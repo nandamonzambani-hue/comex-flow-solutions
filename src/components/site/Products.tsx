@@ -1,5 +1,22 @@
 import { useState } from "react";
-import { Cog, Waves, Droplet, Activity, Package, Download } from "lucide-react";
+import { Cog, Waves, Droplet, Activity, Package, Download, ArrowRight } from "lucide-react";
+import imgCrimpadora from "@/assets/produtos/crimpadora.jpg";
+import imgCorte from "@/assets/produtos/corte.png";
+import imgBancada from "@/assets/produtos/bancada-teste.jpg";
+import imgLimpeza from "@/assets/produtos/limpeza.png";
+import imgDescasque from "@/assets/produtos/descasque.png";
+import imgMarzocchi from "@/assets/produtos/marzocchi-bomba.jpg";
+import imgZec from "@/assets/produtos/zec-mangueira.jpg";
+import imgInsumos from "@/assets/produtos/comex-insumos.jpg";
+import imgTransfluid from "@/assets/produtos/transfluid.jpg";
+
+type Item = {
+  name: string;
+  desc: string;
+  image: string;
+  catalog?: string;
+  brand?: string;
+};
 
 type Category = {
   id: string;
@@ -7,7 +24,7 @@ type Category = {
   title: string;
   brands: string;
   desc: string;
-  items: { name: string; note?: string; href?: string }[];
+  items: Item[];
 };
 
 const categories: Category[] = [
@@ -16,12 +33,42 @@ const categories: Category[] = [
     icon: Cog,
     title: "Equipamentos",
     brands: "Uniflex • Transfluid • Held",
-    desc: "Crimpadoras, máquinas de corte, decapadoras e equipamentos de dobra para a fabricação completa de mangueiras.",
+    desc: "Linha completa de máquinas para produção de mangueiras: crimpadoras, máquinas de corte, decapadoras, bancadas de teste e equipamentos de limpeza.",
     items: [
-      { name: "Crimpadoras Uniflex", note: "Linha completa para baixa, média e alta pressão", href: "/catalogos/Catalogo_Uniflex.pdf" },
-      { name: "Máquinas de corte Uniflex", note: "Precisão e segurança em corte de mangueiras" },
-      { name: "Soluções Transfluid", note: "Dobra, conformação e processamento de tubos" },
-      { name: "Equipamentos Held", note: "Tecnologia para terminais e acoplamentos" },
+      {
+        name: "Crimpadoras Uniflex",
+        brand: "Uniflex",
+        desc: "Linha HM 2xx, 3xx, 4xx e 6xx para produção. S3, S4, S6 e S8/S10 para lojas. Versões disponíveis em português e com NR-12.",
+        image: imgCrimpadora,
+        catalog: "/catalogos/Catalogo_Uniflex.pdf",
+      },
+      {
+        name: "Máquinas de Corte Uniflex",
+        brand: "Uniflex",
+        desc: "Manuais (EM6) e pneumáticas (EM6P, EM8P, EM120) para corte preciso de mangueiras hidráulicas e industriais.",
+        image: imgCorte,
+        catalog: "/catalogos/Catalogo_Uniflex.pdf",
+      },
+      {
+        name: "Decapadoras (Skiving)",
+        brand: "Uniflex",
+        desc: "USM10 e linha completa de equipamentos de descasque para preparação de mangueiras antes da crimpagem.",
+        image: imgDescasque,
+        catalog: "/catalogos/Catalogo_Uniflex.pdf",
+      },
+      {
+        name: "Equipamentos de Limpeza",
+        brand: "Uniflex",
+        desc: "RG10 e soluções para limpeza interna de mangueiras, removendo resíduos antes da montagem do terminal.",
+        image: imgLimpeza,
+        catalog: "/catalogos/Catalogo_Uniflex.pdf",
+      },
+      {
+        name: "Soluções Transfluid",
+        brand: "Transfluid",
+        desc: "Dobra, conformação e processamento de tubos rígidos. Tecnologia italiana para a indústria pesada.",
+        image: imgTransfluid,
+      },
     ],
   },
   {
@@ -29,12 +76,35 @@ const categories: Category[] = [
     icon: Waves,
     title: "Mangueiras",
     brands: "ZEC • Next",
-    desc: "Linha completa de mangueiras hidráulicas e industriais para todos os setores de aplicação.",
+    desc: "Linha completa de mangueiras hidráulicas e industriais ZEC, organizada por segmento de aplicação.",
     items: [
-      { name: "ZEC — Linha hidráulica", note: "Catálogo América Latina disponível", href: "/catalogos/ZEC_Catalogo_America_Latina.pdf" },
-      { name: "ZEC — Mineração", note: "Resistência extrema à abrasão" },
-      { name: "ZEC — Petróleo & Gás", note: "Alta pressão e temperatura" },
-      { name: "Next — Industrial", note: "Aplicações específicas e customizadas" },
+      {
+        name: "ZEC — Linha Hidráulica",
+        brand: "ZEC",
+        desc: "Mangueiras de alta pressão para sistemas hidráulicos. Catálogo completo América Latina disponível.",
+        image: imgZec,
+        catalog: "/catalogos/ZEC_Catalogo_America_Latina.pdf",
+      },
+      {
+        name: "ZEC — Mineração",
+        brand: "ZEC",
+        desc: "Resistência extrema à abrasão e impactos para o ambiente mais hostil da indústria.",
+        image: imgZec,
+        catalog: "/catalogos/ZEC_Catalogo_America_Latina.pdf",
+      },
+      {
+        name: "ZEC — Petróleo & Gás",
+        brand: "ZEC",
+        desc: "Alta pressão, alta temperatura e resistência química para aplicações offshore e onshore.",
+        image: imgZec,
+        catalog: "/catalogos/ZEC_Catalogo_America_Latina.pdf",
+      },
+      {
+        name: "Next — Industrial",
+        brand: "Next",
+        desc: "Mangueiras industriais para aplicações específicas e customizadas conforme projeto.",
+        image: imgZec,
+      },
     ],
   },
   {
@@ -42,11 +112,36 @@ const categories: Category[] = [
     icon: Droplet,
     title: "Bombas",
     brands: "Marzocchi",
-    desc: "Bombas de engrenagem italianas Marzocchi: precisão, durabilidade e a tradição de quem faz bombas hidráulicas há décadas.",
+    desc: "Bombas de engrenagem italianas Marzocchi: precisão, durabilidade e tradição em hidráulica de alta performance.",
     items: [
-      { name: "Bombas de engrenagem", note: "Linhas GHP, ALP, ELI e outras", href: "/catalogos/Company_Profile_Marzocchi.pdf" },
-      { name: "Motores hidráulicos", note: "Alto rendimento e baixa emissão de ruído" },
-      { name: "Soluções customizadas", note: "Especificação técnica sob projeto" },
+      {
+        name: "Marzocchi ELIKA",
+        brand: "Marzocchi",
+        desc: "Tecnologia de baixo ruído com engrenagens helicoidais. Eficiência superior x bombas tradicionais.",
+        image: imgMarzocchi,
+        catalog: "/catalogos/Company_Profile_Marzocchi.pdf",
+      },
+      {
+        name: "Série ALP — Alumínio",
+        brand: "Marzocchi",
+        desc: "Bombas de engrenagem em alumínio, leves e de alta eficiência volumétrica.",
+        image: imgMarzocchi,
+        catalog: "/catalogos/Company_Profile_Marzocchi.pdf",
+      },
+      {
+        name: "FCIP & FCIM — Ferro Fundido",
+        brand: "Marzocchi",
+        desc: "Bombas e motores Gr. 2-3-4 em ferro fundido para aplicações severas de alta pressão.",
+        image: imgMarzocchi,
+        catalog: "/catalogos/Company_Profile_Marzocchi.pdf",
+      },
+      {
+        name: "Micropumps 0,25–0,5 cm³/rev",
+        brand: "Marzocchi",
+        desc: "Micro bombas de precisão para aplicações que exigem dosagem exata em baixos volumes.",
+        image: imgMarzocchi,
+        catalog: "/catalogos/Company_Profile_Marzocchi.pdf",
+      },
     ],
   },
   {
@@ -56,10 +151,31 @@ const categories: Category[] = [
     brands: "Uniflex • Held",
     desc: "Bancadas e equipamentos de teste para garantir a integridade e a vida útil das mangueiras antes da operação.",
     items: [
-      { name: "Bancadas de teste de impulso" },
-      { name: "Bancadas de pressão estática" },
-      { name: "Equipamentos de rastreabilidade" },
-      { name: "Suporte técnico em certificação" },
+      {
+        name: "Bancada de Testes P160",
+        brand: "Uniflex",
+        desc: "Bancada para teste de pressão estática e validação de mangueiras montadas.",
+        image: imgBancada,
+        catalog: "/catalogos/Catalogo_Uniflex.pdf",
+      },
+      {
+        name: "Bancadas de Impulso",
+        brand: "Uniflex",
+        desc: "Testes de fadiga e ciclagem para qualificação e certificação de mangueiras.",
+        image: imgBancada,
+      },
+      {
+        name: "Equipamentos de Marking",
+        brand: "Uniflex",
+        desc: "Identificação e rastreabilidade de mangueiras conforme normas internacionais.",
+        image: imgBancada,
+      },
+      {
+        name: "Pin Prick Tools",
+        brand: "Uniflex",
+        desc: "Ferramentas de perfuração da capa para mangueiras com fluidos voláteis.",
+        image: imgBancada,
+      },
     ],
   },
   {
@@ -69,10 +185,24 @@ const categories: Category[] = [
     brands: "COMEX 10",
     desc: "Linha própria de insumos: lacres de segurança, cabos de proteção e acessórios essenciais para sua operação.",
     items: [
-      { name: "Lacres de segurança COMEX 10" },
-      { name: "Cabos de proteção" },
-      { name: "Acessórios de montagem" },
-      { name: "Identificação e rastreabilidade" },
+      {
+        name: "Lacres de Segurança COMEX 10",
+        brand: "COMEX 10",
+        desc: "Lacres metálicos para identificação e segurança de equipamentos e cargas.",
+        image: imgInsumos,
+      },
+      {
+        name: "Cabos de Proteção",
+        brand: "COMEX 10",
+        desc: "Cabos de aço revestidos para proteção e contenção de mangueiras hidráulicas.",
+        image: imgInsumos,
+      },
+      {
+        name: "Acessórios de Montagem",
+        brand: "COMEX 10",
+        desc: "Linha completa de acessórios para montagem segura e rastreável.",
+        image: imgInsumos,
+      },
     ],
   },
 ];
@@ -135,42 +265,69 @@ export function Products() {
           {/* Content panel */}
           <div className="lg:col-span-8">
             <div
-              className="p-8 md:p-10 rounded-2xl border border-border h-full"
+              className="p-6 md:p-8 rounded-2xl border border-border h-full"
               style={{ background: "var(--gradient-surface)", boxShadow: "var(--shadow-elegant)" }}
             >
-              <div className="flex items-start justify-between gap-4 mb-2 flex-wrap">
-                <div>
-                  <div className="text-xs font-semibold tracking-widest uppercase text-primary mb-1">
-                    {current.brands}
-                  </div>
-                  <h3 className="font-display text-3xl md:text-4xl font-bold">{current.title}</h3>
+              <div className="mb-6">
+                <div className="text-xs font-semibold tracking-widest uppercase text-primary mb-1">
+                  {current.brands}
                 </div>
+                <h3 className="font-display text-3xl md:text-4xl font-bold">{current.title}</h3>
+                <p className="text-muted-foreground leading-relaxed mt-3 max-w-2xl">
+                  {current.desc}
+                </p>
               </div>
-              <p className="text-muted-foreground leading-relaxed mt-4 mb-8 max-w-2xl">
-                {current.desc}
-              </p>
 
-              <div className="grid sm:grid-cols-2 gap-3">
+              <div className="grid sm:grid-cols-2 gap-4">
                 {current.items.map((item) => (
-                  <div
+                  <article
                     key={item.name}
-                    className="p-4 rounded-lg bg-background/50 border border-border hover:border-primary/40 transition-colors"
+                    className="group rounded-xl bg-background/60 border border-border hover:border-primary/40 transition-all overflow-hidden flex flex-col"
                   >
-                    <div className="font-semibold text-sm mb-1">{item.name}</div>
-                    {item.note && (
-                      <div className="text-xs text-muted-foreground mb-2">{item.note}</div>
-                    )}
-                    {item.href && (
-                      <a
-                        href={item.href}
-                        target="_blank"
-                        rel="noopener"
-                        className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary hover:text-primary-glow"
-                      >
-                        <Download size={12} /> Catálogo PDF
-                      </a>
-                    )}
-                  </div>
+                    <div className="aspect-[4/3] overflow-hidden bg-background">
+                      <img
+                        src={item.image}
+                        alt={`${item.name} — ${item.brand ?? "COMEX 10"}`}
+                        loading="lazy"
+                        width={800}
+                        height={600}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                    </div>
+                    <div className="p-4 flex-1 flex flex-col">
+                      {item.brand && (
+                        <div className="text-[10px] font-bold tracking-widest uppercase text-primary mb-1">
+                          {item.brand}
+                        </div>
+                      )}
+                      <h4 className="font-display font-semibold text-sm mb-1.5 leading-snug">
+                        {item.name}
+                      </h4>
+                      <p className="text-xs text-muted-foreground leading-relaxed mb-3 flex-1">
+                        {item.desc}
+                      </p>
+                      <div className="flex items-center gap-3 mt-auto pt-2 border-t border-border/50">
+                        {item.catalog ? (
+                          <a
+                            href={item.catalog}
+                            target="_blank"
+                            rel="noopener"
+                            className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary hover:text-primary-glow transition-colors"
+                          >
+                            <Download size={12} /> Catálogo PDF
+                          </a>
+                        ) : (
+                          <span className="text-xs text-muted-foreground">Sob consulta</span>
+                        )}
+                        <a
+                          href="#contato"
+                          className="ml-auto inline-flex items-center gap-1 text-xs font-medium text-muted-foreground hover:text-foreground transition-colors"
+                        >
+                          Consultar <ArrowRight size={11} />
+                        </a>
+                      </div>
+                    </div>
+                  </article>
                 ))}
               </div>
             </div>

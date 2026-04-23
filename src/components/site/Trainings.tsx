@@ -68,11 +68,11 @@ export function Trainings() {
                   </div>
                   <div>
                     <h3 className="font-display text-xl font-semibold mb-2">
-                      In company — Parceiros Gates & Parker
+                      In company
                     </h3>
                     <p className="text-sm text-muted-foreground mb-3">
-                      Treinamentos realizados dentro da sua empresa, com chancela dos
-                      principais fabricantes globais.
+                      Treinamentos realizados dentro da sua empresa, com conteúdo
+                      customizado para o seu setor de atuação.
                     </p>
                     <ul className="space-y-1.5">
                       {[

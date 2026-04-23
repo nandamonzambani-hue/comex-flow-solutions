@@ -30,7 +30,7 @@ export function Contact() {
 
             <div className="space-y-5">
               <a
-                href="mailto:contato@comex10dobrasil.com.br"
+                href="mailto:contato@comex10.com.br"
                 className="flex items-center gap-4 group"
               >
                 <div className="w-12 h-12 rounded-lg bg-surface border border-border flex items-center justify-center group-hover:border-primary/50 transition-colors">
@@ -41,12 +41,12 @@ export function Contact() {
                     E-mail
                   </div>
                   <div className="font-medium group-hover:text-primary transition-colors">
-                    contato@comex10dobrasil.com.br
+                    contato@comex10.com.br
                   </div>
                 </div>
               </a>
 
-              <a href="tel:+551100000000" className="flex items-center gap-4 group">
+              <a href="tel:+551126017483" className="flex items-center gap-4 group">
                 <div className="w-12 h-12 rounded-lg bg-surface border border-border flex items-center justify-center group-hover:border-primary/50 transition-colors">
                   <Phone className="text-primary" size={20} />
                 </div>
@@ -55,7 +55,10 @@ export function Contact() {
                     Telefone
                   </div>
                   <div className="font-medium group-hover:text-primary transition-colors">
-                    Fale com o comercial
+                    11 2601-7483
+                  </div>
+                  <div className="text-xs text-muted-foreground mt-0.5">
+                    2ª a 6ª — 8:30 às 17:30h
                   </div>
                 </div>
               </a>
@@ -66,9 +69,12 @@ export function Contact() {
                 </div>
                 <div>
                   <div className="text-xs uppercase tracking-wider text-muted-foreground">
-                    Brasil
+                    Endereço
                   </div>
-                  <div className="font-medium">Atendimento em todo o território nacional</div>
+                  <div className="font-medium">R. Marcelo Muller, 415</div>
+                  <div className="text-sm text-muted-foreground">
+                    São Paulo — SP • CEP 03223-060
+                  </div>
                 </div>
               </div>
 
