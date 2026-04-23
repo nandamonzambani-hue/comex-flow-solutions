@@ -1,4 +1,4 @@
-import { Instagram } from "lucide-react";
+import { Instagram, Linkedin } from "lucide-react";
 
 export function Footer() {
   return (
@@ -13,15 +13,26 @@ export function Footer() {
               Consultoria especializada em cadeia de fluidos: equipamentos, mangueiras,
               bombas, testes e treinamentos.
             </p>
-            <a
-              href="https://www.instagram.com/comex10dobrasil/"
-              target="_blank"
-              rel="noopener"
-              aria-label="Instagram da COMEX 10"
-              className="inline-flex items-center justify-center w-10 h-10 rounded-md bg-background border border-border hover:border-primary hover:text-primary transition-colors"
-            >
-              <Instagram size={18} />
-            </a>
+            <div className="flex items-center gap-2">
+              <a
+                href="https://www.instagram.com/comex10dobrasil/"
+                target="_blank"
+                rel="noopener"
+                aria-label="Instagram da COMEX 10"
+                className="inline-flex items-center justify-center w-10 h-10 rounded-md bg-background border border-border hover:border-primary hover:text-primary transition-colors"
+              >
+                <Instagram size={18} />
+              </a>
+              <a
+                href="https://www.linkedin.com/company/comex10-do-brasil/"
+                target="_blank"
+                rel="noopener"
+                aria-label="LinkedIn da COMEX 10"
+                className="inline-flex items-center justify-center w-10 h-10 rounded-md bg-background border border-border hover:border-primary hover:text-primary transition-colors"
+              >
+                <Linkedin size={18} />
+              </a>
+            </div>
           </div>
 
           <div>
