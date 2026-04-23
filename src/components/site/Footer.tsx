@@ -1,4 +1,5 @@
-import { Instagram, Linkedin } from "lucide-react";
+import { Instagram, Linkedin, MapPin, Phone, Mail, Clock } from "lucide-react";
+import logo from "@/assets/logo-comex10.png";
 
 export function Footer() {
   return (
@@ -6,13 +7,23 @@ export function Footer() {
       <div className="mx-auto max-w-7xl px-4 md:px-8 py-12">
         <div className="grid md:grid-cols-4 gap-10 mb-10">
           <div className="md:col-span-2">
-            <div className="font-display text-2xl font-bold mb-3">
-              COMEX<span className="text-primary">10</span>
-            </div>
+            <img
+              src={logo}
+              alt="COMEX 10 do Brasil"
+              width={180}
+              height={54}
+              className="h-12 w-auto bg-white/95 px-2 py-1 rounded mb-4"
+            />
             <p className="text-sm text-muted-foreground max-w-sm mb-4">
               Consultoria especializada em cadeia de fluidos: equipamentos, mangueiras,
               bombas, testes e treinamentos.
             </p>
+            <ul className="space-y-1.5 text-xs text-muted-foreground mb-4">
+              <li className="flex items-start gap-2"><MapPin size={13} className="mt-0.5 text-primary flex-shrink-0" /> R. Marcelo Muller, 415 — São Paulo/SP — 03223-060</li>
+              <li className="flex items-center gap-2"><Phone size={13} className="text-primary flex-shrink-0" /> 11 2601-7483</li>
+              <li className="flex items-center gap-2"><Mail size={13} className="text-primary flex-shrink-0" /> contato@comex10.com.br</li>
+              <li className="flex items-center gap-2"><Clock size={13} className="text-primary flex-shrink-0" /> 2ª a 6ª — 8:30 às 17:30h</li>
+            </ul>
             <div className="flex items-center gap-2">
               <a
                 href="https://www.instagram.com/comex10dobrasil/"

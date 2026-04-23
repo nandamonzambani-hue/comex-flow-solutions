@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Instagram, Linkedin, Phone } from "lucide-react";
+import logo from "@/assets/logo-comex10.png";
 
 const links = [
   { href: "#produtos", label: "Produtos" },
@@ -25,19 +26,58 @@ export function Header() {
     <header
       className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-background/85 backdrop-blur-lg border-b border-border shadow-elegant"
-          : "bg-transparent"
+          ? "bg-background/90 backdrop-blur-lg border-b border-border"
+          : "bg-background/40 backdrop-blur-sm"
       }`}
       style={scrolled ? { boxShadow: "var(--shadow-elegant)" } : undefined}
     >
-      <div className="mx-auto max-w-7xl px-4 md:px-8 h-16 flex items-center justify-between">
-        <a href="#top" className="flex items-center gap-2 group">
-          <span className="font-display text-2xl font-bold tracking-tight">
-            COMEX<span className="text-primary">10</span>
-          </span>
+      {/* Top utility bar */}
+      <div className="hidden md:block border-b border-border/50 bg-background/60">
+        <div className="mx-auto max-w-7xl px-4 md:px-8 h-9 flex items-center justify-between text-xs">
+          <div className="flex items-center gap-5 text-muted-foreground">
+            <a href="tel:+551126017483" className="inline-flex items-center gap-1.5 hover:text-primary transition-colors">
+              <Phone size={12} /> 11 2601-7483
+            </a>
+            <span className="hidden lg:inline">2ª a 6ª — 8:30 às 17:30h</span>
+            <a href="mailto:contato@comex10.com.br" className="hidden lg:inline hover:text-primary transition-colors">
+              contato@comex10.com.br
+            </a>
+          </div>
+          <div className="flex items-center gap-3">
+            <a
+              href="https://www.instagram.com/comex10dobrasil/"
+              target="_blank"
+              rel="noopener"
+              aria-label="Instagram da COMEX 10"
+              className="text-muted-foreground hover:text-primary transition-colors"
+            >
+              <Instagram size={14} />
+            </a>
+            <a
+              href="https://www.linkedin.com/company/comex10-do-brasil/"
+              target="_blank"
+              rel="noopener"
+              aria-label="LinkedIn da COMEX 10"
+              className="text-muted-foreground hover:text-primary transition-colors"
+            >
+              <Linkedin size={14} />
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div className="mx-auto max-w-7xl px-4 md:px-8 h-20 flex items-center justify-between">
+        <a href="#top" className="flex items-center gap-3 group">
+          <img
+            src={logo}
+            alt="Logo COMEX 10 do Brasil — consultoria em cadeia de fluidos"
+            width={180}
+            height={54}
+            className="h-10 md:h-12 w-auto bg-white/95 px-2 py-1 rounded"
+          />
         </a>
 
-        <nav className="hidden lg:flex items-center gap-8">
+        <nav className="hidden lg:flex items-center gap-7">
           {links.map((l) => (
             <a
               key={l.href}
@@ -47,6 +87,26 @@ export function Header() {
               {l.label}
             </a>
           ))}
+          <div className="flex items-center gap-2 ml-2 lg:hidden xl:flex">
+            <a
+              href="https://www.instagram.com/comex10dobrasil/"
+              target="_blank"
+              rel="noopener"
+              aria-label="Instagram"
+              className="inline-flex items-center justify-center w-9 h-9 rounded-md border border-border text-muted-foreground hover:text-primary hover:border-primary/60 transition-colors"
+            >
+              <Instagram size={15} />
+            </a>
+            <a
+              href="https://www.linkedin.com/company/comex10-do-brasil/"
+              target="_blank"
+              rel="noopener"
+              aria-label="LinkedIn"
+              className="inline-flex items-center justify-center w-9 h-9 rounded-md border border-border text-muted-foreground hover:text-primary hover:border-primary/60 transition-colors"
+            >
+              <Linkedin size={15} />
+            </a>
+          </div>
           <a
             href="#contato"
             className="inline-flex items-center justify-center rounded-md px-5 py-2 text-sm font-semibold text-primary-foreground transition-all hover:opacity-90"
@@ -78,6 +138,29 @@ export function Header() {
                 {l.label}
               </a>
             ))}
+            <div className="flex items-center gap-2 px-3 py-3">
+              <a
+                href="https://www.instagram.com/comex10dobrasil/"
+                target="_blank"
+                rel="noopener"
+                aria-label="Instagram"
+                className="inline-flex items-center justify-center w-10 h-10 rounded-md border border-border text-muted-foreground"
+              >
+                <Instagram size={16} />
+              </a>
+              <a
+                href="https://www.linkedin.com/company/comex10-do-brasil/"
+                target="_blank"
+                rel="noopener"
+                aria-label="LinkedIn"
+                className="inline-flex items-center justify-center w-10 h-10 rounded-md border border-border text-muted-foreground"
+              >
+                <Linkedin size={16} />
+              </a>
+              <a href="tel:+551126017483" className="ml-auto text-sm font-medium text-muted-foreground">
+                11 2601-7483
+              </a>
+            </div>
             <a
               href="#contato"
               onClick={() => setOpen(false)}
