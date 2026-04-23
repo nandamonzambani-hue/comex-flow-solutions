@@ -5,8 +5,6 @@ const partners = [
   { name: "Marzocchi", country: "Itália" },
   { name: "ZEC", country: "Itália" },
   { name: "Next", country: "Brasil" },
-  { name: "Gates", country: "EUA" },
-  { name: "Parker", country: "EUA" },
 ];
 
 export function Partners() {
