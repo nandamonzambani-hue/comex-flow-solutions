@@ -1,4 +1,4 @@
-import { Mail, Phone, MapPin, Instagram, ArrowRight } from "lucide-react";
+import { Mail, Phone, MapPin, Instagram, Linkedin, ArrowRight } from "lucide-react";
 import { useState } from "react";
 
 export function Contact() {
@@ -87,6 +87,25 @@ export function Contact() {
                   </div>
                   <div className="font-medium group-hover:text-primary transition-colors">
                     @comex10dobrasil
+                  </div>
+                </div>
+              </a>
+
+              <a
+                href="https://www.linkedin.com/company/comex10-do-brasil/"
+                target="_blank"
+                rel="noopener"
+                className="flex items-center gap-4 group"
+              >
+                <div className="w-12 h-12 rounded-lg bg-surface border border-border flex items-center justify-center group-hover:border-primary/50 transition-colors">
+                  <Linkedin className="text-primary" size={20} />
+                </div>
+                <div>
+                  <div className="text-xs uppercase tracking-wider text-muted-foreground">
+                    LinkedIn
+                  </div>
+                  <div className="font-medium group-hover:text-primary transition-colors">
+                    COMEX 10 do Brasil
                   </div>
                 </div>
               </a>
