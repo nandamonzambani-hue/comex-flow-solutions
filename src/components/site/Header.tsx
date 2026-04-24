@@ -118,7 +118,7 @@ export function Header() {
 
         <button
           onClick={() => setOpen((o) => !o)}
-          className="lg:hidden p-2 text-foreground"
+          className="lg:hidden p-2 text-neutral-800"
           aria-label="Abrir menu"
         >
           {open ? <X size={24} /> : <Menu size={24} />}
