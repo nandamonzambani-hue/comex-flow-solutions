@@ -26,15 +26,15 @@ export function Header() {
     <header
       className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-background/90 backdrop-blur-lg border-b border-border"
-          : "bg-background/40 backdrop-blur-sm"
+          ? "bg-white/95 backdrop-blur-lg border-b border-border"
+          : "bg-white/90 backdrop-blur-sm"
       }`}
       style={scrolled ? { boxShadow: "var(--shadow-elegant)" } : undefined}
     >
       {/* Top utility bar */}
-      <div className="hidden md:block border-b border-border/50 bg-background/60">
+      <div className="hidden md:block border-b border-border/60 bg-white">
         <div className="mx-auto max-w-7xl px-4 md:px-8 h-9 flex items-center justify-between text-xs">
-          <div className="flex items-center gap-5 text-muted-foreground">
+          <div className="flex items-center gap-5 text-neutral-600">
             <a href="tel:+551126017483" className="inline-flex items-center gap-1.5 hover:text-primary transition-colors">
               <Phone size={12} /> 11 2601-7483
             </a>
@@ -49,7 +49,7 @@ export function Header() {
               target="_blank"
               rel="noopener"
               aria-label="Instagram da COMEX 10"
-              className="text-muted-foreground hover:text-primary transition-colors"
+              className="text-neutral-600 hover:text-primary transition-colors"
             >
               <Instagram size={14} />
             </a>
@@ -58,7 +58,7 @@ export function Header() {
               target="_blank"
               rel="noopener"
               aria-label="LinkedIn da COMEX 10"
-              className="text-muted-foreground hover:text-primary transition-colors"
+              className="text-neutral-600 hover:text-primary transition-colors"
             >
               <Linkedin size={14} />
             </a>
@@ -73,7 +73,7 @@ export function Header() {
             alt="Logo COMEX 10 do Brasil — consultoria em cadeia de fluidos"
             width={180}
             height={54}
-            className="h-10 md:h-12 w-auto bg-white/95 px-2 py-1 rounded"
+            className="h-10 md:h-12 w-auto"
           />
         </a>
 
@@ -82,7 +82,7 @@ export function Header() {
             <a
               key={l.href}
               href={l.href}
-              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+              className="text-sm font-medium text-neutral-700 hover:text-primary transition-colors"
             >
               {l.label}
             </a>
