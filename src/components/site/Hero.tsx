@@ -75,40 +75,41 @@ export function Hero() {
           </div>
         </div>
 
-        {/* Uniflex subtle highlight card */}
+        {/* Partners highlight card */}
         <div className="lg:col-span-5">
           <div
             className="relative p-8 rounded-2xl border border-border bg-surface/70 backdrop-blur-md"
             style={{ boxShadow: "var(--shadow-elegant)" }}
           >
             <div className="absolute -top-3 left-6 px-3 py-1 rounded-full bg-primary text-primary-foreground text-xs font-bold tracking-wide uppercase">
-              Parceiro estratégico
+              Parceiros estratégicos
             </div>
-            <div className="font-display text-3xl font-bold mb-2">UNIFLEX</div>
-            <p className="text-sm text-muted-foreground mb-6">
-              Tecnologia alemã em crimpadoras, máquinas de corte e equipamentos de
-              teste. A engenharia que sustenta nossas soluções.
+            <p className="text-sm text-muted-foreground mb-6 mt-2">
+              Representamos as marcas líderes globais em hidráulica, transmissão de
+              fluidos e equipamentos de montagem.
             </p>
-            <div className="grid grid-cols-2 gap-3 mb-6">
-              {["Crimpadoras", "Máquinas de corte", "Decapadoras", "Equip. de teste"].map(
-                (t) => (
-                  <div
-                    key={t}
-                    className="px-3 py-2 rounded-md bg-background/50 border border-border text-xs font-medium"
-                  >
-                    {t}
+            <div className="grid grid-cols-2 gap-3">
+              {[
+                { name: "UNIFLEX", country: "Alemanha" },
+                { name: "TRANSFLUID", country: "Alemanha" },
+                { name: "HELD", country: "Alemanha" },
+                { name: "MARZOCCHI", country: "Itália" },
+                { name: "ZEC", country: "Itália" },
+                { name: "NEXT", country: "Brasil" },
+              ].map((p) => (
+                <div
+                  key={p.name}
+                  className="aspect-[5/3] flex flex-col items-center justify-center rounded-md bg-background/60 border border-border hover:border-primary/50 transition-colors"
+                >
+                  <div className="font-display text-lg font-bold tracking-tight">
+                    {p.name}
                   </div>
-                ),
-              )}
+                  <div className="text-[10px] uppercase tracking-wider text-muted-foreground mt-0.5">
+                    {p.country}
+                  </div>
+                </div>
+              ))}
             </div>
-            <a
-              href="/catalogos/Catalogo_Uniflex.pdf"
-              target="_blank"
-              rel="noopener"
-              className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-primary-glow transition-colors"
-            >
-              Baixar catálogo Uniflex <ArrowRight size={14} />
-            </a>
           </div>
         </div>
       </div>
