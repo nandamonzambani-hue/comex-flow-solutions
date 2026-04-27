@@ -5,7 +5,9 @@ import imgCorte from "@/assets/produtos/corte.png";
 import imgBancada from "@/assets/produtos/bancada-teste.jpg";
 import imgLimpeza from "@/assets/produtos/limpeza.png";
 import imgDescasque from "@/assets/produtos/descasque.png";
-import imgMarzocchi from "@/assets/produtos/marzocchi-bomba.jpg";
+import imgMarzocchi1 from "@/assets/produtos/marzocchi-bomba-1.png";
+import imgMarzocchi2 from "@/assets/produtos/marzocchi-bomba-2.png";
+import imgMarzocchi3 from "@/assets/produtos/marzocchi-bomba-3.png";
 import imgZec from "@/assets/produtos/zec-mangueira.jpg";
 import imgInsumos from "@/assets/produtos/comex-insumos.jpg";
 import imgTransfluid from "@/assets/produtos/transfluid.jpg";
@@ -118,28 +120,28 @@ const categories: Category[] = [
         name: "Marzocchi ELIKA",
         brand: "Marzocchi",
         desc: "Tecnologia de baixo ruído com engrenagens helicoidais. Eficiência superior x bombas tradicionais.",
-        image: imgMarzocchi,
+        image: imgMarzocchi1,
         catalog: "/catalogos/Company_Profile_Marzocchi.pdf",
       },
       {
         name: "Série ALP — Alumínio",
         brand: "Marzocchi",
         desc: "Bombas de engrenagem em alumínio, leves e de alta eficiência volumétrica.",
-        image: imgMarzocchi,
+        image: imgMarzocchi2,
         catalog: "/catalogos/Company_Profile_Marzocchi.pdf",
       },
       {
         name: "FCIP & FCIM — Ferro Fundido",
         brand: "Marzocchi",
         desc: "Bombas e motores Gr. 2-3-4 em ferro fundido para aplicações severas de alta pressão.",
-        image: imgMarzocchi,
+        image: imgMarzocchi3,
         catalog: "/catalogos/Company_Profile_Marzocchi.pdf",
       },
       {
         name: "Micropumps 0,25–0,5 cm³/rev",
         brand: "Marzocchi",
         desc: "Micro bombas de precisão para aplicações que exigem dosagem exata em baixos volumes.",
-        image: imgMarzocchi,
+        image: imgMarzocchi1,
         catalog: "/catalogos/Company_Profile_Marzocchi.pdf",
       },
     ],
