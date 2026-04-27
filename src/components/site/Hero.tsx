@@ -24,14 +24,14 @@ export function Hero() {
             </span>
           </div>
 
-          <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] mb-6">
+          <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] mb-6 text-center mx-0">
             Do problema à solução.
             <br />
             <span
               className="bg-clip-text text-transparent"
               style={{ backgroundImage: "var(--gradient-primary)" }}
             >
-              Sua mangueira não pode falhar.
+              ​
             </span>
           </h1>
 
