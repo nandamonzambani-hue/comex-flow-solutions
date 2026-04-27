@@ -3,7 +3,7 @@ import logo from "@/assets/logo-comex10.png";
 
 export function Footer() {
   return (
-    <footer className="border-t border-border bg-surface/60">
+    <footer className="border-t border-border bg-white text-neutral-800">
       <div className="mx-auto max-w-7xl px-4 md:px-8 py-12">
         <div className="grid md:grid-cols-4 gap-10 mb-10">
           <div className="md:col-span-2">
