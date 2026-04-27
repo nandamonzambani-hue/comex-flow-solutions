@@ -8,7 +8,9 @@ import imgDescasque from "@/assets/produtos/descasque.png";
 import imgMarzocchi1 from "@/assets/produtos/marzocchi-bomba-1.png";
 import imgMarzocchi2 from "@/assets/produtos/marzocchi-bomba-2.png";
 import imgMarzocchi3 from "@/assets/produtos/marzocchi-bomba-3.png";
-import imgZec from "@/assets/produtos/zec-mangueira.jpg";
+import imgZec1 from "@/assets/produtos/zec-mangueira-1.png";
+import imgZec2 from "@/assets/produtos/zec-mangueira-2.png";
+import imgZec3 from "@/assets/produtos/zec-mangueira-3.png";
 import imgInsumos from "@/assets/produtos/comex-insumos.jpg";
 import imgTransfluid from "@/assets/produtos/transfluid.jpg";
 
@@ -84,28 +86,28 @@ const categories: Category[] = [
         name: "ZEC — Linha Hidráulica",
         brand: "ZEC",
         desc: "Mangueiras de alta pressão para sistemas hidráulicos. Catálogo completo América Latina disponível.",
-        image: imgZec,
+        image: imgZec1,
         catalog: "/catalogos/ZEC_Catalogo_America_Latina.pdf",
       },
       {
         name: "ZEC — Mineração",
         brand: "ZEC",
         desc: "Resistência extrema à abrasão e impactos para o ambiente mais hostil da indústria.",
-        image: imgZec,
+        image: imgZec2,
         catalog: "/catalogos/ZEC_Catalogo_America_Latina.pdf",
       },
       {
         name: "ZEC — Petróleo & Gás",
         brand: "ZEC",
         desc: "Alta pressão, alta temperatura e resistência química para aplicações offshore e onshore.",
-        image: imgZec,
+        image: imgZec3,
         catalog: "/catalogos/ZEC_Catalogo_America_Latina.pdf",
       },
       {
         name: "Next — Industrial",
         brand: "Next",
         desc: "Mangueiras industriais para aplicações específicas e customizadas conforme projeto.",
-        image: imgZec,
+        image: imgZec1,
       },
     ],
   },
