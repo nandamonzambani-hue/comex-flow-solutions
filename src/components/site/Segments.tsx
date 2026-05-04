@@ -49,9 +49,10 @@ export function Segments() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
           {segments.map((s) => (
-            <article
+            <a
               key={s.title}
-              className="group relative overflow-hidden rounded-xl border border-border aspect-[4/5] cursor-pointer"
+              href="#produtos"
+              className="group relative overflow-hidden rounded-xl border border-border aspect-[4/5] cursor-pointer block"
             >
               <img
                 src={s.img}
@@ -67,7 +68,7 @@ export function Segments() {
                 </p>
                 <div className="mt-3 h-1 w-12 bg-primary rounded-full transition-all group-hover:w-24" />
               </div>
-            </article>
+            </a>
           ))}
         </div>
       </div>
