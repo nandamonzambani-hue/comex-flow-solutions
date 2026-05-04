@@ -173,6 +173,7 @@ export function Header() {
           </nav>
         </div>
       )}
+      <PartnersStrip />
     </header>
   );
 }
