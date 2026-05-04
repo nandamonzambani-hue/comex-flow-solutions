@@ -1,5 +1,8 @@
 import heroImg from "@/assets/hero-uniflex.jpg";
 import { ArrowRight, ShieldCheck, Wrench, GraduationCap } from "lucide-react";
+import logoUniflex from "@/assets/logos/uniflex.jpeg";
+import logoTransfluid from "@/assets/logos/transfluid.jpg";
+import logoZec from "@/assets/logos/zec.png";
 
 export function Hero() {
   return (
