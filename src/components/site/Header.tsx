@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { Menu, X, Instagram, Linkedin, Phone } from "lucide-react";
 import logo from "@/assets/logo-comex10.png";
-import { PartnersStrip } from "./PartnersStrip";
 
 const links = [
   { href: "#produtos", label: "Produtos" },
@@ -173,7 +172,6 @@ export function Header() {
           </nav>
         </div>
       )}
-      <PartnersStrip />
     </header>
   );
 }

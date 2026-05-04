@@ -1,11 +1,14 @@
 import heroImg from "@/assets/hero-uniflex.jpg";
 import { ArrowRight, ShieldCheck, Wrench, GraduationCap } from "lucide-react";
+import logoUniflex from "@/assets/logos/uniflex.jpeg";
+import logoTransfluid from "@/assets/logos/transfluid.jpg";
+import logoZec from "@/assets/logos/zec.png";
 
 export function Hero() {
   return (
     <section
       id="top"
-      className="relative min-h-screen max-h-[1100px] flex items-center overflow-hidden pt-40 pb-10"
+      className="relative min-h-screen max-h-[1100px] flex items-center overflow-hidden pt-24 pb-10"
     >
       <div className="absolute inset-0">
         <img
@@ -97,32 +100,35 @@ export function Hero() {
             </p>
             <div className="grid grid-cols-2 gap-2.5">
               {[
-                { name: "UNIFLEX", country: "Alemanha", featured: true },
-                { name: "TRANSFLUID", country: "Alemanha" },
-                { name: "HELD", country: "Alemanha" },
-                { name: "MARZOCCHI", country: "Itália" },
-                { name: "ZEC", country: "Itália" },
-                { name: "NEXT", country: "Brasil" },
+                { name: "Uniflex", country: "Alemanha", logo: logoUniflex, href: "https://www.uniflex.de/" },
+                { name: "Transfluid", country: "Alemanha", logo: logoTransfluid, href: "https://www.transfluid.de/" },
+                { name: "Held", country: "Alemanha", href: "#" },
+                { name: "Marzocchi", country: "Itália", href: "https://www.marzocchipompe.com/" },
+                { name: "ZEC", country: "Itália", logo: logoZec, href: "https://www.zecitaly.com/" },
+                { name: "Next", country: "Brasil", href: "#" },
               ].map((p) => (
-                <div
+                <a
                   key={p.name}
-                  className={`aspect-[5/2.5] flex flex-col items-center justify-center rounded-md border transition-colors ${
-                    p.featured
-                      ? "bg-primary/15 border-primary/60"
-                      : "bg-background/60 border-white/10 hover:border-primary/40"
-                  }`}
+                  href={p.href}
+                  target={p.href.startsWith("http") ? "_blank" : undefined}
+                  rel="noopener"
+                  className="aspect-[5/2.5] flex flex-col items-center justify-center rounded-md border border-neutral-200 bg-white hover:border-primary transition-colors p-2"
                 >
-                  <div
-                    className={`font-display text-base font-bold tracking-tight ${
-                      p.featured ? "text-primary" : "text-white"
-                    }`}
-                  >
-                    {p.name}
-                  </div>
-                  <div className="text-[9px] uppercase tracking-wider text-neutral-400 mt-0.5">
+                  {p.logo ? (
+                    <img
+                      src={p.logo}
+                      alt={`Logo ${p.name}`}
+                      className="max-h-8 w-auto object-contain"
+                    />
+                  ) : (
+                    <div className="font-display text-base font-bold tracking-tight text-primary">
+                      {p.name}
+                    </div>
+                  )}
+                  <div className="text-[9px] uppercase tracking-wider text-primary/80 mt-0.5 font-semibold">
                     {p.country}
                   </div>
-                </div>
+                </a>
               ))}
             </div>
           </div>
