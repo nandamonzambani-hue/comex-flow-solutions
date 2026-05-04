@@ -70,7 +70,7 @@ export function Header() {
         <a href="#top" className="flex items-center gap-3 group">
           <img
             src={logo}
-            alt="Logo COMEX 10 do Brasil — consultoria em cadeia de fluidos"
+            alt="Logo COMEX 10 do Brasil — parceiro técnico em cadeia de fluidos"
             width={180}
             height={54}
             className="h-10 md:h-12 w-auto"

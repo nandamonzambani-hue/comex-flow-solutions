@@ -50,46 +50,47 @@
   --popover: oklch(0.21 0.025 250);
   --popover-foreground: oklch(0.97 0.005 250);
 
-  /* COMEX 10 brand: navy blue from logo */
-  --primary: oklch(0.42 0.15 258);
+  /* COMEX 10 brand: vivid orange (energia/campo) */
+  --primary: oklch(0.7 0.19 47);
   --primary-foreground: oklch(0.98 0.005 250);
-  --primary-glow: oklch(0.62 0.16 245);
+  --primary-glow: oklch(0.78 0.18 55);
 
   --secondary: oklch(0.28 0.03 250);
   --secondary-foreground: oklch(0.97 0.005 250);
 
   --muted: oklch(0.25 0.025 250);
-  --muted-foreground: oklch(0.72 0.02 250);
+  --muted-foreground: oklch(0.74 0.02 250);
 
-  --accent: oklch(0.78 0.04 240);
-  --accent-foreground: oklch(0.16 0.02 250);
+  /* Brand navy as accent (logo blue) */
+  --accent: oklch(0.42 0.15 258);
+  --accent-foreground: oklch(0.98 0.005 250);
 
   --destructive: oklch(0.6 0.22 25);
   --destructive-foreground: oklch(0.97 0.005 250);
 
   --border: oklch(0.3 0.02 250);
   --input: oklch(0.28 0.025 250);
-  --ring: oklch(0.42 0.15 258);
+  --ring: oklch(0.7 0.19 47);
 
-  --chart-1: oklch(0.42 0.15 258);
-  --chart-2: oklch(0.62 0.16 245);
-  --chart-3: oklch(0.78 0.04 240);
-  --chart-4: oklch(0.5 0.1 250);
+  --chart-1: oklch(0.7 0.19 47);
+  --chart-2: oklch(0.78 0.18 55);
+  --chart-3: oklch(0.42 0.15 258);
+  --chart-4: oklch(0.62 0.16 245);
   --chart-5: oklch(0.85 0.05 80);
 
   --sidebar: oklch(0.18 0.02 250);
   --sidebar-foreground: oklch(0.97 0.005 250);
-  --sidebar-primary: oklch(0.42 0.15 258);
+  --sidebar-primary: oklch(0.7 0.19 47);
   --sidebar-primary-foreground: oklch(0.98 0.005 250);
   --sidebar-accent: oklch(0.25 0.025 250);
   --sidebar-accent-foreground: oklch(0.97 0.005 250);
   --sidebar-border: oklch(0.3 0.02 250);
-  --sidebar-ring: oklch(0.42 0.15 258);
+  --sidebar-ring: oklch(0.7 0.19 47);
 
-  --gradient-hero: linear-gradient(135deg, oklch(0.16 0.02 250 / 0.94) 0%, oklch(0.18 0.04 250 / 0.82) 55%, oklch(0.42 0.15 258 / 0.45) 100%);
+  --gradient-hero: linear-gradient(120deg, oklch(0.14 0.02 250 / 0.92) 0%, oklch(0.18 0.04 250 / 0.7) 50%, oklch(0.7 0.19 47 / 0.35) 100%);
   --gradient-primary: linear-gradient(135deg, var(--primary), var(--primary-glow));
   --gradient-surface: linear-gradient(180deg, oklch(0.21 0.025 250) 0%, oklch(0.18 0.025 250) 100%);
-  --shadow-glow: 0 20px 60px -20px oklch(0.42 0.15 258 / 0.5);
+  --shadow-glow: 0 20px 60px -20px oklch(0.7 0.19 47 / 0.5);
   --shadow-elegant: 0 10px 40px -10px oklch(0 0 0 / 0.5);
   --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 

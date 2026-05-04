@@ -3,6 +3,29 @@ import { useState } from "react";
 
 export function Contact() {
   const [submitted, setSubmitted] = useState(false);
+  const [form, setForm] = useState({
+    nome: "",
+    empresa: "",
+    email: "",
+    telefone: "",
+    mensagem: "",
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const subject = encodeURIComponent(
+      `Solicitação de diagnóstico — ${form.nome}${form.empresa ? " / " + form.empresa : ""}`
+    );
+    const body = encodeURIComponent(
+      `Nome: ${form.nome}\nEmpresa: ${form.empresa}\nE-mail: ${form.email}\nTelefone: ${form.telefone}\n\nProblema:\n${form.mensagem}`
+    );
+    window.location.href = `mailto:contato@comex10.com.br?subject=${subject}&body=${body}`;
+    setSubmitted(true);
+  };
 
   return (
     <section id="contato" className="py-24 md:py-32 relative overflow-hidden">
@@ -25,7 +48,7 @@ export function Contact() {
             </h2>
             <p className="text-lg text-muted-foreground mb-10">
               Conte para a nossa equipe o desafio da sua operação. Respondemos em até
-              um dia útil com um especialista da cadeia de fluidos.
+              um dia útil com um especialista em cadeia de fluidos.
             </p>
 
             <div className="space-y-5">
@@ -119,10 +142,7 @@ export function Contact() {
           </div>
 
           <form
-            onSubmit={(e) => {
-              e.preventDefault();
-              setSubmitted(true);
-            }}
+            onSubmit={handleSubmit}
             className="p-8 rounded-2xl border border-border bg-surface"
             style={{ boxShadow: "var(--shadow-elegant)" }}
           >
@@ -131,10 +151,20 @@ export function Contact() {
                 <div className="w-16 h-16 mx-auto rounded-full bg-primary/15 flex items-center justify-center mb-4">
                   <ArrowRight className="text-primary" size={28} />
                 </div>
-                <h3 className="font-display text-2xl font-bold mb-2">Mensagem enviada</h3>
+                <h3 className="font-display text-2xl font-bold mb-2">Mensagem encaminhada</h3>
                 <p className="text-muted-foreground">
-                  Em breve um especialista da COMEX 10 entrará em contato.
+                  Abrimos seu cliente de e-mail com a mensagem para
+                  <br />
+                  <strong className="text-foreground">contato@comex10.com.br</strong>.
+                  É só clicar em enviar.
                 </p>
+                <button
+                  type="button"
+                  onClick={() => setSubmitted(false)}
+                  className="mt-6 text-sm text-primary hover:underline"
+                >
+                  Enviar nova solicitação
+                </button>
               </div>
             ) : (
               <div className="space-y-5">
@@ -150,6 +180,9 @@ export function Contact() {
                     </label>
                     <input
                       required
+                      name="nome"
+                      value={form.nome}
+                      onChange={handleChange}
                       type="text"
                       className="mt-1.5 w-full bg-background border border-border rounded-md px-3 py-2.5 text-sm focus:outline-none focus:border-primary transition-colors"
                     />
@@ -159,6 +192,9 @@ export function Contact() {
                       Empresa
                     </label>
                     <input
+                      name="empresa"
+                      value={form.empresa}
+                      onChange={handleChange}
                       type="text"
                       className="mt-1.5 w-full bg-background border border-border rounded-md px-3 py-2.5 text-sm focus:outline-none focus:border-primary transition-colors"
                     />
@@ -172,6 +208,9 @@ export function Contact() {
                     </label>
                     <input
                       required
+                      name="email"
+                      value={form.email}
+                      onChange={handleChange}
                       type="email"
                       className="mt-1.5 w-full bg-background border border-border rounded-md px-3 py-2.5 text-sm focus:outline-none focus:border-primary transition-colors"
                     />
@@ -181,6 +220,9 @@ export function Contact() {
                       Telefone
                     </label>
                     <input
+                      name="telefone"
+                      value={form.telefone}
+                      onChange={handleChange}
                       type="tel"
                       className="mt-1.5 w-full bg-background border border-border rounded-md px-3 py-2.5 text-sm focus:outline-none focus:border-primary transition-colors"
                     />
@@ -193,6 +235,9 @@ export function Contact() {
                   </label>
                   <textarea
                     required
+                    name="mensagem"
+                    value={form.mensagem}
+                    onChange={handleChange}
                     rows={4}
                     placeholder="Ex.: minha mangueira está rompendo na operação..."
                     className="mt-1.5 w-full bg-background border border-border rounded-md px-3 py-2.5 text-sm focus:outline-none focus:border-primary transition-colors resize-none"
