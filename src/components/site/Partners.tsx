@@ -96,7 +96,7 @@ export function Partners() {
               href={p.href}
               target={p.href.startsWith("http") ? "_blank" : undefined}
               rel="noopener"
-              className="aspect-[3/2] flex flex-col items-center justify-center rounded-xl border border-border bg-background hover:border-primary/50 hover:bg-surface transition-all group p-3"
+              className="aspect-[3/2] flex flex-col items-center justify-center rounded-xl border border-neutral-200 bg-white hover:border-primary hover:shadow-md transition-all group p-3"
             >
               {p.logo ? (
                 <img
@@ -105,11 +105,11 @@ export function Partners() {
                   className="max-h-10 w-auto object-contain mb-1 group-hover:scale-105 transition-transform"
                 />
               ) : (
-                <div className="font-display text-xl md:text-2xl font-bold tracking-tight group-hover:text-primary transition-colors">
+                <div className="font-display text-xl md:text-2xl font-bold tracking-tight text-primary">
                   {p.name}
                 </div>
               )}
-              <div className="text-[10px] text-muted-foreground mt-1 uppercase tracking-wider">
+              <div className="text-[10px] text-primary/80 mt-1 uppercase tracking-wider font-semibold">
                 {p.country}
               </div>
             </a>
