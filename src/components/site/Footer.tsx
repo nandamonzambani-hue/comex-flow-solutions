@@ -14,8 +14,8 @@ export function Footer() {
               height={54}
               className="h-12 w-auto bg-white/95 px-2 py-1 rounded mb-4"
             />
-            <p className="text-sm text-muted-foreground max-w-sm mb-4">
-              Consultoria especializada em cadeia de fluidos: equipamentos, mangueiras,
+            <p className="text-sm text-neutral-600 max-w-sm mb-4">
+              Parceiro técnico em cadeia de fluidos: equipamentos, mangueiras,
               bombas, testes e treinamentos.
             </p>
             <ul className="space-y-1.5 text-xs text-muted-foreground mb-4">
