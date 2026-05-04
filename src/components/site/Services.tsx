@@ -18,11 +18,11 @@ export function Services() {
             Serviços
           </span>
           <h2 className="font-display text-4xl md:text-5xl font-bold mt-3 mb-4 leading-tight">
-            Consultoria do diagnóstico à entrega.
+            Soluções técnicas do diagnóstico à entrega.
           </h2>
           <p className="text-lg text-muted-foreground">
-            Acompanhamos sua operação em todas as etapas — do problema identificado à
-            solução em campo.
+            Apoiamos sua operação em todas as etapas — da identificação do problema
+            à solução aplicada em campo.
           </p>
         </div>
 

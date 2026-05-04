@@ -4,7 +4,7 @@ const pillars = [
   {
     icon: Target,
     title: "Identificar o problema",
-    desc: "80% das falhas em mangueiras acontecem antes mesmo do uso — na montagem. Nossa consultoria começa pelo diagnóstico.",
+    desc: "80% das falhas em mangueiras acontecem antes do uso — na especificação ou na montagem. Começamos pelo diagnóstico técnico em campo.",
   },
   {
     icon: Lightbulb,
@@ -35,15 +35,15 @@ export function About() {
             <h2 className="font-display text-4xl md:text-5xl font-bold mt-3 mb-6 leading-tight">
               Mais que fornecedora.
               <br />
-              <span className="text-primary">Sua consultoria</span> em cadeia de fluidos.
+              <span className="text-primary">Seu parceiro técnico</span> em sistemas de fluidos.
             </h2>
           </div>
           <div className="lg:col-span-7">
             <p className="text-lg text-muted-foreground leading-relaxed">
-              A COMEX 10 do Brasil reposicionou-se como referência técnica em soluções
-              hidráulicas. Não vendemos apenas máquinas e mangueiras — entregamos
-              diagnóstico, projeto, equipamentos certificados e capacitação técnica para
-              que sua operação não pare. Trabalhamos lado a lado com as marcas líderes
+              A COMEX 10 do Brasil é referência técnica em soluções hidráulicas.
+              Não vendemos apenas máquinas e mangueiras — entregamos diagnóstico,
+              projeto, equipamentos certificados e capacitação técnica para que sua
+              operação não pare. Trabalhamos lado a lado com as marcas líderes
               mundiais para resolver, de fato, o problema do seu negócio.
             </p>
           </div>
