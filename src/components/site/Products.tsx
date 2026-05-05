@@ -6,7 +6,7 @@ import imgMarzocchi2 from "@/assets/produtos/marzocchi-bomba-2.png";
 import imgMarzocchi3 from "@/assets/produtos/marzocchi-bomba-3.png";
 import imgInsumos from "@/assets/produtos/insumos-certificacoes.jpg";
 import logoHeld from "@/assets/logos/held.png";
-import logoNext from "@/assets/logos/next.svg";
+import logoNext from "@/assets/logos/next-powertech.png";
 
 type Item = {
   name: string;

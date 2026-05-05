@@ -5,15 +5,15 @@ import logoTransfluid from "@/assets/logos/transfluid.jpg";
 import logoZec from "@/assets/logos/zec.png";
 import logoMarzocchi from "@/assets/logos/marzocchi.png";
 import logoHeld from "@/assets/logos/held.png";
-import logoNext from "@/assets/logos/next.svg";
+import logoNext from "@/assets/logos/next-powertech.png";
 
 const partners = [
   { name: "Uniflex", country: "Alemanha", logo: logoUniflex, href: "https://www.uniflex.de/" },
   { name: "ZEC", country: "Itália", logo: logoZec, href: "https://www.zecitaly.com/" },
-  { name: "Next", country: "Brasil", logo: logoNext, href: "https://www.nextmangueiras.com.br/" },
-  { name: "Marzocchi", country: "Itália", logo: logoMarzocchi, href: "https://www.marzocchipompe.com/" },
+  { name: "Next Powertech", country: "Brasil", logo: logoNext, href: "https://www.powertechhoses.com/our-products" },
+  { name: "Marzocchi", country: "Itália", logo: logoMarzocchi, href: "https://www.marzocchipompe.com/en/" },
   { name: "Transfluid", country: "Alemanha", logo: logoTransfluid, href: "https://www.transfluid.de/" },
-  { name: "Held", country: "Alemanha", logo: logoHeld, href: "https://www.held-hfw.de/" },
+  { name: "Held", country: "Alemanha", logo: logoHeld, href: "https://held-test-stands.de/downloads.htm" },
 ];
 
 export function Hero() {
