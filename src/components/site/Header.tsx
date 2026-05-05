@@ -169,12 +169,21 @@ export function Header() {
               </a>
             </div>
             <a
-              href="#contato"
+              href="#produtos"
+              onClick={() => setOpen(false)}
+              className="mt-2 inline-flex items-center justify-center rounded-md px-5 py-3 text-sm font-semibold border border-primary/40 text-primary"
+            >
+              Ver soluções
+            </a>
+            <a
+              href="https://wa.me/5511914900404"
+              target="_blank"
+              rel="noopener"
               onClick={() => setOpen(false)}
               className="mt-2 inline-flex items-center justify-center rounded-md px-5 py-3 text-sm font-semibold text-primary-foreground"
               style={{ background: "var(--gradient-primary)" }}
             >
-              Fale com um expert
+              Falar com especialista
             </a>
           </nav>
         </div>
