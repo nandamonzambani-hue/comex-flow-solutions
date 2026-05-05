@@ -16,7 +16,7 @@ type Partner = {
 // Order: Uniflex, ZEC, Next (Powertech), Marzocchi, Transfluid, Held
 const partners: Partner[] = [
   { name: "Uniflex", country: "Alemanha", logo: logoUniflex, href: "https://www.uniflex.de/", maxH: "max-h-10" },
-  { name: "ZEC", country: "Itália", logo: logoZec, href: "https://www.zecitaly.com/", maxH: "max-h-10" },
+  { name: "ZEC", country: "Itália", logo: logoZec, href: "https://zecspa.com/", maxH: "max-h-10" },
   { name: "Next Powertech", country: "Brasil", logo: logoNext, href: "https://www.powertechhoses.com/our-products", maxH: "max-h-8" },
   { name: "Marzocchi", country: "Itália", logo: logoMarzocchi, href: "https://www.marzocchipompe.com/en/", maxH: "max-h-10" },
   { name: "Transfluid", country: "Alemanha", logo: logoTransfluid, href: "https://www.transfluid.de/", maxH: "max-h-12" },

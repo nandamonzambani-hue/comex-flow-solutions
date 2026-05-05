@@ -5,7 +5,7 @@ import logoZec from "@/assets/logos/zec.png";
 const items = [
   { name: "Uniflex", country: "Alemanha", logo: logoUniflex, href: "https://www.uniflex.de/" },
   { name: "Transfluid", country: "Alemanha", logo: logoTransfluid, href: "https://www.transfluid.de/" },
-  { name: "ZEC", country: "Itália", logo: logoZec, href: "https://www.zecitaly.com/" },
+  { name: "ZEC", country: "Itália", logo: logoZec, href: "https://zecspa.com/" },
   { name: "Held", country: "Alemanha", href: "#" },
   { name: "Marzocchi", country: "Itália", href: "https://www.marzocchipompe.com/" },
   { name: "Next", country: "Brasil", href: "#" },
