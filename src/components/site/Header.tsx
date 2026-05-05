@@ -107,11 +107,19 @@ export function Header() {
             </a>
           </div>
           <a
-            href="#contato"
+            href="#produtos"
+            className="inline-flex items-center justify-center rounded-md px-4 py-2 text-sm font-semibold border border-primary/40 text-primary hover:bg-primary/10 transition-all"
+          >
+            Ver soluções
+          </a>
+          <a
+            href="https://wa.me/5511914900404"
+            target="_blank"
+            rel="noopener"
             className="inline-flex items-center justify-center rounded-md px-5 py-2 text-sm font-semibold text-primary-foreground transition-all hover:opacity-90"
             style={{ background: "var(--gradient-primary)" }}
           >
-            Fale com um expert
+            Falar com especialista
           </a>
         </nav>
 
