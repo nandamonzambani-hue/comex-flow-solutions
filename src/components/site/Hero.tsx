@@ -1,8 +1,20 @@
 import heroImg from "@/assets/hero-uniflex.jpg";
-import { ArrowRight, ShieldCheck, Wrench, GraduationCap } from "lucide-react";
+import { ArrowRight, MessageCircle } from "lucide-react";
 import logoUniflex from "@/assets/logos/uniflex.jpeg";
 import logoTransfluid from "@/assets/logos/transfluid.jpg";
 import logoZec from "@/assets/logos/zec.png";
+import logoMarzocchi from "@/assets/logos/marzocchi.png";
+import logoHeld from "@/assets/logos/held.png";
+import logoNext from "@/assets/logos/next.svg";
+
+const partners = [
+  { name: "Uniflex", country: "Alemanha", logo: logoUniflex, href: "https://www.uniflex.de/" },
+  { name: "ZEC", country: "Itália", logo: logoZec, href: "https://www.zecitaly.com/" },
+  { name: "Next", country: "Brasil", logo: logoNext, href: "https://www.nextmangueiras.com.br/" },
+  { name: "Marzocchi", country: "Itália", logo: logoMarzocchi, href: "https://www.marzocchipompe.com/" },
+  { name: "Transfluid", country: "Alemanha", logo: logoTransfluid, href: "https://www.transfluid.de/" },
+  { name: "Held", country: "Alemanha", logo: logoHeld, href: "https://www.held-hfw.de/" },
+];
 
 export function Hero() {
   return (
@@ -18,8 +30,8 @@ export function Hero() {
           height={1280}
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0" style={{ background: "var(--gradient-hero)" }} />
-        <div className="absolute inset-0 bg-background/40" />
+        <div className="absolute inset-0" style={{ background: "var(--gradient-hero)", opacity: 0.7 }} />
+        <div className="absolute inset-0 bg-background/20" />
       </div>
 
       <div className="relative z-10 mx-auto max-w-7xl w-full px-4 md:px-8 grid lg:grid-cols-12 gap-8 items-center">
@@ -42,14 +54,14 @@ export function Hero() {
             </span>
           </h1>
 
-          <p className="text-base md:text-lg text-neutral-200 max-w-2xl mb-7 leading-relaxed">
+          <p className="text-base md:text-lg text-neutral-100 max-w-2xl mb-8 leading-relaxed">
             Falhas em sistemas hidráulicos muitas vezes começam antes da operação:
             na especificação, na montagem ou na ausência de validação técnica. A
-            COMEX 10 é sua parceira técnica em equipamentos, mangueiras, bombas,
-            testes e treinamentos certificados.
+            COMEX 10 é sua parceira técnica em equipamentos, mangueiras, bombas e
+            soluções industriais certificadas.
           </p>
 
-          <div className="flex flex-wrap gap-3 mb-8">
+          <div className="flex flex-wrap gap-3">
             <a
               href="#produtos"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-md text-sm md:text-base font-semibold text-primary-foreground transition-all hover:scale-105"
@@ -58,76 +70,43 @@ export function Hero() {
               Ver soluções <ArrowRight size={18} />
             </a>
             <a
-              href="#contato"
+              href="https://wa.me/5511914900404"
+              target="_blank"
+              rel="noopener"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-md text-sm md:text-base font-semibold border border-white/30 bg-white/10 backdrop-blur-sm text-white hover:bg-white/20 transition-all"
             >
-              Falar com especialista
+              <MessageCircle size={18} /> Falar com especialista
             </a>
-          </div>
-
-          <div className="grid grid-cols-3 gap-4 max-w-xl">
-            {[
-              { icon: ShieldCheck, label: "Testes & Certificações" },
-              { icon: Wrench, label: "Equipamentos premium" },
-              { icon: GraduationCap, label: "Hub de treinamento" },
-            ].map((i) => (
-              <div
-                key={i.label}
-                className="flex flex-col items-start gap-2 p-3 rounded-lg bg-background/40 backdrop-blur-sm border border-white/10"
-              >
-                <div className="p-1.5 rounded-md bg-primary/20 border border-primary/40">
-                  <i.icon size={16} className="text-primary" />
-                </div>
-                <span className="text-xs font-medium text-white leading-tight">
-                  {i.label}
-                </span>
-              </div>
-            ))}
           </div>
         </div>
 
         {/* Partners highlight card */}
         <div className="hidden lg:block lg:col-span-5">
           <div
-            className="relative p-6 rounded-2xl border border-white/15 bg-background/60 backdrop-blur-md"
+            className="relative p-6 rounded-2xl border border-white/15 bg-background/55 backdrop-blur-md"
             style={{ boxShadow: "var(--shadow-elegant)" }}
           >
             <div className="absolute -top-3 left-6 px-3 py-1 rounded-full bg-primary text-primary-foreground text-xs font-bold tracking-wide uppercase">
               Parceiros estratégicos
             </div>
-            <p className="text-sm text-neutral-300 mb-5 mt-2">
+            <p className="text-sm text-neutral-200 mb-5 mt-2">
               Marcas líderes globais em hidráulica e cadeia de fluidos.
             </p>
-            <div className="grid grid-cols-2 gap-2.5">
-              {[
-                { name: "Uniflex", country: "Alemanha", logo: logoUniflex, href: "https://www.uniflex.de/" },
-                { name: "Transfluid", country: "Alemanha", logo: logoTransfluid, href: "https://www.transfluid.de/" },
-                { name: "Held", country: "Alemanha", href: "#" },
-                { name: "Marzocchi", country: "Itália", href: "https://www.marzocchipompe.com/" },
-                { name: "ZEC", country: "Itália", logo: logoZec, href: "https://www.zecitaly.com/" },
-                { name: "Next", country: "Brasil", href: "#" },
-              ].map((p) => (
+            <div className="grid grid-cols-3 gap-2.5">
+              {partners.map((p) => (
                 <a
                   key={p.name}
                   href={p.href}
-                  target={p.href.startsWith("http") ? "_blank" : undefined}
-                  rel="noopener"
-                  className="aspect-[5/2.5] flex flex-col items-center justify-center rounded-md border border-neutral-200 bg-white hover:border-primary transition-colors p-2"
+                  target="_blank"
+                  rel="noopener nofollow"
+                  title={`${p.name} — ${p.country}`}
+                  className="aspect-[5/3] flex items-center justify-center rounded-md border border-neutral-200 bg-white hover:border-primary transition-colors p-2"
                 >
-                  {p.logo ? (
-                    <img
-                      src={p.logo}
-                      alt={`Logo ${p.name}`}
-                      className="max-h-8 w-auto object-contain"
-                    />
-                  ) : (
-                    <div className="font-display text-base font-bold tracking-tight text-primary">
-                      {p.name}
-                    </div>
-                  )}
-                  <div className="text-[9px] uppercase tracking-wider text-primary/80 mt-0.5 font-semibold">
-                    {p.country}
-                  </div>
+                  <img
+                    src={p.logo}
+                    alt={`Logo ${p.name}`}
+                    className="max-h-7 w-auto object-contain"
+                  />
                 </a>
               ))}
             </div>

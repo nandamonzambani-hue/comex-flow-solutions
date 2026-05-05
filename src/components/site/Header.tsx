@@ -6,7 +6,6 @@ const links = [
   { href: "#produtos", label: "Produtos" },
   { href: "#segmentos", label: "Segmentos" },
   { href: "#servicos", label: "Serviços" },
-  { href: "#treinamentos", label: "Treinamentos" },
   { href: "#parceiros", label: "Parceiros" },
   { href: "#contato", label: "Contato" },
 ];
@@ -108,7 +107,9 @@ export function Header() {
             </a>
           </div>
           <a
-            href="#contato"
+            href="https://wa.me/5511914900404"
+            target="_blank"
+            rel="noopener"
             className="inline-flex items-center justify-center rounded-md px-5 py-2 text-sm font-semibold text-primary-foreground transition-all hover:opacity-90"
             style={{ background: "var(--gradient-primary)" }}
           >
@@ -162,7 +163,9 @@ export function Header() {
               </a>
             </div>
             <a
-              href="#contato"
+              href="https://wa.me/5511914900404"
+              target="_blank"
+              rel="noopener"
               onClick={() => setOpen(false)}
               className="mt-2 inline-flex items-center justify-center rounded-md px-5 py-3 text-sm font-semibold text-primary-foreground"
               style={{ background: "var(--gradient-primary)" }}
