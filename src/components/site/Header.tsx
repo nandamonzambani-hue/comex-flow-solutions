@@ -65,7 +65,7 @@ export function Header() {
         </div>
       </div>
 
-      <div className="relative p-6 rounded-2xl border border-white/15 bg-background/60 backdrop-blur-md pl-[24px] flex items-center justify-between">
+      <div className="relative p-6 rounded-2xl border border-white/15 bg-background/60 backdrop-blur-md pl-[24px] flex items-center justify-between bg-white">
         <a href="#top" className="flex items-center gap-3 group">
           <img
             src={logo}
