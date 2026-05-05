@@ -19,10 +19,10 @@ export function Footer() {
               bombas, testes e treinamentos.
             </p>
             <ul className="space-y-1.5 text-xs text-neutral-600 mb-4">
-              <li className="flex items-start gap-2"><MapPin size={13} className="mt-0.5 text-primary flex-shrink-0" /> R. Marcelo Muller, 415 — São Paulo/SP — 03223-060</li>
-              <li className="flex items-center gap-2"><Phone size={13} className="text-primary flex-shrink-0" /> 11 2601-7483</li>
-              <li className="flex items-center gap-2"><Mail size={13} className="text-primary flex-shrink-0" /> contato@comex10.com.br</li>
-              <li className="flex items-center gap-2"><Clock size={13} className="text-primary flex-shrink-0" /> 2ª a 6ª — 8:30 às 17:30h</li>
+              <li className="flex items-start gap-2"><MapPin size={13} className="mt-0.5 text-primary flex-shrink-0" /><span>R. Marcelo Muller, 415 — São Paulo/SP — 03223-060</span></li>
+              <li className="flex items-center gap-2"><Phone size={13} className="text-primary flex-shrink-0" /><a href="https://wa.me/5511914900404" target="_blank" rel="noopener" className="hover:text-primary transition-colors">11 91490-0404 (WhatsApp)</a></li>
+              <li className="flex items-center gap-2"><Mail size={13} className="text-primary flex-shrink-0" /><a href="mailto:contato@comex10.com.br" className="hover:text-primary transition-colors">contato@comex10.com.br</a></li>
+              <li className="flex items-center gap-2"><Clock size={13} className="text-primary flex-shrink-0" /><span>2ª a 6ª — 8:30 às 17:30h</span></li>
             </ul>
             <div className="flex items-center gap-2">
               <a
@@ -54,7 +54,7 @@ export function Footer() {
               <li><a href="#produtos" className="hover:text-primary transition-colors">Produtos</a></li>
               <li><a href="#segmentos" className="hover:text-primary transition-colors">Segmentos</a></li>
               <li><a href="#servicos" className="hover:text-primary transition-colors">Serviços</a></li>
-              <li><a href="#treinamentos" className="hover:text-primary transition-colors">Treinamentos</a></li>
+              <li><a href="#parceiros" className="hover:text-primary transition-colors">Parceiros</a></li>
             </ul>
           </div>
 
