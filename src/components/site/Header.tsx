@@ -107,9 +107,7 @@ export function Header() {
             </a>
           </div>
           <a
-            href="https://wa.me/5511914900404"
-            target="_blank"
-            rel="noopener"
+            href="#contato"
             className="inline-flex items-center justify-center rounded-md px-5 py-2 text-sm font-semibold text-primary-foreground transition-all hover:opacity-90"
             style={{ background: "var(--gradient-primary)" }}
           >
@@ -163,9 +161,7 @@ export function Header() {
               </a>
             </div>
             <a
-              href="https://wa.me/5511914900404"
-              target="_blank"
-              rel="noopener"
+              href="#contato"
               onClick={() => setOpen(false)}
               className="mt-2 inline-flex items-center justify-center rounded-md px-5 py-3 text-sm font-semibold text-primary-foreground"
               style={{ background: "var(--gradient-primary)" }}
