@@ -9,7 +9,10 @@ import imgMarzocchi2 from "@/assets/produtos/marzocchi-bomba-2.png";
 import imgMarzocchi3 from "@/assets/produtos/marzocchi-bomba-3.png";
 import imgZec1 from "@/assets/produtos/zec-mangueira-1.png";
 import imgZec2 from "@/assets/produtos/zec-mangueira-2.png";
-import imgInsumos from "@/assets/produtos/insumos-certificacoes.jpg";
+import imgNext from "@/assets/produtos/next-mangueira.png";
+import imgHeldBancada from "@/assets/produtos/held-bancada.png";
+import imgLacre from "@/assets/produtos/insumos-lacre.png";
+import imgCabos from "@/assets/produtos/insumos-cabos.png";
 
 type Item = {
   name: string;
