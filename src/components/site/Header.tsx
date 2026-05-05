@@ -72,7 +72,7 @@ export function Header() {
             alt="Logo COMEX 10 do Brasil — parceiro técnico em cadeia de fluidos"
             width={260}
             height={78}
-            className="h-16 md:h-20 w-auto -my-4 object-fill text-lg"
+            className="h-20 md:h-28 w-auto -my-8 object-contain"
           />
         </a>
 
