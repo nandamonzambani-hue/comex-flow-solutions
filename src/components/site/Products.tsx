@@ -1,18 +1,12 @@
 import { useState } from "react";
-import { Cog, Waves, Droplet, Activity, Package, Download, ArrowRight } from "lucide-react";
-import imgCrimpadora from "@/assets/produtos/crimpadora.jpg";
-import imgCorte from "@/assets/produtos/corte.png";
+import { Cog, Droplet, Activity, Package, Download, ArrowRight, Wind, Zap } from "lucide-react";
 import imgBancada from "@/assets/produtos/bancada-teste.jpg";
-import imgLimpeza from "@/assets/produtos/limpeza.png";
-import imgDescasque from "@/assets/produtos/descasque.png";
 import imgMarzocchi1 from "@/assets/produtos/marzocchi-bomba-1.png";
 import imgMarzocchi2 from "@/assets/produtos/marzocchi-bomba-2.png";
 import imgMarzocchi3 from "@/assets/produtos/marzocchi-bomba-3.png";
-import imgZec1 from "@/assets/produtos/zec-mangueira-1.png";
-import imgZec2 from "@/assets/produtos/zec-mangueira-2.png";
-import imgZec3 from "@/assets/produtos/zec-mangueira-3.png";
-import imgInsumos from "@/assets/produtos/comex-insumos.jpg";
-import imgTransfluid from "@/assets/produtos/transfluid.jpg";
+import imgInsumos from "@/assets/produtos/insumos-certificacoes.jpg";
+import logoHeld from "@/assets/logos/held.png";
+import logoNext from "@/assets/logos/next.svg";
 
 type Item = {
   name: string;
@@ -29,102 +23,52 @@ type Category = {
   brands: string;
   desc: string;
   items: Item[];
+  brandLogo?: string;
 };
 
 const categories: Category[] = [
   {
-    id: "equipamentos",
-    icon: Cog,
-    title: "Equipamentos",
-    brands: "Uniflex • Transfluid • Held",
-    desc: "Linha completa de máquinas para produção de mangueiras: crimpadoras, máquinas de corte, decapadoras, bancadas de teste e equipamentos de limpeza.",
+    id: "microbombas",
+    icon: Droplet,
+    title: "Microbombas",
+    brands: "Next • Marzocchi",
+    brandLogo: logoNext,
+    desc: "Microbombas de precisão para aplicações que exigem dosagem exata e controle fino de baixos volumes.",
     items: [
       {
-        name: "Crimpadoras Uniflex",
-        brand: "Uniflex",
-        desc: "Linha HM 2xx, 3xx, 4xx e 6xx para produção. S3, S4, S6 e S8/S10 para lojas. Versões disponíveis em português e com NR-12.",
-        image: imgCrimpadora,
-        catalog: "/catalogos/Catalogo_Uniflex.pdf",
-      },
-      {
-        name: "Máquinas de Corte Uniflex",
-        brand: "Uniflex",
-        desc: "Manuais (EM6) e pneumáticas (EM6P, EM8P, EM120) para corte preciso de mangueiras hidráulicas e industriais.",
-        image: imgCorte,
-        catalog: "/catalogos/Catalogo_Uniflex.pdf",
-      },
-      {
-        name: "Decapadoras (Skiving)",
-        brand: "Uniflex",
-        desc: "USM10 e linha completa de equipamentos de descasque para preparação de mangueiras antes da crimpagem.",
-        image: imgDescasque,
-        catalog: "/catalogos/Catalogo_Uniflex.pdf",
-      },
-      {
-        name: "Equipamentos de Limpeza",
-        brand: "Uniflex",
-        desc: "RG10 e soluções para limpeza interna de mangueiras, removendo resíduos antes da montagem do terminal.",
-        image: imgLimpeza,
-        catalog: "/catalogos/Catalogo_Uniflex.pdf",
-      },
-      {
-        name: "Soluções Transfluid",
-        brand: "Transfluid",
-        desc: "Dobra, conformação e processamento de tubos rígidos. Tecnologia italiana para a indústria pesada.",
-        image: imgTransfluid,
-      },
-    ],
-  },
-  {
-    id: "mangueiras",
-    icon: Waves,
-    title: "Mangueiras",
-    brands: "ZEC • Next",
-    desc: "Linha completa de mangueiras hidráulicas e industriais ZEC, organizada por segmento de aplicação.",
-    items: [
-      {
-        name: "ZEC — Linha Hidráulica",
-        brand: "ZEC",
-        desc: "Mangueiras de alta pressão para sistemas hidráulicos. Catálogo completo América Latina disponível.",
-        image: imgZec1,
-        catalog: "/catalogos/ZEC_Catalogo_America_Latina.pdf",
-      },
-      {
-        name: "ZEC — Mineração",
-        brand: "ZEC",
-        desc: "Resistência extrema à abrasão e impactos para o ambiente mais hostil da indústria.",
-        image: imgZec2,
-        catalog: "/catalogos/ZEC_Catalogo_America_Latina.pdf",
-      },
-      {
-        name: "ZEC — Petróleo & Gás",
-        brand: "ZEC",
-        desc: "Alta pressão, alta temperatura e resistência química para aplicações offshore e onshore.",
-        image: imgZec3,
-        catalog: "/catalogos/ZEC_Catalogo_America_Latina.pdf",
-      },
-      {
-        name: "Next — Industrial",
+        name: "Microbombas Next",
         brand: "Next",
-        desc: "Mangueiras industriais para aplicações específicas e customizadas conforme projeto.",
-        image: imgZec1,
+        desc: "Linha Microbombas Next para dosagem industrial — alta repetibilidade e durabilidade.",
+        image: imgMarzocchi1,
+      },
+      {
+        name: "Marzocchi Micropumps 0,25–0,5 cm³/rev",
+        brand: "Marzocchi",
+        desc: "Microbombas italianas de engrenagem para sistemas de alta precisão.",
+        image: imgMarzocchi2,
+        catalog: "/catalogos/Company_Profile_Marzocchi.pdf",
+      },
+      {
+        name: "Linha de baixo volume Next",
+        brand: "Next",
+        desc: "Soluções customizadas em microvazão para máquinas e equipamentos especiais.",
+        image: imgMarzocchi3,
+      },
+      {
+        name: "Acessórios para microbombas",
+        brand: "Next",
+        desc: "Conexões, válvulas e periféricos para integração em projetos de dosagem.",
+        image: imgMarzocchi1,
       },
     ],
   },
   {
     id: "bombas",
-    icon: Droplet,
+    icon: Cog,
     title: "Bombas",
     brands: "Marzocchi",
     desc: "Bombas de engrenagem italianas Marzocchi: precisão, durabilidade e tradição em hidráulica de alta performance.",
     items: [
-      {
-        name: "Marzocchi ELIKA",
-        brand: "Marzocchi",
-        desc: "Tecnologia de baixo ruído com engrenagens helicoidais. Eficiência superior x bombas tradicionais.",
-        image: imgMarzocchi1,
-        catalog: "/catalogos/Company_Profile_Marzocchi.pdf",
-      },
       {
         name: "Série ALP — Alumínio",
         brand: "Marzocchi",
@@ -135,49 +79,127 @@ const categories: Category[] = [
       {
         name: "FCIP & FCIM — Ferro Fundido",
         brand: "Marzocchi",
-        desc: "Bombas e motores Gr. 2-3-4 em ferro fundido para aplicações severas de alta pressão.",
+        desc: "Bombas Gr. 2-3-4 em ferro fundido para aplicações severas de alta pressão.",
         image: imgMarzocchi3,
         catalog: "/catalogos/Company_Profile_Marzocchi.pdf",
       },
       {
-        name: "Micropumps 0,25–0,5 cm³/rev",
+        name: "Bombas de pistão",
         brand: "Marzocchi",
-        desc: "Micro bombas de precisão para aplicações que exigem dosagem exata em baixos volumes.",
+        desc: "Soluções de pistão axial para alta pressão e variação de vazão.",
         image: imgMarzocchi1,
         catalog: "/catalogos/Company_Profile_Marzocchi.pdf",
+      },
+      {
+        name: "Bombas industriais sob projeto",
+        brand: "Marzocchi",
+        desc: "Especificação técnica e dimensionamento conforme sua aplicação.",
+        image: imgMarzocchi2,
       },
     ],
   },
   {
-    id: "testes",
-    icon: Activity,
-    title: "Testes & Certificações",
-    brands: "Uniflex • Held",
-    desc: "Bancadas e equipamentos de teste para garantir a integridade e a vida útil das mangueiras antes da operação.",
+    id: "bombas-helicas",
+    icon: Wind,
+    title: "Bombas Hélicas",
+    brands: "Marzocchi ELIKA",
+    desc: "Tecnologia de baixo ruído com engrenagens helicoidais — eficiência superior em comparação às bombas tradicionais.",
     items: [
       {
-        name: "Bancada de Testes P160",
+        name: "Marzocchi ELIKA",
+        brand: "Marzocchi",
+        desc: "Engrenagens helicoidais para operação silenciosa e maior vida útil.",
+        image: imgMarzocchi1,
+        catalog: "/catalogos/Company_Profile_Marzocchi.pdf",
+      },
+      {
+        name: "ELIKA Série E",
+        brand: "Marzocchi",
+        desc: "Linha premium para máquinas que exigem baixo ruído e alta eficiência energética.",
+        image: imgMarzocchi2,
+        catalog: "/catalogos/Company_Profile_Marzocchi.pdf",
+      },
+      {
+        name: "Aplicações Mobile",
+        brand: "Marzocchi",
+        desc: "Bombas hélicas para máquinas agrícolas, florestais e de construção.",
+        image: imgMarzocchi3,
+      },
+      {
+        name: "Aplicações Industriais",
+        brand: "Marzocchi",
+        desc: "Soluções para prensas, injetoras e centros de usinagem.",
+        image: imgMarzocchi1,
+      },
+    ],
+  },
+  {
+    id: "motores",
+    icon: Zap,
+    title: "Motores Hidráulicos",
+    brands: "Marzocchi",
+    desc: "Motores hidráulicos de engrenagem para tração, acionamento e transmissão de potência em equipamentos pesados.",
+    items: [
+      {
+        name: "Motores Gr. 2",
+        brand: "Marzocchi",
+        desc: "Motores compactos de engrenagem para aplicações de média potência.",
+        image: imgMarzocchi3,
+        catalog: "/catalogos/Company_Profile_Marzocchi.pdf",
+      },
+      {
+        name: "Motores Gr. 3",
+        brand: "Marzocchi",
+        desc: "Motores robustos para transmissão de potência em maquinário industrial.",
+        image: imgMarzocchi1,
+        catalog: "/catalogos/Company_Profile_Marzocchi.pdf",
+      },
+      {
+        name: "Motores Gr. 4",
+        brand: "Marzocchi",
+        desc: "Alta potência e durabilidade para mineração, agro pesado e siderurgia.",
+        image: imgMarzocchi2,
+        catalog: "/catalogos/Company_Profile_Marzocchi.pdf",
+      },
+      {
+        name: "Motores reversíveis",
+        brand: "Marzocchi",
+        desc: "Soluções bidirecionais para sistemas de tração e movimentação.",
+        image: imgMarzocchi3,
+      },
+    ],
+  },
+  {
+    id: "bancadas",
+    icon: Activity,
+    title: "Bancadas de Testes",
+    brands: "Held • Uniflex",
+    brandLogo: logoHeld,
+    desc: "Bancadas de teste e impulso Gebr. Held (Alemanha) para validação, certificação e qualificação de mangueiras hidráulicas.",
+    items: [
+      {
+        name: "Held — Bancadas de Impulso",
+        brand: "Held",
+        desc: "Equipamentos alemães para testes de fadiga, ciclagem e qualificação conforme normas internacionais.",
+        image: imgBancada,
+      },
+      {
+        name: "Held — Bancadas de Pressão Estática",
+        brand: "Held",
+        desc: "Validação de pressão de trabalho e ruptura para mangueiras montadas.",
+        image: imgBancada,
+      },
+      {
+        name: "Uniflex P160",
         brand: "Uniflex",
-        desc: "Bancada para teste de pressão estática e validação de mangueiras montadas.",
+        desc: "Bancada compacta para teste de pressão estática em produção.",
         image: imgBancada,
         catalog: "/catalogos/Catalogo_Uniflex.pdf",
       },
       {
-        name: "Bancadas de Impulso",
+        name: "Equipamentos de Marking & Pin Prick",
         brand: "Uniflex",
-        desc: "Testes de fadiga e ciclagem para qualificação e certificação de mangueiras.",
-        image: imgBancada,
-      },
-      {
-        name: "Equipamentos de Marking",
-        brand: "Uniflex",
-        desc: "Identificação e rastreabilidade de mangueiras conforme normas internacionais.",
-        image: imgBancada,
-      },
-      {
-        name: "Pin Prick Tools",
-        brand: "Uniflex",
-        desc: "Ferramentas de perfuração da capa para mangueiras com fluidos voláteis.",
+        desc: "Identificação, rastreabilidade e perfuração de capa para fluidos voláteis.",
         image: imgBancada,
       },
     ],
@@ -185,26 +207,20 @@ const categories: Category[] = [
   {
     id: "insumos",
     icon: Package,
-    title: "Insumos COMEX 10",
+    title: "Insumos & Certificações",
     brands: "COMEX 10",
-    desc: "Linha própria de insumos: lacres de segurança, cabos de proteção e acessórios essenciais para sua operação.",
+    desc: "Linha própria de insumos e certificações que garantem rastreabilidade, segurança e conformidade da sua operação.",
     items: [
       {
         name: "Lacres de Segurança COMEX 10",
         brand: "COMEX 10",
-        desc: "Lacres metálicos para identificação e segurança de equipamentos e cargas.",
+        desc: "Lacres metálicos para identificação, rastreabilidade e segurança de mangueiras e equipamentos.",
         image: imgInsumos,
       },
       {
-        name: "Cabos de Proteção",
+        name: "Certificações & Laudos Técnicos",
         brand: "COMEX 10",
-        desc: "Cabos de aço revestidos para proteção e contenção de mangueiras hidráulicas.",
-        image: imgInsumos,
-      },
-      {
-        name: "Acessórios de Montagem",
-        brand: "COMEX 10",
-        desc: "Linha completa de acessórios para montagem segura e rastreável.",
+        desc: "Emissão de laudos e certificados técnicos com rastreabilidade total para auditorias e compliance.",
         image: imgInsumos,
       },
     ],
@@ -226,7 +242,7 @@ export function Products() {
             Toda a cadeia de fluidos em um só lugar.
           </h2>
           <p className="text-lg text-muted-foreground">
-            Equipamentos, mangueiras, bombas, testes e insumos das marcas líderes globais —
+            Bombas, motores, bancadas e insumos das marcas líderes globais —
             organizados por categoria para você encontrar a solução certa.
           </p>
         </div>
@@ -272,14 +288,25 @@ export function Products() {
               className="p-6 md:p-8 rounded-2xl border border-border h-full"
               style={{ background: "var(--gradient-surface)", boxShadow: "var(--shadow-elegant)" }}
             >
-              <div className="mb-6">
-                <div className="text-xs font-semibold tracking-widest uppercase text-primary mb-1">
-                  {current.brands}
+              <div className="mb-6 flex items-start justify-between gap-4">
+                <div>
+                  <div className="text-xs font-semibold tracking-widest uppercase text-primary mb-1">
+                    {current.brands}
+                  </div>
+                  <h3 className="font-display text-3xl md:text-4xl font-bold">{current.title}</h3>
+                  <p className="text-muted-foreground leading-relaxed mt-3 max-w-2xl">
+                    {current.desc}
+                  </p>
                 </div>
-                <h3 className="font-display text-3xl md:text-4xl font-bold">{current.title}</h3>
-                <p className="text-muted-foreground leading-relaxed mt-3 max-w-2xl">
-                  {current.desc}
-                </p>
+                {current.brandLogo && (
+                  <div className="hidden sm:flex flex-shrink-0 items-center justify-center bg-white rounded-lg p-3 border border-border h-16 w-32">
+                    <img
+                      src={current.brandLogo}
+                      alt={`Logo ${current.title}`}
+                      className="max-h-full max-w-full object-contain"
+                    />
+                  </div>
+                )}
               </div>
 
               <div className="grid sm:grid-cols-2 gap-4">
@@ -324,7 +351,9 @@ export function Products() {
                           <span className="text-xs text-muted-foreground">Sob consulta</span>
                         )}
                         <a
-                          href="#contato"
+                          href="https://wa.me/5511914900404"
+                          target="_blank"
+                          rel="noopener"
                           className="ml-auto inline-flex items-center gap-1 text-xs font-medium text-muted-foreground hover:text-foreground transition-colors"
                         >
                           Consultar <ArrowRight size={11} />

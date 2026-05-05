@@ -69,16 +69,16 @@ export function Contact() {
                 </div>
               </a>
 
-              <a href="tel:+551126017483" className="flex items-center gap-4 group">
+              <a href="https://wa.me/5511914900404" target="_blank" rel="noopener" className="flex items-center gap-4 group">
                 <div className="w-12 h-12 rounded-lg bg-surface border border-border flex items-center justify-center group-hover:border-primary/50 transition-colors">
                   <Phone className="text-primary" size={20} />
                 </div>
                 <div>
                   <div className="text-xs uppercase tracking-wider text-muted-foreground">
-                    Telefone
+                    WhatsApp
                   </div>
                   <div className="font-medium group-hover:text-primary transition-colors">
-                    11 2601-7483
+                    11 91490-0404
                   </div>
                   <div className="text-xs text-muted-foreground mt-0.5">
                     2ª a 6ª — 8:30 às 17:30h
