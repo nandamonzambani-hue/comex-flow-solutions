@@ -10,6 +10,24 @@ import imgMarzocchi3 from "@/assets/produtos/marzocchi-bomba-3.png";
 import imgZec1 from "@/assets/produtos/zec-mangueira-1.png";
 import imgZec2 from "@/assets/produtos/zec-mangueira-2.png";
 import imgInsumos from "@/assets/produtos/insumos-certificacoes.jpg";
+
+type Item = {
+  name: string;
+  desc: string;
+  image: string;
+  catalog?: string;
+  brand?: string;
+};
+
+type Category = {
+  id: string;
+  icon: typeof Cog;
+  title: string;
+  brands: string;
+  desc: string;
+  items: Item[];
+};
+
 const categories: Category[] = [
   {
     id: "equipamentos",
