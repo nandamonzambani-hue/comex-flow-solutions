@@ -24,33 +24,118 @@ function NotFoundComponent() {
   );
 }
 
+const SITE_URL = "https://www.comex10.com.br";
+const OG_IMAGE = `${SITE_URL}/og-image.jpg`;
+
+const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "COMEX 10 do Brasil",
+  alternateName: "COMEX 10",
+  url: SITE_URL,
+  logo: `${SITE_URL}/logo-comex10.png`,
+  image: OG_IMAGE,
+  description:
+    "Parceira técnica em cadeia de fluidos: equipamentos Uniflex, Transfluid e Held, mangueiras ZEC e Next Powertech, bombas Marzocchi, testes e insumos Comex 10.",
+  email: "contato@comex10.com.br",
+  telephone: "+55-11-91490-0404",
+  address: {
+    "@type": "PostalAddress",
+    addressCountry: "BR",
+    addressRegion: "SP",
+  },
+  sameAs: ["https://wa.me/5511914900404"],
+  contactPoint: [
+    {
+      "@type": "ContactPoint",
+      telephone: "+55-11-91490-0404",
+      contactType: "sales",
+      areaServed: "BR",
+      availableLanguage: ["Portuguese"],
+    },
+  ],
+};
+
+const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "COMEX 10",
+  url: SITE_URL,
+  inLanguage: "pt-BR",
+};
+
 export const Route = createRootRoute({
   head: () => ({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "COMEX 10 — Soluções em Mangueiras Hidráulicas, Equipamentos e Treinamentos" },
+      { name: "theme-color", content: "#0099ff" },
+      { name: "robots", content: "index,follow,max-image-preview:large" },
+      { name: "googlebot", content: "index,follow" },
+      { name: "format-detection", content: "telephone=no" },
+      {
+        title:
+          "COMEX 10 — Mangueiras Hidráulicas, Equipamentos Uniflex, Bombas Marzocchi e Treinamentos",
+      },
       {
         name: "description",
         content:
-          "Consultoria especializada em cadeia de fluidos: equipamentos Uniflex, Transfluid e Held, mangueiras ZEC e Next, bombas Marzocchi, testes e treinamentos técnicos.",
+          "COMEX 10 do Brasil: parceira técnica em cadeia de fluidos. Equipamentos Uniflex, Transfluid e Held, mangueiras ZEC e Next Powertech, bombas Marzocchi, testes e treinamentos certificados.",
+      },
+      {
+        name: "keywords",
+        content:
+          "mangueiras hidráulicas, cadeia de fluidos, Uniflex, Transfluid, Held, ZEC, Next Powertech, Marzocchi, bombas hidráulicas, bancada de teste, COMEX 10, hidráulica industrial, treinamento hidráulica",
       },
       { name: "author", content: "COMEX 10 do Brasil" },
-      { property: "og:title", content: "COMEX 10 — Cadeia de Fluidos e Mangueiras Hidráulicas" },
+      { name: "geo.region", content: "BR-SP" },
+      { name: "geo.placename", content: "São Paulo" },
+      { property: "og:site_name", content: "COMEX 10 do Brasil" },
+      { property: "og:type", content: "website" },
+      { property: "og:locale", content: "pt_BR" },
+      { property: "og:url", content: SITE_URL },
+      {
+        property: "og:title",
+        content: "COMEX 10 — Cadeia de Fluidos, Mangueiras e Equipamentos Hidráulicos",
+      },
       {
         property: "og:description",
         content:
-          "Da identificação do problema à solução: equipamentos, mangueiras, bombas, testes e treinamentos certificados.",
+          "Da identificação do problema à solução: equipamentos, mangueiras, bombas, testes e treinamentos certificados das marcas líderes globais.",
       },
-      { property: "og:type", content: "website" },
-      { property: "og:locale", content: "pt_BR" },
+      { property: "og:image", content: OG_IMAGE },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
+      { property: "og:image:alt", content: "COMEX 10 — Soluções em cadeia de fluidos" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:site", content: "@comex10dobrasil" },
+      {
+        name: "twitter:title",
+        content: "COMEX 10 — Cadeia de Fluidos, Mangueiras e Equipamentos Hidráulicos",
+      },
+      {
+        name: "twitter:description",
+        content:
+          "Equipamentos, mangueiras, bombas, testes e treinamentos certificados das marcas líderes globais.",
+      },
+      { name: "twitter:image", content: OG_IMAGE },
     ],
     links: [
+      { rel: "stylesheet", href: appCss },
+      { rel: "canonical", href: SITE_URL },
+      { rel: "icon", type: "image/png", href: "/favicon.png" },
+      { rel: "apple-touch-icon", href: "/logo-comex10.png" },
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "" },
+    ],
+    scripts: [
       {
-        rel: "stylesheet",
-        href: appCss,
+        type: "application/ld+json",
+        children: JSON.stringify(organizationJsonLd),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify(websiteJsonLd),
       },
     ],
   }),
