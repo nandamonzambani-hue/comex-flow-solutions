@@ -3,7 +3,7 @@ import logoTransfluid from "@/assets/logos/transfluid.jpg";
 import logoZec from "@/assets/logos/zec.png";
 import logoMarzocchi from "@/assets/logos/marzocchi.png";
 import logoHeld from "@/assets/logos/held.png";
-import logoNext from "@/assets/logos/next.svg";
+import logoNext from "@/assets/logos/next-powertech.png";
 
 type Partner = {
   name: string;
@@ -13,14 +13,14 @@ type Partner = {
   maxH?: string;
 };
 
-// Order: Uniflex, ZEC, Next, Marzocchi, Transfluid, Held
+// Order: Uniflex, ZEC, Next (Powertech), Marzocchi, Transfluid, Held
 const partners: Partner[] = [
-  { name: "Uniflex", country: "Alemanha", logo: logoUniflex, href: "https://www.uniflex.de/", maxH: "max-h-12" },
-  { name: "ZEC", country: "Itália", logo: logoZec, href: "https://www.zecitaly.com/", maxH: "max-h-12" },
-  { name: "Next", country: "Brasil", logo: logoNext, href: "https://www.nextmangueiras.com.br/", maxH: "max-h-10" },
-  { name: "Marzocchi", country: "Itália", logo: logoMarzocchi, href: "https://www.marzocchipompe.com/", maxH: "max-h-12" },
-  { name: "Transfluid", country: "Alemanha", logo: logoTransfluid, href: "https://www.transfluid.de/", maxH: "max-h-14" },
-  { name: "Held", country: "Alemanha", logo: logoHeld, href: "https://www.held-hfw.de/", maxH: "max-h-12" },
+  { name: "Uniflex", country: "Alemanha", logo: logoUniflex, href: "https://www.uniflex.de/", maxH: "max-h-10" },
+  { name: "ZEC", country: "Itália", logo: logoZec, href: "https://www.zecitaly.com/", maxH: "max-h-10" },
+  { name: "Next Powertech", country: "Brasil", logo: logoNext, href: "https://www.powertechhoses.com/our-products", maxH: "max-h-8" },
+  { name: "Marzocchi", country: "Itália", logo: logoMarzocchi, href: "https://www.marzocchipompe.com/en/", maxH: "max-h-10" },
+  { name: "Transfluid", country: "Alemanha", logo: logoTransfluid, href: "https://www.transfluid.de/", maxH: "max-h-12" },
+  { name: "Held", country: "Alemanha", logo: logoHeld, href: "https://held-test-stands.de/downloads.htm", maxH: "max-h-10" },
 ];
 
 export function Partners() {
