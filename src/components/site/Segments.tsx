@@ -39,7 +39,7 @@ export function Segments() {
             Segmentos de atuação
           </span>
           <h2 className="font-display text-4xl md:text-5xl font-bold mt-3 mb-4 leading-tight">
-            Soluções pensadas pelo seu setor.
+            Soluções pensadas para o seu setor.
           </h2>
           <p className="text-lg text-muted-foreground">
             Cada operação tem desafios únicos. Selecionamos equipamentos, mangueiras e
