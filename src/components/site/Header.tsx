@@ -70,9 +70,9 @@ export function Header() {
           <img
             src={logo}
             alt="Logo COMEX 10 do Brasil — parceiro técnico em cadeia de fluidos"
-            width={180}
-            height={54}
-            className="h-10 md:h-12 w-auto"
+            width={260}
+            height={78}
+            className="h-16 md:h-20 w-auto -my-4"
           />
         </a>
 
