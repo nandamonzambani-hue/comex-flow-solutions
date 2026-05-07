@@ -43,7 +43,7 @@ export function Hero() {
             </span>
           </div>
 
-          <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.05] mb-5 text-white">
+          <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.05] mb-5 text-white">
             Do problema
             <br />
             <span

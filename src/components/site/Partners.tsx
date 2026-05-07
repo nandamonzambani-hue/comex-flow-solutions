@@ -25,13 +25,13 @@ const partners: Partner[] = [
 
 export function Partners() {
   return (
-    <section id="parceiros" className="py-24 md:py-32 bg-surface/40 border-y border-border">
+    <section id="parceiros" className="py-16 md:py-32 bg-surface/40 border-y border-border">
       <div className="mx-auto max-w-7xl px-4 md:px-8">
         <div className="max-w-2xl mb-12 text-center mx-auto">
           <span className="text-sm font-semibold tracking-widest uppercase text-primary">
             Parceiros estratégicos
           </span>
-          <h2 className="font-display text-4xl md:text-5xl font-bold mt-3 mb-4 leading-tight">
+          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold mt-3 mb-4 leading-tight">
             Marcas líderes globais.
           </h2>
           <p className="text-lg text-muted-foreground">

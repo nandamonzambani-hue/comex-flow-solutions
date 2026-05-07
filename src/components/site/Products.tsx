@@ -187,13 +187,13 @@ export function Products() {
   const current = categories.find((c) => c.id === active)!;
 
   return (
-    <section id="produtos" className="py-24 md:py-32">
+    <section id="produtos" className="py-16 md:py-32">
       <div className="mx-auto max-w-7xl px-4 md:px-8">
         <div className="max-w-3xl mb-12">
           <span className="text-sm font-semibold tracking-widest uppercase text-primary">
             Produtos & Marcas
           </span>
-          <h2 className="font-display text-4xl md:text-5xl font-bold mt-3 mb-4 leading-tight">
+          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold mt-3 mb-4 leading-tight">
             Toda a cadeia de fluidos em um só lugar.
           </h2>
           <p className="text-lg text-muted-foreground">

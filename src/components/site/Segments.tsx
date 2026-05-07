@@ -32,13 +32,13 @@ const segments = [
 
 export function Segments() {
   return (
-    <section id="segmentos" className="py-24 md:py-32 bg-surface/40 border-y border-border">
+    <section id="segmentos" className="py-16 md:py-32 bg-surface/40 border-y border-border">
       <div className="mx-auto max-w-7xl px-4 md:px-8">
         <div className="max-w-2xl mb-14">
           <span className="text-sm font-semibold tracking-widest uppercase text-primary">
             Segmentos de atuação
           </span>
-          <h2 className="font-display text-4xl md:text-5xl font-bold mt-3 mb-4 leading-tight">
+          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold mt-3 mb-4 leading-tight">
             Soluções pensadas para o seu setor.
           </h2>
           <p className="text-lg text-muted-foreground">

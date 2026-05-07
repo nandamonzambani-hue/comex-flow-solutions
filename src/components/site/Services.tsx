@@ -14,7 +14,7 @@ export function Services() {
   return (
     <section
       id="servicos"
-      className="relative py-24 md:py-32 border-y border-border overflow-hidden"
+      className="relative py-16 md:py-32 border-y border-border overflow-hidden"
       style={{ backgroundColor: "oklch(0.12 0.02 250)" }}
     >
       {/* Translucent service photo background for depth */}
@@ -39,7 +39,7 @@ export function Services() {
           <span className="text-sm font-semibold tracking-widest uppercase text-primary">
             Serviços
           </span>
-          <h2 className="font-display text-4xl md:text-5xl font-bold mt-3 mb-4 leading-tight text-white">
+          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold mt-3 mb-4 leading-tight text-white">
             Soluções técnicas do diagnóstico à entrega.
           </h2>
           <p className="text-lg text-neutral-300">
