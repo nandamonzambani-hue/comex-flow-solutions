@@ -10,7 +10,7 @@ import logoNext from "@/assets/logos/next-powertech.png";
 const partners = [
   { name: "Uniflex", country: "Alemanha", logo: logoUniflex, href: "https://www.uniflex.de/" },
   { name: "ZEC", country: "Itália", logo: logoZec, href: "https://zecspa.com/" },
-  { name: "Next Powertech", country: "Brasil", logo: logoNext, href: "https://www.powertechhoses.com/our-products" },
+  { name: "Next Powertech", country: "Itália", logo: logoNext, href: "https://www.powertechhoses.com/our-products" },
   { name: "Marzocchi", country: "Itália", logo: logoMarzocchi, href: "https://www.marzocchipompe.com/en/" },
   { name: "Transfluid", country: "Alemanha", logo: logoTransfluid, href: "https://www.transfluid.de/" },
   { name: "Held", country: "Alemanha", logo: logoHeld, href: "https://held-test-stands.de/downloads.htm" },
