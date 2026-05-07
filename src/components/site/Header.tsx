@@ -66,14 +66,14 @@ export function Header() {
         </div>
       </div>
 
-      <div className="relative p-6 rounded-2xl border border-white/15 bg-background/60 backdrop-blur-md pl-[24px] flex items-center justify-between bg-white">
+      <div className="relative px-4 py-3 md:p-6 md:rounded-2xl md:border md:border-white/15 md:bg-background/60 md:backdrop-blur-md md:pl-[24px] flex items-center justify-between bg-white">
         <a href="#top" className="flex items-center gap-3 group">
           <img
             src={logo}
             alt="Logo COMEX 10 do Brasil — parceiro técnico em cadeia de fluidos"
             width={260}
             height={78}
-            className="h-[68px] md:h-[72px] w-auto -my-6 object-contain"
+            className="h-12 sm:h-14 md:h-[72px] w-auto md:-my-6 object-contain"
           />
         </a>
 
