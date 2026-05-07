@@ -143,7 +143,7 @@ export function Contact() {
 
           <form
             onSubmit={handleSubmit}
-            className="p-8 rounded-2xl border border-border bg-surface"
+            className="p-5 sm:p-8 rounded-2xl border border-border bg-surface"
             style={{ boxShadow: "var(--shadow-elegant)" }}
           >
             {submitted ? (

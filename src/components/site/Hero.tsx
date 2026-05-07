@@ -20,7 +20,7 @@ export function Hero() {
   return (
     <section
       id="top"
-      className="relative min-h-screen max-h-[1100px] flex items-center overflow-hidden pt-24 pb-10"
+      className="relative min-h-[88vh] md:min-h-screen md:max-h-[1100px] flex items-center overflow-hidden pt-28 md:pt-24 pb-10"
     >
       <div className="absolute inset-0">
         <img
