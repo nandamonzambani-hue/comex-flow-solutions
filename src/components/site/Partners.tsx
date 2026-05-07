@@ -17,7 +17,7 @@ type Partner = {
 const partners: Partner[] = [
   { name: "Uniflex", country: "Alemanha", logo: logoUniflex, href: "https://www.uniflex.de/", maxH: "max-h-10" },
   { name: "ZEC", country: "Itália", logo: logoZec, href: "https://zecspa.com/", maxH: "max-h-10" },
-  { name: "Next Powertech", country: "Brasil", logo: logoNext, href: "https://www.powertechhoses.com/our-products", maxH: "max-h-8" },
+  { name: "Next Powertech", country: "Itália", logo: logoNext, href: "https://www.powertechhoses.com/our-products", maxH: "max-h-8" },
   { name: "Marzocchi", country: "Itália", logo: logoMarzocchi, href: "https://www.marzocchipompe.com/en/", maxH: "max-h-10" },
   { name: "Transfluid", country: "Alemanha", logo: logoTransfluid, href: "https://www.transfluid.de/", maxH: "max-h-12" },
   { name: "Held", country: "Alemanha", logo: logoHeld, href: "https://held-test-stands.de/downloads.htm", maxH: "max-h-10" },
@@ -25,13 +25,13 @@ const partners: Partner[] = [
 
 export function Partners() {
   return (
-    <section id="parceiros" className="py-24 md:py-32 bg-surface/40 border-y border-border">
+    <section id="parceiros" className="py-16 md:py-32 bg-surface/40 border-y border-border">
       <div className="mx-auto max-w-7xl px-4 md:px-8">
         <div className="max-w-2xl mb-12 text-center mx-auto">
           <span className="text-sm font-semibold tracking-widest uppercase text-primary">
             Parceiros estratégicos
           </span>
-          <h2 className="font-display text-4xl md:text-5xl font-bold mt-3 mb-4 leading-tight">
+          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold mt-3 mb-4 leading-tight">
             Marcas líderes globais.
           </h2>
           <p className="text-lg text-muted-foreground">

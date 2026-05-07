@@ -10,7 +10,7 @@ import logoNext from "@/assets/logos/next-powertech.png";
 const partners = [
   { name: "Uniflex", country: "Alemanha", logo: logoUniflex, href: "https://www.uniflex.de/" },
   { name: "ZEC", country: "Itália", logo: logoZec, href: "https://zecspa.com/" },
-  { name: "Next Powertech", country: "Brasil", logo: logoNext, href: "https://www.powertechhoses.com/our-products" },
+  { name: "Next Powertech", country: "Itália", logo: logoNext, href: "https://www.powertechhoses.com/our-products" },
   { name: "Marzocchi", country: "Itália", logo: logoMarzocchi, href: "https://www.marzocchipompe.com/en/" },
   { name: "Transfluid", country: "Alemanha", logo: logoTransfluid, href: "https://www.transfluid.de/" },
   { name: "Held", country: "Alemanha", logo: logoHeld, href: "https://held-test-stands.de/downloads.htm" },
@@ -20,7 +20,7 @@ export function Hero() {
   return (
     <section
       id="top"
-      className="relative min-h-screen max-h-[1100px] flex items-center overflow-hidden pt-24 pb-10"
+      className="relative min-h-[88vh] md:min-h-screen md:max-h-[1100px] flex items-center overflow-hidden pt-28 md:pt-24 pb-10"
     >
       <div className="absolute inset-0">
         <img
@@ -43,7 +43,7 @@ export function Hero() {
             </span>
           </div>
 
-          <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.05] mb-5 text-white">
+          <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.05] mb-5 text-white">
             Do problema
             <br />
             <span

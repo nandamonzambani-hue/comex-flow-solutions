@@ -3,7 +3,7 @@ import { GraduationCap, Building2, Check } from "lucide-react";
 
 export function Trainings() {
   return (
-    <section id="treinamentos" className="py-24 md:py-32">
+    <section id="treinamentos" className="py-16 md:py-32">
       <div className="mx-auto max-w-7xl px-4 md:px-8">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="relative rounded-2xl overflow-hidden order-2 lg:order-1">
@@ -22,7 +22,7 @@ export function Trainings() {
             <span className="text-sm font-semibold tracking-widest uppercase text-primary">
               Treinamentos
             </span>
-            <h2 className="font-display text-4xl md:text-5xl font-bold mt-3 mb-6 leading-tight">
+            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold mt-3 mb-6 leading-tight">
               Hub de conhecimento técnico.
             </h2>
             <p className="text-lg text-muted-foreground mb-8">

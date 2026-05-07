@@ -28,7 +28,7 @@ export function Contact() {
   };
 
   return (
-    <section id="contato" className="py-24 md:py-32 relative overflow-hidden">
+    <section id="contato" className="py-16 md:py-32 relative overflow-hidden">
       <div
         className="absolute inset-0 opacity-30"
         style={{
@@ -42,7 +42,7 @@ export function Contact() {
             <span className="text-sm font-semibold tracking-widest uppercase text-primary">
               Contato
             </span>
-            <h2 className="font-display text-4xl md:text-5xl font-bold mt-3 mb-6 leading-tight">
+            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold mt-3 mb-6 leading-tight">
               Vamos resolver
               <br />o seu problema técnico.
             </h2>
@@ -143,7 +143,7 @@ export function Contact() {
 
           <form
             onSubmit={handleSubmit}
-            className="p-8 rounded-2xl border border-border bg-surface"
+            className="p-5 sm:p-8 rounded-2xl border border-border bg-surface"
             style={{ boxShadow: "var(--shadow-elegant)" }}
           >
             {submitted ? (

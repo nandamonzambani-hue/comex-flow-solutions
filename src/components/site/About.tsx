@@ -25,14 +25,14 @@ const pillars = [
 
 export function About() {
   return (
-    <section id="quem-somos" className="py-24 md:py-32 relative">
+    <section id="quem-somos" className="py-16 md:py-32 relative">
       <div className="mx-auto max-w-7xl px-4 md:px-8">
         <div className="grid lg:grid-cols-12 gap-12 mb-16">
           <div className="lg:col-span-5">
             <span className="text-sm font-semibold tracking-widest uppercase text-primary">
               Quem somos
             </span>
-            <h2 className="font-display text-4xl md:text-5xl font-bold mt-3 mb-6 leading-tight">
+            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold mt-3 mb-6 leading-tight">
               Mais que fornecedora.
               <br />
               <span className="text-primary">Seu parceiro técnico</span> em sistemas de fluidos.
