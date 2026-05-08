@@ -205,14 +205,14 @@ export function Products() {
         <div className="grid lg:grid-cols-12 gap-6">
           {/* Sidebar nav */}
           <div className="lg:col-span-4">
-            <div className="flex lg:flex-col gap-2 overflow-x-auto lg:overflow-visible pb-2 lg:pb-0">
+            <div className="grid grid-cols-2 lg:grid-cols-1 gap-2">
               {categories.map((cat) => {
                 const isActive = cat.id === active;
                 return (
                   <button
                     key={cat.id}
                     onClick={() => setActive(cat.id)}
-                    className={`flex-shrink-0 lg:flex-shrink lg:w-full text-left p-4 rounded-xl border transition-all ${
+                    className={`w-full text-left p-3 sm:p-4 rounded-xl border transition-all ${
                       isActive
                         ? "border-primary bg-primary/10"
                         : "border-border bg-surface hover:border-border/60 hover:bg-surface/80"
