@@ -30,21 +30,30 @@ const OG_IMAGE = `${SITE_URL}/og-image.jpg`;
 const organizationJsonLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
+  "@id": `${SITE_URL}/#organization`,
   name: "COMEX 10 do Brasil",
-  alternateName: "COMEX 10",
+  alternateName: ["COMEX 10", "Comex Dez", "Comex10"],
   url: SITE_URL,
   logo: `${SITE_URL}/logo-comex10.png`,
   image: OG_IMAGE,
   description:
-    "Parceira técnica em cadeia de fluidos: equipamentos Uniflex, Transfluid e Held, mangueiras ZEC e Next Powertech, bombas Marzocchi, testes e insumos Comex 10.",
+    "Parceira técnica em cadeia de fluidos: equipamentos Uniflex, Transfluid e Held, mangueiras ZEC e Next Powertech, bombas Marzocchi, testes e treinamentos certificados.",
   email: "contato@comex10.com.br",
   telephone: "+55-11-91490-0404",
+  foundingDate: "1998",
   address: {
     "@type": "PostalAddress",
-    addressCountry: "BR",
+    streetAddress: "R. Marcelo Müller, 415",
+    addressLocality: "São Paulo",
     addressRegion: "SP",
+    postalCode: "03223-060",
+    addressCountry: "BR",
   },
-  sameAs: ["https://wa.me/5511914900404"],
+  sameAs: [
+    "https://www.instagram.com/comex10dobrasil/",
+    "https://www.linkedin.com/company/comex10-do-brasil/",
+    "https://wa.me/5511914900404",
+  ],
   contactPoint: [
     {
       "@type": "ContactPoint",
@@ -56,12 +65,43 @@ const organizationJsonLd = {
   ],
 };
 
+const localBusinessJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": `${SITE_URL}/#localbusiness`,
+  name: "COMEX 10 do Brasil",
+  image: OG_IMAGE,
+  url: SITE_URL,
+  telephone: "+55-11-91490-0404",
+  email: "contato@comex10.com.br",
+  priceRange: "$$",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "R. Marcelo Müller, 415",
+    addressLocality: "São Paulo",
+    addressRegion: "SP",
+    postalCode: "03223-060",
+    addressCountry: "BR",
+  },
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      opens: "08:30",
+      closes: "17:30",
+    },
+  ],
+  areaServed: { "@type": "Country", name: "Brasil" },
+};
+
 const websiteJsonLd = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  name: "COMEX 10",
+  "@id": `${SITE_URL}/#website`,
+  name: "COMEX 10 do Brasil",
   url: SITE_URL,
   inLanguage: "pt-BR",
+  publisher: { "@id": `${SITE_URL}/#organization` },
 };
 
 export const Route = createRootRoute({
@@ -132,6 +172,10 @@ export const Route = createRootRoute({
       {
         type: "application/ld+json",
         children: JSON.stringify(organizationJsonLd),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify(localBusinessJsonLd),
       },
       {
         type: "application/ld+json",
