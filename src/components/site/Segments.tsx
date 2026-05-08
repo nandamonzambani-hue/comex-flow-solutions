@@ -47,12 +47,12 @@ export function Segments() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
           {segments.map((s) => (
             <a
               key={s.title}
               href="#produtos"
-              className="group relative overflow-hidden rounded-xl border border-border aspect-[4/5] cursor-pointer block"
+              className="group relative overflow-hidden rounded-xl border border-border aspect-[16/10] sm:aspect-[4/5] cursor-pointer block"
             >
               <img
                 src={s.img}
@@ -60,13 +60,13 @@ export function Segments() {
                 loading="lazy"
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent" />
-              <div className="absolute inset-0 p-6 flex flex-col justify-end">
-                <h3 className="font-display text-2xl font-bold mb-2">{s.title}</h3>
-                <p className="text-sm text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity duration-300 max-h-0 group-hover:max-h-40 overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent sm:via-background/50" />
+              <div className="absolute inset-0 p-4 sm:p-6 flex flex-col justify-end">
+                <h3 className="font-display text-xl sm:text-2xl font-bold mb-1 sm:mb-2">{s.title}</h3>
+                <p className="text-xs sm:text-sm text-muted-foreground opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity duration-300 max-h-40 sm:max-h-0 sm:group-hover:max-h-40 overflow-hidden">
                   {s.desc}
                 </p>
-                <div className="mt-3 h-1 w-12 bg-primary rounded-full transition-all group-hover:w-24" />
+                <div className="mt-2 sm:mt-3 h-1 w-12 bg-primary rounded-full transition-all group-hover:w-24" />
               </div>
             </a>
           ))}
