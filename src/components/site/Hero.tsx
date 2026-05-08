@@ -28,6 +28,10 @@ export function Hero() {
           alt="Máquina Uniflex HM em operação na oficina COMEX 10"
           width={1920}
           height={1280}
+          loading="eager"
+          // @ts-expect-error fetchpriority is a valid HTML attribute
+          fetchpriority="high"
+          decoding="async"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0" style={{ background: "var(--gradient-hero)", opacity: 0.7 }} />
