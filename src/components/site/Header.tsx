@@ -66,7 +66,7 @@ export function Header() {
         </div>
       </div>
 
-      <div className="relative px-4 py-3 md:p-6 md:rounded-2xl md:border md:border-white/15 md:bg-background/60 md:backdrop-blur-md md:pl-[24px] flex items-center justify-between bg-white">
+      <div className="relative px-4 py-3 md:p-6 md:rounded-2xl md:border md:border-white/15 md:bg-background/60 md:backdrop-blur-md md:pl-[24px] flex items-center justify-between bg-[#fcfcfc]">
         <a href="#top" className="flex items-center gap-3 group">
           <img
             src={logo}
