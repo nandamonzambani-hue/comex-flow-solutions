@@ -7,6 +7,7 @@ declare global {
   }
 }
 
+const TranslateButton = () => {
   const [lang, setLang] = useState<"pt" | "en">("pt");
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
