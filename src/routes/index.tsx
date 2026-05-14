@@ -9,6 +9,7 @@ import { Trainings } from "@/components/site/Trainings";
 import { Partners } from "@/components/site/Partners";
 import { Contact } from "@/components/site/Contact";
 import { Footer } from "@/components/site/Footer";
+import TranslateButton from "@/components/site/TranslateButton";
 
 export const Route = createFileRoute("/")({
   head: () => ({
