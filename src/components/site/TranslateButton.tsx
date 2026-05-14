@@ -7,8 +7,9 @@ declare global {
   }
 }
 
-const TranslateButton = () => {
   const [lang, setLang] = useState<"pt" | "en">("pt");
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
 
   useEffect(() => {
     const match = document.cookie.match(/googtrans=\/[^/]+\/(\w+)/);
