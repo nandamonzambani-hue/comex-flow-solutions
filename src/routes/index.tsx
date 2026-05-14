@@ -53,6 +53,7 @@ function Index() {
         <Contact />
       </main>
       <Footer />
+      <TranslateButton />
     </div>
   );
 }
