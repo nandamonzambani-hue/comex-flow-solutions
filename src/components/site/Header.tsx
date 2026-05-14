@@ -3,12 +3,13 @@ import { Menu, X, Instagram, Linkedin, Phone } from "lucide-react";
 import logo from "@/assets/logo-comex10.png";
 
 const links = [
-  { href: "#produtos", label: "Produtos" },
-  { href: "#segmentos", label: "Segmentos" },
-  { href: "#servicos", label: "Serviços" },
-  { href: "#treinamentos", label: "Treinamentos" },
-  { href: "#parceiros", label: "Parceiros" },
-  { href: "#contato", label: "Contato" },
+  { href: "/#produtos", label: "Produtos" },
+  { href: "/#segmentos", label: "Segmentos" },
+  { href: "/#servicos", label: "Serviços" },
+  { href: "/#treinamentos", label: "Treinamentos" },
+  { href: "/#parceiros", label: "Parceiros" },
+  { href: "/blog", label: "Blog" },
+  { href: "/#contato", label: "Contato" },
 ];
 
 export function Header() {

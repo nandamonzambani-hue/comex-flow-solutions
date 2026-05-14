@@ -9,6 +9,8 @@ declare global {
 
 const TranslateButton = () => {
   const [lang, setLang] = useState<"pt" | "en">("pt");
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
 
   useEffect(() => {
     const match = document.cookie.match(/googtrans=\/[^/]+\/(\w+)/);
@@ -61,6 +63,8 @@ const TranslateButton = () => {
     setLang(target);
     window.location.reload();
   };
+
+  if (!mounted) return null;
 
   return (
     <div className="fixed bottom-6 right-6 z-50 notranslate">
