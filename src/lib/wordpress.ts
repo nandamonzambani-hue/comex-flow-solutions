@@ -61,11 +61,21 @@ export function mapPost(raw: RawPost): WPPost {
 }
 
 export function buildPostsUrl(perPage = 12) {
-  return `${WORDPRESS_API_BASE}/posts?per_page=${perPage}&_embed=wp:featuredmedia&orderby=date&order=desc`;
+  const url = new URL("https://blog.comex10.com.br/");
+  url.searchParams.set("rest_route", "/wp/v2/posts");
+  url.searchParams.set("per_page", String(perPage));
+  url.searchParams.set("_embed", "wp:featuredmedia");
+  url.searchParams.set("orderby", "date");
+  url.searchParams.set("order", "desc");
+  return url.toString();
 }
 
 export function buildPostBySlugUrl(slug: string) {
-  return `${WORDPRESS_API_BASE}/posts?slug=${encodeURIComponent(slug)}&_embed=wp:featuredmedia`;
+  const url = new URL("https://blog.comex10.com.br/");
+  url.searchParams.set("rest_route", "/wp/v2/posts");
+  url.searchParams.set("slug", slug);
+  url.searchParams.set("_embed", "wp:featuredmedia");
+  return url.toString();
 }
 
 export function formatDate(iso: string) {
