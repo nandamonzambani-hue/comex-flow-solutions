@@ -1,8 +1,4 @@
-// Cliente simples para WordPress REST API (headless).
-// Configure a URL do WP em VITE_WP_API_URL (ex: https://admin.comex10.com.br/wp-json/wp/v2)
-export const WP_API =
-  (import.meta.env.VITE_WP_API_URL as string | undefined) ??
-  "https://blog.comex10.com.br/wp-json/wp/v2";
+export const WORDPRESS_API_BASE = "https://blog.comex10.com.br/?rest_route=/wp/v2";
 
 export type WPPost = {
   id: number;
@@ -15,7 +11,7 @@ export type WPPost = {
   coverAlt: string;
 };
 
-type RawPost = {
+export type RawPost = {
   id: number;
   slug: string;
   date: string;
@@ -31,7 +27,7 @@ type RawPost = {
   };
 };
 
-function stripHtml(html: string) {
+export function stripHtml(html: string) {
   return html
     .replace(/<[^>]+>/g, "")
     .replace(/\s+/g, " ")
@@ -44,7 +40,7 @@ function stripHtml(html: string) {
     .trim();
 }
 
-function mapPost(raw: RawPost): WPPost {
+export function mapPost(raw: RawPost): WPPost {
   const media = raw._embedded?.["wp:featuredmedia"]?.[0];
   const sizes = media?.media_details?.sizes;
   const cover =
@@ -64,22 +60,22 @@ function mapPost(raw: RawPost): WPPost {
   };
 }
 
-export async function fetchPosts(perPage = 12): Promise<WPPost[]> {
-  const res = await fetch(
-    `${WP_API}/posts?per_page=${perPage}&_embed=wp:featuredmedia&orderby=date&order=desc`,
-  );
-  if (!res.ok) throw new Error(`WP error ${res.status}`);
-  const data = (await res.json()) as RawPost[];
-  return data.map(mapPost);
+export function buildPostsUrl(perPage = 12) {
+  const url = new URL("https://blog.comex10.com.br/");
+  url.searchParams.set("rest_route", "/wp/v2/posts");
+  url.searchParams.set("per_page", String(perPage));
+  url.searchParams.set("_embed", "wp:featuredmedia");
+  url.searchParams.set("orderby", "date");
+  url.searchParams.set("order", "desc");
+  return url.toString();
 }
 
-export async function fetchPostBySlug(slug: string): Promise<WPPost | null> {
-  const res = await fetch(
-    `${WP_API}/posts?slug=${encodeURIComponent(slug)}&_embed=wp:featuredmedia`,
-  );
-  if (!res.ok) throw new Error(`WP error ${res.status}`);
-  const data = (await res.json()) as RawPost[];
-  return data[0] ? mapPost(data[0]) : null;
+export function buildPostBySlugUrl(slug: string) {
+  const url = new URL("https://blog.comex10.com.br/");
+  url.searchParams.set("rest_route", "/wp/v2/posts");
+  url.searchParams.set("slug", slug);
+  url.searchParams.set("_embed", "wp:featuredmedia");
+  return url.toString();
 }
 
 export function formatDate(iso: string) {
