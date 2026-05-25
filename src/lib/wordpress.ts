@@ -60,6 +60,14 @@ export function mapPost(raw: RawPost): WPPost {
   };
 }
 
+export function buildPostsUrl(perPage = 12) {
+  return `${WORDPRESS_API_BASE}/posts?per_page=${perPage}&_embed=wp:featuredmedia&orderby=date&order=desc`;
+}
+
+export function buildPostBySlugUrl(slug: string) {
+  return `${WORDPRESS_API_BASE}/posts?slug=${encodeURIComponent(slug)}&_embed=wp:featuredmedia`;
+}
+
 export function formatDate(iso: string) {
   try {
     return new Date(iso).toLocaleDateString("pt-BR", {
