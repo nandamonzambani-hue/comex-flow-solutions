@@ -1,7 +1,21 @@
+<IfModule mod_dir.c>
+  DirectoryIndex index.html
+</IfModule>
+
+<IfModule mod_negotiation.c>
+  Options -MultiViews
+</IfModule>
+
 # Hostinger / Apache — SPA fallback for client-side routing
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /
+  # Force the static blog entrypoint even if an old /blog PHP app still exists
+  RewriteRule ^blog/?$ /blog/index.html [L]
+  RewriteCond %{REQUEST_URI} !^/blog/index\.html$
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^blog/.+$ /blog/index.html [L]
   # Don't rewrite real files or directories
   RewriteCond %{REQUEST_FILENAME} -f [OR]
   RewriteCond %{REQUEST_FILENAME} -d
