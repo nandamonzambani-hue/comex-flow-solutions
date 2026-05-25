@@ -2,7 +2,7 @@
 // Configure a URL do WP em VITE_WP_API_URL (ex: https://admin.comex10.com.br/wp-json/wp/v2)
 export const WP_API =
   (import.meta.env.VITE_WP_API_URL as string | undefined) ??
-  "https://admin.comex10.com.br/wp-json/wp/v2";
+  "https://blog.comex10.com.br/wp-json/wp/v2";
 
 export type WPPost = {
   id: number;
