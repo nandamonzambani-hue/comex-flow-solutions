@@ -1,9 +1,11 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link, useRouter } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
+import { useServerFn } from "@tanstack/react-start";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import TranslateButton from "@/components/site/TranslateButton";
-import { fetchPosts, formatDate, type WPPost } from "@/lib/wordpress";
+import { getPosts } from "@/lib/wordpress.functions";
+import { formatDate, type WPPost } from "@/lib/wordpress";
 
 export const Route = createFileRoute("/blog")({
   head: () => ({
@@ -56,14 +58,18 @@ export const Route = createFileRoute("/blog")({
 
 
 function BlogIndex() {
+  const router = useRouter();
+  const fetchPosts = useServerFn(getPosts);
   const [posts, setPosts] = useState<WPPost[] | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    fetchPosts(20)
+    fetchPosts({ data: { perPage: 20 } })
       .then(setPosts)
-      .catch((e) => setError(e.message ?? "Falha ao carregar posts"));
-  }, []);
+      .catch((e: unknown) =>
+        setError(e instanceof Error ? e.message : "Falha ao carregar posts"),
+      );
+  }, [fetchPosts]);
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -111,6 +117,7 @@ function BlogIndex() {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
               {posts.map((p) => (
                 <Link
+                  onClick={() => router.preloadRoute({ to: "/blog/$slug", params: { slug: p.slug } })}
                   key={p.id}
                   to="/blog/$slug"
                   params={{ slug: p.slug }}
