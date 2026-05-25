@@ -89,3 +89,18 @@ export function formatDate(iso: string) {
     return iso;
   }
 }
+
+export async function fetchPosts(perPage = 20): Promise<WPPost[]> {
+  const res = await fetch(buildPostsUrl(perPage), { headers: { Accept: "application/json" } });
+  if (!res.ok) throw new Error(`Falha ao carregar posts (${res.status})`);
+  const raw = (await res.json()) as RawPost[];
+  return raw.map(mapPost);
+}
+
+export async function fetchPostBySlug(slug: string): Promise<WPPost | null> {
+  const res = await fetch(buildPostBySlugUrl(slug), { headers: { Accept: "application/json" } });
+  if (!res.ok) throw new Error(`Falha ao carregar post (${res.status})`);
+  const raw = (await res.json()) as RawPost[];
+  if (!raw.length) return null;
+  return mapPost(raw[0]);
+}

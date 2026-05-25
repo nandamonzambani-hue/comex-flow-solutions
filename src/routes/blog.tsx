@@ -1,14 +1,11 @@
-import { createFileRoute, Link, useRouter } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import TranslateButton from "@/components/site/TranslateButton";
-import { getPosts } from "@/lib/wordpress.functions";
-import { formatDate, type WPPost } from "@/lib/wordpress";
+import { fetchPosts, formatDate, type WPPost } from "@/lib/wordpress";
 
 export const Route = createFileRoute("/blog")({
-  loader: async () => ({
-    posts: await getPosts({ data: { perPage: 20 } }),
-  }),
   head: () => ({
     meta: [
       { title: "Blog COMEX 10 — Conteúdo técnico de cadeia de fluidos" },
@@ -54,44 +51,29 @@ export const Route = createFileRoute("/blog")({
       },
     ],
   }),
-  notFoundComponent: () => null,
-  errorComponent: BlogIndexError,
   component: BlogIndex,
 });
 
-function BlogIndexError({ error, reset }: { error: Error; reset: () => void }) {
-  const router = useRouter();
-
-  return (
-    <div className="min-h-screen bg-background text-foreground">
-      <Header />
-      <main className="pt-28 md:pt-32 pb-20">
-        <div className="mx-auto max-w-3xl px-4 md:px-8">
-          <div className="rounded-xl border border-border bg-muted/40 p-8 text-center">
-            <h1 className="text-2xl font-semibold">Não foi possível carregar os posts</h1>
-            <p className="mt-2 text-sm text-muted-foreground">{error.message}</p>
-            <button
-              onClick={() => {
-                router.invalidate();
-                reset();
-              }}
-              className="mt-6 inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:bg-primary/90"
-            >
-              Tentar novamente
-            </button>
-          </div>
-        </div>
-      </main>
-      <Footer />
-      <TranslateButton />
-    </div>
-  );
-}
-
-
 function BlogIndex() {
-  const router = useRouter();
-  const { posts } = Route.useLoaderData();
+  const [posts, setPosts] = useState<WPPost[] | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [reloadKey, setReloadKey] = useState(0);
+
+  useEffect(() => {
+    let cancelled = false;
+    setError(null);
+    setPosts(null);
+    fetchPosts(20)
+      .then((p) => {
+        if (!cancelled) setPosts(p);
+      })
+      .catch((e: Error) => {
+        if (!cancelled) setError(e.message);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [reloadKey]);
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -111,17 +93,45 @@ function BlogIndex() {
             </p>
           </header>
 
-          {posts.length === 0 && (
-            <p className="text-muted-foreground">
-              Nenhum post publicado ainda.
-            </p>
+          {error && (
+            <div className="rounded-xl border border-border bg-muted/40 p-8 text-center">
+              <h2 className="text-xl font-semibold">Não foi possível carregar os posts</h2>
+              <p className="mt-2 text-sm text-muted-foreground">{error}</p>
+              <button
+                onClick={() => setReloadKey((k) => k + 1)}
+                className="mt-6 inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:bg-primary/90"
+              >
+                Tentar novamente
+              </button>
+            </div>
           )}
 
-          {posts.length > 0 && (
+          {!error && posts === null && (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-              {posts.map((p: WPPost) => (
+              {Array.from({ length: 6 }).map((_, i) => (
+                <div
+                  key={i}
+                  className="rounded-2xl border border-border bg-card overflow-hidden animate-pulse"
+                >
+                  <div className="aspect-[16/10] bg-muted" />
+                  <div className="p-5 md:p-6 space-y-3">
+                    <div className="h-3 w-24 bg-muted rounded" />
+                    <div className="h-5 w-full bg-muted rounded" />
+                    <div className="h-4 w-2/3 bg-muted rounded" />
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {!error && posts && posts.length === 0 && (
+            <p className="text-muted-foreground">Nenhum post publicado ainda.</p>
+          )}
+
+          {!error && posts && posts.length > 0 && (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+              {posts.map((p) => (
                 <Link
-                  onClick={() => router.preloadRoute({ to: "/blog/$slug", params: { slug: p.slug } })}
                   key={p.id}
                   to="/blog/$slug"
                   params={{ slug: p.slug }}
