@@ -3,7 +3,7 @@ import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import TranslateButton from "@/components/site/TranslateButton";
 import { getPosts } from "@/lib/wordpress.functions";
-import { formatDate } from "@/lib/wordpress";
+import { formatDate, type WPPost } from "@/lib/wordpress";
 
 export const Route = createFileRoute("/blog")({
   loader: async () => ({
@@ -59,6 +59,35 @@ export const Route = createFileRoute("/blog")({
   component: BlogIndex,
 });
 
+function BlogIndexError({ error, reset }: { error: Error; reset: () => void }) {
+  const router = useRouter();
+
+  return (
+    <div className="min-h-screen bg-background text-foreground">
+      <Header />
+      <main className="pt-28 md:pt-32 pb-20">
+        <div className="mx-auto max-w-3xl px-4 md:px-8">
+          <div className="rounded-xl border border-border bg-muted/40 p-8 text-center">
+            <h1 className="text-2xl font-semibold">Não foi possível carregar os posts</h1>
+            <p className="mt-2 text-sm text-muted-foreground">{error.message}</p>
+            <button
+              onClick={() => {
+                router.invalidate();
+                reset();
+              }}
+              className="mt-6 inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:bg-primary/90"
+            >
+              Tentar novamente
+            </button>
+          </div>
+        </div>
+      </main>
+      <Footer />
+      <TranslateButton />
+    </div>
+  );
+}
+
 
 function BlogIndex() {
   const router = useRouter();
@@ -90,7 +119,7 @@ function BlogIndex() {
 
           {posts.length > 0 && (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-              {posts.map((p) => (
+              {posts.map((p: WPPost) => (
                 <Link
                   onClick={() => router.preloadRoute({ to: "/blog/$slug", params: { slug: p.slug } })}
                   key={p.id}
