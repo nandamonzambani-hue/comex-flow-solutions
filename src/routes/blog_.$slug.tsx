@@ -184,7 +184,7 @@ function BlogPost() {
           )}
 
           <div
-            className="prose prose-neutral max-w-none prose-headings:font-bold prose-a:text-primary prose-img:rounded-xl"
+            className="blog-content"
             dangerouslySetInnerHTML={{ __html: post.content }}
           />
         </article>
