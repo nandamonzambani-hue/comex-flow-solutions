@@ -1,4 +1,4 @@
-import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { createFileRoute, Link, notFound, useRouter } from "@tanstack/react-router";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import TranslateButton from "@/components/site/TranslateButton";
@@ -123,7 +123,7 @@ export const Route = createFileRoute("/blog_/$slug")({
 });
 
 function BlogPostError({ error, reset }: { error: Error; reset: () => void }) {
-  const router = Route.useRouter();
+  const router = useRouter();
 
   return (
     <div className="min-h-screen bg-background text-foreground">
