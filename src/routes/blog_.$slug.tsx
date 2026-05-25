@@ -5,7 +5,7 @@ import { Footer } from "@/components/site/Footer";
 import TranslateButton from "@/components/site/TranslateButton";
 import { fetchPostBySlug, formatDate, type WPPost } from "@/lib/wordpress";
 
-export const Route = createFileRoute("/blog/$slug")({
+export const Route = createFileRoute("/blog_/$slug")({
   head: ({ params }) => ({
     meta: [
       { title: `${params.slug.replace(/-/g, " ")} — Blog COMEX 10` },
