@@ -1,158 +1,59 @@
-import { createFileRoute, Link, notFound, useRouter } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import TranslateButton from "@/components/site/TranslateButton";
-import { getPostBySlug } from "@/lib/wordpress.functions";
-import { formatDate } from "@/lib/wordpress";
+import { fetchPostBySlug, formatDate, type WPPost } from "@/lib/wordpress";
 
 const SITE_URL = "https://comex10.com.br";
 
 export const Route = createFileRoute("/blog_/$slug")({
-  loader: async ({ params }) => {
-    const post = await getPostBySlug({ data: { slug: params.slug } });
-    if (!post) throw notFound();
-    return { post };
-  },
-  head: ({ params, loaderData }) => {
-    const post = loaderData?.post;
+  head: ({ params }) => {
     const url = `${SITE_URL}/blog/${params.slug}`;
-    if (!post) {
-      const fallbackTitle = `${params.slug.replace(/-/g, " ")} — Blog COMEX 10`;
-      return {
-        meta: [
-          { title: fallbackTitle },
-          {
-            name: "description",
-            content:
-              "Artigo do blog COMEX 10 do Brasil sobre cadeia de fluidos, mangueiras hidráulicas, equipamentos e treinamentos.",
-          },
-          { property: "og:url", content: url },
-          { property: "og:type", content: "article" },
-        ],
-        links: [{ rel: "canonical", href: url }],
-      };
-    }
-
-    const description =
-      post.excerpt?.slice(0, 160) ||
-      "Artigo do blog COMEX 10 do Brasil sobre cadeia de fluidos, mangueiras hidráulicas, equipamentos e treinamentos.";
-    const title = `${post.title} — Blog COMEX 10`;
-
-    const meta: Array<Record<string, string>> = [
-      { title },
-      { name: "description", content: description },
-      { property: "og:title", content: post.title },
-      { property: "og:description", content: description },
-      { property: "og:type", content: "article" },
-      { property: "og:url", content: url },
-      { property: "og:site_name", content: "COMEX 10 do Brasil" },
-      { property: "article:published_time", content: post.date },
-      { name: "twitter:card", content: post.cover ? "summary_large_image" : "summary" },
-      { name: "twitter:title", content: post.title },
-      { name: "twitter:description", content: description },
-    ];
-    if (post.cover) {
-      meta.push(
-        { property: "og:image", content: post.cover },
-        { property: "og:image:alt", content: post.coverAlt },
-        { name: "twitter:image", content: post.cover },
-      );
-    }
-
+    const fallbackTitle = `${params.slug.replace(/-/g, " ")} — Blog COMEX 10`;
     return {
-      meta,
-      links: [{ rel: "canonical", href: url }],
-      scripts: [
+      meta: [
+        { title: fallbackTitle },
         {
-          type: "application/ld+json",
-          children: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Article",
-            headline: post.title,
-            description,
-            datePublished: post.date,
-            ...(post.cover ? { image: [post.cover] } : {}),
-            mainEntityOfPage: { "@type": "WebPage", "@id": url },
-            publisher: {
-              "@type": "Organization",
-              name: "COMEX 10 do Brasil",
-              url: SITE_URL,
-            },
-          }),
+          name: "description",
+          content:
+            "Artigo do blog COMEX 10 do Brasil sobre cadeia de fluidos, mangueiras hidráulicas, equipamentos e treinamentos.",
         },
-        {
-          type: "application/ld+json",
-          children: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            itemListElement: [
-              { "@type": "ListItem", position: 1, name: "Início", item: SITE_URL },
-              { "@type": "ListItem", position: 2, name: "Blog", item: `${SITE_URL}/blog` },
-              { "@type": "ListItem", position: 3, name: post.title, item: url },
-            ],
-          }),
-        },
+        { property: "og:url", content: url },
+        { property: "og:type", content: "article" },
+        { property: "og:site_name", content: "COMEX 10 do Brasil" },
       ],
+      links: [{ rel: "canonical", href: url }],
     };
   },
-  notFoundComponent: () => (
-    <div className="min-h-screen bg-background text-foreground">
-      <Header />
-      <main className="pt-28 md:pt-32 pb-20">
-        <div className="mx-auto max-w-3xl px-4 md:px-8">
-          <div className="rounded-xl border border-border bg-muted/40 p-8 text-center">
-            <h1 className="text-2xl font-semibold">Post não encontrado</h1>
-            <p className="mt-2 text-muted-foreground">
-              Esse artigo pode ter sido movido ou removido.
-            </p>
-            <Link
-              to="/blog"
-              className="mt-6 inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:bg-primary/90"
-            >
-              Ver todos os posts
-            </Link>
-          </div>
-        </div>
-      </main>
-      <Footer />
-      <TranslateButton />
-    </div>
-  ),
-  errorComponent: BlogPostError,
   component: BlogPost,
 });
 
-function BlogPostError({ error, reset }: { error: Error; reset: () => void }) {
-  const router = useRouter();
-
-  return (
-    <div className="min-h-screen bg-background text-foreground">
-      <Header />
-      <main className="pt-28 md:pt-32 pb-20">
-        <div className="mx-auto max-w-3xl px-4 md:px-8">
-          <div className="rounded-xl border border-border bg-muted/40 p-8 text-center">
-            <h1 className="text-2xl font-semibold">Não foi possível carregar o post</h1>
-            <p className="mt-2 text-sm text-muted-foreground">{error.message}</p>
-            <button
-              onClick={() => {
-                router.invalidate();
-                reset();
-              }}
-              className="mt-6 inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:bg-primary/90"
-            >
-              Tentar novamente
-            </button>
-          </div>
-        </div>
-      </main>
-      <Footer />
-      <TranslateButton />
-    </div>
-  );
-}
-
 function BlogPost() {
-  const { post } = Route.useLoaderData();
+  const { slug } = Route.useParams();
+  const [post, setPost] = useState<WPPost | null | undefined>(undefined);
+  const [error, setError] = useState<string | null>(null);
+  const [reloadKey, setReloadKey] = useState(0);
+
+  useEffect(() => {
+    let cancelled = false;
+    setError(null);
+    setPost(undefined);
+    fetchPostBySlug(slug)
+      .then((p) => {
+        if (!cancelled) setPost(p);
+      })
+      .catch((e: Error) => {
+        if (!cancelled) setError(e.message);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [slug, reloadKey]);
+
+  useEffect(() => {
+    if (post) document.title = `${post.title} — Blog COMEX 10`;
+  }, [post]);
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -166,27 +67,66 @@ function BlogPost() {
             ← Voltar para o blog
           </Link>
 
-          <header className="mt-6 mb-8">
-            <time className="text-xs uppercase tracking-wider text-muted-foreground">
-              {formatDate(post.date)}
-            </time>
-            <h1 className="mt-3 text-3xl md:text-5xl font-bold tracking-tight leading-tight">
-              {post.title}
-            </h1>
-          </header>
-
-          {post.cover && (
-            <img
-              src={post.cover}
-              alt={post.coverAlt}
-              className="w-full rounded-2xl mb-10 object-cover"
-            />
+          {error && (
+            <div className="mt-8 rounded-xl border border-border bg-muted/40 p-8 text-center">
+              <h1 className="text-2xl font-semibold">Não foi possível carregar o post</h1>
+              <p className="mt-2 text-sm text-muted-foreground">{error}</p>
+              <button
+                onClick={() => setReloadKey((k) => k + 1)}
+                className="mt-6 inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:bg-primary/90"
+              >
+                Tentar novamente
+              </button>
+            </div>
           )}
 
-          <div
-            className="blog-content"
-            dangerouslySetInnerHTML={{ __html: post.content }}
-          />
+          {!error && post === undefined && (
+            <div className="mt-8 space-y-4 animate-pulse">
+              <div className="h-3 w-32 bg-muted rounded" />
+              <div className="h-10 w-3/4 bg-muted rounded" />
+              <div className="aspect-[16/9] bg-muted rounded-2xl mt-6" />
+              <div className="space-y-2 mt-6">
+                <div className="h-4 w-full bg-muted rounded" />
+                <div className="h-4 w-5/6 bg-muted rounded" />
+                <div className="h-4 w-4/6 bg-muted rounded" />
+              </div>
+            </div>
+          )}
+
+          {!error && post === null && (
+            <div className="mt-8 rounded-xl border border-border bg-muted/40 p-8 text-center">
+              <h1 className="text-2xl font-semibold">Post não encontrado</h1>
+              <p className="mt-2 text-muted-foreground">
+                Esse artigo pode ter sido movido ou removido.
+              </p>
+            </div>
+          )}
+
+          {!error && post && (
+            <>
+              <header className="mt-6 mb-8">
+                <time className="text-xs uppercase tracking-wider text-muted-foreground">
+                  {formatDate(post.date)}
+                </time>
+                <h1 className="mt-3 text-3xl md:text-5xl font-bold tracking-tight leading-tight">
+                  {post.title}
+                </h1>
+              </header>
+
+              {post.cover && (
+                <img
+                  src={post.cover}
+                  alt={post.coverAlt}
+                  className="w-full rounded-2xl mb-10 object-cover"
+                />
+              )}
+
+              <div
+                className="blog-content"
+                dangerouslySetInnerHTML={{ __html: post.content }}
+              />
+            </>
+          )}
         </article>
       </main>
       <Footer />
