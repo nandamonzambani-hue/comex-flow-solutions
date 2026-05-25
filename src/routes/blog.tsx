@@ -1,13 +1,14 @@
 import { createFileRoute, Link, useRouter } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
-import { useServerFn } from "@tanstack/react-start";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import TranslateButton from "@/components/site/TranslateButton";
 import { getPosts } from "@/lib/wordpress.functions";
-import { formatDate, type WPPost } from "@/lib/wordpress";
+import { formatDate } from "@/lib/wordpress";
 
 export const Route = createFileRoute("/blog")({
+  loader: async () => ({
+    posts: await getPosts({ data: { perPage: 20 } }),
+  }),
   head: () => ({
     meta: [
       { title: "Blog COMEX 10 — Conteúdo técnico de cadeia de fluidos" },
@@ -53,23 +54,15 @@ export const Route = createFileRoute("/blog")({
       },
     ],
   }),
+  notFoundComponent: () => null,
+  errorComponent: BlogIndexError,
   component: BlogIndex,
 });
 
 
 function BlogIndex() {
   const router = useRouter();
-  const fetchPosts = useServerFn(getPosts);
-  const [posts, setPosts] = useState<WPPost[] | null>(null);
-  const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    fetchPosts({ data: { perPage: 20 } })
-      .then(setPosts)
-      .catch((e: unknown) =>
-        setError(e instanceof Error ? e.message : "Falha ao carregar posts"),
-      );
-  }, [fetchPosts]);
+  const { posts } = Route.useLoaderData();
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -89,31 +82,13 @@ function BlogIndex() {
             </p>
           </header>
 
-          {error && (
-            <div className="rounded-xl border border-border bg-muted/40 p-6 text-sm text-muted-foreground">
-              Não foi possível carregar os posts agora. Tente novamente em
-              instantes.
-            </div>
-          )}
-
-          {!posts && !error && (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {Array.from({ length: 6 }).map((_, i) => (
-                <div
-                  key={i}
-                  className="rounded-2xl border border-border bg-muted/40 h-80 animate-pulse"
-                />
-              ))}
-            </div>
-          )}
-
-          {posts && posts.length === 0 && (
+          {posts.length === 0 && (
             <p className="text-muted-foreground">
               Nenhum post publicado ainda.
             </p>
           )}
 
-          {posts && posts.length > 0 && (
+          {posts.length > 0 && (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
               {posts.map((p) => (
                 <Link
