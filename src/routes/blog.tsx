@@ -20,10 +20,40 @@ export const Route = createFileRoute("/blog")({
         content:
           "Conteúdo técnico em hidráulica industrial: mangueiras, equipamentos, bombas e treinamentos.",
       },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://comex10.com.br/blog" },
+      { property: "og:site_name", content: "COMEX 10 do Brasil" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Blog COMEX 10 do Brasil" },
+      {
+        name: "twitter:description",
+        content:
+          "Conteúdo técnico em hidráulica industrial: mangueiras, equipamentos, bombas e treinamentos.",
+      },
+    ],
+    links: [{ rel: "canonical", href: "https://comex10.com.br/blog" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Blog",
+          name: "Blog COMEX 10 do Brasil",
+          url: "https://comex10.com.br/blog",
+          description:
+            "Conteúdo técnico em hidráulica industrial: mangueiras, equipamentos, bombas e treinamentos.",
+          publisher: {
+            "@type": "Organization",
+            name: "COMEX 10 do Brasil",
+            url: "https://comex10.com.br",
+          },
+        }),
+      },
     ],
   }),
   component: BlogIndex,
 });
+
 
 function BlogIndex() {
   const [posts, setPosts] = useState<WPPost[] | null>(null);
