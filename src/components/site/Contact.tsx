@@ -134,7 +134,7 @@ export function Contact() {
                     LinkedIn
                   </div>
                   <div className="font-medium group-hover:text-primary transition-colors">
-                    COMEX 10 do Brasil
+                    Comex10 do Brasil
                   </div>
                 </div>
               </a>

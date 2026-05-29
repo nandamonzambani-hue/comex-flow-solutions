@@ -48,7 +48,7 @@ export function Header() {
               href="https://www.instagram.com/comex10dobrasil/"
               target="_blank"
               rel="noopener"
-              aria-label="Instagram da COMEX 10"
+              aria-label="Instagram da Comex10"
               className="text-neutral-600 hover:text-primary transition-colors"
             >
               <Instagram size={14} />
@@ -57,7 +57,7 @@ export function Header() {
               href="https://www.linkedin.com/company/comex10-do-brasil/"
               target="_blank"
               rel="noopener"
-              aria-label="LinkedIn da COMEX 10"
+              aria-label="LinkedIn da Comex10"
               className="text-neutral-600 hover:text-primary transition-colors"
             >
               <Linkedin size={14} />
@@ -70,7 +70,7 @@ export function Header() {
         <a href="#top" className="flex items-center gap-3 group">
           <img
             src={logo}
-            alt="Logo COMEX 10 do Brasil — parceiro técnico em cadeia de fluidos"
+            alt="Logo Comex10 do Brasil — parceiro técnico em cadeia de fluidos"
             width={260}
             height={78}
             className="h-12 sm:h-14 md:h-[72px] w-auto md:-my-6 object-contain"

@@ -164,18 +164,18 @@ const categories: Category[] = [
     id: "insumos",
     icon: Package,
     title: "Insumos",
-    brands: "Comex 10",
-    desc: "Itens próprios Comex 10 para identificação, segurança e suporte à montagem de mangueiras.",
+    brands: "Comex10",
+    desc: "Itens próprios Comex10 para identificação, segurança e suporte à montagem de mangueiras.",
     items: [
       {
         name: "Lacres",
-        brand: "Comex 10",
+        brand: "Comex10",
         desc: "Lacres para identificação, rastreabilidade e segurança na operação.",
         image: imgLacre,
       },
       {
         name: "Cabos de Segurança",
-        brand: "Comex 10",
+        brand: "Comex10",
         desc: "Cabos de segurança para proteção operacional e prevenção de riscos em campo.",
         image: imgCabos,
       },
@@ -264,7 +264,7 @@ export function Products() {
                     <div className="aspect-[4/3] overflow-hidden bg-background">
                       <img
                         src={item.image}
-                        alt={`${item.name} — ${item.brand ?? "COMEX 10"}`}
+                        alt={`${item.name} — ${item.brand ?? "Comex10"}`}
                         loading="lazy"
                         width={800}
                         height={600}

@@ -9,7 +9,7 @@ export function Footer() {
           <div className="md:col-span-2">
             <img
               src={logo}
-              alt="COMEX 10 do Brasil"
+              alt="Comex10 do Brasil"
               width={180}
               height={54}
               className="h-12 w-auto bg-white/95 px-2 py-1 rounded mb-4"
@@ -29,7 +29,7 @@ export function Footer() {
                 href="https://www.instagram.com/comex10dobrasil/"
                 target="_blank"
                 rel="noopener"
-                aria-label="Instagram da COMEX 10"
+                aria-label="Instagram da Comex10"
                 className="inline-flex items-center justify-center w-10 h-10 rounded-md bg-neutral-100 border border-neutral-200 hover:border-primary hover:text-primary transition-colors"
               >
                 <Instagram size={18} />
@@ -38,7 +38,7 @@ export function Footer() {
                 href="https://www.linkedin.com/company/comex10-do-brasil/"
                 target="_blank"
                 rel="noopener"
-                aria-label="LinkedIn da COMEX 10"
+                aria-label="LinkedIn da Comex10"
                 className="inline-flex items-center justify-center w-10 h-10 rounded-md bg-neutral-100 border border-neutral-200 hover:border-primary hover:text-primary transition-colors"
               >
                 <Linkedin size={18} />
@@ -73,7 +73,7 @@ export function Footer() {
 
         <div className="pt-6 border-t border-neutral-200 flex flex-col sm:flex-row gap-3 items-center justify-between">
           <div className="text-xs text-neutral-600">
-            © {new Date().getFullYear()} COMEX 10 do Brasil. Todos os direitos reservados.
+            © {new Date().getFullYear()} Comex10 do Brasil. Todos os direitos reservados.
           </div>
           <div className="text-xs text-neutral-600">
             Cadeia de fluidos • Mangueiras • Equipamentos • Treinamentos

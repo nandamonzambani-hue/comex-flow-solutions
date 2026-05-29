@@ -25,7 +25,7 @@ export function Hero() {
       <div className="absolute inset-0">
         <img
           src={heroImg}
-          alt="Máquina Uniflex HM em operação na oficina COMEX 10"
+          alt="Máquina Uniflex HM em operação na oficina Comex10"
           width={1920}
           height={1280}
           loading="eager"
@@ -61,7 +61,7 @@ export function Hero() {
           <p className="text-base md:text-lg text-neutral-100 max-w-2xl mb-8 leading-relaxed">
             Falhas em sistemas hidráulicos muitas vezes começam antes da operação:
             na especificação, na montagem ou na ausência de validação técnica. A
-            COMEX 10 é sua parceira técnica em equipamentos, mangueiras, bombas e
+            Comex10 é sua parceira técnica em equipamentos, mangueiras, bombas e
             soluções industriais certificadas.
           </p>
 

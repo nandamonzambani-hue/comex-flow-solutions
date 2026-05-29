@@ -9,7 +9,7 @@ export function Trainings() {
           <div className="relative rounded-2xl overflow-hidden order-2 lg:order-1">
             <img
               src={treinamentoImg}
-              alt="Treinamento técnico em mangueiras hidráulicas na COMEX 10"
+              alt="Treinamento técnico em mangueiras hidráulicas na Comex10"
               loading="lazy"
               width={1280}
               height={800}
@@ -39,7 +39,7 @@ export function Trainings() {
                   </div>
                   <div>
                     <h3 className="font-display text-xl font-semibold mb-2">
-                      Na COMEX 10
+                      Na Comex10
                     </h3>
                     <p className="text-sm text-muted-foreground mb-3">
                       Treinamento técnico aprofundado sobre montagem, manutenção e

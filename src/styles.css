@@ -50,7 +50,7 @@
   --popover: oklch(0.21 0.025 250);
   --popover-foreground: oklch(0.97 0.005 250);
 
-  /* COMEX 10 brand: vivid light blue (logo) */
+  /* Comex10 brand: vivid light blue (logo) */
   --primary: oklch(0.68 0.16 235);
   --primary-foreground: oklch(0.99 0.005 250);
   --primary-glow: oklch(0.78 0.14 225);
@@ -137,7 +137,7 @@
   }
 }
 
-/* WordPress blog content styling — matches COMEX 10 identity */
+/* WordPress blog content styling — matches Comex10 identity */
 .blog-content {
   font-family: var(--font-body);
   color: var(--color-foreground);

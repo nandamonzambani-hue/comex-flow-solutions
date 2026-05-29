@@ -19,7 +19,7 @@ const pillars = [
   {
     icon: Users,
     title: "Capacitar pessoas",
-    desc: "Hub de conhecimento técnico: treinamentos certificados na COMEX 10 e dentro de empresas parceiras.",
+    desc: "Hub de conhecimento técnico: treinamentos certificados na Comex10 e dentro de empresas parceiras.",
   },
 ];
 
@@ -40,7 +40,7 @@ export function About() {
           </div>
           <div className="lg:col-span-7">
             <p className="text-lg text-muted-foreground leading-relaxed">
-              A COMEX 10 do Brasil é referência técnica em soluções hidráulicas.
+              A Comex10 do Brasil é referência técnica em soluções hidráulicas.
               Não vendemos apenas máquinas e mangueiras — entregamos diagnóstico,
               projeto, equipamentos certificados e capacitação técnica para que sua
               operação não pare. Trabalhamos lado a lado com as marcas líderes

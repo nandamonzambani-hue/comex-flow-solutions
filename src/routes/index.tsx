@@ -16,7 +16,7 @@ export const Route = createFileRoute("/")({
     meta: [
       {
         title:
-          "COMEX 10 do Brasil — Mangueiras Hidráulicas, Equipamentos e Bombas Industriais",
+          "Comex10 do Brasil — Mangueiras Hidráulicas, Equipamentos e Bombas Industriais",
       },
       {
         name: "description",
@@ -26,7 +26,7 @@ export const Route = createFileRoute("/")({
       {
         property: "og:title",
         content:
-          "COMEX 10 do Brasil — Mangueiras Hidráulicas e Cadeia de Fluidos",
+          "Comex10 do Brasil — Mangueiras Hidráulicas e Cadeia de Fluidos",
       },
       {
         property: "og:description",

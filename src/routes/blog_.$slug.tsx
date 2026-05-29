@@ -10,18 +10,18 @@ const SITE_URL = "https://comex10.com.br";
 export const Route = createFileRoute("/blog_/$slug")({
   head: ({ params }) => {
     const url = `${SITE_URL}/blog/${params.slug}`;
-    const fallbackTitle = `${params.slug.replace(/-/g, " ")} — Blog COMEX 10`;
+    const fallbackTitle = `${params.slug.replace(/-/g, " ")} — Blog Comex10`;
     return {
       meta: [
         { title: fallbackTitle },
         {
           name: "description",
           content:
-            "Artigo do blog COMEX 10 do Brasil sobre cadeia de fluidos, mangueiras hidráulicas, equipamentos e treinamentos.",
+            "Artigo do blog Comex10 do Brasil sobre cadeia de fluidos, mangueiras hidráulicas, equipamentos e treinamentos.",
         },
         { property: "og:url", content: url },
         { property: "og:type", content: "article" },
-        { property: "og:site_name", content: "COMEX 10 do Brasil" },
+        { property: "og:site_name", content: "Comex10 do Brasil" },
       ],
       links: [{ rel: "canonical", href: url }],
     };
@@ -52,7 +52,7 @@ function BlogPost() {
   }, [slug, reloadKey]);
 
   useEffect(() => {
-    if (post) document.title = `${post.title} — Blog COMEX 10`;
+    if (post) document.title = `${post.title} — Blog Comex10`;
   }, [post]);
 
   return (

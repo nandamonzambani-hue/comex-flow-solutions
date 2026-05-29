@@ -31,8 +31,8 @@ const organizationJsonLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
   "@id": `${SITE_URL}/#organization`,
-  name: "COMEX 10 do Brasil",
-  alternateName: ["COMEX 10", "Comex Dez", "Comex10"],
+  name: "Comex10 do Brasil",
+  alternateName: ["Comex10", "Comex Dez", "Comex10"],
   url: SITE_URL,
   logo: `${SITE_URL}/logo-comex10.png`,
   image: OG_IMAGE,
@@ -69,7 +69,7 @@ const localBusinessJsonLd = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   "@id": `${SITE_URL}/#localbusiness`,
-  name: "COMEX 10 do Brasil",
+  name: "Comex10 do Brasil",
   image: OG_IMAGE,
   url: SITE_URL,
   telephone: "+55-11-91490-0404",
@@ -98,7 +98,7 @@ const websiteJsonLd = {
   "@context": "https://schema.org",
   "@type": "WebSite",
   "@id": `${SITE_URL}/#website`,
-  name: "COMEX 10 do Brasil",
+  name: "Comex10 do Brasil",
   url: SITE_URL,
   inLanguage: "pt-BR",
   publisher: { "@id": `${SITE_URL}/#organization` },
@@ -115,28 +115,28 @@ export const Route = createRootRoute({
       { name: "format-detection", content: "telephone=no" },
       {
         title:
-          "COMEX 10 — Mangueiras Hidráulicas, Equipamentos Uniflex, Bombas Marzocchi e Treinamentos",
+          "Comex10 — Mangueiras Hidráulicas, Equipamentos Uniflex, Bombas Marzocchi e Treinamentos",
       },
       {
         name: "description",
         content:
-          "COMEX 10 do Brasil: parceira técnica em cadeia de fluidos. Equipamentos Uniflex, Transfluid e Held, mangueiras ZEC e Next Powertech, bombas Marzocchi, testes e treinamentos certificados.",
+          "Comex10 do Brasil: parceira técnica em cadeia de fluidos. Equipamentos Uniflex, Transfluid e Held, mangueiras ZEC e Next Powertech, bombas Marzocchi, testes e treinamentos certificados.",
       },
       {
         name: "keywords",
         content:
-          "mangueiras hidráulicas, cadeia de fluidos, Uniflex, Transfluid, Held, ZEC, Next Powertech, Marzocchi, bombas hidráulicas, bancada de teste, COMEX 10, hidráulica industrial, treinamento hidráulica",
+          "mangueiras hidráulicas, cadeia de fluidos, Uniflex, Transfluid, Held, ZEC, Next Powertech, Marzocchi, bombas hidráulicas, bancada de teste, Comex10, hidráulica industrial, treinamento hidráulica",
       },
-      { name: "author", content: "COMEX 10 do Brasil" },
+      { name: "author", content: "Comex10 do Brasil" },
       { name: "geo.region", content: "BR-SP" },
       { name: "geo.placename", content: "São Paulo" },
-      { property: "og:site_name", content: "COMEX 10 do Brasil" },
+      { property: "og:site_name", content: "Comex10 do Brasil" },
       { property: "og:type", content: "website" },
       { property: "og:locale", content: "pt_BR" },
       { property: "og:url", content: SITE_URL },
       {
         property: "og:title",
-        content: "COMEX 10 — Cadeia de Fluidos, Mangueiras e Equipamentos Hidráulicos",
+        content: "Comex10 — Cadeia de Fluidos, Mangueiras e Equipamentos Hidráulicos",
       },
       {
         property: "og:description",
@@ -146,12 +146,12 @@ export const Route = createRootRoute({
       { property: "og:image", content: OG_IMAGE },
       { property: "og:image:width", content: "1200" },
       { property: "og:image:height", content: "630" },
-      { property: "og:image:alt", content: "COMEX 10 — Soluções em cadeia de fluidos" },
+      { property: "og:image:alt", content: "Comex10 — Soluções em cadeia de fluidos" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:site", content: "@comex10dobrasil" },
       {
         name: "twitter:title",
-        content: "COMEX 10 — Cadeia de Fluidos, Mangueiras e Equipamentos Hidráulicos",
+        content: "Comex10 — Cadeia de Fluidos, Mangueiras e Equipamentos Hidráulicos",
       },
       {
         name: "twitter:description",
