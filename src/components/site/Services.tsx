@@ -1,23 +1,36 @@
-import { Search, Settings, FlaskConical, Truck, Headphones, FileCheck } from "lucide-react";
+import { Headphones, Package, FlaskConical, ShieldCheck, ArrowRight } from "lucide-react";
 import bgService from "@/assets/oficina-movel.jpg";
 
 const services = [
-  { icon: Search, title: "Diagnóstico técnico", desc: "Análise da sua operação para identificar pontos críticos antes da falha." },
-  { icon: Settings, title: "Projeto & Especificação", desc: "Dimensionamento de mangueiras, terminais e equipamentos sob medida." },
-  { icon: FlaskConical, title: "Testes & Certificação", desc: "Validação em bancada com rastreabilidade e laudo técnico." },
-  { icon: Truck, title: "Oficina do futuro", desc: "Demonstração móvel de soluções e atendimento on-site." },
-  { icon: Headphones, title: "Suporte contínuo", desc: "Equipe técnica disponível para tirar sua operação do papel." },
-  { icon: FileCheck, title: "Compliance & Normas", desc: "Atendimento às normas de segurança e qualidade do seu setor." },
+  {
+    icon: Headphones,
+    title: "Suporte Técnico Especializado",
+    desc: "Diagnóstico em campo e atendimento técnico com especialistas em cadeia de fluidos.",
+  },
+  {
+    icon: Package,
+    title: "Reposição de Peças",
+    desc: "Fornecimento ágil de peças originais e componentes para manter sua operação ativa.",
+  },
+  {
+    icon: FlaskConical,
+    title: "Testes",
+    desc: "Validação em bancada com rastreabilidade, laudos técnicos e conformidade normativa.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Adequação / Implementação NR12",
+    desc: "Projeto e execução de adequações de segurança em máquinas conforme a NR12.",
+  },
 ];
 
 export function Services() {
   return (
     <section
       id="servicos"
-      className="relative py-16 md:py-32 border-y border-border overflow-hidden"
+      className="relative py-16 md:py-28 border-y border-border overflow-hidden"
       style={{ backgroundColor: "oklch(0.12 0.02 250)" }}
     >
-      {/* Translucent service photo background for depth */}
       <div className="absolute inset-0 pointer-events-none">
         <img
           src={bgService}
@@ -48,7 +61,7 @@ export function Services() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
           {services.map((s) => (
             <div
               key={s.title}
@@ -61,6 +74,26 @@ export function Services() {
               <p className="text-sm text-neutral-300 leading-relaxed">{s.desc}</p>
             </div>
           ))}
+        </div>
+
+        <div className="mt-12 flex flex-wrap items-center justify-between gap-4 p-6 rounded-xl border border-primary/30 bg-primary/10 backdrop-blur-sm">
+          <div>
+            <h3 className="font-display text-xl font-semibold text-white">
+              Aumente a produtividade da sua operação
+            </h3>
+            <p className="text-sm text-neutral-300 mt-1">
+              Fale com um especialista e receba uma proposta sob medida.
+            </p>
+          </div>
+          <a
+            href="https://wa.me/5511914900404"
+            target="_blank"
+            rel="noopener"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-md text-sm font-semibold text-primary-foreground transition-all hover:scale-105"
+            style={{ background: "var(--gradient-primary)", boxShadow: "var(--shadow-glow)" }}
+          >
+            Solicite agora <ArrowRight size={16} />
+          </a>
         </div>
       </div>
     </section>

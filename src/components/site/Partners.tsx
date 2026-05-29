@@ -15,17 +15,17 @@ type Partner = {
 
 // Order: Uniflex, ZEC, Next (Powertech), Marzocchi, Transfluid, Held
 const partners: Partner[] = [
-  { name: "Uniflex", country: "Alemanha", logo: logoUniflex, href: "https://www.uniflex.de/", maxH: "max-h-10" },
-  { name: "ZEC", country: "Itália", logo: logoZec, href: "https://zecspa.com/", maxH: "max-h-10" },
-  { name: "Next Powertech", country: "Itália", logo: logoNext, href: "https://www.powertechhoses.com/our-products", maxH: "max-h-8" },
-  { name: "Marzocchi", country: "Itália", logo: logoMarzocchi, href: "https://www.marzocchipompe.com/en/", maxH: "max-h-10" },
-  { name: "Transfluid", country: "Alemanha", logo: logoTransfluid, href: "https://www.transfluid.de/", maxH: "max-h-12" },
-  { name: "Held", country: "Alemanha", logo: logoHeld, href: "https://held-test-stands.de/downloads.htm", maxH: "max-h-10" },
+  { name: "Uniflex", country: "Alemanha", logo: logoUniflex, href: "https://www.uniflex.de/", maxH: "max-h-16" },
+  { name: "ZEC", country: "Itália", logo: logoZec, href: "https://zecspa.com/", maxH: "max-h-16" },
+  { name: "Next Powertech", country: "Itália", logo: logoNext, href: "https://www.powertechhoses.com/our-products", maxH: "max-h-14" },
+  { name: "Marzocchi", country: "Itália", logo: logoMarzocchi, href: "https://www.marzocchipompe.com/en/", maxH: "max-h-16" },
+  { name: "Transfluid", country: "Alemanha", logo: logoTransfluid, href: "https://www.transfluid.de/", maxH: "max-h-20" },
+  { name: "Held", country: "Alemanha", logo: logoHeld, href: "https://held-test-stands.de/downloads.htm", maxH: "max-h-16" },
 ];
 
 export function Partners() {
   return (
-    <section id="parceiros" className="py-16 md:py-32 bg-surface/40 border-y border-border">
+    <section id="parceiros" className="py-16 md:py-28 bg-surface/40 border-y border-border">
       <div className="mx-auto max-w-7xl px-4 md:px-8">
         <div className="max-w-2xl mb-12 text-center mx-auto">
           <span className="text-sm font-semibold tracking-widest uppercase text-primary">
@@ -48,14 +48,14 @@ export function Partners() {
               target="_blank"
               rel="noopener nofollow"
               title={`${p.name} — ${p.country}`}
-              className="aspect-[4/3] flex flex-col items-center justify-center rounded-xl border border-neutral-200 bg-white hover:border-primary transition-all group p-4"
+              className="aspect-[4/3] flex flex-col items-center justify-center rounded-xl border border-neutral-200 bg-white hover:border-primary transition-all group p-5"
             >
               <img
                 src={p.logo}
                 alt={`Logo ${p.name}`}
-                className={`${p.maxH ?? "max-h-12"} w-auto object-contain`}
+                className={`${p.maxH ?? "max-h-16"} w-auto object-contain`}
               />
-              <div className="text-[10px] text-primary/70 mt-2 uppercase tracking-wider font-semibold">
+              <div className="text-[10px] text-primary/70 mt-3 uppercase tracking-wider font-semibold">
                 {p.country}
               </div>
             </a>
