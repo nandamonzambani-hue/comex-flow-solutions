@@ -25,7 +25,7 @@ const pillars = [
 
 export function About() {
   return (
-    <section id="quem-somos" className="py-16 md:py-32 relative">
+    <section id="quem-somos" className="py-16 md:py-24 relative scroll-mt-24">
       <div className="mx-auto max-w-7xl px-4 md:px-8">
         <div className="grid lg:grid-cols-12 gap-12 mb-16">
           <div className="lg:col-span-5">
@@ -41,10 +41,12 @@ export function About() {
           <div className="lg:col-span-7">
             <p className="text-lg text-muted-foreground leading-relaxed">
               A Comex10 do Brasil é referência técnica em soluções hidráulicas.
-              Não vendemos apenas máquinas e mangueiras — entregamos diagnóstico,
-              projeto, equipamentos certificados e capacitação técnica para que sua
-              operação não pare. Trabalhamos lado a lado com as marcas líderes
-              mundiais para resolver, de fato, o problema do seu negócio.
+              Mais do que vender máquinas e mangueiras, entregamos diagnóstico,
+              projetos, equipamentos certificados e capacitação técnica para
+              garantir que a sua operação continue funcionando com segurança e
+              eficiência. Atuamos lado a lado com as principais marcas líderes
+              mundiais, oferecendo soluções completas e personalizadas para
+              resolver, de fato, as necessidades do seu negócio.
             </p>
           </div>
         </div>

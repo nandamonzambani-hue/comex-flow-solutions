@@ -7,13 +7,12 @@ export function Footer() {
       <div className="mx-auto max-w-7xl px-4 md:px-8 py-12">
         <div className="grid md:grid-cols-4 gap-10 mb-10">
           <div className="md:col-span-2">
-            <img
-              src={logo}
-              alt="Comex10 do Brasil"
-              width={180}
-              height={54}
-              className="h-12 w-auto bg-white/95 px-2 py-1 rounded mb-4"
-            />
+            <div className="mb-4">
+              <span className="font-display text-3xl font-bold tracking-tight text-neutral-900" style={{ letterSpacing: "-0.04em" }}>
+                Comex<span className="text-primary">10</span>
+              </span>
+              <span className="ml-2 text-[10px] uppercase tracking-[0.18em] text-neutral-500">do Brasil</span>
+            </div>
             <p className="text-sm text-neutral-600 max-w-sm mb-4">
               Parceiro técnico em cadeia de fluidos: equipamentos, mangueiras,
               bombas, testes e treinamentos.
@@ -51,11 +50,15 @@ export function Footer() {
               Navegação
             </div>
             <ul className="space-y-2 text-sm">
-              <li><a href="#produtos" className="hover:text-primary transition-colors">Produtos</a></li>
-              <li><a href="#segmentos" className="hover:text-primary transition-colors">Segmentos</a></li>
-              <li><a href="#servicos" className="hover:text-primary transition-colors">Serviços</a></li>
-              <li><a href="#treinamentos" className="hover:text-primary transition-colors">Treinamentos</a></li>
-              <li><a href="#parceiros" className="hover:text-primary transition-colors">Parceiros</a></li>
+              <li><a href="/#quem-somos" className="hover:text-primary transition-colors">Quem Somos</a></li>
+              <li><a href="/#produtos" className="hover:text-primary transition-colors">Produtos</a></li>
+              <li><a href="/#servicos" className="hover:text-primary transition-colors">Serviços</a></li>
+              <li><a href="/#treinamentos" className="hover:text-primary transition-colors">Treinamentos</a></li>
+              <li><a href="/#segmentos" className="hover:text-primary transition-colors">Segmentos</a></li>
+              <li><a href="/#parceiros" className="hover:text-primary transition-colors">Parceiros</a></li>
+              <li><a href="/#certificados" className="hover:text-primary transition-colors">Certificados</a></li>
+              <li><a href="/blog" className="hover:text-primary transition-colors">Blog</a></li>
+              <li><a href="/#contato" className="hover:text-primary transition-colors">Contato</a></li>
             </ul>
           </div>
 
