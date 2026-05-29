@@ -25,7 +25,7 @@ const partners: Partner[] = [
 
 export function Partners() {
   return (
-    <section id="parceiros" className="py-16 md:py-28 bg-surface/40 border-y border-border">
+    <section id="parceiros" className="scroll-mt-24 py-16 md:py-28 bg-surface/40 border-y border-border">
       <div className="mx-auto max-w-7xl px-4 md:px-8">
         <div className="max-w-2xl mb-12 text-center mx-auto">
           <span className="text-sm font-semibold tracking-widest uppercase text-primary">

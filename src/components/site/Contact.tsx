@@ -28,7 +28,7 @@ export function Contact() {
   };
 
   return (
-    <section id="contato" className="py-16 md:py-32 relative overflow-hidden">
+    <section id="contato" className="scroll-mt-24 py-16 md:py-24 relative overflow-hidden">
       <div
         className="absolute inset-0 opacity-30"
         style={{

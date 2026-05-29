@@ -18,7 +18,7 @@ const upcoming = [
 
 export function Trainings() {
   return (
-    <section id="treinamentos" className="py-16 md:py-28">
+    <section id="treinamentos" className="scroll-mt-24 py-16 md:py-28">
       <div className="mx-auto max-w-7xl px-4 md:px-8">
         <div className="grid lg:grid-cols-2 gap-12 items-start">
           <div className="relative rounded-2xl overflow-hidden order-2 lg:order-1">

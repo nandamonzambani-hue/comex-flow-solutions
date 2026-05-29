@@ -273,7 +273,7 @@ export function Products() {
   const current = categories.find((c) => c.id === active)!;
 
   return (
-    <section id="produtos" className="py-16 md:py-28">
+    <section id="produtos" className="scroll-mt-24 py-16 md:py-28">
       <div className="mx-auto max-w-7xl px-4 md:px-8">
         <div className="max-w-3xl mb-12">
           <span className="text-sm font-semibold tracking-widest uppercase text-primary">

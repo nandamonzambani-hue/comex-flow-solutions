@@ -1,5 +1,4 @@
 import { Instagram, Linkedin, MapPin, Phone, Mail, Clock } from "lucide-react";
-import logo from "@/assets/logo-comex10.png";
 
 export function Footer() {
   return (
