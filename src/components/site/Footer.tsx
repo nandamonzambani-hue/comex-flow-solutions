@@ -1,5 +1,4 @@
 import { Instagram, Linkedin, MapPin, Phone, Mail, Clock } from "lucide-react";
-import logo from "@/assets/logo-comex10.png";
 
 export function Footer() {
   return (
@@ -7,13 +6,12 @@ export function Footer() {
       <div className="mx-auto max-w-7xl px-4 md:px-8 py-12">
         <div className="grid md:grid-cols-4 gap-10 mb-10">
           <div className="md:col-span-2">
-            <img
-              src={logo}
-              alt="COMEX 10 do Brasil"
-              width={180}
-              height={54}
-              className="h-12 w-auto bg-white/95 px-2 py-1 rounded mb-4"
-            />
+            <div className="mb-4">
+              <span className="font-display text-3xl font-bold tracking-tight text-neutral-900" style={{ letterSpacing: "-0.04em" }}>
+                Comex<span className="text-primary">10</span>
+              </span>
+              <span className="ml-2 text-[10px] uppercase tracking-[0.18em] text-neutral-500">do Brasil</span>
+            </div>
             <p className="text-sm text-neutral-600 max-w-sm mb-4">
               Parceiro técnico em cadeia de fluidos: equipamentos, mangueiras,
               bombas, testes e treinamentos.
@@ -29,7 +27,7 @@ export function Footer() {
                 href="https://www.instagram.com/comex10dobrasil/"
                 target="_blank"
                 rel="noopener"
-                aria-label="Instagram da COMEX 10"
+                aria-label="Instagram da Comex10"
                 className="inline-flex items-center justify-center w-10 h-10 rounded-md bg-neutral-100 border border-neutral-200 hover:border-primary hover:text-primary transition-colors"
               >
                 <Instagram size={18} />
@@ -38,7 +36,7 @@ export function Footer() {
                 href="https://www.linkedin.com/company/comex10-do-brasil/"
                 target="_blank"
                 rel="noopener"
-                aria-label="LinkedIn da COMEX 10"
+                aria-label="LinkedIn da Comex10"
                 className="inline-flex items-center justify-center w-10 h-10 rounded-md bg-neutral-100 border border-neutral-200 hover:border-primary hover:text-primary transition-colors"
               >
                 <Linkedin size={18} />
@@ -51,11 +49,15 @@ export function Footer() {
               Navegação
             </div>
             <ul className="space-y-2 text-sm">
-              <li><a href="#produtos" className="hover:text-primary transition-colors">Produtos</a></li>
-              <li><a href="#segmentos" className="hover:text-primary transition-colors">Segmentos</a></li>
-              <li><a href="#servicos" className="hover:text-primary transition-colors">Serviços</a></li>
-              <li><a href="#treinamentos" className="hover:text-primary transition-colors">Treinamentos</a></li>
-              <li><a href="#parceiros" className="hover:text-primary transition-colors">Parceiros</a></li>
+              <li><a href="/#quem-somos" className="hover:text-primary transition-colors">Quem Somos</a></li>
+              <li><a href="/#produtos" className="hover:text-primary transition-colors">Produtos</a></li>
+              <li><a href="/#servicos" className="hover:text-primary transition-colors">Serviços</a></li>
+              <li><a href="/#treinamentos" className="hover:text-primary transition-colors">Treinamentos</a></li>
+              <li><a href="/#segmentos" className="hover:text-primary transition-colors">Segmentos</a></li>
+              <li><a href="/#parceiros" className="hover:text-primary transition-colors">Parceiros</a></li>
+              <li><a href="/#certificados" className="hover:text-primary transition-colors">Certificados</a></li>
+              <li><a href="/blog" className="hover:text-primary transition-colors">Blog</a></li>
+              <li><a href="/#contato" className="hover:text-primary transition-colors">Contato</a></li>
             </ul>
           </div>
 
@@ -73,7 +75,7 @@ export function Footer() {
 
         <div className="pt-6 border-t border-neutral-200 flex flex-col sm:flex-row gap-3 items-center justify-between">
           <div className="text-xs text-neutral-600">
-            © {new Date().getFullYear()} COMEX 10 do Brasil. Todos os direitos reservados.
+            © {new Date().getFullYear()} Comex10 do Brasil. Todos os direitos reservados.
           </div>
           <div className="text-xs text-neutral-600">
             Cadeia de fluidos • Mangueiras • Equipamentos • Treinamentos

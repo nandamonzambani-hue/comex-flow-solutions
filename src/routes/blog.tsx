@@ -8,13 +8,13 @@ import { fetchPosts, formatDate, type WPPost } from "@/lib/wordpress";
 export const Route = createFileRoute("/blog")({
   head: () => ({
     meta: [
-      { title: "Blog COMEX 10 — Conteúdo técnico de cadeia de fluidos" },
+      { title: "Blog Comex10 — Conteúdo técnico de cadeia de fluidos" },
       {
         name: "description",
         content:
-          "Artigos, novidades e dicas técnicas sobre mangueiras hidráulicas, equipamentos, bombas e treinamentos da COMEX 10 do Brasil.",
+          "Artigos, novidades e dicas técnicas sobre mangueiras hidráulicas, equipamentos, bombas e treinamentos da Comex10 do Brasil.",
       },
-      { property: "og:title", content: "Blog COMEX 10 do Brasil" },
+      { property: "og:title", content: "Blog Comex10 do Brasil" },
       {
         property: "og:description",
         content:
@@ -22,9 +22,9 @@ export const Route = createFileRoute("/blog")({
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "https://comex10.com.br/blog" },
-      { property: "og:site_name", content: "COMEX 10 do Brasil" },
+      { property: "og:site_name", content: "Comex10 do Brasil" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Blog COMEX 10 do Brasil" },
+      { name: "twitter:title", content: "Blog Comex10 do Brasil" },
       {
         name: "twitter:description",
         content:
@@ -38,13 +38,13 @@ export const Route = createFileRoute("/blog")({
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "Blog",
-          name: "Blog COMEX 10 do Brasil",
+          name: "Blog Comex10 do Brasil",
           url: "https://comex10.com.br/blog",
           description:
             "Conteúdo técnico em hidráulica industrial: mangueiras, equipamentos, bombas e treinamentos.",
           publisher: {
             "@type": "Organization",
-            name: "COMEX 10 do Brasil",
+            name: "Comex10 do Brasil",
             url: "https://comex10.com.br",
           },
         }),
