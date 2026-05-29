@@ -28,7 +28,7 @@ export function Services() {
   return (
     <section
       id="servicos"
-      className="relative py-16 md:py-28 border-y border-border overflow-hidden"
+      className="scroll-mt-24 relative py-16 md:py-24 border-y border-border overflow-hidden"
       style={{ backgroundColor: "oklch(0.12 0.02 250)" }}
     >
       <div className="absolute inset-0 pointer-events-none">
