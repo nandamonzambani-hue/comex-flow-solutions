@@ -7,7 +7,9 @@ declare global {
   }
 }
 
-const TranslateButton = () => {
+type Props = { variant?: "floating" | "inline" };
+
+const TranslateButton = ({ variant = "floating" }: Props) => {
   const [lang, setLang] = useState<"pt" | "en">("pt");
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
@@ -65,6 +67,37 @@ const TranslateButton = () => {
   };
 
   if (!mounted) return null;
+
+  if (variant === "inline") {
+    return (
+      <div className="flex items-center gap-1 notranslate">
+        <button
+          onClick={() => switchTo("pt")}
+          aria-label="Português"
+          title="Português"
+          className={`flex items-center justify-center w-9 h-9 rounded-md border text-base transition-all ${
+            lang === "pt"
+              ? "border-primary bg-primary/10"
+              : "border-border opacity-70 hover:opacity-100 hover:border-primary/60"
+          }`}
+        >
+          <span role="img" aria-hidden="true">🇧🇷</span>
+        </button>
+        <button
+          onClick={() => switchTo("en")}
+          aria-label="English"
+          title="English"
+          className={`flex items-center justify-center w-9 h-9 rounded-md border text-base transition-all ${
+            lang === "en"
+              ? "border-primary bg-primary/10"
+              : "border-border opacity-70 hover:opacity-100 hover:border-primary/60"
+          }`}
+        >
+          <span role="img" aria-hidden="true">🇺🇸</span>
+        </button>
+      </div>
+    );
+  }
 
   return (
     <div className="fixed bottom-6 right-6 z-50 notranslate">

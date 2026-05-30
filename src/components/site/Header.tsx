@@ -1,17 +1,11 @@
 import { useEffect, useState } from "react";
-import { Menu, X, Instagram, Linkedin, Phone, ChevronDown } from "lucide-react";
+import { Menu, X, Instagram, Linkedin, Phone } from "lucide-react";
+import logoComex from "@/assets/logo-comex10.png";
+import TranslateButton from "@/components/site/TranslateButton";
 
 const mainLinks = [
+  { href: "/#produtos", label: "Soluções", highlight: true },
   { href: "/#quem-somos", label: "Quem Somos" },
-  {
-    href: "/#produtos",
-    label: "Soluções",
-    submenu: [
-      { href: "/#produtos", label: "Produtos" },
-      { href: "/#servicos", label: "Serviços" },
-      { href: "/#treinamentos", label: "Treinamentos" },
-    ],
-  },
   { href: "/#segmentos", label: "Segmentos" },
   { href: "/#parceiros", label: "Parceiros" },
   { href: "/blog", label: "Blog" },
@@ -55,58 +49,33 @@ export function Header() {
       </div>
 
       <div className="relative px-4 py-3 md:px-8 md:py-4 flex items-center justify-between bg-white">
-        {/* Wordmark */}
+        {/* Logo */}
         <a href="/#top" className="flex items-center group" aria-label="Comex10 — voltar ao topo">
-          <span
-            className="font-display text-2xl md:text-3xl font-bold tracking-tight text-neutral-900"
-            style={{ letterSpacing: "-0.04em" }}
-          >
-            Comex<span className="text-primary">10</span>
-          </span>
-          <span className="hidden md:inline ml-2 text-[10px] uppercase tracking-[0.18em] text-neutral-500 mt-2">
-            do Brasil
-          </span>
+          <img
+            src={logoComex}
+            alt="Comex10 do Brasil"
+            className="h-10 md:h-12 w-auto object-contain"
+          />
         </a>
 
         {/* Desktop nav */}
         <nav className="hidden lg:flex items-center gap-7">
-          {mainLinks.map((l) =>
-            l.submenu ? (
-              <div key={l.label} className="relative group">
-                <a
-                  href={l.href}
-                  className="inline-flex items-center gap-1 text-sm font-medium text-neutral-700 hover:text-primary transition-colors"
-                >
-                  {l.label}
-                  <ChevronDown size={14} className="opacity-60 group-hover:opacity-100 transition-opacity" />
-                </a>
-                <div className="absolute left-1/2 -translate-x-1/2 top-full pt-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition-all">
-                  <div className="min-w-[200px] rounded-lg border border-border bg-white shadow-lg py-2">
-                    {l.submenu.map((s) => (
-                      <a
-                        key={s.href}
-                        href={s.href}
-                        className="block px-4 py-2 text-sm text-neutral-700 hover:bg-primary/5 hover:text-primary transition-colors"
-                      >
-                        {s.label}
-                      </a>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            ) : (
-              <a
-                key={l.href}
-                href={l.href}
-                className="text-sm font-medium text-neutral-700 hover:text-primary transition-colors"
-              >
-                {l.label}
-              </a>
-            ),
-          )}
+          {mainLinks.map((l) => (
+            <a
+              key={l.href}
+              href={l.href}
+              className={
+                l.highlight
+                  ? "relative text-sm font-bold uppercase tracking-wide text-primary hover:text-primary-glow transition-colors after:content-[''] after:absolute after:-bottom-1 after:left-0 after:right-0 after:h-0.5 after:bg-primary/60 after:rounded-full"
+                  : "text-sm font-medium text-neutral-700 hover:text-primary transition-colors"
+              }
+            >
+              {l.label}
+            </a>
+          ))}
         </nav>
 
-        {/* Right cluster: socials */}
+        {/* Right cluster: socials + translate */}
         <div className="hidden lg:flex items-center gap-2 ml-4">
           <a
             href="https://www.instagram.com/comex10dobrasil/"
@@ -126,6 +95,8 @@ export function Header() {
           >
             <Linkedin size={15} />
           </a>
+          <div className="w-px h-6 bg-border mx-1" />
+          <TranslateButton variant="inline" />
         </div>
 
         <button
@@ -141,29 +112,18 @@ export function Header() {
         <div className="lg:hidden bg-white border-t border-border">
           <nav className="px-4 py-4 flex flex-col gap-1">
             {mainLinks.map((l) => (
-              <div key={l.label}>
-                <a
-                  href={l.href}
-                  onClick={() => setOpen(false)}
-                  className="block px-3 py-3 rounded-md text-sm font-medium text-neutral-700 hover:bg-neutral-100 hover:text-primary transition-colors"
-                >
-                  {l.label}
-                </a>
-                {l.submenu && (
-                  <div className="pl-4 border-l border-border ml-3 my-1">
-                    {l.submenu.map((s) => (
-                      <a
-                        key={s.href}
-                        href={s.href}
-                        onClick={() => setOpen(false)}
-                        className="block px-3 py-2 rounded-md text-sm text-neutral-600 hover:text-primary transition-colors"
-                      >
-                        {s.label}
-                      </a>
-                    ))}
-                  </div>
-                )}
-              </div>
+              <a
+                key={l.href}
+                href={l.href}
+                onClick={() => setOpen(false)}
+                className={
+                  l.highlight
+                    ? "block px-3 py-3 rounded-md text-sm font-bold uppercase tracking-wide text-primary bg-primary/5"
+                    : "block px-3 py-3 rounded-md text-sm font-medium text-neutral-700 hover:bg-neutral-100 hover:text-primary transition-colors"
+                }
+              >
+                {l.label}
+              </a>
             ))}
             <div className="flex items-center gap-2 px-3 py-3 mt-2 border-t border-border">
               <a
@@ -184,9 +144,9 @@ export function Header() {
               >
                 <Linkedin size={16} />
               </a>
-              <a href="tel:+551126017483" className="ml-auto text-sm font-medium text-neutral-600">
-                11 2601-7483
-              </a>
+              <div className="ml-auto">
+                <TranslateButton variant="inline" />
+              </div>
             </div>
           </nav>
         </div>

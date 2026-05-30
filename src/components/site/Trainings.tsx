@@ -66,26 +66,26 @@ export function Trainings() {
               </div>
             </div>
 
-            <div className="p-6 rounded-xl border border-primary/30 bg-primary/5">
-              <div className="flex items-center gap-2 mb-4">
-                <Globe2 size={18} className="text-primary" />
-                <h3 className="font-display text-lg font-semibold">Próximas turmas</h3>
+            <div className="p-6 rounded-xl border border-primary/40 bg-white shadow-sm">
+              <div className="flex items-center gap-2 mb-5">
+                <Globe2 size={20} className="text-primary" />
+                <h3 className="font-display text-xl font-bold text-neutral-900">Próximas turmas</h3>
               </div>
               <ul className="space-y-3">
                 {upcoming.map((u) => (
                   <li
                     key={u.title}
-                    className="flex items-center gap-3 p-3 rounded-lg bg-white border border-border"
+                    className="flex items-center gap-4 p-4 rounded-lg bg-neutral-50 border border-neutral-200 hover:border-primary/40 transition-colors"
                   >
-                    <span className="text-2xl leading-none" aria-hidden>
+                    <span className="text-3xl leading-none flex-shrink-0" aria-hidden>
                       {u.flag}
                     </span>
-                    <div className="flex-1">
-                      <div className="font-semibold text-sm">{u.title}</div>
-                      <div className="text-xs text-muted-foreground">{u.location}</div>
-                    </div>
-                    <div className="flex items-center gap-1.5 text-xs text-primary font-medium">
-                      <Calendar size={12} /> {u.date}
+                    <div className="flex-1 min-w-0">
+                      <div className="font-display font-bold text-base text-neutral-900">{u.title}</div>
+                      <div className="text-sm text-neutral-600">{u.location}</div>
+                      <div className="flex items-center gap-1.5 text-sm text-primary font-semibold mt-1">
+                        <Calendar size={14} /> {u.date}
+                      </div>
                     </div>
                   </li>
                 ))}
@@ -94,7 +94,7 @@ export function Trainings() {
                 href="https://wa.me/5511914900404?text=Tenho%20interesse%20em%20uma%20turma%20de%20treinamento%20da%20Comex10."
                 target="_blank"
                 rel="noopener"
-                className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline"
+                className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-primary hover:underline"
               >
                 Solicite agora sua vaga <ArrowRight size={14} />
               </a>
