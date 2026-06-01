@@ -63,7 +63,7 @@ export function Header() {
         </a>
 
         {/* Desktop nav */}
-        <nav className="hidden lg:flex items-center gap-7">
+        <nav className="hidden lg:flex items-center gap-4 xl:gap-5">
           {mainLinks.map((l) => (
             <a
               key={l.href}
