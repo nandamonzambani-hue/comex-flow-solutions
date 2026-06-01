@@ -49,6 +49,7 @@ function Index() {
         <Hero />
         <PartnersStrip />
         <About />
+        <Solutions />
         <Segments />
         <Products />
         <Services />
