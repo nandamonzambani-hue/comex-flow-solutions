@@ -1,18 +1,28 @@
 import treinamentoImg from "@/assets/treinamento.jpg";
 import { GraduationCap, Building2, Globe2, Calendar, ArrowRight } from "lucide-react";
 
-const upcoming = [
+type Session = { date: string; language: string };
+type CountrySchedule = { flag: string; country: string; sessions: Session[] };
+
+const schedule: CountrySchedule[] = [
   {
-    flag: "🇨🇴",
-    title: "Turma Colômbia",
-    location: "Bogotá — internacional",
-    date: "2026 — datas em definição",
+    flag: "🇩🇪",
+    country: "Alemanha",
+    sessions: [
+      { date: "22 e 23/04", language: "Alemão" },
+      { date: "10 e 11/06", language: "Tcheco" },
+      { date: "24 e 25/06", language: "Inglês" },
+    ],
   },
   {
     flag: "🇧🇷",
-    title: "Turma São Paulo",
-    location: "Sede Comex10",
-    date: "Próxima turma — consulte vagas",
+    country: "Brasil",
+    sessions: [{ date: "11 e 12/06", language: "Português" }],
+  },
+  {
+    flag: "🇨🇴",
+    country: "Colômbia",
+    sessions: [{ date: "23 e 24/06", language: "Espanhol" }],
   },
 ];
 
