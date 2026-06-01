@@ -11,6 +11,10 @@ import imgZec1 from "@/assets/produtos/zec-mangueira-1.png";
 import imgZec2 from "@/assets/produtos/zec-mangueira-2.png";
 import imgZec3 from "@/assets/produtos/zec-mangueira-3.png";
 import imgZecJpg from "@/assets/produtos/zec-mangueira.jpg";
+import zecOleodinamicaAsset from "@/assets/produtos/zec-oleodinamica.png.asset.json";
+import zecAltaPressaoAsset from "@/assets/produtos/zec-alta-pressao.png.asset.json";
+import zecIndustriaAsset from "@/assets/produtos/zec-industria.png.asset.json";
+import zecAgroAsset from "@/assets/produtos/zec-agro.png.asset.json";
 import imgNext from "@/assets/produtos/next-mangueira.png";
 import imgHeldBancada from "@/assets/produtos/held-bancada.png";
 import imgLacre from "@/assets/produtos/insumos-lacre.png";
@@ -198,25 +202,25 @@ const zecBlocks = [
     label: "Hidráulica / Oleodinâmica",
     color: "#F4C430",
     fg: "#1a1a1a",
-    image: imgZec1,
+    image: zecOleodinamicaAsset.url,
   },
   {
     label: "Alta Pressão",
     color: "#DC2626",
     fg: "#ffffff",
-    image: imgZec2,
+    image: zecAltaPressaoAsset.url,
   },
   {
     label: "Indústria",
     color: "#2563EB",
     fg: "#ffffff",
-    image: imgZec3,
+    image: zecIndustriaAsset.url,
   },
   {
     label: "Água / Irrigação / Agro",
     color: "#16A34A",
     fg: "#ffffff",
-    image: imgZecJpg,
+    image: zecAgroAsset.url,
   },
 ];
 

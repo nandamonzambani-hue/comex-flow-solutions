@@ -4,9 +4,13 @@ import logoComex from "@/assets/logo-comex10.png";
 import TranslateButton from "@/components/site/TranslateButton";
 
 const mainLinks = [
-  { href: "/#produtos", label: "Soluções", highlight: true },
+  { href: "/#solucoes", label: "Soluções", highlight: true },
+  { href: "/#produtos", label: "Produtos" },
+  { href: "/#servicos", label: "Serviços" },
+  { href: "/#treinamentos", label: "Treinamentos" },
   { href: "/#quem-somos", label: "Quem Somos" },
   { href: "/#segmentos", label: "Segmentos" },
+  { href: "/#certificados", label: "Certificações" },
   { href: "/#parceiros", label: "Parceiros" },
   { href: "/blog", label: "Blog" },
   { href: "/#contato", label: "Contato" },
@@ -59,7 +63,7 @@ export function Header() {
         </a>
 
         {/* Desktop nav */}
-        <nav className="hidden lg:flex items-center gap-7">
+        <nav className="hidden lg:flex items-center gap-4 xl:gap-5">
           {mainLinks.map((l) => (
             <a
               key={l.href}
