@@ -5,7 +5,7 @@ export function WhatsAppFloat() {
     <a
       href="https://wa.me/5511914900404"
       target="_blank"
-      rel="noopener"
+      rel="noopener noreferrer"
       aria-label="Fale com a Comex10 no WhatsApp"
       className="fixed bottom-5 right-5 z-[60] inline-flex items-center gap-2 pl-3.5 pr-4 py-3 rounded-full text-sm font-semibold text-white shadow-lg transition-all hover:scale-105 active:scale-95"
       style={{
