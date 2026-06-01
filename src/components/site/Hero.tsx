@@ -42,7 +42,7 @@ export function Hero() {
             </span>
           </h1>
 
-          <p className="text-base md:text-lg text-neutral-100 max-w-2xl leading-relaxed">
+          <p className="text-base md:text-lg text-neutral-100 max-w-2xl leading-relaxed mb-8">
             A Comex10 do Brasil é referência técnica em soluções hidráulicas. Mais do
             que vender máquinas e mangueiras, entregamos diagnóstico, projetos,
             equipamentos certificados e capacitação técnica para garantir que a sua
@@ -51,6 +51,27 @@ export function Hero() {
             completas e personalizadas para resolver, de fato, as necessidades do
             seu negócio.
           </p>
+
+          <div className="flex flex-wrap items-center gap-3">
+            <a
+              href="https://wa.me/5511914900404?text=Ol%C3%A1!%20Gostaria%20de%20falar%20com%20um%20especialista%20da%20Comex10."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-bold text-sm text-white shadow-lg transition-all hover:scale-[1.03] active:scale-95"
+              style={{
+                backgroundColor: "#25D366",
+                boxShadow: "0 10px 30px -10px rgba(37, 211, 102, 0.55)",
+              }}
+            >
+              Fale com um especialista
+            </a>
+            <a
+              href="#solucoes"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-bold text-sm bg-white/10 text-white border border-white/30 backdrop-blur-sm hover:bg-white/20 transition-all"
+            >
+              Ver soluções
+            </a>
+          </div>
         </div>
       </div>
     </section>
