@@ -11,7 +11,7 @@ const partners = [
   { name: "ZEC", logo: logoZec, href: "https://zecspa.com/", h: "h-9" },
   { name: "Next Powertech", logo: logoNext, href: "https://www.powertechhoses.com/our-products", h: "h-8" },
   { name: "Marzocchi", logo: logoMarzocchi, href: "https://www.marzocchipompe.com/en/", h: "h-9" },
-  { name: "Transfluid", logo: logoTransfluid, href: "https://www.transfluid.de/", h: "h-11" },
+  { name: "Transfluid", logo: logoTransfluid, href: "https://www.transfluid.de/", h: "h-14" },
   { name: "Held", logo: logoHeld, href: "https://held-test-stands.de/downloads.htm", h: "h-9" },
 ];
 
