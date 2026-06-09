@@ -32,11 +32,6 @@ export function About() {
             <span className="text-sm font-semibold tracking-widest uppercase text-primary">
               Quem somos
             </span>
-            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold mt-3 mb-6 leading-tight">
-              Mais que fornecedora.
-              <br />
-              <span className="text-primary">Seu parceiro técnico</span> em sistemas de fluidos.
-            </h2>
           </div>
           <div className="lg:col-span-7">
             <p className="text-lg text-muted-foreground leading-relaxed">

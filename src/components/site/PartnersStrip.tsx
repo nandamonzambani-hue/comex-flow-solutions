@@ -15,7 +15,7 @@ const row1: P[] = [
 
 const row2: P[] = [
   { name: "Marzocchi", country: "Itália", logo: logoMarzocchi, href: "https://www.marzocchipompe.com/en/", h: "h-14 md:h-16" },
-  { name: "Transfluid", country: "Alemanha", logo: logoTransfluid, href: "https://www.transfluid.de/", h: "h-16 md:h-20" },
+  { name: "Transfluid", country: "Alemanha", logo: logoTransfluid, href: "https://www.transfluid.de/", h: "h-20 md:h-24" },
   { name: "Held", country: "Alemanha", logo: logoHeld, href: "https://held-test-stands.de/downloads.htm", h: "h-14 md:h-16" },
 ];
 
