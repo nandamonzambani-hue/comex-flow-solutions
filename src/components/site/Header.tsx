@@ -68,7 +68,7 @@ export function Header() {
           <img
             src={logoComex}
             alt="Comex10 do Brasil"
-            className="h-10 md:h-11 w-auto object-contain"
+            className="h-14 md:h-16 lg:h-[68px] w-auto object-contain"
           />
         </a>
 
