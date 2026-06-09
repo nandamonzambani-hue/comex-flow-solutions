@@ -1,16 +1,26 @@
 import { useEffect, useState } from "react";
-import { Menu, X, Instagram, Linkedin, Phone } from "lucide-react";
+import { Menu, X, Instagram, Linkedin, Phone, ChevronDown } from "lucide-react";
 import logoComex from "@/assets/logo-comex10.png";
 import TranslateButton from "@/components/site/TranslateButton";
 
-const mainLinks = [
-  { href: "/#solucoes", label: "Soluções", highlight: true },
-  { href: "/#produtos", label: "Produtos" },
-  { href: "/#servicos", label: "Serviços" },
-  { href: "/#treinamentos", label: "Treinamentos" },
+type Link = {
+  href: string;
+  label: string;
+  sub?: { href: string; label: string }[];
+};
+
+const mainLinks: Link[] = [
   { href: "/#quem-somos", label: "Quem Somos" },
+  {
+    href: "/#solucoes",
+    label: "Soluções",
+    sub: [
+      { href: "/#produtos", label: "Produtos" },
+      { href: "/#servicos", label: "Serviços" },
+      { href: "/#treinamentos", label: "Treinamentos" },
+    ],
+  },
   { href: "/#segmentos", label: "Segmentos" },
-  { href: "/#certificados", label: "Certificações" },
   { href: "/#parceiros", label: "Parceiros" },
   { href: "/blog", label: "Blog" },
   { href: "/#contato", label: "Contato" },
@@ -52,35 +62,48 @@ export function Header() {
         </div>
       </div>
 
-      <div className="relative px-4 py-3 md:px-8 md:py-4 flex items-center justify-between bg-white">
-        {/* Logo */}
-        <a href="/#top" className="flex items-center group" aria-label="Comex10 — voltar ao topo">
+      <div className="relative px-4 py-3 md:px-8 md:py-3.5 flex items-center justify-between gap-4 bg-white">
+        {/* Logo (unchanged image) */}
+        <a href="/#top" className="flex items-center shrink-0" aria-label="Comex10 — voltar ao topo">
           <img
             src={logoComex}
             alt="Comex10 do Brasil"
-            className="h-10 md:h-12 w-auto object-contain"
+            className="h-10 md:h-11 w-auto object-contain"
           />
         </a>
 
         {/* Desktop nav */}
-        <nav className="hidden lg:flex items-center gap-4 xl:gap-5">
+        <nav className="hidden lg:flex items-center gap-1 xl:gap-2 flex-1 justify-center">
           {mainLinks.map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
-              className={
-                l.highlight
-                  ? "relative text-sm font-bold uppercase tracking-wide text-primary hover:text-primary-glow transition-colors after:content-[''] after:absolute after:-bottom-1 after:left-0 after:right-0 after:h-0.5 after:bg-primary/60 after:rounded-full"
-                  : "text-sm font-medium text-neutral-700 hover:text-primary transition-colors"
-              }
-            >
-              {l.label}
-            </a>
+            <div key={l.href} className="relative group">
+              <a
+                href={l.href}
+                className="inline-flex items-center gap-1 px-3 py-2 rounded-md text-sm font-semibold text-neutral-800 hover:text-primary hover:bg-primary/5 transition-colors"
+              >
+                {l.label}
+                {l.sub && <ChevronDown size={13} className="opacity-60" />}
+              </a>
+              {l.sub && (
+                <div className="invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all absolute top-full left-1/2 -translate-x-1/2 pt-1 z-50">
+                  <div className="min-w-[180px] rounded-lg border border-border bg-white shadow-lg py-1.5">
+                    {l.sub.map((s) => (
+                      <a
+                        key={s.href}
+                        href={s.href}
+                        className="block px-4 py-2 text-sm text-neutral-700 hover:bg-primary/5 hover:text-primary transition-colors"
+                      >
+                        {s.label}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
           ))}
         </nav>
 
         {/* Right cluster: socials + translate */}
-        <div className="hidden lg:flex items-center gap-2 ml-4">
+        <div className="hidden lg:flex items-center gap-1.5 shrink-0">
           <a
             href="https://www.instagram.com/comex10dobrasil/"
             target="_blank"
@@ -116,18 +139,29 @@ export function Header() {
         <div className="lg:hidden bg-white border-t border-border">
           <nav className="px-4 py-4 flex flex-col gap-1">
             {mainLinks.map((l) => (
-              <a
-                key={l.href}
-                href={l.href}
-                onClick={() => setOpen(false)}
-                className={
-                  l.highlight
-                    ? "block px-3 py-3 rounded-md text-sm font-bold uppercase tracking-wide text-primary bg-primary/5"
-                    : "block px-3 py-3 rounded-md text-sm font-medium text-neutral-700 hover:bg-neutral-100 hover:text-primary transition-colors"
-                }
-              >
-                {l.label}
-              </a>
+              <div key={l.href}>
+                <a
+                  href={l.href}
+                  onClick={() => setOpen(false)}
+                  className="block px-3 py-3 rounded-md text-sm font-semibold text-neutral-800 hover:bg-neutral-100 hover:text-primary transition-colors"
+                >
+                  {l.label}
+                </a>
+                {l.sub && (
+                  <div className="ml-3 border-l-2 border-primary/30 pl-3 mb-1">
+                    {l.sub.map((s) => (
+                      <a
+                        key={s.href}
+                        href={s.href}
+                        onClick={() => setOpen(false)}
+                        className="block px-2 py-2 text-sm text-neutral-600 hover:text-primary transition-colors"
+                      >
+                        {s.label}
+                      </a>
+                    ))}
+                  </div>
+                )}
+              </div>
             ))}
             <div className="flex items-center gap-2 px-3 py-3 mt-2 border-t border-border">
               <a

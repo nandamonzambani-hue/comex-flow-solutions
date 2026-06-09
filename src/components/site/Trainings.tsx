@@ -76,54 +76,74 @@ export function Trainings() {
               </div>
             </div>
 
-            <div className="p-6 rounded-xl border border-primary/40 bg-white shadow-sm">
-              <div className="flex items-center gap-2 mb-1">
-                <Globe2 size={20} className="text-primary" />
-                <h3 className="font-display text-xl font-bold text-neutral-900">
-                  Agenda de cursos — 1º semestre
-                </h3>
+            <div className="rounded-xl border border-primary/40 bg-white shadow-sm overflow-hidden">
+              <div className="p-5 md:p-6 border-b border-neutral-200">
+                <div className="flex items-center gap-2 mb-1">
+                  <Globe2 size={20} className="text-primary" />
+                  <h3 className="font-display text-xl font-bold text-neutral-900">
+                    Agenda de cursos — 1º semestre
+                  </h3>
+                </div>
+                <p className="text-sm text-neutral-600">
+                  Datas confirmadas das próximas turmas internacionais.
+                </p>
               </div>
-              <p className="text-sm text-neutral-600 mb-5">
-                Datas confirmadas das próximas turmas internacionais.
-              </p>
-              <ul className="space-y-4">
-                {schedule.map((c) => (
-                  <li
-                    key={c.country}
-                    className="p-4 rounded-lg bg-neutral-50 border border-neutral-200"
-                  >
-                    <div className="flex items-center gap-3 mb-3">
-                      <span className="text-2xl leading-none" aria-hidden>
-                        {c.flag}
-                      </span>
-                      <div className="font-display font-bold text-base text-neutral-900">
-                        {c.country}
-                      </div>
-                    </div>
-                    <ul className="space-y-2">
-                      {c.sessions.map((s) => (
-                        <li
-                          key={`${c.country}-${s.date}-${s.language}`}
-                          className="flex items-center justify-between gap-3 text-sm"
+
+              <div className="overflow-hidden">
+                <table className="w-full text-sm">
+                  <thead>
+                    <tr className="bg-neutral-50 text-[11px] uppercase tracking-wider text-neutral-500">
+                      <th className="text-left px-5 py-2.5 font-semibold">País</th>
+                      <th className="text-left px-3 py-2.5 font-semibold">Data</th>
+                      <th className="text-left px-3 py-2.5 pr-5 font-semibold">Idioma</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {schedule.flatMap((c) =>
+                      c.sessions.map((s, i) => (
+                        <tr
+                          key={`${c.country}-${s.date}`}
+                          className="border-t border-neutral-100 hover:bg-primary/5 transition-colors"
                         >
-                          <span className="inline-flex items-center gap-1.5 text-primary font-semibold">
-                            <Calendar size={14} /> {s.date}
-                          </span>
-                          <span className="text-neutral-700">{s.language}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </li>
-                ))}
-              </ul>
-              <a
-                href="https://wa.me/5511914900404?text=Tenho%20interesse%20em%20uma%20turma%20de%20treinamento%20da%20Comex10."
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-primary hover:underline"
-              >
-                Reservar minha vaga <ArrowRight size={14} />
-              </a>
+                          <td className="px-5 py-3 align-middle">
+                            {i === 0 ? (
+                              <div className="flex items-center gap-2">
+                                <span className="text-xl leading-none" aria-hidden>
+                                  {c.flag}
+                                </span>
+                                <span className="font-display font-bold text-neutral-900">
+                                  {c.country}
+                                </span>
+                              </div>
+                            ) : (
+                              <span className="pl-7 text-neutral-400 text-xs">↳</span>
+                            )}
+                          </td>
+                          <td className="px-3 py-3 align-middle">
+                            <span className="inline-flex items-center gap-1.5 font-semibold text-primary">
+                              <Calendar size={13} /> {s.date}
+                            </span>
+                          </td>
+                          <td className="px-3 py-3 pr-5 align-middle text-neutral-700">
+                            {s.language}
+                          </td>
+                        </tr>
+                      )),
+                    )}
+                  </tbody>
+                </table>
+              </div>
+
+              <div className="p-5 md:p-6 border-t border-neutral-200 bg-neutral-50/50">
+                <a
+                  href="https://wa.me/5511914900404?text=Tenho%20interesse%20em%20uma%20turma%20de%20treinamento%20da%20Comex10."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-sm font-bold text-primary hover:underline"
+                >
+                  Reservar minha vaga <ArrowRight size={14} />
+                </a>
+              </div>
             </div>
           </div>
         </div>
