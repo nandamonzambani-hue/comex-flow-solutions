@@ -30,7 +30,7 @@ export function Trainings() {
   return (
     <section id="treinamentos" className="scroll-mt-24 py-16 md:py-28">
       <div className="mx-auto max-w-7xl px-4 md:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 items-start">
+        <div className="grid lg:grid-cols-2 gap-12 items-start mb-12">
           <div className="relative rounded-2xl overflow-hidden order-2 lg:order-1">
             <img
               src={treinamentoImg}
@@ -55,7 +55,7 @@ export function Trainings() {
               e elevar a segurança da operação — na Comex10 ou na sua empresa.
             </p>
 
-            <div className="grid sm:grid-cols-2 gap-4 mb-8">
+            <div className="grid sm:grid-cols-2 gap-4">
               <div className="p-5 rounded-xl border border-border bg-surface">
                 <div className="w-10 h-10 rounded-lg bg-primary text-primary-foreground flex items-center justify-center mb-3">
                   <GraduationCap size={20} />
@@ -75,76 +75,80 @@ export function Trainings() {
                 </p>
               </div>
             </div>
+          </div>
+        </div>
 
-            <div className="rounded-xl border border-primary/40 bg-white shadow-sm overflow-hidden">
-              <div className="p-5 md:p-6 border-b border-neutral-200">
-                <div className="flex items-center gap-2 mb-1">
-                  <Globe2 size={20} className="text-primary" />
-                  <h3 className="font-display text-xl font-bold text-neutral-900">
-                    Agenda de cursos — 1º semestre
-                  </h3>
-                </div>
-                <p className="text-sm text-neutral-600">
-                  Datas confirmadas das próximas turmas internacionais.
-                </p>
+        {/* Agenda — full horizontal width */}
+        <div
+          className="rounded-2xl border border-border overflow-hidden bg-surface"
+          style={{ background: "var(--gradient-surface)", boxShadow: "var(--shadow-elegant)" }}
+        >
+          <div className="p-5 md:p-7 border-b border-border flex flex-wrap items-center justify-between gap-4">
+            <div>
+              <div className="flex items-center gap-2 mb-1">
+                <Globe2 size={20} className="text-primary" />
+                <h3 className="font-display text-xl md:text-2xl font-bold">
+                  Agenda de cursos — 1º semestre
+                </h3>
               </div>
-
-              <div className="overflow-hidden">
-                <table className="w-full text-sm">
-                  <thead>
-                    <tr className="bg-neutral-50 text-[11px] uppercase tracking-wider text-neutral-500">
-                      <th className="text-left px-5 py-2.5 font-semibold">País</th>
-                      <th className="text-left px-3 py-2.5 font-semibold">Data</th>
-                      <th className="text-left px-3 py-2.5 pr-5 font-semibold">Idioma</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {schedule.flatMap((c) =>
-                      c.sessions.map((s, i) => (
-                        <tr
-                          key={`${c.country}-${s.date}`}
-                          className="border-t border-neutral-100 hover:bg-primary/5 transition-colors"
-                        >
-                          <td className="px-5 py-3 align-middle">
-                            {i === 0 ? (
-                              <div className="flex items-center gap-2">
-                                <span className="text-xl leading-none" aria-hidden>
-                                  {c.flag}
-                                </span>
-                                <span className="font-display font-bold text-neutral-900">
-                                  {c.country}
-                                </span>
-                              </div>
-                            ) : (
-                              <span className="pl-7 text-neutral-400 text-xs">↳</span>
-                            )}
-                          </td>
-                          <td className="px-3 py-3 align-middle">
-                            <span className="inline-flex items-center gap-1.5 font-semibold text-primary">
-                              <Calendar size={13} /> {s.date}
-                            </span>
-                          </td>
-                          <td className="px-3 py-3 pr-5 align-middle text-neutral-700">
-                            {s.language}
-                          </td>
-                        </tr>
-                      )),
-                    )}
-                  </tbody>
-                </table>
-              </div>
-
-              <div className="p-5 md:p-6 border-t border-neutral-200 bg-neutral-50/50">
-                <a
-                  href="https://wa.me/5511914900404?text=Tenho%20interesse%20em%20uma%20turma%20de%20treinamento%20da%20Comex10."
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-sm font-bold text-primary hover:underline"
-                >
-                  Reservar minha vaga <ArrowRight size={14} />
-                </a>
-              </div>
+              <p className="text-sm text-muted-foreground">
+                Datas confirmadas das próximas turmas internacionais.
+              </p>
             </div>
+            <a
+              href="https://wa.me/5511914900404?text=Tenho%20interesse%20em%20uma%20turma%20de%20treinamento%20da%20Comex10."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-md text-sm font-bold text-primary-foreground hover:opacity-90 transition-opacity"
+              style={{ background: "var(--gradient-primary)" }}
+            >
+              Reservar minha vaga <ArrowRight size={14} />
+            </a>
+          </div>
+
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="bg-background/40 text-[11px] uppercase tracking-wider text-muted-foreground">
+                  <th className="text-left px-6 py-3 font-semibold w-1/3">País</th>
+                  <th className="text-left px-4 py-3 font-semibold w-1/3">Data</th>
+                  <th className="text-left px-4 py-3 pr-6 font-semibold w-1/3">Idioma</th>
+                </tr>
+              </thead>
+              <tbody>
+                {schedule.flatMap((c) =>
+                  c.sessions.map((s, i) => (
+                    <tr
+                      key={`${c.country}-${s.date}`}
+                      className="border-t border-border/60 hover:bg-primary/5 transition-colors"
+                    >
+                      <td className="px-6 py-4 align-middle">
+                        {i === 0 ? (
+                          <div className="flex items-center gap-2.5">
+                            <span className="text-2xl leading-none" aria-hidden>
+                              {c.flag}
+                            </span>
+                            <span className="font-display font-bold text-base">
+                              {c.country}
+                            </span>
+                          </div>
+                        ) : (
+                          <span className="pl-9 text-muted-foreground/60 text-xs">↳</span>
+                        )}
+                      </td>
+                      <td className="px-4 py-4 align-middle">
+                        <span className="inline-flex items-center gap-1.5 font-semibold text-primary">
+                          <Calendar size={14} /> {s.date}
+                        </span>
+                      </td>
+                      <td className="px-4 py-4 pr-6 align-middle">
+                        {s.language}
+                      </td>
+                    </tr>
+                  )),
+                )}
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
