@@ -28,7 +28,7 @@ const schedule: CountrySchedule[] = [
 
 // Inline SVG flags — funcionam em Chrome/Edge sem depender de emoji
 function Flag({ code }: { code: string }) {
-  const flags: Record<string, JSX.Element> = {
+  const flags: Record<string, React.ReactElement> = {
     DE: (
       <svg viewBox="0 0 3 2" className="w-full h-full">
         <rect width="3" height="2" fill="#000" />
