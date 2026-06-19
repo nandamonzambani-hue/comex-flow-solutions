@@ -94,7 +94,7 @@ export function Hero() {
               <span className="h-px w-8 bg-primary/60" />
               Tecnologia alemã de alta performance
             </div>
-
+          </div>
 
           {/* Partner brands — vertical column on the side */}
           <aside className="lg:col-span-4">
