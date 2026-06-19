@@ -4,13 +4,13 @@ import bgService from "@/assets/oficina-movel.jpg";
 const services = [
   {
     icon: Headphones,
-    title: "Suporte Técnico Especializado",
-    desc: "Diagnóstico em campo e atendimento técnico com especialistas em cadeia de fluidos.",
+    title: "Assistência Técnica",
+    desc: "Diagnóstico em campo e atendimento técnico com especialistas em cadeia de fluidos — em máquinas Uniflex e demais equipamentos.",
   },
   {
     icon: Package,
-    title: "Reposição de Peças",
-    desc: "Fornecimento ágil de peças originais e componentes para manter sua operação ativa.",
+    title: "Peças de Reposição",
+    desc: "Fornecimento ágil de peças originais e componentes para manter sua operação ativa sem paradas.",
   },
   {
     icon: FlaskConical,

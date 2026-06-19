@@ -43,27 +43,57 @@ export function Hero() {
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/15 border border-primary/40 backdrop-blur-sm mb-5">
               <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
               <span className="text-xs font-semibold tracking-wide uppercase text-primary">
-                Expert em cadeia de fluidos
+                Especialistas em cadeia de fluidos
               </span>
             </div>
 
             <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-[3.4rem] font-bold leading-[1.05] mb-6 text-white">
-              Mais que fornecedora.
+              Sua operação não pode parar.
               <br />
+              <span className="text-white">A </span>
               <span
                 className="bg-clip-text text-transparent"
                 style={{ backgroundImage: "var(--gradient-primary)" }}
               >
-                Seu parceiro técnico
+                Comex10
               </span>
-              <span className="text-white"> em sistemas de fluidos.</span>
+              <span className="text-white"> mantém sua cadeia de fluidos </span>
+              <span
+                className="bg-clip-text text-transparent"
+                style={{ backgroundImage: "var(--gradient-primary)" }}
+              >
+                em movimento.
+              </span>
             </h1>
 
-            <p className="text-base md:text-lg text-neutral-100 max-w-2xl leading-relaxed">
-              Diagnóstico, projetos, equipamentos certificados e capacitação técnica
-              para garantir que sua operação continue funcionando com segurança e
-              eficiência — ao lado das principais marcas líderes mundiais.
+            <p className="text-base md:text-lg text-neutral-100 max-w-2xl leading-relaxed mb-6">
+              Soluções completas para máxima confiabilidade, desempenho e
+              continuidade da sua operação — ao lado das principais marcas líderes
+              mundiais.
             </p>
+
+            <div className="flex flex-wrap items-center gap-3 mb-6">
+              <a
+                href="#contato"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-md text-sm font-semibold text-primary-foreground transition-all hover:scale-105"
+                style={{ background: "var(--gradient-primary)", boxShadow: "var(--shadow-glow)" }}
+              >
+                Solicitar diagnóstico
+              </a>
+              <a
+                href="https://wa.me/5511914900404"
+                target="_blank"
+                rel="noopener"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-md text-sm font-semibold text-white border border-white/30 bg-white/5 backdrop-blur-sm hover:bg-white/10 transition-all"
+              >
+                Falar com especialista
+              </a>
+            </div>
+
+            <div className="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.2em] text-primary/90">
+              <span className="h-px w-8 bg-primary/60" />
+              Tecnologia alemã de alta performance
+            </div>
           </div>
 
           {/* Partner brands — vertical column on the side */}
