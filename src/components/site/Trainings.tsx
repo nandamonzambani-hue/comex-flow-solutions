@@ -1,3 +1,4 @@
+import type React from "react";
 import treinamentoImg from "@/assets/treinamento.jpg";
 import { GraduationCap, Building2, Calendar, ArrowRight, CheckCircle2 } from "lucide-react";
 
