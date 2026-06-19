@@ -1,33 +1,27 @@
-import mineracao from "@/assets/segment-mineracao.jpg";
-import petroleo from "@/assets/segment-petroleo.jpg";
-import agro from "@/assets/segment-agro.jpg";
-import industria from "@/assets/segment-industria.jpg";
+import {
+  Mountain,
+  Droplets,
+  Sprout,
+  Factory,
+  Ship,
+  Utensils,
+  Snowflake,
+  Waves,
+  Flame,
+  Cog,
+} from "lucide-react";
 
 const segments = [
-  {
-    img: mineracao,
-    alt: "Equipamento de mineração com mangueiras hidráulicas de alta pressão",
-    title: "Mineração",
-    desc: "Mangueiras de alta resistência à abrasão, reposição rápida e equipamentos para reduzir paradas em frota pesada.",
-  },
-  {
-    img: petroleo,
-    alt: "Refinaria de petróleo com tubulações industriais ao pôr do sol",
-    title: "Óleo & Gás",
-    desc: "Soluções para alta pressão e temperatura, conformes às normas do setor e com rastreabilidade total.",
-  },
-  {
-    img: agro,
-    alt: "Trator agrícola com implementos hidráulicos no campo",
-    title: "Agro & Florestal",
-    desc: "Mangueiras e crimpagem para implementos agrícolas, colheitadeiras e maquinário florestal.",
-  },
-  {
-    img: industria,
-    alt: "Linha de prensas hidráulicas em planta industrial",
-    title: "Indústria",
-    desc: "Manutenção, retrofit e novos projetos em prensas, injetoras e linhas hidráulicas industriais.",
-  },
+  { icon: Mountain, title: "Mineração", desc: "Mangueiras de alta resistência à abrasão e equipamentos para reduzir paradas em frota pesada." },
+  { icon: Droplets, title: "Óleo & Gás", desc: "Soluções para alta pressão e temperatura, conformes às normas do setor com rastreabilidade total." },
+  { icon: Sprout, title: "Agro & Florestal", desc: "Mangueiras e crimpagem para implementos agrícolas, colheitadeiras e maquinário florestal." },
+  { icon: Factory, title: "Indústria", desc: "Manutenção, retrofit e novos projetos em prensas, injetoras e linhas hidráulicas industriais." },
+  { icon: Ship, title: "Náutica", desc: "Sistemas hidráulicos e mangueiras certificadas para aplicações navais e portuárias." },
+  { icon: Utensils, title: "Alimentício", desc: "Soluções com materiais compatíveis para a indústria de alimentos e bebidas." },
+  { icon: Snowflake, title: "Refrigeração", desc: "Mangueiras técnicas para sistemas de refrigeração industrial e comercial." },
+  { icon: Waves, title: "Água & Irrigação", desc: "Condução de água em sistemas prediais, irrigação e infraestrutura." },
+  { icon: Flame, title: "Gás CNG", desc: "Mangueiras e conexões para gás natural veicular e aplicações de alta pressão." },
+  { icon: Cog, title: "Lubrificação", desc: "Sistemas de lubrificação centralizada e mangueiras para óleos e graxas." },
 ];
 
 export function Segments() {
@@ -42,32 +36,25 @@ export function Segments() {
             Soluções pensadas para o seu setor.
           </h2>
           <p className="text-lg text-muted-foreground">
-            Cada operação tem desafios únicos. Selecionamos equipamentos, mangueiras e
-            insumos para o seu segmento.
+            Cada operação tem desafios únicos. Selecionamos equipamentos, mangueiras
+            e insumos para o seu segmento.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
           {segments.map((s) => (
             <a
               key={s.title}
               href="#produtos"
-              className="group relative overflow-hidden rounded-xl border border-border aspect-[16/10] sm:aspect-[4/5] cursor-pointer block"
+              className="group relative overflow-hidden rounded-xl border border-border bg-surface hover:border-primary/50 hover:-translate-y-1 transition-all p-5 block"
+              style={{ background: "var(--gradient-surface)" }}
             >
-              <img
-                src={s.img}
-                alt={s.alt}
-                loading="lazy"
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent sm:via-background/50" />
-              <div className="absolute inset-0 p-4 sm:p-6 flex flex-col justify-end">
-                <h3 className="font-display text-xl sm:text-2xl font-bold mb-1 sm:mb-2">{s.title}</h3>
-                <p className="text-xs sm:text-sm text-muted-foreground opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity duration-300 max-h-40 sm:max-h-0 sm:group-hover:max-h-40 overflow-hidden">
-                  {s.desc}
-                </p>
-                <div className="mt-2 sm:mt-3 h-1 w-12 bg-primary rounded-full transition-all group-hover:w-24" />
+              <div className="w-12 h-12 rounded-lg flex items-center justify-center mb-4 bg-primary/15 border border-primary/30 group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                <s.icon size={22} className="text-primary group-hover:text-primary-foreground" />
               </div>
+              <h3 className="font-display text-base sm:text-lg font-semibold mb-1.5">{s.title}</h3>
+              <p className="text-xs text-muted-foreground leading-relaxed">{s.desc}</p>
+              <div className="mt-3 h-0.5 w-8 bg-primary rounded-full transition-all group-hover:w-16" />
             </a>
           ))}
         </div>
