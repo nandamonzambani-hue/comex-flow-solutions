@@ -99,11 +99,21 @@ export function Partners() {
           ))}
         </div>
 
-        <div className="mt-12 text-center">
-          <p className="text-xs font-mono tracking-[0.3em] uppercase text-cyan-400">
-            Qualidade ao alcance de todos
+        <div className="mt-14 text-center max-w-2xl mx-auto">
+          <p className="font-display text-2xl md:text-3xl font-extrabold text-white mb-2">
+            Qualidade ao alcance de todos!
+          </p>
+          <p className="text-base text-slate-400 font-light">
+            O elo estratégico das referências globais no Brasil.{" "}
+            <a
+              href="#contato"
+              className="text-cyan-300 hover:text-cyan-200 underline underline-offset-4 decoration-cyan-400/40 hover:decoration-cyan-300 font-semibold"
+            >
+              Fale conosco!
+            </a>
           </p>
         </div>
+
       </div>
     </section>
   );
