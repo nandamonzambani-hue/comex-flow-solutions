@@ -45,25 +45,21 @@ export function Partners() {
       </div>
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 md:px-8">
-        <div className="max-w-2xl mb-14 text-center mx-auto">
+        <div className="max-w-3xl mb-14 text-center mx-auto">
           <div className="inline-flex items-center space-x-3 bg-blue-900/30 border border-blue-500/40 px-4 py-1.5 rounded-sm backdrop-blur-md mb-6">
             <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
             <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-cyan-300 font-mono">
-              Tecnologia global · Aplicação local
+              Parceiros
             </span>
           </div>
           <h2 className="font-display text-4xl sm:text-5xl md:text-6xl font-extrabold leading-[1.05] tracking-tight mb-5">
-            <span className="text-slate-100">Marcas líderes </span>
+            <span className="text-slate-100">Comex10, parceiro estratégico </span>
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-300 to-blue-500 drop-shadow-[0_0_18px_rgba(34,211,238,0.35)]">
-              globais.
+              no Brasil das marcas globais.
             </span>
           </h2>
-          <p className="text-lg text-slate-400 font-light">
-            <strong className="text-white font-semibold">Comex10</strong>, o elo
-            estratégico das referências globais no Brasil em hidráulica e cadeia de
-            fluidos.
-          </p>
         </div>
+
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {partners.map((p) => (

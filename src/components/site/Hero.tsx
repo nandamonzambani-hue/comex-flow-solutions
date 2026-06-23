@@ -44,11 +44,18 @@ export function Hero() {
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left column */}
           <div className="flex flex-col space-y-7">
-            <div className="inline-flex items-center space-x-3 bg-blue-900/30 border border-blue-500/40 px-4 py-1.5 rounded-sm backdrop-blur-md w-fit">
-              <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
-              <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-cyan-300 font-mono">
-                Tecnologia alemã de alta performance
-              </span>
+            <div className="flex flex-wrap gap-3">
+              <div className="inline-flex items-center space-x-3 bg-blue-900/30 border border-blue-500/40 px-4 py-1.5 rounded-sm backdrop-blur-md w-fit">
+                <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
+                <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-cyan-300 font-mono">
+                  Especialistas em cadeia de fluidos
+                </span>
+              </div>
+              <div className="inline-flex items-center space-x-3 bg-white/[0.04] border border-white/15 px-4 py-1.5 rounded-sm backdrop-blur-md w-fit">
+                <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-slate-300 font-mono">
+                  Tecnologia alemã de alta performance 🇩🇪
+                </span>
+              </div>
             </div>
 
             <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-[4.2rem] font-extrabold leading-[1.05] tracking-tight">
@@ -61,10 +68,12 @@ export function Hero() {
             </h1>
 
             <p className="text-lg md:text-xl text-slate-400 max-w-xl leading-relaxed font-light">
-              Sistemas hidráulicos de precisão para indústrias que exigem{" "}
-              <span className="text-white font-medium">zero downtime</span> e
-              performance certificada.
+              Soluções completas para máxima{" "}
+              <span className="text-white font-medium">confiabilidade</span>,{" "}
+              <span className="text-white font-medium">desempenho</span> e{" "}
+              <span className="text-white font-medium">continuidade</span> da sua operação.
             </p>
+
 
             <div className="flex flex-wrap gap-4">
               <a
