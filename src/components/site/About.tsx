@@ -5,27 +5,28 @@ const pillars = [
     step: "01",
     icon: Target,
     title: "Identificar o problema",
-    desc: "80% das falhas em mangueiras acontecem antes do uso — na especificação ou na montagem. Começamos pelo diagnóstico técnico em campo.",
+    desc: "Entendemos sua operação e mapeamos causas e riscos.",
   },
   {
     step: "02",
     icon: Lightbulb,
-    title: "Apresentar a solução",
-    desc: "Equipamentos, mangueiras, bombas e insumos selecionados para cada setor de aplicação e desafio técnico.",
+    title: "Especificar a solução",
+    desc: "Projetamos a solução ideal com precisão técnica.",
   },
   {
     step: "03",
     icon: Award,
-    title: "Garantir qualidade",
-    desc: "Testes e certificações em todas as soluções, com a confiabilidade dos maiores fabricantes globais.",
+    title: "Validar com testes",
+    desc: "Testes, qualidade e rastreabilidade em cada etapa.",
   },
   {
     step: "04",
     icon: Users,
-    title: "Capacitar pessoas",
-    desc: "Hub de conhecimento técnico: treinamentos certificados na Comex10 e dentro de empresas parceiras.",
+    title: "Capacitar a operação",
+    desc: "Treinamentos práticos para performance contínua em campo.",
   },
 ];
+
 
 const badges = [
   { icon: Clock, title: "+20 anos", sub: "de experiência" },
