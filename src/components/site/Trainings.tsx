@@ -1,5 +1,6 @@
 import type React from "react";
-import treinamentoImg from "@/assets/treinamento.jpg";
+import treinamentoAsset from "@/assets/treinamento-sala.png.asset.json";
+const treinamentoImg = treinamentoAsset.url;
 import { GraduationCap, Building2, Calendar, ArrowRight, CheckCircle2 } from "lucide-react";
 
 type Session = { date: string; language: string };

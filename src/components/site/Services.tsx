@@ -1,5 +1,6 @@
 import { Headphones, Package, FlaskConical, ShieldCheck, ArrowRight } from "lucide-react";
-import bgService from "@/assets/oficina-movel.jpg";
+import bgServiceAsset from "@/assets/uniflex-sc6s.png.asset.json";
+const bgService = bgServiceAsset.url;
 
 const services = [
   {
