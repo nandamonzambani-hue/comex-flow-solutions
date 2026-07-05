@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
-import { Menu, X, Instagram, Linkedin, Phone, ChevronDown } from "lucide-react";
+import { Menu, X, Instagram, Linkedin, Facebook, ChevronDown, ClipboardList } from "lucide-react";
 import logoComex from "@/assets/logo-comex10.png";
-import TranslateButton from "@/components/site/TranslateButton";
 
 type Link = {
   href: string;
@@ -26,6 +25,22 @@ const mainLinks: Link[] = [
   { href: "/#contato", label: "Contato" },
 ];
 
+// Simple X (Twitter) icon
+function XIcon({ size = 14 }: { size?: number }) {
+  return (
+    <svg viewBox="0 0 24 24" width={size} height={size} fill="currentColor" aria-hidden="true">
+      <path d="M18.244 2H21.5l-7.5 8.57L22.5 22h-6.844l-5.36-6.99L4.2 22H.94l8.02-9.17L.5 2h7.02l4.83 6.39L18.244 2Zm-2.4 18h1.9L7.24 4H5.23l10.614 16Z" />
+    </svg>
+  );
+}
+
+const socials = [
+  { href: "https://www.linkedin.com/company/comex10-do-brasil/", label: "LinkedIn", icon: <Linkedin size={14} /> },
+  { href: "https://www.instagram.com/comex10dobrasil/", label: "Instagram", icon: <Instagram size={14} /> },
+  { href: "https://www.facebook.com/comex10dobrasil", label: "Facebook", icon: <Facebook size={14} /> },
+  { href: "https://x.com/comex10", label: "X", icon: <XIcon size={13} /> },
+];
+
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
@@ -39,58 +54,41 @@ export function Header() {
 
   return (
     <header
-      className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 bg-white ${
-        scrolled ? "border-b border-border" : ""
+      className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? "bg-[#020617]/90 backdrop-blur-md border-b border-white/10"
+          : "bg-transparent"
       }`}
-      style={scrolled ? { boxShadow: "var(--shadow-elegant)" } : undefined}
     >
-      {/* Top utility bar */}
-      <div className="hidden md:block border-b border-border/60 bg-white">
-        <div className="mx-auto max-w-7xl px-4 md:px-8 h-9 flex items-center justify-between text-xs">
-          <div className="flex items-center gap-5 text-neutral-600">
-            <a href="tel:+551126017483" className="inline-flex items-center gap-1.5 hover:text-primary transition-colors">
-              <Phone size={12} /> 11 2601-7483
-            </a>
-            <span className="hidden lg:inline">2ª a 6ª — 8:30 às 17:30h</span>
-            <a href="mailto:contato@comex10.com.br" className="hidden lg:inline hover:text-primary transition-colors">
-              contato@comex10.com.br
-            </a>
-          </div>
-          <div className="text-neutral-500">
-            Soluções hidráulicas técnicas certificadas
-          </div>
-        </div>
-      </div>
-
-      <div className="relative px-4 py-3 md:px-8 md:py-3.5 flex items-center justify-between gap-4 bg-white">
-        {/* Logo (unchanged image) */}
-        <a href="/#top" className="flex items-center shrink-0" aria-label="Comex10 — voltar ao topo">
+      <div className="relative mx-auto max-w-7xl px-4 md:px-8 py-3 md:py-4 flex items-center justify-between gap-4">
+        {/* Logo */}
+        <a href="/#top" className="flex items-center shrink-0" aria-label="Comex10">
           <img
             src={logoComex}
             alt="Comex10 do Brasil"
-            className="h-14 md:h-16 lg:h-[68px] w-auto object-contain"
+            className="h-12 md:h-14 w-auto object-contain"
           />
         </a>
 
         {/* Desktop nav */}
-        <nav className="hidden lg:flex items-center gap-1 xl:gap-2 flex-1 justify-center">
+        <nav className="hidden lg:flex items-center gap-1 xl:gap-3">
           {mainLinks.map((l) => (
             <div key={l.href} className="relative group">
               <a
                 href={l.href}
-                className="inline-flex items-center gap-1 px-3 py-2 rounded-md text-sm font-semibold text-neutral-800 hover:text-primary hover:bg-primary/5 transition-colors"
+                className="inline-flex items-center gap-1 px-3 py-2 text-sm font-semibold text-white/90 hover:text-cyan-300 transition-colors"
               >
                 {l.label}
-                {l.sub && <ChevronDown size={13} className="opacity-60" />}
+                {l.sub && <ChevronDown size={13} className="opacity-70" />}
               </a>
               {l.sub && (
                 <div className="invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all absolute top-full left-1/2 -translate-x-1/2 pt-1 z-50">
-                  <div className="min-w-[180px] rounded-lg border border-border bg-white shadow-lg py-1.5">
+                  <div className="min-w-[180px] rounded-md border border-white/10 bg-[#0b1220]/95 backdrop-blur-md shadow-lg py-1.5">
                     {l.sub.map((s) => (
                       <a
                         key={s.href}
                         href={s.href}
-                        className="block px-4 py-2 text-sm text-neutral-700 hover:bg-primary/5 hover:text-primary transition-colors"
+                        className="block px-4 py-2 text-sm text-slate-200 hover:bg-white/5 hover:text-cyan-300 transition-colors"
                       >
                         {s.label}
                       </a>
@@ -102,33 +100,34 @@ export function Header() {
           ))}
         </nav>
 
-        {/* Right cluster: socials + translate */}
-        <div className="hidden lg:flex items-center gap-1.5 shrink-0">
+        {/* Right cluster */}
+        <div className="hidden lg:flex items-center gap-2 shrink-0">
+          <div className="flex items-center gap-1.5">
+            {socials.map((s) => (
+              <a
+                key={s.label}
+                href={s.href}
+                target="_blank"
+                rel="noopener"
+                aria-label={s.label}
+                className="inline-flex items-center justify-center w-8 h-8 rounded-md bg-blue-600 hover:bg-blue-500 text-white transition-colors"
+              >
+                {s.icon}
+              </a>
+            ))}
+          </div>
           <a
-            href="https://www.instagram.com/comex10dobrasil/"
-            target="_blank"
-            rel="noopener"
-            aria-label="Instagram"
-            className="inline-flex items-center justify-center w-9 h-9 rounded-md border border-border text-neutral-600 hover:text-primary hover:border-primary/60 transition-colors"
+            href="/#contato"
+            className="inline-flex items-center gap-2 ml-2 px-5 py-2.5 rounded-full bg-blue-600 hover:bg-blue-500 text-white text-sm font-bold transition-all hover:shadow-[0_0_20px_rgba(37,99,235,0.6)]"
           >
-            <Instagram size={15} />
+            <ClipboardList size={16} />
+            Solicitar diagnóstico
           </a>
-          <a
-            href="https://www.linkedin.com/company/comex10-do-brasil/"
-            target="_blank"
-            rel="noopener"
-            aria-label="LinkedIn"
-            className="inline-flex items-center justify-center w-9 h-9 rounded-md border border-border text-neutral-600 hover:text-primary hover:border-primary/60 transition-colors"
-          >
-            <Linkedin size={15} />
-          </a>
-          <div className="w-px h-6 bg-border mx-1" />
-          <TranslateButton variant="inline" />
         </div>
 
         <button
           onClick={() => setOpen((o) => !o)}
-          className="lg:hidden p-2 text-neutral-800"
+          className="lg:hidden p-2 text-white"
           aria-label="Abrir menu"
         >
           {open ? <X size={24} /> : <Menu size={24} />}
@@ -136,25 +135,25 @@ export function Header() {
       </div>
 
       {open && (
-        <div className="lg:hidden bg-white border-t border-border">
+        <div className="lg:hidden bg-[#020617]/95 backdrop-blur-md border-t border-white/10">
           <nav className="px-4 py-4 flex flex-col gap-1">
             {mainLinks.map((l) => (
               <div key={l.href}>
                 <a
                   href={l.href}
                   onClick={() => setOpen(false)}
-                  className="block px-3 py-3 rounded-md text-sm font-semibold text-neutral-800 hover:bg-neutral-100 hover:text-primary transition-colors"
+                  className="block px-3 py-3 rounded-md text-sm font-semibold text-white hover:bg-white/5 hover:text-cyan-300 transition-colors"
                 >
                   {l.label}
                 </a>
                 {l.sub && (
-                  <div className="ml-3 border-l-2 border-primary/30 pl-3 mb-1">
+                  <div className="ml-3 border-l-2 border-cyan-400/40 pl-3 mb-1">
                     {l.sub.map((s) => (
                       <a
                         key={s.href}
                         href={s.href}
                         onClick={() => setOpen(false)}
-                        className="block px-2 py-2 text-sm text-neutral-600 hover:text-primary transition-colors"
+                        className="block px-2 py-2 text-sm text-slate-300 hover:text-cyan-300 transition-colors"
                       >
                         {s.label}
                       </a>
@@ -163,28 +162,27 @@ export function Header() {
                 )}
               </div>
             ))}
-            <div className="flex items-center gap-2 px-3 py-3 mt-2 border-t border-border">
+            <div className="flex items-center gap-2 px-3 py-3 mt-2 border-t border-white/10">
+              {socials.map((s) => (
+                <a
+                  key={s.label}
+                  href={s.href}
+                  target="_blank"
+                  rel="noopener"
+                  aria-label={s.label}
+                  className="inline-flex items-center justify-center w-9 h-9 rounded-md bg-blue-600 text-white"
+                >
+                  {s.icon}
+                </a>
+              ))}
               <a
-                href="https://www.instagram.com/comex10dobrasil/"
-                target="_blank"
-                rel="noopener"
-                aria-label="Instagram"
-                className="inline-flex items-center justify-center w-10 h-10 rounded-md border border-border text-neutral-600"
+                href="/#contato"
+                onClick={() => setOpen(false)}
+                className="ml-auto inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-600 text-white text-sm font-bold"
               >
-                <Instagram size={16} />
+                <ClipboardList size={14} />
+                Diagnóstico
               </a>
-              <a
-                href="https://www.linkedin.com/company/comex10-do-brasil/"
-                target="_blank"
-                rel="noopener"
-                aria-label="LinkedIn"
-                className="inline-flex items-center justify-center w-10 h-10 rounded-md border border-border text-neutral-600"
-              >
-                <Linkedin size={16} />
-              </a>
-              <div className="ml-auto">
-                <TranslateButton variant="inline" />
-              </div>
             </div>
           </nav>
         </div>
