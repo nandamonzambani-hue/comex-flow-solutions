@@ -56,8 +56,8 @@ export function Header() {
     <header
       className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-[#020617]/90 backdrop-blur-md border-b border-white/10"
-          : "bg-transparent"
+          ? "bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm"
+          : "bg-white"
       }`}
     >
       <div className="relative mx-auto max-w-7xl px-4 md:px-8 py-3 md:py-4 flex items-center justify-between gap-4">
@@ -76,7 +76,7 @@ export function Header() {
             <div key={l.href} className="relative group">
               <a
                 href={l.href}
-                className="inline-flex items-center gap-1 px-3 py-2 text-sm font-semibold text-white/90 hover:text-cyan-300 transition-colors"
+                className="inline-flex items-center gap-1 px-3 py-2 text-sm font-semibold text-slate-800 hover:text-blue-600 transition-colors"
               >
                 {l.label}
                 {l.sub && <ChevronDown size={13} className="opacity-70" />}
@@ -127,7 +127,7 @@ export function Header() {
 
         <button
           onClick={() => setOpen((o) => !o)}
-          className="lg:hidden p-2 text-white"
+          className="lg:hidden p-2 text-slate-800"
           aria-label="Abrir menu"
         >
           {open ? <X size={24} /> : <Menu size={24} />}
@@ -135,25 +135,25 @@ export function Header() {
       </div>
 
       {open && (
-        <div className="lg:hidden bg-[#020617]/95 backdrop-blur-md border-t border-white/10">
+        <div className="lg:hidden bg-white border-t border-slate-200">
           <nav className="px-4 py-4 flex flex-col gap-1">
             {mainLinks.map((l) => (
               <div key={l.href}>
                 <a
                   href={l.href}
                   onClick={() => setOpen(false)}
-                  className="block px-3 py-3 rounded-md text-sm font-semibold text-white hover:bg-white/5 hover:text-cyan-300 transition-colors"
+                  className="block px-3 py-3 rounded-md text-sm font-semibold text-slate-800 hover:bg-slate-100 hover:text-blue-600 transition-colors"
                 >
                   {l.label}
                 </a>
                 {l.sub && (
-                  <div className="ml-3 border-l-2 border-cyan-400/40 pl-3 mb-1">
+                  <div className="ml-3 border-l-2 border-blue-500/40 pl-3 mb-1">
                     {l.sub.map((s) => (
                       <a
                         key={s.href}
                         href={s.href}
                         onClick={() => setOpen(false)}
-                        className="block px-2 py-2 text-sm text-slate-300 hover:text-cyan-300 transition-colors"
+                        className="block px-2 py-2 text-sm text-slate-600 hover:text-blue-600 transition-colors"
                       >
                         {s.label}
                       </a>
@@ -162,7 +162,7 @@ export function Header() {
                 )}
               </div>
             ))}
-            <div className="flex items-center gap-2 px-3 py-3 mt-2 border-t border-white/10">
+            <div className="flex items-center gap-2 px-3 py-3 mt-2 border-t border-slate-200">
               {socials.map((s) => (
                 <a
                   key={s.label}
