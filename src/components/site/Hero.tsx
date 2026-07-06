@@ -1,18 +1,18 @@
 import heroBg from "@/assets/hero-bg.png.asset.json";
 import logoUniflex from "@/assets/logos/uniflex.jpeg";
-import logoTransfluid from "@/assets/logos/transfluid.jpg";
+import logoTransfluidAsset from "@/assets/logos/transfluid.png.asset.json";
 import logoZec from "@/assets/logos/zec.png";
 import logoMarzocchi from "@/assets/logos/marzocchi.png";
-import logoHeld from "@/assets/logos/held.png";
-import logoNext from "@/assets/logos/next-powertech.png";
+import logoHeldAsset from "@/assets/logos/held.png.asset.json";
+import logoNextAsset from "@/assets/logos/next-powertech.png.asset.json";
 
 const partners = [
-  { name: "Uniflex", logo: logoUniflex, href: "https://www.uniflex.de/", tagline: "Líder mundial em máquinas para crimpagem", h: "h-14" },
-  { name: "ZEC", logo: logoZec, href: "https://zecspa.com/", tagline: "Excelência em conexões", h: "h-14" },
-  { name: "Transfluid", logo: logoTransfluid, href: "https://www.transfluid.de/", tagline: "Soluções completas para mangueiras e conexões", h: "h-14" },
-  { name: "Marzocchi", logo: logoMarzocchi, href: "https://www.marzocchipompe.com/en/", tagline: "Bombas e motores de alta performance", h: "h-14" },
-  { name: "Next Powertech", logo: logoNext, href: "https://www.powertechhoses.com/our-products", tagline: "Sistemas hidráulicos avançados", h: "h-10" },
-  { name: "Gebr. Held", logo: logoHeld, href: "https://held-test-stands.de/downloads.htm", tagline: "Ferramentas para fundição e precisão", h: "h-12" },
+  { name: "Uniflex", logo: logoUniflex, href: "https://www.uniflex.de/", tagline: "Líder mundial em máquinas para crimpagem", h: "h-14", invert: true },
+  { name: "ZEC", logo: logoZec, href: "https://zecspa.com/", tagline: "Excelência em conexões", h: "h-14", invert: true },
+  { name: "Transfluid", logo: logoTransfluidAsset.url, href: "https://www.transfluid.de/", tagline: "Soluções completas para mangueiras e conexões", h: "h-14", invert: false },
+  { name: "Marzocchi", logo: logoMarzocchi, href: "https://www.marzocchipompe.com/en/", tagline: "Bombas e motores de alta performance", h: "h-14", invert: true },
+  { name: "Next Powertech", logo: logoNextAsset.url, href: "https://www.powertechhoses.com/our-products", tagline: "Sistemas hidráulicos avançados", h: "h-10", invert: false },
+  { name: "Gebr. Held", logo: logoHeldAsset.url, href: "https://held-test-stands.de/downloads.htm", tagline: "Ferramentas para fundição e precisão", h: "h-12", invert: false },
 ];
 
 export function Hero() {
@@ -120,7 +120,7 @@ export function Hero() {
                   <img
                     src={p.logo}
                     alt={`Logo ${p.name}`}
-                    className={`${p.h} w-auto object-contain brightness-0 invert opacity-95 group-hover:opacity-100 transition-opacity`}
+                    className={`${p.h} w-auto object-contain opacity-95 group-hover:opacity-100 transition-opacity ${p.invert ? "brightness-0 invert" : ""}`}
                   />
                 </div>
                 <p className="text-xs text-slate-300 leading-snug max-w-[190px]">

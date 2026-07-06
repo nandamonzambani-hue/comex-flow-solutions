@@ -1,9 +1,9 @@
 import logoUniflex from "@/assets/logos/uniflex.jpeg";
-import logoTransfluid from "@/assets/logos/transfluid.jpg";
+import logoTransfluidAsset from "@/assets/logos/transfluid.png.asset.json";
 import logoZec from "@/assets/logos/zec.png";
 import logoMarzocchi from "@/assets/logos/marzocchi.png";
-import logoHeld from "@/assets/logos/held.png";
-import logoNext from "@/assets/logos/next-powertech.png";
+import logoHeldAsset from "@/assets/logos/held.png.asset.json";
+import logoNextAsset from "@/assets/logos/next-powertech.png.asset.json";
 
 type Partner = {
   name: string;
@@ -18,10 +18,10 @@ type Partner = {
 const partners: Partner[] = [
   { name: "Uniflex", country: "Alemanha", code: "DE", tagline: "Líder mundial em máquinas para crimpagem", logo: logoUniflex, href: "https://www.uniflex.de/", maxH: "max-h-14" },
   { name: "ZEC", country: "Itália", code: "IT", tagline: "Excelência em conexões — The Original. Better. Direct.", logo: logoZec, href: "https://zecspa.com/", maxH: "max-h-14" },
-  { name: "Next Powertech", country: "Itália", code: "IT", tagline: "Sistemas hidráulicos avançados", logo: logoNext, href: "https://www.powertechhoses.com/our-products", maxH: "max-h-12" },
+  { name: "Next Powertech", country: "Itália", code: "IT", tagline: "Sistemas hidráulicos avançados", logo: logoNextAsset.url, href: "https://www.powertechhoses.com/our-products", maxH: "max-h-12" },
   { name: "Marzocchi Pompe", country: "Itália", code: "IT", tagline: "Bombas e motores de alta performance", logo: logoMarzocchi, href: "https://www.marzocchipompe.com/en/", maxH: "max-h-14" },
-  { name: "Transfluid", country: "Alemanha", code: "DE", tagline: "Soluções completas para mangueiras e conexões", logo: logoTransfluid, href: "https://www.transfluid.de/", maxH: "max-h-16" },
-  { name: "Gebr. Held", country: "Alemanha", code: "DE", tagline: "Ferramentas hidráulicas para fundição e precisão", logo: logoHeld, href: "https://held-test-stands.de/downloads.htm", maxH: "max-h-14" },
+  { name: "Transfluid", country: "Alemanha", code: "DE", tagline: "Soluções completas para mangueiras e conexões", logo: logoTransfluidAsset.url, href: "https://www.transfluid.de/", maxH: "max-h-16" },
+  { name: "Gebr. Held", country: "Alemanha", code: "DE", tagline: "Ferramentas hidráulicas para fundição e precisão", logo: logoHeldAsset.url, href: "https://held-test-stands.de/downloads.htm", maxH: "max-h-14" },
 ];
 
 export function Partners() {
