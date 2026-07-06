@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Menu, X, Instagram, Linkedin, Facebook, ChevronDown, ClipboardList } from "lucide-react";
+import { Menu, X, Instagram, Linkedin, ChevronDown, ClipboardList } from "lucide-react";
 import logoComex from "@/assets/logo-comex10.png";
 
 type Link = {
@@ -25,20 +25,10 @@ const mainLinks: Link[] = [
   { href: "/#contato", label: "Contato" },
 ];
 
-// Simple X (Twitter) icon
-function XIcon({ size = 14 }: { size?: number }) {
-  return (
-    <svg viewBox="0 0 24 24" width={size} height={size} fill="currentColor" aria-hidden="true">
-      <path d="M18.244 2H21.5l-7.5 8.57L22.5 22h-6.844l-5.36-6.99L4.2 22H.94l8.02-9.17L.5 2h7.02l4.83 6.39L18.244 2Zm-2.4 18h1.9L7.24 4H5.23l10.614 16Z" />
-    </svg>
-  );
-}
 
 const socials = [
   { href: "https://www.linkedin.com/company/comex10-do-brasil/", label: "LinkedIn", icon: <Linkedin size={14} /> },
   { href: "https://www.instagram.com/comex10dobrasil/", label: "Instagram", icon: <Instagram size={14} /> },
-  { href: "https://www.facebook.com/comex10dobrasil", label: "Facebook", icon: <Facebook size={14} /> },
-  { href: "https://x.com/comex10", label: "X", icon: <XIcon size={13} /> },
 ];
 
 export function Header() {
