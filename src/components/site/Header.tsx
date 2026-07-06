@@ -37,8 +37,6 @@ function XIcon({ size = 14 }: { size?: number }) {
 const socials = [
   { href: "https://www.linkedin.com/company/comex10-do-brasil/", label: "LinkedIn", icon: <Linkedin size={14} /> },
   { href: "https://www.instagram.com/comex10dobrasil/", label: "Instagram", icon: <Instagram size={14} /> },
-  { href: "https://www.facebook.com/comex10dobrasil", label: "Facebook", icon: <Facebook size={14} /> },
-  { href: "https://x.com/comex10", label: "X", icon: <XIcon size={13} /> },
 ];
 
 export function Header() {
