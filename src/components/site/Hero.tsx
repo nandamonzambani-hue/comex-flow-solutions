@@ -1,10 +1,10 @@
 import heroBg from "@/assets/hero-bg.png.asset.json";
 import logoUniflex from "@/assets/logos/uniflex.jpeg";
-import logoTransfluid from "@/assets/logos/transfluid.jpg";
+import logoTransfluidAsset from "@/assets/logos/transfluid.png.asset.json";
 import logoZec from "@/assets/logos/zec.png";
 import logoMarzocchi from "@/assets/logos/marzocchi.png";
-import logoHeld from "@/assets/logos/held.png";
-import logoNext from "@/assets/logos/next-powertech.png";
+import logoHeldAsset from "@/assets/logos/held.png.asset.json";
+import logoNextAsset from "@/assets/logos/next-powertech.png.asset.json";
 
 const partners = [
   { name: "Uniflex", logo: logoUniflex, href: "https://www.uniflex.de/", tagline: "Líder mundial em máquinas para crimpagem", h: "h-14" },
