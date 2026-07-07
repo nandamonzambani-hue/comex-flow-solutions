@@ -119,7 +119,7 @@ export function Hero() {
                   <img
                     src={p.logo}
                     alt={`Logo ${p.name}`}
-                    className={`${p.h} w-auto object-contain opacity-95 group-hover:opacity-100 transition-opacity ${p.invert ? "brightness-0 invert" : ""}`}
+                    className="h-14 w-auto object-contain opacity-95 group-hover:opacity-100 transition-opacity brightness-0 invert"
                   />
                 </div>
                 <p className="text-xs text-slate-300 leading-snug max-w-[190px]">
