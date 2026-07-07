@@ -55,8 +55,9 @@ export function Partners() {
           <h2 className="font-display text-4xl sm:text-5xl md:text-6xl font-extrabold leading-[1.05] tracking-tight mb-5">
             <span className="text-slate-100">Comex10, parceiro estratégico </span>
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-300 to-blue-500 drop-shadow-[0_0_18px_rgba(34,211,238,0.35)]">
-              no Brasil das marcas globais.
+              no Brasil
             </span>
+            <span className="text-slate-100"> das marcas globais.</span>
           </h2>
         </div>
 
