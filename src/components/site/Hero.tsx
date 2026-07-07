@@ -25,10 +25,9 @@ export function Hero() {
           alt="Técnico Comex10 operando máquina de crimpagem Uniflex"
           className="absolute inset-0 w-full h-full object-cover object-center"
         />
-        {/* Overlays for readability */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#050B18]/95 via-[#050B18]/70 to-[#050B18]/40" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#050B18] via-[#050B18]/30 to-[#050B18]/60" />
-        <div className="absolute inset-0 bg-blue-950/25 mix-blend-multiply" />
+        {/* Lighter overlays — background more visible, text still readable */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#050B18]/85 via-[#050B18]/40 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#050B18]/85 via-transparent to-transparent" />
       </div>
 
       {/* Ambient blue glow */}
