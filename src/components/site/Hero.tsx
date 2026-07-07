@@ -7,12 +7,12 @@ import logoHeldAsset from "@/assets/logos/held.png.asset.json";
 import logoNextAsset from "@/assets/logos/next-powertech.png.asset.json";
 
 const partners = [
-  { name: "Uniflex", logo: logoUniflex, href: "https://www.uniflex.de/", tagline: "Líder mundial em máquinas para crimpagem", h: "h-14", invert: true },
-  { name: "ZEC", logo: logoZec, href: "https://zecspa.com/", tagline: "Excelência em conexões", h: "h-14", invert: true },
-  { name: "Transfluid", logo: logoTransfluidAsset.url, href: "https://www.transfluid.de/", tagline: "Soluções completas para mangueiras e conexões", h: "h-14", invert: false },
-  { name: "Marzocchi", logo: logoMarzocchi, href: "https://www.marzocchipompe.com/en/", tagline: "Bombas e motores de alta performance", h: "h-14", invert: true },
-  { name: "Next Powertech", logo: logoNextAsset.url, href: "https://www.powertechhoses.com/our-products", tagline: "Sistemas hidráulicos avançados", h: "h-10", invert: false },
-  { name: "Gebr. Held", logo: logoHeldAsset.url, href: "https://held-test-stands.de/downloads.htm", tagline: "Ferramentas para fundição e precisão", h: "h-12", invert: false },
+  { name: "Uniflex", logo: logoUniflex, href: "https://www.uniflex.de/", tagline: "Líder mundial em máquinas para crimpagem" },
+  { name: "ZEC", logo: logoZec, href: "https://zecspa.com/", tagline: "Excelência em conexões" },
+  { name: "Transfluid", logo: logoTransfluidAsset.url, href: "https://www.transfluid.de/", tagline: "Soluções completas para mangueiras e conexões" },
+  { name: "Marzocchi", logo: logoMarzocchi, href: "https://www.marzocchipompe.com/en/", tagline: "Bombas e motores de alta performance" },
+  { name: "Next Powertech", logo: logoNextAsset.url, href: "https://www.powertechhoses.com/our-products", tagline: "Sistemas hidráulicos avançados" },
+  { name: "Gebr. Held", logo: logoHeldAsset.url, href: "https://held-test-stands.de/downloads.htm", tagline: "Ferramentas para fundição e precisão" },
 ];
 
 export function Hero() {
