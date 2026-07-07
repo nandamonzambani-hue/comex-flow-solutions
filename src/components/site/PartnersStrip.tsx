@@ -1,4 +1,4 @@
-import logoUniflex from "@/assets/logos/uniflex.jpeg";
+import logoUniflexAsset from "@/assets/logos/uniflex-white.png.asset.json";
 import logoTransfluidAsset from "@/assets/logos/transfluid.png.asset.json";
 import logoZec from "@/assets/logos/zec.png";
 import logoMarzocchi from "@/assets/logos/marzocchi.png";
@@ -8,15 +8,19 @@ import logoNextAsset from "@/assets/logos/next-powertech.png.asset.json";
 type P = { name: string; country: string; logo: string; href: string; h?: string };
 
 const row1: P[] = [
-  { name: "Uniflex", country: "Alemanha", logo: logoUniflex, href: "https://www.uniflex.de/", h: "h-14 md:h-16" },
+  // Uniflex processado: branco com fundo transparente.
+  { name: "Uniflex", country: "Alemanha", logo: logoUniflexAsset.url, href: "https://www.uniflex.de/", h: "h-14 md:h-16" },
   { name: "ZEC", country: "Itália", logo: logoZec, href: "https://zecspa.com/", h: "h-14 md:h-16" },
-  { name: "Next Powertech", country: "Itália", logo: logoNextAsset.url, href: "https://www.powertechhoses.com/our-products", h: "h-12 md:h-14" },
+  // Aumentar Next para ficar proporcional aos demais.
+  { name: "Next Powertech", country: "Itália", logo: logoNextAsset.url, href: "https://www.powertechhoses.com/our-products", h: "h-16 md:h-20" },
 ];
 
 const row2: P[] = [
   { name: "Marzocchi", country: "Itália", logo: logoMarzocchi, href: "https://www.marzocchipompe.com/en/", h: "h-14 md:h-16" },
-  { name: "Transfluid", country: "Alemanha", logo: logoTransfluidAsset.url, href: "https://www.transfluid.de/", h: "h-20 md:h-24" },
-  { name: "Held", country: "Alemanha", logo: logoHeldAsset.url, href: "https://held-test-stands.de/downloads.htm", h: "h-14 md:h-16" },
+  // Aumentar Transfluid para o "T" ficar legível.
+  { name: "Transfluid", country: "Alemanha", logo: logoTransfluidAsset.url, href: "https://www.transfluid.de/", h: "h-24 md:h-28" },
+  // Aumentar Held para ficar proporcional aos demais.
+  { name: "Held", country: "Alemanha", logo: logoHeldAsset.url, href: "https://held-test-stands.de/downloads.htm", h: "h-16 md:h-20" },
 ];
 
 function Tile({ p }: { p: P }) {
