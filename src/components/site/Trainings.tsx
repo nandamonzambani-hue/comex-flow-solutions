@@ -221,22 +221,33 @@ export function Trainings() {
                 </thead>
                 <tbody>
                   {schedule.flatMap((c) =>
-                    c.sessions.map((s, i) => (
+                    c.sessions.map((s, i) => {
+                      const isBR = c.code === "BR";
+                      return (
                       <tr
                         key={`${c.country}-${s.date}`}
-                        className="border-t border-white/5 hover:bg-cyan-500/5 transition-colors group"
+                        className={`border-t border-white/5 transition-colors group ${
+                          isBR
+                            ? "bg-gradient-to-r from-cyan-500/15 via-blue-500/10 to-transparent hover:bg-cyan-500/20"
+                            : "hover:bg-cyan-500/5"
+                        }`}
                       >
-                        <td className="px-6 py-5 align-middle">
+                        <td className={`px-6 py-5 align-middle ${isBR ? "border-l-4 border-cyan-400" : ""}`}>
                           {i === 0 ? (
                             <div className="flex items-center gap-3">
                               <Flag code={c.code} />
                               <div className="flex flex-col">
-                                <span className="font-mono text-[10px] text-cyan-400 tracking-widest">
+                                <span className={`font-mono text-[10px] tracking-widest ${isBR ? "text-cyan-300" : "text-cyan-400"}`}>
                                   {c.code}
                                 </span>
-                                <span className="font-display font-bold text-base text-white">
+                                <span className={`font-display font-bold text-base ${isBR ? "text-cyan-200 text-lg" : "text-white"}`}>
                                   {c.country}
                                 </span>
+                                {isBR && (
+                                  <span className="mt-1 inline-flex items-center gap-1 text-[9px] font-mono uppercase tracking-[0.2em] text-cyan-300 bg-cyan-400/10 border border-cyan-400/40 px-2 py-0.5 rounded-sm w-fit">
+                                    ● Turma em português
+                                  </span>
+                                )}
                               </div>
                             </div>
                           ) : (
@@ -244,18 +255,19 @@ export function Trainings() {
                           )}
                         </td>
                         <td className="px-4 py-5 align-middle">
-                          <span className="inline-flex items-center gap-2 font-semibold text-cyan-300">
+                          <span className={`inline-flex items-center gap-2 font-semibold ${isBR ? "text-cyan-200" : "text-cyan-300"}`}>
                             <Calendar size={14} /> {s.date}
                           </span>
                         </td>
                         <td className="px-4 py-5 pr-6 align-middle">
-                          <span className="inline-flex items-center gap-2 text-slate-300">
+                          <span className={`inline-flex items-center gap-2 ${isBR ? "text-cyan-100 font-semibold" : "text-slate-300"}`}>
                             <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 group-hover:shadow-[0_0_10px_rgba(34,211,238,0.8)] transition-shadow" />
                             {s.language}
                           </span>
                         </td>
                       </tr>
-                    )),
+                      );
+                    }),
                   )}
                 </tbody>
               </table>
