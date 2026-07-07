@@ -7,12 +7,12 @@ import logoHeldAsset from "@/assets/logos/held.png.asset.json";
 import logoNextAsset from "@/assets/logos/next-powertech.png.asset.json";
 
 const partners = [
-  { name: "Uniflex", logo: logoUniflex, href: "https://www.uniflex.de/", tagline: "Líder mundial em máquinas para crimpagem", h: "h-14", invert: true },
-  { name: "ZEC", logo: logoZec, href: "https://zecspa.com/", tagline: "Excelência em conexões", h: "h-14", invert: true },
-  { name: "Transfluid", logo: logoTransfluidAsset.url, href: "https://www.transfluid.de/", tagline: "Soluções completas para mangueiras e conexões", h: "h-14", invert: false },
-  { name: "Marzocchi", logo: logoMarzocchi, href: "https://www.marzocchipompe.com/en/", tagline: "Bombas e motores de alta performance", h: "h-14", invert: true },
-  { name: "Next Powertech", logo: logoNextAsset.url, href: "https://www.powertechhoses.com/our-products", tagline: "Sistemas hidráulicos avançados", h: "h-10", invert: false },
-  { name: "Gebr. Held", logo: logoHeldAsset.url, href: "https://held-test-stands.de/downloads.htm", tagline: "Ferramentas para fundição e precisão", h: "h-12", invert: false },
+  { name: "Uniflex", logo: logoUniflex, href: "https://www.uniflex.de/", tagline: "Líder mundial em máquinas para crimpagem" },
+  { name: "ZEC", logo: logoZec, href: "https://zecspa.com/", tagline: "Excelência em conexões" },
+  { name: "Transfluid", logo: logoTransfluidAsset.url, href: "https://www.transfluid.de/", tagline: "Soluções completas para mangueiras e conexões" },
+  { name: "Marzocchi", logo: logoMarzocchi, href: "https://www.marzocchipompe.com/en/", tagline: "Bombas e motores de alta performance" },
+  { name: "Next Powertech", logo: logoNextAsset.url, href: "https://www.powertechhoses.com/our-products", tagline: "Sistemas hidráulicos avançados" },
+  { name: "Gebr. Held", logo: logoHeldAsset.url, href: "https://held-test-stands.de/downloads.htm", tagline: "Ferramentas para fundição e precisão" },
 ];
 
 export function Hero() {
@@ -25,10 +25,9 @@ export function Hero() {
           alt="Técnico Comex10 operando máquina de crimpagem Uniflex"
           className="absolute inset-0 w-full h-full object-cover object-center"
         />
-        {/* Overlays for readability */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#050B18]/95 via-[#050B18]/70 to-[#050B18]/40" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#050B18] via-[#050B18]/30 to-[#050B18]/60" />
-        <div className="absolute inset-0 bg-blue-950/25 mix-blend-multiply" />
+        {/* Lighter overlays — background more visible, text still readable */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#050B18]/85 via-[#050B18]/40 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#050B18]/85 via-transparent to-transparent" />
       </div>
 
       {/* Ambient blue glow */}
@@ -120,7 +119,7 @@ export function Hero() {
                   <img
                     src={p.logo}
                     alt={`Logo ${p.name}`}
-                    className={`${p.h} w-auto object-contain opacity-95 group-hover:opacity-100 transition-opacity ${p.invert ? "brightness-0 invert" : ""}`}
+                    className="h-14 w-auto object-contain opacity-95 group-hover:opacity-100 transition-opacity brightness-0 invert"
                   />
                 </div>
                 <p className="text-xs text-slate-300 leading-snug max-w-[190px]">
