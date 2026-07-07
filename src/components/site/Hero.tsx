@@ -7,12 +7,13 @@ import logoHeldAsset from "@/assets/logos/held.png.asset.json";
 import logoNextAsset from "@/assets/logos/next-powertech.png.asset.json";
 
 const partners = [
-  { name: "Uniflex", logo: logoUniflex, href: "https://www.uniflex.de/", tagline: "Líder mundial em máquinas para crimpagem" },
-  { name: "ZEC", logo: logoZec, href: "https://zecspa.com/", tagline: "Excelência em conexões" },
-  { name: "Transfluid", logo: logoTransfluidAsset.url, href: "https://www.transfluid.de/", tagline: "Soluções completas para mangueiras e conexões" },
-  { name: "Marzocchi", logo: logoMarzocchi, href: "https://www.marzocchipompe.com/en/", tagline: "Bombas e motores de alta performance" },
-  { name: "Next Powertech", logo: logoNextAsset.url, href: "https://www.powertechhoses.com/our-products", tagline: "Sistemas hidráulicos avançados" },
-  { name: "Gebr. Held", logo: logoHeldAsset.url, href: "https://held-test-stands.de/downloads.htm", tagline: "Ferramentas para fundição e precisão" },
+  // Uniflex é JPEG (fundo branco): usar apenas `invert` (não brightness-0) para o fundo ficar preto e o logo ficar claro.
+  { name: "Uniflex", logo: logoUniflex, href: "https://www.uniflex.de/", tagline: "Líder mundial em máquinas para crimpagem", h: "h-16", filter: "invert" },
+  { name: "ZEC", logo: logoZec, href: "https://zecspa.com/", tagline: "Excelência em conexões", h: "h-14", filter: "brightness-0 invert" },
+  { name: "Transfluid", logo: logoTransfluidAsset.url, href: "https://www.transfluid.de/", tagline: "Soluções completas para mangueiras e conexões", h: "h-14", filter: "brightness-0 invert" },
+  { name: "Marzocchi", logo: logoMarzocchi, href: "https://www.marzocchipompe.com/en/", tagline: "Bombas e motores de alta performance", h: "h-14", filter: "brightness-0 invert" },
+  { name: "Next Powertech", logo: logoNextAsset.url, href: "https://www.powertechhoses.com/our-products", tagline: "Sistemas hidráulicos avançados", h: "h-20", filter: "brightness-0 invert" },
+  { name: "Gebr. Held", logo: logoHeldAsset.url, href: "https://held-test-stands.de/downloads.htm", tagline: "Ferramentas para fundição e precisão", h: "h-20", filter: "brightness-0 invert" },
 ];
 
 export function Hero() {
