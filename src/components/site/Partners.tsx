@@ -1,4 +1,4 @@
-import logoUniflex from "@/assets/logos/uniflex.jpeg";
+import logoUniflexAsset from "@/assets/logos/uniflex-white.png.asset.json";
 import logoTransfluidAsset from "@/assets/logos/transfluid.png.asset.json";
 import logoZec from "@/assets/logos/zec.png";
 import logoMarzocchi from "@/assets/logos/marzocchi.png";
@@ -13,15 +13,18 @@ type Partner = {
   logo: string;
   href: string;
   maxH?: string;
+  filter?: string;
 };
 
 const partners: Partner[] = [
-  { name: "Uniflex", country: "Alemanha", code: "DE", tagline: "Líder mundial em máquinas para crimpagem", logo: logoUniflex, href: "https://www.uniflex.de/", maxH: "max-h-14" },
-  { name: "ZEC", country: "Itália", code: "IT", tagline: "Excelência em conexões — The Original. Better. Direct.", logo: logoZec, href: "https://zecspa.com/", maxH: "max-h-14" },
-  { name: "Next Powertech", country: "Itália", code: "IT", tagline: "Sistemas hidráulicos avançados", logo: logoNextAsset.url, href: "https://www.powertechhoses.com/our-products", maxH: "max-h-12" },
-  { name: "Marzocchi Pompe", country: "Itália", code: "IT", tagline: "Bombas e motores de alta performance", logo: logoMarzocchi, href: "https://www.marzocchipompe.com/en/", maxH: "max-h-14" },
-  { name: "Transfluid", country: "Alemanha", code: "DE", tagline: "Soluções completas para mangueiras e conexões", logo: logoTransfluidAsset.url, href: "https://www.transfluid.de/", maxH: "max-h-16" },
-  { name: "Gebr. Held", country: "Alemanha", code: "DE", tagline: "Ferramentas hidráulicas para fundição e precisão", logo: logoHeldAsset.url, href: "https://held-test-stands.de/downloads.htm", maxH: "max-h-14" },
+  // Uniflex processado: branco com fundo transparente.
+  { name: "Uniflex", country: "Alemanha", code: "DE", tagline: "Líder mundial em máquinas para crimpagem", logo: logoUniflexAsset.url, href: "https://www.uniflex.de/", maxH: "max-h-16", filter: "" },
+  { name: "ZEC", country: "Itália", code: "IT", tagline: "Excelência em conexões — The Original. Better. Direct.", logo: logoZec, href: "https://zecspa.com/", maxH: "max-h-14", filter: "brightness-0 invert" },
+  { name: "Next Powertech", country: "Itália", code: "IT", tagline: "Sistemas hidráulicos avançados", logo: logoNextAsset.url, href: "https://www.powertechhoses.com/our-products", maxH: "max-h-16", filter: "brightness-0 invert" },
+  { name: "Marzocchi Pompe", country: "Itália", code: "IT", tagline: "Bombas e motores de alta performance", logo: logoMarzocchi, href: "https://www.marzocchipompe.com/en/", maxH: "max-h-14", filter: "brightness-0 invert" },
+  // Aumentar para o "T" do logo Transfluid ficar legível.
+  { name: "Transfluid", country: "Alemanha", code: "DE", tagline: "Soluções completas para mangueiras e conexões", logo: logoTransfluidAsset.url, href: "https://www.transfluid.de/", maxH: "max-h-20", filter: "brightness-0 invert" },
+  { name: "Gebr. Held", country: "Alemanha", code: "DE", tagline: "Ferramentas hidráulicas para fundição e precisão", logo: logoHeldAsset.url, href: "https://held-test-stands.de/downloads.htm", maxH: "max-h-16", filter: "brightness-0 invert" },
 ];
 
 export function Partners() {
@@ -74,11 +77,11 @@ export function Partners() {
             >
               <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-cyan-400/60 opacity-0 group-hover:opacity-100 transition-opacity" />
 
-              <div className="bg-white h-24 flex items-center justify-center mb-5 group-hover:shadow-[0_0_25px_rgba(34,211,238,0.35)] transition-shadow">
+              <div className="bg-[#0A1526] h-24 flex items-center justify-center mb-5 group-hover:shadow-[0_0_25px_rgba(34,211,238,0.35)] transition-shadow">
                 <img
                   src={p.logo}
                   alt={`Logo ${p.name}`}
-                  className={`${p.maxH ?? "max-h-14"} w-auto object-contain`}
+                  className={`${p.maxH ?? "max-h-14"} w-auto object-contain ${p.filter ?? ""}`}
                 />
               </div>
               <div>
