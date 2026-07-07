@@ -116,11 +116,11 @@ export function Hero() {
                   i !== 0 ? "md:border-l border-white/10" : ""
                 }`}
               >
-                <div className="h-16 flex items-center justify-center mb-3">
+                <div className="h-20 flex items-center justify-center mb-3">
                   <img
                     src={p.logo}
                     alt={`Logo ${p.name}`}
-                    className="h-14 w-auto object-contain opacity-95 group-hover:opacity-100 transition-opacity brightness-0 invert"
+                    className={`${p.h} w-auto object-contain opacity-95 group-hover:opacity-100 transition-opacity ${p.filter}`}
                   />
                 </div>
                 <p className="text-xs text-slate-300 leading-snug max-w-[190px]">
