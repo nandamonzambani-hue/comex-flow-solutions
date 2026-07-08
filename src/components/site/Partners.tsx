@@ -20,11 +20,11 @@ const partners: Partner[] = [
   // Uniflex processado: branco com fundo transparente.
   { name: "Uniflex", country: "Alemanha", code: "DE", tagline: "Líder mundial em máquinas para crimpagem", logo: logoUniflexAsset.url, href: "https://www.uniflex.de/", maxH: "max-h-16", filter: "" },
   { name: "ZEC", country: "Itália", code: "IT", tagline: "Excelência em conexões — The Original. Better. Direct.", logo: logoZec, href: "https://zecspa.com/", maxH: "max-h-14", filter: "brightness-0 invert" },
-  { name: "Next Powertech", country: "Itália", code: "IT", tagline: "Sistemas hidráulicos avançados", logo: logoNextAsset.url, href: "https://www.powertechhoses.com/our-products", maxH: "max-h-16", filter: "brightness-0 invert" },
+  { name: "Next Powertech", country: "Itália", code: "IT", tagline: "Sistemas hidráulicos avançados", logo: logoNextAsset.url, href: "https://www.powertechhoses.com/our-products", maxH: "max-h-24", filter: "brightness-0 invert" },
   { name: "Marzocchi Pompe", country: "Itália", code: "IT", tagline: "Bombas e motores de alta performance", logo: logoMarzocchi, href: "https://www.marzocchipompe.com/en/", maxH: "max-h-14", filter: "brightness-0 invert" },
   // Aumentar para o "T" do logo Transfluid ficar legível.
   { name: "Transfluid", country: "Alemanha", code: "DE", tagline: "Soluções completas para mangueiras e conexões", logo: logoTransfluidAsset.url, href: "https://www.transfluid.de/", maxH: "max-h-20", filter: "brightness-0 invert" },
-  { name: "Gebr. Held", country: "Alemanha", code: "DE", tagline: "Ferramentas hidráulicas para fundição e precisão", logo: logoHeldAsset.url, href: "https://held-test-stands.de/downloads.htm", maxH: "max-h-16", filter: "brightness-0 invert" },
+  { name: "Gebr. Held", country: "Alemanha", code: "DE", tagline: "Ferramentas hidráulicas para fundição e precisão", logo: logoHeldAsset.url, href: "https://held-test-stands.de/downloads.htm", maxH: "max-h-24", filter: "brightness-0 invert" },
 ];
 
 export function Partners() {
