@@ -14,8 +14,8 @@ const partners = [
   { name: "Transfluid", logo: logoTransfluidAsset.url, href: "https://www.transfluid.de/", tagline: "Soluções completas para mangueiras e conexões", h: "h-18", filter: "brightness-0 invert" },
   { name: "Marzocchi", logo: logoMarzocchi, href: "https://www.marzocchipompe.com/en/", tagline: "Bombas e motores de alta performance", h: "h-14", filter: "brightness-0 invert" },
   // Aumentar Next e Held para ficarem do mesmo tamanho dos demais.
-  { name: "Next Powertech", logo: logoNextAsset.url, href: "https://www.powertechhoses.com/our-products", tagline: "Sistemas hidráulicos avançados", h: "h-24", filter: "brightness-0 invert" },
-  { name: "Gebr. Held", logo: logoHeldAsset.url, href: "https://held-test-stands.de/downloads.htm", tagline: "Ferramentas para fundição e precisão", h: "h-24", filter: "brightness-0 invert" },
+  { name: "Next Powertech", logo: logoNextAsset.url, href: "https://www.powertechhoses.com/our-products", tagline: "Sistemas hidráulicos avançados", h: "h-32", filter: "brightness-0 invert" },
+  { name: "Gebr. Held", logo: logoHeldAsset.url, href: "https://held-test-stands.de/downloads.htm", tagline: "Ferramentas para fundição e precisão", h: "h-32", filter: "brightness-0 invert" },
 ];
 
 export function Hero() {
