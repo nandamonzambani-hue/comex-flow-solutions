@@ -15,6 +15,8 @@ export type PartnerBrand = {
   href: string;
   /** Altura do logo dentro do tile branco (todas visualmente equivalentes). */
   h: string;
+  /** Fundo do tile: branco por padrão; cor da marca quando o logo é branco. */
+  tile: string;
   official?: boolean;
 };
 
@@ -29,6 +31,7 @@ export const partnerBrands: PartnerBrand[] = [
     logo: uniflexColor.url,
     href: "https://www.uniflex.de/",
     h: "h-12 md:h-14",
+    tile: "bg-white",
     official: true,
   },
   {
@@ -40,6 +43,7 @@ export const partnerBrands: PartnerBrand[] = [
     logo: logoZec,
     href: "https://zecspa.com/",
     h: "h-11 md:h-12",
+    tile: "bg-white",
     official: true,
   },
   {
@@ -50,6 +54,7 @@ export const partnerBrands: PartnerBrand[] = [
     logo: logoNextAsset.url,
     href: "https://www.powertechhoses.com/our-products",
     h: "h-12 md:h-14",
+    tile: "bg-[#5B2B8A]",
     official: true,
   },
   {
@@ -60,6 +65,7 @@ export const partnerBrands: PartnerBrand[] = [
     logo: logoMarzocchi,
     href: "https://www.marzocchipompe.com/en/",
     h: "h-10 md:h-12",
+    tile: "bg-white",
     official: true,
   },
   {
@@ -71,6 +77,7 @@ export const partnerBrands: PartnerBrand[] = [
     logo: transfluidOficial.url,
     href: "https://www.transfluid.de/",
     h: "h-12 md:h-14",
+    tile: "bg-white",
     official: true,
   },
   {
@@ -82,6 +89,7 @@ export const partnerBrands: PartnerBrand[] = [
     logo: logoHeldAsset.url,
     href: "https://held-test-stands.de/downloads.htm",
     h: "h-12 md:h-14",
+    tile: "bg-[#00509E]",
     official: true,
   },
 ];

@@ -22,7 +22,7 @@ export function PartnersStrip() {
                   target="_blank"
                   rel="noopener nofollow"
                   title={`${p.name} — ${p.country}`}
-                  className="flex items-center justify-center px-6 py-4 rounded-xl bg-white border border-neutral-200 hover:border-primary hover:shadow-md transition-all min-h-[96px] md:min-h-[112px]"
+                  className={`flex items-center justify-center px-6 py-4 rounded-xl ${p.tile} border border-neutral-200 hover:border-primary hover:shadow-md transition-all min-h-[96px] md:min-h-[112px]`}
                 >
                   <img
                     src={p.logo}

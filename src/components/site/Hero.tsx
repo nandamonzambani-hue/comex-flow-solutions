@@ -83,7 +83,11 @@ export function Hero() {
                   <div className="text-[10px] font-mono tracking-[0.25em] text-cyan-300 mb-2">
                     PERFORMANCE
                   </div>
-                  <div className="text-2xl">🇩🇪</div>
+                  <svg viewBox="0 0 5 3" className="w-8 h-5 mx-auto rounded-[2px] overflow-hidden" aria-label="Alemanha">
+                    <rect width="5" height="1" y="0" fill="#000" />
+                    <rect width="5" height="1" y="1" fill="#D00" />
+                    <rect width="5" height="1" y="2" fill="#FFCE00" />
+                  </svg>
                 </div>
               </div>
             </div>
@@ -104,7 +108,7 @@ export function Hero() {
                   i !== 0 ? "md:border-l border-white/10" : ""
                 }`}
               >
-                <div className="w-full h-20 rounded-md bg-white flex items-center justify-center mb-3 px-3 shadow-[0_0_0_1px_rgba(255,255,255,0.15)]">
+                <div className={`w-full h-20 rounded-md ${p.tile} flex items-center justify-center mb-3 px-3 shadow-[0_0_0_1px_rgba(255,255,255,0.15)]`}>
                   <img
                     src={p.logo}
                     alt={`Logo ${p.name}`}
