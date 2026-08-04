@@ -50,8 +50,7 @@ export function Hero() {
             </h2>
 
             <p className="mt-8 text-base md:text-lg text-slate-200/90 max-w-md leading-relaxed font-light">
-              Soluções completas para máxima confiabilidade, desempenho e continuidade da sua
-              operação.
+              A Comex10 mantém sua cadeia de fluidos em movimento.
             </p>
           </div>
 
