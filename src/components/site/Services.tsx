@@ -15,9 +15,10 @@ const services = [
   },
   {
     icon: FlaskConical,
-    title: "Testes",
-    desc: "Validação em bancada com rastreabilidade, laudos técnicos e conformidade normativa.",
+    title: "Impulso Teste",
+    desc: "Validação em bancada de impulso com rastreabilidade, laudos técnicos e conformidade normativa.",
   },
+
   {
     icon: ShieldCheck,
     title: "Adequação / Implementação NR12",
