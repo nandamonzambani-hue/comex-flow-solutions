@@ -4,7 +4,7 @@ export function Partners() {
   return (
     <section
       id="parceiros"
-      className="scroll-mt-24 py-20 md:py-28 lg:min-h-screen lg:flex lg:items-center relative overflow-hidden bg-[#020617] text-white"
+      className="scroll-mt-24 py-20 md:py-28 lg:min-h-screen lg:flex lg:items-center relative overflow-hidden bg-background text-foreground"
     >
       {/* Technical background */}
       <div className="absolute inset-0 z-0 pointer-events-none">
@@ -22,20 +22,20 @@ export function Partners() {
 
       <div className="relative z-10 w-full mx-auto max-w-7xl px-4 md:px-8">
         <div className="max-w-3xl mb-12 text-center mx-auto">
-          <div className="inline-flex items-center space-x-3 bg-blue-900/30 border border-blue-500/40 px-4 py-1.5 rounded-sm backdrop-blur-md mb-6">
-            <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
-            <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-cyan-300 font-mono">
+          <div className="inline-flex items-center space-x-3 bg-primary/10 border border-primary/30 px-4 py-1.5 rounded-sm backdrop-blur-md mb-6">
+            <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+            <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-primary font-display">
               Parceiros
             </span>
           </div>
           <h2 className="font-display text-4xl sm:text-5xl md:text-6xl font-extrabold leading-[1.05] tracking-tight mb-5">
-            <span className="text-slate-100">Comex10, parceiro estratégico </span>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-300 to-blue-500 drop-shadow-[0_0_18px_rgba(34,211,238,0.35)]">
+            <span className="text-foreground">Comex10, parceiro estratégico </span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-primary-glow to-accent drop-shadow-[0_0_18px_rgba(56,140,255,0.25)]">
               no Brasil
             </span>
-            <span className="text-slate-100"> das marcas globais.</span>
+            <span className="text-foreground"> das marcas globais.</span>
           </h2>
-          <p className="text-sm md:text-base text-slate-400 font-light">
+          <p className="text-sm md:text-base text-muted-foreground font-light">
             Distribuidor oficial e autorizado no Brasil das marcas líderes em cadeia de fluidos.
           </p>
         </div>
@@ -48,13 +48,13 @@ export function Partners() {
               target="_blank"
               rel="noopener nofollow"
               title={`${p.name} — ${p.country}`}
-              className="group relative flex flex-col bg-white/[0.04] backdrop-blur-xl border border-white/10 hover:border-cyan-400/50 transition-all p-6 overflow-hidden"
+              className="group relative flex flex-col bg-card backdrop-blur-xl border border-border hover:border-primary/40 transition-all p-6 overflow-hidden"
             >
-              <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-cyan-400/60 opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-primary/40 opacity-0 group-hover:opacity-100 transition-opacity" />
 
               {/* Tile branco: logo em CORES ORIGINAIS, sem filtro */}
               <div
-                className="rounded-md h-24 flex items-center justify-center px-5 mb-5 group-hover:shadow-[0_0_25px_rgba(34,211,238,0.35)] transition-shadow"
+                className="rounded-md h-24 flex items-center justify-center px-5 mb-5 group-hover:shadow-[0_0_25px_rgba(56,140,255,0.25)] transition-shadow"
                 style={{ backgroundColor: p.tileBg }}
               >
                 <img
@@ -65,37 +65,37 @@ export function Partners() {
               </div>
               <div>
                 <div className="flex items-center gap-2 mb-1.5">
-                  <span className="font-mono text-[9px] text-cyan-400 tracking-[0.25em]">
+                  <span className="font-display text-[9px] text-primary tracking-[0.25em]">
                     {p.code}
                   </span>
-                  <span className="text-[10px] text-slate-500 uppercase tracking-widest">
+                  <span className="text-[10px] text-muted-foreground uppercase tracking-widest">
                     {p.country}
                   </span>
                 </div>
-                <h3 className="font-display text-lg font-bold text-white mb-2">
+                <h3 className="font-display text-lg font-bold text-foreground mb-2">
                   {p.name}
                 </h3>
                 {p.official && (
-                  <span className="inline-block mb-2 text-[9px] font-mono uppercase tracking-[0.18em] text-cyan-300 border border-cyan-400/40 bg-cyan-400/10 px-2 py-0.5 rounded-sm">
+                  <span className="inline-block mb-2 text-[9px] font-display uppercase tracking-[0.18em] text-primary border border-primary/40 bg-primary/20 px-2 py-0.5 rounded-sm">
                     Distribuidor oficial
                   </span>
                 )}
-                <p className="text-xs text-slate-400 leading-relaxed">{p.tagline}</p>
+                <p className="text-xs text-muted-foreground leading-relaxed">{p.tagline}</p>
               </div>
-              <div className="mt-4 h-0.5 w-10 bg-cyan-400/60 transition-all group-hover:w-20 group-hover:shadow-[0_0_10px_rgba(34,211,238,0.8)]" />
+              <div className="mt-4 h-0.5 w-10 bg-primary/20 transition-all group-hover:w-20 group-hover:shadow-[0_0_10px_rgba(56,140,255,0.25)]" />
             </a>
           ))}
         </div>
 
         <div className="mt-12 text-center max-w-2xl mx-auto">
-          <p className="font-display text-2xl md:text-3xl font-extrabold text-white mb-2">
+          <p className="font-display text-2xl md:text-3xl font-extrabold text-foreground mb-2">
             Qualidade ao alcance de todos!
           </p>
-          <p className="text-base text-slate-400 font-light">
+          <p className="text-base text-muted-foreground font-light">
             O elo estratégico das referências globais no Brasil.{" "}
             <a
               href="#contato"
-              className="text-cyan-300 hover:text-cyan-200 underline underline-offset-4 decoration-cyan-400/40 hover:decoration-cyan-300 font-semibold"
+              className="text-primary hover:text-primary underline underline-offset-4 decoration-cyan-400/40 hover:decoration-cyan-300 font-semibold"
             >
               Fale conosco!
             </a>

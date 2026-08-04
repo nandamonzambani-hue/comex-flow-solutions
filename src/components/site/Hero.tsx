@@ -31,7 +31,7 @@ export function Hero() {
           <div className="flex flex-col justify-center">
             <div className="inline-flex items-center gap-3 bg-blue-900/50 border border-blue-400/50 px-5 py-2 rounded-full backdrop-blur-md w-fit mb-8">
               <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
-              <span className="text-[11px] uppercase tracking-[0.28em] font-bold text-white font-mono">
+              <span className="text-[11px] uppercase tracking-[0.28em] font-bold text-white font-display">
                 Especialistas em cadeia de fluidos
               </span>
             </div>
@@ -77,10 +77,10 @@ export function Hero() {
                   <div className="font-display text-lg md:text-xl font-black text-white leading-tight tracking-tight mb-2">
                     ALEMÃ
                   </div>
-                  <div className="text-[10px] font-mono tracking-[0.25em] text-cyan-300">
+                  <div className="text-[10px] font-display tracking-[0.25em] text-cyan-300">
                     DE ALTA
                   </div>
-                  <div className="text-[10px] font-mono tracking-[0.25em] text-cyan-300 mb-2">
+                  <div className="text-[10px] font-display tracking-[0.25em] text-cyan-300 mb-2">
                     PERFORMANCE
                   </div>
                   <svg viewBox="0 0 5 3" className="w-8 h-5 mx-auto rounded-[2px] overflow-hidden" aria-label="Alemanha">
@@ -119,7 +119,7 @@ export function Hero() {
                   />
                 </div>
                 {p.official && (
-                  <span className="mb-2 text-[9px] font-mono uppercase tracking-[0.18em] text-cyan-300 border border-cyan-400/40 bg-cyan-400/10 px-2 py-0.5 rounded-sm">
+                  <span className="mb-2 text-[9px] font-display uppercase tracking-[0.18em] text-cyan-300 border border-cyan-400/40 bg-cyan-400/10 px-2 py-0.5 rounded-sm">
                     Distribuidor oficial
                   </span>
                 )}
