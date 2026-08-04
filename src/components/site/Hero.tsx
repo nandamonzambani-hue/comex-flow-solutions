@@ -31,7 +31,7 @@ export function Hero() {
           <div className="flex flex-col justify-center">
             <div className="inline-flex items-center gap-3 bg-blue-900/50 border border-blue-400/50 px-5 py-2 rounded-full backdrop-blur-md w-fit mb-8">
               <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
-              <span className="text-[11px] uppercase tracking-[0.28em] font-bold text-white font-mono">
+              <span className="text-[11px] uppercase tracking-[0.28em] font-bold text-white font-display">
                 Especialistas em cadeia de fluidos
               </span>
             </div>
@@ -77,10 +77,10 @@ export function Hero() {
                   <div className="font-display text-lg md:text-xl font-black text-white leading-tight tracking-tight mb-2">
                     ALEMÃ
                   </div>
-                  <div className="text-[10px] font-mono tracking-[0.25em] text-cyan-300">
+                  <div className="text-[10px] font-display tracking-[0.25em] text-cyan-300">
                     DE ALTA
                   </div>
-                  <div className="text-[10px] font-mono tracking-[0.25em] text-cyan-300 mb-2">
+                  <div className="text-[10px] font-display tracking-[0.25em] text-cyan-300 mb-2">
                     PERFORMANCE
                   </div>
                   <svg viewBox="0 0 5 3" className="w-8 h-5 mx-auto rounded-[2px] overflow-hidden" aria-label="Alemanha">
@@ -94,9 +94,8 @@ export function Hero() {
           </div>
         </div>
 
-        {/* Partners strip — logos em cores originais sobre tile branco */}
         <div className="mt-12 md:mt-16 relative z-10">
-          <div className="bg-[#0A1526]/90 backdrop-blur-xl border border-white/10 rounded-sm grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6">
+          <div className="bg-background/95 backdrop-blur-xl border border-border rounded-sm grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6">
             {partners.map((p, i) => (
               <a
                 key={p.name}
@@ -104,14 +103,11 @@ export function Hero() {
                 target="_blank"
                 rel="noopener nofollow"
                 title={p.name}
-                className={`group flex flex-col items-center justify-start text-center px-4 py-6 hover:bg-white/5 transition-colors ${
-                  i !== 0 ? "md:border-l border-white/10" : ""
+                className={`group flex flex-col items-center justify-start text-center px-4 py-6 hover:bg-muted transition-colors ${
+                  i !== 0 ? "md:border-l border-border" : ""
                 }`}
               >
-                <div
-                  className="w-full h-20 rounded-md flex items-center justify-center mb-3 px-3 shadow-[0_0_0_1px_rgba(255,255,255,0.15)]"
-                  style={{ backgroundColor: p.tileBg }}
-                >
+                <div className="w-full h-20 rounded-md flex items-center justify-center mb-3 px-3">
                   <img
                     src={p.logo}
                     alt={`Logo ${p.name}`}
@@ -119,17 +115,18 @@ export function Hero() {
                   />
                 </div>
                 {p.official && (
-                  <span className="mb-2 text-[9px] font-mono uppercase tracking-[0.18em] text-cyan-300 border border-cyan-400/40 bg-cyan-400/10 px-2 py-0.5 rounded-sm">
+                  <span className="mb-2 text-[9px] font-display font-bold uppercase tracking-[0.18em] text-primary border border-primary/30 bg-primary/10 px-2 py-0.5 rounded-sm">
                     Distribuidor oficial
                   </span>
                 )}
-                <p className="text-xs text-slate-300 leading-snug max-w-[190px]">
+                <p className="text-xs text-muted-foreground leading-snug max-w-[190px]">
                   {p.tagline}
                 </p>
               </a>
             ))}
           </div>
         </div>
+
 
       </div>
     </section>

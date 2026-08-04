@@ -2,8 +2,9 @@ import uniflexColor from "@/assets/logos/uniflex-color.png.asset.json";
 import transfluidOficial from "@/assets/logos/transfluid-oficial.svg.asset.json";
 import logoZec from "@/assets/logos/zec.png";
 import logoMarzocchi from "@/assets/logos/marzocchi.png";
-import logoHeldAsset from "@/assets/logos/held-trim.png.asset.json";
-import logoNextAsset from "@/assets/logos/next-powertech-trim.png.asset.json";
+import logoHeldAsset from "@/assets/logos/held-color.png.asset.json";
+import logoNextAsset from "@/assets/logos/next-powertech-color.png.asset.json";
+
 
 export type PartnerBrand = {
   name: string;
@@ -31,7 +32,7 @@ export const partnerBrands: PartnerBrand[] = [
     logo: uniflexColor.url,
     href: "https://www.uniflex.de/",
     h: "h-12 md:h-14 w-auto",
-    tileBg: "#ffffff",
+    tileBg: "transparent",
     official: true,
   },
   {
@@ -43,7 +44,7 @@ export const partnerBrands: PartnerBrand[] = [
     logo: logoZec,
     href: "https://zecspa.com/",
     h: "h-11 md:h-12 w-auto",
-    tileBg: "#ffffff",
+    tileBg: "transparent",
     official: true,
   },
   {
@@ -54,7 +55,7 @@ export const partnerBrands: PartnerBrand[] = [
     logo: logoNextAsset.url,
     href: "https://www.powertechhoses.com/our-products",
     h: "h-10 md:h-12 w-auto",
-    tileBg: "#5B2B8A",
+    tileBg: "transparent",
     official: true,
   },
   {
@@ -65,7 +66,7 @@ export const partnerBrands: PartnerBrand[] = [
     logo: logoMarzocchi,
     href: "https://www.marzocchipompe.com/en/",
     h: "h-10 md:h-12 w-auto",
-    tileBg: "#ffffff",
+    tileBg: "transparent",
     official: true,
   },
   {
@@ -77,7 +78,7 @@ export const partnerBrands: PartnerBrand[] = [
     logo: transfluidOficial.url,
     href: "https://www.transfluid.de/",
     h: "h-12 md:h-14 w-auto",
-    tileBg: "#ffffff",
+    tileBg: "transparent",
     official: true,
   },
   {
@@ -89,7 +90,7 @@ export const partnerBrands: PartnerBrand[] = [
     logo: logoHeldAsset.url,
     href: "https://held-test-stands.de/downloads.htm",
     h: "h-14 md:h-16 w-auto",
-    tileBg: "#00509E",
+    tileBg: "transparent",
     official: true,
   },
 ];

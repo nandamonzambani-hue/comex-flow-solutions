@@ -38,7 +38,7 @@ export function About() {
   return (
     <section
       id="quem-somos"
-      className="py-20 md:py-28 lg:min-h-screen lg:flex lg:items-center relative scroll-mt-24 overflow-hidden bg-[#020617] text-white"
+      className="py-20 md:py-28 lg:min-h-screen lg:flex lg:items-center relative scroll-mt-24 overflow-hidden bg-background text-foreground"
     >
       {/* Technical background */}
       <div className="absolute inset-0 z-0 pointer-events-none">
@@ -57,34 +57,34 @@ export function About() {
       <div className="relative z-10 w-full mx-auto max-w-7xl px-4 md:px-8">
         <div className="grid lg:grid-cols-12 gap-12 mb-14">
           <div className="lg:col-span-6">
-            <div className="inline-flex items-center space-x-3 bg-blue-900/30 border border-blue-500/40 px-4 py-1.5 rounded-sm backdrop-blur-md w-fit mb-6">
-              <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
-              <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-cyan-300 font-mono">
+            <div className="inline-flex items-center space-x-3 bg-primary/10 border border-primary/30 px-4 py-1.5 rounded-sm backdrop-blur-md w-fit mb-6">
+              <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+              <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-primary font-display">
                 Quem Somos
               </span>
             </div>
             <h2 className="font-display text-4xl sm:text-5xl md:text-6xl font-extrabold leading-[1.05] tracking-tight mb-6">
-              <span className="text-slate-100 block">Referência técnica em </span>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-300 to-blue-500 drop-shadow-[0_0_18px_rgba(34,211,238,0.35)]">
+              <span className="text-foreground block">Referência técnica em </span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-primary-glow to-accent drop-shadow-[0_0_18px_rgba(56,140,255,0.25)]">
                 soluções hidráulicas.
               </span>
             </h2>
-            <p className="text-lg text-slate-400 leading-relaxed mb-7 font-light max-w-xl">
+            <p className="text-lg text-muted-foreground leading-relaxed mb-7 font-light max-w-xl">
               Mais do que fornecer, entregamos{" "}
-              <strong className="text-white font-semibold">segurança</strong>,{" "}
-              <strong className="text-white font-semibold">eficiência</strong> e{" "}
-              <strong className="text-white font-semibold">performance</strong> para o seu negócio.
+              <strong className="text-foreground font-semibold">segurança</strong>,{" "}
+              <strong className="text-foreground font-semibold">eficiência</strong> e{" "}
+              <strong className="text-foreground font-semibold">performance</strong> para o seu negócio.
             </p>
             <div className="flex flex-wrap gap-3">
               {badges.map((b) => (
                 <div
                   key={b.title}
-                  className="flex items-center gap-2.5 px-4 py-2.5 border border-cyan-400/30 bg-white/[0.04] backdrop-blur-xl"
+                  className="flex items-center gap-2.5 px-4 py-2.5 border border-primary/40 bg-card backdrop-blur-xl"
                 >
-                  <b.icon size={18} className="text-cyan-300" />
+                  <b.icon size={18} className="text-primary" />
                   <div className="text-xs leading-tight">
-                    <div className="font-semibold text-white">{b.title}</div>
-                    <div className="text-slate-400">{b.sub}</div>
+                    <div className="font-semibold text-foreground">{b.title}</div>
+                    <div className="text-muted-foreground">{b.sub}</div>
                   </div>
                 </div>
               ))}
@@ -93,23 +93,23 @@ export function About() {
 
           <div className="lg:col-span-6 relative">
             <div className="absolute -inset-1 bg-gradient-to-tr from-cyan-500 to-blue-600 opacity-25 blur-xl" />
-            <div className="relative p-7 md:p-9 bg-white/[0.04] backdrop-blur-2xl border border-white/10 overflow-hidden">
-              <div className="absolute top-0 right-0 w-12 h-12 border-t-2 border-r-2 border-cyan-400/60" />
-              <div className="absolute bottom-0 left-0 w-12 h-12 border-b-2 border-l-2 border-cyan-400/60" />
+            <div className="relative p-7 md:p-9 bg-card backdrop-blur-2xl border border-border overflow-hidden">
+              <div className="absolute top-0 right-0 w-12 h-12 border-t-2 border-r-2 border-primary/40" />
+              <div className="absolute bottom-0 left-0 w-12 h-12 border-b-2 border-l-2 border-primary/40" />
 
-              <div className="text-[10px] font-mono tracking-[0.3em] text-cyan-400 mb-4">
+              <div className="text-[10px] font-display tracking-[0.3em] text-primary mb-4">
                 COMEX10 // MANIFESTO
               </div>
-              <p className="text-base text-slate-300 leading-relaxed mb-4 font-light">
-                A <strong className="text-white font-semibold">Comex10</strong> do Brasil é
+              <p className="text-base text-muted-foreground leading-relaxed mb-4 font-light">
+                A <strong className="text-foreground font-semibold">Comex10</strong> do Brasil é
                 referência técnica em soluções hidráulicas. Mais do que vender máquinas e
                 mangueiras, entregamos diagnóstico, projetos, equipamentos certificados e
                 capacitação técnica para garantir que a sua operação continue funcionando
                 com segurança e eficiência.
               </p>
-              <p className="text-base text-slate-300 leading-relaxed font-light">
+              <p className="text-base text-muted-foreground leading-relaxed font-light">
                 Atuamos lado a lado com as principais{" "}
-                <strong className="text-white font-semibold">marcas líderes mundiais</strong>,
+                <strong className="text-foreground font-semibold">marcas líderes mundiais</strong>,
                 oferecendo soluções completas e personalizadas para resolver, de fato, as
                 necessidades do seu negócio.
               </p>
@@ -119,10 +119,10 @@ export function About() {
 
         {/* Pillars / Etapas */}
         <div className="mb-8">
-          <div className="text-[10px] font-mono tracking-[0.3em] text-cyan-400 mb-2">
+          <div className="text-[10px] font-display tracking-[0.3em] text-primary mb-2">
             NOSSA_JORNADA // 4_ETAPAS
           </div>
-          <h3 className="font-display text-2xl md:text-3xl font-bold text-white">
+          <h3 className="font-display text-2xl md:text-3xl font-bold text-foreground">
             Nossa jornada técnica ao seu lado
           </h3>
         </div>
@@ -131,26 +131,26 @@ export function About() {
           {pillars.map((p) => (
             <div
               key={p.title}
-              className="group relative p-6 bg-white/[0.04] backdrop-blur-xl border border-white/10 hover:border-cyan-400/50 transition-all overflow-hidden"
+              className="group relative p-6 bg-card backdrop-blur-xl border border-border hover:border-primary/40 transition-all overflow-hidden"
             >
-              <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-cyan-400/60 opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-primary/40 opacity-0 group-hover:opacity-100 transition-opacity" />
 
               <div className="flex items-start justify-between mb-4">
-                <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-400 text-white flex items-center justify-center shadow-[0_0_20px_rgba(34,211,238,0.35)]">
+                <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-400 text-foreground flex items-center justify-center shadow-[0_0_20px_rgba(56,140,255,0.25)]">
                   <p.icon size={22} strokeWidth={2.2} />
                 </div>
                 <div className="text-right">
-                  <div className="text-[9px] font-mono tracking-[0.25em] text-cyan-400">
+                  <div className="text-[9px] font-display tracking-[0.25em] text-primary">
                     ETAPA
                   </div>
-                  <div className="font-display text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-blue-500 leading-none">
+                  <div className="font-display text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-accent leading-none">
                     {p.step}
                   </div>
                 </div>
               </div>
-              <h3 className="font-display text-lg font-bold mb-2 text-white">{p.title}</h3>
-              <p className="text-sm text-slate-400 leading-relaxed">{p.desc}</p>
-              <div className="mt-4 h-0.5 w-10 bg-cyan-400/60 transition-all group-hover:w-20 group-hover:shadow-[0_0_10px_rgba(34,211,238,0.8)]" />
+              <h3 className="font-display text-lg font-bold mb-2 text-foreground">{p.title}</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">{p.desc}</p>
+              <div className="mt-4 h-0.5 w-10 bg-primary/20 transition-all group-hover:w-20 group-hover:shadow-[0_0_10px_rgba(56,140,255,0.25)]" />
             </div>
           ))}
         </div>

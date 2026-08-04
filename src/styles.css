@@ -39,64 +39,66 @@
 :root {
   --radius: 0.5rem;
 
-  --background: oklch(0.16 0.02 250);
-  --foreground: oklch(0.97 0.005 250);
+  /* Light neutral base: off-white / light gray */
+  --background: oklch(0.972 0.003 250);
+  --foreground: oklch(0.22 0.03 255);
 
-  --surface: oklch(0.21 0.025 250);
-  --surface-foreground: oklch(0.97 0.005 250);
+  --surface: oklch(0.995 0.002 250);
+  --surface-foreground: oklch(0.22 0.03 255);
 
-  --card: oklch(0.21 0.025 250);
-  --card-foreground: oklch(0.97 0.005 250);
-  --popover: oklch(0.21 0.025 250);
-  --popover-foreground: oklch(0.97 0.005 250);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.22 0.03 255);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.22 0.03 255);
 
   /* Comex10 brand: vivid light blue (logo) */
-  --primary: oklch(0.68 0.16 235);
+  --primary: oklch(0.56 0.17 250);
   --primary-foreground: oklch(0.99 0.005 250);
-  --primary-glow: oklch(0.78 0.14 225);
+  --primary-glow: oklch(0.68 0.16 235);
 
-  --secondary: oklch(0.28 0.03 250);
-  --secondary-foreground: oklch(0.97 0.005 250);
+  --secondary: oklch(0.94 0.006 250);
+  --secondary-foreground: oklch(0.25 0.03 255);
 
-  --muted: oklch(0.25 0.025 250);
-  --muted-foreground: oklch(0.74 0.02 250);
+  --muted: oklch(0.945 0.005 250);
+  --muted-foreground: oklch(0.5 0.02 255);
 
   /* Brand navy as accent (logo blue) */
   --accent: oklch(0.42 0.15 258);
   --accent-foreground: oklch(0.98 0.005 250);
 
-  --destructive: oklch(0.6 0.22 25);
-  --destructive-foreground: oklch(0.97 0.005 250);
+  --destructive: oklch(0.55 0.22 25);
+  --destructive-foreground: oklch(0.98 0.005 250);
 
-  --border: oklch(0.3 0.02 250);
-  --input: oklch(0.28 0.025 250);
-  --ring: oklch(0.68 0.16 235);
+  --border: oklch(0.9 0.008 250);
+  --input: oklch(0.9 0.008 250);
+  --ring: oklch(0.56 0.17 250);
 
-  --chart-1: oklch(0.68 0.16 235);
-  --chart-2: oklch(0.78 0.14 225);
+  --chart-1: oklch(0.56 0.17 250);
+  --chart-2: oklch(0.68 0.16 235);
   --chart-3: oklch(0.42 0.15 258);
   --chart-4: oklch(0.62 0.16 245);
-  --chart-5: oklch(0.85 0.05 80);
+  --chart-5: oklch(0.75 0.12 80);
 
-  --sidebar: oklch(0.18 0.02 250);
-  --sidebar-foreground: oklch(0.97 0.005 250);
-  --sidebar-primary: oklch(0.68 0.16 235);
+  --sidebar: oklch(0.99 0.002 250);
+  --sidebar-foreground: oklch(0.22 0.03 255);
+  --sidebar-primary: oklch(0.56 0.17 250);
   --sidebar-primary-foreground: oklch(0.98 0.005 250);
-  --sidebar-accent: oklch(0.25 0.025 250);
-  --sidebar-accent-foreground: oklch(0.97 0.005 250);
-  --sidebar-border: oklch(0.3 0.02 250);
-  --sidebar-ring: oklch(0.68 0.16 235);
+  --sidebar-accent: oklch(0.945 0.005 250);
+  --sidebar-accent-foreground: oklch(0.25 0.03 255);
+  --sidebar-border: oklch(0.9 0.008 250);
+  --sidebar-ring: oklch(0.56 0.17 250);
 
-  --gradient-hero: linear-gradient(120deg, oklch(0.14 0.02 250 / 0.92) 0%, oklch(0.18 0.04 250 / 0.7) 50%, oklch(0.68 0.16 235 / 0.35) 100%);
+  --gradient-hero: linear-gradient(120deg, oklch(0.14 0.02 250 / 0.92) 0%, oklch(0.18 0.04 250 / 0.7) 50%, oklch(0.56 0.17 250 / 0.35) 100%);
   --gradient-primary: linear-gradient(135deg, var(--primary), var(--primary-glow));
-  --gradient-surface: linear-gradient(180deg, oklch(0.21 0.025 250) 0%, oklch(0.18 0.025 250) 100%);
-  --shadow-glow: 0 20px 60px -20px oklch(0.68 0.16 235 / 0.5);
-  --shadow-elegant: 0 10px 40px -10px oklch(0 0 0 / 0.5);
+  --gradient-surface: linear-gradient(180deg, oklch(1 0 0) 0%, oklch(0.965 0.004 250) 100%);
+  --shadow-glow: 0 20px 60px -25px oklch(0.56 0.17 250 / 0.35);
+  --shadow-elegant: 0 12px 40px -18px oklch(0.25 0.04 255 / 0.25);
   --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
   --font-display: 'Space Grotesk', system-ui, sans-serif;
-  --font-body: 'Inter', system-ui, sans-serif;
+  --font-body: 'Space Grotesk', system-ui, sans-serif;
 }
+
 
 @layer base {
   * {

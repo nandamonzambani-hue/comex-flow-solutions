@@ -197,33 +197,50 @@ const categories: Category[] = [
   },
 ];
 
-// ZEC application color blocks
+// ZEC — Segmentos (código de cores do catálogo ZEC)
 const zecBlocks = [
   {
     label: "Hidráulica / Oleodinâmica",
+    desc: "Mangueiras SAE/EN para sistemas oleodinâmicos móveis e industriais.",
     color: "#F4C430",
     fg: "#1a1a1a",
     image: zecOleodinamicaAsset.url,
   },
   {
     label: "Alta Pressão",
+    desc: "Termoplásticas até 4.000 bar para hidrojateamento e lubrificação.",
     color: "#DC2626",
     fg: "#ffffff",
     image: zecAltaPressaoAsset.url,
   },
   {
     label: "Indústria",
+    desc: "Ar, água, vapor, químicos, abrasivos e aplicações alimentícias.",
     color: "#2563EB",
     fg: "#ffffff",
     image: zecIndustriaAsset.url,
   },
   {
     label: "Água / Irrigação / Agro",
+    desc: "Condução de água, irrigação, pulverização e implementos agrícolas.",
     color: "#16A34A",
     fg: "#ffffff",
     image: zecAgroAsset.url,
   },
 ];
+
+// ZEC — Aplicações específicas (linhas técnicas dedicadas)
+const zecApplications: { name: string; detail: string }[] = [
+  { name: "Alimentício", detail: "Mangueiras com materiais compatíveis para alimentos e bebidas." },
+  { name: "Refrigeração", detail: "Linhas técnicas para refrigeração industrial e comercial." },
+  { name: "Gás CNG", detail: "Condução de gás natural veicular em alta pressão." },
+  { name: "Lubrificação", detail: "Óleos e graxas em sistemas de lubrificação centralizada." },
+  { name: "Náutica", detail: "Aplicações navais e portuárias com resistência à corrosão." },
+  { name: "Mineração", detail: "Alta resistência à abrasão e ambientes severos." },
+  { name: "Hidrojateamento", detail: "Ultra alta pressão para limpeza técnica industrial." },
+  { name: "Vapor & Químicos", detail: "Compostos resistentes a temperatura e agentes agressivos." },
+];
+
 
 function ItemCard({ item }: { item: Item }) {
   return (
@@ -401,17 +418,39 @@ export function Products() {
                             <div className="text-sm font-display font-bold leading-tight">
                               {b.label}
                             </div>
+                            <p className="text-[10px] leading-snug opacity-90 mt-1">{b.desc}</p>
                           </div>
                         </div>
                       ))}
                     </div>
                   ) : (
-                    <div className="grid sm:grid-cols-2 gap-4">
-                      {current.items.map((item) => (
-                        <ItemCard key={item.name} item={item} />
-                      ))}
+                    <div className="space-y-6">
+                      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+                        {zecApplications.map((a) => (
+                          <div
+                            key={a.name}
+                            className="rounded-xl border border-border bg-card p-3 hover:border-primary/40 transition-colors"
+                          >
+                            <div className="text-[10px] font-bold uppercase tracking-widest text-primary mb-1">
+                              ZEC
+                            </div>
+                            <div className="font-display text-sm font-bold leading-tight">
+                              {a.name}
+                            </div>
+                            <p className="text-[11px] text-muted-foreground leading-snug mt-1">
+                              {a.detail}
+                            </p>
+                          </div>
+                        ))}
+                      </div>
+                      <div className="grid sm:grid-cols-2 gap-4">
+                        {current.items.map((item) => (
+                          <ItemCard key={item.name} item={item} />
+                        ))}
+                      </div>
                     </div>
                   )}
+
                 </div>
               ) : current.id === "equipamentos" ? (
                 <>
