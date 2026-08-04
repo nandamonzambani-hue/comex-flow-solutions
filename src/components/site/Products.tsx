@@ -399,7 +399,7 @@ export function Products() {
                     A linha <strong className="text-foreground">ZEC</strong> cobre todo o
                     espectro de aplicações em condução de fluidos — de baixa a altíssima
                     pressão, na indústria, no agro e em sistemas hidráulicos móveis. Cada
-                    família é identificada por cor para facilitar a especificação técnica.
+                    família tem catálogo técnico próprio — clique para abrir.
                   </p>
 
                   <div className="inline-flex p-1 rounded-lg border border-border bg-background/60 mb-6">
