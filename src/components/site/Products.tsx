@@ -200,45 +200,68 @@ const categories: Category[] = [
 // ZEC — Segmentos (código de cores do catálogo ZEC)
 const zecBlocks = [
   {
-    label: "Hidráulica / Oleodinâmica",
+    label: "Água",
+    desc: "Condução de água, irrigação e pulverização.",
+    color: "#16A34A",
+    fg: "#ffffff",
+    image: zecAgroAsset.url,
+  },
+  {
+    label: "Alimentício",
+    desc: "Materiais compatíveis para alimentos e bebidas.",
+    color: "#0EA5E9",
+    fg: "#ffffff",
+    image: zecIndustriaAsset.url,
+  },
+  {
+    label: "Fluid Power (Oleodinâmico)",
     desc: "Mangueiras SAE/EN para sistemas oleodinâmicos móveis e industriais.",
     color: "#F4C430",
     fg: "#1a1a1a",
     image: zecOleodinamicaAsset.url,
   },
   {
-    label: "Alta Pressão",
-    desc: "Termoplásticas até 4.000 bar para hidrojateamento e lubrificação.",
-    color: "#DC2626",
+    label: "Gás CNG",
+    desc: "Condução de gás natural veicular em alta pressão.",
+    color: "#7C3AED",
     fg: "#ffffff",
     image: zecAltaPressaoAsset.url,
   },
   {
     label: "Indústria",
-    desc: "Ar, água, vapor, químicos, abrasivos e aplicações alimentícias.",
+    desc: "Ar, vapor, químicos e aplicações abrasivas.",
     color: "#2563EB",
     fg: "#ffffff",
     image: zecIndustriaAsset.url,
   },
   {
-    label: "Água / Irrigação / Agro",
-    desc: "Condução de água, irrigação, pulverização e implementos agrícolas.",
-    color: "#16A34A",
+    label: "Náutico",
+    desc: "Aplicações navais e portuárias com resistência à corrosão.",
+    color: "#0F766E",
     fg: "#ffffff",
     image: zecAgroAsset.url,
+  },
+  {
+    label: "Óleo e Gás",
+    desc: "Linhas para ambientes severos de óleo, gás e offshore.",
+    color: "#1F2937",
+    fg: "#ffffff",
+    image: zecOleodinamicaAsset.url,
+  },
+  {
+    label: "Refrigeração",
+    desc: "Linhas técnicas para refrigeração industrial e comercial.",
+    color: "#DC2626",
+    fg: "#ffffff",
+    image: zecAltaPressaoAsset.url,
   },
 ];
 
 // ZEC — Aplicações específicas (linhas técnicas dedicadas)
 const zecApplications: { name: string; detail: string }[] = [
-  { name: "Alimentício", detail: "Mangueiras com materiais compatíveis para alimentos e bebidas." },
-  { name: "Refrigeração", detail: "Linhas técnicas para refrigeração industrial e comercial." },
-  { name: "Gás CNG", detail: "Condução de gás natural veicular em alta pressão." },
   { name: "Lubrificação", detail: "Óleos e graxas em sistemas de lubrificação centralizada." },
-  { name: "Náutica", detail: "Aplicações navais e portuárias com resistência à corrosão." },
-  { name: "Mineração", detail: "Alta resistência à abrasão e ambientes severos." },
-  { name: "Hidrojateamento", detail: "Ultra alta pressão para limpeza técnica industrial." },
-  { name: "Vapor & Químicos", detail: "Compostos resistentes a temperatura e agentes agressivos." },
+  { name: "Mangueiras Espirais (UHP)", detail: "Ultra alta pressão para hidrojateamento e limpeza técnica." },
+  { name: "Terminais (Fitings)", detail: "Terminais e conexões para montagem e vedação segura." },
 ];
 
 
