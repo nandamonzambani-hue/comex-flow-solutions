@@ -108,7 +108,10 @@ export function Hero() {
                   i !== 0 ? "md:border-l border-white/10" : ""
                 }`}
               >
-                <div className={`w-full h-20 rounded-md ${p.tile} flex items-center justify-center mb-3 px-3 shadow-[0_0_0_1px_rgba(255,255,255,0.15)]`}>
+                <div
+                  className="w-full h-20 rounded-md flex items-center justify-center mb-3 px-3 shadow-[0_0_0_1px_rgba(255,255,255,0.15)]"
+                  style={{ backgroundColor: p.tileBg }}
+                >
                   <img
                     src={p.logo}
                     alt={`Logo ${p.name}`}

@@ -53,7 +53,10 @@ export function Partners() {
               <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-cyan-400/60 opacity-0 group-hover:opacity-100 transition-opacity" />
 
               {/* Tile branco: logo em CORES ORIGINAIS, sem filtro */}
-              <div className={`${p.tile} rounded-md h-24 flex items-center justify-center px-5 mb-5 group-hover:shadow-[0_0_25px_rgba(34,211,238,0.35)] transition-shadow`}>
+              <div
+                className="rounded-md h-24 flex items-center justify-center px-5 mb-5 group-hover:shadow-[0_0_25px_rgba(34,211,238,0.35)] transition-shadow"
+                style={{ backgroundColor: p.tileBg }}
+              >
                 <img
                   src={p.logo}
                   alt={`Logo ${p.name}`}
