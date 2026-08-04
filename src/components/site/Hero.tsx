@@ -115,7 +115,7 @@ export function Hero() {
                   <img
                     src={p.logo}
                     alt={`Logo ${p.name}`}
-                    className={`${p.h} w-auto max-w-full object-contain`}
+                    className={`${p.h} max-w-full object-contain`}
                   />
                 </div>
                 {p.official && (
