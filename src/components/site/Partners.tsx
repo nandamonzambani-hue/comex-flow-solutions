@@ -4,7 +4,7 @@ export function Partners() {
   return (
     <section
       id="parceiros"
-      className="scroll-mt-24 py-20 md:py-28 lg:min-h-screen lg:flex lg:items-center relative overflow-hidden bg-background text-foreground"
+      className="scroll-mt-24 py-16 md:py-20 lg:h-svh lg:py-0 lg:flex lg:items-center relative overflow-hidden bg-background text-foreground"
     >
       {/* Technical background */}
       <div className="absolute inset-0 z-0 pointer-events-none">
@@ -21,14 +21,14 @@ export function Partners() {
       </div>
 
       <div className="relative z-10 w-full mx-auto max-w-7xl px-4 md:px-8">
-        <div className="max-w-3xl mb-12 text-center mx-auto">
-          <div className="inline-flex items-center space-x-3 bg-primary/10 border border-primary/30 px-4 py-1.5 rounded-sm backdrop-blur-md mb-6">
+        <div className="max-w-3xl mb-8 text-center mx-auto">
+          <div className="inline-flex items-center space-x-3 bg-primary/10 border border-primary/30 px-4 py-1.5 rounded-sm backdrop-blur-md mb-4">
             <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
             <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-primary font-display">
               Parceiros
             </span>
           </div>
-          <h2 className="font-display text-4xl sm:text-5xl md:text-6xl font-extrabold leading-[1.05] tracking-tight mb-5">
+          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-[1.05] tracking-tight mb-4">
             <span className="text-foreground">Comex10, parceiro estratégico </span>
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-primary-glow to-accent drop-shadow-[0_0_18px_rgba(56,140,255,0.25)]">
               no Brasil
@@ -40,7 +40,7 @@ export function Partners() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {partnerBrands.map((p) => (
             <a
               key={p.name}
@@ -48,13 +48,13 @@ export function Partners() {
               target="_blank"
               rel="noopener nofollow"
               title={`${p.name} — ${p.country}`}
-              className="group relative flex flex-col bg-card backdrop-blur-xl border border-border hover:border-primary/40 transition-all p-6 overflow-hidden"
+              className="group relative flex flex-col bg-card backdrop-blur-xl border border-border hover:border-primary/40 transition-all p-5 overflow-hidden"
             >
               <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-primary/40 opacity-0 group-hover:opacity-100 transition-opacity" />
 
               {/* Tile branco: logo em CORES ORIGINAIS, sem filtro */}
               <div
-                className="rounded-md h-24 flex items-center justify-center px-5 mb-5 group-hover:shadow-[0_0_25px_rgba(56,140,255,0.25)] transition-shadow"
+                className="rounded-md h-20 flex items-center justify-center px-5 mb-4 group-hover:shadow-[0_0_25px_rgba(56,140,255,0.25)] transition-shadow"
                 style={{ backgroundColor: p.tileBg }}
               >
                 <img
@@ -87,11 +87,11 @@ export function Partners() {
           ))}
         </div>
 
-        <div className="mt-12 text-center max-w-2xl mx-auto">
-          <p className="font-display text-2xl md:text-3xl font-extrabold text-foreground mb-2">
+        <div className="mt-8 text-center max-w-2xl mx-auto">
+          <p className="font-display text-xl md:text-2xl font-extrabold text-foreground mb-1.5">
             Qualidade ao alcance de todos!
           </p>
-          <p className="text-base text-muted-foreground font-light">
+          <p className="text-sm text-muted-foreground font-light">
             O elo estratégico das referências globais no Brasil.{" "}
             <a
               href="#contato"
