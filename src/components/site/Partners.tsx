@@ -20,8 +20,8 @@ export function Partners() {
         <div className="absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-transparent via-cyan-400/30 to-transparent" />
       </div>
 
-      <div className="relative z-10 w-full mx-auto max-w-7xl px-4 md:px-8 lg:pt-20">
-        <div className="max-w-3xl mb-6 text-center mx-auto">
+      <div className="relative z-10 w-full mx-auto max-w-7xl px-4 md:px-8 lg:pt-16 lg:pb-4">
+        <div className="max-w-3xl mb-5 text-center mx-auto">
           <div className="inline-flex items-center space-x-3 bg-primary/10 border border-primary/30 px-4 py-1.5 rounded-sm backdrop-blur-md mb-3">
             <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
             <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-primary font-display">
@@ -87,7 +87,7 @@ export function Partners() {
           ))}
         </div>
 
-        <div className="mt-6 text-center max-w-2xl mx-auto">
+        <div className="mt-5 text-center max-w-2xl mx-auto">
           <p className="font-display text-xl md:text-2xl font-extrabold text-foreground mb-1.5">
             Qualidade ao alcance de todos!
           </p>
