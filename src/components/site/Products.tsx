@@ -197,33 +197,50 @@ const categories: Category[] = [
   },
 ];
 
-// ZEC application color blocks
+// ZEC — Segmentos (código de cores do catálogo ZEC)
 const zecBlocks = [
   {
     label: "Hidráulica / Oleodinâmica",
+    desc: "Mangueiras SAE/EN para sistemas oleodinâmicos móveis e industriais.",
     color: "#F4C430",
     fg: "#1a1a1a",
     image: zecOleodinamicaAsset.url,
   },
   {
     label: "Alta Pressão",
+    desc: "Termoplásticas até 4.000 bar para hidrojateamento e lubrificação.",
     color: "#DC2626",
     fg: "#ffffff",
     image: zecAltaPressaoAsset.url,
   },
   {
     label: "Indústria",
+    desc: "Ar, água, vapor, químicos, abrasivos e aplicações alimentícias.",
     color: "#2563EB",
     fg: "#ffffff",
     image: zecIndustriaAsset.url,
   },
   {
     label: "Água / Irrigação / Agro",
+    desc: "Condução de água, irrigação, pulverização e implementos agrícolas.",
     color: "#16A34A",
     fg: "#ffffff",
     image: zecAgroAsset.url,
   },
 ];
+
+// ZEC — Aplicações específicas (linhas técnicas dedicadas)
+const zecApplications: { name: string; detail: string }[] = [
+  { name: "Alimentício", detail: "Mangueiras com materiais compatíveis para alimentos e bebidas." },
+  { name: "Refrigeração", detail: "Linhas técnicas para refrigeração industrial e comercial." },
+  { name: "Gás CNG", detail: "Condução de gás natural veicular em alta pressão." },
+  { name: "Lubrificação", detail: "Óleos e graxas em sistemas de lubrificação centralizada." },
+  { name: "Náutica", detail: "Aplicações navais e portuárias com resistência à corrosão." },
+  { name: "Mineração", detail: "Alta resistência à abrasão e ambientes severos." },
+  { name: "Hidrojateamento", detail: "Ultra alta pressão para limpeza técnica industrial." },
+  { name: "Vapor & Químicos", detail: "Compostos resistentes a temperatura e agentes agressivos." },
+];
+
 
 function ItemCard({ item }: { item: Item }) {
   return (
