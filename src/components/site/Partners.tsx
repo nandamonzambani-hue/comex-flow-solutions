@@ -20,15 +20,15 @@ export function Partners() {
         <div className="absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-transparent via-cyan-400/30 to-transparent" />
       </div>
 
-      <div className="relative z-10 w-full mx-auto max-w-7xl px-4 md:px-8">
-        <div className="max-w-3xl mb-8 text-center mx-auto">
-          <div className="inline-flex items-center space-x-3 bg-primary/10 border border-primary/30 px-4 py-1.5 rounded-sm backdrop-blur-md mb-4">
+      <div className="relative z-10 w-full mx-auto max-w-7xl px-4 md:px-8 lg:pt-20">
+        <div className="max-w-3xl mb-6 text-center mx-auto">
+          <div className="inline-flex items-center space-x-3 bg-primary/10 border border-primary/30 px-4 py-1.5 rounded-sm backdrop-blur-md mb-3">
             <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
             <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-primary font-display">
               Parceiros
             </span>
           </div>
-          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-[1.05] tracking-tight mb-4">
+          <h2 className="font-display text-3xl sm:text-4xl font-extrabold leading-[1.05] tracking-tight mb-3">
             <span className="text-foreground">Comex10, parceiro estratégico </span>
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-primary-glow to-accent drop-shadow-[0_0_18px_rgba(56,140,255,0.25)]">
               no Brasil
@@ -48,13 +48,13 @@ export function Partners() {
               target="_blank"
               rel="noopener nofollow"
               title={`${p.name} — ${p.country}`}
-              className="group relative flex flex-col bg-card backdrop-blur-xl border border-border hover:border-primary/40 transition-all p-5 overflow-hidden"
+              className="group relative flex flex-col bg-card backdrop-blur-xl border border-border hover:border-primary/40 transition-all p-4 overflow-hidden"
             >
               <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-primary/40 opacity-0 group-hover:opacity-100 transition-opacity" />
 
               {/* Tile branco: logo em CORES ORIGINAIS, sem filtro */}
               <div
-                className="rounded-md h-20 flex items-center justify-center px-5 mb-4 group-hover:shadow-[0_0_25px_rgba(56,140,255,0.25)] transition-shadow"
+                className="rounded-md h-16 flex items-center justify-center px-4 mb-3 group-hover:shadow-[0_0_25px_rgba(56,140,255,0.25)] transition-shadow"
                 style={{ backgroundColor: p.tileBg }}
               >
                 <img
@@ -72,7 +72,7 @@ export function Partners() {
                     {p.country}
                   </span>
                 </div>
-                <h3 className="font-display text-lg font-bold text-foreground mb-2">
+                <h3 className="font-display text-base font-bold text-foreground mb-1.5">
                   {p.name}
                 </h3>
                 {p.official && (
@@ -82,12 +82,12 @@ export function Partners() {
                 )}
                 <p className="text-xs text-muted-foreground leading-relaxed">{p.tagline}</p>
               </div>
-              <div className="mt-4 h-0.5 w-10 bg-primary/20 transition-all group-hover:w-20 group-hover:shadow-[0_0_10px_rgba(56,140,255,0.25)]" />
+              <div className="mt-3 h-0.5 w-10 bg-primary/20 transition-all group-hover:w-20 group-hover:shadow-[0_0_10px_rgba(56,140,255,0.25)]" />
             </a>
           ))}
         </div>
 
-        <div className="mt-8 text-center max-w-2xl mx-auto">
+        <div className="mt-6 text-center max-w-2xl mx-auto">
           <p className="font-display text-xl md:text-2xl font-extrabold text-foreground mb-1.5">
             Qualidade ao alcance de todos!
           </p>
