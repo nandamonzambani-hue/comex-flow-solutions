@@ -90,7 +90,7 @@ export function Hero() {
           </div>
         </div>
 
-        {/* Partners strip */}
+        {/* Partners strip — logos em cores originais sobre tile branco */}
         <div className="mt-12 md:mt-16 relative z-10">
           <div className="bg-[#0A1526]/90 backdrop-blur-xl border border-white/10 rounded-sm grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6">
             {partners.map((p, i) => (
@@ -104,13 +104,18 @@ export function Hero() {
                   i !== 0 ? "md:border-l border-white/10" : ""
                 }`}
               >
-                <div className="h-20 flex items-center justify-center mb-3">
+                <div className="w-full h-20 rounded-md bg-white flex items-center justify-center mb-3 px-3 shadow-[0_0_0_1px_rgba(255,255,255,0.15)]">
                   <img
                     src={p.logo}
                     alt={`Logo ${p.name}`}
-                    className={`${p.h} w-auto object-contain opacity-95 group-hover:opacity-100 transition-opacity ${p.filter}`}
+                    className={`${p.h} w-auto max-w-full object-contain`}
                   />
                 </div>
+                {p.official && (
+                  <span className="mb-2 text-[9px] font-mono uppercase tracking-[0.18em] text-cyan-300 border border-cyan-400/40 bg-cyan-400/10 px-2 py-0.5 rounded-sm">
+                    Distribuidor oficial
+                  </span>
+                )}
                 <p className="text-xs text-slate-300 leading-snug max-w-[190px]">
                   {p.tagline}
                 </p>
@@ -118,6 +123,7 @@ export function Hero() {
             ))}
           </div>
         </div>
+
       </div>
     </section>
   );
