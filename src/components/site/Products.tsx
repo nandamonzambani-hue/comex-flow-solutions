@@ -204,72 +204,71 @@ const categories: Category[] = [
   },
 ];
 
-// ZEC — Segmentos (código de cores do catálogo ZEC)
+const ZEC_CATALOG = "/catalogos/ZEC_Catalogo_America_Latina.pdf";
+
+// ZEC — Segmentos (capas oficiais dos catálogos ZEC)
 const zecBlocks = [
-  {
-    label: "Água",
-    desc: "Condução de água, irrigação e pulverização.",
-    color: "#16A34A",
-    fg: "#ffffff",
-    image: zecAgroAsset.url,
-  },
-  {
-    label: "Alimentício",
-    desc: "Materiais compatíveis para alimentos e bebidas.",
-    color: "#0EA5E9",
-    fg: "#ffffff",
-    image: zecIndustriaAsset.url,
-  },
+  { label: "Água", desc: "Condução de água, irrigação e pulverização.", image: zecAgua.url },
+  { label: "Alimentício", desc: "Materiais compatíveis para alimentos e bebidas.", image: zecAlimenticio.url },
   {
     label: "Fluid Power (Oleodinâmico)",
     desc: "Mangueiras SAE/EN para sistemas oleodinâmicos móveis e industriais.",
-    color: "#F4C430",
-    fg: "#1a1a1a",
-    image: zecOleodinamicaAsset.url,
+    image: zecFluidPower.url,
   },
-  {
-    label: "Gás CNG",
-    desc: "Condução de gás natural veicular em alta pressão.",
-    color: "#7C3AED",
-    fg: "#ffffff",
-    image: zecAltaPressaoAsset.url,
-  },
-  {
-    label: "Indústria",
-    desc: "Ar, vapor, químicos e aplicações abrasivas.",
-    color: "#2563EB",
-    fg: "#ffffff",
-    image: zecIndustriaAsset.url,
-  },
-  {
-    label: "Náutico",
-    desc: "Aplicações navais e portuárias com resistência à corrosão.",
-    color: "#0F766E",
-    fg: "#ffffff",
-    image: zecAgroAsset.url,
-  },
-  {
-    label: "Óleo e Gás",
-    desc: "Linhas para ambientes severos de óleo, gás e offshore.",
-    color: "#1F2937",
-    fg: "#ffffff",
-    image: zecOleodinamicaAsset.url,
-  },
-  {
-    label: "Refrigeração",
-    desc: "Linhas técnicas para refrigeração industrial e comercial.",
-    color: "#DC2626",
-    fg: "#ffffff",
-    image: zecAltaPressaoAsset.url,
-  },
+  { label: "Gás CNG", desc: "Condução de gás natural veicular em alta pressão.", image: zecCng.url },
+  { label: "Indústria", desc: "Ar, vapor, químicos e aplicações abrasivas.", image: zecIndustriaImg.url },
+  { label: "Náutico", desc: "Aplicações navais e portuárias com resistência à corrosão.", image: zecNautico.url },
+  { label: "Óleo e Gás", desc: "Linhas para ambientes severos de óleo, gás e offshore.", image: zecOleoGas.url },
+  { label: "Refrigeração", desc: "Linhas técnicas para refrigeração industrial e comercial.", image: zecRefrigeracao.url },
 ];
 
 // ZEC — Aplicações específicas (linhas técnicas dedicadas)
-const zecApplications: { name: string; detail: string }[] = [
-  { name: "Lubrificação", detail: "Óleos e graxas em sistemas de lubrificação centralizada." },
-  { name: "Mangueiras Espirais (UHP)", detail: "Ultra alta pressão para hidrojateamento e limpeza técnica." },
-  { name: "Terminais (Fitings)", detail: "Terminais e conexões para montagem e vedação segura." },
+const zecApplications = [
+  {
+    name: "Lubrificação",
+    detail: "Óleos e graxas em sistemas de lubrificação centralizada.",
+    image: zecLubrificacao.url,
+  },
+  {
+    name: "Mangueiras Espirais (UHP)",
+    detail: "Ultra alta pressão para hidrojateamento e limpeza técnica.",
+    image: zecSpiral.url,
+  },
+  {
+    name: "Terminais (Fitings)",
+    detail: "Terminais e conexões para montagem e vedação segura.",
+    image: zecTerminais.url,
+  },
 ];
+
+function ZecCard({ label, desc, image }: { label: string; desc: string; image: string }) {
+  return (
+    <a
+      href={ZEC_CATALOG}
+      target="_blank"
+      rel="noopener"
+      className="group rounded-lg border border-border bg-card overflow-hidden hover:border-primary/50 transition-colors flex flex-col"
+    >
+      <div className="aspect-[3/4] overflow-hidden bg-background">
+        <img
+          src={image}
+          alt={`ZEC ${label} — catálogo`}
+          loading="lazy"
+          className="w-full h-full object-contain group-hover:scale-[1.04] transition-transform duration-500"
+        />
+      </div>
+      <div className="p-2.5">
+        <div className="text-[9px] font-bold uppercase tracking-widest text-primary">ZEC</div>
+        <div className="font-display text-xs font-bold leading-tight">{label}</div>
+        <p className="text-[10px] text-muted-foreground leading-snug mt-0.5">{desc}</p>
+        <span className="mt-1.5 inline-flex items-center gap-1 text-[10px] font-semibold text-primary">
+          <Download size={10} /> Catálogo ZEC
+        </span>
+      </div>
+    </a>
+  );
+}
+
 
 
 function ItemCard({ item }: { item: Item }) {
