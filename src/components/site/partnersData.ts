@@ -2,8 +2,9 @@ import uniflexColor from "@/assets/logos/uniflex-color.png.asset.json";
 import transfluidOficial from "@/assets/logos/transfluid-oficial.svg.asset.json";
 import logoZec from "@/assets/logos/zec.png";
 import logoMarzocchi from "@/assets/logos/marzocchi.png";
-import logoHeldAsset from "@/assets/logos/held-trim.png.asset.json";
-import logoNextAsset from "@/assets/logos/next-powertech-trim.png.asset.json";
+import logoHeldAsset from "@/assets/logos/held-color.png.asset.json";
+import logoNextAsset from "@/assets/logos/next-powertech-color.png.asset.json";
+
 
 export type PartnerBrand = {
   name: string;
