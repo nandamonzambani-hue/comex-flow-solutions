@@ -6,7 +6,7 @@ const partners = partnerBrands;
 
 export function Hero() {
   return (
-    <section id="top" className="relative overflow-hidden bg-[#050B18] text-white">
+    <section id="top" className="relative overflow-hidden bg-[#050B18] text-white min-h-svh lg:h-svh flex flex-col">
       {/* Full-bleed background image */}
       <div className="absolute inset-0 z-0">
         <img
@@ -25,8 +25,8 @@ export function Hero() {
         <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-cyan-500/15 blur-[180px] rounded-full" />
       </div>
 
-      <div className="relative z-10 mx-auto max-w-[1400px] px-4 md:px-8 pt-32 md:pt-36 pb-10">
-        <div className="grid lg:grid-cols-2 gap-8 items-center min-h-[calc(100svh-220px)]">
+      <div className="relative z-10 w-full flex-1 min-h-0 flex flex-col mx-auto max-w-[1400px] px-4 md:px-8 pt-28 md:pt-32 pb-6 md:pb-8">
+        <div className="grid lg:grid-cols-2 gap-8 items-center flex-1 min-h-0">
           {/* LEFT — text over image */}
           <div className="flex flex-col justify-center">
             <div className="inline-flex items-center gap-3 bg-blue-900/50 border border-blue-400/50 px-5 py-2 rounded-full backdrop-blur-md w-fit mb-8">
@@ -51,11 +51,11 @@ export function Hero() {
           </div>
 
           {/* RIGHT — hexagon seal */}
-          <div className="relative hidden lg:flex items-end justify-end min-h-[500px]">
+          <div className="relative hidden lg:flex items-center justify-end">
             <div className="relative">
               <div className="absolute -inset-6 bg-cyan-400/25 blur-2xl rounded-full" />
               <div
-                className="relative w-48 h-52 md:w-56 md:h-60 flex items-center justify-center"
+                className="relative w-44 h-48 md:w-52 md:h-56 flex items-center justify-center"
                 style={{
                   clipPath:
                     "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)",
@@ -89,7 +89,7 @@ export function Hero() {
           </div>
         </div>
 
-        <div className="mt-12 md:mt-16 relative z-10">
+        <div className="mt-8 md:mt-10 shrink-0 relative z-10">
           <div className="bg-background/95 backdrop-blur-xl border border-border rounded-sm grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6">
             {partners.map((p, i) => (
               <a
@@ -98,11 +98,11 @@ export function Hero() {
                 target="_blank"
                 rel="noopener nofollow"
                 title={p.name}
-                className={`group flex flex-col items-center justify-start text-center px-4 py-6 hover:bg-muted transition-colors ${
+                className={`group flex flex-col items-center justify-start text-center px-3 py-4 hover:bg-muted transition-colors ${
                   i !== 0 ? "md:border-l border-border" : ""
                 }`}
               >
-                <div className="w-full h-20 rounded-md flex items-center justify-center mb-3 px-3">
+                <div className="w-full h-14 rounded-md flex items-center justify-center mb-2 px-3">
                   <img
                     src={p.logo}
                     alt={`Logo ${p.name}`}
@@ -110,11 +110,11 @@ export function Hero() {
                   />
                 </div>
                 {p.official && (
-                  <span className="mb-2 text-[9px] font-display font-bold uppercase tracking-[0.18em] text-primary border border-primary/30 bg-primary/10 px-2 py-0.5 rounded-sm">
+                  <span className="mb-1.5 text-[9px] font-display font-bold uppercase tracking-[0.18em] text-primary border border-primary/30 bg-primary/10 px-2 py-0.5 rounded-sm">
                     Distribuidor oficial
                   </span>
                 )}
-                <p className="text-xs text-muted-foreground leading-snug max-w-[190px]">
+                <p className="text-[11px] text-muted-foreground leading-snug max-w-[190px]">
                   {p.tagline}
                 </p>
               </a>
