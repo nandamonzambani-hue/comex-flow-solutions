@@ -11,10 +11,17 @@ import imgZec1 from "@/assets/produtos/zec-mangueira-1.png";
 import imgZec2 from "@/assets/produtos/zec-mangueira-2.png";
 import imgZec3 from "@/assets/produtos/zec-mangueira-3.png";
 import imgZecJpg from "@/assets/produtos/zec-mangueira.jpg";
-import zecOleodinamicaAsset from "@/assets/produtos/zec-oleodinamica.png.asset.json";
-import zecAltaPressaoAsset from "@/assets/produtos/zec-alta-pressao.png.asset.json";
-import zecIndustriaAsset from "@/assets/produtos/zec-industria.png.asset.json";
-import zecAgroAsset from "@/assets/produtos/zec-agro.png.asset.json";
+import zecAgua from "@/assets/zec/agua.jpg.asset.json";
+import zecAlimenticio from "@/assets/zec/alimenticio.jpg.asset.json";
+import zecFluidPower from "@/assets/zec/fluidpower.jpg.asset.json";
+import zecCng from "@/assets/zec/cng.jpg.asset.json";
+import zecIndustriaImg from "@/assets/zec/industria.jpg.asset.json";
+import zecNautico from "@/assets/zec/nautico.jpg.asset.json";
+import zecOleoGas from "@/assets/zec/oleogas.jpg.asset.json";
+import zecRefrigeracao from "@/assets/zec/refrigeracao.jpg.asset.json";
+import zecLubrificacao from "@/assets/zec/lubrificacao.jpg.asset.json";
+import zecSpiral from "@/assets/zec/spiral.jpg.asset.json";
+import zecTerminais from "@/assets/zec/terminais.jpg.asset.json";
 import imgNext from "@/assets/produtos/next-mangueira.png";
 import imgHeldBancada from "@/assets/produtos/held-bancada.png";
 import imgLacre from "@/assets/produtos/insumos-lacre.png";
@@ -197,72 +204,71 @@ const categories: Category[] = [
   },
 ];
 
-// ZEC — Segmentos (código de cores do catálogo ZEC)
+const ZEC_CATALOG = "/catalogos/ZEC_Catalogo_America_Latina.pdf";
+
+// ZEC — Segmentos (capas oficiais dos catálogos ZEC)
 const zecBlocks = [
-  {
-    label: "Água",
-    desc: "Condução de água, irrigação e pulverização.",
-    color: "#16A34A",
-    fg: "#ffffff",
-    image: zecAgroAsset.url,
-  },
-  {
-    label: "Alimentício",
-    desc: "Materiais compatíveis para alimentos e bebidas.",
-    color: "#0EA5E9",
-    fg: "#ffffff",
-    image: zecIndustriaAsset.url,
-  },
+  { label: "Água", desc: "Condução de água, irrigação e pulverização.", image: zecAgua.url },
+  { label: "Alimentício", desc: "Materiais compatíveis para alimentos e bebidas.", image: zecAlimenticio.url },
   {
     label: "Fluid Power (Oleodinâmico)",
     desc: "Mangueiras SAE/EN para sistemas oleodinâmicos móveis e industriais.",
-    color: "#F4C430",
-    fg: "#1a1a1a",
-    image: zecOleodinamicaAsset.url,
+    image: zecFluidPower.url,
   },
-  {
-    label: "Gás CNG",
-    desc: "Condução de gás natural veicular em alta pressão.",
-    color: "#7C3AED",
-    fg: "#ffffff",
-    image: zecAltaPressaoAsset.url,
-  },
-  {
-    label: "Indústria",
-    desc: "Ar, vapor, químicos e aplicações abrasivas.",
-    color: "#2563EB",
-    fg: "#ffffff",
-    image: zecIndustriaAsset.url,
-  },
-  {
-    label: "Náutico",
-    desc: "Aplicações navais e portuárias com resistência à corrosão.",
-    color: "#0F766E",
-    fg: "#ffffff",
-    image: zecAgroAsset.url,
-  },
-  {
-    label: "Óleo e Gás",
-    desc: "Linhas para ambientes severos de óleo, gás e offshore.",
-    color: "#1F2937",
-    fg: "#ffffff",
-    image: zecOleodinamicaAsset.url,
-  },
-  {
-    label: "Refrigeração",
-    desc: "Linhas técnicas para refrigeração industrial e comercial.",
-    color: "#DC2626",
-    fg: "#ffffff",
-    image: zecAltaPressaoAsset.url,
-  },
+  { label: "Gás CNG", desc: "Condução de gás natural veicular em alta pressão.", image: zecCng.url },
+  { label: "Indústria", desc: "Ar, vapor, químicos e aplicações abrasivas.", image: zecIndustriaImg.url },
+  { label: "Náutico", desc: "Aplicações navais e portuárias com resistência à corrosão.", image: zecNautico.url },
+  { label: "Óleo e Gás", desc: "Linhas para ambientes severos de óleo, gás e offshore.", image: zecOleoGas.url },
+  { label: "Refrigeração", desc: "Linhas técnicas para refrigeração industrial e comercial.", image: zecRefrigeracao.url },
 ];
 
 // ZEC — Aplicações específicas (linhas técnicas dedicadas)
-const zecApplications: { name: string; detail: string }[] = [
-  { name: "Lubrificação", detail: "Óleos e graxas em sistemas de lubrificação centralizada." },
-  { name: "Mangueiras Espirais (UHP)", detail: "Ultra alta pressão para hidrojateamento e limpeza técnica." },
-  { name: "Terminais (Fitings)", detail: "Terminais e conexões para montagem e vedação segura." },
+const zecApplications = [
+  {
+    name: "Lubrificação",
+    detail: "Óleos e graxas em sistemas de lubrificação centralizada.",
+    image: zecLubrificacao.url,
+  },
+  {
+    name: "Mangueiras Espirais (UHP)",
+    detail: "Ultra alta pressão para hidrojateamento e limpeza técnica.",
+    image: zecSpiral.url,
+  },
+  {
+    name: "Terminais (Fitings)",
+    detail: "Terminais e conexões para montagem e vedação segura.",
+    image: zecTerminais.url,
+  },
 ];
+
+function ZecCard({ label, desc, image }: { label: string; desc: string; image: string }) {
+  return (
+    <a
+      href={ZEC_CATALOG}
+      target="_blank"
+      rel="noopener"
+      className="group rounded-lg border border-border bg-card overflow-hidden hover:border-primary/50 transition-colors flex flex-col"
+    >
+      <div className="aspect-[3/4] overflow-hidden bg-background">
+        <img
+          src={image}
+          alt={`ZEC ${label} — catálogo`}
+          loading="lazy"
+          className="w-full h-full object-contain group-hover:scale-[1.04] transition-transform duration-500"
+        />
+      </div>
+      <div className="p-2.5">
+        <div className="text-[9px] font-bold uppercase tracking-widest text-primary">ZEC</div>
+        <div className="font-display text-xs font-bold leading-tight">{label}</div>
+        <p className="text-[10px] text-muted-foreground leading-snug mt-0.5">{desc}</p>
+        <span className="mt-1.5 inline-flex items-center gap-1 text-[10px] font-semibold text-primary">
+          <Download size={10} /> Catálogo ZEC
+        </span>
+      </div>
+    </a>
+  );
+}
+
 
 
 function ItemCard({ item }: { item: Item }) {
@@ -393,7 +399,7 @@ export function Products() {
                     A linha <strong className="text-foreground">ZEC</strong> cobre todo o
                     espectro de aplicações em condução de fluidos — de baixa a altíssima
                     pressão, na indústria, no agro e em sistemas hidráulicos móveis. Cada
-                    família é identificada por cor para facilitar a especificação técnica.
+                    família tem catálogo técnico próprio — clique para abrir.
                   </p>
 
                   <div className="inline-flex p-1 rounded-lg border border-border bg-background/60 mb-6">
@@ -418,54 +424,19 @@ export function Products() {
                   </div>
 
                   {zecTab === "segmentos" ? (
-                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+                    <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-4 gap-3">
                       {zecBlocks.map((b) => (
-                        <div
-                          key={b.label}
-                          className="relative aspect-square rounded-xl overflow-hidden border border-border group"
-                        >
-                          <img
-                            src={b.image}
-                            alt={`ZEC ${b.label}`}
-                            loading="lazy"
-                            className="absolute inset-0 w-full h-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
-                          />
-                          <div
-                            className="absolute inset-0 mix-blend-multiply opacity-80"
-                            style={{ backgroundColor: b.color }}
-                          />
-                          <div className="absolute inset-x-0 bottom-0 p-3" style={{ color: b.fg }}>
-                            <div className="text-[10px] font-bold uppercase tracking-widest opacity-80">
-                              ZEC
-                            </div>
-                            <div className="text-sm font-display font-bold leading-tight">
-                              {b.label}
-                            </div>
-                            <p className="text-[10px] leading-snug opacity-90 mt-1">{b.desc}</p>
-                          </div>
-                        </div>
+                        <ZecCard key={b.label} label={b.label} desc={b.desc} image={b.image} />
                       ))}
                     </div>
                   ) : (
                     <div className="space-y-6">
-                      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+                      <div className="grid grid-cols-3 sm:grid-cols-4 gap-3">
                         {zecApplications.map((a) => (
-                          <div
-                            key={a.name}
-                            className="rounded-xl border border-border bg-card p-3 hover:border-primary/40 transition-colors"
-                          >
-                            <div className="text-[10px] font-bold uppercase tracking-widest text-primary mb-1">
-                              ZEC
-                            </div>
-                            <div className="font-display text-sm font-bold leading-tight">
-                              {a.name}
-                            </div>
-                            <p className="text-[11px] text-muted-foreground leading-snug mt-1">
-                              {a.detail}
-                            </p>
-                          </div>
+                          <ZecCard key={a.name} label={a.name} desc={a.detail} image={a.image} />
                         ))}
                       </div>
+
                       <div className="grid sm:grid-cols-2 gap-4">
                         {current.items.map((item) => (
                           <ItemCard key={item.name} item={item} />
