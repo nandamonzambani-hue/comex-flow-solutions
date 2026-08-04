@@ -154,9 +154,10 @@ const categories: Category[] = [
   {
     id: "testes",
     icon: Activity,
-    title: "Testes",
+    title: "Impulso Teste",
     brands: "Uniflex • Held",
-    desc: "Equipamentos de teste para validação, segurança operacional e controle de qualidade em mangueiras e sistemas hidráulicos.",
+    desc: "Equipamentos de impulso teste para validação, segurança operacional e controle de qualidade em mangueiras e sistemas hidráulicos.",
+
     items: [
       {
         name: "Uniflex — Bancada de Testes",
