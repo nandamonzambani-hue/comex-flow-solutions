@@ -29,31 +29,31 @@ export function Hero() {
         <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-cyan-500/15 blur-[180px] rounded-full" />
       </div>
 
-      <div className="relative z-10 w-full flex-1 min-h-0 flex flex-col mx-auto max-w-[1400px] px-4 md:px-8 pt-24 sm:pt-28 lg:pt-24 xl:pt-28 pb-5 md:pb-6">
-        <div className="grid lg:grid-cols-[1.15fr_0.85fr] gap-6 items-center flex-1 min-h-0">
+      <div className="relative z-10 mx-auto grid w-full max-w-[1400px] flex-1 grid-rows-[auto_auto] content-between gap-4 px-4 pb-4 pt-24 sm:px-6 sm:pb-5 sm:pt-28 md:px-8 lg:min-h-0 lg:grid-rows-[minmax(0,1fr)_auto] lg:gap-3 lg:pb-4 lg:pt-[5.75rem] xl:pt-24">
+        <div className="grid min-h-0 items-center gap-4 lg:grid-cols-[1.15fr_0.85fr]">
           {/* LEFT — text over image */}
-          <div className="flex flex-col justify-center">
-            <div className="inline-flex items-center gap-2.5 bg-blue-900/50 border border-blue-400/50 px-4 py-1.5 rounded-full backdrop-blur-md w-fit mb-4 lg:mb-5">
+          <div className="flex min-h-0 flex-col justify-center">
+            <div className="mb-3 inline-flex w-fit items-center gap-2.5 rounded-full border border-blue-400/50 bg-blue-900/50 px-4 py-1.5 backdrop-blur-md lg:mb-4">
               <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
               <span className="text-[9px] sm:text-[10px] uppercase tracking-[0.24em] font-bold text-white font-display">
                 Especialistas em cadeia de fluidos
               </span>
             </div>
 
-            <h1 className="font-display font-extrabold leading-[1.03] tracking-tight text-white text-[2rem] sm:text-4xl md:text-5xl lg:text-[3.25rem] xl:text-[4rem]">
+            <h1 className="font-display text-[2rem] font-extrabold leading-[1.03] tracking-tight text-white sm:text-4xl md:text-5xl lg:text-[clamp(2.75rem,4.8vw,3.75rem)] xl:text-[4rem]">
               Sua operação
               <br />
               não pode parar.
             </h1>
 
-            <h2 className="mt-3 lg:mt-4 font-display font-bold leading-[1.15] tracking-tight text-lg sm:text-2xl md:text-3xl lg:text-[1.75rem] xl:text-[2.125rem]">
+            <h2 className="mt-3 font-display text-lg font-bold leading-[1.15] tracking-tight sm:text-2xl md:text-3xl lg:text-[clamp(1.35rem,2.4vw,1.85rem)] xl:text-[2.125rem]">
               <span className="text-white">
                 A <span className="text-blue-400">Comex10</span> mantém sua cadeia de fluidos{" "}
               </span>
               <span className="text-blue-400">em movimento.</span>
             </h2>
 
-            <div className="mt-6 flex flex-wrap gap-3">
+            <div className="mt-4 flex flex-wrap gap-3 lg:mt-5">
               <a
                 href="#produtos"
                 className="inline-flex items-center justify-center rounded-full bg-primary px-6 py-3 text-sm font-display font-bold text-primary-foreground shadow-[0_0_25px_rgba(56,140,255,0.35)] transition-transform hover:scale-[1.03]"
@@ -115,7 +115,7 @@ export function Hero() {
         </div>
 
         {/* Partner logo grid */}
-        <div className="mt-5 lg:mt-4 shrink-0 relative z-10">
+        <div className="relative z-10 shrink-0">
           <div className="bg-background/95 backdrop-blur-xl border border-border rounded-sm grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 overflow-hidden">
             {partners.map((p, i) => (
               <a
@@ -124,7 +124,7 @@ export function Hero() {
                 target="_blank"
                 rel="noopener nofollow"
                 title={p.name}
-                className={`group flex flex-col items-center justify-start text-center px-2.5 py-3 lg:py-3.5 hover:bg-muted transition-colors border-border ${
+                className={`group flex min-w-0 flex-col items-center justify-center px-2 py-2.5 text-center transition-colors hover:bg-muted lg:min-h-[5.75rem] lg:py-2 border-border ${
                   i % 2 === 1 ? "border-l sm:border-l-0" : ""
                 } ${i >= 2 ? "border-t sm:border-t-0" : ""} ${
                   i % 3 !== 0 ? "sm:border-l" : ""
@@ -132,7 +132,7 @@ export function Hero() {
                   i !== 0 ? "lg:border-l" : "lg:border-l-0"
                 }`}
               >
-                <div className="w-full h-9 sm:h-10 lg:h-11 flex items-center justify-center mb-1.5 px-1">
+                <div className="mb-1.5 flex h-8 w-full items-center justify-center px-1 sm:h-9 lg:h-10">
                   <img
                     src={p.logo}
                     alt={`Logo ${p.name}`}
@@ -146,9 +146,6 @@ export function Hero() {
                     Distribuidor oficial
                   </span>
                 )}
-                <p className="hidden md:block text-[10px] leading-snug text-muted-foreground max-w-[180px]">
-                  {p.tagline}
-                </p>
               </a>
             ))}
           </div>
