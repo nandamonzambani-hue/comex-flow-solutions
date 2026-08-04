@@ -1,5 +1,5 @@
 import type React from "react";
-import treinamentoAsset from "@/assets/treinamento-sala.png.asset.json";
+import treinamentoAsset from "@/assets/treinamento-gates.jpg.asset.json";
 const treinamentoImg = treinamentoAsset.url;
 import { GraduationCap, Building2, Calendar, ArrowRight, CheckCircle2 } from "lucide-react";
 
@@ -64,7 +64,7 @@ export function Trainings() {
   return (
     <section
       id="treinamentos"
-      className="scroll-mt-24 py-20 md:py-28 relative overflow-hidden bg-[#020617] text-white"
+      className="scroll-mt-24 py-20 md:py-28 lg:min-h-screen lg:flex lg:items-center relative overflow-hidden bg-[#020617] text-white"
     >
       {/* Technical background */}
       <div className="absolute inset-0 z-0 pointer-events-none">
@@ -80,7 +80,7 @@ export function Trainings() {
         <div className="absolute bottom-0 right-0 w-[420px] h-[420px] bg-cyan-500/10 blur-[140px] rounded-full" />
       </div>
 
-      <div className="relative z-10 mx-auto max-w-7xl px-4 md:px-8">
+      <div className="relative z-10 w-full mx-auto max-w-7xl px-4 md:px-8">
         {/* Header */}
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center mb-16">
           {/* Image with neon frame */}
