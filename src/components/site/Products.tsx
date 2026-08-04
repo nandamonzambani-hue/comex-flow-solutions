@@ -275,7 +275,9 @@ function ItemCard({ item }: { item: Item }) {
 
 export function Products() {
   const [active, setActive] = useState(categories[0].id);
+  const [zecTab, setZecTab] = useState<"segmentos" | "aplicacoes">("segmentos");
   const current = categories.find((c) => c.id === active)!;
+
 
   return (
     <section id="produtos" className="scroll-mt-24 py-16 md:py-28">
