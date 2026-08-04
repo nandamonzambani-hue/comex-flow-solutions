@@ -1,37 +1,10 @@
-import logoUniflexAsset from "@/assets/logos/uniflex-white.png.asset.json";
-import logoTransfluidAsset from "@/assets/logos/transfluid.png.asset.json";
-import logoZec from "@/assets/logos/zec.png";
-import logoMarzocchi from "@/assets/logos/marzocchi.png";
-import logoHeldAsset from "@/assets/logos/held.png.asset.json";
-import logoNextAsset from "@/assets/logos/next-powertech.png.asset.json";
-
-type Partner = {
-  name: string;
-  country: string;
-  code: string;
-  tagline: string;
-  logo: string;
-  href: string;
-  maxH?: string;
-  filter?: string;
-};
-
-const partners: Partner[] = [
-  // Uniflex processado: branco com fundo transparente.
-  { name: "Uniflex", country: "Alemanha", code: "DE", tagline: "Líder mundial em máquinas para crimpagem", logo: logoUniflexAsset.url, href: "https://www.uniflex.de/", maxH: "max-h-16", filter: "" },
-  { name: "ZEC", country: "Itália", code: "IT", tagline: "Excelência em conexões — The Original. Better. Direct.", logo: logoZec, href: "https://zecspa.com/", maxH: "max-h-14", filter: "brightness-0 invert" },
-  { name: "Next Powertech", country: "Itália", code: "IT", tagline: "Sistemas hidráulicos avançados", logo: logoNextAsset.url, href: "https://www.powertechhoses.com/our-products", maxH: "max-h-24", filter: "brightness-0 invert" },
-  { name: "Marzocchi Pompe", country: "Itália", code: "IT", tagline: "Bombas e motores de alta performance", logo: logoMarzocchi, href: "https://www.marzocchipompe.com/en/", maxH: "max-h-14", filter: "brightness-0 invert" },
-  // Aumentar para o "T" do logo Transfluid ficar legível.
-  { name: "Transfluid", country: "Alemanha", code: "DE", tagline: "Soluções completas para mangueiras e conexões", logo: logoTransfluidAsset.url, href: "https://www.transfluid.de/", maxH: "max-h-20", filter: "brightness-0 invert" },
-  { name: "Gebr. Held", country: "Alemanha", code: "DE", tagline: "Ferramentas hidráulicas para fundição e precisão", logo: logoHeldAsset.url, href: "https://held-test-stands.de/downloads.htm", maxH: "max-h-24", filter: "brightness-0 invert" },
-];
+import { partnerBrands } from "./partnersData";
 
 export function Partners() {
   return (
     <section
       id="parceiros"
-      className="scroll-mt-24 py-20 md:py-28 relative overflow-hidden bg-[#020617] text-white"
+      className="scroll-mt-24 py-20 md:py-28 lg:min-h-screen lg:flex lg:items-center relative overflow-hidden bg-[#020617] text-white"
     >
       {/* Technical background */}
       <div className="absolute inset-0 z-0 pointer-events-none">
@@ -47,8 +20,8 @@ export function Partners() {
         <div className="absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-transparent via-cyan-400/30 to-transparent" />
       </div>
 
-      <div className="relative z-10 mx-auto max-w-7xl px-4 md:px-8">
-        <div className="max-w-3xl mb-14 text-center mx-auto">
+      <div className="relative z-10 w-full mx-auto max-w-7xl px-4 md:px-8">
+        <div className="max-w-3xl mb-12 text-center mx-auto">
           <div className="inline-flex items-center space-x-3 bg-blue-900/30 border border-blue-500/40 px-4 py-1.5 rounded-sm backdrop-blur-md mb-6">
             <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
             <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-cyan-300 font-mono">
@@ -62,11 +35,13 @@ export function Partners() {
             </span>
             <span className="text-slate-100"> das marcas globais.</span>
           </h2>
+          <p className="text-sm md:text-base text-slate-400 font-light">
+            Distribuidor oficial e autorizado no Brasil das marcas líderes em cadeia de fluidos.
+          </p>
         </div>
 
-
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {partners.map((p) => (
+          {partnerBrands.map((p) => (
             <a
               key={p.name}
               href={p.href}
@@ -77,11 +52,12 @@ export function Partners() {
             >
               <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-cyan-400/60 opacity-0 group-hover:opacity-100 transition-opacity" />
 
-              <div className="bg-[#0A1526] h-24 flex items-center justify-center mb-5 group-hover:shadow-[0_0_25px_rgba(34,211,238,0.35)] transition-shadow">
+              {/* Tile branco: logo em CORES ORIGINAIS, sem filtro */}
+              <div className="bg-white rounded-md h-24 flex items-center justify-center px-5 mb-5 group-hover:shadow-[0_0_25px_rgba(34,211,238,0.35)] transition-shadow">
                 <img
                   src={p.logo}
                   alt={`Logo ${p.name}`}
-                  className={`${p.maxH ?? "max-h-14"} w-auto object-contain ${p.filter ?? ""}`}
+                  className={`${p.h} w-auto max-w-full object-contain`}
                 />
               </div>
               <div>
@@ -93,9 +69,14 @@ export function Partners() {
                     {p.country}
                   </span>
                 </div>
-                <h3 className="font-display text-lg font-bold text-white mb-1.5">
+                <h3 className="font-display text-lg font-bold text-white mb-2">
                   {p.name}
                 </h3>
+                {p.official && (
+                  <span className="inline-block mb-2 text-[9px] font-mono uppercase tracking-[0.18em] text-cyan-300 border border-cyan-400/40 bg-cyan-400/10 px-2 py-0.5 rounded-sm">
+                    Distribuidor oficial
+                  </span>
+                )}
                 <p className="text-xs text-slate-400 leading-relaxed">{p.tagline}</p>
               </div>
               <div className="mt-4 h-0.5 w-10 bg-cyan-400/60 transition-all group-hover:w-20 group-hover:shadow-[0_0_10px_rgba(34,211,238,0.8)]" />
@@ -103,7 +84,7 @@ export function Partners() {
           ))}
         </div>
 
-        <div className="mt-14 text-center max-w-2xl mx-auto">
+        <div className="mt-12 text-center max-w-2xl mx-auto">
           <p className="font-display text-2xl md:text-3xl font-extrabold text-white mb-2">
             Qualidade ao alcance de todos!
           </p>
@@ -117,7 +98,6 @@ export function Partners() {
             </a>
           </p>
         </div>
-
       </div>
     </section>
   );
