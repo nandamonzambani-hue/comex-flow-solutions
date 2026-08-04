@@ -2,8 +2,8 @@ import uniflexColor from "@/assets/logos/uniflex-color.png.asset.json";
 import transfluidOficial from "@/assets/logos/transfluid-oficial.svg.asset.json";
 import logoZec from "@/assets/logos/zec.png";
 import logoMarzocchi from "@/assets/logos/marzocchi.png";
-import logoHeldAsset from "@/assets/logos/held.png.asset.json";
-import logoNextAsset from "@/assets/logos/next-powertech.png.asset.json";
+import logoHeldAsset from "@/assets/logos/held-trim.png.asset.json";
+import logoNextAsset from "@/assets/logos/next-powertech-trim.png.asset.json";
 
 export type PartnerBrand = {
   name: string;
@@ -53,7 +53,7 @@ export const partnerBrands: PartnerBrand[] = [
     tagline: "Mangueiras industriais high-tech para reposição e montagem técnica.",
     logo: logoNextAsset.url,
     href: "https://www.powertechhoses.com/our-products",
-    h: "w-[88%] h-auto max-h-16",
+    h: "h-8 md:h-9 w-auto",
     tileBg: "#5B2B8A",
     official: true,
   },
@@ -88,7 +88,7 @@ export const partnerBrands: PartnerBrand[] = [
       "Bancadas de teste de impulso e ferramentas HFW para fundição de alta precisão.",
     logo: logoHeldAsset.url,
     href: "https://held-test-stands.de/downloads.htm",
-    h: "w-[78%] h-auto max-h-16",
+    h: "h-12 md:h-14 w-auto",
     tileBg: "#00509E",
     official: true,
   },
