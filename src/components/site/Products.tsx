@@ -424,54 +424,19 @@ export function Products() {
                   </div>
 
                   {zecTab === "segmentos" ? (
-                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+                    <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-4 gap-3">
                       {zecBlocks.map((b) => (
-                        <div
-                          key={b.label}
-                          className="relative aspect-square rounded-xl overflow-hidden border border-border group"
-                        >
-                          <img
-                            src={b.image}
-                            alt={`ZEC ${b.label}`}
-                            loading="lazy"
-                            className="absolute inset-0 w-full h-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
-                          />
-                          <div
-                            className="absolute inset-0 mix-blend-multiply opacity-80"
-                            style={{ backgroundColor: b.color }}
-                          />
-                          <div className="absolute inset-x-0 bottom-0 p-3" style={{ color: b.fg }}>
-                            <div className="text-[10px] font-bold uppercase tracking-widest opacity-80">
-                              ZEC
-                            </div>
-                            <div className="text-sm font-display font-bold leading-tight">
-                              {b.label}
-                            </div>
-                            <p className="text-[10px] leading-snug opacity-90 mt-1">{b.desc}</p>
-                          </div>
-                        </div>
+                        <ZecCard key={b.label} label={b.label} desc={b.desc} image={b.image} />
                       ))}
                     </div>
                   ) : (
                     <div className="space-y-6">
-                      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+                      <div className="grid grid-cols-3 sm:grid-cols-4 gap-3">
                         {zecApplications.map((a) => (
-                          <div
-                            key={a.name}
-                            className="rounded-xl border border-border bg-card p-3 hover:border-primary/40 transition-colors"
-                          >
-                            <div className="text-[10px] font-bold uppercase tracking-widest text-primary mb-1">
-                              ZEC
-                            </div>
-                            <div className="font-display text-sm font-bold leading-tight">
-                              {a.name}
-                            </div>
-                            <p className="text-[11px] text-muted-foreground leading-snug mt-1">
-                              {a.detail}
-                            </p>
-                          </div>
+                          <ZecCard key={a.name} label={a.name} desc={a.detail} image={a.image} />
                         ))}
                       </div>
+
                       <div className="grid sm:grid-cols-2 gap-4">
                         {current.items.map((item) => (
                           <ItemCard key={item.name} item={item} />
