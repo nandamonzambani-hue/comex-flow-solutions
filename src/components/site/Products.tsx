@@ -418,17 +418,39 @@ export function Products() {
                             <div className="text-sm font-display font-bold leading-tight">
                               {b.label}
                             </div>
+                            <p className="text-[10px] leading-snug opacity-90 mt-1">{b.desc}</p>
                           </div>
                         </div>
                       ))}
                     </div>
                   ) : (
-                    <div className="grid sm:grid-cols-2 gap-4">
-                      {current.items.map((item) => (
-                        <ItemCard key={item.name} item={item} />
-                      ))}
+                    <div className="space-y-6">
+                      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+                        {zecApplications.map((a) => (
+                          <div
+                            key={a.name}
+                            className="rounded-xl border border-border bg-card p-3 hover:border-primary/40 transition-colors"
+                          >
+                            <div className="text-[10px] font-bold uppercase tracking-widest text-primary mb-1">
+                              ZEC
+                            </div>
+                            <div className="font-display text-sm font-bold leading-tight">
+                              {a.name}
+                            </div>
+                            <p className="text-[11px] text-muted-foreground leading-snug mt-1">
+                              {a.detail}
+                            </p>
+                          </div>
+                        ))}
+                      </div>
+                      <div className="grid sm:grid-cols-2 gap-4">
+                        {current.items.map((item) => (
+                          <ItemCard key={item.name} item={item} />
+                        ))}
+                      </div>
                     </div>
                   )}
+
                 </div>
               ) : current.id === "equipamentos" ? (
                 <>
