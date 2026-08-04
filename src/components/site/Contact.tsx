@@ -28,7 +28,7 @@ export function Contact() {
   };
 
   return (
-    <section id="contato" className="scroll-mt-24 py-16 md:py-24 relative overflow-hidden">
+    <section id="contato" className="scroll-mt-24 py-16 md:py-24 lg:min-h-screen lg:flex lg:items-center relative overflow-hidden">
       <div
         className="absolute inset-0 opacity-30"
         style={{
@@ -36,7 +36,7 @@ export function Contact() {
             "radial-gradient(ellipse at top right, var(--primary), transparent 60%)",
         }}
       />
-      <div className="relative mx-auto max-w-7xl px-4 md:px-8">
+      <div className="relative w-full mx-auto max-w-7xl px-4 md:px-8">
         <div className="grid lg:grid-cols-2 gap-12 items-start">
           <div>
             <span className="text-sm font-semibold tracking-widest uppercase text-primary">

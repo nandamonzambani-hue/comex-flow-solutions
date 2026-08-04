@@ -15,9 +15,10 @@ const services = [
   },
   {
     icon: FlaskConical,
-    title: "Testes",
-    desc: "Validação em bancada com rastreabilidade, laudos técnicos e conformidade normativa.",
+    title: "Impulso Teste",
+    desc: "Validação em bancada de impulso com rastreabilidade, laudos técnicos e conformidade normativa.",
   },
+
   {
     icon: ShieldCheck,
     title: "Adequação / Implementação NR12",
@@ -29,7 +30,7 @@ export function Services() {
   return (
     <section
       id="servicos"
-      className="scroll-mt-24 relative py-16 md:py-24 border-y border-border overflow-hidden"
+      className="scroll-mt-24 relative py-16 md:py-24 lg:min-h-screen lg:flex lg:items-center border-y border-border overflow-hidden"
       style={{ backgroundColor: "oklch(0.12 0.02 250)" }}
     >
       <div className="absolute inset-0 pointer-events-none">
@@ -48,7 +49,7 @@ export function Services() {
         />
       </div>
 
-      <div className="relative mx-auto max-w-7xl px-4 md:px-8">
+      <div className="relative w-full mx-auto max-w-7xl px-4 md:px-8">
         <div className="max-w-2xl mb-14">
           <span className="text-sm font-semibold tracking-widest uppercase text-primary">
             Serviços

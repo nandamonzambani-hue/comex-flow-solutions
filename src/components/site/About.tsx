@@ -38,7 +38,7 @@ export function About() {
   return (
     <section
       id="quem-somos"
-      className="py-20 md:py-28 relative scroll-mt-24 overflow-hidden bg-[#020617] text-white"
+      className="py-20 md:py-28 lg:min-h-screen lg:flex lg:items-center relative scroll-mt-24 overflow-hidden bg-[#020617] text-white"
     >
       {/* Technical background */}
       <div className="absolute inset-0 z-0 pointer-events-none">
@@ -54,7 +54,7 @@ export function About() {
         <div className="absolute bottom-0 -right-32 w-[520px] h-[520px] bg-cyan-500/15 blur-[150px] rounded-full" />
       </div>
 
-      <div className="relative z-10 mx-auto max-w-7xl px-4 md:px-8">
+      <div className="relative z-10 w-full mx-auto max-w-7xl px-4 md:px-8">
         <div className="grid lg:grid-cols-12 gap-12 mb-14">
           <div className="lg:col-span-6">
             <div className="inline-flex items-center space-x-3 bg-blue-900/30 border border-blue-500/40 px-4 py-1.5 rounded-sm backdrop-blur-md w-fit mb-6">

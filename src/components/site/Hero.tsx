@@ -1,22 +1,8 @@
 import heroBg from "@/assets/hero-bg.png.asset.json";
-import logoUniflexAsset from "@/assets/logos/uniflex-white.png.asset.json";
-import logoTransfluidAsset from "@/assets/logos/transfluid.png.asset.json";
-import logoZec from "@/assets/logos/zec.png";
-import logoMarzocchi from "@/assets/logos/marzocchi.png";
-import logoHeldAsset from "@/assets/logos/held.png.asset.json";
-import logoNextAsset from "@/assets/logos/next-powertech.png.asset.json";
+import { partnerBrands } from "./partnersData";
 
-const partners = [
-  // Uniflex processado: branco com fundo transparente.
-  { name: "Uniflex", logo: logoUniflexAsset.url, href: "https://www.uniflex.de/", tagline: "Líder mundial em máquinas para crimpagem", h: "h-16", filter: "" },
-  { name: "ZEC", logo: logoZec, href: "https://zecspa.com/", tagline: "Excelência em conexões", h: "h-14", filter: "brightness-0 invert" },
-  // Aumentar Transfluid para o "T" ficar legível.
-  { name: "Transfluid", logo: logoTransfluidAsset.url, href: "https://www.transfluid.de/", tagline: "Soluções completas para mangueiras e conexões", h: "h-18", filter: "brightness-0 invert" },
-  { name: "Marzocchi", logo: logoMarzocchi, href: "https://www.marzocchipompe.com/en/", tagline: "Bombas e motores de alta performance", h: "h-14", filter: "brightness-0 invert" },
-  // Aumentar Next e Held para ficarem do mesmo tamanho dos demais.
-  { name: "Next Powertech", logo: logoNextAsset.url, href: "https://www.powertechhoses.com/our-products", tagline: "Sistemas hidráulicos avançados", h: "h-32", filter: "brightness-0 invert" },
-  { name: "Gebr. Held", logo: logoHeldAsset.url, href: "https://held-test-stands.de/downloads.htm", tagline: "Ferramentas para fundição e precisão", h: "h-32", filter: "brightness-0 invert" },
-];
+const partners = partnerBrands;
+
 
 export function Hero() {
   return (
@@ -97,14 +83,18 @@ export function Hero() {
                   <div className="text-[10px] font-mono tracking-[0.25em] text-cyan-300 mb-2">
                     PERFORMANCE
                   </div>
-                  <div className="text-2xl">🇩🇪</div>
+                  <svg viewBox="0 0 5 3" className="w-8 h-5 mx-auto rounded-[2px] overflow-hidden" aria-label="Alemanha">
+                    <rect width="5" height="1" y="0" fill="#000" />
+                    <rect width="5" height="1" y="1" fill="#D00" />
+                    <rect width="5" height="1" y="2" fill="#FFCE00" />
+                  </svg>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Partners strip */}
+        {/* Partners strip — logos em cores originais sobre tile branco */}
         <div className="mt-12 md:mt-16 relative z-10">
           <div className="bg-[#0A1526]/90 backdrop-blur-xl border border-white/10 rounded-sm grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6">
             {partners.map((p, i) => (
@@ -118,13 +108,21 @@ export function Hero() {
                   i !== 0 ? "md:border-l border-white/10" : ""
                 }`}
               >
-                <div className="h-20 flex items-center justify-center mb-3">
+                <div
+                  className="w-full h-20 rounded-md flex items-center justify-center mb-3 px-3 shadow-[0_0_0_1px_rgba(255,255,255,0.15)]"
+                  style={{ backgroundColor: p.tileBg }}
+                >
                   <img
                     src={p.logo}
                     alt={`Logo ${p.name}`}
-                    className={`${p.h} w-auto object-contain opacity-95 group-hover:opacity-100 transition-opacity ${p.filter}`}
+                    className={`${p.h} max-w-full object-contain`}
                   />
                 </div>
+                {p.official && (
+                  <span className="mb-2 text-[9px] font-mono uppercase tracking-[0.18em] text-cyan-300 border border-cyan-400/40 bg-cyan-400/10 px-2 py-0.5 rounded-sm">
+                    Distribuidor oficial
+                  </span>
+                )}
                 <p className="text-xs text-slate-300 leading-snug max-w-[190px]">
                   {p.tagline}
                 </p>
@@ -132,6 +130,7 @@ export function Hero() {
             ))}
           </div>
         </div>
+
       </div>
     </section>
   );

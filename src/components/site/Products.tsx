@@ -154,9 +154,10 @@ const categories: Category[] = [
   {
     id: "testes",
     icon: Activity,
-    title: "Testes",
+    title: "Impulso Teste",
     brands: "Uniflex • Held",
-    desc: "Equipamentos de teste para validação, segurança operacional e controle de qualidade em mangueiras e sistemas hidráulicos.",
+    desc: "Equipamentos de impulso teste para validação, segurança operacional e controle de qualidade em mangueiras e sistemas hidráulicos.",
+
     items: [
       {
         name: "Uniflex — Bancada de Testes",
@@ -274,11 +275,13 @@ function ItemCard({ item }: { item: Item }) {
 
 export function Products() {
   const [active, setActive] = useState(categories[0].id);
+  const [zecTab, setZecTab] = useState<"segmentos" | "aplicacoes">("segmentos");
   const current = categories.find((c) => c.id === active)!;
 
+
   return (
-    <section id="produtos" className="scroll-mt-24 py-16 md:py-28">
-      <div className="mx-auto max-w-7xl px-4 md:px-8">
+    <section id="produtos" className="scroll-mt-24 py-16 md:py-28 lg:min-h-screen lg:flex lg:items-center">
+      <div className="w-full mx-auto max-w-7xl px-4 md:px-8">
         <div className="max-w-3xl mb-12">
           <span className="text-sm font-semibold tracking-widest uppercase text-primary">
             Produtos & Marcas
@@ -343,47 +346,74 @@ export function Products() {
                 </p>
               </div>
 
-              {/* Mangueiras (ZEC) special intro + colored blocks */}
-              {current.id === "mangueiras" && (
-                <div className="mb-8">
+              {/* Mangueiras (ZEC) — tabs Segmentos / Aplicações específicas */}
+              {current.id === "mangueiras" ? (
+                <div>
                   <p className="text-sm text-muted-foreground mb-5 leading-relaxed">
                     A linha <strong className="text-foreground">ZEC</strong> cobre todo o
                     espectro de aplicações em condução de fluidos — de baixa a altíssima
                     pressão, na indústria, no agro e em sistemas hidráulicos móveis. Cada
                     família é identificada por cor para facilitar a especificação técnica.
                   </p>
-                  <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
-                    {zecBlocks.map((b) => (
-                      <div
-                        key={b.label}
-                        className="relative aspect-square rounded-xl overflow-hidden border border-border group"
+
+                  <div className="inline-flex p-1 rounded-lg border border-border bg-background/60 mb-6">
+                    {(
+                      [
+                        { id: "segmentos", label: "Segmentos" },
+                        { id: "aplicacoes", label: "Aplicações específicas" },
+                      ] as const
+                    ).map((t) => (
+                      <button
+                        key={t.id}
+                        onClick={() => setZecTab(t.id)}
+                        className={`px-4 py-2 rounded-md text-xs font-semibold uppercase tracking-widest transition-all ${
+                          zecTab === t.id
+                            ? "bg-primary text-primary-foreground"
+                            : "text-muted-foreground hover:text-foreground"
+                        }`}
                       >
-                        <img
-                          src={b.image}
-                          alt={`ZEC ${b.label}`}
-                          loading="lazy"
-                          className="absolute inset-0 w-full h-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
-                        />
-                        <div
-                          className="absolute inset-0 mix-blend-multiply opacity-80"
-                          style={{ backgroundColor: b.color }}
-                        />
-                        <div className="absolute inset-x-0 bottom-0 p-3" style={{ color: b.fg }}>
-                          <div className="text-[10px] font-bold uppercase tracking-widest opacity-80">
-                            ZEC
-                          </div>
-                          <div className="text-sm font-display font-bold leading-tight">
-                            {b.label}
-                          </div>
-                        </div>
-                      </div>
+                        {t.label}
+                      </button>
                     ))}
                   </div>
-                </div>
-              )}
 
-              {/* Equipamentos: Uniflex top row + Transfluid/Held centered below */}
-              {current.id === "equipamentos" ? (
+                  {zecTab === "segmentos" ? (
+                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+                      {zecBlocks.map((b) => (
+                        <div
+                          key={b.label}
+                          className="relative aspect-square rounded-xl overflow-hidden border border-border group"
+                        >
+                          <img
+                            src={b.image}
+                            alt={`ZEC ${b.label}`}
+                            loading="lazy"
+                            className="absolute inset-0 w-full h-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
+                          />
+                          <div
+                            className="absolute inset-0 mix-blend-multiply opacity-80"
+                            style={{ backgroundColor: b.color }}
+                          />
+                          <div className="absolute inset-x-0 bottom-0 p-3" style={{ color: b.fg }}>
+                            <div className="text-[10px] font-bold uppercase tracking-widest opacity-80">
+                              ZEC
+                            </div>
+                            <div className="text-sm font-display font-bold leading-tight">
+                              {b.label}
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  ) : (
+                    <div className="grid sm:grid-cols-2 gap-4">
+                      {current.items.map((item) => (
+                        <ItemCard key={item.name} item={item} />
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ) : current.id === "equipamentos" ? (
                 <>
                   <div className="text-[11px] font-bold uppercase tracking-widest text-primary mb-3">
                     Linha Uniflex
@@ -409,6 +439,7 @@ export function Products() {
                   ))}
                 </div>
               )}
+
             </div>
           </div>
         </div>
