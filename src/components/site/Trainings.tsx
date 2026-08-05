@@ -64,7 +64,7 @@ export function Trainings() {
   return (
     <section
       id="treinamentos"
-      className="scroll-mt-24 py-20 md:py-28 lg:min-h-screen lg:flex lg:items-center relative overflow-hidden bg-background text-foreground"
+      className="scroll-mt-24 py-20 md:py-28 lg:min-h-svh lg:flex lg:items-center relative overflow-hidden bg-background text-foreground"
     >
       {/* Technical background */}
       <div className="absolute inset-0 z-0 pointer-events-none">

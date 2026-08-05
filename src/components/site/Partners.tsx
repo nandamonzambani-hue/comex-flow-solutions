@@ -4,7 +4,7 @@ export function Partners() {
   return (
     <section
       id="parceiros"
-      className="scroll-mt-24 py-16 md:py-20 lg:h-svh lg:py-0 lg:flex lg:items-center relative overflow-hidden bg-background text-foreground"
+      className="scroll-mt-24 py-16 md:py-20 lg:min-h-svh lg:py-14 lg:flex lg:items-center relative overflow-hidden bg-background text-foreground"
     >
       {/* Technical background */}
       <div className="absolute inset-0 z-0 pointer-events-none">

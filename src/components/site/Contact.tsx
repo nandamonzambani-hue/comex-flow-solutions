@@ -28,7 +28,7 @@ export function Contact() {
   };
 
   return (
-    <section id="contato" className="scroll-mt-24 py-16 md:py-24 lg:min-h-screen lg:flex lg:items-center relative overflow-hidden">
+    <section id="contato" className="scroll-mt-24 py-16 md:py-24 lg:min-h-svh lg:flex lg:items-center relative overflow-hidden">
       <div
         className="absolute inset-0 opacity-30"
         style={{

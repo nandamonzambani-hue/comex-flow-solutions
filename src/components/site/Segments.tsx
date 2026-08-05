@@ -26,7 +26,7 @@ const segments = [
 
 export function Segments() {
   return (
-    <section id="segmentos" className="scroll-mt-24 py-16 md:py-24 lg:min-h-screen lg:flex lg:items-center bg-surface/40 border-y border-border">
+    <section id="segmentos" className="scroll-mt-24 py-16 md:py-24 lg:min-h-svh lg:flex lg:items-center bg-surface/40 border-y border-border">
       <div className="w-full mx-auto max-w-7xl px-4 md:px-8">
         <div className="max-w-2xl mb-14">
           <span className="text-sm font-semibold tracking-widest uppercase text-primary">
