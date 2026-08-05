@@ -103,7 +103,16 @@
 
   --font-display: 'Space Grotesk', system-ui, sans-serif;
   --font-body: 'Space Grotesk', system-ui, sans-serif;
+
+  /* Cores das marcas parceiras — usadas como acentos harmônicos */
+  --brand-uniflex: oklch(0.56 0.17 250);
+  --brand-zec: oklch(0.56 0.19 22);
+  --brand-next: oklch(0.62 0.13 195);
+  --brand-marzocchi: oklch(0.52 0.18 278);
+  --brand-transfluid: oklch(0.5 0.09 232);
+  --brand-held: oklch(0.6 0.15 238);
 }
+
 
 
 @layer base {
