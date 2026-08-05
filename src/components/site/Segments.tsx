@@ -11,6 +11,15 @@ import {
   Cog,
 } from "lucide-react";
 
+const accents = [
+  "var(--brand-uniflex)",
+  "var(--brand-zec)",
+  "var(--brand-next)",
+  "var(--brand-marzocchi)",
+  "var(--brand-held)",
+  "var(--brand-transfluid)",
+];
+
 const segments = [
   { icon: Mountain, title: "Mineração", desc: "Mangueiras de alta resistência à abrasão e equipamentos para reduzir paradas em frota pesada." },
   { icon: Droplets, title: "Óleo & Gás", desc: "Soluções para alta pressão e temperatura, conformes às normas do setor com rastreabilidade total." },
@@ -42,21 +51,37 @@ export function Segments() {
         </div>
 
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
-          {segments.map((s) => (
+          {segments.map((s, i) => {
+            const accent = accents[i % accents.length];
+            return (
             <a
               key={s.title}
               href="#produtos"
-              className="group relative overflow-hidden rounded-xl border border-border bg-surface hover:border-primary/50 hover:-translate-y-1 transition-all p-5 block"
-              style={{ background: "var(--gradient-surface)" }}
+              className="group relative overflow-hidden rounded-xl border border-border bg-surface hover:-translate-y-1 transition-all p-5 block"
+              style={{
+                background: "var(--gradient-surface)",
+                borderColor: `color-mix(in oklab, ${accent} 25%, transparent)`,
+              }}
             >
-              <div className="w-12 h-12 rounded-lg flex items-center justify-center mb-4 bg-primary/15 border border-primary/30 group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
-                <s.icon size={22} className="text-primary group-hover:text-primary-foreground" />
+              <div
+                className="w-12 h-12 rounded-lg flex items-center justify-center mb-4 border transition-colors group-hover:text-white"
+                style={{
+                  backgroundColor: `color-mix(in oklab, ${accent} 14%, transparent)`,
+                  borderColor: `color-mix(in oklab, ${accent} 35%, transparent)`,
+                  color: accent,
+                }}
+              >
+                <s.icon size={22} />
               </div>
               <h3 className="font-display text-base sm:text-lg font-semibold mb-1.5">{s.title}</h3>
               <p className="text-xs text-muted-foreground leading-relaxed">{s.desc}</p>
-              <div className="mt-3 h-0.5 w-8 bg-primary rounded-full transition-all group-hover:w-16" />
+              <div
+                className="mt-3 h-0.5 w-8 rounded-full transition-all group-hover:w-16"
+                style={{ backgroundColor: accent }}
+              />
             </a>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>
