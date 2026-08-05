@@ -4,7 +4,7 @@ export function Partners() {
   return (
     <section
       id="parceiros"
-      className="scroll-mt-24 py-16 md:py-20 lg:h-svh lg:py-0 lg:flex lg:items-center relative overflow-hidden bg-background text-foreground"
+      className="scroll-mt-24 py-16 md:py-20 lg:min-h-svh lg:py-14 lg:flex lg:items-center relative overflow-hidden bg-background text-foreground"
     >
       {/* Technical background */}
       <div className="absolute inset-0 z-0 pointer-events-none">
@@ -48,9 +48,13 @@ export function Partners() {
               target="_blank"
               rel="noopener nofollow"
               title={`${p.name} — ${p.country}`}
-              className="group relative flex flex-col bg-card backdrop-blur-xl border border-border hover:border-primary/40 transition-all p-4 overflow-hidden"
+              className="group relative flex flex-col bg-card backdrop-blur-xl border transition-all p-4 overflow-hidden"
+              style={{ borderColor: `color-mix(in oklab, ${p.accent} 30%, transparent)` }}
             >
-              <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-primary/40 opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div
+                className="absolute inset-x-0 top-0 h-1 opacity-70 group-hover:opacity-100 transition-opacity"
+                style={{ backgroundColor: p.accent }}
+              />
 
               {/* Tile branco: logo em CORES ORIGINAIS, sem filtro */}
               <div

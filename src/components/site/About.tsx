@@ -38,7 +38,7 @@ export function About() {
   return (
     <section
       id="quem-somos"
-      className="py-20 md:py-28 lg:min-h-screen lg:flex lg:items-center relative scroll-mt-24 overflow-hidden bg-background text-foreground"
+      className="py-20 md:py-28 lg:min-h-svh lg:flex lg:items-center relative scroll-mt-24 overflow-hidden bg-background text-foreground"
     >
       {/* Technical background */}
       <div className="absolute inset-0 z-0 pointer-events-none">

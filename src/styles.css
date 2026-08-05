@@ -32,6 +32,12 @@
   --color-ring: var(--ring);
   --color-surface: var(--surface);
   --color-surface-foreground: var(--surface-foreground);
+  --color-brand-uniflex: var(--brand-uniflex);
+  --color-brand-zec: var(--brand-zec);
+  --color-brand-next: var(--brand-next);
+  --color-brand-marzocchi: var(--brand-marzocchi);
+  --color-brand-transfluid: var(--brand-transfluid);
+  --color-brand-held: var(--brand-held);
   --font-display: var(--font-display);
   --font-body: var(--font-body);
 }
@@ -97,7 +103,16 @@
 
   --font-display: 'Space Grotesk', system-ui, sans-serif;
   --font-body: 'Space Grotesk', system-ui, sans-serif;
+
+  /* Cores das marcas parceiras — usadas como acentos harmônicos */
+  --brand-uniflex: oklch(0.56 0.17 250);
+  --brand-zec: oklch(0.56 0.19 22);
+  --brand-next: oklch(0.62 0.13 195);
+  --brand-marzocchi: oklch(0.52 0.18 278);
+  --brand-transfluid: oklch(0.5 0.09 232);
+  --brand-held: oklch(0.6 0.15 238);
 }
+
 
 
 @layer base {

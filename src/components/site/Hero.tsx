@@ -7,7 +7,7 @@ export function Hero() {
   return (
     <section
       id="top"
-      className="relative overflow-hidden bg-[#050B18] text-white min-h-[100svh] lg:h-[100svh] flex flex-col"
+      className="relative overflow-hidden bg-[#050B18] text-white min-h-[100svh] flex flex-col"
     >
       {/* Full-bleed background image */}
       <div className="absolute inset-0 z-0">

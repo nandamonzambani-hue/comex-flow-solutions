@@ -41,6 +41,7 @@ type Category = {
   title: string;
   brands: string;
   desc: string;
+  accent: string;
   items: Item[];
 };
 
@@ -86,6 +87,7 @@ const transfluidHeldItems: Item[] = [
 const categories: Category[] = [
   {
     id: "equipamentos",
+    accent: "var(--brand-uniflex)",
     icon: Settings,
     title: "Equipamentos",
     brands: "Uniflex • Transfluid • Held",
@@ -94,6 +96,7 @@ const categories: Category[] = [
   },
   {
     id: "mangueiras",
+    accent: "var(--brand-zec)",
     icon: Droplet,
     title: "Mangueiras",
     brands: "ZEC • Next Powertech",
@@ -130,6 +133,7 @@ const categories: Category[] = [
   },
   {
     id: "bombas-engrenagens",
+    accent: "var(--brand-marzocchi)",
     icon: Cog,
     title: "Bombas de Engrenagens",
     brands: "Marzocchi",
@@ -160,6 +164,7 @@ const categories: Category[] = [
   },
   {
     id: "testes",
+    accent: "var(--brand-held)",
     icon: Activity,
     title: "Impulso Teste",
     brands: "Uniflex • Held",
@@ -183,6 +188,7 @@ const categories: Category[] = [
   },
   {
     id: "insumos",
+    accent: "var(--brand-next)",
     icon: Package,
     title: "Insumos",
     brands: "Comex10",
@@ -326,7 +332,7 @@ export function Products() {
 
 
   return (
-    <section id="produtos" className="scroll-mt-24 py-16 md:py-28 lg:min-h-screen lg:flex lg:items-center">
+    <section id="produtos" className="scroll-mt-24 py-16 md:py-28 lg:min-h-svh lg:flex lg:items-center">
       <div className="w-full mx-auto max-w-7xl px-4 md:px-8">
         <div className="max-w-3xl mb-12">
           <span className="text-sm font-semibold tracking-widest uppercase text-primary">
@@ -351,17 +357,23 @@ export function Products() {
                   <button
                     key={cat.id}
                     onClick={() => setActive(cat.id)}
-                    className={`w-full text-left p-3 sm:p-4 rounded-xl border transition-all ${
-                      isActive
-                        ? "border-primary bg-primary/10"
-                        : "border-border bg-surface hover:border-border/60 hover:bg-surface/80"
-                    }`}
+                    className="w-full text-left p-3 sm:p-4 rounded-xl border transition-all bg-surface hover:bg-surface/80"
+                    style={{
+                      borderColor: `color-mix(in oklab, ${cat.accent} ${isActive ? 70 : 22}%, transparent)`,
+                      backgroundColor: isActive
+                        ? `color-mix(in oklab, ${cat.accent} 12%, transparent)`
+                        : undefined,
+                    }}
                   >
                     <div className="flex items-center gap-3">
                       <div
-                        className={`w-10 h-10 rounded-lg flex items-center justify-center transition-colors ${
-                          isActive ? "bg-primary text-primary-foreground" : "bg-background text-primary"
-                        }`}
+                        className="w-10 h-10 rounded-lg flex items-center justify-center transition-colors"
+                        style={{
+                          backgroundColor: isActive
+                            ? cat.accent
+                            : `color-mix(in oklab, ${cat.accent} 12%, transparent)`,
+                          color: isActive ? "#fff" : cat.accent,
+                        }}
                       >
                         <cat.icon size={20} />
                       </div>
@@ -383,7 +395,10 @@ export function Products() {
               style={{ background: "var(--gradient-surface)", boxShadow: "var(--shadow-elegant)" }}
             >
               <div className="mb-6">
-                <div className="text-xs font-semibold tracking-widest uppercase text-primary mb-1">
+                <div
+                  className="text-xs font-semibold tracking-widest uppercase mb-1"
+                  style={{ color: current.accent }}
+                >
                   {current.brands}
                 </div>
                 <h3 className="font-display text-3xl md:text-4xl font-bold">{current.title}</h3>
@@ -412,11 +427,12 @@ export function Products() {
                       <button
                         key={t.id}
                         onClick={() => setZecTab(t.id)}
-                        className={`px-4 py-2 rounded-md text-xs font-semibold uppercase tracking-widest transition-all ${
+                        className="px-4 py-2 rounded-md text-xs font-semibold uppercase tracking-widest transition-all"
+                        style={
                           zecTab === t.id
-                            ? "bg-primary text-primary-foreground"
-                            : "text-muted-foreground hover:text-foreground"
-                        }`}
+                            ? { backgroundColor: current.accent, color: "#fff" }
+                            : undefined
+                        }
                       >
                         {t.label}
                       </button>
