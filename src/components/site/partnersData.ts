@@ -19,12 +19,15 @@ export type PartnerBrand = {
   /** Fundo do tile: branco por padrão; cor da marca quando o logo é branco. */
   tileBg: string;
   official?: boolean;
+  /** Cor da marca usada como acento harmônico na UI. */
+  accent: string;
 };
 
 /** Logos sempre em CORES ORIGINAIS, sobre tile branco, sem filtros monocolores. */
 export const partnerBrands: PartnerBrand[] = [
   {
     name: "Uniflex",
+    accent: "var(--brand-uniflex)",
     country: "Alemanha",
     code: "DE",
     tagline:
@@ -37,6 +40,7 @@ export const partnerBrands: PartnerBrand[] = [
   },
   {
     name: "ZEC",
+    accent: "var(--brand-zec)",
     country: "Itália",
     code: "IT",
     tagline:
@@ -49,6 +53,7 @@ export const partnerBrands: PartnerBrand[] = [
   },
   {
     name: "Next Powertech",
+    accent: "var(--brand-next)",
     country: "Itália",
     code: "IT",
     tagline: "Mangueiras industriais high-tech para reposição e montagem técnica.",
@@ -60,6 +65,7 @@ export const partnerBrands: PartnerBrand[] = [
   },
   {
     name: "Marzocchi Pompe",
+    accent: "var(--brand-marzocchi)",
     country: "Itália",
     code: "IT",
     tagline: "Bombas e motores de engrenagens de alta performance e eficiência.",
@@ -71,6 +77,7 @@ export const partnerBrands: PartnerBrand[] = [
   },
   {
     name: "Transfluid",
+    accent: "var(--brand-transfluid)",
     country: "Alemanha",
     code: "DE",
     tagline:
@@ -83,6 +90,7 @@ export const partnerBrands: PartnerBrand[] = [
   },
   {
     name: "Gebr. Held",
+    accent: "var(--brand-held)",
     country: "Alemanha",
     code: "DE",
     tagline:
