@@ -32,6 +32,12 @@
   --color-ring: var(--ring);
   --color-surface: var(--surface);
   --color-surface-foreground: var(--surface-foreground);
+  --color-brand-uniflex: var(--brand-uniflex);
+  --color-brand-zec: var(--brand-zec);
+  --color-brand-next: var(--brand-next);
+  --color-brand-marzocchi: var(--brand-marzocchi);
+  --color-brand-transfluid: var(--brand-transfluid);
+  --color-brand-held: var(--brand-held);
   --font-display: var(--font-display);
   --font-body: var(--font-body);
 }
