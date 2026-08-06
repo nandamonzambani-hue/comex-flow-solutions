@@ -53,7 +53,7 @@ export function Header() {
       <div className="relative mx-auto max-w-7xl px-4 md:px-8 py-3 md:py-4 flex items-center justify-between gap-4">
         {/* Logo */}
         <a href="/#top" className="flex items-center shrink-0" aria-label="Comex10">
-          <img
+          <img decoding="async" loading="eager" fetchPriority="high"
             src={logoComex}
             alt="Comex10 do Brasil"
             className="h-12 md:h-14 w-auto object-contain"

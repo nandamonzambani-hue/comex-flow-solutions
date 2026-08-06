@@ -38,6 +38,8 @@
   --color-brand-marzocchi: var(--brand-marzocchi);
   --color-brand-transfluid: var(--brand-transfluid);
   --color-brand-held: var(--brand-held);
+  --color-brand-comex10: var(--brand-comex10);
+
   --font-display: var(--font-display);
   --font-body: var(--font-body);
 }
@@ -104,13 +106,23 @@
   --font-display: 'Space Grotesk', system-ui, sans-serif;
   --font-body: 'Space Grotesk', system-ui, sans-serif;
 
-  /* Cores das marcas parceiras — usadas como acentos harmônicos */
-  --brand-uniflex: oklch(0.56 0.17 250);
-  --brand-zec: oklch(0.56 0.19 22);
-  --brand-next: oklch(0.62 0.13 195);
-  --brand-marzocchi: oklch(0.52 0.18 278);
-  --brand-transfluid: oklch(0.5 0.09 232);
-  --brand-held: oklch(0.6 0.15 238);
+  /* Cores oficiais das marcas — usadas como acentos harmônicos.
+     *-ink = versão com contraste AA para texto/ícones sobre fundo claro. */
+  --brand-uniflex: oklch(0.56 0.17 250);      /* azul */
+  --brand-uniflex-ink: oklch(0.5 0.17 250);
+  --brand-zec: oklch(0.62 0.16 150);          /* verde */
+  --brand-zec-ink: oklch(0.46 0.13 152);
+  --brand-next: oklch(0.52 0.2 300);          /* roxo */
+  --brand-next-ink: oklch(0.46 0.2 300);
+  --brand-marzocchi: oklch(0.86 0.17 92);     /* amarelo */
+  --brand-marzocchi-ink: oklch(0.52 0.12 82);
+  --brand-transfluid: oklch(0.57 0.21 27);    /* vermelho */
+  --brand-transfluid-ink: oklch(0.5 0.2 27);
+  --brand-held: oklch(0.7 0.17 55);           /* laranja */
+  --brand-held-ink: oklch(0.53 0.15 50);
+  --brand-comex10: oklch(0.56 0.17 250);      /* azul Comex10 */
+  --brand-comex10-ink: oklch(0.48 0.17 252);
+
 }
 
 
@@ -255,4 +267,26 @@
   border-radius: 12px;
   border: 0;
   margin: 1.5em 0;
+}
+
+/* Acessibilidade: respeitar preferência de menos movimento */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Foco visível reforçado em elementos interativos */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 5px color-mix(in oklab, var(--color-primary) 25%, transparent);
 }

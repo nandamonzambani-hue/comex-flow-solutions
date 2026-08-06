@@ -87,7 +87,7 @@ export function Trainings() {
           <div className="relative order-2 lg:order-1">
             <div className="absolute -inset-1 bg-gradient-to-tr from-cyan-500 to-blue-600 opacity-30 blur-xl" />
             <div className="relative overflow-hidden border border-border">
-              <img
+              <img decoding="async"
                 src={treinamentoImg}
                 alt="Treinamento técnico em mangueiras hidráulicas na Comex10"
                 loading="lazy"

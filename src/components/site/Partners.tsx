@@ -61,7 +61,7 @@ export function Partners() {
                 className="rounded-md h-16 flex items-center justify-center px-4 mb-3 group-hover:shadow-[0_0_25px_rgba(56,140,255,0.25)] transition-shadow"
                 style={{ backgroundColor: p.tileBg }}
               >
-                <img
+                <img decoding="async" loading="lazy"
                   src={p.logo}
                   alt={`Logo ${p.name}`}
                   className={`${p.h} max-w-full object-contain`}
