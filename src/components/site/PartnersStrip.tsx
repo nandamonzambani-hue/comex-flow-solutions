@@ -25,7 +25,7 @@ export function PartnersStrip() {
                   className="flex items-center justify-center px-6 py-4 rounded-xl border border-neutral-200 hover:border-primary hover:shadow-md transition-all min-h-[96px] md:min-h-[112px]"
                   style={{ backgroundColor: p.tileBg }}
                 >
-                  <img
+                  <img decoding="async" loading="lazy"
                     src={p.logo}
                     alt={`Logo ${p.name}`}
                     className={`${p.h} max-w-full object-contain`}

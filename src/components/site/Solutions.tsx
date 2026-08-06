@@ -6,28 +6,28 @@ const pillars = [
     title: "Mangueiras & Conexões",
     desc: "ZEC e Next Powertech para condução de fluidos em todas as pressões.",
     href: "#produtos",
-    accent: "var(--brand-zec)",
+    accent: "var(--brand-zec-ink)",
   },
   {
     icon: Cog,
     title: "Bombas & Motores",
     desc: "Linha Marzocchi de bombas de engrenagem e motores hidráulicos.",
     href: "#produtos",
-    accent: "var(--brand-marzocchi)",
+    accent: "var(--brand-marzocchi-ink)",
   },
   {
     icon: Wrench,
     title: "Equipamentos & Bancadas",
     desc: "Uniflex, Transfluid e Held para montagem, corte e ensaios.",
     href: "#produtos",
-    accent: "var(--brand-held)",
+    accent: "var(--brand-held-ink)",
   },
   {
     icon: ShieldCheck,
     title: "Serviços & Treinamentos",
     desc: "Suporte técnico, adequação NR12 e capacitação especializada.",
     href: "#servicos",
-    accent: "var(--brand-next)",
+    accent: "var(--brand-next-ink)",
   },
 ];
 

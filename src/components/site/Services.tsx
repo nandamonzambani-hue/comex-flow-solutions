@@ -34,7 +34,7 @@ export function Services() {
       style={{ backgroundColor: "oklch(0.12 0.02 250)" }}
     >
       <div className="absolute inset-0 pointer-events-none">
-        <img
+        <img decoding="async" loading="lazy"
           src={bgService}
           alt=""
           aria-hidden="true"

@@ -42,8 +42,25 @@ type Category = {
   brands: string;
   desc: string;
   accent: string;
+  /** Versão com contraste AA para texto e preenchimentos com texto branco. */
+  accentInk: string;
   items: Item[];
 };
+
+/** Cor oficial de cada marca. */
+const BRAND_COLORS: Record<string, { accent: string; ink: string }> = {
+  Uniflex: { accent: "var(--brand-uniflex)", ink: "var(--brand-uniflex-ink)" },
+  ZEC: { accent: "var(--brand-zec)", ink: "var(--brand-zec-ink)" },
+  "Next Powertech": { accent: "var(--brand-next)", ink: "var(--brand-next-ink)" },
+  Marzocchi: { accent: "var(--brand-marzocchi)", ink: "var(--brand-marzocchi-ink)" },
+  Transfluid: { accent: "var(--brand-transfluid)", ink: "var(--brand-transfluid-ink)" },
+  Held: { accent: "var(--brand-held)", ink: "var(--brand-held-ink)" },
+  Comex10: { accent: "var(--brand-comex10)", ink: "var(--brand-comex10-ink)" },
+};
+
+function brandColors(brand?: string) {
+  return (brand && BRAND_COLORS[brand]) || BRAND_COLORS["Comex10"];
+}
 
 const uniflexItems: Item[] = [
   {
@@ -88,6 +105,7 @@ const categories: Category[] = [
   {
     id: "equipamentos",
     accent: "var(--brand-uniflex)",
+    accentInk: "var(--brand-uniflex-ink)",
     icon: Settings,
     title: "Equipamentos",
     brands: "Uniflex • Transfluid • Held",
@@ -97,6 +115,7 @@ const categories: Category[] = [
   {
     id: "mangueiras",
     accent: "var(--brand-zec)",
+    accentInk: "var(--brand-zec-ink)",
     icon: Droplet,
     title: "Mangueiras",
     brands: "ZEC • Next Powertech",
@@ -134,6 +153,7 @@ const categories: Category[] = [
   {
     id: "bombas-engrenagens",
     accent: "var(--brand-marzocchi)",
+    accentInk: "var(--brand-marzocchi-ink)",
     icon: Cog,
     title: "Bombas de Engrenagens",
     brands: "Marzocchi",
@@ -165,6 +185,7 @@ const categories: Category[] = [
   {
     id: "testes",
     accent: "var(--brand-held)",
+    accentInk: "var(--brand-held-ink)",
     icon: Activity,
     title: "Impulso Teste",
     brands: "Uniflex • Held",
@@ -188,7 +209,8 @@ const categories: Category[] = [
   },
   {
     id: "insumos",
-    accent: "var(--brand-next)",
+    accent: "var(--brand-comex10)",
+    accentInk: "var(--brand-comex10-ink)",
     icon: Package,
     title: "Insumos",
     brands: "Comex10",
@@ -253,21 +275,31 @@ function ZecCard({ label, desc, image }: { label: string; desc: string; image: s
       href={ZEC_CATALOG}
       target="_blank"
       rel="noopener"
-      className="group rounded-lg border border-border bg-card overflow-hidden hover:border-primary/50 transition-colors flex flex-col"
+      className="group rounded-lg border bg-card overflow-hidden transition-colors flex flex-col hover:shadow-md"
+      style={{ borderColor: "color-mix(in oklab, var(--brand-zec) 30%, transparent)" }}
     >
       <div className="aspect-[3/4] overflow-hidden bg-background">
         <img
           src={image}
           alt={`ZEC ${label} — catálogo`}
           loading="lazy"
+          decoding="async"
           className="w-full h-full object-contain group-hover:scale-[1.04] transition-transform duration-500"
         />
       </div>
       <div className="p-2.5">
-        <div className="text-[9px] font-bold uppercase tracking-widest text-primary">ZEC</div>
+        <div
+          className="text-[9px] font-bold uppercase tracking-widest"
+          style={{ color: "var(--brand-zec-ink)" }}
+        >
+          ZEC
+        </div>
         <div className="font-display text-xs font-bold leading-tight">{label}</div>
         <p className="text-[10px] text-muted-foreground leading-snug mt-0.5">{desc}</p>
-        <span className="mt-1.5 inline-flex items-center gap-1 text-[10px] font-semibold text-primary">
+        <span
+          className="mt-1.5 inline-flex items-center gap-1 text-[10px] font-semibold"
+          style={{ color: "var(--brand-zec-ink)" }}
+        >
           <Download size={10} /> Catálogo ZEC
         </span>
       </div>
@@ -278,13 +310,19 @@ function ZecCard({ label, desc, image }: { label: string; desc: string; image: s
 
 
 function ItemCard({ item }: { item: Item }) {
+  const c = brandColors(item.brand);
   return (
-    <article className="group rounded-xl bg-background/60 border border-border hover:border-primary/40 transition-all overflow-hidden flex flex-col">
+    <article
+      className="group rounded-xl bg-background/60 border transition-all overflow-hidden flex flex-col hover:shadow-md"
+      style={{ borderColor: `color-mix(in oklab, ${c.accent} 32%, transparent)` }}
+    >
+      <div className="h-1 w-full" style={{ backgroundColor: c.accent }} />
       <div className="aspect-[4/3] overflow-hidden bg-background">
         <img
           src={item.image}
           alt={`${item.name} — ${item.brand ?? "Comex10"}`}
           loading="lazy"
+          decoding="async"
           width={800}
           height={600}
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
@@ -292,7 +330,10 @@ function ItemCard({ item }: { item: Item }) {
       </div>
       <div className="p-4 flex-1 flex flex-col">
         {item.brand && (
-          <div className="text-[10px] font-bold tracking-widest uppercase text-primary mb-1">
+          <div
+            className="text-[10px] font-bold tracking-widest uppercase mb-1"
+            style={{ color: c.ink }}
+          >
             {item.brand}
           </div>
         )}
@@ -304,7 +345,9 @@ function ItemCard({ item }: { item: Item }) {
               href={item.catalog}
               target="_blank"
               rel="noopener"
-              className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary hover:text-primary-glow transition-colors"
+              className="inline-flex items-center gap-1.5 min-h-11 text-xs font-semibold underline-offset-4 hover:underline transition-colors"
+              style={{ color: c.ink }}
+              aria-label={`Baixar catálogo PDF — ${item.name}`}
             >
               <Download size={12} /> Catálogo PDF
             </a>
@@ -315,7 +358,8 @@ function ItemCard({ item }: { item: Item }) {
             href="https://wa.me/5511914900404"
             target="_blank"
             rel="noopener"
-            className="ml-auto inline-flex items-center gap-1 text-xs font-medium text-muted-foreground hover:text-foreground transition-colors"
+            className="ml-auto inline-flex items-center gap-1 min-h-11 text-xs font-medium text-muted-foreground hover:text-foreground transition-colors"
+            aria-label={`Solicitar ${item.name} pelo WhatsApp`}
           >
             Solicite agora <ArrowRight size={11} />
           </a>
@@ -350,14 +394,18 @@ export function Products() {
         <div className="grid lg:grid-cols-12 gap-6">
           {/* Sidebar nav */}
           <div className="lg:col-span-4">
-            <div className="grid grid-cols-2 lg:grid-cols-1 gap-2">
+            <div role="tablist" aria-label="Categorias de produtos" className="grid grid-cols-2 lg:grid-cols-1 gap-2">
               {categories.map((cat) => {
                 const isActive = cat.id === active;
                 return (
                   <button
                     key={cat.id}
                     onClick={() => setActive(cat.id)}
-                    className="w-full text-left p-3 sm:p-4 rounded-xl border transition-all bg-surface hover:bg-surface/80"
+                    role="tab"
+                    id={`tab-${cat.id}`}
+                    aria-selected={isActive}
+                    aria-controls="painel-produtos"
+                    className="w-full text-left p-3 sm:p-4 min-h-11 rounded-xl border transition-all bg-surface hover:bg-surface/80"
                     style={{
                       borderColor: `color-mix(in oklab, ${cat.accent} ${isActive ? 70 : 22}%, transparent)`,
                       backgroundColor: isActive
@@ -370,9 +418,9 @@ export function Products() {
                         className="w-10 h-10 rounded-lg flex items-center justify-center transition-colors"
                         style={{
                           backgroundColor: isActive
-                            ? cat.accent
-                            : `color-mix(in oklab, ${cat.accent} 12%, transparent)`,
-                          color: isActive ? "#fff" : cat.accent,
+                            ? cat.accentInk
+                            : `color-mix(in oklab, ${cat.accent} 16%, transparent)`,
+                          color: isActive ? "#fff" : cat.accentInk,
                         }}
                       >
                         <cat.icon size={20} />
@@ -391,13 +439,16 @@ export function Products() {
           {/* Content panel */}
           <div className="lg:col-span-8">
             <div
+              id="painel-produtos"
+              role="tabpanel"
+              aria-labelledby={`tab-${current.id}`}
               className="p-6 md:p-8 rounded-2xl border border-border h-full"
               style={{ background: "var(--gradient-surface)", boxShadow: "var(--shadow-elegant)" }}
             >
               <div className="mb-6">
                 <div
                   className="text-xs font-semibold tracking-widest uppercase mb-1"
-                  style={{ color: current.accent }}
+                  style={{ color: current.accentInk }}
                 >
                   {current.brands}
                 </div>
@@ -427,10 +478,12 @@ export function Products() {
                       <button
                         key={t.id}
                         onClick={() => setZecTab(t.id)}
-                        className="px-4 py-2 rounded-md text-xs font-semibold uppercase tracking-widest transition-all"
+                        role="tab"
+                        aria-selected={zecTab === t.id}
+                        className="px-4 py-2 min-h-11 rounded-md text-xs font-semibold uppercase tracking-widest transition-all"
                         style={
                           zecTab === t.id
-                            ? { backgroundColor: current.accent, color: "#fff" }
+                            ? { backgroundColor: current.accentInk, color: "#fff" }
                             : undefined
                         }
                       >
@@ -464,7 +517,10 @@ export function Products() {
                 </div>
               ) : current.id === "equipamentos" ? (
                 <>
-                  <div className="text-[11px] font-bold uppercase tracking-widest text-primary mb-3">
+                  <div
+                    className="text-[11px] font-bold uppercase tracking-widest mb-3"
+                    style={{ color: "var(--brand-uniflex-ink)" }}
+                  >
                     Linha Uniflex
                   </div>
                   <div className="grid sm:grid-cols-3 gap-4 mb-6">
@@ -472,8 +528,10 @@ export function Products() {
                       <ItemCard key={item.name} item={item} />
                     ))}
                   </div>
-                  <div className="text-[11px] font-bold uppercase tracking-widest text-primary mb-3">
-                    Transfluid & Held
+                  <div className="text-[11px] font-bold uppercase tracking-widest mb-3">
+                    <span style={{ color: "var(--brand-transfluid-ink)" }}>Transfluid</span>
+                    <span className="text-muted-foreground"> & </span>
+                    <span style={{ color: "var(--brand-held-ink)" }}>Held</span>
                   </div>
                   <div className="grid sm:grid-cols-2 gap-4 max-w-2xl mx-auto">
                     {transfluidHeldItems.map((item) => (

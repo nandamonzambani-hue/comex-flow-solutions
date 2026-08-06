@@ -12,12 +12,12 @@ import {
 } from "lucide-react";
 
 const accents = [
-  "var(--brand-uniflex)",
-  "var(--brand-zec)",
-  "var(--brand-next)",
-  "var(--brand-marzocchi)",
-  "var(--brand-held)",
-  "var(--brand-transfluid)",
+  "var(--brand-uniflex-ink)",
+  "var(--brand-zec-ink)",
+  "var(--brand-next-ink)",
+  "var(--brand-marzocchi-ink)",
+  "var(--brand-held-ink)",
+  "var(--brand-transfluid-ink)",
 ];
 
 const segments = [
