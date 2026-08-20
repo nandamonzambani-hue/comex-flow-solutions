@@ -122,27 +122,6 @@ const categories: Category[] = [
     desc: "Mangueiras técnicas e soluções associadas para aplicações hidráulicas, industriais e de alta exigência.",
     items: [
       {
-        name: "ZEC — Mangueiras Hidráulicas",
-        brand: "ZEC",
-        desc: "Alta performance para condução de fluidos em ambientes industriais e móveis.",
-        image: imgZec1,
-        catalog: "/catalogos/ZEC_Catalogo_America_Latina.pdf",
-      },
-      {
-        name: "ZEC — Linhas Especiais",
-        brand: "ZEC",
-        desc: "Séries especiais para pressão, temperatura e resistência específicas.",
-        image: imgZec2,
-        catalog: "/catalogos/ZEC_Catalogo_America_Latina.pdf",
-      },
-      {
-        name: "ZEC — Industriais",
-        brand: "ZEC",
-        desc: "Soluções para indústria, química e aplicações severas.",
-        image: imgZec3,
-        catalog: "/catalogos/ZEC_Catalogo_America_Latina.pdf",
-      },
-      {
         name: "Next Powertech — Mangueiras",
         brand: "Next Powertech",
         desc: "Portfólio para reposição, montagem e atendimento técnico especializado.",
