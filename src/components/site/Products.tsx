@@ -163,9 +163,9 @@ const categories: Category[] = [
     accent: "var(--brand-held)",
     accentInk: "var(--brand-held-ink)",
     icon: Activity,
-    title: "Impulso Teste",
+    title: "Impulse Test",
     brands: "Uniflex • Held",
-    desc: "Equipamentos de impulso teste para validação, segurança operacional e controle de qualidade em mangueiras e sistemas hidráulicos.",
+    desc: "Equipamentos de Impulse Test para validação, segurança operacional e controle de qualidade em mangueiras e sistemas hidráulicos.",
 
     items: [
       {
