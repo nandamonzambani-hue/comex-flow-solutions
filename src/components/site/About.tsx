@@ -97,7 +97,7 @@ export function About() {
               <div className="absolute top-0 right-0 w-12 h-12 border-t-2 border-r-2 border-primary/40" />
               <div className="absolute bottom-0 left-0 w-12 h-12 border-b-2 border-l-2 border-primary/40" />
 
-              <div className="text-[10px] font-display tracking-[0.3em] text-primary mb-4">
+              <div className="text-[10px] font-body tracking-[0.3em] text-primary mb-4">
                 COMEX10 // MANIFESTO
               </div>
               <p className="text-base text-muted-foreground leading-relaxed mb-4 font-light">

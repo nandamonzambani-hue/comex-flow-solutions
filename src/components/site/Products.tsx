@@ -7,9 +7,6 @@ import imgTransfluid from "@/assets/produtos/transfluid.jpg";
 import imgMarzocchi1 from "@/assets/produtos/marzocchi-bomba-1.png";
 import imgMarzocchi2 from "@/assets/produtos/marzocchi-bomba-2.png";
 import imgMarzocchi3 from "@/assets/produtos/marzocchi-bomba-3.png";
-import imgZec1 from "@/assets/produtos/zec-mangueira-1.png";
-import imgZec2 from "@/assets/produtos/zec-mangueira-2.png";
-import imgZec3 from "@/assets/produtos/zec-mangueira-3.png";
 import imgZecJpg from "@/assets/produtos/zec-mangueira.jpg";
 import zecAgua from "@/assets/zec/agua.jpg.asset.json";
 import zecAlimenticio from "@/assets/zec/alimenticio.jpg.asset.json";
@@ -121,27 +118,6 @@ const categories: Category[] = [
     brands: "ZEC • Next Powertech",
     desc: "Mangueiras técnicas e soluções associadas para aplicações hidráulicas, industriais e de alta exigência.",
     items: [
-      {
-        name: "ZEC — Mangueiras Hidráulicas",
-        brand: "ZEC",
-        desc: "Alta performance para condução de fluidos em ambientes industriais e móveis.",
-        image: imgZec1,
-        catalog: "/catalogos/ZEC_Catalogo_America_Latina.pdf",
-      },
-      {
-        name: "ZEC — Linhas Especiais",
-        brand: "ZEC",
-        desc: "Séries especiais para pressão, temperatura e resistência específicas.",
-        image: imgZec2,
-        catalog: "/catalogos/ZEC_Catalogo_America_Latina.pdf",
-      },
-      {
-        name: "ZEC — Industriais",
-        brand: "ZEC",
-        desc: "Soluções para indústria, química e aplicações severas.",
-        image: imgZec3,
-        catalog: "/catalogos/ZEC_Catalogo_America_Latina.pdf",
-      },
       {
         name: "Next Powertech — Mangueiras",
         brand: "Next Powertech",
