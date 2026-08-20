@@ -15,8 +15,8 @@ const services = [
   },
   {
     icon: FlaskConical,
-    title: "Impulso Teste",
-    desc: "Validação em bancada de impulso com rastreabilidade, laudos técnicos e conformidade normativa.",
+    title: "Impulse Test",
+    desc: "Validação em bancada de Impulse Test com rastreabilidade, laudos técnicos e conformidade normativa.",
   },
 
   {
