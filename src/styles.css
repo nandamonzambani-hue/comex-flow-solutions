@@ -40,8 +40,9 @@
   --color-brand-held: var(--brand-held);
   --color-brand-comex10: var(--brand-comex10);
 
-  --font-display: var(--font-display);
-  --font-body: var(--font-body);
+  --font-display: 'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-body: 'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
 }
 
 :root {
@@ -103,8 +104,8 @@
   --shadow-elegant: 0 12px 40px -18px oklch(0.25 0.04 255 / 0.25);
   --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
-  --font-display: 'Plus Jakarta Sans', system-ui, sans-serif;
-  --font-body: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-display: 'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-body: 'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
 
   /* Cores oficiais das marcas — usadas como acentos harmônicos.
      *-ink = versão com contraste AA para texto/ícones sobre fundo claro. */
