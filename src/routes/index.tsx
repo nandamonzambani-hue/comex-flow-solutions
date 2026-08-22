@@ -10,6 +10,8 @@ import { Partners } from "@/components/site/Partners";
 import { Contact } from "@/components/site/Contact";
 import { Footer } from "@/components/site/Footer";
 import { WhatsAppFloat } from "@/components/site/WhatsAppFloat";
+import { ScrollReveal } from "@/components/site/ScrollReveal";
+
 
 const SITE_URL = "https://www.comex10.com.br";
 
@@ -81,9 +83,11 @@ export const Route = createFileRoute("/")({
 function Index() {
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <ScrollReveal />
       <Header />
       <main>
         <Hero />
+        <div className="chroma-rail" aria-hidden="true" />
         <About />
         <Segments />
         <Products />
@@ -97,3 +101,4 @@ function Index() {
     </div>
   );
 }
+
