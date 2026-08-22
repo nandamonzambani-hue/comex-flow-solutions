@@ -81,9 +81,11 @@ export const Route = createFileRoute("/")({
 function Index() {
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <ScrollReveal />
       <Header />
       <main>
         <Hero />
+        <div className="chroma-rail" aria-hidden="true" />
         <About />
         <Segments />
         <Products />
@@ -97,3 +99,4 @@ function Index() {
     </div>
   );
 }
+
