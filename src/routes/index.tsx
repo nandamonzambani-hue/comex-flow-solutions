@@ -10,6 +10,8 @@ import { Partners } from "@/components/site/Partners";
 import { Contact } from "@/components/site/Contact";
 import { Footer } from "@/components/site/Footer";
 import { WhatsAppFloat } from "@/components/site/WhatsAppFloat";
+import { ScrollReveal } from "@/components/site/ScrollReveal";
+
 
 const SITE_URL = "https://www.comex10.com.br";
 
