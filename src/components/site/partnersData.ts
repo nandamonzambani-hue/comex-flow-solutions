@@ -1,5 +1,5 @@
 import uniflexColor from "@/assets/logos/uniflex-color.png.asset.json";
-import transfluidOficial from "@/assets/logos/transfluid-oficial.svg.asset.json";
+import transfluidOficial from "@/assets/logos/transfluid-oficial.png.asset.json";
 import logoZec from "@/assets/logos/zec.png";
 import logoMarzocchi from "@/assets/logos/marzocchi.png";
 import logoHeldAsset from "@/assets/logos/held-color.png.asset.json";
