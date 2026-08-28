@@ -79,13 +79,22 @@ export function Services() {
               className="lift-card accent-top accent-wash relative overflow-hidden h-full p-6 pt-7 rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm group"
               style={{ ["--card-accent" as string]: serviceAccents[i % serviceAccents.length] }}
             >
-              <div className="w-12 h-12 rounded-lg bg-primary/15 border border-primary/30 flex items-center justify-center mb-4 group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
-                <s.icon size={22} className="text-primary group-hover:text-primary-foreground" />
+              <div
+                className="relative z-10 w-12 h-12 rounded-lg border flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3"
+                style={{
+                  backgroundColor: `color-mix(in oklab, ${serviceAccents[i % serviceAccents.length]} 22%, transparent)`,
+                  borderColor: `color-mix(in oklab, ${serviceAccents[i % serviceAccents.length]} 45%, transparent)`,
+                  color: serviceAccents[i % serviceAccents.length],
+                }}
+              >
+                <s.icon size={22} />
               </div>
-              <h3 className="font-display text-lg font-semibold mb-2 text-white">{s.title}</h3>
-              <p className="text-sm text-neutral-300 leading-relaxed">{s.desc}</p>
+              <h3 className="relative z-10 font-display text-lg font-semibold mb-2 text-white">{s.title}</h3>
+              <p className="relative z-10 text-sm text-neutral-300 leading-relaxed">{s.desc}</p>
             </div>
+            </Reveal>
           ))}
+
         </div>
 
         <div className="mt-12 flex flex-wrap items-center justify-between gap-4 p-6 rounded-xl border border-primary/30 bg-primary/10 backdrop-blur-sm">
