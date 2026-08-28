@@ -10,6 +10,7 @@ import {
   Flame,
   Cog,
 } from "lucide-react";
+import { Reveal } from "./Reveal";
 
 const accents = [
   "var(--brand-uniflex-ink)",
@@ -37,34 +38,36 @@ export function Segments() {
   return (
     <section id="segmentos" className="scroll-mt-24 py-16 md:py-24 lg:min-h-svh lg:flex lg:items-center bg-surface/40 border-y border-border">
       <div className="w-full mx-auto max-w-7xl px-4 md:px-8">
-        <div className="max-w-2xl mb-14">
+        <Reveal from="left" className="max-w-2xl mb-14">
           <span className="text-sm font-semibold tracking-widest uppercase text-primary">
             Segmentos de atuação
           </span>
           <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold mt-3 mb-4 leading-tight">
             Soluções pensadas para o seu setor.
           </h2>
+          <div className="brand-rule w-40 mb-4" />
           <p className="text-lg text-muted-foreground">
             Cada operação tem desafios únicos. Selecionamos equipamentos, mangueiras
             e insumos para o seu segmento.
           </p>
-        </div>
+        </Reveal>
 
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
           {segments.map((s, i) => {
             const accent = accents[i % accents.length];
             return (
+            <Reveal key={s.title} from="up" delay={i * 55}>
             <a
-              key={s.title}
               href="#produtos"
-              className="group relative overflow-hidden rounded-xl border border-border bg-surface hover:-translate-y-1 transition-all p-5 block"
+              className="group lift-card accent-wash relative h-full overflow-hidden rounded-xl border border-border bg-surface p-5 block"
               style={{
                 background: "var(--gradient-surface)",
                 borderColor: `color-mix(in oklab, ${accent} 25%, transparent)`,
+                ["--card-accent" as string]: accent,
               }}
             >
               <div
-                className="w-12 h-12 rounded-lg flex items-center justify-center mb-4 border transition-colors group-hover:text-white"
+                className="relative z-10 w-12 h-12 rounded-lg flex items-center justify-center mb-4 border transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3"
                 style={{
                   backgroundColor: `color-mix(in oklab, ${accent} 14%, transparent)`,
                   borderColor: `color-mix(in oklab, ${accent} 35%, transparent)`,
@@ -73,13 +76,14 @@ export function Segments() {
               >
                 <s.icon size={22} />
               </div>
-              <h3 className="font-display text-base sm:text-lg font-semibold mb-1.5">{s.title}</h3>
-              <p className="text-xs text-muted-foreground leading-relaxed">{s.desc}</p>
+              <h3 className="relative z-10 font-display text-base sm:text-lg font-semibold mb-1.5">{s.title}</h3>
+              <p className="relative z-10 text-xs text-muted-foreground leading-relaxed">{s.desc}</p>
               <div
-                className="mt-3 h-0.5 w-8 rounded-full transition-all group-hover:w-16"
+                className="relative z-10 mt-3 h-0.5 w-8 rounded-full transition-all duration-500 group-hover:w-16"
                 style={{ backgroundColor: accent }}
               />
             </a>
+            </Reveal>
             );
           })}
         </div>
