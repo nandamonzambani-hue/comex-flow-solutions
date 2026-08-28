@@ -56,7 +56,7 @@ export function Hero() {
             <div className="mt-4 flex flex-wrap gap-3 lg:mt-5">
               <a
                 href="#produtos"
-                className="inline-flex items-center justify-center rounded-full bg-primary px-6 py-3 text-sm font-display font-bold text-primary-foreground shadow-[0_0_25px_rgba(56,140,255,0.35)] transition-transform hover:scale-[1.03]"
+                className="cta-pulse inline-flex items-center justify-center rounded-full bg-primary px-6 py-3 text-sm font-display font-bold text-primary-foreground shadow-[0_0_25px_rgba(56,140,255,0.35)]"
               >
                 Ver soluções
               </a>
@@ -64,7 +64,7 @@ export function Hero() {
                 href="https://wa.me/5511914900404"
                 target="_blank"
                 rel="noopener nofollow"
-                className="inline-flex items-center justify-center rounded-full border border-white/40 bg-white/10 px-6 py-3 text-sm font-display font-bold text-white backdrop-blur-md transition-colors hover:bg-white/20"
+                className="inline-flex items-center justify-center rounded-full border border-white/40 bg-white/10 px-6 py-3 text-sm font-display font-bold text-white backdrop-blur-md transition-all duration-300 hover:bg-white/20 hover:-translate-y-0.5 hover:border-white/70"
               >
                 Falar com especialista
               </a>
@@ -73,8 +73,8 @@ export function Hero() {
 
           {/* RIGHT — hexagon seal */}
           <div className="relative hidden lg:flex items-center justify-end">
-            <div className="relative">
-              <div className="absolute -inset-6 bg-cyan-400/25 blur-2xl rounded-full" />
+            <div className="relative float-soft">
+              <div className="absolute -inset-6 bg-cyan-400/25 blur-2xl rounded-full animate-pulse" />
               <div
                 className="relative w-40 h-44 xl:w-48 xl:h-52 flex items-center justify-center"
                 style={{
@@ -124,7 +124,8 @@ export function Hero() {
                 target="_blank"
                 rel="noopener nofollow"
                 title={p.name}
-                className={`group flex min-w-0 flex-col items-center justify-center px-2 py-2.5 text-center transition-colors hover:bg-muted lg:min-h-[5.75rem] lg:py-2 border-border ${
+                style={{ ["--card-accent" as string]: p.accent }}
+                className={`group relative flex min-w-0 flex-col items-center justify-center px-2 py-2.5 text-center transition-all duration-300 hover:bg-muted lg:min-h-[5.75rem] lg:py-2 border-border ${
                   i % 2 === 1 ? "border-l sm:border-l-0" : ""
                 } ${i >= 2 ? "border-t sm:border-t-0" : ""} ${
                   i % 3 !== 0 ? "sm:border-l" : ""
@@ -136,11 +137,15 @@ export function Hero() {
                   <img
                     src={p.logo}
                     alt={`Logo ${p.name}`}
-                    className="max-h-full max-w-full object-contain"
+                    className="max-h-full max-w-full object-contain transition-transform duration-300 group-hover:scale-110"
                     loading="lazy"
                     decoding="async"
                   />
                 </div>
+                <span
+                  className="absolute inset-x-0 bottom-0 h-[3px] origin-left scale-x-0 transition-transform duration-400 group-hover:scale-x-100"
+                  style={{ backgroundColor: p.accent }}
+                />
                 {p.official && (
                   <span className="mb-1 text-[8px] font-display font-bold uppercase tracking-[0.16em] text-primary border border-primary/30 bg-primary/10 px-1.5 py-0.5 rounded-sm">
                     Distribuidor oficial
