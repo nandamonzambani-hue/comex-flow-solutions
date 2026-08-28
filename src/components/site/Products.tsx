@@ -251,8 +251,11 @@ function ZecCard({ label, desc, image }: { label: string; desc: string; image: s
       href={ZEC_CATALOG}
       target="_blank"
       rel="noopener"
-      className="group rounded-lg border bg-card overflow-hidden transition-colors flex flex-col hover:shadow-md"
-      style={{ borderColor: "color-mix(in oklab, var(--brand-zec) 30%, transparent)" }}
+      className="group lift-card accent-wash relative rounded-lg border bg-card overflow-hidden flex flex-col"
+      style={{
+        borderColor: "color-mix(in oklab, var(--brand-zec) 30%, transparent)",
+        ["--card-accent" as string]: "var(--brand-zec)",
+      }}
     >
       <div className="aspect-[3/4] overflow-hidden bg-background">
         <img
@@ -289,10 +292,16 @@ function ItemCard({ item }: { item: Item }) {
   const c = brandColors(item.brand);
   return (
     <article
-      className="group rounded-xl bg-background/60 border transition-all overflow-hidden flex flex-col hover:shadow-md"
-      style={{ borderColor: `color-mix(in oklab, ${c.accent} 32%, transparent)` }}
+      className="group lift-card accent-wash relative rounded-xl bg-background/60 border overflow-hidden flex flex-col"
+      style={{
+        borderColor: `color-mix(in oklab, ${c.accent} 32%, transparent)`,
+        ["--card-accent" as string]: c.accent,
+      }}
     >
-      <div className="h-1 w-full" style={{ backgroundColor: c.accent }} />
+      <div
+        className="h-1 w-full origin-left transition-transform duration-500 group-hover:scale-y-[2.5]"
+        style={{ backgroundColor: c.accent }}
+      />
       <div className="aspect-[4/3] overflow-hidden bg-background">
         <img
           src={item.image}
@@ -381,7 +390,7 @@ export function Products() {
                     id={`tab-${cat.id}`}
                     aria-selected={isActive}
                     aria-controls="painel-produtos"
-                    className="w-full text-left p-3 sm:p-4 min-h-11 rounded-xl border transition-all bg-surface hover:bg-surface/80"
+                    className="w-full text-left p-3 sm:p-4 min-h-11 rounded-xl border bg-surface transition-all duration-300 hover:bg-surface/80 hover:translate-x-1"
                     style={{
                       borderColor: `color-mix(in oklab, ${cat.accent} ${isActive ? 70 : 22}%, transparent)`,
                       backgroundColor: isActive

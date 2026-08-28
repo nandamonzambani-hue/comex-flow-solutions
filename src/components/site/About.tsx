@@ -114,14 +114,18 @@ export function About() {
           <h3 className="font-display text-2xl md:text-3xl font-bold mt-2">
             Nossa jornada técnica ao seu lado
           </h3>
+          <div className="brand-rule w-40 mt-4" />
         </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {pillars.map((p) => (
             <div
               key={p.title}
-              className="group p-6 rounded-xl border bg-card transition-all hover:shadow-md flex flex-col"
-              style={{ borderColor: `color-mix(in oklab, ${p.accent} 28%, transparent)` }}
+              className="group lift-card accent-top accent-wash relative overflow-hidden p-6 pt-7 rounded-xl border bg-card flex flex-col"
+              style={{
+                borderColor: `color-mix(in oklab, ${p.accent} 28%, transparent)`,
+                ["--card-accent" as string]: p.accent,
+              }}
             >
               <div className="flex items-start justify-between mb-4">
                 <div
