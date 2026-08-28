@@ -126,6 +126,119 @@
 
 }
 
+/* ---------- Movimento & dinamismo (apenas visual) ---------- */
+
+[data-reveal] {
+  opacity: 0;
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+[data-reveal="up"] { transform: translate3d(0, 28px, 0); }
+[data-reveal="left"] { transform: translate3d(-28px, 0, 0); }
+[data-reveal="right"] { transform: translate3d(28px, 0, 0); }
+[data-reveal="scale"] { transform: scale(0.96); }
+[data-reveal][data-visible="true"] {
+  opacity: 1;
+  transform: none;
+}
+
+/* Régua com as cores das marcas parceiras */
+.brand-rule {
+  height: 3px;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    var(--brand-uniflex) 0%,
+    var(--brand-zec) 18%,
+    var(--brand-next) 36%,
+    var(--brand-marzocchi) 54%,
+    var(--brand-held) 72%,
+    var(--brand-transfluid) 88%,
+    var(--brand-comex10) 100%
+  );
+  background-size: 200% 100%;
+  animation: brand-slide 9s linear infinite;
+}
+
+@keyframes brand-slide {
+  to { background-position: 200% 0; }
+}
+
+/* Cartão com elevação e brilho na cor da marca (via --card-accent) */
+.lift-card {
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.35s ease,
+    border-color 0.35s ease;
+}
+.lift-card:hover {
+  transform: translateY(-6px);
+  border-color: color-mix(in oklab, var(--card-accent, var(--primary)) 60%, transparent) !important;
+  box-shadow:
+    0 18px 40px -22px color-mix(in oklab, var(--card-accent, var(--primary)) 60%, transparent),
+    0 0 0 1px color-mix(in oklab, var(--card-accent, var(--primary)) 22%, transparent);
+}
+
+/* Faixa superior colorida que cresce no hover */
+.accent-top::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 3px;
+  background: var(--card-accent, var(--primary));
+  transform: scaleX(0.25);
+  transform-origin: left;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.accent-top:hover::before { transform: scaleX(1); }
+
+/* Brilho radial suave que segue o hover do cartão */
+.accent-wash::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  background: radial-gradient(
+    120% 90% at 15% 0%,
+    color-mix(in oklab, var(--card-accent, var(--primary)) 16%, transparent) 0%,
+    transparent 65%
+  );
+}
+.accent-wash:hover::after { opacity: 1; }
+
+/* CTA com brilho pulsante */
+.cta-pulse {
+  position: relative;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.cta-pulse:hover { transform: translateY(-2px) scale(1.03); }
+.cta-pulse::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: inherit;
+  pointer-events: none;
+  box-shadow: 0 0 0 0 color-mix(in oklab, var(--primary) 45%, transparent);
+  animation: cta-ring 2.6s ease-out infinite;
+}
+@keyframes cta-ring {
+  0% { box-shadow: 0 0 0 0 color-mix(in oklab, var(--primary) 45%, transparent); }
+  70% { box-shadow: 0 0 0 14px transparent; }
+  100% { box-shadow: 0 0 0 0 transparent; }
+}
+
+@keyframes float-soft {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+.float-soft { animation: float-soft 6s ease-in-out infinite; }
+
+
+
 
 
 @layer base {
