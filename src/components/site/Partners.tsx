@@ -1,4 +1,5 @@
 import { partnerBrands } from "./partnersData";
+import { Reveal } from "./Reveal";
 
 export function Partners() {
   return (
@@ -21,7 +22,7 @@ export function Partners() {
       </div>
 
       <div className="relative z-10 w-full mx-auto max-w-7xl px-4 md:px-8 lg:pt-16 lg:pb-4">
-        <div className="max-w-3xl mb-5 text-center mx-auto">
+        <Reveal from="up" className="max-w-3xl mb-5 text-center mx-auto">
           <div className="inline-flex items-center space-x-3 bg-primary/10 border border-primary/30 px-4 py-1.5 rounded-sm backdrop-blur-md mb-3">
             <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
             <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-primary font-display">
@@ -38,27 +39,27 @@ export function Partners() {
           <p className="text-sm md:text-base text-muted-foreground font-light">
             Distribuidor oficial e autorizado no Brasil das marcas líderes em cadeia de fluidos.
           </p>
-        </div>
+          <div className="brand-rule w-56 mx-auto mt-4" />
+        </Reveal>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {partnerBrands.map((p) => (
+          {partnerBrands.map((p, i) => (
+            <Reveal key={p.name} from="scale" delay={i * 70} className="h-full">
             <a
-              key={p.name}
               href={p.href}
               target="_blank"
               rel="noopener nofollow"
               title={`${p.name} — ${p.country}`}
-              className="group relative flex flex-col bg-card backdrop-blur-xl border transition-all p-4 overflow-hidden"
-              style={{ borderColor: `color-mix(in oklab, ${p.accent} 30%, transparent)` }}
+              className="group lift-card accent-top accent-wash relative h-full flex flex-col bg-card backdrop-blur-xl border p-4 pt-5 overflow-hidden"
+              style={{
+                borderColor: `color-mix(in oklab, ${p.accent} 30%, transparent)`,
+                ["--card-accent" as string]: p.accent,
+              }}
             >
-              <div
-                className="absolute inset-x-0 top-0 h-1 opacity-70 group-hover:opacity-100 transition-opacity"
-                style={{ backgroundColor: p.accent }}
-              />
 
               {/* Tile branco: logo em CORES ORIGINAIS, sem filtro */}
               <div
-                className="rounded-md h-16 flex items-center justify-center px-4 mb-3 group-hover:shadow-[0_0_25px_rgba(56,140,255,0.25)] transition-shadow"
+                className="relative z-10 rounded-md h-16 flex items-center justify-center px-4 mb-3 transition-transform duration-500 group-hover:scale-[1.06]"
                 style={{ backgroundColor: p.tileBg }}
               >
                 <img decoding="async" loading="lazy"
@@ -67,7 +68,7 @@ export function Partners() {
                   className={`${p.h} max-w-full object-contain`}
                 />
               </div>
-              <div>
+              <div className="relative z-10">
                 <div className="flex items-center gap-2 mb-1.5">
                   <span className="font-display text-[9px] text-primary tracking-[0.25em]">
                     {p.code}
@@ -86,8 +87,12 @@ export function Partners() {
                 )}
                 <p className="text-xs text-muted-foreground leading-relaxed">{p.tagline}</p>
               </div>
-              <div className="mt-3 h-0.5 w-10 bg-primary/20 transition-all group-hover:w-20 group-hover:shadow-[0_0_10px_rgba(56,140,255,0.25)]" />
+              <div
+                className="relative z-10 mt-3 h-0.5 w-10 transition-all duration-500 group-hover:w-24"
+                style={{ backgroundColor: p.accent }}
+              />
             </a>
+            </Reveal>
           ))}
         </div>
 
