@@ -1,3 +1,4 @@
+import { Reveal } from "./Reveal";
 import { Headphones, Package, FlaskConical, ShieldCheck, ArrowRight } from "lucide-react";
 import bgServiceAsset from "@/assets/uniflex-sc6s.png.asset.json";
 const bgService = bgServiceAsset.url;
@@ -26,6 +27,13 @@ const services = [
   },
 ];
 
+const serviceAccents = [
+  "var(--brand-uniflex)",
+  "var(--brand-next)",
+  "var(--brand-held)",
+  "var(--brand-zec)",
+];
+
 export function Services() {
   return (
     <section
@@ -50,7 +58,7 @@ export function Services() {
       </div>
 
       <div className="relative w-full mx-auto max-w-7xl px-4 md:px-8">
-        <div className="max-w-2xl mb-14">
+        <Reveal from="left" className="max-w-2xl mb-14">
           <span className="text-sm font-semibold tracking-widest uppercase text-primary">
             Serviços
           </span>
@@ -61,13 +69,15 @@ export function Services() {
             Apoiamos sua operação em todas as etapas — da identificação do problema
             à solução aplicada em campo.
           </p>
-        </div>
+          <div className="brand-rule w-44 mt-5" />
+        </Reveal>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
-          {services.map((s) => (
+          {services.map((s, i) => (
+            <Reveal key={s.title} from="up" delay={i * 90}>
             <div
-              key={s.title}
-              className="p-6 rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm hover:border-primary/40 transition-all group"
+              className="lift-card accent-top accent-wash relative overflow-hidden h-full p-6 pt-7 rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm group"
+              style={{ ["--card-accent" as string]: serviceAccents[i % serviceAccents.length] }}
             >
               <div className="w-12 h-12 rounded-lg bg-primary/15 border border-primary/30 flex items-center justify-center mb-4 group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
                 <s.icon size={22} className="text-primary group-hover:text-primary-foreground" />
@@ -91,7 +101,7 @@ export function Services() {
             href="https://wa.me/5511914900404"
             target="_blank"
             rel="noopener"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-md text-sm font-semibold text-primary-foreground transition-all hover:scale-105"
+            className="cta-pulse inline-flex items-center gap-2 px-6 py-3 rounded-md text-sm font-semibold text-primary-foreground"
             style={{ background: "var(--gradient-primary)", boxShadow: "var(--shadow-glow)" }}
           >
             Solicite agora <ArrowRight size={16} />
