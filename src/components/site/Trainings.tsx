@@ -2,6 +2,7 @@ import type React from "react";
 import treinamentoAsset from "@/assets/treinamento-gates.jpg.asset.json";
 const treinamentoImg = treinamentoAsset.url;
 import { GraduationCap, Building2, Calendar, ArrowRight, CheckCircle2 } from "lucide-react";
+import { Reveal } from "./Reveal";
 
 type Session = { date: string; language: string };
 type CountrySchedule = { code: string; country: string; sessions: Session[] };
@@ -84,7 +85,7 @@ export function Trainings() {
         {/* Header */}
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center mb-16">
           {/* Image with neon frame */}
-          <div className="relative order-2 lg:order-1">
+          <Reveal from="left" className="relative order-2 lg:order-1">
             <div className="absolute -inset-1 bg-gradient-to-tr from-cyan-500 to-blue-600 opacity-30 blur-xl" />
             <div className="relative overflow-hidden border border-border">
               <img decoding="async"
@@ -106,9 +107,9 @@ export function Trainings() {
                 </span>
               </div>
             </div>
-          </div>
+          </Reveal>
 
-          <div className="order-1 lg:order-2">
+          <Reveal from="right" delay={80} className="order-1 lg:order-2">
             <div className="inline-flex items-center space-x-3 bg-primary/10 border border-primary/30 px-4 py-1.5 rounded-sm backdrop-blur-md w-fit mb-6">
               <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
               <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-primary font-display">
@@ -172,7 +173,7 @@ export function Trainings() {
                 <CheckCircle2 size={14} className="text-primary" /> Conteúdo prático
               </span>
             </div>
-          </div>
+          </Reveal>
         </div>
 
         {/* Agenda */}

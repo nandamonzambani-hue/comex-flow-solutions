@@ -1,3 +1,4 @@
+import { Reveal } from "./Reveal";
 import { ShieldCheck, FileBadge, Award, MessageCircle } from "lucide-react";
 
 const certs = [
@@ -31,7 +32,7 @@ export function Certificates() {
   return (
     <section id="certificados" className="scroll-mt-24 py-16 md:py-28 bg-white border-y border-neutral-200">
       <div className="mx-auto max-w-7xl px-4 md:px-8">
-        <div className="max-w-2xl mb-12 text-center mx-auto">
+        <Reveal className="max-w-2xl mb-12 text-center mx-auto">
           <span className="text-sm font-semibold tracking-widest uppercase text-primary">
             Certificados
           </span>
@@ -42,12 +43,13 @@ export function Certificates() {
             Documentação técnica e certificados de conformidade dos nossos fornecedores
             globais — disponíveis sob solicitação para sua área de qualidade.
           </p>
-        </div>
+        </Reveal>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {certs.map((c) => (
-            <div
+          {certs.map((c, i) => (
+            <Reveal
               key={c.brand + c.title}
+              delay={i * 90}
               className="p-6 rounded-xl border border-neutral-200 bg-white shadow-sm hover:shadow-md hover:border-primary/50 transition-all hover:-translate-y-1 flex flex-col"
             >
               <div className="w-12 h-12 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center mb-4">
@@ -68,7 +70,7 @@ export function Certificates() {
               >
                 <MessageCircle size={14} /> Solicitar certificado
               </a>
-            </div>
+            </Reveal>
           ))}
         </div>
       </div>
