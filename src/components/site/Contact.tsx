@@ -1,3 +1,4 @@
+import { Reveal } from "./Reveal";
 import { Mail, Phone, MapPin, Instagram, Linkedin, ArrowRight } from "lucide-react";
 import { useState } from "react";
 
@@ -38,7 +39,7 @@ export function Contact() {
       />
       <div className="relative w-full mx-auto max-w-7xl px-4 md:px-8">
         <div className="grid lg:grid-cols-2 gap-12 items-start">
-          <div>
+          <Reveal from="left">
             <span className="text-sm font-semibold tracking-widest uppercase text-primary">
               Contato
             </span>
@@ -139,8 +140,9 @@ export function Contact() {
                 </div>
               </a>
             </div>
-          </div>
+          </Reveal>
 
+          <Reveal from="right" delay={100}>
           <form
             onSubmit={handleSubmit}
             className="p-5 sm:p-8 rounded-2xl border border-border bg-surface"
@@ -254,6 +256,7 @@ export function Contact() {
               </div>
             )}
           </form>
+          </Reveal>
         </div>
       </div>
     </section>
