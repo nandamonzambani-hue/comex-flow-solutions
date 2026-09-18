@@ -31,7 +31,7 @@
 			<!-- wp:group {"backgroundColor":"surface","style":{"spacing":{"padding":"2rem"},"border":{"radius":"12px"}},"layout":{"type":"constrained"}} -->
 			<div class="wp-block-group has-surface-background-color has-background" style="border-radius:12px;padding:2rem">
 				<!-- wp:image {"width":40,"height":40,"sizeSlug":"thumbnail"} -->
-				<figure class="wp-block-image is-resized"><img src="" alt="" width="40" height="40"/></figure>
+				<figure class="wp-block-image is-resized"><img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/icon-consulting.png' ) ); ?>" alt="" width="40" height="40"/></figure>
 				<!-- /wp:image -->
 				<!-- wp:heading {"level":3,"fontSize":"large"} -->
 				<h3 class="wp-block-heading has-large-font-size">Consulting</h3>
@@ -49,7 +49,7 @@
 			<!-- wp:group {"backgroundColor":"surface","style":{"spacing":{"padding":"2rem"},"border":{"radius":"12px"}},"layout":{"type":"constrained"}} -->
 			<div class="wp-block-group has-surface-background-color has-background" style="border-radius:12px;padding:2rem">
 				<!-- wp:image {"width":40,"height":40,"sizeSlug":"thumbnail"} -->
-				<figure class="wp-block-image is-resized"><img src="" alt="" width="40" height="40"/></figure>
+				<figure class="wp-block-image is-resized"><img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/icon-implementation.png' ) ); ?>" alt="" width="40" height="40"/></figure>
 				<!-- /wp:image -->
 				<!-- wp:heading {"level":3,"fontSize":"large"} -->
 				<h3 class="wp-block-heading has-large-font-size">Implementation</h3>
@@ -67,7 +67,7 @@
 			<!-- wp:group {"backgroundColor":"surface","style":{"spacing":{"padding":"2rem"},"border":{"radius":"12px"}},"layout":{"type":"constrained"}} -->
 			<div class="wp-block-group has-surface-background-color has-background" style="border-radius:12px;padding:2rem">
 				<!-- wp:image {"width":40,"height":40,"sizeSlug":"thumbnail"} -->
-				<figure class="wp-block-image is-resized"><img src="" alt="" width="40" height="40"/></figure>
+				<figure class="wp-block-image is-resized"><img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/icon-support.png' ) ); ?>" alt="" width="40" height="40"/></figure>
 				<!-- /wp:image -->
 				<!-- wp:heading {"level":3,"fontSize":"large"} -->
 				<h3 class="wp-block-heading has-large-font-size">Support</h3>

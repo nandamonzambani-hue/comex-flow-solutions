@@ -15,7 +15,7 @@
 		<!-- wp:column {"verticalAlignment":"center"} -->
 		<div class="wp-block-column is-vertically-aligned-center">
 			<!-- wp:image {"style":{"border":{"radius":"12px"}}} -->
-			<figure class="wp-block-image"><img src="" alt="Team at work" style="border-radius:12px"/></figure>
+			<figure class="wp-block-image"><img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/about.jpg' ) ); ?>" alt="" style="border-radius:12px"/></figure>
 			<!-- /wp:image -->
 		</div>
 		<!-- /wp:column -->

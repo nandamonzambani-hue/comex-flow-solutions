@@ -20,13 +20,13 @@
 	<!-- wp:gallery {"columns":3,"linkTo":"none"} -->
 	<figure class="wp-block-gallery has-nested-images columns-3 is-cropped">
 		<!-- wp:image {"sizeSlug":"large"} -->
-		<figure class="wp-block-image size-large"><img src="" alt="Product one"/><figcaption class="wp-element-caption">Product name</figcaption></figure>
+		<figure class="wp-block-image size-large"><img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/product-1.jpg' ) ); ?>" alt=""/><figcaption class="wp-element-caption">Product name</figcaption></figure>
 		<!-- /wp:image -->
 		<!-- wp:image {"sizeSlug":"large"} -->
-		<figure class="wp-block-image size-large"><img src="" alt="Product two"/><figcaption class="wp-element-caption">Product name</figcaption></figure>
+		<figure class="wp-block-image size-large"><img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/product-2.jpg' ) ); ?>" alt=""/><figcaption class="wp-element-caption">Product name</figcaption></figure>
 		<!-- /wp:image -->
 		<!-- wp:image {"sizeSlug":"large"} -->
-		<figure class="wp-block-image size-large"><img src="" alt="Product three"/><figcaption class="wp-element-caption">Product name</figcaption></figure>
+		<figure class="wp-block-image size-large"><img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/product-3.jpg' ) ); ?>" alt=""/><figcaption class="wp-element-caption">Product name</figcaption></figure>
 		<!-- /wp:image -->
 	</figure>
 	<!-- /wp:gallery -->

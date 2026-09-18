@@ -6,9 +6,10 @@
  * Description: Full-width hero banner with headline, supporting text and two call-to-action buttons.
  */
 ?>
-<!-- wp:cover {"overlayColor":"contrast","dimRatio":40,"minHeight":560,"minHeightUnit":"px","gradient":"hero-gradient","align":"full","style":{"spacing":{"padding":{"top":"6rem","bottom":"6rem","left":"1.5rem","right":"1.5rem"}}}} -->
+<!-- wp:cover {"url":"<?php echo esc_url( get_theme_file_uri( 'assets/images/hero-bg.jpg' ) ); ?>","dimRatio":40,"minHeight":560,"minHeightUnit":"px","gradient":"hero-gradient","align":"full","style":{"spacing":{"padding":{"top":"6rem","bottom":"6rem","left":"1.5rem","right":"1.5rem"}}}} -->
 <div class="wp-block-cover alignfull" style="padding-top:6rem;padding-right:1.5rem;padding-bottom:6rem;padding-left:1.5rem;min-height:560px">
 	<span aria-hidden="true" class="wp-block-cover__background has-background-dim-40 has-background-dim has-background-gradient has-hero-gradient-gradient-background"></span>
+	<img class="wp-block-cover__image-background" alt="" src="<?php echo esc_url( get_theme_file_uri( 'assets/images/hero-bg.jpg' ) ); ?>" data-object-fit="cover"/>
 	<div class="wp-block-cover__inner-container">
 		<!-- wp:group {"layout":{"type":"constrained","contentSize":"760px"}} -->
 		<div class="wp-block-group">

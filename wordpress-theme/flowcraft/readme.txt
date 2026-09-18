@@ -4,7 +4,7 @@ Contributors: yourwporgusername
 Requires at least: 6.4
 Tested up to: 6.6
 Requires PHP: 7.4
-Version: 1.0.0
+Version: 1.0.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Tags: full-site-editing, block-patterns, business, one-column, two-columns, custom-colors, custom-menu, custom-logo, editor-style, featured-images, rtl-language-support, translation-ready, wide-blocks
@@ -32,9 +32,9 @@ FlowCraft is free and 100% GPL. A separate FlowCraft Pro add-on (sold independen
 
 No. FlowCraft is built entirely with WordPress core blocks and the Site Editor.
 
-= Where do the placeholder images come from? =
+= Where do the demo images come from? =
 
-They don't — image placeholders are left empty by design so you always start from your own, properly licensed photography.
+They are original abstract graphics and icons created specifically for this theme (no stock photography), so there are no licensing questions when you redistribute or resell the theme. Swap them for your own photography from the Site Editor whenever you're ready.
 
 = Does this theme require any plugins? =
 
@@ -45,9 +45,12 @@ No plugins are required. If you want a working contact form, add your preferred 
 FlowCraft WordPress Theme, (C) 2026 Your Studio Name.
 FlowCraft is distributed under the terms of the GNU GPL v2 or later.
 
-FlowCraft is an original theme built from scratch on top of WordPress core APIs (block templates, template parts, block patterns and theme.json). It bundles no third-party code, images, icons or fonts — all visuals in the block patterns are empty placeholders for the site owner to fill in with their own, properly licensed media.
+FlowCraft is an original theme built from scratch on top of WordPress core APIs (block templates, template parts, block patterns and theme.json). It bundles no third-party code. The demo images and icons in `assets/images/` (hero background, about section graphic, product tiles, partner wordmarks, service icons) are original, programmatically generated artwork created for this theme, (C) 2026 Your Studio Name, licensed GPLv2 or later — no external stock photography is used.
 
 == Changelog ==
+
+= 1.0.1 =
+* Replaced empty image placeholders with original bundled demo artwork (hero background, about graphic, product tiles, partner logos, service icons).
 
 = 1.0.0 =
 * Initial public release.
