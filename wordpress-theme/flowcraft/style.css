@@ -1,0 +1,52 @@
+/*
+Theme Name: FlowCraft
+Theme URI: https://example.com/flowcraft
+Author: Your Studio Name
+Author URI: https://example.com
+Description: FlowCraft is a fast, accessible block theme built for corporate, industrial and B2B businesses. Showcase your services, products, partners and certifications with ready-made sections, then customize every color, font and layout with the Site Editor. No page builder required.
+Requires at least: 6.4
+Tested up to: 6.6
+Requires PHP: 7.4
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: flowcraft
+Tags: full-site-editing, block-patterns, business, one-column, two-columns, custom-colors, custom-menu, custom-logo, editor-style, featured-images, rtl-language-support, translation-ready, wide-blocks
+
+FlowCraft WordPress Theme, (C) 2026 Your Studio Name
+FlowCraft is distributed under the terms of the GNU General Public License v2 or later.
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+*/
+
+/*
+ * Fallback styles for editors/browsers that do not read theme.json.
+ * All layout, color and typography rules live in theme.json; this file
+ * only carries the required stylesheet header plus small print-time and
+ * no-js fallbacks that theme.json cannot express.
+ */
+
+.skip-link {
+	background: #0b2b4c;
+	color: #fff;
+	height: auto;
+	left: 0;
+	padding: 0.75em 1.5em;
+	position: absolute;
+	top: -100px;
+	transition: top 0.2s ease-in-out;
+	z-index: 100000;
+}
+
+.skip-link:focus {
+	top: 0;
+}
+
+@media print {
+	.site-header,
+	.site-footer,
+	.wp-block-flowcraft-whatsapp-float {
+		display: none !important;
+	}
+}
