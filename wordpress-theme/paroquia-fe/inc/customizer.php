@@ -156,13 +156,33 @@ function paroquiafe_customize_register( $wp_customize ) {
 	) );
 
 	/* ---------- Cores ---------- */
+	$wp_customize->add_setting( 'paroquiafe_paleta', array(
+		'sanitize_callback' => 'paroquiafe_sanitize_paleta',
+		'default'           => 'classico',
+	) );
+	$wp_customize->add_control( 'paroquiafe_paleta', array(
+		'label'       => __( 'Paleta de Cores', 'paroquia-fe' ),
+		'description' => __( 'Escolha um estilo pronto ou defina suas próprias cores abaixo.', 'paroquia-fe' ),
+		'section'     => 'colors',
+		'type'        => 'select',
+		'choices'     => array(
+			'classico'     => __( 'Clássico - Vinho Litúrgico e Dourado', 'paroquia-fe' ),
+			'moderno'      => __( 'Moderno Claro - Azul Sereno e Areia', 'paroquia-fe' ),
+			'personalizado' => __( 'Personalizado (cores abaixo)', 'paroquia-fe' ),
+		),
+		'priority' => 5,
+	) );
+
 	$wp_customize->add_setting( 'paroquiafe_cor_primaria', array(
 		'sanitize_callback' => 'sanitize_hex_color',
 		'default'           => '#6b1d2e',
 	) );
 	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'paroquiafe_cor_primaria', array(
-		'label'   => __( 'Cor Primária (ex: vinho litúrgico)', 'paroquia-fe' ),
-		'section' => 'colors',
+		'label'           => __( 'Cor Primária', 'paroquia-fe' ),
+		'section'         => 'colors',
+		'active_callback' => function () {
+			return 'personalizado' === get_theme_mod( 'paroquiafe_paleta', 'classico' );
+		},
 	) ) );
 
 	$wp_customize->add_setting( 'paroquiafe_cor_destaque', array(
@@ -170,8 +190,11 @@ function paroquiafe_customize_register( $wp_customize ) {
 		'default'           => '#c8a24a',
 	) );
 	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'paroquiafe_cor_destaque', array(
-		'label'   => __( 'Cor de Destaque (ex: dourado)', 'paroquia-fe' ),
-		'section' => 'colors',
+		'label'           => __( 'Cor de Destaque', 'paroquia-fe' ),
+		'section'         => 'colors',
+		'active_callback' => function () {
+			return 'personalizado' === get_theme_mod( 'paroquiafe_paleta', 'classico' );
+		},
 	) ) );
 }
 add_action( 'customize_register', 'paroquiafe_customize_register' );
@@ -180,17 +203,72 @@ function paroquiafe_sanitize_checkbox( $checked ) {
 	return ( isset( $checked ) && true === (bool) $checked ) ? true : false;
 }
 
+function paroquiafe_sanitize_paleta( $valor ) {
+	$permitidos = array( 'classico', 'moderno', 'personalizado' );
+	return in_array( $valor, $permitidos, true ) ? $valor : 'classico';
+}
+
+/**
+ * Paletas de cores prontas do tema.
+ *
+ * @return array<string, array<string, string>>
+ */
+function paroquiafe_get_paletas() {
+	return array(
+		'classico' => array(
+			'primaria'        => '#6b1d2e',
+			'primaria_escura' => '#4a1420',
+			'destaque'        => '#c8a24a',
+			'fundo_alt'       => '#faf6ee',
+			'borda'           => '#e7ddcb',
+			'texto'           => '#2b2622',
+			'texto_claro'     => '#6f645b',
+			'topbar_fundo'    => '#4a1420',
+			'topbar_texto'    => '#f1e7d8',
+			'fonte_titulo'    => "'Cormorant Garamond', Georgia, serif",
+		),
+		'moderno' => array(
+			'primaria'        => '#2f6690',
+			'primaria_escura' => '#1f4a68',
+			'destaque'        => '#e0a458',
+			'fundo_alt'       => '#f3f6f6',
+			'borda'           => '#e1e7e6',
+			'texto'           => '#242b2e',
+			'texto_claro'     => '#5c6a6e',
+			'topbar_fundo'    => '#ffffff',
+			'topbar_texto'    => '#242b2e',
+			'fonte_titulo'    => "'Mulish', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+		),
+	);
+}
+
 /**
  * Imprime as cores escolhidas no Personalizador como CSS custom properties.
  */
 function paroquiafe_customizer_css() {
-	$primaria = get_theme_mod( 'paroquiafe_cor_primaria', '#6b1d2e' );
-	$destaque = get_theme_mod( 'paroquiafe_cor_destaque', '#c8a24a' );
+	$paleta_escolhida = get_theme_mod( 'paroquiafe_paleta', 'classico' );
+	$paletas          = paroquiafe_get_paletas();
+
+	if ( 'personalizado' === $paleta_escolhida ) {
+		$cores = $paletas['classico'];
+		$cores['primaria'] = get_theme_mod( 'paroquiafe_cor_primaria', $cores['primaria'] );
+		$cores['destaque'] = get_theme_mod( 'paroquiafe_cor_destaque', $cores['destaque'] );
+	} else {
+		$cores = isset( $paletas[ $paleta_escolhida ] ) ? $paletas[ $paleta_escolhida ] : $paletas['classico'];
+	}
 	?>
 	<style id="paroquiafe-customizer-css">
 		:root {
-			--pf-cor-primaria: <?php echo esc_html( $primaria ); ?>;
-			--pf-cor-destaque: <?php echo esc_html( $destaque ); ?>;
+			--pf-cor-primaria: <?php echo esc_html( $cores['primaria'] ); ?>;
+			--pf-cor-primaria-escura: <?php echo esc_html( $cores['primaria_escura'] ); ?>;
+			--pf-cor-destaque: <?php echo esc_html( $cores['destaque'] ); ?>;
+			--pf-cor-fundo-alt: <?php echo esc_html( $cores['fundo_alt'] ); ?>;
+			--pf-cor-borda: <?php echo esc_html( $cores['borda'] ); ?>;
+			--pf-cor-texto: <?php echo esc_html( $cores['texto'] ); ?>;
+			--pf-cor-texto-claro: <?php echo esc_html( $cores['texto_claro'] ); ?>;
+			--pf-topbar-fundo: <?php echo esc_html( $cores['topbar_fundo'] ); ?>;
+			--pf-topbar-texto: <?php echo esc_html( $cores['topbar_texto'] ); ?>;
+			--pf-fonte-titulo: <?php echo esc_html( $cores['fonte_titulo'] ); ?>;
 		}
 	</style>
 	<?php

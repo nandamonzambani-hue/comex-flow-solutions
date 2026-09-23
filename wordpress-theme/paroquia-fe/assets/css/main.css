@@ -11,6 +11,8 @@
 	--pf-cor-fundo: #ffffff;
 	--pf-cor-fundo-alt: #faf6ee;
 	--pf-cor-borda: #e7ddcb;
+	--pf-topbar-fundo: var(--pf-cor-primaria-escura);
+	--pf-topbar-texto: #f1e7d8;
 	--pf-fonte-titulo: 'Cormorant Garamond', Georgia, serif;
 	--pf-fonte-corpo: 'Mulish', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 	--pf-raio: 10px;
@@ -96,9 +98,10 @@ ul { padding-left: 1.2em; }
 
 /* ---------- Topbar ---------- */
 .pf-topbar {
-	background: var(--pf-cor-primaria-escura);
-	color: #f1e7d8;
+	background: var(--pf-topbar-fundo);
+	color: var(--pf-topbar-texto);
 	font-size: .85rem;
+	border-bottom: 1px solid rgba(0, 0, 0, .06);
 }
 .pf-topbar-inner {
 	display: flex;
@@ -108,7 +111,7 @@ ul { padding-left: 1.2em; }
 	flex-wrap: wrap;
 	gap: 6px;
 }
-.pf-topbar a, .pf-topbar span { color: #f1e7d8; }
+.pf-topbar a, .pf-topbar span { color: var(--pf-topbar-texto); }
 .pf-topbar a:hover { color: var(--pf-cor-destaque); }
 .pf-topbar-contato { display: flex; gap: 1.5em; flex-wrap: wrap; }
 .pf-topbar-redes { display: flex; gap: .9em; }
