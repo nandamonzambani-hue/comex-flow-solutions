@@ -23,6 +23,25 @@ direitos autorais** e pertencem a editoras específicas:
 3. Nunca faça scraping de sites de terceiros sem autorização — além do
    risco legal, esses sites mudam de estrutura e quebram a integração.
 
+### Bíblia em outros idiomas
+
+O app suporta várias versões bíblicas simultaneamente via `bible_versions`
+(cada versão tem seu próprio `language`). Para adicionar uma versão em
+inglês, espanhol, italiano ou francês:
+
+| Idioma | Opção de domínio público | Opção com licença |
+|---|---|---|
+| Inglês | Douay-Rheims (tradução católica, domínio público) | New American Bible, RSV-CE (requerem licença) |
+| Espanhol | — (a maioria das traduções católicas em espanhol é protegida) | Biblia de Jerusalén, Biblia Latinoamericana |
+| Italiano | — | Bibbia CEI (Conferenza Episcopale Italiana) |
+| Francês | — | Bible de Jérusalem, AELF (liturgia oficial francesa) |
+
+Rode `bible-sync` uma vez por `(versão, livro)` apontando `BIBLE_API_URL`
+para a fonte correta; registre a versão em `bible_versions` com o
+`language` no formato usado pelo app (`en`, `es`, `it`, `fr`, `pt-BR`) para
+que a tela de Bíblia a selecione automaticamente quando o app estiver
+naquele idioma.
+
 ## Liturgia Diária
 
 Não existe uma API pública e oficialmente mantida pela CNBB ou Vaticano
@@ -30,7 +49,12 @@ para as leituras do dia. Três caminhos:
 
 1. **Alimentar manualmente**: a tela `admin/liturgy-editor.tsx` permite
    que alguém da equipe de liturgia digite a leitura do dia — funciona
-   bem para uma única paróquia com um voluntário responsável.
+   bem para uma única paróquia com um voluntário responsável. A tela tem
+   uma aba por idioma (`daily_liturgy` guarda uma linha por
+   `data + idioma`); na prática, a maioria das paróquias só preenche
+   português e deixa os outros idiomas para quando houver um
+   voluntário/fonte disponível — o app cai automaticamente para o texto
+   em português quando a tradução não existe, então nada fica quebrado.
 2. **Usar um provedor comunitário**: existem projetos open-source que
    disponibilizam a liturgia diária em JSON (busque "liturgia diária API"
    no GitHub). Configure `LITURGY_API_URL` na Edge Function

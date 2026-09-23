@@ -3,6 +3,7 @@ import type { Session } from "@supabase/supabase-js";
 import { supabase } from "@/lib/supabase";
 import type { MemberRole, Profile } from "@/types/database";
 import { registerPushToken } from "@/lib/notifications";
+import { syncLocaleFromProfile, type LocaleCode } from "@/i18n";
 
 interface AuthContextValue {
   session: Session | null;
@@ -29,6 +30,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   async function loadProfile(userId: string) {
     const { data } = await supabase.from("profiles").select("*").eq("id", userId).single();
     setProfile(data as Profile | null);
+    await syncLocaleFromProfile((data as Profile | null)?.preferred_locale as LocaleCode | undefined);
   }
 
   useEffect(() => {

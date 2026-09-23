@@ -1,17 +1,21 @@
 import { useEffect, useState } from "react";
 import { Alert, ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
+import { useTranslation } from "react-i18next";
 import { supabase } from "@/lib/supabase";
 import { useParishId } from "@/hooks/useParish";
+import { useLocalizedField } from "@/lib/localized";
 import { sendNotification } from "@/lib/notifications";
 import { Button, Card, SectionTitle } from "@/components/ui";
 import { colors } from "@/theme/colors";
-import type { Group } from "@/types/database";
+import type { Group, MemberRole } from "@/types/database";
 
 type TargetType = "all" | "group" | "role";
 
-const ROLES = ["member", "group_leader", "staff"] as const;
+const ROLES: MemberRole[] = ["member", "group_leader", "staff"];
 
 export default function AdminNotificationsScreen() {
+  const { t } = useTranslation();
+  const localize = useLocalizedField();
   const parishId = useParishId();
   const [title, setTitle] = useState("");
   const [message, setMessage] = useState("");
@@ -33,11 +37,11 @@ export default function AdminNotificationsScreen() {
     setSending(true);
     try {
       const result = await sendNotification({ title, message, target_type: targetType, target_id: targetId });
-      Alert.alert("Enviado", `Notificação enviada para ${result.sent} dispositivo(s).`);
+      Alert.alert(t("admin.notifications.sentTitle"), t("admin.notifications.sentBody", { count: result.sent }));
       setTitle("");
       setMessage("");
     } catch (err) {
-      Alert.alert("Erro", err instanceof Error ? err.message : "Falha ao enviar notificação");
+      Alert.alert(t("common.error"), err instanceof Error ? err.message : t("admin.notifications.sendError"));
     } finally {
       setSending(false);
     }
@@ -46,28 +50,28 @@ export default function AdminNotificationsScreen() {
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <Card>
-        <TextInput style={styles.input} placeholder="Título da notificação" value={title} onChangeText={setTitle} />
+        <TextInput style={styles.input} placeholder={t("admin.notifications.titlePlaceholder")} value={title} onChangeText={setTitle} />
         <TextInput
           style={[styles.input, styles.textarea]}
-          placeholder="Mensagem"
+          placeholder={t("admin.notifications.messagePlaceholder")}
           value={message}
           onChangeText={setMessage}
           multiline
         />
       </Card>
 
-      <SectionTitle>Destinatários</SectionTitle>
+      <SectionTitle>{t("admin.notifications.recipients")}</SectionTitle>
       <View style={styles.optionsRow}>
-        {(["all", "group", "role"] as TargetType[]).map((t) => (
+        {(["all", "group", "role"] as TargetType[]).map((target) => (
           <Text
-            key={t}
-            style={[styles.option, targetType === t && styles.optionActive]}
+            key={target}
+            style={[styles.option, targetType === target && styles.optionActive]}
             onPress={() => {
-              setTargetType(t);
+              setTargetType(target);
               setTargetId(undefined);
             }}
           >
-            {t === "all" ? "Todos" : t === "group" ? "Um grupo" : "Um papel"}
+            {t(`admin.notifications.target.${target}`)}
           </Text>
         ))}
       </View>
@@ -80,7 +84,7 @@ export default function AdminNotificationsScreen() {
               style={[styles.option, targetId === g.id && styles.optionActive]}
               onPress={() => setTargetId(g.id)}
             >
-              {g.name}
+              {localize(g, "name")}
             </Text>
           ))}
         </View>
@@ -90,14 +94,14 @@ export default function AdminNotificationsScreen() {
         <View style={styles.optionsRow}>
           {ROLES.map((r) => (
             <Text key={r} style={[styles.option, targetId === r && styles.optionActive]} onPress={() => setTargetId(r)}>
-              {r}
+              {t(`admin.members.roles.${r === "group_leader" ? "groupLeader" : r}`)}
             </Text>
           ))}
         </View>
       )}
 
       <Button
-        title="Enviar notificação"
+        title={t("admin.notifications.send")}
         onPress={handleSend}
         loading={sending}
         disabled={!title.trim() || !message.trim() || (targetType !== "all" && !targetId)}

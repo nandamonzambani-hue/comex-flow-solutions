@@ -1,0 +1,228 @@
+{
+  "app": {
+    "name": "Mi Parroquia",
+    "tagline": "Comunidad, fe y servicio en un solo lugar"
+  },
+  "common": {
+    "back": "Volver",
+    "backHome": "Volver al inicio",
+    "notFound": "Página no encontrada",
+    "error": "Error"
+  },
+  "tabs": {
+    "home": "Inicio",
+    "events": "Eventos",
+    "groups": "Grupos",
+    "giving": "Diezmo",
+    "more": "Más"
+  },
+  "auth": {
+    "email": "Correo electrónico",
+    "password": "Contraseña",
+    "passwordMin": "Contraseña (mín. 6 caracteres)",
+    "signIn": "Iniciar sesión",
+    "noAccount": "¿Aún no tienes cuenta? Regístrate",
+    "registerTitle": "Crear cuenta",
+    "registerSubtitle": "Únete a la comunidad de nuestra parroquia",
+    "fullName": "Nombre completo",
+    "register": "Registrarse"
+  },
+  "home": {
+    "greeting": "Hola, {{name}} 👋",
+    "defaultName": "hermano(a)",
+    "peaceMessage": "Que la paz esté contigo hoy.",
+    "todayLiturgy": "Liturgia de hoy",
+    "tapForLiturgy": "Toca para ver la liturgia diaria",
+    "upcomingEvents": "Próximos eventos",
+    "noEvents": "No hay eventos programados por ahora.",
+    "parishNews": "Noticias de la parroquia",
+    "noNews": "Aún no hay noticias publicadas."
+  },
+  "events": {
+    "title": "Eventos",
+    "detailTitle": "Detalles del evento",
+    "empty": "Aún no hay eventos próximos.",
+    "registrationRequired": "Inscripción requerida",
+    "spotsFilled": "{{count}} / {{total}} cupos ocupados",
+    "register": "Inscribirse",
+    "cancelRegistration": "Cancelar inscripción",
+    "full": "Cupos agotados"
+  },
+  "groups": {
+    "title": "Pastorales y Grupos",
+    "detailTitle": "Grupo",
+    "empty": "Aún no hay grupos registrados.",
+    "meetings": "Reuniones",
+    "participants": "Participantes",
+    "peopleCount": "{{count}} persona(s)",
+    "join": "Unirme a este grupo",
+    "leave": "Salir del grupo",
+    "types": {
+      "pastoral": "Pastorales",
+      "movement": "Movimientos",
+      "ministry": "Ministerios",
+      "choir": "Música y Coro",
+      "catechesis": "Catequesis",
+      "news": "Noticias",
+      "other": "Otros"
+    }
+  },
+  "giving": {
+    "title": "Diezmo y Donaciones",
+    "donateTitle": "Contribuir",
+    "campaignTitle": "Campaña",
+    "historyTitle": "Mi historial",
+    "intro": "\"Que cada uno dé según lo que decidió en su corazón\" (2 Cor 9,7). Tu contribución sostiene la vida y las obras de nuestra parroquia.",
+    "monthlyTithe": "Diezmo mensual",
+    "makeOffering": "Hacer una ofrenda",
+    "viewHistory": "Ver mi historial",
+    "activeCampaigns": "Campañas y fiestas activas",
+    "progressOf": "R$ {{current}} de R$ {{goal}}",
+    "campaignProgress": "R$ {{current}} recaudados de R$ {{goal}} ({{percent}}%)",
+    "contributeToCampaign": "Contribuir a esta campaña",
+    "titheAmount": "Monto del diezmo",
+    "contributionAmount": "Monto de la contribución",
+    "generatePix": "Generar Pix",
+    "scanOrCopy": "Escanea o copia el código Pix",
+    "copyPixCode": "Copiar código Pix",
+    "invalidAmountTitle": "Monto inválido",
+    "invalidAmountBody": "Ingresa un monto mayor que cero.",
+    "pixErrorTitle": "Error al generar el Pix",
+    "processingTitle": "Pago en procesamiento",
+    "processingBody": "Revisa tu historial en unos instantes.",
+    "copiedTitle": "Copiado",
+    "copiedBody": "Código Pix copiado. Pégalo en la app de tu banco para completar el pago.",
+    "emptyHistory": "Aún no has hecho ninguna contribución.",
+    "status": {
+      "pending": "Pendiente",
+      "processing": "Procesando",
+      "completed": "Confirmado",
+      "failed": "Falló",
+      "refunded": "Reembolsado",
+      "cancelled": "Cancelado"
+    }
+  },
+  "media": {
+    "title": "Videos y Textos",
+    "detailTitle": "Contenido",
+    "empty": "Aún no hay contenido publicado.",
+    "types": {
+      "video": "Video",
+      "article": "Texto",
+      "audio": "Audio",
+      "live": "En vivo"
+    }
+  },
+  "downloads": {
+    "title": "Descargas",
+    "empty": "No hay materiales disponibles para descargar."
+  },
+  "news": {
+    "title": "Noticias",
+    "detailTitle": "Noticia",
+    "empty": "Aún no hay noticias publicadas.",
+    "pinned": "Fijado"
+  },
+  "bible": {
+    "title": "Biblia",
+    "chapters": "Capítulos",
+    "reading": "Lectura",
+    "oldTestament": "Antiguo Testamento",
+    "newTestament": "Nuevo Testamento",
+    "chapterCount": "{{count}} capítulos",
+    "notSynced": "Texto aún no sincronizado para este capítulo. Consulta docs/CONTENT_GUIDE.md sobre la sincronización de la Biblia."
+  },
+  "liturgy": {
+    "title": "Liturgia Diaria",
+    "empty": "La liturgia de hoy aún no ha sido publicada.",
+    "firstReading": "1ª Lectura",
+    "psalm": "Salmo",
+    "secondReading": "2ª Lectura",
+    "gospel": "Evangelio",
+    "reflection": "Reflexión"
+  },
+  "profile": {
+    "title": "Mi Perfil",
+    "fullName": "Nombre completo",
+    "phone": "Teléfono",
+    "save": "Guardar cambios",
+    "language": "Idioma",
+    "signOut": "Cerrar sesión"
+  },
+  "admin": {
+    "title": "Administración",
+    "members": {
+      "title": "Miembros",
+      "searchPlaceholder": "Buscar por nombre...",
+      "empty": "No se encontraron miembros.",
+      "roles": {
+        "member": "Miembro",
+        "groupLeader": "Líder de grupo",
+        "staff": "Equipo",
+        "admin": "Administrador",
+        "pastor": "Párroco"
+      }
+    },
+    "finance": {
+      "title": "Finanzas",
+      "currentMonth": "Mes actual",
+      "confirmed": "Confirmado",
+      "pending": "Pendiente",
+      "byMethod": "Por forma de pago",
+      "recentTransactions": "Transacciones recientes"
+    },
+    "content": {
+      "title": "Contenido",
+      "type": "Tipo de contenido",
+      "kinds": {
+        "news": "Noticia",
+        "article": "Texto",
+        "video": "Video"
+      },
+      "titlePlaceholder": "Título",
+      "subtitlePlaceholder": "Subtítulo (opcional)",
+      "shortDescriptionPlaceholder": "Descripción corta",
+      "videoUrlPlaceholder": "URL del video (mp4, HLS, YouTube incrustable)",
+      "bodyPlaceholder": "Cuerpo del texto...",
+      "translationsOptional": "Traducciones (opcional)",
+      "translatedTitlePlaceholder": "Título traducido",
+      "translatedSubtitlePlaceholder": "Subtítulo/descripción traducida",
+      "translatedBodyPlaceholder": "Cuerpo del texto traducido...",
+      "publish": "Publicar",
+      "publishedTitle": "Publicado",
+      "publishedBody": "Contenido publicado con éxito."
+    },
+    "notifications": {
+      "title": "Notificaciones",
+      "titlePlaceholder": "Título de la notificación",
+      "messagePlaceholder": "Mensaje",
+      "recipients": "Destinatarios",
+      "target": {
+        "all": "Todos",
+        "group": "Un grupo",
+        "role": "Un rol"
+      },
+      "send": "Enviar notificación",
+      "sentTitle": "Enviado",
+      "sentBody": "Notificación enviada a {{count}} dispositivo(s).",
+      "sendError": "Error al enviar la notificación"
+    },
+    "liturgyEditor": {
+      "title": "Editar Liturgia",
+      "hint": "Edita manualmente la liturgia de hoy ({{date}}) en el idioma seleccionado abajo. Si configuras la sincronización automática (supabase/functions/daily-liturgy-sync), este formulario pasa a ser solo un ajuste/respaldo.",
+      "celebration": "Celebración (ej: Domingo XXV del Tiempo Ordinario)",
+      "color": "Color litúrgico (Verde, Morado, Blanco, Rojo, Rosa)",
+      "saint": "Santo del día (opcional)",
+      "firstReadingRef": "Referencia 1ª Lectura",
+      "firstReadingText": "Texto 1ª Lectura",
+      "psalmRef": "Referencia Salmo",
+      "psalmText": "Texto del Salmo",
+      "gospelRef": "Referencia Evangelio",
+      "gospelText": "Texto del Evangelio",
+      "reflection": "Reflexión del día",
+      "save": "Guardar liturgia de hoy",
+      "savedTitle": "Guardado",
+      "savedBody": "Liturgia actualizada para este idioma."
+    }
+  }
+}

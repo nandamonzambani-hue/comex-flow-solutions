@@ -1,13 +1,17 @@
 import { useCallback, useEffect, useState } from "react";
 import { ScrollView, StyleSheet, Text } from "react-native";
 import { useLocalSearchParams } from "expo-router";
+import { useTranslation } from "react-i18next";
 import { supabase } from "@/lib/supabase";
 import { useAuth } from "@/context/AuthContext";
+import { useLocalizedField } from "@/lib/localized";
 import { Button, Card } from "@/components/ui";
 import { colors } from "@/theme/colors";
 import type { Group } from "@/types/database";
 
 export default function GroupDetailScreen() {
+  const { t } = useTranslation();
+  const localize = useLocalizedField();
   const { id } = useLocalSearchParams<{ id: string }>();
   const { profile } = useAuth();
   const [group, setGroup] = useState<Group | null>(null);
@@ -56,21 +60,21 @@ export default function GroupDetailScreen() {
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <Text style={styles.title}>{group.name}</Text>
-      {group.description && <Text style={styles.description}>{group.description}</Text>}
+      <Text style={styles.title}>{localize(group, "name")}</Text>
+      {group.description && <Text style={styles.description}>{localize(group, "description")}</Text>}
       {group.meeting_schedule && (
         <Card>
-          <Text style={styles.label}>Encontros</Text>
+          <Text style={styles.label}>{t("groups.meetings")}</Text>
           <Text style={styles.value}>{group.meeting_schedule}</Text>
         </Card>
       )}
       <Card>
-        <Text style={styles.label}>Participantes</Text>
-        <Text style={styles.value}>{memberCount} pessoa(s)</Text>
+        <Text style={styles.label}>{t("groups.participants")}</Text>
+        <Text style={styles.value}>{t("groups.peopleCount", { count: memberCount })}</Text>
       </Card>
 
       <Button
-        title={isMember ? "Sair do grupo" : "Participar deste grupo"}
+        title={isMember ? t("groups.leave") : t("groups.join")}
         onPress={toggleMembership}
         loading={busy}
         variant={isMember ? "outline" : "primary"}

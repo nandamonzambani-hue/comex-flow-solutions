@@ -1,41 +1,43 @@
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import { router } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
+import { useTranslation } from "react-i18next";
 import { useAuth } from "@/context/AuthContext";
 import { ScreenContainer } from "@/components/ui";
 import { colors } from "@/theme/colors";
 
 const MENU_ITEMS = [
-  { icon: "play-circle", label: "Vídeos e Textos", href: "/(tabs)/more/media" },
-  { icon: "download", label: "Downloads", href: "/(tabs)/more/downloads" },
-  { icon: "newspaper", label: "Notícias", href: "/(tabs)/more/news" },
-  { icon: "book", label: "Bíblia", href: "/(tabs)/more/bible" },
-  { icon: "sunny", label: "Liturgia Diária", href: "/(tabs)/more/liturgy" },
-  { icon: "person-circle", label: "Meu Perfil", href: "/(tabs)/more/profile" },
+  { icon: "play-circle", key: "media.title", href: "/(tabs)/more/media" },
+  { icon: "download", key: "downloads.title", href: "/(tabs)/more/downloads" },
+  { icon: "newspaper", key: "news.title", href: "/(tabs)/more/news" },
+  { icon: "book", key: "bible.title", href: "/(tabs)/more/bible" },
+  { icon: "sunny", key: "liturgy.title", href: "/(tabs)/more/liturgy" },
+  { icon: "person-circle", key: "profile.title", href: "/(tabs)/more/profile" },
 ] as const;
 
 export default function MoreScreen() {
+  const { t } = useTranslation();
   const { isStaff, signOut } = useAuth();
 
   return (
     <ScreenContainer>
       <View style={styles.grid}>
         {MENU_ITEMS.map((item) => (
-          <Pressable key={item.label} style={styles.item} onPress={() => router.push(item.href as never)}>
+          <Pressable key={item.key} style={styles.item} onPress={() => router.push(item.href as never)}>
             <Ionicons name={item.icon as never} size={30} color={colors.primary} />
-            <Text style={styles.itemLabel}>{item.label}</Text>
+            <Text style={styles.itemLabel}>{t(item.key)}</Text>
           </Pressable>
         ))}
         {isStaff && (
           <Pressable style={styles.item} onPress={() => router.push("/admin")}>
             <Ionicons name="settings" size={30} color={colors.primary} />
-            <Text style={styles.itemLabel}>Administração</Text>
+            <Text style={styles.itemLabel}>{t("admin.title")}</Text>
           </Pressable>
         )}
       </View>
 
       <Text style={styles.logout} onPress={signOut}>
-        Sair da conta
+        {t("profile.signOut")}
       </Text>
     </ScreenContainer>
   );

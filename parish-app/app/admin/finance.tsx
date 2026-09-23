@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
+import { useTranslation } from "react-i18next";
 import { supabase } from "@/lib/supabase";
 import { useParishId } from "@/hooks/useParish";
 import { Card, SectionTitle } from "@/components/ui";
@@ -7,6 +8,7 @@ import { colors } from "@/theme/colors";
 import type { Donation } from "@/types/database";
 
 export default function AdminFinanceScreen() {
+  const { t } = useTranslation();
   const parishId = useParishId();
   const [donations, setDonations] = useState<Donation[]>([]);
 
@@ -43,20 +45,20 @@ export default function AdminFinanceScreen() {
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <Text style={styles.periodLabel}>Mês atual</Text>
+      <Text style={styles.periodLabel}>{t("admin.finance.currentMonth")}</Text>
 
       <View style={{ flexDirection: "row", gap: 12 }}>
         <Card style={{ flex: 1 }}>
-          <Text style={styles.metricLabel}>Confirmado</Text>
+          <Text style={styles.metricLabel}>{t("admin.finance.confirmed")}</Text>
           <Text style={styles.metricValue}>R$ {totalCompleted.toFixed(2)}</Text>
         </Card>
         <Card style={{ flex: 1 }}>
-          <Text style={styles.metricLabel}>Pendente</Text>
+          <Text style={styles.metricLabel}>{t("admin.finance.pending")}</Text>
           <Text style={styles.metricValuePending}>R$ {totalPending.toFixed(2)}</Text>
         </Card>
       </View>
 
-      <SectionTitle>Por forma de pagamento</SectionTitle>
+      <SectionTitle>{t("admin.finance.byMethod")}</SectionTitle>
       {Object.entries(byMethod).map(([method, total]) => (
         <Card key={method}>
           <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
@@ -66,12 +68,12 @@ export default function AdminFinanceScreen() {
         </Card>
       ))}
 
-      <SectionTitle>Últimas transações</SectionTitle>
+      <SectionTitle>{t("admin.finance.recentTransactions")}</SectionTitle>
       {donations.slice(0, 20).map((d) => (
         <Card key={d.id}>
           <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
             <Text style={styles.methodName}>R$ {d.amount.toFixed(2)}</Text>
-            <Text style={styles.statusText}>{d.payment_status}</Text>
+            <Text style={styles.statusText}>{t(`giving.status.${d.payment_status}`)}</Text>
           </View>
         </Card>
       ))}

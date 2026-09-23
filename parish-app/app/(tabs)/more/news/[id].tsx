@@ -3,12 +3,15 @@ import { ScrollView, StyleSheet, Text } from "react-native";
 import { Image } from "expo-image";
 import { useLocalSearchParams } from "expo-router";
 import { format } from "date-fns";
-import { ptBR } from "date-fns/locale";
 import { supabase } from "@/lib/supabase";
+import { useDateLocale } from "@/lib/dateLocale";
+import { useLocalizedField } from "@/lib/localized";
 import { colors } from "@/theme/colors";
 import type { NewsPost } from "@/types/database";
 
 export default function NewsDetailScreen() {
+  const dateLocale = useDateLocale();
+  const localize = useLocalizedField();
   const { id } = useLocalSearchParams<{ id: string }>();
   const [post, setPost] = useState<NewsPost | null>(null);
 
@@ -29,11 +32,11 @@ export default function NewsDetailScreen() {
         <Image source={{ uri: post.cover_image_url }} style={styles.cover} contentFit="cover" />
       )}
       {post.published_at && (
-        <Text style={styles.date}>{format(new Date(post.published_at), "dd 'de' MMMM 'de' yyyy", { locale: ptBR })}</Text>
+        <Text style={styles.date}>{format(new Date(post.published_at), "dd MMMM yyyy", { locale: dateLocale })}</Text>
       )}
-      <Text style={styles.title}>{post.title}</Text>
-      {post.subtitle && <Text style={styles.subtitle}>{post.subtitle}</Text>}
-      <Text style={styles.body}>{post.body}</Text>
+      <Text style={styles.title}>{localize(post, "title")}</Text>
+      {post.subtitle && <Text style={styles.subtitle}>{localize(post, "subtitle")}</Text>}
+      <Text style={styles.body}>{localize(post, "body")}</Text>
     </ScrollView>
   );
 }

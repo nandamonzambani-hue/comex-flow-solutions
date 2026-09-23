@@ -2,14 +2,19 @@ import { useEffect, useState } from "react";
 import { FlatList, StyleSheet, Text } from "react-native";
 import { router } from "expo-router";
 import { format } from "date-fns";
-import { ptBR } from "date-fns/locale";
+import { useTranslation } from "react-i18next";
 import { supabase } from "@/lib/supabase";
 import { useParishId } from "@/hooks/useParish";
+import { useDateLocale } from "@/lib/dateLocale";
+import { useLocalizedField } from "@/lib/localized";
 import { Card, EmptyState, ScreenContainer } from "@/components/ui";
 import { colors } from "@/theme/colors";
 import type { ParishEvent } from "@/types/database";
 
 export default function EventsListScreen() {
+  const { t } = useTranslation();
+  const dateLocale = useDateLocale();
+  const localize = useLocalizedField();
   const parishId = useParishId();
   const [events, setEvents] = useState<ParishEvent[]>([]);
   const [loading, setLoading] = useState(true);
@@ -33,15 +38,15 @@ export default function EventsListScreen() {
       <FlatList
         data={events}
         keyExtractor={(item) => item.id}
-        ListEmptyComponent={!loading ? <EmptyState message="Nenhum evento futuro cadastrado." /> : null}
+        ListEmptyComponent={!loading ? <EmptyState message={t("events.empty")} /> : null}
         renderItem={({ item }) => (
           <Card onPress={() => router.push(`/(tabs)/events/${item.id}`)}>
             <Text style={styles.date}>
-              {format(new Date(item.start_at), "EEEE, dd 'de' MMMM · HH:mm", { locale: ptBR })}
+              {format(new Date(item.start_at), "EEEE, dd MMMM · HH:mm", { locale: dateLocale })}
             </Text>
-            <Text style={styles.title}>{item.title}</Text>
+            <Text style={styles.title}>{localize(item, "title")}</Text>
             {item.location && <Text style={styles.location}>{item.location}</Text>}
-            {item.requires_registration && <Text style={styles.tag}>Inscrição necessária</Text>}
+            {item.requires_registration && <Text style={styles.tag}>{t("events.registrationRequired")}</Text>}
           </Card>
         )}
       />

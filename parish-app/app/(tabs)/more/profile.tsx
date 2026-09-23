@@ -1,11 +1,14 @@
 import { useState } from "react";
-import { ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
+import { ScrollView, StyleSheet, Text, TextInput } from "react-native";
+import { useTranslation } from "react-i18next";
 import { supabase } from "@/lib/supabase";
 import { useAuth } from "@/context/AuthContext";
 import { Button, Card } from "@/components/ui";
+import { LanguagePicker } from "@/components/LanguagePicker";
 import { colors } from "@/theme/colors";
 
 export default function ProfileScreen() {
+  const { t } = useTranslation();
   const { profile, refreshProfile } = useAuth();
   const [fullName, setFullName] = useState(profile?.full_name ?? "");
   const [phone, setPhone] = useState(profile?.phone ?? "");
@@ -22,17 +25,22 @@ export default function ProfileScreen() {
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <Card>
-        <Text style={styles.label}>Nome completo</Text>
+        <Text style={styles.label}>{t("profile.fullName")}</Text>
         <TextInput style={styles.input} value={fullName} onChangeText={setFullName} />
 
-        <Text style={styles.label}>Telefone</Text>
+        <Text style={styles.label}>{t("profile.phone")}</Text>
         <TextInput style={styles.input} value={phone} onChangeText={setPhone} keyboardType="phone-pad" />
 
-        <Text style={styles.label}>E-mail</Text>
+        <Text style={styles.label}>{t("auth.email")}</Text>
         <Text style={styles.readOnly}>{profile?.email}</Text>
       </Card>
 
-      <Button title="Salvar alterações" onPress={handleSave} loading={saving} />
+      <Button title={t("profile.save")} onPress={handleSave} loading={saving} />
+
+      <Card style={{ marginTop: 4 }}>
+        <Text style={styles.label}>{t("profile.language")}</Text>
+        <LanguagePicker />
+      </Card>
     </ScrollView>
   );
 }

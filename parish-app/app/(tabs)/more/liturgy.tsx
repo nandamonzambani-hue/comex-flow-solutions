@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 import { format } from "date-fns";
-import { ptBR } from "date-fns/locale";
+import { useTranslation } from "react-i18next";
 import { supabase } from "@/lib/supabase";
+import { useDateLocale } from "@/lib/dateLocale";
 import { Badge, Card, EmptyState } from "@/components/ui";
 import { colors } from "@/theme/colors";
 import type { DailyLiturgy } from "@/types/database";
@@ -19,24 +20,41 @@ function ReadingBlock({ label, ref, text }: { label: string; ref: string | null;
 }
 
 export default function DailyLiturgyScreen() {
+  const { t, i18n } = useTranslation();
+  const dateLocale = useDateLocale();
   const [liturgy, setLiturgy] = useState<DailyLiturgy | null>(null);
   const today = new Date();
+  const todayISO = today.toISOString().slice(0, 10);
 
   useEffect(() => {
     supabase
       .from("daily_liturgy")
       .select("*")
-      .eq("date", today.toISOString().slice(0, 10))
+      .eq("date", todayISO)
+      .eq("locale", i18n.language)
       .maybeSingle()
-      .then(({ data }) => setLiturgy(data as DailyLiturgy | null));
-  }, []);
+      .then(({ data }) => {
+        if (data) {
+          setLiturgy(data as DailyLiturgy);
+        } else {
+          // sem tradução para o idioma ativo: cai para o texto principal (pt-BR)
+          supabase
+            .from("daily_liturgy")
+            .select("*")
+            .eq("date", todayISO)
+            .eq("locale", "pt-BR")
+            .maybeSingle()
+            .then(({ data: fallback }) => setLiturgy(fallback as DailyLiturgy | null));
+        }
+      });
+  }, [todayISO, i18n.language]);
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <Text style={styles.date}>{format(today, "EEEE, dd 'de' MMMM 'de' yyyy", { locale: ptBR })}</Text>
+      <Text style={styles.date}>{format(today, "EEEE, dd MMMM yyyy", { locale: dateLocale })}</Text>
 
       {!liturgy ? (
-        <EmptyState message="Liturgia de hoje ainda não foi publicada." />
+        <EmptyState message={t("liturgy.empty")} />
       ) : (
         <>
           <View style={styles.headerRow}>
@@ -45,14 +63,14 @@ export default function DailyLiturgyScreen() {
           </View>
           {liturgy.saint_of_day && <Text style={styles.saint}>{liturgy.saint_of_day}</Text>}
 
-          <ReadingBlock label="1ª Leitura" ref={liturgy.first_reading_ref} text={liturgy.first_reading_text} />
-          <ReadingBlock label="Salmo" ref={liturgy.psalm_ref} text={liturgy.psalm_text} />
-          <ReadingBlock label="2ª Leitura" ref={liturgy.second_reading_ref} text={liturgy.second_reading_text} />
-          <ReadingBlock label="Evangelho" ref={liturgy.gospel_ref} text={liturgy.gospel_text} />
+          <ReadingBlock label={t("liturgy.firstReading")} ref={liturgy.first_reading_ref} text={liturgy.first_reading_text} />
+          <ReadingBlock label={t("liturgy.psalm")} ref={liturgy.psalm_ref} text={liturgy.psalm_text} />
+          <ReadingBlock label={t("liturgy.secondReading")} ref={liturgy.second_reading_ref} text={liturgy.second_reading_text} />
+          <ReadingBlock label={t("liturgy.gospel")} ref={liturgy.gospel_ref} text={liturgy.gospel_text} />
 
           {liturgy.reflection && (
             <Card>
-              <Text style={styles.readingLabel}>Reflexão</Text>
+              <Text style={styles.readingLabel}>{t("liturgy.reflection")}</Text>
               <Text style={styles.readingText}>{liturgy.reflection}</Text>
             </Card>
           )}

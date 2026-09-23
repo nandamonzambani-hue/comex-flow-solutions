@@ -114,6 +114,23 @@ O build do iOS pede sua Apple ID e time (Apple Team ID) — preencha em
   `expo.version` incrementado, `eas.json` já tem `autoIncrement: true`
   para o build number).
 
+## Idiomas na ficha da loja
+
+O app em si já roda em português, inglês, espanhol, italiano e francês
+(ver seção "Idiomas e tradução" do `README.md`). Isso é diferente de
+**localizar a ficha da loja** (nome, descrição, screenshots) — ambas as
+lojas permitem cadastrar essas informações em vários idiomas:
+
+- **App Store Connect**: em "App Information", clique em "+" ao lado dos
+  idiomas para adicionar cada localização da ficha (nome, subtítulo,
+  descrição, palavras-chave, screenshots por idioma).
+- **Google Play Console**: em "Presença na loja > Localizações", adicione
+  cada idioma com seus textos e imagens.
+
+Você não precisa localizar a ficha em todos os 5 idiomas do app — comece
+com português (e inglês, se a paróquia tiver membros internacionais) e
+adicione mais conforme a demanda.
+
 ## Checklist rápido antes de qualquer submissão
 
 - [ ] Testado login/cadastro, dízimo (Pix sandbox), push notification, liturgia do dia

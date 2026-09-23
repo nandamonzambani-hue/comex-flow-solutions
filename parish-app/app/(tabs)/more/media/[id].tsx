@@ -3,10 +3,12 @@ import { ScrollView, StyleSheet, Text } from "react-native";
 import { useLocalSearchParams } from "expo-router";
 import { useVideoPlayer, VideoView } from "expo-video";
 import { supabase } from "@/lib/supabase";
+import { useLocalizedField } from "@/lib/localized";
 import { colors } from "@/theme/colors";
 import type { MediaContent } from "@/types/database";
 
 export default function MediaDetailScreen() {
+  const localize = useLocalizedField();
   const { id } = useLocalSearchParams<{ id: string }>();
   const [item, setItem] = useState<MediaContent | null>(null);
 
@@ -39,9 +41,9 @@ export default function MediaDetailScreen() {
       {item.content_type === "video" && item.video_url && (
         <VideoView player={player} style={styles.video} allowsFullscreen nativeControls />
       )}
-      <Text style={styles.title}>{item.title}</Text>
-      {item.description && <Text style={styles.description}>{item.description}</Text>}
-      {item.content_type === "article" && item.body && <Text style={styles.body}>{item.body}</Text>}
+      <Text style={styles.title}>{localize(item, "title")}</Text>
+      {item.description && <Text style={styles.description}>{localize(item, "description")}</Text>}
+      {item.content_type === "article" && item.body && <Text style={styles.body}>{localize(item, "body")}</Text>}
     </ScrollView>
   );
 }

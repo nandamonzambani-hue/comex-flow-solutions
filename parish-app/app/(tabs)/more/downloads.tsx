@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { FlatList, StyleSheet, Text } from "react-native";
 import * as FileSystem from "expo-file-system";
 import * as Sharing from "expo-sharing";
+import { useTranslation } from "react-i18next";
 import { supabase } from "@/lib/supabase";
 import { useParishId } from "@/hooks/useParish";
 import { Card, EmptyState, ScreenContainer } from "@/components/ui";
@@ -15,6 +16,7 @@ function formatSize(bytes: number | null) {
 }
 
 export default function DownloadsScreen() {
+  const { t } = useTranslation();
   const parishId = useParishId();
   const [items, setItems] = useState<DownloadItem[]>([]);
 
@@ -45,7 +47,7 @@ export default function DownloadsScreen() {
       <FlatList
         data={items}
         keyExtractor={(item) => item.id}
-        ListEmptyComponent={<EmptyState message="Nenhum material disponível para download." />}
+        ListEmptyComponent={<EmptyState message={t("downloads.empty")} />}
         renderItem={({ item }) => (
           <Card onPress={() => handleDownload(item)}>
             <Text style={styles.title}>{item.title}</Text>

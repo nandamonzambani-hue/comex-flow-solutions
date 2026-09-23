@@ -15,6 +15,9 @@ várias comunidades.
 - **Backend**: Supabase (Postgres + Auth + Storage + Edge Functions + RLS)
 - **Pagamentos**: Mercado Pago (Pix) — trocável por outro gateway
 - **Push**: Expo Push Notifications (APNs/FCM por baixo)
+- **Idiomas**: i18next/react-i18next — interface em português, inglês,
+  espanhol, italiano e francês, com detecção automática do idioma do
+  aparelho e troca manual (ver seção **Idiomas e tradução** abaixo)
 
 ## Estrutura
 
@@ -26,11 +29,12 @@ parish-app/
       more/                   mídia, downloads, notícias, bíblia, liturgia, perfil
     admin/                   painel administrativo (staff/admin/pastor)
   src/
-    lib/                    supabase client, notificações
+    lib/                    supabase client, notificações, localização
     context/                AuthContext
-    components/             UI compartilhada
+    components/             UI compartilhada (inclui LanguagePicker)
     types/                  tipos do banco
     theme/                  cores
+    i18n/                   configuração i18next + dicionários de idioma
   supabase/
     migrations/             schema SQL completo + RLS
     seed.sql                dados de exemplo
@@ -91,6 +95,44 @@ você precisa que **só você pode fazer** (contas pessoais/da organização):
 - [ ] Gateway de pagamento (Mercado Pago) com conta verificada
 - [ ] Definir a fonte de texto bíblico (ver `docs/CONTENT_GUIDE.md` — questão de licenciamento)
 - [ ] Revisar `docs/PRIVACY_POLICY.md` e `docs/TERMS_OF_SERVICE.md` e publicar num link público (exigido pelas lojas)
+
+## Idiomas e tradução
+
+O app já vem traduzido para **5 idiomas**: português (padrão), inglês,
+espanhol, italiano e francês.
+
+- **Interface (botões, menus, telas)**: 100% traduzida. O idioma é
+  detectado automaticamente pelo idioma do aparelho no primeiro acesso, e
+  pode ser trocado a qualquer momento pelo seletor 🌐 na tela de login ou
+  em **Perfil > Idioma**. A escolha manual fica salva no aparelho
+  (`AsyncStorage`) e também no perfil do usuário (`profiles.preferred_locale`),
+  então sincroniza ao logar num novo aparelho — sem nunca sobrescrever
+  uma escolha manual já feita.
+- **Conteúdo (notícias, vídeos/textos, grupos, eventos, campanhas)**: cada
+  uma dessas tabelas tem uma coluna `translations` (jsonb) opcional. A
+  equipe da paróquia escreve o conteúdo principal em português (como
+  sempre) e pode, se quiser, abrir a seção "Traduções (opcional)" na tela
+  **Admin > Conteúdo** para preencher título/texto em outro idioma. Se não
+  houver tradução para o idioma ativo do usuário, o app mostra o texto
+  original automaticamente — nenhum conteúdo fica em branco.
+- **Bíblia**: a tabela `bible_versions` já suporta várias versões/idiomas
+  (`language` por versão). A tela de Bíblia escolhe automaticamente a
+  versão que combina com o idioma ativo do app (com seletor manual se
+  houver mais de uma). Ver `docs/CONTENT_GUIDE.md` sobre licenciamento por
+  idioma.
+- **Liturgia diária**: uma linha por `(data, idioma)` em `daily_liturgy`.
+  A tela **Admin > Liturgia Diária** tem abas por idioma; a função
+  `daily-liturgy-sync` aceita `?locale=` para sincronizar de fontes
+  diferentes por idioma.
+
+**Para adicionar um novo idioma:**
+1. Crie `src/i18n/locales/<código>.json` copiando `pt-BR.json` e
+   traduzindo os valores (mantenha as chaves idênticas).
+2. Registre o idioma em `src/i18n/index.ts` (`SUPPORTED_LOCALES` e
+   `resources`).
+3. Adicione o locale correspondente do `date-fns` em `src/lib/dateLocale.ts`.
+4. Pronto — o seletor de idioma, o fallback de conteúdo e a bíblia/liturgia
+   já reconhecem qualquer código presente em `SUPPORTED_LOCALES`.
 
 ## Papéis de usuário
 

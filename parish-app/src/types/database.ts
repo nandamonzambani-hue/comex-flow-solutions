@@ -37,8 +37,12 @@ export interface Profile {
   status: MemberStatus;
   baptized: boolean;
   confirmed: boolean;
+  preferred_locale: string | null;
   joined_at: string;
 }
+
+/** Traduções opcionais por idioma: { "en": { "title": "...", "body": "..." } } */
+export type Translations = Record<string, Record<string, string>>;
 
 export interface Group {
   id: string;
@@ -51,6 +55,7 @@ export interface Group {
   leader_id: string | null;
   meeting_schedule: string | null;
   is_active: boolean;
+  translations: Translations | null;
 }
 
 export interface ParishEvent {
@@ -67,6 +72,7 @@ export interface ParishEvent {
   is_recurring: boolean;
   capacity: number | null;
   requires_registration: boolean;
+  translations: Translations | null;
 }
 
 export interface Campaign {
@@ -81,6 +87,7 @@ export interface Campaign {
   start_date: string | null;
   end_date: string | null;
   status: "draft" | "active" | "completed" | "cancelled";
+  translations: Translations | null;
 }
 
 export interface Donation {
@@ -116,6 +123,7 @@ export interface MediaContent {
   is_featured: boolean;
   views_count: number;
   published_at: string | null;
+  translations: Translations | null;
 }
 
 export interface NewsPost {
@@ -129,6 +137,7 @@ export interface NewsPost {
   category: string;
   is_pinned: boolean;
   published_at: string | null;
+  translations: Translations | null;
 }
 
 export interface DownloadItem {
@@ -142,6 +151,12 @@ export interface DownloadItem {
   file_size_bytes: number | null;
   category: string;
   download_count: number;
+}
+
+export interface BibleVersion {
+  id: string;
+  name: string;
+  language: string;
 }
 
 export interface BibleBook {
@@ -166,6 +181,7 @@ export interface BibleVerse {
 export interface DailyLiturgy {
   id: string;
   date: string;
+  locale: string;
   liturgical_color: string | null;
   liturgical_season: string | null;
   celebration: string | null;

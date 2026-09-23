@@ -61,14 +61,27 @@ insert into bible_books (id, version_id, testament, name, abbreviation, order_in
 -- Lista completa dos 73 livros deve ser inserida pela função de sync (ver docs/CONTENT_GUIDE.md).
 
 -- Liturgia de hoje (exemplo estático — em produção, a Edge Function
--- daily-liturgy-sync roda diariamente via cron e preenche esta tabela)
-insert into daily_liturgy (date, liturgical_color, liturgical_season, celebration, gospel_ref, gospel_text, reflection)
+-- daily-liturgy-sync roda diariamente via cron e preenche esta tabela).
+-- Uma linha por idioma (locale); o app cai para 'pt-BR' se faltar tradução.
+insert into daily_liturgy (date, locale, liturgical_color, liturgical_season, celebration, gospel_ref, gospel_text, reflection)
+values
+  (current_date, 'pt-BR', 'Verde', 'Tempo Comum', 'Feria do Tempo Comum', 'Lc 8, 4-15',
+   'Texto do evangelho do dia a ser preenchido pela sincronização automática.',
+   'Reflexão do dia a ser preenchida pela sincronização automática ou por um membro da equipe de liturgia.'),
+  (current_date, 'en', 'Green', 'Ordinary Time', 'Weekday in Ordinary Time', 'Lk 8:4-15',
+   'Gospel text to be filled in by the automatic sync or the liturgy team.',
+   'Daily reflection to be filled in by the automatic sync or a member of the liturgy team.');
+
+-- Exemplo de conteúdo com tradução opcional (mostra como preencher a
+-- coluna `translations` — ver docs/CONTENT_GUIDE.md)
+insert into news_posts (parish_id, title, slug, subtitle, body, category, translations, published_at)
 values (
-  current_date,
-  'Verde',
-  'Tempo Comum',
-  'Feria do Tempo Comum',
-  'Lc 8, 4-15',
-  'Texto do evangelho do dia a ser preenchido pela sincronização automática.',
-  'Reflexão do dia a ser preenchida pela sincronização automática ou por um membro da equipe de liturgia.'
+  '00000000-0000-0000-0000-000000000001',
+  'Bem-vindos ao nosso aplicativo!',
+  'bem-vindos-ao-nosso-aplicativo',
+  'Uma nova forma de viver a fé em comunidade',
+  'Este é um exemplo de notícia. A equipe da paróquia pode publicar textos, avisos e comunicados diretamente pelo painel administrativo.',
+  'geral',
+  '{"en": {"title": "Welcome to our app!", "subtitle": "A new way to live our faith in community", "body": "This is a sample news post. The parish team can publish texts, notices and announcements directly from the admin panel."}, "es": {"title": "¡Bienvenidos a nuestra aplicación!", "subtitle": "Una nueva forma de vivir la fe en comunidad", "body": "Este es un ejemplo de noticia. El equipo de la parroquia puede publicar textos y avisos directamente desde el panel administrativo."}}'::jsonb,
+  now()
 );

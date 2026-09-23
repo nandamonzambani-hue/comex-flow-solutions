@@ -1,0 +1,228 @@
+{
+  "app": {
+    "name": "My Parish",
+    "tagline": "Community, faith and service in one place"
+  },
+  "common": {
+    "back": "Back",
+    "backHome": "Back to home",
+    "notFound": "Page not found",
+    "error": "Error"
+  },
+  "tabs": {
+    "home": "Home",
+    "events": "Events",
+    "groups": "Groups",
+    "giving": "Giving",
+    "more": "More"
+  },
+  "auth": {
+    "email": "Email",
+    "password": "Password",
+    "passwordMin": "Password (min. 6 characters)",
+    "signIn": "Sign in",
+    "noAccount": "Don't have an account? Sign up",
+    "registerTitle": "Create account",
+    "registerSubtitle": "Join our parish community",
+    "fullName": "Full name",
+    "register": "Sign up"
+  },
+  "home": {
+    "greeting": "Hello, {{name}} 👋",
+    "defaultName": "friend",
+    "peaceMessage": "May peace be with you today.",
+    "todayLiturgy": "Today's liturgy",
+    "tapForLiturgy": "Tap to see the daily liturgy",
+    "upcomingEvents": "Upcoming events",
+    "noEvents": "No events scheduled right now.",
+    "parishNews": "Parish news",
+    "noNews": "No news published yet."
+  },
+  "events": {
+    "title": "Events",
+    "detailTitle": "Event details",
+    "empty": "No upcoming events yet.",
+    "registrationRequired": "Registration required",
+    "spotsFilled": "{{count}} / {{total}} spots filled",
+    "register": "Register",
+    "cancelRegistration": "Cancel registration",
+    "full": "Fully booked"
+  },
+  "groups": {
+    "title": "Groups & Ministries",
+    "detailTitle": "Group",
+    "empty": "No groups registered yet.",
+    "meetings": "Meetings",
+    "participants": "Members",
+    "peopleCount": "{{count}} people",
+    "join": "Join this group",
+    "leave": "Leave group",
+    "types": {
+      "pastoral": "Pastoral Groups",
+      "movement": "Movements",
+      "ministry": "Ministries",
+      "choir": "Music & Choir",
+      "catechesis": "Catechesis",
+      "news": "News",
+      "other": "Other"
+    }
+  },
+  "giving": {
+    "title": "Tithing & Donations",
+    "donateTitle": "Give",
+    "campaignTitle": "Campaign",
+    "historyTitle": "My history",
+    "intro": "\"Each of you should give what you have decided in your heart to give\" (2 Cor 9:7). Your contribution sustains the life and works of our parish.",
+    "monthlyTithe": "Monthly tithe",
+    "makeOffering": "Make an offering",
+    "viewHistory": "View my history",
+    "activeCampaigns": "Active campaigns & fundraisers",
+    "progressOf": "R$ {{current}} of R$ {{goal}}",
+    "campaignProgress": "R$ {{current}} raised of R$ {{goal}} ({{percent}}%)",
+    "contributeToCampaign": "Contribute to this campaign",
+    "titheAmount": "Tithe amount",
+    "contributionAmount": "Contribution amount",
+    "generatePix": "Generate Pix",
+    "scanOrCopy": "Scan or copy the Pix code",
+    "copyPixCode": "Copy Pix code",
+    "invalidAmountTitle": "Invalid amount",
+    "invalidAmountBody": "Enter an amount greater than zero.",
+    "pixErrorTitle": "Error generating Pix",
+    "processingTitle": "Payment processing",
+    "processingBody": "Check your history in a moment.",
+    "copiedTitle": "Copied",
+    "copiedBody": "Pix code copied. Paste it in your bank app to complete the payment.",
+    "emptyHistory": "You haven't made any contributions yet.",
+    "status": {
+      "pending": "Pending",
+      "processing": "Processing",
+      "completed": "Confirmed",
+      "failed": "Failed",
+      "refunded": "Refunded",
+      "cancelled": "Cancelled"
+    }
+  },
+  "media": {
+    "title": "Videos & Articles",
+    "detailTitle": "Content",
+    "empty": "No content published yet.",
+    "types": {
+      "video": "Video",
+      "article": "Article",
+      "audio": "Audio",
+      "live": "Live"
+    }
+  },
+  "downloads": {
+    "title": "Downloads",
+    "empty": "No files available for download."
+  },
+  "news": {
+    "title": "News",
+    "detailTitle": "News",
+    "empty": "No news published yet.",
+    "pinned": "Pinned"
+  },
+  "bible": {
+    "title": "Bible",
+    "chapters": "Chapters",
+    "reading": "Reading",
+    "oldTestament": "Old Testament",
+    "newTestament": "New Testament",
+    "chapterCount": "{{count}} chapters",
+    "notSynced": "Text not yet synced for this chapter. See docs/CONTENT_GUIDE.md about Bible syncing."
+  },
+  "liturgy": {
+    "title": "Daily Liturgy",
+    "empty": "Today's liturgy hasn't been published yet.",
+    "firstReading": "1st Reading",
+    "psalm": "Psalm",
+    "secondReading": "2nd Reading",
+    "gospel": "Gospel",
+    "reflection": "Reflection"
+  },
+  "profile": {
+    "title": "My Profile",
+    "fullName": "Full name",
+    "phone": "Phone",
+    "save": "Save changes",
+    "language": "Language",
+    "signOut": "Sign out"
+  },
+  "admin": {
+    "title": "Administration",
+    "members": {
+      "title": "Members",
+      "searchPlaceholder": "Search by name...",
+      "empty": "No members found.",
+      "roles": {
+        "member": "Member",
+        "groupLeader": "Group leader",
+        "staff": "Staff",
+        "admin": "Administrator",
+        "pastor": "Pastor"
+      }
+    },
+    "finance": {
+      "title": "Finance",
+      "currentMonth": "Current month",
+      "confirmed": "Confirmed",
+      "pending": "Pending",
+      "byMethod": "By payment method",
+      "recentTransactions": "Recent transactions"
+    },
+    "content": {
+      "title": "Content",
+      "type": "Content type",
+      "kinds": {
+        "news": "News",
+        "article": "Article",
+        "video": "Video"
+      },
+      "titlePlaceholder": "Title",
+      "subtitlePlaceholder": "Subtitle (optional)",
+      "shortDescriptionPlaceholder": "Short description",
+      "videoUrlPlaceholder": "Video URL (mp4, HLS, embeddable YouTube)",
+      "bodyPlaceholder": "Body text...",
+      "translationsOptional": "Translations (optional)",
+      "translatedTitlePlaceholder": "Translated title",
+      "translatedSubtitlePlaceholder": "Translated subtitle/description",
+      "translatedBodyPlaceholder": "Translated body text...",
+      "publish": "Publish",
+      "publishedTitle": "Published",
+      "publishedBody": "Content published successfully."
+    },
+    "notifications": {
+      "title": "Notifications",
+      "titlePlaceholder": "Notification title",
+      "messagePlaceholder": "Message",
+      "recipients": "Recipients",
+      "target": {
+        "all": "Everyone",
+        "group": "A group",
+        "role": "A role"
+      },
+      "send": "Send notification",
+      "sentTitle": "Sent",
+      "sentBody": "Notification sent to {{count}} device(s).",
+      "sendError": "Failed to send notification"
+    },
+    "liturgyEditor": {
+      "title": "Edit Liturgy",
+      "hint": "Manually edit today's liturgy ({{date}}) in the language selected below. If you set up the automatic sync (supabase/functions/daily-liturgy-sync), this form becomes just a fine-tune/backup.",
+      "celebration": "Celebration (e.g. 25th Sunday in Ordinary Time)",
+      "color": "Liturgical color (Green, Purple, White, Red, Rose)",
+      "saint": "Saint of the day (optional)",
+      "firstReadingRef": "1st Reading reference",
+      "firstReadingText": "1st Reading text",
+      "psalmRef": "Psalm reference",
+      "psalmText": "Psalm text",
+      "gospelRef": "Gospel reference",
+      "gospelText": "Gospel text",
+      "reflection": "Daily reflection",
+      "save": "Save today's liturgy",
+      "savedTitle": "Saved",
+      "savedBody": "Liturgy updated for this language."
+    }
+  }
+}

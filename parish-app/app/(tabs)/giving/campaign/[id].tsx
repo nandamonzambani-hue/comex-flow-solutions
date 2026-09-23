@@ -2,12 +2,16 @@ import { useEffect, useState } from "react";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 import { Image } from "expo-image";
 import { router, useLocalSearchParams } from "expo-router";
+import { useTranslation } from "react-i18next";
 import { supabase } from "@/lib/supabase";
+import { useLocalizedField } from "@/lib/localized";
 import { Button } from "@/components/ui";
 import { colors } from "@/theme/colors";
 import type { Campaign } from "@/types/database";
 
 export default function CampaignDetailScreen() {
+  const { t } = useTranslation();
+  const localize = useLocalizedField();
   const { id } = useLocalSearchParams<{ id: string }>();
   const [campaign, setCampaign] = useState<Campaign | null>(null);
 
@@ -29,8 +33,8 @@ export default function CampaignDetailScreen() {
       {campaign.cover_image_url && (
         <Image source={{ uri: campaign.cover_image_url }} style={styles.cover} contentFit="cover" />
       )}
-      <Text style={styles.title}>{campaign.name}</Text>
-      {campaign.description && <Text style={styles.description}>{campaign.description}</Text>}
+      <Text style={styles.title}>{localize(campaign, "name")}</Text>
+      {campaign.description && <Text style={styles.description}>{localize(campaign, "description")}</Text>}
 
       {campaign.goal_amount && (
         <View style={{ marginVertical: 16 }}>
@@ -38,14 +42,17 @@ export default function CampaignDetailScreen() {
             <View style={[styles.progressFill, { width: `${progress * 100}%` }]} />
           </View>
           <Text style={styles.progressText}>
-            R$ {campaign.current_amount.toFixed(2)} arrecadados de R$ {campaign.goal_amount.toFixed(2)} (
-            {Math.round(progress * 100)}%)
+            {t("giving.campaignProgress", {
+              current: campaign.current_amount.toFixed(2),
+              goal: campaign.goal_amount.toFixed(2),
+              percent: Math.round(progress * 100),
+            })}
           </Text>
         </View>
       )}
 
       <Button
-        title="Contribuir com esta campanha"
+        title={t("giving.contributeToCampaign")}
         onPress={() => router.push({ pathname: "/(tabs)/giving/donate", params: { campaignId: campaign.id } })}
       />
     </ScrollView>

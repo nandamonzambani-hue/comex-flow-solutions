@@ -1,25 +1,27 @@
 import { useEffect, useState } from "react";
 import { FlatList, Pressable, StyleSheet, Text, TextInput, View } from "react-native";
+import { useTranslation } from "react-i18next";
 import { supabase } from "@/lib/supabase";
 import { useParishId } from "@/hooks/useParish";
 import { Badge, Card, EmptyState, ScreenContainer } from "@/components/ui";
 import { colors } from "@/theme/colors";
 import type { MemberRole, Profile } from "@/types/database";
 
-const ROLE_LABEL: Record<MemberRole, string> = {
-  member: "Membro",
-  group_leader: "Líder de grupo",
-  staff: "Equipe",
-  admin: "Administrador",
-  pastor: "Pároco",
-};
-
 const ROLE_CYCLE: MemberRole[] = ["member", "group_leader", "staff", "admin"];
 
 export default function AdminMembersScreen() {
+  const { t } = useTranslation();
   const parishId = useParishId();
   const [members, setMembers] = useState<Profile[]>([]);
   const [search, setSearch] = useState("");
+
+  const ROLE_LABEL: Record<MemberRole, string> = {
+    member: t("admin.members.roles.member"),
+    group_leader: t("admin.members.roles.groupLeader"),
+    staff: t("admin.members.roles.staff"),
+    admin: t("admin.members.roles.admin"),
+    pastor: t("admin.members.roles.pastor"),
+  };
 
   useEffect(() => {
     if (!parishId) return;
@@ -44,14 +46,14 @@ export default function AdminMembersScreen() {
     <ScreenContainer>
       <TextInput
         style={styles.search}
-        placeholder="Buscar por nome..."
+        placeholder={t("admin.members.searchPlaceholder")}
         value={search}
         onChangeText={setSearch}
       />
       <FlatList
         data={filtered}
         keyExtractor={(item) => item.id}
-        ListEmptyComponent={<EmptyState message="Nenhum membro encontrado." />}
+        ListEmptyComponent={<EmptyState message={t("admin.members.empty")} />}
         renderItem={({ item }) => (
           <Card>
             <View style={{ flexDirection: "row", justifyContent: "space-between", alignItems: "center" }}>

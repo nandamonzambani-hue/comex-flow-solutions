@@ -1,26 +1,30 @@
 import { useEffect, useMemo, useState } from "react";
 import { SectionList, StyleSheet, Text } from "react-native";
 import { router } from "expo-router";
+import { useTranslation } from "react-i18next";
 import { supabase } from "@/lib/supabase";
 import { useParishId } from "@/hooks/useParish";
+import { useLocalizedField } from "@/lib/localized";
 import { Card, EmptyState, ScreenContainer } from "@/components/ui";
 import { colors } from "@/theme/colors";
 import type { Group, GroupType } from "@/types/database";
 
-const TYPE_LABELS: Record<GroupType, string> = {
-  pastoral: "Pastorais",
-  movement: "Movimentos",
-  ministry: "Ministérios",
-  choir: "Música e Coral",
-  catechesis: "Catequese",
-  news: "Notícias",
-  other: "Outros",
-};
-
 export default function GroupsListScreen() {
+  const { t } = useTranslation();
+  const localize = useLocalizedField();
   const parishId = useParishId();
   const [groups, setGroups] = useState<Group[]>([]);
   const [loading, setLoading] = useState(true);
+
+  const TYPE_LABELS: Record<GroupType, string> = {
+    pastoral: t("groups.types.pastoral"),
+    movement: t("groups.types.movement"),
+    ministry: t("groups.types.ministry"),
+    choir: t("groups.types.choir"),
+    catechesis: t("groups.types.catechesis"),
+    news: t("groups.types.news"),
+    other: t("groups.types.other"),
+  };
 
   useEffect(() => {
     if (!parishId) return;
@@ -43,6 +47,7 @@ export default function GroupsListScreen() {
       byType.get(group.type)!.push(group);
     }
     return Array.from(byType.entries()).map(([type, data]) => ({ title: TYPE_LABELS[type], data }));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [groups]);
 
   return (
@@ -51,14 +56,14 @@ export default function GroupsListScreen() {
         contentContainerStyle={{ padding: 16 }}
         sections={sections}
         keyExtractor={(item) => item.id}
-        ListEmptyComponent={!loading ? <EmptyState message="Nenhum grupo cadastrado ainda." /> : null}
+        ListEmptyComponent={!loading ? <EmptyState message={t("groups.empty")} /> : null}
         renderSectionHeader={({ section }) => <Text style={styles.sectionHeader}>{section.title}</Text>}
         renderItem={({ item }) => (
           <Card onPress={() => router.push(`/(tabs)/groups/${item.id}`)}>
-            <Text style={styles.name}>{item.name}</Text>
+            <Text style={styles.name}>{localize(item, "name")}</Text>
             {item.description && (
               <Text style={styles.description} numberOfLines={2}>
-                {item.description}
+                {localize(item, "description")}
               </Text>
             )}
             {item.meeting_schedule && <Text style={styles.schedule}>🗓 {item.meeting_schedule}</Text>}

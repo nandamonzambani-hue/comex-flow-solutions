@@ -1,11 +1,14 @@
 import { useState } from "react";
-import { Image, StyleSheet, Text, TextInput, View } from "react-native";
+import { StyleSheet, Text, TextInput, View } from "react-native";
 import { Link, router } from "expo-router";
+import { useTranslation } from "react-i18next";
 import { useAuth } from "@/context/AuthContext";
 import { Button } from "@/components/ui";
+import { LanguagePicker } from "@/components/LanguagePicker";
 import { colors } from "@/theme/colors";
 
 export default function LoginScreen() {
+  const { t } = useTranslation();
   const { signIn } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -26,14 +29,18 @@ export default function LoginScreen() {
 
   return (
     <View style={styles.container}>
+      <View style={styles.languageWrap}>
+        <LanguagePicker variant="compact" />
+      </View>
+
       <View style={styles.logoWrap}>
-        <Text style={styles.appName}>Minha Paróquia</Text>
-        <Text style={styles.tagline}>Comunidade, fé e serviço em um só lugar</Text>
+        <Text style={styles.appName}>{t("app.name")}</Text>
+        <Text style={styles.tagline}>{t("app.tagline")}</Text>
       </View>
 
       <TextInput
         style={styles.input}
-        placeholder="E-mail"
+        placeholder={t("auth.email")}
         autoCapitalize="none"
         keyboardType="email-address"
         value={email}
@@ -41,7 +48,7 @@ export default function LoginScreen() {
       />
       <TextInput
         style={styles.input}
-        placeholder="Senha"
+        placeholder={t("auth.password")}
         secureTextEntry
         value={password}
         onChangeText={setPassword}
@@ -49,10 +56,10 @@ export default function LoginScreen() {
 
       {error && <Text style={styles.error}>{error}</Text>}
 
-      <Button title="Entrar" onPress={handleSubmit} loading={loading} disabled={!email || !password} />
+      <Button title={t("auth.signIn")} onPress={handleSubmit} loading={loading} disabled={!email || !password} />
 
       <Link href="/(auth)/register" style={styles.link}>
-        <Text style={styles.linkText}>Ainda não tem conta? Cadastre-se</Text>
+        <Text style={styles.linkText}>{t("auth.noAccount")}</Text>
       </Link>
     </View>
   );
@@ -65,6 +72,7 @@ const styles = StyleSheet.create({
     padding: 24,
     justifyContent: "center",
   },
+  languageWrap: { position: "absolute", top: 56, right: 20 },
   logoWrap: { alignItems: "center", marginBottom: 40 },
   appName: { fontSize: 28, fontWeight: "700", color: "#fff" },
   tagline: { fontSize: 14, color: "#fff", opacity: 0.85, marginTop: 6, textAlign: "center" },

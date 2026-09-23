@@ -3,14 +3,19 @@ import { FlatList, StyleSheet, Text, View } from "react-native";
 import { Image } from "expo-image";
 import { router } from "expo-router";
 import { format } from "date-fns";
-import { ptBR } from "date-fns/locale";
+import { useTranslation } from "react-i18next";
 import { supabase } from "@/lib/supabase";
 import { useParishId } from "@/hooks/useParish";
+import { useDateLocale } from "@/lib/dateLocale";
+import { useLocalizedField } from "@/lib/localized";
 import { Badge, Card, EmptyState, ScreenContainer } from "@/components/ui";
 import { colors } from "@/theme/colors";
 import type { NewsPost } from "@/types/database";
 
 export default function NewsListScreen() {
+  const { t } = useTranslation();
+  const dateLocale = useDateLocale();
+  const localize = useLocalizedField();
   const parishId = useParishId();
   const [items, setItems] = useState<NewsPost[]>([]);
 
@@ -31,20 +36,20 @@ export default function NewsListScreen() {
       <FlatList
         data={items}
         keyExtractor={(item) => item.id}
-        ListEmptyComponent={<EmptyState message="Nenhuma notícia publicada ainda." />}
+        ListEmptyComponent={<EmptyState message={t("news.empty")} />}
         renderItem={({ item }) => (
           <Card onPress={() => router.push(`/(tabs)/more/news/${item.id}`)}>
             {item.cover_image_url && (
               <Image source={{ uri: item.cover_image_url }} style={styles.cover} contentFit="cover" />
             )}
             <View style={{ flexDirection: "row", gap: 8, alignItems: "center" }}>
-              {item.is_pinned && <Badge label="Fixado" tone="warning" />}
+              {item.is_pinned && <Badge label={t("news.pinned")} tone="warning" />}
               <Text style={styles.category}>{item.category}</Text>
             </View>
-            <Text style={styles.title}>{item.title}</Text>
-            {item.subtitle && <Text style={styles.subtitle}>{item.subtitle}</Text>}
+            <Text style={styles.title}>{localize(item, "title")}</Text>
+            {item.subtitle && <Text style={styles.subtitle}>{localize(item, "subtitle")}</Text>}
             {item.published_at && (
-              <Text style={styles.date}>{format(new Date(item.published_at), "dd/MM/yyyy", { locale: ptBR })}</Text>
+              <Text style={styles.date}>{format(new Date(item.published_at), "dd/MM/yyyy", { locale: dateLocale })}</Text>
             )}
           </Card>
         )}

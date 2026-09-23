@@ -13,6 +13,12 @@
 // uma fonte específica, ou preencha a tabela manualmente pelo Supabase
 // Studio / painel admin do app (tela Admin > Liturgia).
 //
+// Suporte a múltiplos idiomas: chame esta função uma vez por idioma
+// (?date=YYYY-MM-DD&locale=en, por exemplo) apontando LITURGY_API_URL para
+// uma fonte que sirva aquele idioma. A maioria das fontes gratuitas só tem
+// português — nesse caso, preencha as demais traduções manualmente pela
+// tela Admin > Liturgia Diária (que já tem seletor de idioma).
+//
 // Formato esperado da API configurada em LITURGY_API_URL (chamada com
 // ?date=YYYY-MM-DD):
 // {
@@ -32,6 +38,7 @@ Deno.serve(async (req) => {
   const url = new URL(req.url);
   const dateParam = url.searchParams.get("date");
   const targetDate = dateParam ?? new Date().toISOString().slice(0, 10);
+  const locale = url.searchParams.get("locale") ?? "pt-BR";
 
   const liturgyApiUrl = Deno.env.get("LITURGY_API_URL");
   if (!liturgyApiUrl) {
@@ -50,7 +57,7 @@ Deno.serve(async (req) => {
   );
 
   try {
-    const resp = await fetch(`${liturgyApiUrl}?date=${targetDate}`);
+    const resp = await fetch(`${liturgyApiUrl}?date=${targetDate}&locale=${locale}`);
     if (!resp.ok) {
       throw new Error(`Fonte externa retornou ${resp.status}`);
     }
@@ -58,6 +65,7 @@ Deno.serve(async (req) => {
 
     const row = {
       date: targetDate,
+      locale,
       liturgical_color: source.liturgical_color ?? null,
       liturgical_season: source.liturgical_season ?? null,
       celebration: source.celebration ?? null,
@@ -74,10 +82,10 @@ Deno.serve(async (req) => {
       synced_at: new Date().toISOString(),
     };
 
-    const { error } = await admin.from("daily_liturgy").upsert(row, { onConflict: "date" });
+    const { error } = await admin.from("daily_liturgy").upsert(row, { onConflict: "date,locale" });
     if (error) throw error;
 
-    return new Response(JSON.stringify({ ok: true, date: targetDate }), {
+    return new Response(JSON.stringify({ ok: true, date: targetDate, locale }), {
       status: 200,
       headers: { "Content-Type": "application/json" },
     });

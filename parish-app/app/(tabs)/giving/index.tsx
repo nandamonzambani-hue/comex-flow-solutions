@@ -1,13 +1,17 @@
 import { useEffect, useState } from "react";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 import { router } from "expo-router";
+import { useTranslation } from "react-i18next";
 import { supabase } from "@/lib/supabase";
 import { useParishId } from "@/hooks/useParish";
+import { useLocalizedField } from "@/lib/localized";
 import { Button, Card, SectionTitle } from "@/components/ui";
 import { colors } from "@/theme/colors";
 import type { Campaign } from "@/types/database";
 
 export default function GivingScreen() {
+  const { t } = useTranslation();
+  const localize = useLocalizedField();
   const parishId = useParishId();
   const [campaigns, setCampaigns] = useState<Campaign[]>([]);
 
@@ -23,34 +27,34 @@ export default function GivingScreen() {
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <Text style={styles.intro}>
-        "Cada um contribua segundo o que decidiu no seu coração" (2Cor 9,7). Sua contribuição sustenta a vida e as
-        obras da nossa paróquia.
-      </Text>
+      <Text style={styles.intro}>{t("giving.intro")}</Text>
 
       <View style={{ gap: 10 }}>
-        <Button title="Dízimo mensal" onPress={() => router.push({ pathname: "/(tabs)/giving/donate", params: { kind: "dizimo" } })} />
+        <Button title={t("giving.monthlyTithe")} onPress={() => router.push({ pathname: "/(tabs)/giving/donate", params: { kind: "dizimo" } })} />
         <Button
-          title="Fazer uma oferta"
+          title={t("giving.makeOffering")}
           variant="secondary"
           onPress={() => router.push({ pathname: "/(tabs)/giving/donate", params: { kind: "oferta" } })}
         />
-        <Button title="Ver meu histórico" variant="outline" onPress={() => router.push("/(tabs)/giving/history")} />
+        <Button title={t("giving.viewHistory")} variant="outline" onPress={() => router.push("/(tabs)/giving/history")} />
       </View>
 
-      <SectionTitle>Campanhas e festas ativas</SectionTitle>
+      <SectionTitle>{t("giving.activeCampaigns")}</SectionTitle>
       {campaigns.map((campaign) => {
         const progress = campaign.goal_amount ? Math.min(campaign.current_amount / campaign.goal_amount, 1) : 0;
         return (
           <Card key={campaign.id} onPress={() => router.push(`/(tabs)/giving/campaign/${campaign.id}`)}>
-            <Text style={styles.campaignName}>{campaign.name}</Text>
+            <Text style={styles.campaignName}>{localize(campaign, "name")}</Text>
             {campaign.goal_amount && (
               <>
                 <View style={styles.progressTrack}>
                   <View style={[styles.progressFill, { width: `${progress * 100}%` }]} />
                 </View>
                 <Text style={styles.progressText}>
-                  R$ {campaign.current_amount.toFixed(2)} de R$ {campaign.goal_amount.toFixed(2)}
+                  {t("giving.progressOf", {
+                    current: campaign.current_amount.toFixed(2),
+                    goal: campaign.goal_amount.toFixed(2),
+                  })}
                 </Text>
               </>
             )}

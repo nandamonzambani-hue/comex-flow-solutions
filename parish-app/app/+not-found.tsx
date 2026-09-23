@@ -1,13 +1,15 @@
 import { StyleSheet, Text, View } from "react-native";
 import { Link } from "expo-router";
+import { useTranslation } from "react-i18next";
 import { colors } from "@/theme/colors";
 
 export default function NotFoundScreen() {
+  const { t } = useTranslation();
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Página não encontrada</Text>
+      <Text style={styles.title}>{t("common.notFound")}</Text>
       <Link href="/(tabs)" style={styles.link}>
-        Voltar para o início
+        {t("common.backHome")}
       </Link>
     </View>
   );

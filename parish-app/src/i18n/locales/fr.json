@@ -1,0 +1,228 @@
+{
+  "app": {
+    "name": "Ma Paroisse",
+    "tagline": "Communauté, foi et service en un seul endroit"
+  },
+  "common": {
+    "back": "Retour",
+    "backHome": "Retour à l'accueil",
+    "notFound": "Page introuvable",
+    "error": "Erreur"
+  },
+  "tabs": {
+    "home": "Accueil",
+    "events": "Événements",
+    "groups": "Groupes",
+    "giving": "Dîme",
+    "more": "Plus"
+  },
+  "auth": {
+    "email": "E-mail",
+    "password": "Mot de passe",
+    "passwordMin": "Mot de passe (min. 6 caractères)",
+    "signIn": "Se connecter",
+    "noAccount": "Pas encore de compte ? Inscrivez-vous",
+    "registerTitle": "Créer un compte",
+    "registerSubtitle": "Rejoignez la communauté de notre paroisse",
+    "fullName": "Nom complet",
+    "register": "S'inscrire"
+  },
+  "home": {
+    "greeting": "Bonjour, {{name}} 👋",
+    "defaultName": "frère/sœur",
+    "peaceMessage": "Que la paix soit avec vous aujourd'hui.",
+    "todayLiturgy": "Liturgie du jour",
+    "tapForLiturgy": "Touchez pour voir la liturgie du jour",
+    "upcomingEvents": "Prochains événements",
+    "noEvents": "Aucun événement prévu pour le moment.",
+    "parishNews": "Actualités de la paroisse",
+    "noNews": "Aucune actualité publiée pour l'instant."
+  },
+  "events": {
+    "title": "Événements",
+    "detailTitle": "Détails de l'événement",
+    "empty": "Aucun événement à venir pour le moment.",
+    "registrationRequired": "Inscription requise",
+    "spotsFilled": "{{count}} / {{total}} places occupées",
+    "register": "S'inscrire",
+    "cancelRegistration": "Annuler l'inscription",
+    "full": "Complet"
+  },
+  "groups": {
+    "title": "Pastorales et Groupes",
+    "detailTitle": "Groupe",
+    "empty": "Aucun groupe enregistré pour le moment.",
+    "meetings": "Rencontres",
+    "participants": "Participants",
+    "peopleCount": "{{count}} personne(s)",
+    "join": "Rejoindre ce groupe",
+    "leave": "Quitter le groupe",
+    "types": {
+      "pastoral": "Pastorales",
+      "movement": "Mouvements",
+      "ministry": "Ministères",
+      "choir": "Musique et Chorale",
+      "catechesis": "Catéchèse",
+      "news": "Actualités",
+      "other": "Autres"
+    }
+  },
+  "giving": {
+    "title": "Dîme et Dons",
+    "donateTitle": "Faire un don",
+    "campaignTitle": "Campagne",
+    "historyTitle": "Mon historique",
+    "intro": "\"Que chacun donne comme il l'a résolu dans son cœur\" (2 Co 9,7). Votre contribution soutient la vie et les œuvres de notre paroisse.",
+    "monthlyTithe": "Dîme mensuelle",
+    "makeOffering": "Faire une offrande",
+    "viewHistory": "Voir mon historique",
+    "activeCampaigns": "Campagnes et fêtes actives",
+    "progressOf": "R$ {{current}} sur R$ {{goal}}",
+    "campaignProgress": "R$ {{current}} collectés sur R$ {{goal}} ({{percent}}%)",
+    "contributeToCampaign": "Contribuer à cette campagne",
+    "titheAmount": "Montant de la dîme",
+    "contributionAmount": "Montant de la contribution",
+    "generatePix": "Générer le Pix",
+    "scanOrCopy": "Scannez ou copiez le code Pix",
+    "copyPixCode": "Copier le code Pix",
+    "invalidAmountTitle": "Montant invalide",
+    "invalidAmountBody": "Indiquez un montant supérieur à zéro.",
+    "pixErrorTitle": "Erreur lors de la génération du Pix",
+    "processingTitle": "Paiement en cours de traitement",
+    "processingBody": "Vérifiez votre historique dans un instant.",
+    "copiedTitle": "Copié",
+    "copiedBody": "Code Pix copié. Collez-le dans l'application de votre banque pour finaliser le paiement.",
+    "emptyHistory": "Vous n'avez encore fait aucune contribution.",
+    "status": {
+      "pending": "En attente",
+      "processing": "En cours",
+      "completed": "Confirmé",
+      "failed": "Échoué",
+      "refunded": "Remboursé",
+      "cancelled": "Annulé"
+    }
+  },
+  "media": {
+    "title": "Vidéos et Textes",
+    "detailTitle": "Contenu",
+    "empty": "Aucun contenu publié pour le moment.",
+    "types": {
+      "video": "Vidéo",
+      "article": "Texte",
+      "audio": "Audio",
+      "live": "En direct"
+    }
+  },
+  "downloads": {
+    "title": "Téléchargements",
+    "empty": "Aucun document disponible au téléchargement."
+  },
+  "news": {
+    "title": "Actualités",
+    "detailTitle": "Actualité",
+    "empty": "Aucune actualité publiée pour le moment.",
+    "pinned": "Épinglé"
+  },
+  "bible": {
+    "title": "Bible",
+    "chapters": "Chapitres",
+    "reading": "Lecture",
+    "oldTestament": "Ancien Testament",
+    "newTestament": "Nouveau Testament",
+    "chapterCount": "{{count}} chapitres",
+    "notSynced": "Texte pas encore synchronisé pour ce chapitre. Voir docs/CONTENT_GUIDE.md à propos de la synchronisation de la Bible."
+  },
+  "liturgy": {
+    "title": "Liturgie du Jour",
+    "empty": "La liturgie du jour n'a pas encore été publiée.",
+    "firstReading": "1ère Lecture",
+    "psalm": "Psaume",
+    "secondReading": "2ème Lecture",
+    "gospel": "Évangile",
+    "reflection": "Réflexion"
+  },
+  "profile": {
+    "title": "Mon Profil",
+    "fullName": "Nom complet",
+    "phone": "Téléphone",
+    "save": "Enregistrer les modifications",
+    "language": "Langue",
+    "signOut": "Se déconnecter"
+  },
+  "admin": {
+    "title": "Administration",
+    "members": {
+      "title": "Membres",
+      "searchPlaceholder": "Rechercher par nom...",
+      "empty": "Aucun membre trouvé.",
+      "roles": {
+        "member": "Membre",
+        "groupLeader": "Responsable de groupe",
+        "staff": "Équipe",
+        "admin": "Administrateur",
+        "pastor": "Curé"
+      }
+    },
+    "finance": {
+      "title": "Finances",
+      "currentMonth": "Mois en cours",
+      "confirmed": "Confirmé",
+      "pending": "En attente",
+      "byMethod": "Par moyen de paiement",
+      "recentTransactions": "Transactions récentes"
+    },
+    "content": {
+      "title": "Contenu",
+      "type": "Type de contenu",
+      "kinds": {
+        "news": "Actualité",
+        "article": "Texte",
+        "video": "Vidéo"
+      },
+      "titlePlaceholder": "Titre",
+      "subtitlePlaceholder": "Sous-titre (optionnel)",
+      "shortDescriptionPlaceholder": "Description courte",
+      "videoUrlPlaceholder": "URL de la vidéo (mp4, HLS, YouTube intégrable)",
+      "bodyPlaceholder": "Corps du texte...",
+      "translationsOptional": "Traductions (optionnel)",
+      "translatedTitlePlaceholder": "Titre traduit",
+      "translatedSubtitlePlaceholder": "Sous-titre/description traduit(e)",
+      "translatedBodyPlaceholder": "Corps du texte traduit...",
+      "publish": "Publier",
+      "publishedTitle": "Publié",
+      "publishedBody": "Contenu publié avec succès."
+    },
+    "notifications": {
+      "title": "Notifications",
+      "titlePlaceholder": "Titre de la notification",
+      "messagePlaceholder": "Message",
+      "recipients": "Destinataires",
+      "target": {
+        "all": "Tout le monde",
+        "group": "Un groupe",
+        "role": "Un rôle"
+      },
+      "send": "Envoyer la notification",
+      "sentTitle": "Envoyé",
+      "sentBody": "Notification envoyée à {{count}} appareil(s).",
+      "sendError": "Échec de l'envoi de la notification"
+    },
+    "liturgyEditor": {
+      "title": "Modifier la Liturgie",
+      "hint": "Modifiez manuellement la liturgie du jour ({{date}}) dans la langue sélectionnée ci-dessous. Si vous configurez la synchronisation automatique (supabase/functions/daily-liturgy-sync), ce formulaire devient juste un ajustement/sauvegarde.",
+      "celebration": "Célébration (ex : 25e dimanche du temps ordinaire)",
+      "color": "Couleur liturgique (Vert, Violet, Blanc, Rouge, Rose)",
+      "saint": "Saint du jour (optionnel)",
+      "firstReadingRef": "Référence 1ère Lecture",
+      "firstReadingText": "Texte 1ère Lecture",
+      "psalmRef": "Référence Psaume",
+      "psalmText": "Texte du Psaume",
+      "gospelRef": "Référence Évangile",
+      "gospelText": "Texte de l'Évangile",
+      "reflection": "Réflexion du jour",
+      "save": "Enregistrer la liturgie du jour",
+      "savedTitle": "Enregistré",
+      "savedBody": "Liturgie mise à jour pour cette langue."
+    }
+  }
+}

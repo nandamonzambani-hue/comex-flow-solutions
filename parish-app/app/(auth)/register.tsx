@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { StyleSheet, Text, TextInput, View } from "react-native";
 import { router } from "expo-router";
+import { useTranslation } from "react-i18next";
 import { useAuth } from "@/context/AuthContext";
 import { Button } from "@/components/ui";
 import { colors } from "@/theme/colors";
@@ -10,6 +11,7 @@ import { colors } from "@/theme/colors";
 const DEFAULT_PARISH_ID = "00000000-0000-0000-0000-000000000001";
 
 export default function RegisterScreen() {
+  const { t } = useTranslation();
   const { signUp } = useAuth();
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
@@ -36,13 +38,13 @@ export default function RegisterScreen() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Criar conta</Text>
-      <Text style={styles.subtitle}>Junte-se à comunidade da nossa paróquia</Text>
+      <Text style={styles.title}>{t("auth.registerTitle")}</Text>
+      <Text style={styles.subtitle}>{t("auth.registerSubtitle")}</Text>
 
-      <TextInput style={styles.input} placeholder="Nome completo" value={fullName} onChangeText={setFullName} />
+      <TextInput style={styles.input} placeholder={t("auth.fullName")} value={fullName} onChangeText={setFullName} />
       <TextInput
         style={styles.input}
-        placeholder="E-mail"
+        placeholder={t("auth.email")}
         autoCapitalize="none"
         keyboardType="email-address"
         value={email}
@@ -50,7 +52,7 @@ export default function RegisterScreen() {
       />
       <TextInput
         style={styles.input}
-        placeholder="Senha (mín. 6 caracteres)"
+        placeholder={t("auth.passwordMin")}
         secureTextEntry
         value={password}
         onChangeText={setPassword}
@@ -59,12 +61,12 @@ export default function RegisterScreen() {
       {error && <Text style={styles.error}>{error}</Text>}
 
       <Button
-        title="Cadastrar"
+        title={t("auth.register")}
         onPress={handleSubmit}
         loading={loading}
         disabled={!fullName || !email || password.length < 6}
       />
-      <Button title="Voltar" variant="outline" onPress={() => router.back()} />
+      <Button title={t("common.back")} variant="outline" onPress={() => router.back()} />
     </View>
   );
 }
