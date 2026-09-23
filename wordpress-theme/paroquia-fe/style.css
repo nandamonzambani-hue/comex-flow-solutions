@@ -1,0 +1,17 @@
+/*
+Theme Name: Paróquia Fé
+Theme URI: https://example.com/paroquia-fe
+Author: Sua Empresa
+Author URI: https://example.com
+Description: Tema WordPress completo e responsivo para paróquias, dioceses e comunidades católicas. Inclui horário de missas, agenda de eventos e novenas, galeria de sacramentos, apresentação do clero e das pastorais, área de doações/dízimo e integração com redes sociais. Fácil de customizar pelo Personalizador do WordPress, sem precisar mexer em código.
+Version: 1.0.0
+Requires at least: 6.0
+Tested up to: 6.6
+Requires PHP: 7.4
+License: GNU General Public License v2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: paroquia-fe
+Tags: church, religion, blog, e-commerce, one-column, two-columns, right-sidebar, custom-colors, custom-menu, custom-logo, featured-images, footer-widgets, full-width-template, threaded-comments, translation-ready
+*/
+
+/* O CSS real do tema fica em assets/css/main.css e é carregado via functions.php (wp_enqueue_style). Este arquivo existe apenas para o WordPress reconhecer o tema pelo cabeçalho acima. */
