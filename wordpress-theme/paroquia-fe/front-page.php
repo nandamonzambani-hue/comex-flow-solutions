@@ -31,7 +31,11 @@ $banner_imagem = get_theme_mod( 'paroquiafe_banner_imagem' );
 			<span class="pf-eyebrow"><?php esc_html_e( 'Bem-vindo', 'paroquia-fe' ); ?></span>
 			<h2><?php esc_html_e( 'Nossa Comunidade', 'paroquia-fe' ); ?></h2>
 			<div class="pf-sobre-conteudo"><?php echo wp_kses_post( wpautop( $texto_sobre ) ); ?></div>
-			<a class="pf-link-saiba-mais" href="<?php echo esc_url( get_permalink( get_page_by_path( 'sobre' ) ) ?: home_url( '/' ) ); ?>"><?php esc_html_e( 'Saiba mais →', 'paroquia-fe' ); ?></a>
+			<?php
+			$pagina_sobre = get_page_by_path( 'sobre' );
+			$link_sobre   = $pagina_sobre ? get_permalink( $pagina_sobre ) : home_url( '/' );
+			?>
+			<a class="pf-link-saiba-mais" href="<?php echo esc_url( $link_sobre ); ?>"><?php esc_html_e( 'Saiba mais →', 'paroquia-fe' ); ?></a>
 		</div>
 	</div>
 </section>
