@@ -83,6 +83,39 @@ parish-app/
    Escaneie o QR code com o app Expo Go (para testar rápido) ou rode num
    emulador Android/iOS.
 
+   Para um preview rápido sem celular/emulador (bom para conferir telas e
+   textos, mas alguns módulos nativos como notificações push não
+   funcionam no navegador):
+   ```bash
+   npm run web
+   ```
+
+## Testado
+
+Antes de considerar este código pronto, ele passou por validação real, não
+só escrita:
+
+- **Banco de dados**: as 5 migrations + `seed.sql` foram aplicadas contra
+  um Postgres real (com um stub mínimo de `auth`/`storage` do Supabase) e
+  as políticas de RLS foram testadas com usuários de verdade — membro só
+  vê o próprio perfil/doações, staff vê tudo da paróquia, `service_role`
+  consegue rodar `increment_campaign_amount` e um membro comum não
+  consegue. Isso pegou um bug real: as funções auxiliares `auth_role()` /
+  `auth_parish_id()` / `is_staff()` causavam recursão infinita ao
+  consultar `profiles` sob RLS — corrigido com `security definer` (ver
+  `supabase/migrations/0002_rls_policies.sql`).
+- **App**: `npm install`, `tsc --noEmit` e `eslint` rodam limpos, e o app
+  inteiro foi empacotado de ponta a ponta com o Metro bundler (`expo
+  export`) e aberto num navegador headless — login, troca de idioma em
+  tempo real e navegação para a tela de cadastro confirmados
+  funcionando, sem erros no console. Isso pegou dependências que
+  faltavam no `package.json` (`expo-asset`, `expo-font`, `query-string`)
+  e um erro de tipos no helper de tradução de conteúdo (`src/lib/localized.ts`).
+
+O que **não** foi testado aqui (exige suas próprias contas/dispositivos):
+build nativo real via EAS, push notification de ponta a ponta (APNs/FCM),
+cobrança Pix real via Mercado Pago, e o app rodando em iOS/Android físico.
+
 ## Antes de publicar nas lojas
 
 Veja o passo a passo completo em `docs/PUBLISHING_GUIDE.md`. Resumo do que

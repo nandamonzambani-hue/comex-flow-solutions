@@ -27,24 +27,32 @@ alter table daily_liturgy enable row level security;
 alter table push_tokens enable row level security;
 alter table notifications_log enable row level security;
 
--- Helper: papel do usuário autenticado atual
+-- Helpers: papel/paróquia do usuário autenticado atual.
+--
+-- security definer é essencial aqui: sem ele, a consulta a `profiles`
+-- dentro da própria função dispara de novo as policies de RLS de
+-- `profiles` (que chamam auth_role()/auth_parish_id()/is_staff()) e isso
+-- gera recursão infinita ("stack depth limit exceeded") assim que
+-- qualquer policy de staff é avaliada. Rodando como definer (dono da
+-- função, sem RLS) a função lê a própria linha do usuário uma única vez,
+-- sem reentrar nas policies.
 create or replace function auth_role()
 returns member_role
-language sql stable
+language sql stable security definer set search_path = public
 as $$
   select role from profiles where id = auth.uid();
 $$;
 
 create or replace function auth_parish_id()
 returns uuid
-language sql stable
+language sql stable security definer set search_path = public
 as $$
   select parish_id from profiles where id = auth.uid();
 $$;
 
 create or replace function is_staff()
 returns boolean
-language sql stable
+language sql stable security definer set search_path = public
 as $$
   select coalesce(auth_role() in ('staff', 'admin', 'pastor'), false);
 $$;

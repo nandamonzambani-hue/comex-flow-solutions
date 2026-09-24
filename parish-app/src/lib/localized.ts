@@ -1,4 +1,5 @@
 import { useTranslation } from "react-i18next";
+import type { Translations } from "@/types/database";
 
 /**
  * Lê um campo com possível tradução guardada em `translations` (jsonb):
@@ -9,10 +10,12 @@ import { useTranslation } from "react-i18next";
 export function useLocalizedField() {
   const { i18n } = useTranslation();
 
-  return function localize<T extends Record<string, unknown>>(item: T | null | undefined, field: keyof T): string {
+  return function localize<T extends { translations?: Translations | null }>(
+    item: T | null | undefined,
+    field: Exclude<keyof T, "translations">,
+  ): string {
     if (!item) return "";
-    const translations = item.translations as Record<string, Record<string, string>> | undefined;
-    const translated = translations?.[i18n.language]?.[field as string];
+    const translated = item.translations?.[i18n.language]?.[field as string];
     return (translated ?? (item[field] as unknown as string) ?? "") as string;
   };
 }

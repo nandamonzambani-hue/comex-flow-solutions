@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Alert, ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
 import { useTranslation } from "react-i18next";
 import { supabase } from "@/lib/supabase";
-import { SUPPORTED_LOCALES } from "@/i18n";
+import { SUPPORTED_LOCALES, type LocaleCode } from "@/i18n";
 import { Button, Card } from "@/components/ui";
 import { colors } from "@/theme/colors";
 import type { DailyLiturgy } from "@/types/database";
@@ -11,7 +11,7 @@ const todayISO = new Date().toISOString().slice(0, 10);
 
 export default function AdminLiturgyEditorScreen() {
   const { t } = useTranslation();
-  const [locale, setLocale] = useState(SUPPORTED_LOCALES[0].code);
+  const [locale, setLocale] = useState<LocaleCode>(SUPPORTED_LOCALES[0].code);
   const [form, setForm] = useState<Partial<DailyLiturgy>>({ date: todayISO, locale });
   const [saving, setSaving] = useState(false);
 
