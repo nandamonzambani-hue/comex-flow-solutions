@@ -10,8 +10,10 @@ interface AuthContextValue {
   profile: Profile | null;
   loading: boolean;
   isStaff: boolean;
+  isPlatformAdmin: boolean;
   signIn: (email: string, password: string) => Promise<{ error: string | null }>;
-  signUp: (params: { email: string; password: string; fullName: string; parishId: string }) => Promise<{
+  /** parishId opcional: sem ele, o perfil nasce sem paróquia (fluxo de onboarding decide depois). */
+  signUp: (params: { email: string; password: string; fullName: string; parishId?: string }) => Promise<{
     error: string | null;
   }>;
   signOut: () => Promise<void>;
@@ -25,12 +27,20 @@ const STAFF_ROLES: MemberRole[] = ["staff", "admin", "pastor"];
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [session, setSession] = useState<Session | null>(null);
   const [profile, setProfile] = useState<Profile | null>(null);
+  const [isPlatformAdmin, setIsPlatformAdmin] = useState(false);
   const [loading, setLoading] = useState(true);
 
   async function loadProfile(userId: string) {
     const { data } = await supabase.from("profiles").select("*").eq("id", userId).single();
     setProfile(data as Profile | null);
     await syncLocaleFromProfile((data as Profile | null)?.preferred_locale as LocaleCode | undefined);
+
+    const { data: platformAdminRow } = await supabase
+      .from("platform_admins")
+      .select("profile_id")
+      .eq("profile_id", userId)
+      .maybeSingle();
+    setIsPlatformAdmin(!!platformAdminRow);
   }
 
   useEffect(() => {
@@ -49,6 +59,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         });
       } else {
         setProfile(null);
+        setIsPlatformAdmin(false);
       }
     });
 
@@ -61,6 +72,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       profile,
       loading,
       isStaff: profile ? STAFF_ROLES.includes(profile.role) : false,
+      isPlatformAdmin,
       async signIn(email, password) {
         const { error } = await supabase.auth.signInWithPassword({ email, password });
         return { error: error?.message ?? null };
@@ -71,7 +83,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         if (data.user) {
           const { error: profileError } = await supabase.from("profiles").insert({
             id: data.user.id,
-            parish_id: parishId,
+            parish_id: parishId ?? null,
             full_name: fullName,
             email,
           });
@@ -86,7 +98,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         if (session?.user) await loadProfile(session.user.id);
       },
     }),
-    [session, profile, loading],
+    [session, profile, loading, isPlatformAdmin],
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

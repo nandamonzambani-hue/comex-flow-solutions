@@ -36,7 +36,15 @@
     "upcomingEvents": "Próximos eventos",
     "noEvents": "Nenhum evento agendado no momento.",
     "parishNews": "Notícias da paróquia",
-    "noNews": "Nenhuma notícia publicada ainda."
+    "noNews": "Nenhuma notícia publicada ainda.",
+    "parishStatus": {
+      "pending_approval": "Sua paróquia está aguardando aprovação da plataforma. Assim que for aprovada, tudo fica liberado.",
+      "trial": "Sua paróquia está no período de teste gratuito.",
+      "active": "",
+      "past_due": "Há um problema com o pagamento da assinatura da paróquia. Regularize para evitar interrupção.",
+      "suspended": "A assinatura da paróquia está suspensa. Fale com a administração para reativar.",
+      "cancelled": "A assinatura da paróquia foi cancelada."
+    }
   },
   "events": {
     "title": "Eventos",
@@ -223,6 +231,98 @@
       "save": "Salvar liturgia de hoje",
       "savedTitle": "Salvo",
       "savedBody": "Liturgia atualizada para este idioma."
+    },
+    "subscription": {
+      "title": "Assinatura",
+      "status": "Status da assinatura",
+      "choosePlan": "Escolha um plano",
+      "subscribe": "Assinar",
+      "trialUntil": "Teste gratuito até {{date}}"
+    }
+  },
+  "onboarding": {
+    "greeting": "Bem-vindo(a), {{name}}!",
+    "subtitle": "Antes de continuar, encontre a paróquia da qual você faz parte ou cadastre uma nova.",
+    "findParish": "Encontrar minha paróquia",
+    "registerParish": "Cadastrar minha paróquia",
+    "goToPlatformAdmin": "Ir para o painel da plataforma",
+    "joinByCode": "Tenho um código de convite",
+    "joinCodePlaceholder": "Ex: APARECIDA-7F2K",
+    "join": "Entrar",
+    "searchByNameCity": "Ou busque por nome/cidade",
+    "searchPlaceholder": "Nome da paróquia ou cidade",
+    "search": "Buscar",
+    "noResults": "Nenhuma paróquia encontrada com esse nome/cidade.",
+    "codeNotFoundTitle": "Código não encontrado",
+    "codeNotFoundBody": "Confira o código de convite com a secretaria da paróquia.",
+    "notJoinableTitle": "Paróquia indisponível",
+    "notJoinableBody": "Esta paróquia ainda não foi aprovada na plataforma.",
+    "trialBadge": "Em teste",
+    "createParishTitle": "Cadastrar minha paróquia",
+    "createParishSubtitle": "Você será o administrador inicial dela. O cadastro fica pendente até nossa equipe aprovar.",
+    "parishNamePlaceholder": "Nome da paróquia",
+    "parishCityPlaceholder": "Cidade",
+    "parishStatePlaceholder": "Estado (UF)",
+    "parishPhonePlaceholder": "Telefone de contato",
+    "createParishHint": "Depois de enviar, nossa equipe analisa o cadastro e libera o acesso completo — normalmente em até 1 dia útil.",
+    "submitParish": "Enviar cadastro",
+    "createError": "Não foi possível cadastrar a paróquia."
+  },
+  "parishStatusLabel": {
+    "pending_approval": "Pendente",
+    "trial": "Em teste",
+    "active": "Ativa",
+    "past_due": "Pagamento pendente",
+    "suspended": "Suspensa",
+    "cancelled": "Cancelada"
+  },
+  "billingInterval": {
+    "once": "pagamento único",
+    "weekly": "semana",
+    "monthly": "mês",
+    "yearly": "ano"
+  },
+  "platformAdmin": {
+    "title": "Painel da Plataforma",
+    "overview": "Visão geral",
+    "management": "Gestão",
+    "stats": {
+      "pending": "Pendentes",
+      "trial": "Em teste",
+      "active": "Ativas"
+    },
+    "parishes": {
+      "title": "Paróquias",
+      "empty": "Nenhuma paróquia encontrada com este filtro.",
+      "filterAll": "Todas"
+    },
+    "parishDetail": {
+      "title": "Paróquia",
+      "location": "Localização",
+      "contact": "Contato",
+      "createdBy": "Cadastrada por",
+      "joinCode": "Código de convite",
+      "approveWithPlan": "Aprovar com o plano",
+      "approve": "Aprovar",
+      "trialDays": "{{count}} dias de teste",
+      "suspend": "Suspender paróquia",
+      "reactivate": "Reativar paróquia"
+    },
+    "plans": {
+      "title": "Planos",
+      "existing": "Planos cadastrados",
+      "active": "Ativo",
+      "inactive": "Inativo",
+      "activate": "Ativar",
+      "deactivate": "Desativar",
+      "unlimitedMembers": "membros ilimitados",
+      "upToMembers": "até {{count}} membros",
+      "newPlan": "Novo plano",
+      "namePlaceholder": "Nome do plano",
+      "pricePlaceholder": "Preço mensal (R$)",
+      "maxMembersPlaceholder": "Limite de membros (vazio = ilimitado)",
+      "trialDaysPlaceholder": "Dias de teste grátis",
+      "create": "Criar plano"
     }
   }
 }

@@ -6,10 +6,6 @@ import { useAuth } from "@/context/AuthContext";
 import { Button } from "@/components/ui";
 import { colors } from "@/theme/colors";
 
-// Paróquia padrão do app (single-tenant). Para multi-paróquia, troque por
-// uma tela de seleção que busca em `parishes` antes do cadastro.
-const DEFAULT_PARISH_ID = "00000000-0000-0000-0000-000000000001";
-
 export default function RegisterScreen() {
   const { t } = useTranslation();
   const { signUp } = useAuth();
@@ -22,18 +18,14 @@ export default function RegisterScreen() {
   async function handleSubmit() {
     setError(null);
     setLoading(true);
-    const { error } = await signUp({
-      email: email.trim(),
-      password,
-      fullName: fullName.trim(),
-      parishId: DEFAULT_PARISH_ID,
-    });
+    const { error } = await signUp({ email: email.trim(), password, fullName: fullName.trim() });
     setLoading(false);
     if (error) {
       setError(error);
       return;
     }
-    router.replace("/(tabs)");
+    // Conta criada sem paróquia ainda — o hub de onboarding decide o resto.
+    router.replace("/(auth)/onboarding");
   }
 
   return (

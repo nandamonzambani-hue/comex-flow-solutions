@@ -36,7 +36,15 @@
     "upcomingEvents": "Prossimi eventi",
     "noEvents": "Nessun evento programmato al momento.",
     "parishNews": "Notizie della parrocchia",
-    "noNews": "Nessuna notizia pubblicata ancora."
+    "noNews": "Nessuna notizia pubblicata ancora.",
+    "parishStatus": {
+      "pending_approval": "La tua parrocchia è in attesa di approvazione dalla piattaforma. Non appena approvata, tutto sarà sbloccato.",
+      "trial": "La tua parrocchia è nel periodo di prova gratuita.",
+      "active": "",
+      "past_due": "C'è un problema con il pagamento dell'abbonamento della parrocchia. Risolvilo per evitare interruzioni.",
+      "suspended": "L'abbonamento della parrocchia è sospeso. Contatta l'amministrazione per riattivarlo.",
+      "cancelled": "L'abbonamento della parrocchia è stato annullato."
+    }
   },
   "events": {
     "title": "Eventi",
@@ -223,6 +231,98 @@
       "save": "Salva la liturgia di oggi",
       "savedTitle": "Salvato",
       "savedBody": "Liturgia aggiornata per questa lingua."
+    },
+    "subscription": {
+      "title": "Abbonamento",
+      "status": "Stato dell'abbonamento",
+      "choosePlan": "Scegli un piano",
+      "subscribe": "Abbonati",
+      "trialUntil": "Prova gratuita fino al {{date}}"
+    }
+  },
+  "onboarding": {
+    "greeting": "Benvenuto/a, {{name}}!",
+    "subtitle": "Prima di continuare, trova la parrocchia a cui appartieni oppure registrane una nuova.",
+    "findParish": "Trova la mia parrocchia",
+    "registerParish": "Registra la mia parrocchia",
+    "goToPlatformAdmin": "Vai al pannello della piattaforma",
+    "joinByCode": "Ho un codice di invito",
+    "joinCodePlaceholder": "Es: APARECIDA-7F2K",
+    "join": "Entra",
+    "searchByNameCity": "Oppure cerca per nome/città",
+    "searchPlaceholder": "Nome della parrocchia o città",
+    "search": "Cerca",
+    "noResults": "Nessuna parrocchia trovata con questo nome/città.",
+    "codeNotFoundTitle": "Codice non trovato",
+    "codeNotFoundBody": "Verifica il codice di invito con la segreteria della parrocchia.",
+    "notJoinableTitle": "Parrocchia non disponibile",
+    "notJoinableBody": "Questa parrocchia non è ancora stata approvata sulla piattaforma.",
+    "trialBadge": "In prova",
+    "createParishTitle": "Registra la mia parrocchia",
+    "createParishSubtitle": "Ne sarai l'amministratore iniziale. La registrazione resta in sospeso finché il nostro team non la approva.",
+    "parishNamePlaceholder": "Nome della parrocchia",
+    "parishCityPlaceholder": "Città",
+    "parishStatePlaceholder": "Provincia",
+    "parishPhonePlaceholder": "Telefono di contatto",
+    "createParishHint": "Dopo l'invio, il nostro team esamina la registrazione e sblocca l'accesso completo — di solito entro 1 giorno lavorativo.",
+    "submitParish": "Invia registrazione",
+    "createError": "Impossibile registrare la parrocchia."
+  },
+  "parishStatusLabel": {
+    "pending_approval": "In attesa",
+    "trial": "In prova",
+    "active": "Attiva",
+    "past_due": "Pagamento in sospeso",
+    "suspended": "Sospesa",
+    "cancelled": "Annullata"
+  },
+  "billingInterval": {
+    "once": "pagamento unico",
+    "weekly": "settimana",
+    "monthly": "mese",
+    "yearly": "anno"
+  },
+  "platformAdmin": {
+    "title": "Pannello della Piattaforma",
+    "overview": "Panoramica",
+    "management": "Gestione",
+    "stats": {
+      "pending": "In attesa",
+      "trial": "In prova",
+      "active": "Attive"
+    },
+    "parishes": {
+      "title": "Parrocchie",
+      "empty": "Nessuna parrocchia trovata con questo filtro.",
+      "filterAll": "Tutte"
+    },
+    "parishDetail": {
+      "title": "Parrocchia",
+      "location": "Posizione",
+      "contact": "Contatto",
+      "createdBy": "Registrata da",
+      "joinCode": "Codice di invito",
+      "approveWithPlan": "Approva con il piano",
+      "approve": "Approva",
+      "trialDays": "{{count}} giorni di prova",
+      "suspend": "Sospendi parrocchia",
+      "reactivate": "Riattiva parrocchia"
+    },
+    "plans": {
+      "title": "Piani",
+      "existing": "Piani esistenti",
+      "active": "Attivo",
+      "inactive": "Inattivo",
+      "activate": "Attiva",
+      "deactivate": "Disattiva",
+      "unlimitedMembers": "membri illimitati",
+      "upToMembers": "fino a {{count}} membri",
+      "newPlan": "Nuovo piano",
+      "namePlaceholder": "Nome del piano",
+      "pricePlaceholder": "Prezzo mensile (R$)",
+      "maxMembersPlaceholder": "Limite membri (vuoto = illimitato)",
+      "trialDaysPlaceholder": "Giorni di prova gratuita",
+      "create": "Crea piano"
     }
   }
 }

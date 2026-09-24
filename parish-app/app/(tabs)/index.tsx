@@ -5,7 +5,7 @@ import { router } from "expo-router";
 import { useTranslation } from "react-i18next";
 import { supabase } from "@/lib/supabase";
 import { useAuth } from "@/context/AuthContext";
-import { useParishId } from "@/hooks/useParish";
+import { useParishContext, useTheme } from "@/context/ParishContext";
 import { useDateLocale } from "@/lib/dateLocale";
 import { useLocalizedField } from "@/lib/localized";
 import { Card, SectionTitle, Badge } from "@/components/ui";
@@ -17,8 +17,10 @@ export default function HomeScreen() {
   const { t, i18n } = useTranslation();
   const dateLocale = useDateLocale();
   const localize = useLocalizedField();
-  const { profile } = useAuth();
-  const parishId = useParishId();
+  const theme = useTheme();
+  const { profile, isStaff } = useAuth();
+  const { parish } = useParishContext();
+  const parishId = parish?.id ?? null;
   const [liturgy, setLiturgy] = useState<DailyLiturgy | null>(null);
   const [nextEvents, setNextEvents] = useState<ParishEvent[]>([]);
   const [news, setNews] = useState<NewsPost[]>([]);
@@ -74,6 +76,8 @@ export default function HomeScreen() {
     setRefreshing(false);
   }
 
+  const showStatusBanner = isStaff && parish && parish.status !== "active";
+
   return (
     <ScrollView
       style={styles.screen}
@@ -83,7 +87,13 @@ export default function HomeScreen() {
       <Text style={styles.greeting}>{t("home.greeting", { name: profile?.full_name?.split(" ")[0] ?? t("home.defaultName") })}</Text>
       <Text style={styles.subGreeting}>{t("home.peaceMessage")}</Text>
 
-      <Card style={styles.liturgyCard} onPress={() => router.push("/(tabs)/more/liturgy")}>
+      {showStatusBanner && (
+        <Card style={styles.statusBanner}>
+          <Text style={styles.statusBannerText}>{t(`home.parishStatus.${parish.status}`)}</Text>
+        </Card>
+      )}
+
+      <Card style={[styles.liturgyCard, { backgroundColor: theme.primary }]} onPress={() => router.push("/(tabs)/more/liturgy")}>
         <View style={{ flexDirection: "row", justifyContent: "space-between", alignItems: "center" }}>
           <Text style={styles.liturgyLabel}>{t("home.todayLiturgy")}</Text>
           {liturgy?.liturgical_color && <Badge label={liturgy.liturgical_color} />}
@@ -96,7 +106,7 @@ export default function HomeScreen() {
       {nextEvents.length === 0 && <Text style={styles.emptyText}>{t("home.noEvents")}</Text>}
       {nextEvents.map((event) => (
         <Card key={event.id} onPress={() => router.push(`/(tabs)/events/${event.id}`)}>
-          <Text style={styles.eventDate}>
+          <Text style={[styles.eventDate, { color: theme.secondary }]}>
             {format(new Date(event.start_at), "EEEE, dd MMMM · HH:mm", { locale: dateLocale })}
           </Text>
           <Text style={styles.eventTitle}>{localize(event, "title")}</Text>
@@ -123,11 +133,13 @@ const styles = StyleSheet.create({
   screen: { flex: 1, backgroundColor: colors.background },
   greeting: { fontSize: 24, fontWeight: "700", color: colors.textPrimary },
   subGreeting: { fontSize: 14, color: colors.textSecondary, marginBottom: 20 },
-  liturgyCard: { backgroundColor: colors.primary, borderWidth: 0 },
+  statusBanner: { backgroundColor: `${colors.warning}18`, borderColor: colors.warning },
+  statusBannerText: { color: colors.warning, fontWeight: "600", textAlign: "center" },
+  liturgyCard: { borderWidth: 0 },
   liturgyLabel: { color: "#fff", fontWeight: "600", opacity: 0.9 },
   liturgyCelebration: { color: "#fff", fontSize: 17, fontWeight: "700", marginTop: 8 },
   liturgyRef: { color: "#fff", opacity: 0.85, marginTop: 4 },
-  eventDate: { color: colors.secondary, fontSize: 12, fontWeight: "600", textTransform: "uppercase" },
+  eventDate: { fontSize: 12, fontWeight: "600", textTransform: "uppercase" },
   eventTitle: { fontSize: 16, fontWeight: "700", color: colors.textPrimary, marginTop: 4 },
   eventLocation: { color: colors.textSecondary, marginTop: 2 },
   newsImage: { width: "100%", height: 140, borderRadius: 10, marginBottom: 10 },

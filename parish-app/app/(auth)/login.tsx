@@ -24,7 +24,8 @@ export default function LoginScreen() {
       setError(error);
       return;
     }
-    router.replace("/(tabs)");
+    // "/" decide pra onde ir: tabs, onboarding (sem paróquia) ou platform-admin
+    router.replace("/");
   }
 
   return (

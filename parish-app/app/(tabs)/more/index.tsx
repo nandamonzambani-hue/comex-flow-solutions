@@ -17,7 +17,7 @@ const MENU_ITEMS = [
 
 export default function MoreScreen() {
   const { t } = useTranslation();
-  const { isStaff, signOut } = useAuth();
+  const { isStaff, isPlatformAdmin, signOut } = useAuth();
 
   return (
     <ScreenContainer>
@@ -32,6 +32,12 @@ export default function MoreScreen() {
           <Pressable style={styles.item} onPress={() => router.push("/admin")}>
             <Ionicons name="settings" size={30} color={colors.primary} />
             <Text style={styles.itemLabel}>{t("admin.title")}</Text>
+          </Pressable>
+        )}
+        {isPlatformAdmin && (
+          <Pressable style={styles.item} onPress={() => router.push("/platform-admin")}>
+            <Ionicons name="server" size={30} color={colors.primary} />
+            <Text style={styles.itemLabel}>{t("platformAdmin.title")}</Text>
           </Pressable>
         )}
       </View>

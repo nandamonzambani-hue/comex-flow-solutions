@@ -1,17 +1,18 @@
 import { Tabs } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
 import { useTranslation } from "react-i18next";
-import { colors } from "@/theme/colors";
+import { useTheme } from "@/context/ParishContext";
 
 export default function TabsLayout() {
   const { t } = useTranslation();
+  const theme = useTheme();
 
   return (
     <Tabs
       screenOptions={{
         headerShown: false,
-        tabBarActiveTintColor: colors.primary,
-        tabBarInactiveTintColor: colors.textSecondary,
+        tabBarActiveTintColor: theme.primary,
+        tabBarInactiveTintColor: theme.textSecondary,
       }}
     >
       <Tabs.Screen

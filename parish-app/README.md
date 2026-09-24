@@ -1,19 +1,22 @@
-# Minha Paróquia — App para Paróquias e Comunidades Católicas
+# Minha Paróquia — Plataforma SaaS multi-paróquia
 
-App mobile (iOS + Android) no estilo InChurch, para gestão completa de uma
-paróquia: membros, grupos/pastorais, eventos, dízimo e campanhas, conteúdo
-em vídeo/texto, downloads, Bíblia, liturgia diária e notificações push.
+App mobile (iOS + Android) **único**, no estilo InChurch: várias
+paróquias assinam e usam o mesmo app, cada uma com seus próprios
+membros, grupos/pastorais, eventos, dízimo e campanhas, conteúdo em
+vídeo/texto, downloads, Bíblia, liturgia diária, notificações push e
+identidade visual (cores/logo) — tudo isolado por paróquia via Row Level
+Security. Veja **`docs/SAAS_MODEL.md`** para como o modelo multi-tenant,
+a aprovação de novas paróquias e a assinatura recorrente funcionam.
 
-Construído com **Expo (React Native) + Supabase**. Pensado para ser
-white-label: troque cores, nome e dados da paróquia em `parishes` e o app
-serve para qualquer paróquia — permitindo vender o mesmo produto para
-várias comunidades.
+Construído com **Expo (React Native) + Supabase**.
 
 ## Stack
 
 - **App**: Expo SDK 52, TypeScript, expo-router (navegação por arquivos)
 - **Backend**: Supabase (Postgres + Auth + Storage + Edge Functions + RLS)
-- **Pagamentos**: Mercado Pago (Pix) — trocável por outro gateway
+- **Pagamentos**: Mercado Pago — Pix avulso (dízimo/ofertas dos fiéis) e
+  assinatura recorrente via Preapproval (cobrança da paróquia pela
+  plataforma) — ambos trocáveis por outro gateway
 - **Push**: Expo Push Notifications (APNs/FCM por baixo)
 - **Idiomas**: i18next/react-i18next — interface em português, inglês,
   espanhol, italiano e francês, com detecção automática do idioma do
@@ -24,22 +27,23 @@ várias comunidades.
 ```
 parish-app/
   app/                    # telas (expo-router)
-    (auth)/                 login, cadastro
+    (auth)/                 login, cadastro, onboarding (buscar/criar paróquia)
     (tabs)/                  início, eventos, grupos, dízimo, mais
       more/                   mídia, downloads, notícias, bíblia, liturgia, perfil
-    admin/                   painel administrativo (staff/admin/pastor)
+    admin/                   painel da paróquia (staff/admin/pastor) + assinatura
+    platform-admin/          painel do dono da plataforma (aprovar paróquias, planos)
   src/
     lib/                    supabase client, notificações, localização
-    context/                AuthContext
+    context/                AuthContext, ParishContext (tema por paróquia)
     components/             UI compartilhada (inclui LanguagePicker)
     types/                  tipos do banco
     theme/                  cores
     i18n/                   configuração i18next + dicionários de idioma
   supabase/
-    migrations/             schema SQL completo + RLS
+    migrations/             schema SQL completo + RLS (inclui camada SaaS)
     seed.sql                dados de exemplo
-    functions/               Edge Functions (push, liturgia, bíblia, pagamento)
-  docs/                    guias de publicação, privacidade, conteúdo
+    functions/               Edge Functions (push, liturgia, bíblia, pagamentos, assinatura)
+  docs/                    guias de publicação, privacidade, conteúdo, modelo SaaS
 ```
 
 ## Como rodar localmente
@@ -62,13 +66,18 @@ parish-app/
      supabase functions deploy payment-webhook
      supabase functions deploy daily-liturgy-sync
      supabase functions deploy bible-sync
+     supabase functions deploy create-parish-subscription
+     supabase functions deploy subscription-webhook
      ```
    - Configure os segredos das funções:
      ```bash
      supabase secrets set MERCADOPAGO_ACCESS_TOKEN=xxx
+     supabase secrets set SUBSCRIPTION_BACK_URL=https://seusite.com/assinatura-confirmada
      supabase secrets set LITURGY_API_URL=https://sua-fonte-de-liturgia
      supabase secrets set BIBLE_API_URL=https://sua-fonte-biblica BIBLE_API_KEY=xxx
      ```
+   - Torne-se o primeiro **platform admin** (dono da plataforma) — veja o
+     passo a passo em `docs/SAAS_MODEL.md#bootstrap-do-primeiro-platform-admin`.
 
 3. **Configure o app**
    ```bash
@@ -111,10 +120,24 @@ só escrita:
   funcionando, sem erros no console. Isso pegou dependências que
   faltavam no `package.json` (`expo-asset`, `expo-font`, `query-string`)
   e um erro de tipos no helper de tradução de conteúdo (`src/lib/localized.ts`).
+- **Camada SaaS multi-paróquia** (`0006_saas_platform.sql`): testada com
+  cenários reais de ataque, não só o caminho feliz — usuário tentando se
+  auto-promover a admin (bloqueado), paróquia tentando se auto-aprovar
+  (bloqueado), reivindicar a paróquia de outra pessoa (bloqueado),
+  platform admin aprovando de verdade (funciona), `service_role`
+  confirmando assinatura via webhook (funciona). Isso pegou dois bugs
+  reais de segurança antes de qualquer paróquia real usar o produto: (1)
+  nada impedia um cadastro/edição de perfil de setar `role=admin` por
+  conta própria; (2) as triggers de proteção usavam `current_user`, que
+  dentro de uma função `security definer` reflete o *dono* da função, não
+  quem está chamando — ou seja, a proteção nunca chegava a barrar
+  ninguém. Corrigido usando o claim `role` do JWT (o mesmo mecanismo do
+  `auth.role()` do Supabase) em vez de `current_user`.
 
 O que **não** foi testado aqui (exige suas próprias contas/dispositivos):
 build nativo real via EAS, push notification de ponta a ponta (APNs/FCM),
-cobrança Pix real via Mercado Pago, e o app rodando em iOS/Android físico.
+cobrança Pix e assinatura recorrente reais via Mercado Pago, e o app
+rodando em iOS/Android físico.
 
 ## Antes de publicar nas lojas
 
@@ -174,9 +197,13 @@ espanhol, italiano e francês.
 | `member` | Ver conteúdo, participar de grupos/eventos, doar, ver seu próprio histórico |
 | `group_leader` | Tudo do member + gerenciar seu grupo, criar eventos/conteúdo do grupo |
 | `staff` | Tudo + gestão de membros, financeiro, conteúdo geral, notificações |
-| `admin` | Tudo do staff + configurações da paróquia |
+| `admin` | Tudo do staff + configurações e assinatura da paróquia |
 | `pastor` | Mesmo nível de acesso do admin |
+| *platform admin* (`platform_admins`, não é um `role`) | Aprova/suspende paróquias, gerencia planos — vê todas as paróquias, não só a própria |
 
 Segurança de dados (quem vê o quê) é garantida por Row Level Security no
-Postgres (`supabase/migrations/0002_rls_policies.sql**`), não apenas na
-interface — mesmo que alguém chame a API diretamente, as regras valem.
+Postgres (`supabase/migrations/0002_rls_policies.sql` e
+`0006_saas_platform.sql`), não apenas na interface — mesmo que alguém
+chame a API diretamente, as regras valem. Isso inclui proteção a nível de
+coluna via triggers (ex: ninguém consegue se auto-promover a admin, e só
+platform admin aprova uma paróquia) — ver `docs/SAAS_MODEL.md`.

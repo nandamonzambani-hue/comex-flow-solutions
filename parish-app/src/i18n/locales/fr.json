@@ -36,7 +36,15 @@
     "upcomingEvents": "Prochains événements",
     "noEvents": "Aucun événement prévu pour le moment.",
     "parishNews": "Actualités de la paroisse",
-    "noNews": "Aucune actualité publiée pour l'instant."
+    "noNews": "Aucune actualité publiée pour l'instant.",
+    "parishStatus": {
+      "pending_approval": "Votre paroisse est en attente d'approbation par la plateforme. Tout sera débloqué dès son approbation.",
+      "trial": "Votre paroisse est en période d'essai gratuit.",
+      "active": "",
+      "past_due": "Il y a un problème avec le paiement de l'abonnement de la paroisse. Régularisez pour éviter une interruption.",
+      "suspended": "L'abonnement de la paroisse est suspendu. Contactez l'administration pour le réactiver.",
+      "cancelled": "L'abonnement de la paroisse a été annulé."
+    }
   },
   "events": {
     "title": "Événements",
@@ -223,6 +231,98 @@
       "save": "Enregistrer la liturgie du jour",
       "savedTitle": "Enregistré",
       "savedBody": "Liturgie mise à jour pour cette langue."
+    },
+    "subscription": {
+      "title": "Abonnement",
+      "status": "Statut de l'abonnement",
+      "choosePlan": "Choisissez un forfait",
+      "subscribe": "S'abonner",
+      "trialUntil": "Essai gratuit jusqu'au {{date}}"
+    }
+  },
+  "onboarding": {
+    "greeting": "Bienvenue, {{name}} !",
+    "subtitle": "Avant de continuer, trouvez la paroisse à laquelle vous appartenez ou enregistrez-en une nouvelle.",
+    "findParish": "Trouver ma paroisse",
+    "registerParish": "Enregistrer ma paroisse",
+    "goToPlatformAdmin": "Accéder au tableau de bord de la plateforme",
+    "joinByCode": "J'ai un code d'invitation",
+    "joinCodePlaceholder": "Ex : APARECIDA-7F2K",
+    "join": "Rejoindre",
+    "searchByNameCity": "Ou recherchez par nom/ville",
+    "searchPlaceholder": "Nom de la paroisse ou ville",
+    "search": "Rechercher",
+    "noResults": "Aucune paroisse trouvée avec ce nom/cette ville.",
+    "codeNotFoundTitle": "Code introuvable",
+    "codeNotFoundBody": "Vérifiez le code d'invitation auprès du secrétariat de la paroisse.",
+    "notJoinableTitle": "Paroisse indisponible",
+    "notJoinableBody": "Cette paroisse n'a pas encore été approuvée sur la plateforme.",
+    "trialBadge": "À l'essai",
+    "createParishTitle": "Enregistrer ma paroisse",
+    "createParishSubtitle": "Vous en serez l'administrateur initial. L'inscription reste en attente jusqu'à l'approbation de notre équipe.",
+    "parishNamePlaceholder": "Nom de la paroisse",
+    "parishCityPlaceholder": "Ville",
+    "parishStatePlaceholder": "Région/État",
+    "parishPhonePlaceholder": "Téléphone de contact",
+    "createParishHint": "Après l'envoi, notre équipe examine l'inscription et débloque l'accès complet — généralement sous 1 jour ouvré.",
+    "submitParish": "Envoyer l'inscription",
+    "createError": "Impossible d'enregistrer la paroisse."
+  },
+  "parishStatusLabel": {
+    "pending_approval": "En attente",
+    "trial": "À l'essai",
+    "active": "Active",
+    "past_due": "Paiement en attente",
+    "suspended": "Suspendue",
+    "cancelled": "Annulée"
+  },
+  "billingInterval": {
+    "once": "paiement unique",
+    "weekly": "semaine",
+    "monthly": "mois",
+    "yearly": "an"
+  },
+  "platformAdmin": {
+    "title": "Tableau de Bord Plateforme",
+    "overview": "Vue d'ensemble",
+    "management": "Gestion",
+    "stats": {
+      "pending": "En attente",
+      "trial": "À l'essai",
+      "active": "Actives"
+    },
+    "parishes": {
+      "title": "Paroisses",
+      "empty": "Aucune paroisse trouvée avec ce filtre.",
+      "filterAll": "Toutes"
+    },
+    "parishDetail": {
+      "title": "Paroisse",
+      "location": "Localisation",
+      "contact": "Contact",
+      "createdBy": "Enregistrée par",
+      "joinCode": "Code d'invitation",
+      "approveWithPlan": "Approuver avec le forfait",
+      "approve": "Approuver",
+      "trialDays": "{{count}} jours d'essai",
+      "suspend": "Suspendre la paroisse",
+      "reactivate": "Réactiver la paroisse"
+    },
+    "plans": {
+      "title": "Forfaits",
+      "existing": "Forfaits existants",
+      "active": "Actif",
+      "inactive": "Inactif",
+      "activate": "Activer",
+      "deactivate": "Désactiver",
+      "unlimitedMembers": "membres illimités",
+      "upToMembers": "jusqu'à {{count}} membres",
+      "newPlan": "Nouveau forfait",
+      "namePlaceholder": "Nom du forfait",
+      "pricePlaceholder": "Prix mensuel (R$)",
+      "maxMembersPlaceholder": "Limite de membres (vide = illimité)",
+      "trialDaysPlaceholder": "Jours d'essai gratuit",
+      "create": "Créer le forfait"
     }
   }
 }

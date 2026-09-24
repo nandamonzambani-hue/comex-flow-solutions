@@ -1,5 +1,6 @@
 import { ActivityIndicator, Pressable, StyleSheet, Text, View, type ViewProps } from "react-native";
 import { colors } from "@/theme/colors";
+import { useTheme } from "@/context/ParishContext";
 
 export function ScreenContainer({ style, ...props }: ViewProps) {
   return <View style={[styles.screen, style]} {...props} />;
@@ -33,23 +34,24 @@ export function Button({
   loading?: boolean;
   disabled?: boolean;
 }) {
+  const theme = useTheme();
   return (
     <Pressable
       onPress={onPress}
       disabled={disabled || loading}
       style={({ pressed }) => [
         styles.button,
-        variant === "primary" && { backgroundColor: colors.primary },
-        variant === "secondary" && { backgroundColor: colors.secondary },
-        variant === "outline" && { backgroundColor: "transparent", borderWidth: 1, borderColor: colors.primary },
+        variant === "primary" && { backgroundColor: theme.primary },
+        variant === "secondary" && { backgroundColor: theme.secondary },
+        variant === "outline" && { backgroundColor: "transparent", borderWidth: 1, borderColor: theme.primary },
         (disabled || loading) && { opacity: 0.6 },
         pressed && { opacity: 0.85 },
       ]}
     >
       {loading ? (
-        <ActivityIndicator color={variant === "outline" ? colors.primary : "#fff"} />
+        <ActivityIndicator color={variant === "outline" ? theme.primary : "#fff"} />
       ) : (
-        <Text style={[styles.buttonText, variant === "outline" && { color: colors.primary }]}>{title}</Text>
+        <Text style={[styles.buttonText, variant === "outline" && { color: theme.primary }]}>{title}</Text>
       )}
     </Pressable>
   );
@@ -68,7 +70,8 @@ export function EmptyState({ message }: { message: string }) {
 }
 
 export function Badge({ label, tone = "default" }: { label: string; tone?: "default" | "success" | "warning" }) {
-  const toneColor = tone === "success" ? colors.success : tone === "warning" ? colors.warning : colors.secondary;
+  const theme = useTheme();
+  const toneColor = tone === "success" ? colors.success : tone === "warning" ? colors.warning : theme.secondary;
   return (
     <View style={[styles.badge, { backgroundColor: `${toneColor}22`, borderColor: toneColor }]}>
       <Text style={[styles.badgeText, { color: toneColor }]}>{label}</Text>

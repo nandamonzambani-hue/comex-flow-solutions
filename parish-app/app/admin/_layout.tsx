@@ -17,6 +17,7 @@ export default function AdminLayout() {
       <Stack.Screen name="content" options={{ title: t("admin.content.title") }} />
       <Stack.Screen name="notifications" options={{ title: t("admin.notifications.title") }} />
       <Stack.Screen name="liturgy-editor" options={{ title: t("admin.liturgyEditor.title") }} />
+      <Stack.Screen name="subscription" options={{ title: t("admin.subscription.title") }} />
     </Stack>
   );
 }

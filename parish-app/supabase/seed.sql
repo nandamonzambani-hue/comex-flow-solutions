@@ -4,7 +4,19 @@
 -- Troque os valores pela paróquia real antes de ir para produção.
 -- =========================================================================
 
-insert into parishes (id, name, slug, address, city, state, phone, email, primary_color, secondary_color)
+-- Planos que a plataforma vende para as paróquias assinarem
+insert into subscription_plans (id, name, slug, description, price_amount, billing_interval, max_members, trial_days, sort_order)
+values
+  ('10000000-0000-0000-0000-000000000001', 'Essencial', 'essencial', 'Até 300 membros. Eventos, grupos, notícias, dízimo digital.', 99.00, 'monthly', 300, 14, 1),
+  ('10000000-0000-0000-0000-000000000002', 'Comunidade', 'comunidade', 'Membros ilimitados, conteúdo em vídeo, downloads e liturgia diária.', 199.00, 'monthly', null, 14, 2);
+
+-- Paróquia de exemplo já aprovada e assinando o plano Comunidade (para
+-- desenvolvimento local funcionar de ponta a ponta sem precisar passar
+-- pelo fluxo de aprovação manual toda vez).
+insert into parishes (
+  id, name, slug, address, city, state, phone, email, primary_color, secondary_color,
+  status, plan_id, subscription_status, join_code
+)
 values (
   '00000000-0000-0000-0000-000000000001',
   'Paróquia Nossa Senhora Aparecida',
@@ -15,7 +27,11 @@ values (
   '(11) 4000-0000',
   'contato@paroquiaexemplo.org.br',
   '#7A1F2B',
-  '#C9A24B'
+  '#C9A24B',
+  'active',
+  '10000000-0000-0000-0000-000000000002',
+  'authorized',
+  'APARECIDA-DEMO'
 );
 
 -- Grupos / pastorais padrão de uma paróquia católica

@@ -9,6 +9,8 @@ export type ContentType = "video" | "article" | "audio" | "live";
 export type PaymentMethod = "pix" | "credit_card" | "debit_card" | "boleto" | "cash" | "bank_transfer" | "other";
 export type PaymentStatus = "pending" | "processing" | "completed" | "failed" | "refunded" | "cancelled";
 export type FinancialCategoryType = "dizimo" | "oferta" | "campanha" | "festa" | "missa_intencao" | "outro";
+export type ParishStatus = "pending_approval" | "trial" | "active" | "past_due" | "suspended" | "cancelled";
+export type SubscriptionStatus = "none" | "trialing" | "authorized" | "paused" | "cancelled";
 
 export interface Parish {
   id: string;
@@ -23,6 +25,26 @@ export interface Parish {
   primary_color: string;
   secondary_color: string;
   timezone: string;
+  status: ParishStatus;
+  plan_id: string | null;
+  subscription_status: SubscriptionStatus;
+  trial_ends_at: string | null;
+  join_code: string | null;
+  contact_name: string | null;
+  contact_phone: string | null;
+}
+
+export interface SubscriptionPlan {
+  id: string;
+  name: string;
+  slug: string;
+  description: string | null;
+  price_amount: number;
+  currency: string;
+  billing_interval: "once" | "weekly" | "monthly" | "yearly";
+  max_members: number | null;
+  trial_days: number;
+  is_active: boolean;
 }
 
 export interface Profile {

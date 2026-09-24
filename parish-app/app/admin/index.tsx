@@ -11,6 +11,7 @@ const ITEMS = [
   { icon: "newspaper", key: "admin.content.title", href: "/admin/content" },
   { icon: "notifications", key: "admin.notifications.title", href: "/admin/notifications" },
   { icon: "sunny", key: "admin.liturgyEditor.title", href: "/admin/liturgy-editor" },
+  { icon: "card", key: "admin.subscription.title", href: "/admin/subscription" },
 ] as const;
 
 export default function AdminHomeScreen() {

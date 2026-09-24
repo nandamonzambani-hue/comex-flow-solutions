@@ -36,7 +36,15 @@
     "upcomingEvents": "Upcoming events",
     "noEvents": "No events scheduled right now.",
     "parishNews": "Parish news",
-    "noNews": "No news published yet."
+    "noNews": "No news published yet.",
+    "parishStatus": {
+      "pending_approval": "Your parish is awaiting approval from the platform. Everything unlocks once it's approved.",
+      "trial": "Your parish is in its free trial period.",
+      "active": "",
+      "past_due": "There's an issue with the parish's subscription payment. Please resolve it to avoid interruption.",
+      "suspended": "The parish's subscription is suspended. Contact the administration to reactivate it.",
+      "cancelled": "The parish's subscription has been cancelled."
+    }
   },
   "events": {
     "title": "Events",
@@ -223,6 +231,98 @@
       "save": "Save today's liturgy",
       "savedTitle": "Saved",
       "savedBody": "Liturgy updated for this language."
+    },
+    "subscription": {
+      "title": "Subscription",
+      "status": "Subscription status",
+      "choosePlan": "Choose a plan",
+      "subscribe": "Subscribe",
+      "trialUntil": "Free trial until {{date}}"
+    }
+  },
+  "onboarding": {
+    "greeting": "Welcome, {{name}}!",
+    "subtitle": "Before continuing, find the parish you belong to or register a new one.",
+    "findParish": "Find my parish",
+    "registerParish": "Register my parish",
+    "goToPlatformAdmin": "Go to platform dashboard",
+    "joinByCode": "I have an invite code",
+    "joinCodePlaceholder": "e.g. APARECIDA-7F2K",
+    "join": "Join",
+    "searchByNameCity": "Or search by name/city",
+    "searchPlaceholder": "Parish name or city",
+    "search": "Search",
+    "noResults": "No parish found with that name/city.",
+    "codeNotFoundTitle": "Code not found",
+    "codeNotFoundBody": "Check the invite code with the parish office.",
+    "notJoinableTitle": "Parish unavailable",
+    "notJoinableBody": "This parish hasn't been approved on the platform yet.",
+    "trialBadge": "Trial",
+    "createParishTitle": "Register my parish",
+    "createParishSubtitle": "You'll be its initial administrator. The registration stays pending until our team approves it.",
+    "parishNamePlaceholder": "Parish name",
+    "parishCityPlaceholder": "City",
+    "parishStatePlaceholder": "State",
+    "parishPhonePlaceholder": "Contact phone",
+    "createParishHint": "After submitting, our team reviews the registration and unlocks full access — usually within 1 business day.",
+    "submitParish": "Submit registration",
+    "createError": "Couldn't register the parish."
+  },
+  "parishStatusLabel": {
+    "pending_approval": "Pending",
+    "trial": "Trial",
+    "active": "Active",
+    "past_due": "Payment due",
+    "suspended": "Suspended",
+    "cancelled": "Cancelled"
+  },
+  "billingInterval": {
+    "once": "one-time payment",
+    "weekly": "week",
+    "monthly": "month",
+    "yearly": "year"
+  },
+  "platformAdmin": {
+    "title": "Platform Dashboard",
+    "overview": "Overview",
+    "management": "Management",
+    "stats": {
+      "pending": "Pending",
+      "trial": "Trial",
+      "active": "Active"
+    },
+    "parishes": {
+      "title": "Parishes",
+      "empty": "No parish found with this filter.",
+      "filterAll": "All"
+    },
+    "parishDetail": {
+      "title": "Parish",
+      "location": "Location",
+      "contact": "Contact",
+      "createdBy": "Registered by",
+      "joinCode": "Invite code",
+      "approveWithPlan": "Approve with plan",
+      "approve": "Approve",
+      "trialDays": "{{count}} trial days",
+      "suspend": "Suspend parish",
+      "reactivate": "Reactivate parish"
+    },
+    "plans": {
+      "title": "Plans",
+      "existing": "Existing plans",
+      "active": "Active",
+      "inactive": "Inactive",
+      "activate": "Activate",
+      "deactivate": "Deactivate",
+      "unlimitedMembers": "unlimited members",
+      "upToMembers": "up to {{count}} members",
+      "newPlan": "New plan",
+      "namePlaceholder": "Plan name",
+      "pricePlaceholder": "Monthly price (R$)",
+      "maxMembersPlaceholder": "Member limit (blank = unlimited)",
+      "trialDaysPlaceholder": "Free trial days",
+      "create": "Create plan"
     }
   }
 }

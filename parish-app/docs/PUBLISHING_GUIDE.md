@@ -5,6 +5,11 @@ Etapas marcadas **[VOCÊ]** só podem ser feitas por você (dono das contas);
 etapas marcadas **[EU/CLI]** podem ser feitas por mim rodando comandos,
 desde que você já tenha as contas e credenciais.
 
+Este é um app **único que várias paróquias assinam** (não um app por
+paróquia) — por isso você só publica/mantém uma listagem em cada loja,
+mesmo vendendo para centenas de clientes. Veja `docs/SAAS_MODEL.md` para
+entender o modelo multi-paróquia antes de publicar.
+
 ## 1. Contas necessárias
 
 | Conta | Custo | Para quê | Quem cria |
