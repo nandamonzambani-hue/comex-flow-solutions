@@ -1,95 +1,138 @@
 // Edge Function: daily-liturgy-sync
 //
-// Busca a liturgia diária católica numa API externa configurável e grava
-// (upsert) na tabela `daily_liturgy`. Pensada para rodar num cron diário
-// (ex: 04:00 America/Sao_Paulo) via `supabase functions schedule` ou um
-// cron job externo chamando este endpoint com o header de service role.
+// Sincroniza a liturgia diária (cor, tempo litúrgico, leituras completas)
+// a partir da API pública https://liturgia.up.railway.app (mantida pela
+// comunidade, usada por vários apps católicos brasileiros). Roda um
+// intervalo de dias de uma vez (não só "hoje"), pra a tela de liturgia
+// do app já ter conteúdo disponível para datas futuras.
 //
-// IMPORTANTE (ver docs/CONTENT_GUIDE.md): não existe uma API oficial e
-// gratuita mantida pela CNBB/Vaticano. Configure LITURGY_API_URL com um
-// provedor de sua escolha (ex: um projeto comunitário de liturgia diária,
-// ou uma API própria que você mantenha) que devolva JSON no formato
-// abaixo. Se preferir, edite este arquivo para fazer parsing de HTML de
-// uma fonte específica, ou preencha a tabela manualmente pelo Supabase
-// Studio / painel admin do app (tela Admin > Liturgia).
+// Uso:
+//   GET /daily-liturgy-sync                       -> sincroniza hoje + 29 dias seguintes (30 no total)
+//   GET /daily-liturgy-sync?start=2026-10-01       -> a partir de uma data específica
+//   GET /daily-liturgy-sync?days=60                -> quantos dias sincronizar (máx. 90 por chamada,
+//                                                      pra não estourar o tempo de execução da function)
 //
-// Suporte a múltiplos idiomas: chame esta função uma vez por idioma
-// (?date=YYYY-MM-DD&locale=en, por exemplo) apontando LITURGY_API_URL para
-// uma fonte que sirva aquele idioma. A maioria das fontes gratuitas só tem
-// português — nesse caso, preencha as demais traduções manualmente pela
-// tela Admin > Liturgia Diária (que já tem seletor de idioma).
+// Para manter o calendário sempre alimentado bem à frente (ex: usuário
+// conseguir ver "semana que vem" ou o mês seguinte a qualquer momento),
+// agende esta function para rodar todo dia (Supabase Dashboard > Edge
+// Functions > Schedules, ou um cron externo) com os parâmetros padrão —
+// cada execução diária estende o horizonte em +1 dia, mantendo uma janela
+// contínua de 30 dias à frente. Para popular um horizonte maior de uma
+// vez (ex: os próximos 2 anos), chame repetidas vezes mudando `start`
+// (ver docs/CONTENT_GUIDE.md).
 //
-// Formato esperado da API configurada em LITURGY_API_URL (chamada com
-// ?date=YYYY-MM-DD):
-// {
-//   "liturgical_color": "Verde",
-//   "liturgical_season": "Tempo Comum",
-//   "celebration": "Domingo XXV do Tempo Comum",
-//   "saint_of_day": "",
-//   "first_reading": { "ref": "Am 8, 4-7", "text": "..." },
-//   "psalm": { "ref": "Sl 112", "text": "..." },
-//   "second_reading": { "ref": "1Tm 2, 1-8", "text": "..." },
-//   "gospel": { "ref": "Lc 16, 1-13", "text": "..." }
-// }
+// A API não tem outros idiomas além de pt-BR; por isso este sync sempre
+// grava locale='pt-BR'. Traduções para outros idiomas continuam sendo
+// preenchidas manualmente pela tela Admin > Liturgia.
 
 import { createClient } from "npm:@supabase/supabase-js@2";
 
+const SOURCE_BASE = "https://liturgia.up.railway.app/v2";
+const MAX_DAYS_PER_CALL = 90;
+
+interface LiturgiaApiReading {
+  referencia?: string;
+  titulo?: string;
+  texto?: string;
+}
+
+interface LiturgiaApiResponse {
+  erro?: string;
+  data?: string;
+  liturgia?: string;
+  cor?: string;
+  leituras?: {
+    primeiraLeitura?: LiturgiaApiReading[];
+    salmo?: (LiturgiaApiReading & { refrao?: string })[];
+    segundaLeitura?: LiturgiaApiReading[];
+    evangelho?: LiturgiaApiReading[];
+  };
+}
+
+function toIsoDate(d: Date): string {
+  return d.toISOString().slice(0, 10);
+}
+
+function mapSeason(celebration: string | undefined): string | null {
+  if (!celebration) return null;
+  const c = celebration.toLowerCase();
+  if (c.includes("advento")) return "Advento";
+  if (c.includes("natal") || c.includes("epifania") || c.includes("batismo do senhor")) return "Natal";
+  if (c.includes("quaresma") || c.includes("cinzas") || c.includes("ramos") || c.includes("santo(a)")) return "Quaresma";
+  if (c.includes("páscoa") || c.includes("pascal") || c.includes("pentecostes")) return "Tempo Pascal";
+  return "Tempo Comum";
+}
+
 Deno.serve(async (req) => {
   const url = new URL(req.url);
-  const dateParam = url.searchParams.get("date");
-  const targetDate = dateParam ?? new Date().toISOString().slice(0, 10);
-  const locale = url.searchParams.get("locale") ?? "pt-BR";
-
-  const liturgyApiUrl = Deno.env.get("LITURGY_API_URL");
-  if (!liturgyApiUrl) {
-    return new Response(
-      JSON.stringify({
-        error:
-          "LITURGY_API_URL não configurada. Veja docs/CONTENT_GUIDE.md para opções de fonte de dados.",
-      }),
-      { status: 500 },
-    );
+  const startParam = url.searchParams.get("start");
+  const startDate = startParam ? new Date(`${startParam}T00:00:00Z`) : new Date();
+  if (Number.isNaN(startDate.getTime())) {
+    return new Response(JSON.stringify({ error: "Parâmetro 'start' inválido, use YYYY-MM-DD." }), { status: 400 });
   }
+  const days = Math.min(Math.max(Number(url.searchParams.get("days") ?? "30"), 1), MAX_DAYS_PER_CALL);
 
   const admin = createClient(
     Deno.env.get("SUPABASE_URL")!,
     Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!,
   );
 
-  try {
-    const resp = await fetch(`${liturgyApiUrl}?date=${targetDate}&locale=${locale}`);
-    if (!resp.ok) {
-      throw new Error(`Fonte externa retornou ${resp.status}`);
+  const synced: string[] = [];
+  const failed: { date: string; reason: string }[] = [];
+
+  for (let i = 0; i < days; i++) {
+    const d = new Date(startDate);
+    d.setUTCDate(d.getUTCDate() + i);
+    const isoDate = toIsoDate(d);
+
+    try {
+      const resp = await fetch(`${SOURCE_BASE}/${isoDate}`);
+      if (!resp.ok) {
+        failed.push({ date: isoDate, reason: `HTTP ${resp.status}` });
+        continue;
+      }
+      const source = (await resp.json()) as LiturgiaApiResponse;
+      if (source.erro) {
+        failed.push({ date: isoDate, reason: source.erro });
+        continue;
+      }
+
+      const firstReading = source.leituras?.primeiraLeitura?.[0];
+      const psalm = source.leituras?.salmo?.[0];
+      const secondReading = source.leituras?.segundaLeitura?.[0];
+      const gospel = source.leituras?.evangelho?.[0];
+
+      const row = {
+        date: isoDate,
+        locale: "pt-BR",
+        liturgical_color: source.cor ?? null,
+        liturgical_season: mapSeason(source.liturgia),
+        celebration: source.liturgia ?? null,
+        first_reading_ref: firstReading?.referencia ?? null,
+        first_reading_text: firstReading?.texto ?? null,
+        psalm_ref: psalm?.referencia ?? null,
+        psalm_text: psalm?.refrao ? `${psalm.refrao}\n\n${psalm.texto ?? ""}` : (psalm?.texto ?? null),
+        second_reading_ref: secondReading?.referencia ?? null,
+        second_reading_text: secondReading?.texto ?? null,
+        gospel_ref: gospel?.referencia ?? null,
+        gospel_text: gospel?.texto ?? null,
+        source: SOURCE_BASE,
+        synced_at: new Date().toISOString(),
+      };
+
+      const { error } = await admin.from("daily_liturgy").upsert(row, { onConflict: "date,locale" });
+      if (error) {
+        failed.push({ date: isoDate, reason: error.message });
+        continue;
+      }
+      synced.push(isoDate);
+    } catch (err) {
+      failed.push({ date: isoDate, reason: String(err) });
     }
-    const source = await resp.json();
-
-    const row = {
-      date: targetDate,
-      locale,
-      liturgical_color: source.liturgical_color ?? null,
-      liturgical_season: source.liturgical_season ?? null,
-      celebration: source.celebration ?? null,
-      saint_of_day: source.saint_of_day ?? null,
-      first_reading_ref: source.first_reading?.ref ?? null,
-      first_reading_text: source.first_reading?.text ?? null,
-      psalm_ref: source.psalm?.ref ?? null,
-      psalm_text: source.psalm?.text ?? null,
-      second_reading_ref: source.second_reading?.ref ?? null,
-      second_reading_text: source.second_reading?.text ?? null,
-      gospel_ref: source.gospel?.ref ?? null,
-      gospel_text: source.gospel?.text ?? null,
-      source: liturgyApiUrl,
-      synced_at: new Date().toISOString(),
-    };
-
-    const { error } = await admin.from("daily_liturgy").upsert(row, { onConflict: "date,locale" });
-    if (error) throw error;
-
-    return new Response(JSON.stringify({ ok: true, date: targetDate, locale }), {
-      status: 200,
-      headers: { "Content-Type": "application/json" },
-    });
-  } catch (err) {
-    return new Response(JSON.stringify({ ok: false, error: String(err) }), { status: 500 });
   }
+
+  return new Response(
+    JSON.stringify({ ok: failed.length === 0, synced_count: synced.length, failed_count: failed.length, synced, failed }),
+    { status: 200, headers: { "Content-Type": "application/json" } },
+  );
 });
