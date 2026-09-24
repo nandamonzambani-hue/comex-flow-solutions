@@ -9,17 +9,18 @@
 // Uso:
 //   GET /daily-liturgy-sync                       -> sincroniza hoje + 29 dias seguintes (30 no total)
 //   GET /daily-liturgy-sync?start=2026-10-01       -> a partir de uma data específica
-//   GET /daily-liturgy-sync?days=60                -> quantos dias sincronizar (máx. 90 por chamada,
-//                                                      pra não estourar o tempo de execução da function)
+//   GET /daily-liturgy-sync?days=200               -> quantos dias sincronizar (máx. 250 por chamada;
+//                                                      as buscas rodam em paralelo em lotes, então mesmo
+//                                                      250 dias termina em poucos segundos)
 //
-// Para manter o calendário sempre alimentado bem à frente (ex: usuário
-// conseguir ver "semana que vem" ou o mês seguinte a qualquer momento),
-// agende esta function para rodar todo dia (Supabase Dashboard > Edge
-// Functions > Schedules, ou um cron externo) com os parâmetros padrão —
-// cada execução diária estende o horizonte em +1 dia, mantendo uma janela
-// contínua de 30 dias à frente. Para popular um horizonte maior de uma
-// vez (ex: os próximos 2 anos), chame repetidas vezes mudando `start`
-// (ver docs/CONTENT_GUIDE.md).
+// Para cobrir um horizonte grande de uma vez (ex: até o fim do ano que
+// vem), chame esta function 2-3 vezes mudando `start` a cada vez (ver
+// docs/CONTENT_GUIDE.md para os links prontos).
+//
+// Para manter o calendário sempre alimentado depois disso (sem precisar
+// lembrar de rodar de novo), agende esta function para rodar 1x por
+// semana (Supabase Dashboard > Edge Functions > Schedules, ou um cron
+// externo) com os parâmetros padrão — assim o horizonte nunca se esgota.
 //
 // A API não tem outros idiomas além de pt-BR; por isso este sync sempre
 // grava locale='pt-BR'. Traduções para outros idiomas continuam sendo
@@ -28,7 +29,8 @@
 import { createClient } from "npm:@supabase/supabase-js@2";
 
 const SOURCE_BASE = "https://liturgia.up.railway.app/v2";
-const MAX_DAYS_PER_CALL = 90;
+const MAX_DAYS_PER_CALL = 250;
+const CONCURRENCY = 12;
 
 interface LiturgiaApiReading {
   referencia?: string;
@@ -77,24 +79,27 @@ Deno.serve(async (req) => {
     Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!,
   );
 
-  const synced: string[] = [];
-  const failed: { date: string; reason: string }[] = [];
-
+  const isoDates: string[] = [];
   for (let i = 0; i < days; i++) {
     const d = new Date(startDate);
     d.setUTCDate(d.getUTCDate() + i);
-    const isoDate = toIsoDate(d);
+    isoDates.push(toIsoDate(d));
+  }
 
+  const synced: string[] = [];
+  const failed: { date: string; reason: string }[] = [];
+
+  async function syncOneDate(isoDate: string) {
     try {
       const resp = await fetch(`${SOURCE_BASE}/${isoDate}`);
       if (!resp.ok) {
         failed.push({ date: isoDate, reason: `HTTP ${resp.status}` });
-        continue;
+        return;
       }
       const source = (await resp.json()) as LiturgiaApiResponse;
       if (source.erro) {
         failed.push({ date: isoDate, reason: source.erro });
-        continue;
+        return;
       }
 
       const firstReading = source.leituras?.primeiraLeitura?.[0];
@@ -123,12 +128,20 @@ Deno.serve(async (req) => {
       const { error } = await admin.from("daily_liturgy").upsert(row, { onConflict: "date,locale" });
       if (error) {
         failed.push({ date: isoDate, reason: error.message });
-        continue;
+        return;
       }
       synced.push(isoDate);
     } catch (err) {
       failed.push({ date: isoDate, reason: String(err) });
     }
+  }
+
+  // Processa em lotes paralelos (CONCURRENCY por vez) em vez de um dia por
+  // vez sequencialmente — pra sincronizar centenas de dias sem estourar o
+  // tempo máximo de execução da Edge Function.
+  for (let i = 0; i < isoDates.length; i += CONCURRENCY) {
+    const batch = isoDates.slice(i, i + CONCURRENCY);
+    await Promise.all(batch.map(syncOneDate));
   }
 
   return new Response(
