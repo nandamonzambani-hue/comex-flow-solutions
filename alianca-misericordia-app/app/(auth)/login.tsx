@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { KeyboardAvoidingView, Platform, ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
+import { StyleSheet, Text, TextInput, View } from "react-native";
 import { Link, router } from "expo-router";
 import { useTranslation } from "react-i18next";
 import { useAuth } from "@/context/AuthContext";
@@ -29,56 +29,48 @@ export default function LoginScreen() {
   }
 
   return (
-    <KeyboardAvoidingView
-      style={styles.flex}
-      behavior={Platform.OS === "ios" ? "padding" : undefined}
-    >
-      <ScrollView contentContainerStyle={styles.container} keyboardShouldPersistTaps="handled">
-        <View style={styles.languageWrap}>
-          <LanguagePicker variant="compact" />
-        </View>
+    <View style={styles.container}>
+      <View style={styles.languageWrap}>
+        <LanguagePicker variant="compact" />
+      </View>
 
-        <View style={styles.logoWrap}>
-          <Text style={styles.appName}>{t("app.name")}</Text>
-          <Text style={styles.tagline}>{t("app.tagline")}</Text>
-        </View>
+      <View style={styles.logoWrap}>
+        <Text style={styles.appName}>{t("app.name")}</Text>
+        <Text style={styles.tagline}>{t("app.tagline")}</Text>
+      </View>
 
-        <TextInput
-          style={styles.input}
-          placeholder={t("auth.email")}
-          autoCapitalize="none"
-          keyboardType="email-address"
-          value={email}
-          onChangeText={setEmail}
-        />
-        <TextInput
-          style={styles.input}
-          placeholder={t("auth.password")}
-          secureTextEntry
-          value={password}
-          onChangeText={setPassword}
-        />
+      <TextInput
+        style={styles.input}
+        placeholder={t("auth.email")}
+        autoCapitalize="none"
+        keyboardType="email-address"
+        value={email}
+        onChangeText={setEmail}
+      />
+      <TextInput
+        style={styles.input}
+        placeholder={t("auth.password")}
+        secureTextEntry
+        value={password}
+        onChangeText={setPassword}
+      />
 
-        {error && <Text style={styles.error}>{error}</Text>}
+      {error && <Text style={styles.error}>{error}</Text>}
 
-        <Button title={t("auth.signIn")} onPress={handleSubmit} loading={loading} disabled={!email || !password} />
+      <Button title={t("auth.signIn")} onPress={handleSubmit} loading={loading} disabled={!email || !password} />
 
-        <Link href="/(auth)/register" style={styles.link}>
-          <Text style={styles.linkText}>{t("auth.noAccount")}</Text>
-        </Link>
-      </ScrollView>
-    </KeyboardAvoidingView>
+      <Link href="/(auth)/register" style={styles.link}>
+        <Text style={styles.linkText}>{t("auth.noAccount")}</Text>
+      </Link>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  flex: { flex: 1, backgroundColor: colors.primary },
   container: {
-    flexGrow: 1,
+    flex: 1,
     backgroundColor: colors.primary,
     padding: 24,
-    paddingTop: 96,
-    paddingBottom: 40,
     justifyContent: "center",
   },
   languageWrap: { position: "absolute", top: 56, right: 20 },

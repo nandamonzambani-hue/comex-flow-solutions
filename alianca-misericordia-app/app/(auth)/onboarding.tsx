@@ -1,4 +1,4 @@
-import { ScrollView, StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import { router } from "expo-router";
 import { useTranslation } from "react-i18next";
 import { useAuth } from "@/context/AuthContext";
@@ -10,7 +10,7 @@ export default function OnboardingScreen() {
   const { profile, isPlatformAdmin, signOut } = useAuth();
 
   return (
-    <ScrollView contentContainerStyle={styles.container}>
+    <View style={styles.container}>
       <Text style={styles.title}>{t("onboarding.greeting", { name: profile?.full_name?.split(" ")[0] ?? "" })}</Text>
       <Text style={styles.subtitle}>{t("onboarding.subtitle")}</Text>
 
@@ -33,12 +33,12 @@ export default function OnboardingScreen() {
       <Text style={styles.logout} onPress={signOut}>
         {t("profile.signOut")}
       </Text>
-    </ScrollView>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: { flexGrow: 1, backgroundColor: colors.background, padding: 24, paddingVertical: 48, justifyContent: "center" },
+  container: { flex: 1, backgroundColor: colors.background, padding: 24, justifyContent: "center" },
   title: { fontSize: 24, fontWeight: "700", color: colors.textPrimary },
   subtitle: { fontSize: 14, color: colors.textSecondary, marginTop: 8, lineHeight: 20 },
   logout: { textAlign: "center", color: colors.danger, marginTop: 32, fontWeight: "600" },

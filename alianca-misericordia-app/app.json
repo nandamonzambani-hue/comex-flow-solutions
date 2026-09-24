@@ -1,0 +1,63 @@
+{
+  "expo": {
+    "name": "Minha Paróquia",
+    "slug": "minha-paroquia",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "scheme": "parishapp",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#7A1F2B"
+    },
+    "assetBundlePatterns": ["**/*"],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "br.org.paroquiaexemplo.app",
+      "infoPlist": {
+        "UIBackgroundModes": ["remote-notification"],
+        "NSCameraUsageDescription": "Usado para atualizar sua foto de perfil.",
+        "NSPhotoLibraryUsageDescription": "Usado para escolher sua foto de perfil e anexar imagens em publicações."
+      }
+    },
+    "android": {
+      "package": "br.org.paroquiaexemplo.app",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#7A1F2B"
+      },
+      "permissions": ["NOTIFICATIONS", "CAMERA", "READ_EXTERNAL_STORAGE", "WRITE_EXTERNAL_STORAGE"]
+    },
+    "web": {
+      "favicon": "./assets/favicon.png",
+      "bundler": "metro"
+    },
+    "plugins": [
+      "expo-router",
+      "expo-secure-store",
+      [
+        "expo-notifications",
+        {
+          "icon": "./assets/notification-icon.png",
+          "color": "#7A1F2B"
+        }
+      ],
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/splash.png",
+          "backgroundColor": "#7A1F2B"
+        }
+      ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "REPLACE_WITH_YOUR_EAS_PROJECT_ID"
+      }
+    },
+    "owner": "REPLACE_WITH_YOUR_EXPO_ACCOUNT"
+  }
+}
