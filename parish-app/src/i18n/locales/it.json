@@ -23,6 +23,9 @@
     "signIn": "Accedi",
     "noAccount": "Non hai un account? Registrati",
     "registerTitle": "Crea account",
+    "checkEmailTitle": "Controlla la tua email",
+    "checkEmailBody": "Abbiamo inviato un link di conferma a {{email}}. Apri la tua email e clicca sul link per attivare il tuo account.",
+    "backToLogin": "Torna al login",
     "registerSubtitle": "Unisciti alla comunità della nostra parrocchia",
     "fullName": "Nome completo",
     "register": "Registrati"

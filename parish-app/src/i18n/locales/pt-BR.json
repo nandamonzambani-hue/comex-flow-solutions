@@ -23,6 +23,9 @@
     "signIn": "Entrar",
     "noAccount": "Ainda não tem conta? Cadastre-se",
     "registerTitle": "Criar conta",
+    "checkEmailTitle": "Confirme seu e-mail",
+    "checkEmailBody": "Enviamos um link de confirmação para {{email}}. Abra seu e-mail e clique no link para ativar sua conta.",
+    "backToLogin": "Voltar para o login",
     "registerSubtitle": "Junte-se à comunidade da nossa paróquia",
     "fullName": "Nome completo",
     "register": "Cadastrar"

@@ -23,6 +23,9 @@
     "signIn": "Iniciar sesión",
     "noAccount": "¿Aún no tienes cuenta? Regístrate",
     "registerTitle": "Crear cuenta",
+    "checkEmailTitle": "Confirma tu correo",
+    "checkEmailBody": "Enviamos un enlace de confirmación a {{email}}. Abre tu correo y haz clic en el enlace para activar tu cuenta.",
+    "backToLogin": "Volver al inicio de sesión",
     "registerSubtitle": "Únete a la comunidad de nuestra parroquia",
     "fullName": "Nombre completo",
     "register": "Registrarse"

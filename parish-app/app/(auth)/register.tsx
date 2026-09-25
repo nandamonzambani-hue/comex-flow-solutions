@@ -14,6 +14,7 @@ export default function RegisterScreen() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+  const [registered, setRegistered] = useState(false);
 
   async function handleSubmit() {
     setError(null);
@@ -24,8 +25,23 @@ export default function RegisterScreen() {
       setError(error);
       return;
     }
-    // Conta criada sem paróquia ainda — o hub de onboarding decide o resto.
-    router.replace("/(auth)/onboarding");
+    // Supabase exige confirmação de e-mail por padrão: ainda não existe
+    // sessão válida aqui, então não dá pra entrar no app direto — o
+    // perfil já foi criado (via trigger), mas só vira sessão utilizável
+    // depois que a pessoa clicar no link do e-mail.
+    setRegistered(true);
+  }
+
+  if (registered) {
+    return (
+      <View style={styles.flex}>
+        <View style={styles.container}>
+          <Text style={styles.title}>{t("auth.checkEmailTitle")}</Text>
+          <Text style={styles.subtitle}>{t("auth.checkEmailBody", { email: email.trim() })}</Text>
+          <Button title={t("auth.backToLogin")} onPress={() => router.replace("/(auth)/login")} />
+        </View>
+      </View>
+    );
   }
 
   return (

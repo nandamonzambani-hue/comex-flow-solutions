@@ -23,6 +23,9 @@
     "signIn": "Se connecter",
     "noAccount": "Pas encore de compte ? Inscrivez-vous",
     "registerTitle": "Créer un compte",
+    "checkEmailTitle": "Vérifiez votre e-mail",
+    "checkEmailBody": "Nous avons envoyé un lien de confirmation à {{email}}. Ouvrez votre e-mail et cliquez sur le lien pour activer votre compte.",
+    "backToLogin": "Retour à la connexion",
     "registerSubtitle": "Rejoignez la communauté de notre paroisse",
     "fullName": "Nom complet",
     "register": "S'inscrire"

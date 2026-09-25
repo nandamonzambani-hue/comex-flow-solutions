@@ -12,8 +12,7 @@ interface AuthContextValue {
   isStaff: boolean;
   isPlatformAdmin: boolean;
   signIn: (email: string, password: string) => Promise<{ error: string | null }>;
-  /** parishId opcional: sem ele, o perfil nasce sem paróquia (fluxo de onboarding decide depois). */
-  signUp: (params: { email: string; password: string; fullName: string; parishId?: string }) => Promise<{
+  signUp: (params: { email: string; password: string; fullName: string }) => Promise<{
     error: string | null;
   }>;
   signOut: () => Promise<void>;
@@ -77,19 +76,19 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         const { error } = await supabase.auth.signInWithPassword({ email, password });
         return { error: error?.message ?? null };
       },
-      async signUp({ email, password, fullName, parishId }) {
-        const { data, error } = await supabase.auth.signUp({ email, password });
-        if (error) return { error: error.message };
-        if (data.user) {
-          const { error: profileError } = await supabase.from("profiles").insert({
-            id: data.user.id,
-            parish_id: parishId ?? null,
-            full_name: fullName,
-            email,
-          });
-          if (profileError) return { error: profileError.message };
-        }
-        return { error: null };
+      async signUp({ email, password, fullName }) {
+        // O perfil é criado automaticamente por um trigger em auth.users
+        // (ver migrations/0007_auto_create_profile.sql) — não pelo
+        // cliente, porque logo após signUp() ainda não existe sessão
+        // válida (Supabase exige confirmação de e-mail antes disso), e
+        // qualquer insert feito pelo app nesse intervalo bate na RLS.
+        // full_name vai nos metadados do usuário pra o trigger usar.
+        const { error } = await supabase.auth.signUp({
+          email,
+          password,
+          options: { data: { full_name: fullName } },
+        });
+        return { error: error?.message ?? null };
       },
       async signOut() {
         await supabase.auth.signOut();
