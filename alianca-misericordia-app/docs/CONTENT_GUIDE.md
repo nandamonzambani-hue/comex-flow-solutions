@@ -23,6 +23,50 @@ direitos autorais** e pertencem a editoras específicas:
 3. Nunca faça scraping de sites de terceiros sem autorização — além do
    risco legal, esses sites mudam de estrutura e quebram a integração.
 
+### Versão pré-instalada: Pe. Figueiredo (1778) — domínio público
+
+A migration `supabase/migrations/0006_bible_figueiredo.sql` já popula o
+banco com a tradução do **Padre Antônio Pereira de Figueiredo** (a partir
+da Vulgata Latina, 73 livros do cânon católico) — a mesma usada no app
+Minha Paróquia. Foi escolhida porque é a única tradução católica completa
+em português **seguramente em domínio público no Brasil**: Figueiredo
+faleceu em 1797, muito além do prazo de vida do autor + 70 anos (Lei
+9.610/98) — ao contrário de traduções mais recentes (Ave Maria, Matos
+Soares, Edição Pastoral), que **ainda estão protegidas por direitos
+autorais** (Matos Soares, por exemplo, só entra em domínio público em
+01/01/2028) e não podem ser usadas sem licença da editora, mesmo que
+apareçam "de graça" em repositórios no GitHub.
+
+**De onde veio o texto e por que há lacunas:**
+- Fonte: digitalização (OCR) de uma edição impressa de 1950, disponível no
+  Internet Archive. Não existe em nenhum lugar uma versão já estruturada
+  em JSON/banco de dados dessa tradução — foi necessário escrever um
+  parser próprio (livros/capítulos/versículos identificados por
+  cabeçalhos de página, marcadores "CAPÍTULO N" e títulos de livro no
+  texto OCR'd) para extrair os versículos.
+- **Cobertura: ~31.300 de ~35.000 versículos esperados (~89%), todos os
+  73 livros presentes**, mas com capítulos/versículos faltando de forma
+  irregular — o "CAPÍTULO N" impresso na edição original às vezes não foi
+  reconhecido pelo OCR. Onde falta um versículo, o app mostra "não
+  disponível" em vez de inventar ou mostrar texto errado.
+- **Qualidade do texto**: os versículos que foram capturados são, pelas
+  amostras verificadas, fiéis ao original — mas por ser OCR de um livro
+  de 1950, pequenos erros de digitalização podem aparecer ocasionalmente.
+  Não houve revisão humana verso a verso dos ~31 mil versículos.
+- **Numeração dos Salmos**: segue a Vulgata (tradição católica antiga),
+  diferente da numeração usada nas Bíblias modernas — ex. o "Salmo 22"
+  da Vulgata é o "Salmo 23" nas edições modernas.
+- **Livros "I–IV Reis"**: esta tradução segue a divisão clássica da
+  Vulgata (4 livros de "Reis"), que corresponde a 1–2 Samuel + 1–2 Reis
+  nas edições modernas — os nomes em `bible_books.name` deixam isso
+  explícito entre parênteses.
+
+Quando a licença de uma tradução como a Ave Maria estiver disponível como
+texto digital de verdade, crie uma nova migration inserindo em
+`bible_versions`/`bible_books`/`bible_verses` com um `version_id` próprio
+— as duas versões convivem, e a tela de Bíblia já deixa o usuário trocar
+entre elas quando há mais de uma para o mesmo idioma.
+
 ### Bíblia em outros idiomas
 
 O app suporta várias versões bíblicas simultaneamente via `bible_versions`
