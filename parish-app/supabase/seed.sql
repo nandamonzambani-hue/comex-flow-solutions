@@ -60,21 +60,11 @@ insert into financial_categories (parish_id, name, type) values
 insert into campaigns (parish_id, name, slug, description, goal_amount, current_amount, start_date, end_date, status) values
   ('00000000-0000-0000-0000-000000000001', 'Reforma do Salão Paroquial', 'reforma-salao-paroquial', 'Ajude-nos a reformar o salão paroquial para melhor acolher nossa comunidade.', 50000.00, 12500.00, current_date, current_date + interval '90 days', 'active');
 
--- Versão bíblica (texto completo deve ser populado via função de
--- sincronização — ver supabase/functions/bible-sync). Aqui só o cadastro
--- da versão e dos livros, para a UI funcionar imediatamente.
-insert into bible_versions (id, name, language) values
-  ('ave-maria', 'Bíblia Ave Maria', 'pt-BR');
-
-insert into bible_books (id, version_id, testament, name, abbreviation, order_index, chapters_count) values
-  ('gn', 'ave-maria', 'AT', 'Gênesis', 'Gn', 1, 50),
-  ('ex', 'ave-maria', 'AT', 'Êxodo', 'Ex', 2, 40),
-  ('sl', 'ave-maria', 'AT', 'Salmos', 'Sl', 19, 150),
-  ('mt', 'ave-maria', 'NT', 'Mateus', 'Mt', 40, 28),
-  ('mc', 'ave-maria', 'NT', 'Marcos', 'Mc', 41, 16),
-  ('lc', 'ave-maria', 'NT', 'Lucas', 'Lc', 42, 24),
-  ('jo', 'ave-maria', 'NT', 'João', 'Jo', 43, 21);
--- Lista completa dos 73 livros deve ser inserida pela função de sync (ver docs/CONTENT_GUIDE.md).
+-- O texto bíblico (versão, livros e versículos) é inserido pela migration
+-- 0008_bible_figueiredo.sql, não aqui — ver docs/CONTENT_GUIDE.md. Não
+-- cadastre aqui uma versão sem versículos: a tela de Bíblia escolhe a
+-- primeira versão pt-BR automaticamente, e uma versão vazia apareceria
+-- como se a Bíblia estivesse quebrada.
 
 -- Liturgia de hoje (exemplo estático — em produção, a Edge Function
 -- daily-liturgy-sync roda diariamente via cron e preenche esta tabela).
