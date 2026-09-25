@@ -154,6 +154,17 @@
     "gospel": "Evangelio",
     "reflection": "Reflexión"
   },
+  "quiz": {
+    "title": "Quiz",
+    "listEmpty": "Aún no hay quizzes disponibles.",
+    "bestScore": "Mejor puntuación: {{percent}}%",
+    "notTaken": "Aún no respondido",
+    "submit": "Enviar respuestas",
+    "submitError": "No se pudieron enviar tus respuestas. Inténtalo de nuevo.",
+    "passed": "¡Aprobaste!",
+    "notPassed": "Sigue estudiando",
+    "scoreLine": "{{correct}} de {{total}} correctas ({{percent}}%)"
+  },
   "profile": {
     "title": "Mi Perfil",
     "fullName": "Nombre completo",
@@ -249,6 +260,23 @@
       "inactive": "Inactivo",
       "deleteTitle": "Eliminar banner",
       "deleteConfirm": "¿Seguro que deseas eliminar este banner?"
+    },
+    "quizzes": {
+      "title": "Quizzes",
+      "linkedContent": "Contenido vinculado",
+      "standalone": "Independiente (estudio general)",
+      "titlePlaceholder": "Título del quiz",
+      "passingScorePlaceholder": "Nota mínima para aprobar (%)",
+      "questions": "Preguntas",
+      "questionPlaceholder": "Escribe la pregunta",
+      "optionPlaceholder": "Escribe la opción",
+      "addOption": "Agregar opción",
+      "addQuestion": "Agregar pregunta",
+      "removeQuestion": "Eliminar esta pregunta",
+      "save": "Guardar quiz",
+      "savedTitle": "¡Quiz guardado!",
+      "savedBody": "El quiz ya está disponible en la pestaña Quiz de la app.",
+      "saveError": "No se pudo guardar el quiz."
     },
     "notifications": {
       "title": "Notificaciones",

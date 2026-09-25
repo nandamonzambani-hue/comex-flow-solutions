@@ -154,6 +154,17 @@
     "gospel": "Evangelho",
     "reflection": "Reflexão"
   },
+  "quiz": {
+    "title": "Quiz",
+    "listEmpty": "Nenhum quiz disponível ainda.",
+    "bestScore": "Sua melhor nota: {{percent}}%",
+    "notTaken": "Você ainda não respondeu",
+    "submit": "Enviar respostas",
+    "submitError": "Não foi possível enviar suas respostas. Tente novamente.",
+    "passed": "Você passou!",
+    "notPassed": "Continue estudando",
+    "scoreLine": "{{correct}} de {{total}} corretas ({{percent}}%)"
+  },
   "profile": {
     "title": "Meu Perfil",
     "fullName": "Nome completo",
@@ -249,6 +260,23 @@
       "inactive": "Inativo",
       "deleteTitle": "Excluir banner",
       "deleteConfirm": "Tem certeza que deseja excluir este banner?"
+    },
+    "quizzes": {
+      "title": "Quizzes",
+      "linkedContent": "Conteúdo vinculado",
+      "standalone": "Avulso (estudo geral)",
+      "titlePlaceholder": "Título do quiz",
+      "passingScorePlaceholder": "Nota mínima para passar (%)",
+      "questions": "Perguntas",
+      "questionPlaceholder": "Digite a pergunta",
+      "optionPlaceholder": "Digite a opção",
+      "addOption": "Adicionar opção",
+      "addQuestion": "Adicionar pergunta",
+      "removeQuestion": "Remover esta pergunta",
+      "save": "Salvar quiz",
+      "savedTitle": "Quiz salvo!",
+      "savedBody": "O quiz já está disponível na aba Quiz do app.",
+      "saveError": "Não foi possível salvar o quiz."
     },
     "notifications": {
       "title": "Notificações",

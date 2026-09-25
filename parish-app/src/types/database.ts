@@ -148,6 +148,43 @@ export interface MediaContent {
   translations: Translations | null;
 }
 
+export interface Quiz {
+  id: string;
+  parish_id: string;
+  media_content_id: string | null;
+  title: string;
+  description: string | null;
+  passing_score_percent: number;
+  is_published: boolean;
+}
+
+export interface QuizQuestion {
+  id: string;
+  quiz_id: string;
+  question_text: string;
+  sort_order: number;
+}
+
+/** Vem da view quiz_options_public — nunca inclui is_correct. */
+export interface QuizOptionPublic {
+  id: string;
+  question_id: string;
+  option_text: string;
+  sort_order: number;
+}
+
+export interface QuizAttempt {
+  id: string;
+  quiz_id: string;
+  profile_id: string;
+  score_percent: number;
+  correct_count: number;
+  total_questions: number;
+  passed: boolean;
+  started_at: string;
+  completed_at: string | null;
+}
+
 export interface NewsPost {
   id: string;
   parish_id: string;

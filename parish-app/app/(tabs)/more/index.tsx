@@ -12,6 +12,7 @@ const MENU_ITEMS = [
   { icon: "newspaper", key: "news.title", href: "/(tabs)/more/news" },
   { icon: "book", key: "bible.title", href: "/(tabs)/more/bible" },
   { icon: "sunny", key: "liturgy.title", href: "/(tabs)/more/liturgy" },
+  { icon: "help-circle", key: "quiz.title", href: "/(tabs)/more/quiz" },
   { icon: "person-circle", key: "profile.title", href: "/(tabs)/more/profile" },
 ] as const;
 

@@ -11,6 +11,7 @@ const ITEMS = [
   { icon: "newspaper", key: "admin.content.title", href: "/admin/content" },
   { icon: "calendar", key: "admin.events.title", href: "/admin/events" },
   { icon: "images", key: "admin.banners.title", href: "/admin/banners" },
+  { icon: "help-circle", key: "admin.quizzes.title", href: "/admin/quizzes" },
   { icon: "notifications", key: "admin.notifications.title", href: "/admin/notifications" },
   { icon: "sunny", key: "admin.liturgyEditor.title", href: "/admin/liturgy-editor" },
   { icon: "card", key: "admin.subscription.title", href: "/admin/subscription" },

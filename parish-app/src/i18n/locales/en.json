@@ -154,6 +154,17 @@
     "gospel": "Gospel",
     "reflection": "Reflection"
   },
+  "quiz": {
+    "title": "Quiz",
+    "listEmpty": "No quizzes available yet.",
+    "bestScore": "Best score: {{percent}}%",
+    "notTaken": "Not taken yet",
+    "submit": "Submit answers",
+    "submitError": "Couldn't submit your answers. Please try again.",
+    "passed": "You passed!",
+    "notPassed": "Keep studying",
+    "scoreLine": "{{correct}} of {{total}} correct ({{percent}}%)"
+  },
   "profile": {
     "title": "My Profile",
     "fullName": "Full name",
@@ -249,6 +260,23 @@
       "inactive": "Inactive",
       "deleteTitle": "Delete banner",
       "deleteConfirm": "Are you sure you want to delete this banner?"
+    },
+    "quizzes": {
+      "title": "Quizzes",
+      "linkedContent": "Linked content",
+      "standalone": "Standalone (general study)",
+      "titlePlaceholder": "Quiz title",
+      "passingScorePlaceholder": "Minimum passing score (%)",
+      "questions": "Questions",
+      "questionPlaceholder": "Enter the question",
+      "optionPlaceholder": "Enter the option",
+      "addOption": "Add option",
+      "addQuestion": "Add question",
+      "removeQuestion": "Remove this question",
+      "save": "Save quiz",
+      "savedTitle": "Quiz saved!",
+      "savedBody": "The quiz is now available in the app's Quiz tab.",
+      "saveError": "Couldn't save the quiz."
     },
     "notifications": {
       "title": "Notifications",

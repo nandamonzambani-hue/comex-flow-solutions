@@ -154,6 +154,17 @@
     "gospel": "Évangile",
     "reflection": "Réflexion"
   },
+  "quiz": {
+    "title": "Quiz",
+    "listEmpty": "Aucun quiz disponible pour le moment.",
+    "bestScore": "Meilleur score : {{percent}}%",
+    "notTaken": "Pas encore répondu",
+    "submit": "Envoyer les réponses",
+    "submitError": "Impossible d'envoyer vos réponses. Réessayez.",
+    "passed": "Vous avez réussi !",
+    "notPassed": "Continuez à étudier",
+    "scoreLine": "{{correct}} sur {{total}} correctes ({{percent}}%)"
+  },
   "profile": {
     "title": "Mon Profil",
     "fullName": "Nom complet",
@@ -249,6 +260,23 @@
       "inactive": "Inactif",
       "deleteTitle": "Supprimer la bannière",
       "deleteConfirm": "Voulez-vous vraiment supprimer cette bannière ?"
+    },
+    "quizzes": {
+      "title": "Quiz",
+      "linkedContent": "Contenu lié",
+      "standalone": "Autonome (étude générale)",
+      "titlePlaceholder": "Titre du quiz",
+      "passingScorePlaceholder": "Score minimum pour réussir (%)",
+      "questions": "Questions",
+      "questionPlaceholder": "Saisissez la question",
+      "optionPlaceholder": "Saisissez l'option",
+      "addOption": "Ajouter une option",
+      "addQuestion": "Ajouter une question",
+      "removeQuestion": "Supprimer cette question",
+      "save": "Enregistrer le quiz",
+      "savedTitle": "Quiz enregistré !",
+      "savedBody": "Le quiz est désormais disponible dans l'onglet Quiz de l'application.",
+      "saveError": "Impossible d'enregistrer le quiz."
     },
     "notifications": {
       "title": "Notifications",
