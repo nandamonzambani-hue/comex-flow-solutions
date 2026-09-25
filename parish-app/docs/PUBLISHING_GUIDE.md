@@ -33,9 +33,9 @@ entender o modelo multi-paróquia antes de publicar.
 - Cor primária/secundária da identidade visual
 
 Os arquivos em `assets/` (`icon.png`, `adaptive-icon.png`, `splash.png`,
-`favicon.png`, `notification-icon.png`) hoje são **placeholders sólidos**
-gerados automaticamente — substitua pelos arquivos finais antes de
-publicar.
+`favicon.png`, `notification-icon.png`) já têm uma identidade visual real
+(cruz dourada sobre bordô) — pronto para publicar como está, ou substitua
+pela arte definitiva da paróquia/marca se quiser algo diferente.
 
 ## 3. Configurar EAS Build
 
@@ -77,7 +77,9 @@ O build do iOS pede sua Apple ID e time (Apple Team ID) — preencha em
 1. **[VOCÊ]** crie o app no Google Play Console, preencha a ficha da loja:
    - Categoria: Estilo de vida ou Comunicação
    - Classificação de conteúdo (questionário do próprio Play Console)
-   - Política de privacidade: link público (publique `docs/PRIVACY_POLICY.md`, ex. como página no site da paróquia)
+   - Política de privacidade: link público — já publicada em
+     https://claude.ai/artifact/LwN3X8Psko77uSWRNjsY4v#privacidade
+     (lembre de deixar o link compartilhável no menu Share da página)
    - Screenshots (mín. 2, recomendo 4-8) em pelo menos um tamanho de tela
 2. Gere uma **conta de serviço** (Service Account) no Google Cloud e baixe o JSON:
    `parish-app/secrets/google-play-service-account.json` (caminho já referenciado em `eas.json`)
@@ -93,7 +95,8 @@ O build do iOS pede sua Apple ID e time (Apple Team ID) — preencha em
 
 1. **[VOCÊ]** crie o app em https://appstoreconnect.apple.com:
    - Nome, categoria (Estilo de vida), classificação etária
-   - Política de privacidade (link público)
+   - Política de privacidade (link público) — mesma URL acima:
+     https://claude.ai/artifact/LwN3X8Psko77uSWRNjsY4v#privacidade
    - Screenshots para iPhone (obrigatório) — várias resoluções
    - Descrição, palavras-chave, textos promocionais
    - **Formulário de privacidade (App Privacy)**: declare coleta de nome,
@@ -140,6 +143,7 @@ adicione mais conforme a demanda.
 
 - [ ] Testado login/cadastro, dízimo (Pix sandbox), push notification, liturgia do dia
 - [ ] `.env` de produção aponta para o projeto Supabase de produção (não o de dev)
-- [ ] Ícones e splash finais (não os placeholders)
-- [ ] Política de privacidade e termos publicados em URL pública
+- [x] Ícones e splash finais (cruz dourada sobre bordô, não mais placeholders)
+- [x] Política de privacidade e termos publicados em URL pública —
+      https://claude.ai/artifact/LwN3X8Psko77uSWRNjsY4v (lembre de compartilhar publicamente)
 - [ ] Dados de teste/demo removidos ou claramente marcados como exemplo
