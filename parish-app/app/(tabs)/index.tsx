@@ -9,8 +9,9 @@ import { useParishContext, useTheme } from "@/context/ParishContext";
 import { useDateLocale } from "@/lib/dateLocale";
 import { useLocalizedField } from "@/lib/localized";
 import { Card, SectionTitle, Badge } from "@/components/ui";
+import { BannerCarousel } from "@/components/BannerCarousel";
 import { colors } from "@/theme/colors";
-import type { DailyLiturgy, NewsPost, ParishEvent } from "@/types/database";
+import type { Banner, DailyLiturgy, NewsPost, ParishEvent } from "@/types/database";
 import { format } from "date-fns";
 
 export default function HomeScreen() {
@@ -24,12 +25,13 @@ export default function HomeScreen() {
   const [liturgy, setLiturgy] = useState<DailyLiturgy | null>(null);
   const [nextEvents, setNextEvents] = useState<ParishEvent[]>([]);
   const [news, setNews] = useState<NewsPost[]>([]);
+  const [banners, setBanners] = useState<Banner[]>([]);
   const [refreshing, setRefreshing] = useState(false);
 
   const load = useCallback(async () => {
     const today = new Date().toISOString().slice(0, 10);
 
-    const [{ data: liturgyData }, { data: eventsData }, { data: newsData }] = await Promise.all([
+    const [{ data: liturgyData }, { data: eventsData }, { data: newsData }, { data: bannersData }] = await Promise.all([
       supabase
         .from("daily_liturgy")
         .select("*")
@@ -59,11 +61,15 @@ export default function HomeScreen() {
             .order("published_at", { ascending: false })
             .limit(5)
         : Promise.resolve({ data: [] as NewsPost[] }),
+      parishId
+        ? supabase.from("banners").select("*").eq("parish_id", parishId).order("order_index")
+        : Promise.resolve({ data: [] as Banner[] }),
     ]);
 
     setLiturgy(liturgyData as DailyLiturgy | null);
     setNextEvents((eventsData as ParishEvent[]) ?? []);
     setNews((newsData as NewsPost[]) ?? []);
+    setBanners((bannersData as Banner[]) ?? []);
   }, [parishId, i18n.language]);
 
   useEffect(() => {
@@ -92,6 +98,8 @@ export default function HomeScreen() {
           <Text style={styles.statusBannerText}>{t(`home.parishStatus.${parish.status}`)}</Text>
         </Card>
       )}
+
+      <BannerCarousel banners={banners} />
 
       <Card style={[styles.liturgyCard, { backgroundColor: theme.primary }]} onPress={() => router.push("/(tabs)/more/liturgy")}>
         <View style={{ flexDirection: "row", justifyContent: "space-between", alignItems: "center" }}>

@@ -162,6 +162,18 @@ export interface NewsPost {
   translations: Translations | null;
 }
 
+export interface Banner {
+  id: string;
+  parish_id: string;
+  image_url: string;
+  title: string | null;
+  link_url: string | null;
+  order_index: number;
+  is_active: boolean;
+  starts_at: string | null;
+  ends_at: string | null;
+}
+
 export interface DownloadItem {
   id: string;
   parish_id: string;

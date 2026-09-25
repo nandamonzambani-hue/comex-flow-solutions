@@ -7,7 +7,9 @@
     "back": "Voltar",
     "backHome": "Voltar para o início",
     "notFound": "Página não encontrada",
-    "error": "Erro"
+    "error": "Erro",
+    "cancel": "Cancelar",
+    "delete": "Excluir"
   },
   "tabs": {
     "home": "Início",
@@ -202,6 +204,51 @@
       "publish": "Publicar",
       "publishedTitle": "Publicado",
       "publishedBody": "Conteúdo publicado com sucesso."
+    },
+    "events": {
+      "title": "Eventos",
+      "newEvent": "Novo evento",
+      "editEvent": "Editar evento",
+      "titlePlaceholder": "Título do evento",
+      "descriptionPlaceholder": "Descrição (opcional)",
+      "locationPlaceholder": "Local",
+      "category": "Categoria",
+      "categories": {
+        "geral": "Geral",
+        "missa": "Missa",
+        "encontro": "Encontro",
+        "retiro": "Retiro",
+        "festa": "Festa",
+        "catequese": "Catequese"
+      },
+      "datePlaceholder": "Data (AAAA-MM-DD)",
+      "timePlaceholder": "Início (HH:MM)",
+      "endTimePlaceholder": "Fim (HH:MM, opcional)",
+      "capacityPlaceholder": "Capacidade (opcional)",
+      "requiresRegistration": "Requer inscrição",
+      "create": "Criar evento",
+      "save": "Salvar alterações",
+      "invalidDateTime": "Preencha data (AAAA-MM-DD) e horário (HH:MM) válidos.",
+      "upcoming": "Eventos cadastrados",
+      "empty": "Nenhum evento cadastrado ainda.",
+      "deleteTitle": "Excluir evento",
+      "deleteConfirm": "Tem certeza que deseja excluir \"{{title}}\"?"
+    },
+    "banners": {
+      "title": "Banners",
+      "hint": "Imagens em destaque no topo da tela inicial, em formato de carrossel (largura total, proporção 16:7). Cole a URL de uma imagem já hospedada.",
+      "imageUrlPlaceholder": "URL da imagem",
+      "titlePlaceholder": "Título (opcional, uso interno)",
+      "linkUrlPlaceholder": "Link ao tocar (opcional)",
+      "active": "Ativo",
+      "create": "Adicionar banner",
+      "save": "Salvar alterações",
+      "current": "Banners cadastrados",
+      "empty": "Nenhum banner cadastrado ainda.",
+      "untitled": "Sem título",
+      "inactive": "Inativo",
+      "deleteTitle": "Excluir banner",
+      "deleteConfirm": "Tem certeza que deseja excluir este banner?"
     },
     "notifications": {
       "title": "Notificações",

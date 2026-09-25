@@ -7,7 +7,9 @@
     "back": "Retour",
     "backHome": "Retour à l'accueil",
     "notFound": "Page introuvable",
-    "error": "Erreur"
+    "error": "Erreur",
+    "cancel": "Annuler",
+    "delete": "Supprimer"
   },
   "tabs": {
     "home": "Accueil",
@@ -202,6 +204,51 @@
       "publish": "Publier",
       "publishedTitle": "Publié",
       "publishedBody": "Contenu publié avec succès."
+    },
+    "events": {
+      "title": "Événements",
+      "newEvent": "Nouvel événement",
+      "editEvent": "Modifier l'événement",
+      "titlePlaceholder": "Titre de l'événement",
+      "descriptionPlaceholder": "Description (optionnelle)",
+      "locationPlaceholder": "Lieu",
+      "category": "Catégorie",
+      "categories": {
+        "geral": "Général",
+        "missa": "Messe",
+        "encontro": "Rencontre",
+        "retiro": "Retraite",
+        "festa": "Fête",
+        "catequese": "Catéchisme"
+      },
+      "datePlaceholder": "Date (AAAA-MM-JJ)",
+      "timePlaceholder": "Début (HH:MM)",
+      "endTimePlaceholder": "Fin (HH:MM, optionnel)",
+      "capacityPlaceholder": "Capacité (optionnelle)",
+      "requiresRegistration": "Inscription requise",
+      "create": "Créer l'événement",
+      "save": "Enregistrer les modifications",
+      "invalidDateTime": "Saisissez une date (AAAA-MM-JJ) et une heure (HH:MM) valides.",
+      "upcoming": "Événements enregistrés",
+      "empty": "Aucun événement pour l'instant.",
+      "deleteTitle": "Supprimer l'événement",
+      "deleteConfirm": "Voulez-vous vraiment supprimer « {{title}} » ?"
+    },
+    "banners": {
+      "title": "Bannières",
+      "hint": "Images à la une en haut de l'écran d'accueil, affichées en carrousel (pleine largeur, ratio 16:7). Collez l'URL d'une image déjà hébergée.",
+      "imageUrlPlaceholder": "URL de l'image",
+      "titlePlaceholder": "Titre (optionnel, usage interne)",
+      "linkUrlPlaceholder": "Lien au toucher (optionnel)",
+      "active": "Actif",
+      "create": "Ajouter une bannière",
+      "save": "Enregistrer les modifications",
+      "current": "Bannières enregistrées",
+      "empty": "Aucune bannière pour l'instant.",
+      "untitled": "Sans titre",
+      "inactive": "Inactif",
+      "deleteTitle": "Supprimer la bannière",
+      "deleteConfirm": "Voulez-vous vraiment supprimer cette bannière ?"
     },
     "notifications": {
       "title": "Notifications",

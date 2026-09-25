@@ -7,7 +7,9 @@
     "back": "Back",
     "backHome": "Back to home",
     "notFound": "Page not found",
-    "error": "Error"
+    "error": "Error",
+    "cancel": "Cancel",
+    "delete": "Delete"
   },
   "tabs": {
     "home": "Home",
@@ -202,6 +204,51 @@
       "publish": "Publish",
       "publishedTitle": "Published",
       "publishedBody": "Content published successfully."
+    },
+    "events": {
+      "title": "Events",
+      "newEvent": "New event",
+      "editEvent": "Edit event",
+      "titlePlaceholder": "Event title",
+      "descriptionPlaceholder": "Description (optional)",
+      "locationPlaceholder": "Location",
+      "category": "Category",
+      "categories": {
+        "geral": "General",
+        "missa": "Mass",
+        "encontro": "Meeting",
+        "retiro": "Retreat",
+        "festa": "Feast",
+        "catequese": "Catechesis"
+      },
+      "datePlaceholder": "Date (YYYY-MM-DD)",
+      "timePlaceholder": "Start (HH:MM)",
+      "endTimePlaceholder": "End (HH:MM, optional)",
+      "capacityPlaceholder": "Capacity (optional)",
+      "requiresRegistration": "Requires registration",
+      "create": "Create event",
+      "save": "Save changes",
+      "invalidDateTime": "Enter a valid date (YYYY-MM-DD) and time (HH:MM).",
+      "upcoming": "Events",
+      "empty": "No events yet.",
+      "deleteTitle": "Delete event",
+      "deleteConfirm": "Are you sure you want to delete \"{{title}}\"?"
+    },
+    "banners": {
+      "title": "Banners",
+      "hint": "Featured images at the top of the home screen, shown as a carousel (full width, 16:7 ratio). Paste the URL of an already-hosted image.",
+      "imageUrlPlaceholder": "Image URL",
+      "titlePlaceholder": "Title (optional, internal use)",
+      "linkUrlPlaceholder": "Link when tapped (optional)",
+      "active": "Active",
+      "create": "Add banner",
+      "save": "Save changes",
+      "current": "Banners",
+      "empty": "No banners yet.",
+      "untitled": "Untitled",
+      "inactive": "Inactive",
+      "deleteTitle": "Delete banner",
+      "deleteConfirm": "Are you sure you want to delete this banner?"
     },
     "notifications": {
       "title": "Notifications",

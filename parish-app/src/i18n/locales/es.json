@@ -7,7 +7,9 @@
     "back": "Volver",
     "backHome": "Volver al inicio",
     "notFound": "Página no encontrada",
-    "error": "Error"
+    "error": "Error",
+    "cancel": "Cancelar",
+    "delete": "Eliminar"
   },
   "tabs": {
     "home": "Inicio",
@@ -202,6 +204,51 @@
       "publish": "Publicar",
       "publishedTitle": "Publicado",
       "publishedBody": "Contenido publicado con éxito."
+    },
+    "events": {
+      "title": "Eventos",
+      "newEvent": "Nuevo evento",
+      "editEvent": "Editar evento",
+      "titlePlaceholder": "Título del evento",
+      "descriptionPlaceholder": "Descripción (opcional)",
+      "locationPlaceholder": "Lugar",
+      "category": "Categoría",
+      "categories": {
+        "geral": "General",
+        "missa": "Misa",
+        "encontro": "Encuentro",
+        "retiro": "Retiro",
+        "festa": "Fiesta",
+        "catequese": "Catequesis"
+      },
+      "datePlaceholder": "Fecha (AAAA-MM-DD)",
+      "timePlaceholder": "Inicio (HH:MM)",
+      "endTimePlaceholder": "Fin (HH:MM, opcional)",
+      "capacityPlaceholder": "Capacidad (opcional)",
+      "requiresRegistration": "Requiere inscripción",
+      "create": "Crear evento",
+      "save": "Guardar cambios",
+      "invalidDateTime": "Ingrese una fecha (AAAA-MM-DD) y hora (HH:MM) válidas.",
+      "upcoming": "Eventos registrados",
+      "empty": "Aún no hay eventos.",
+      "deleteTitle": "Eliminar evento",
+      "deleteConfirm": "¿Seguro que deseas eliminar \"{{title}}\"?"
+    },
+    "banners": {
+      "title": "Banners",
+      "hint": "Imágenes destacadas en la parte superior de la pantalla inicial, en formato carrusel (ancho completo, proporción 16:7). Pega la URL de una imagen ya alojada.",
+      "imageUrlPlaceholder": "URL de la imagen",
+      "titlePlaceholder": "Título (opcional, uso interno)",
+      "linkUrlPlaceholder": "Enlace al tocar (opcional)",
+      "active": "Activo",
+      "create": "Agregar banner",
+      "save": "Guardar cambios",
+      "current": "Banners registrados",
+      "empty": "Aún no hay banners.",
+      "untitled": "Sin título",
+      "inactive": "Inactivo",
+      "deleteTitle": "Eliminar banner",
+      "deleteConfirm": "¿Seguro que deseas eliminar este banner?"
     },
     "notifications": {
       "title": "Notificaciones",
