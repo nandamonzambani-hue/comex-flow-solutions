@@ -21,6 +21,27 @@ entender o modelo multi-paróquia antes de publicar.
 | Mercado Pago (ou outro gateway) | Grátis, taxa por transação | Receber dízimo/doações via Pix | **[VOCÊ]** — exige CNPJ/CPF da paróquia verificado |
 | Apple Push (APNs) | Incluso na Apple Developer | Notificações push no iOS | Gerado automaticamente pelo EAS |
 | Firebase Cloud Messaging | Grátis | Notificações push no Android | **[VOCÊ]** cria projeto Firebase (ver abaixo) |
+| Resend | Grátis até 3.000 e-mails/mês | Envio de e-mail (confirmação de cadastro, recuperação de senha) | **[FEITO]** — ver seção 1.1 abaixo |
+
+### 1.1 E-mail transacional (SMTP) — já configurado
+
+O Supabase, por padrão, usa um servidor de e-mail próprio com limite muito
+baixo (poucos e-mails/hora) — inviável em produção. Isso já foi resolvido:
+
+- Conta Resend criada, domínio `mail.logosagencia.com` verificado (SPF/DKIM).
+- SMTP customizado configurado no projeto Supabase (Authentication → Emails
+  → SMTP Settings): host `smtp.resend.com`, porta `587` (a 465 falha — o
+  mailer do Supabase espera STARTTLS, não SSL implícito), usuário `resend`,
+  senha = API key do Resend, remetente `naoresponda@mail.logosagencia.com`.
+- Limite interno de e-mail do Supabase (`rate_limit_email_sent`, um valor
+  separado do SMTP em si, fácil de não perceber) subido de 2/hora (padrão)
+  para 100/hora.
+- Testado de ponta a ponta: cadastro → e-mail de confirmação → perfil
+  criado automaticamente, sem restrição de destinatário.
+
+Se precisar trocar a API key do Resend ou o domínio remetente no futuro,
+mexa em Authentication → Emails → SMTP Settings no painel do Supabase (ou
+via API de gerenciamento: `PATCH /v1/projects/{ref}/config/auth`).
 
 ## 2. Preparar identidade do app
 
@@ -141,7 +162,8 @@ adicione mais conforme a demanda.
 
 ## Checklist rápido antes de qualquer submissão
 
-- [ ] Testado login/cadastro, dízimo (Pix sandbox), push notification, liturgia do dia
+- [x] Cadastro/confirmação de e-mail/criação de perfil testados de ponta a ponta (SMTP Resend)
+- [ ] Testado login, dízimo (Pix sandbox), push notification, liturgia do dia
 - [ ] `.env` de produção aponta para o projeto Supabase de produção (não o de dev)
 - [x] Ícones e splash finais (cruz dourada sobre bordô, não mais placeholders)
 - [x] Política de privacidade e termos publicados em URL pública —
