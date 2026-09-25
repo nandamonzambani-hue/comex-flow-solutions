@@ -1,6 +1,6 @@
-# Política de Privacidade — [Nome do App]
+# Política de Privacidade — Minha Paróquia
 
-_Última atualização: [DATA]_
+_Última atualização: 25/09/2026_
 
 > **Modelo — revise com um advogado antes de publicar.** Este texto é um
 > ponto de partida alinhado à LGPD (Lei nº 13.709/2018) e às exigências
@@ -10,8 +10,8 @@ _Última atualização: [DATA]_
 
 ## 1. Quem somos
 
-O aplicativo **[Nome do App]** ("Plataforma") é um produto SaaS operado
-por **[Nome da sua Empresa, CNPJ]** ("nós"), que licencia o uso do
+O aplicativo **Minha Paróquia** ("Plataforma") é um produto SaaS operado
+por **Logos Agência Digital (CNPJ 29.949.426/0001-78)** ("nós"), que licencia o uso do
 aplicativo a paróquias e comunidades católicas independentes ("Paróquia
 Cliente"). Para dúvidas sobre privacidade, contate: **[e-mail do
 encarregado de dados / DPO]**.
@@ -72,7 +72,7 @@ Você pode, a qualquer momento, solicitar:
   que a lei exige manter por período determinado)
 - Portabilidade dos seus dados
 
-Solicitações podem ser feitas em **[e-mail de contato]** ou diretamente
+Solicitações podem ser feitas em **contato@logosagencia.com.br** ou diretamente
 na tela "Meu Perfil" do app.
 
 ## 6. Dados de menores de idade

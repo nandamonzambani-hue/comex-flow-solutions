@@ -1,14 +1,14 @@
-# Termos de Uso — [Nome do App]
+# Termos de Uso — Minha Paróquia
 
-_Última atualização: [DATA]_
+_Última atualização: 25/09/2026_
 
 > **Modelo — revise com um advogado antes de publicar.**
 
 ## 1. Aceite
 
-Ao criar uma conta e usar o app **[Nome do App]** ("Plataforma"), você
+Ao criar uma conta e usar o app **Minha Paróquia** ("Plataforma"), você
 concorda com estes Termos de Uso e com a nossa Política de Privacidade.
-A Plataforma é operada por **[Nome da sua Empresa, CNPJ]** ("nós") e
+A Plataforma é operada por **Logos Agência Digital (CNPJ 29.949.426/0001-78)** ("nós") e
 licenciada a paróquias e comunidades católicas independentes ("Paróquia
 Cliente").
 
@@ -49,7 +49,7 @@ no cadastro.
 - Pagamentos são processados por um gateway externo (Mercado Pago). Nem
   a Plataforma nem a paróquia armazenam dados do seu cartão.
 - Em caso de erro de cobrança, entre em contato com sua paróquia ou em
-  **[e-mail/telefone]** para solicitar estorno, sujeito às regras do
+  **contato@logosagencia.com.br** para solicitar estorno, sujeito às regras do
   gateway de pagamento.
 
 ## 6. Conduta do usuário
@@ -86,4 +86,4 @@ Internet).
 
 ## 10. Contato
 
-Dúvidas sobre estes termos: **[e-mail de contato]**.
+Dúvidas sobre estes termos: **contato@logosagencia.com.br**.
