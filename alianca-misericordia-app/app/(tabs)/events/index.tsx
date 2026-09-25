@@ -4,34 +4,28 @@ import { router } from "expo-router";
 import { format } from "date-fns";
 import { useTranslation } from "react-i18next";
 import { supabase } from "@/lib/supabase";
-import { useParishId } from "@/hooks/useParish";
 import { useDateLocale } from "@/lib/dateLocale";
-import { useLocalizedField } from "@/lib/localized";
 import { Card, EmptyState, ScreenContainer } from "@/components/ui";
 import { colors } from "@/theme/colors";
-import type { ParishEvent } from "@/types/database";
+import type { CommunityEvent } from "@/types/database";
 
 export default function EventsListScreen() {
   const { t } = useTranslation();
   const dateLocale = useDateLocale();
-  const localize = useLocalizedField();
-  const parishId = useParishId();
-  const [events, setEvents] = useState<ParishEvent[]>([]);
+  const [events, setEvents] = useState<CommunityEvent[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (!parishId) return;
     supabase
       .from("events")
       .select("*")
-      .eq("parish_id", parishId)
       .gte("start_at", new Date(Date.now() - 86400000).toISOString())
       .order("start_at", { ascending: true })
       .then(({ data }) => {
-        setEvents((data as ParishEvent[]) ?? []);
+        setEvents((data as CommunityEvent[]) ?? []);
         setLoading(false);
       });
-  }, [parishId]);
+  }, []);
 
   return (
     <ScreenContainer>
@@ -44,8 +38,8 @@ export default function EventsListScreen() {
             <Text style={styles.date}>
               {format(new Date(item.start_at), "EEEE, dd MMMM · HH:mm", { locale: dateLocale })}
             </Text>
-            <Text style={styles.title}>{localize(item, "title")}</Text>
-            {item.location && <Text style={styles.location}>{item.location}</Text>}
+            <Text style={styles.title}>{item.title}</Text>
+            {item.city && <Text style={styles.location}>{item.location ? `${item.location} — ` : ""}{item.city}</Text>}
             {item.requires_registration && <Text style={styles.tag}>{t("events.registrationRequired")}</Text>}
           </Card>
         )}

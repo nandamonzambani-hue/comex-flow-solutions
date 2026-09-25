@@ -1,7 +1,7 @@
 {
   "app": {
-    "name": "La Mia Parrocchia",
-    "tagline": "Comunità, fede e servizio in un unico posto"
+    "name": "Aliança da Misericórdia",
+    "tagline": "Fede, servizio e formazione in un unico posto"
   },
   "common": {
     "back": "Indietro",
@@ -11,9 +11,9 @@
   },
   "tabs": {
     "home": "Home",
+    "videos": "Studi",
     "events": "Eventi",
     "groups": "Gruppi",
-    "giving": "Decima",
     "more": "Altro"
   },
   "auth": {
@@ -23,107 +23,72 @@
     "signIn": "Accedi",
     "noAccount": "Non hai un account? Registrati",
     "registerTitle": "Crea account",
-    "registerSubtitle": "Unisciti alla comunità della nostra parrocchia",
+    "registerSubtitle": "Unisciti alla comunità dell'Aliança da Misericórdia",
     "fullName": "Nome completo",
-    "register": "Registrati"
+    "register": "Registrati",
+    "city": "Città",
+    "state": "Provincia",
+    "membershipLevel": "Livello di appartenenza",
+    "evangelizationColor": "Colore di evangelizzazione"
   },
   "home": {
     "greeting": "Ciao, {{name}} 👋",
-    "defaultName": "fratello/sorella",
+    "defaultName": "amico/a",
     "peaceMessage": "Che la pace sia con te oggi.",
     "todayLiturgy": "Liturgia di oggi",
-    "tapForLiturgy": "Tocca per vedere la liturgia del giorno",
+    "tapForLiturgy": "Tocca per vedere la liturgia quotidiana",
     "upcomingEvents": "Prossimi eventi",
-    "noEvents": "Nessun evento programmato al momento.",
-    "parishNews": "Notizie della parrocchia",
-    "noNews": "Nessuna notizia pubblicata ancora.",
-    "parishStatus": {
-      "pending_approval": "La tua parrocchia è in attesa di approvazione dalla piattaforma. Non appena approvata, tutto sarà sbloccato.",
-      "trial": "La tua parrocchia è nel periodo di prova gratuita.",
-      "active": "",
-      "past_due": "C'è un problema con il pagamento dell'abbonamento della parrocchia. Risolvilo per evitare interruzioni.",
-      "suspended": "L'abbonamento della parrocchia è sospeso. Contatta l'amministrazione per riattivarlo.",
-      "cancelled": "L'abbonamento della parrocchia è stato annullato."
-    }
+    "noEvents": "Nessun evento in programma al momento.",
+    "news": "Notizie",
+    "noNews": "Nessuna notizia pubblicata ancora."
+  },
+  "videos": {
+    "title": "Studi",
+    "detailTitle": "Video",
+    "empty": "Nessun video disponibile ancora.",
+    "paid": "A pagamento",
+    "completed": "Completato",
+    "locked": "Contenuto bloccato",
+    "lockedBody": "Non hai accesso a questo video con il tuo account attuale.",
+    "price": "R$ {{amount}}",
+    "buy": "Acquista con Pix",
+    "buyError": "Impossibile generare l'addebito. Riprova.",
+    "pixHint": "Scansiona il QR code o copia il codice Pix nella tua banca. L'accesso si sblocca automaticamente dopo la conferma del pagamento."
+  },
+  "quiz": {
+    "title": "Quiz",
+    "take": "Rispondi",
+    "submit": "Invia risposte",
+    "submitError": "Impossibile inviare le risposte. Riprova.",
+    "passed": "Hai superato il quiz!",
+    "notPassed": "Continua a studiare",
+    "scoreLine": "{{correct}} su {{total}} corrette ({{percent}}%)"
   },
   "events": {
     "title": "Eventi",
     "detailTitle": "Dettagli evento",
-    "empty": "Nessun evento futuro registrato.",
+    "empty": "Nessun evento in programma ancora.",
     "registrationRequired": "Iscrizione richiesta",
     "spotsFilled": "{{count}} / {{total}} posti occupati",
     "register": "Iscriviti",
     "cancelRegistration": "Annulla iscrizione",
-    "full": "Posti esauriti"
+    "full": "Al completo"
   },
   "groups": {
-    "title": "Pastorali e Gruppi",
-    "detailTitle": "Gruppo",
+    "title": "Gruppi",
+    "detailTitle": "Dettagli gruppo",
     "empty": "Nessun gruppo registrato ancora.",
+    "join": "Partecipa",
+    "leave": "Esci",
     "meetings": "Incontri",
     "participants": "Partecipanti",
-    "peopleCount": "{{count}} persona/e",
-    "join": "Partecipa a questo gruppo",
-    "leave": "Lascia il gruppo",
+    "peopleCount": "{{count}} persone",
     "types": {
-      "pastoral": "Pastorali",
-      "movement": "Movimenti",
-      "ministry": "Ministeri",
-      "choir": "Musica e Coro",
-      "catechesis": "Catechesi",
-      "news": "Notizie",
+      "celula": "Cellula",
+      "coordenacao": "Coordinamento",
+      "evento_local": "Evento locale",
       "other": "Altro"
     }
-  },
-  "giving": {
-    "title": "Decima e Donazioni",
-    "donateTitle": "Dona",
-    "campaignTitle": "Campagna",
-    "historyTitle": "Il mio storico",
-    "intro": "\"Ognuno dia secondo quanto ha deciso nel suo cuore\" (2 Cor 9,7). Il tuo contributo sostiene la vita e le opere della nostra parrocchia.",
-    "monthlyTithe": "Decima mensile",
-    "makeOffering": "Fai un'offerta",
-    "viewHistory": "Vedi il mio storico",
-    "activeCampaigns": "Campagne e feste attive",
-    "progressOf": "R$ {{current}} di R$ {{goal}}",
-    "campaignProgress": "R$ {{current}} raccolti su R$ {{goal}} ({{percent}}%)",
-    "contributeToCampaign": "Contribuisci a questa campagna",
-    "titheAmount": "Importo della decima",
-    "contributionAmount": "Importo del contributo",
-    "generatePix": "Genera Pix",
-    "scanOrCopy": "Scansiona o copia il codice Pix",
-    "copyPixCode": "Copia codice Pix",
-    "invalidAmountTitle": "Importo non valido",
-    "invalidAmountBody": "Inserisci un importo maggiore di zero.",
-    "pixErrorTitle": "Errore nella generazione del Pix",
-    "processingTitle": "Pagamento in elaborazione",
-    "processingBody": "Controlla il tuo storico tra un momento.",
-    "copiedTitle": "Copiato",
-    "copiedBody": "Codice Pix copiato. Incollalo nell'app della tua banca per completare il pagamento.",
-    "emptyHistory": "Non hai ancora effettuato contributi.",
-    "status": {
-      "pending": "In attesa",
-      "processing": "In elaborazione",
-      "completed": "Confermato",
-      "failed": "Fallito",
-      "refunded": "Rimborsato",
-      "cancelled": "Annullato"
-    }
-  },
-  "media": {
-    "title": "Video e Testi",
-    "detailTitle": "Contenuto",
-    "empty": "Nessun contenuto pubblicato ancora.",
-    "types": {
-      "video": "Video",
-      "article": "Testo",
-      "audio": "Audio",
-      "live": "In diretta"
-    }
-  },
-  "downloads": {
-    "title": "Download",
-    "empty": "Nessun materiale disponibile per il download."
   },
   "news": {
     "title": "Notizie",
@@ -131,74 +96,92 @@
     "empty": "Nessuna notizia pubblicata ancora.",
     "pinned": "In evidenza"
   },
+  "downloads": {
+    "title": "Materiali",
+    "empty": "Nessun materiale disponibile ancora."
+  },
+  "liturgy": {
+    "title": "Liturgia Quotidiana",
+    "empty": "La liturgia di oggi non è ancora disponibile.",
+    "firstReading": "Prima Lettura",
+    "psalm": "Salmo",
+    "secondReading": "Seconda Lettura",
+    "gospel": "Vangelo",
+    "reflection": "Riflessione"
+  },
   "bible": {
     "title": "Bibbia",
     "chapters": "Capitoli",
     "reading": "Lettura",
     "oldTestament": "Antico Testamento",
     "newTestament": "Nuovo Testamento",
+    "empty": "Testo non ancora disponibile per questo capitolo.",
     "chapterCount": "{{count}} capitoli",
-    "notSynced": "Testo non ancora sincronizzato per questo capitolo. Vedi docs/CONTENT_GUIDE.md sulla sincronizzazione della Bibbia."
+    "notSynced": "Testo non ancora sincronizzato per questo capitolo."
   },
-  "liturgy": {
-    "title": "Liturgia del Giorno",
-    "empty": "La liturgia di oggi non è ancora stata pubblicata.",
-    "firstReading": "1ª Lettura",
-    "psalm": "Salmo",
-    "secondReading": "2ª Lettura",
-    "gospel": "Vangelo",
-    "reflection": "Riflessione"
+  "shop": {
+    "title": "Negozio dell'Aliança"
   },
   "profile": {
     "title": "Il Mio Profilo",
     "fullName": "Nome completo",
     "phone": "Telefono",
-    "save": "Salva modifiche",
     "language": "Lingua",
+    "save": "Salva",
     "signOut": "Esci dall'account"
   },
   "admin": {
     "title": "Amministrazione",
     "members": {
       "title": "Membri",
-      "searchPlaceholder": "Cerca per nome...",
       "empty": "Nessun membro trovato.",
+      "searchPlaceholder": "Cerca per nome o città",
       "roles": {
         "member": "Membro",
-        "groupLeader": "Responsabile di gruppo",
+        "leader": "Leader",
         "staff": "Staff",
-        "admin": "Amministratore",
-        "pastor": "Parroco"
+        "admin": "Admin"
       }
     },
-    "finance": {
-      "title": "Finanze",
-      "currentMonth": "Mese corrente",
-      "confirmed": "Confermato",
-      "pending": "In attesa",
-      "byMethod": "Per metodo di pagamento",
-      "recentTransactions": "Transazioni recenti"
-    },
     "content": {
-      "title": "Contenuti",
-      "type": "Tipo di contenuto",
+      "title": "Pubblica Contenuto",
+      "type": "Tipo",
       "kinds": {
-        "news": "Notizia",
-        "article": "Testo",
-        "video": "Video"
+        "video": "Video",
+        "news": "Notizia"
       },
       "titlePlaceholder": "Titolo",
-      "subtitlePlaceholder": "Sottotitolo (opzionale)",
+      "subtitlePlaceholder": "Sottotitolo",
       "shortDescriptionPlaceholder": "Descrizione breve",
-      "videoUrlPlaceholder": "URL del video (mp4, HLS, YouTube incorporabile)",
-      "bodyPlaceholder": "Testo del contenuto...",
-      "translationsOptional": "Traduzioni (opzionale)",
-      "translatedTitlePlaceholder": "Titolo tradotto",
-      "translatedSubtitlePlaceholder": "Sottotitolo/descrizione tradotta",
-      "translatedBodyPlaceholder": "Testo tradotto...",
+      "bodyPlaceholder": "Testo completo",
+      "videoUrlPlaceholder": "URL del video (mp4, HLS...)",
+      "accessType": "Chi può vederlo",
+      "access": {
+        "public": "Tutti",
+        "color": "Per colore",
+        "level": "Per livello",
+        "paid": "A pagamento"
+      },
+      "pricePlaceholder": "Prezzo (R$)",
       "publish": "Pubblica",
-      "publishedTitle": "Pubblicato",
-      "publishedBody": "Contenuto pubblicato con successo."
+      "publishedTitle": "Pubblicato!",
+      "publishedBody": "Il contenuto è ora disponibile nell'app."
+    },
+    "quizzes": {
+      "title": "Quiz",
+      "video": "Video",
+      "titlePlaceholder": "Titolo del quiz",
+      "passingScorePlaceholder": "Punteggio minimo per superare (%)",
+      "questions": "Domande",
+      "questionPlaceholder": "Scrivi la domanda",
+      "optionPlaceholder": "Scrivi l'opzione",
+      "addOption": "Aggiungi opzione",
+      "addQuestion": "Aggiungi domanda",
+      "removeQuestion": "Rimuovi questa domanda",
+      "save": "Salva quiz",
+      "savedTitle": "Quiz salvato!",
+      "savedBody": "Il quiz è ora disponibile per chi guarda il video.",
+      "saveError": "Impossibile salvare il quiz."
     },
     "notifications": {
       "title": "Notifiche",
@@ -207,122 +190,14 @@
       "recipients": "Destinatari",
       "target": {
         "all": "Tutti",
-        "group": "Un gruppo",
-        "role": "Un ruolo"
+        "group": "Gruppo",
+        "color": "Colore",
+        "level": "Livello"
       },
-      "send": "Invia notifica",
-      "sentTitle": "Inviato",
-      "sentBody": "Notifica inviata a {{count}} dispositivo/i.",
-      "sendError": "Invio notifica non riuscito"
-    },
-    "liturgyEditor": {
-      "title": "Modifica Liturgia",
-      "hint": "Modifica manualmente la liturgia di oggi ({{date}}) nella lingua selezionata qui sotto. Se configuri la sincronizzazione automatica (supabase/functions/daily-liturgy-sync), questo modulo diventa solo una rifinitura/backup.",
-      "celebration": "Celebrazione (es: XXV Domenica del Tempo Ordinario)",
-      "color": "Colore liturgico (Verde, Viola, Bianco, Rosso, Rosa)",
-      "saint": "Santo del giorno (opzionale)",
-      "firstReadingRef": "Riferimento 1ª Lettura",
-      "firstReadingText": "Testo 1ª Lettura",
-      "psalmRef": "Riferimento Salmo",
-      "psalmText": "Testo del Salmo",
-      "gospelRef": "Riferimento Vangelo",
-      "gospelText": "Testo del Vangelo",
-      "reflection": "Riflessione del giorno",
-      "save": "Salva la liturgia di oggi",
-      "savedTitle": "Salvato",
-      "savedBody": "Liturgia aggiornata per questa lingua."
-    },
-    "subscription": {
-      "title": "Abbonamento",
-      "status": "Stato dell'abbonamento",
-      "choosePlan": "Scegli un piano",
-      "subscribe": "Abbonati",
-      "trialUntil": "Prova gratuita fino al {{date}}"
-    }
-  },
-  "onboarding": {
-    "greeting": "Benvenuto/a, {{name}}!",
-    "subtitle": "Prima di continuare, trova la parrocchia a cui appartieni oppure registrane una nuova.",
-    "findParish": "Trova la mia parrocchia",
-    "registerParish": "Registra la mia parrocchia",
-    "goToPlatformAdmin": "Vai al pannello della piattaforma",
-    "joinByCode": "Ho un codice di invito",
-    "joinCodePlaceholder": "Es: APARECIDA-7F2K",
-    "join": "Entra",
-    "searchByNameCity": "Oppure cerca per nome/città",
-    "searchPlaceholder": "Nome della parrocchia o città",
-    "search": "Cerca",
-    "noResults": "Nessuna parrocchia trovata con questo nome/città.",
-    "codeNotFoundTitle": "Codice non trovato",
-    "codeNotFoundBody": "Verifica il codice di invito con la segreteria della parrocchia.",
-    "notJoinableTitle": "Parrocchia non disponibile",
-    "notJoinableBody": "Questa parrocchia non è ancora stata approvata sulla piattaforma.",
-    "trialBadge": "In prova",
-    "createParishTitle": "Registra la mia parrocchia",
-    "createParishSubtitle": "Ne sarai l'amministratore iniziale. La registrazione resta in sospeso finché il nostro team non la approva.",
-    "parishNamePlaceholder": "Nome della parrocchia",
-    "parishCityPlaceholder": "Città",
-    "parishStatePlaceholder": "Provincia",
-    "parishPhonePlaceholder": "Telefono di contatto",
-    "createParishHint": "Dopo l'invio, il nostro team esamina la registrazione e sblocca l'accesso completo — di solito entro 1 giorno lavorativo.",
-    "submitParish": "Invia registrazione",
-    "createError": "Impossibile registrare la parrocchia."
-  },
-  "parishStatusLabel": {
-    "pending_approval": "In attesa",
-    "trial": "In prova",
-    "active": "Attiva",
-    "past_due": "Pagamento in sospeso",
-    "suspended": "Sospesa",
-    "cancelled": "Annullata"
-  },
-  "billingInterval": {
-    "once": "pagamento unico",
-    "weekly": "settimana",
-    "monthly": "mese",
-    "yearly": "anno"
-  },
-  "platformAdmin": {
-    "title": "Pannello della Piattaforma",
-    "overview": "Panoramica",
-    "management": "Gestione",
-    "stats": {
-      "pending": "In attesa",
-      "trial": "In prova",
-      "active": "Attive"
-    },
-    "parishes": {
-      "title": "Parrocchie",
-      "empty": "Nessuna parrocchia trovata con questo filtro.",
-      "filterAll": "Tutte"
-    },
-    "parishDetail": {
-      "title": "Parrocchia",
-      "location": "Posizione",
-      "contact": "Contatto",
-      "createdBy": "Registrata da",
-      "joinCode": "Codice di invito",
-      "approveWithPlan": "Approva con il piano",
-      "approve": "Approva",
-      "trialDays": "{{count}} giorni di prova",
-      "suspend": "Sospendi parrocchia",
-      "reactivate": "Riattiva parrocchia"
-    },
-    "plans": {
-      "title": "Piani",
-      "existing": "Piani esistenti",
-      "active": "Attivo",
-      "inactive": "Inattivo",
-      "activate": "Attiva",
-      "deactivate": "Disattiva",
-      "unlimitedMembers": "membri illimitati",
-      "upToMembers": "fino a {{count}} membri",
-      "newPlan": "Nuovo piano",
-      "namePlaceholder": "Nome del piano",
-      "pricePlaceholder": "Prezzo mensile (R$)",
-      "maxMembersPlaceholder": "Limite membri (vuoto = illimitato)",
-      "trialDaysPlaceholder": "Giorni di prova gratuita",
-      "create": "Crea piano"
+      "send": "Invia",
+      "sendError": "Impossibile inviare la notifica.",
+      "sentTitle": "Inviato!",
+      "sentBody": "Notifica inviata a {{count}} persone."
     }
   }
 }

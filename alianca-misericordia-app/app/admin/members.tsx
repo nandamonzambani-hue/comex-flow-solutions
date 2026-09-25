@@ -2,36 +2,31 @@ import { useEffect, useState } from "react";
 import { FlatList, Pressable, StyleSheet, Text, TextInput, View } from "react-native";
 import { useTranslation } from "react-i18next";
 import { supabase } from "@/lib/supabase";
-import { useParishId } from "@/hooks/useParish";
 import { Badge, Card, EmptyState, ScreenContainer } from "@/components/ui";
 import { colors } from "@/theme/colors";
-import type { MemberRole, Profile } from "@/types/database";
+import { EVANGELIZATION_COLORS, type MemberRole, type Profile } from "@/types/database";
 
-const ROLE_CYCLE: MemberRole[] = ["member", "group_leader", "staff", "admin"];
+const ROLE_CYCLE: MemberRole[] = ["member", "leader", "staff", "admin"];
 
 export default function AdminMembersScreen() {
   const { t } = useTranslation();
-  const parishId = useParishId();
   const [members, setMembers] = useState<Profile[]>([]);
   const [search, setSearch] = useState("");
 
   const ROLE_LABEL: Record<MemberRole, string> = {
     member: t("admin.members.roles.member"),
-    group_leader: t("admin.members.roles.groupLeader"),
+    leader: t("admin.members.roles.leader"),
     staff: t("admin.members.roles.staff"),
     admin: t("admin.members.roles.admin"),
-    pastor: t("admin.members.roles.pastor"),
   };
 
   useEffect(() => {
-    if (!parishId) return;
     supabase
       .from("profiles")
       .select("*")
-      .eq("parish_id", parishId)
       .order("full_name")
       .then(({ data }) => setMembers((data as Profile[]) ?? []));
-  }, [parishId]);
+  }, []);
 
   async function cycleRole(member: Profile) {
     const currentIndex = ROLE_CYCLE.indexOf(member.role);
@@ -40,7 +35,11 @@ export default function AdminMembersScreen() {
     setMembers((prev) => prev.map((m) => (m.id === member.id ? { ...m, role: nextRole } : m)));
   }
 
-  const filtered = members.filter((m) => m.full_name.toLowerCase().includes(search.toLowerCase()));
+  const filtered = members.filter(
+    (m) =>
+      m.full_name.toLowerCase().includes(search.toLowerCase()) ||
+      (m.city ?? "").toLowerCase().includes(search.toLowerCase()),
+  );
 
   return (
     <ScreenContainer>
@@ -54,19 +53,30 @@ export default function AdminMembersScreen() {
         data={filtered}
         keyExtractor={(item) => item.id}
         ListEmptyComponent={<EmptyState message={t("admin.members.empty")} />}
-        renderItem={({ item }) => (
-          <Card>
-            <View style={{ flexDirection: "row", justifyContent: "space-between", alignItems: "center" }}>
-              <View style={{ flex: 1 }}>
-                <Text style={styles.name}>{item.full_name}</Text>
-                {item.email && <Text style={styles.email}>{item.email}</Text>}
+        renderItem={({ item }) => {
+          const colorInfo = EVANGELIZATION_COLORS.find((c) => c.value === item.evangelization_color);
+          return (
+            <Card>
+              <View style={{ flexDirection: "row", justifyContent: "space-between", alignItems: "center" }}>
+                <View style={{ flex: 1 }}>
+                  <Text style={styles.name}>{item.full_name}</Text>
+                  {item.email && <Text style={styles.email}>{item.email}</Text>}
+                  <View style={{ flexDirection: "row", gap: 6, marginTop: 6, flexWrap: "wrap" }}>
+                    {item.city && <Text style={styles.tag}>📍 {item.city}</Text>}
+                    {colorInfo && (
+                      <Text style={[styles.tag, { color: colorInfo.hex }]}>
+                        ● {colorInfo.label} ({colorInfo.group})
+                      </Text>
+                    )}
+                  </View>
+                </View>
+                <Pressable onPress={() => cycleRole(item)}>
+                  <Badge label={ROLE_LABEL[item.role]} tone={item.role === "member" ? "default" : "success"} />
+                </Pressable>
               </View>
-              <Pressable onPress={() => cycleRole(item)}>
-                <Badge label={ROLE_LABEL[item.role]} tone={item.role === "member" ? "default" : "success"} />
-              </Pressable>
-            </View>
-          </Card>
-        )}
+            </Card>
+          );
+        }}
       />
     </ScreenContainer>
   );
@@ -84,4 +94,5 @@ const styles = StyleSheet.create({
   },
   name: { fontWeight: "700", color: colors.textPrimary },
   email: { color: colors.textSecondary, fontSize: 13, marginTop: 2 },
+  tag: { color: colors.textSecondary, fontSize: 12, fontWeight: "600" },
 });

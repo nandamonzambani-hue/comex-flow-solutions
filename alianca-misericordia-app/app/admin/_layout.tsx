@@ -13,11 +13,9 @@ export default function AdminLayout() {
     <Stack screenOptions={{ headerShown: true }}>
       <Stack.Screen name="index" options={{ title: t("admin.title") }} />
       <Stack.Screen name="members" options={{ title: t("admin.members.title") }} />
-      <Stack.Screen name="finance" options={{ title: t("admin.finance.title") }} />
       <Stack.Screen name="content" options={{ title: t("admin.content.title") }} />
+      <Stack.Screen name="quizzes" options={{ title: t("admin.quizzes.title") }} />
       <Stack.Screen name="notifications" options={{ title: t("admin.notifications.title") }} />
-      <Stack.Screen name="liturgy-editor" options={{ title: t("admin.liturgyEditor.title") }} />
-      <Stack.Screen name="subscription" options={{ title: t("admin.subscription.title") }} />
     </Stack>
   );
 }

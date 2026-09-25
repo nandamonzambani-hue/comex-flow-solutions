@@ -5,9 +5,7 @@ import { router } from "expo-router";
 import { format } from "date-fns";
 import { useTranslation } from "react-i18next";
 import { supabase } from "@/lib/supabase";
-import { useParishId } from "@/hooks/useParish";
 import { useDateLocale } from "@/lib/dateLocale";
-import { useLocalizedField } from "@/lib/localized";
 import { Badge, Card, EmptyState, ScreenContainer } from "@/components/ui";
 import { colors } from "@/theme/colors";
 import type { NewsPost } from "@/types/database";
@@ -15,21 +13,17 @@ import type { NewsPost } from "@/types/database";
 export default function NewsListScreen() {
   const { t } = useTranslation();
   const dateLocale = useDateLocale();
-  const localize = useLocalizedField();
-  const parishId = useParishId();
   const [items, setItems] = useState<NewsPost[]>([]);
 
   useEffect(() => {
-    if (!parishId) return;
     supabase
       .from("news_posts")
       .select("*")
-      .eq("parish_id", parishId)
       .not("published_at", "is", null)
       .order("is_pinned", { ascending: false })
       .order("published_at", { ascending: false })
       .then(({ data }) => setItems((data as NewsPost[]) ?? []));
-  }, [parishId]);
+  }, []);
 
   return (
     <ScreenContainer>
@@ -46,8 +40,8 @@ export default function NewsListScreen() {
               {item.is_pinned && <Badge label={t("news.pinned")} tone="warning" />}
               <Text style={styles.category}>{item.category}</Text>
             </View>
-            <Text style={styles.title}>{localize(item, "title")}</Text>
-            {item.subtitle && <Text style={styles.subtitle}>{localize(item, "subtitle")}</Text>}
+            <Text style={styles.title}>{item.title}</Text>
+            {item.subtitle && <Text style={styles.subtitle}>{item.subtitle}</Text>}
             {item.published_at && (
               <Text style={styles.date}>{format(new Date(item.published_at), "dd/MM/yyyy", { locale: dateLocale })}</Text>
             )}

@@ -1,0 +1,203 @@
+{
+  "app": {
+    "name": "Aliança da Misericórdia",
+    "tagline": "Wiara, służba i formacja w jednym miejscu"
+  },
+  "common": {
+    "back": "Wstecz",
+    "backHome": "Powrót do strony głównej",
+    "notFound": "Strona nie znaleziona",
+    "error": "Błąd"
+  },
+  "tabs": {
+    "home": "Start",
+    "videos": "Formacja",
+    "events": "Wydarzenia",
+    "groups": "Grupy",
+    "more": "Więcej"
+  },
+  "auth": {
+    "email": "E-mail",
+    "password": "Hasło",
+    "passwordMin": "Hasło (min. 6 znaków)",
+    "signIn": "Zaloguj się",
+    "noAccount": "Nie masz jeszcze konta? Zarejestruj się",
+    "registerTitle": "Utwórz konto",
+    "registerSubtitle": "Dołącz do wspólnoty Aliança da Misericórdia",
+    "fullName": "Imię i nazwisko",
+    "register": "Zarejestruj się",
+    "city": "Miasto",
+    "state": "Województwo",
+    "membershipLevel": "Poziom przynależności",
+    "evangelizationColor": "Kolor ewangelizacji"
+  },
+  "home": {
+    "greeting": "Cześć, {{name}} 👋",
+    "defaultName": "przyjacielu",
+    "peaceMessage": "Niech pokój będzie z tobą dzisiaj.",
+    "todayLiturgy": "Liturgia dnia",
+    "tapForLiturgy": "Dotknij, aby zobaczyć liturgię dnia",
+    "upcomingEvents": "Nadchodzące wydarzenia",
+    "noEvents": "Obecnie brak zaplanowanych wydarzeń.",
+    "news": "Aktualności",
+    "noNews": "Brak opublikowanych aktualności."
+  },
+  "videos": {
+    "title": "Formacja",
+    "detailTitle": "Wideo",
+    "empty": "Brak dostępnych filmów.",
+    "paid": "Płatne",
+    "completed": "Ukończone",
+    "locked": "Zablokowana treść",
+    "lockedBody": "Nie masz dostępu do tego filmu z obecnym kontem.",
+    "price": "R$ {{amount}}",
+    "buy": "Kup przez Pix",
+    "buyError": "Nie udało się utworzyć płatności. Spróbuj ponownie.",
+    "pixHint": "Zeskanuj kod QR lub skopiuj kod Pix w swojej aplikacji bankowej. Dostęp odblokuje się automatycznie po potwierdzeniu płatności."
+  },
+  "quiz": {
+    "title": "Quiz",
+    "take": "Rozwiąż",
+    "submit": "Wyślij odpowiedzi",
+    "submitError": "Nie udało się wysłać odpowiedzi. Spróbuj ponownie.",
+    "passed": "Zaliczone!",
+    "notPassed": "Ucz się dalej",
+    "scoreLine": "{{correct}} z {{total}} poprawnych ({{percent}}%)"
+  },
+  "events": {
+    "title": "Wydarzenia",
+    "detailTitle": "Szczegóły wydarzenia",
+    "empty": "Brak nadchodzących wydarzeń.",
+    "registrationRequired": "Wymagana rejestracja",
+    "spotsFilled": "{{count}} / {{total}} zajętych miejsc",
+    "register": "Zapisz się",
+    "cancelRegistration": "Anuluj zapis",
+    "full": "Brak miejsc"
+  },
+  "groups": {
+    "title": "Grupy",
+    "detailTitle": "Szczegóły grupy",
+    "empty": "Brak zarejestrowanych grup.",
+    "join": "Dołącz",
+    "leave": "Opuść",
+    "meetings": "Spotkania",
+    "participants": "Uczestnicy",
+    "peopleCount": "{{count}} osób",
+    "types": {
+      "celula": "Komórka",
+      "coordenacao": "Koordynacja",
+      "evento_local": "Wydarzenie lokalne",
+      "other": "Inne"
+    }
+  },
+  "news": {
+    "title": "Aktualności",
+    "detailTitle": "Aktualność",
+    "empty": "Brak opublikowanych aktualności.",
+    "pinned": "Przypięte"
+  },
+  "downloads": {
+    "title": "Materiały",
+    "empty": "Brak dostępnych materiałów."
+  },
+  "liturgy": {
+    "title": "Liturgia Dnia",
+    "empty": "Dzisiejsza liturgia nie jest jeszcze dostępna.",
+    "firstReading": "I Czytanie",
+    "psalm": "Psalm",
+    "secondReading": "II Czytanie",
+    "gospel": "Ewangelia",
+    "reflection": "Rozważanie"
+  },
+  "bible": {
+    "title": "Pismo Święte",
+    "chapters": "Rozdziały",
+    "reading": "Czytanie",
+    "oldTestament": "Stary Testament",
+    "newTestament": "Nowy Testament",
+    "empty": "Tekst tego rozdziału nie jest jeszcze dostępny.",
+    "chapterCount": "{{count}} rozdziałów",
+    "notSynced": "Tekst tego rozdziału nie został jeszcze zsynchronizowany."
+  },
+  "shop": {
+    "title": "Sklep Aliança"
+  },
+  "profile": {
+    "title": "Mój Profil",
+    "fullName": "Imię i nazwisko",
+    "phone": "Telefon",
+    "language": "Język",
+    "save": "Zapisz",
+    "signOut": "Wyloguj się"
+  },
+  "admin": {
+    "title": "Administracja",
+    "members": {
+      "title": "Członkowie",
+      "empty": "Nie znaleziono żadnych członków.",
+      "searchPlaceholder": "Szukaj po imieniu lub mieście",
+      "roles": {
+        "member": "Członek",
+        "leader": "Lider",
+        "staff": "Zespół",
+        "admin": "Admin"
+      }
+    },
+    "content": {
+      "title": "Publikuj Treść",
+      "type": "Typ",
+      "kinds": {
+        "video": "Wideo",
+        "news": "Aktualność"
+      },
+      "titlePlaceholder": "Tytuł",
+      "subtitlePlaceholder": "Podtytuł",
+      "shortDescriptionPlaceholder": "Krótki opis",
+      "bodyPlaceholder": "Pełny tekst",
+      "videoUrlPlaceholder": "URL wideo (mp4, HLS...)",
+      "accessType": "Kto może oglądać",
+      "access": {
+        "public": "Wszyscy",
+        "color": "Według koloru",
+        "level": "Według poziomu",
+        "paid": "Płatne"
+      },
+      "pricePlaceholder": "Cena (R$)",
+      "publish": "Opublikuj",
+      "publishedTitle": "Opublikowano!",
+      "publishedBody": "Treść jest już dostępna w aplikacji."
+    },
+    "quizzes": {
+      "title": "Quizy",
+      "video": "Wideo",
+      "titlePlaceholder": "Tytuł quizu",
+      "passingScorePlaceholder": "Minimalny wynik zaliczenia (%)",
+      "questions": "Pytania",
+      "questionPlaceholder": "Wpisz pytanie",
+      "optionPlaceholder": "Wpisz opcję",
+      "addOption": "Dodaj opcję",
+      "addQuestion": "Dodaj pytanie",
+      "removeQuestion": "Usuń to pytanie",
+      "save": "Zapisz quiz",
+      "savedTitle": "Quiz zapisany!",
+      "savedBody": "Quiz jest teraz dostępny dla osób oglądających film.",
+      "saveError": "Nie udało się zapisać quizu."
+    },
+    "notifications": {
+      "title": "Powiadomienia",
+      "titlePlaceholder": "Tytuł powiadomienia",
+      "messagePlaceholder": "Wiadomość",
+      "recipients": "Odbiorcy",
+      "target": {
+        "all": "Wszyscy",
+        "group": "Grupa",
+        "color": "Kolor",
+        "level": "Poziom"
+      },
+      "send": "Wyślij",
+      "sendError": "Nie udało się wysłać powiadomienia.",
+      "sentTitle": "Wysłano!",
+      "sentBody": "Powiadomienie wysłane do {{count}} osób."
+    }
+  }
+}

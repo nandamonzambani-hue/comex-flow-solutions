@@ -1,12 +1,13 @@
 // Edge Function: send-push-notification
 //
 // Envia notificações push via Expo Push API para membros segmentados por
-// "todos", grupo/pastoral ou papel (role). Chamada pelo app (tela admin)
-// com o token JWT do usuário logado — a função valida que ele é staff.
+// "todos", grupo, cor de evangelização ou nível de vínculo. Chamada pelo
+// app (tela admin) com o token JWT do usuário logado — a função valida
+// que ele é staff.
 //
 // Deploy: supabase functions deploy send-push-notification
 // Invoke:  POST /functions/v1/send-push-notification
-//   { "title": "...", "body": "...", "target_type": "all"|"group"|"role", "target_id"?: "..." }
+//   { "title": "...", "body": "...", "target_type": "all"|"group"|"color"|"level", "target_id"?: "..." }
 
 import { createClient } from "npm:@supabase/supabase-js@2";
 
@@ -42,11 +43,11 @@ Deno.serve(async (req) => {
 
   const { data: profile } = await admin
     .from("profiles")
-    .select("id, parish_id, role")
+    .select("id, role")
     .eq("id", user.id)
     .single();
 
-  if (!profile || !["staff", "admin", "pastor"].includes(profile.role)) {
+  if (!profile || !["staff", "admin"].includes(profile.role)) {
     return new Response(JSON.stringify({ error: "Forbidden: staff only" }), { status: 403 });
   }
 
@@ -58,10 +59,12 @@ Deno.serve(async (req) => {
   }
 
   // Monta a query de destinatários conforme o alvo
-  let profilesQuery = admin.from("profiles").select("id").eq("parish_id", profile.parish_id);
+  let profilesQuery = admin.from("profiles").select("id");
 
-  if (target_type === "role" && target_id) {
-    profilesQuery = profilesQuery.eq("role", target_id);
+  if (target_type === "color" && target_id) {
+    profilesQuery = profilesQuery.eq("evangelization_color", target_id);
+  } else if (target_type === "level" && target_id) {
+    profilesQuery = profilesQuery.eq("membership_level_id", target_id);
   } else if (target_type === "group" && target_id) {
     const { data: members } = await admin
       .from("group_members")
@@ -117,7 +120,6 @@ Deno.serve(async (req) => {
   }
 
   await admin.from("notifications_log").insert({
-    parish_id: profile.parish_id,
     title,
     body: message,
     target_type,

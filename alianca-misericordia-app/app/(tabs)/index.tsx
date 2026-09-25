@@ -5,26 +5,24 @@ import { router } from "expo-router";
 import { useTranslation } from "react-i18next";
 import { supabase } from "@/lib/supabase";
 import { useAuth } from "@/context/AuthContext";
-import { useParishContext, useTheme } from "@/context/ParishContext";
+import { useTheme } from "@/theme/colors";
 import { useDateLocale } from "@/lib/dateLocale";
-import { useLocalizedField } from "@/lib/localized";
 import { Card, SectionTitle, Badge } from "@/components/ui";
 import { colors } from "@/theme/colors";
-import type { DailyLiturgy, NewsPost, ParishEvent } from "@/types/database";
+import { EVANGELIZATION_COLORS, type CommunityEvent, type DailyLiturgy, type NewsPost } from "@/types/database";
 import { format } from "date-fns";
 
 export default function HomeScreen() {
   const { t, i18n } = useTranslation();
   const dateLocale = useDateLocale();
-  const localize = useLocalizedField();
   const theme = useTheme();
-  const { profile, isStaff } = useAuth();
-  const { parish } = useParishContext();
-  const parishId = parish?.id ?? null;
+  const { profile } = useAuth();
   const [liturgy, setLiturgy] = useState<DailyLiturgy | null>(null);
-  const [nextEvents, setNextEvents] = useState<ParishEvent[]>([]);
+  const [nextEvents, setNextEvents] = useState<CommunityEvent[]>([]);
   const [news, setNews] = useState<NewsPost[]>([]);
   const [refreshing, setRefreshing] = useState(false);
+
+  const colorInfo = EVANGELIZATION_COLORS.find((c) => c.value === profile?.evangelization_color);
 
   const load = useCallback(async () => {
     const today = new Date().toISOString().slice(0, 10);
@@ -41,30 +39,14 @@ export default function HomeScreen() {
             ? res
             : supabase.from("daily_liturgy").select("*").eq("date", today).eq("locale", "pt-BR").maybeSingle(),
         ),
-      parishId
-        ? supabase
-            .from("events")
-            .select("*")
-            .eq("parish_id", parishId)
-            .gte("start_at", new Date().toISOString())
-            .order("start_at", { ascending: true })
-            .limit(3)
-        : Promise.resolve({ data: [] as ParishEvent[] }),
-      parishId
-        ? supabase
-            .from("news_posts")
-            .select("*")
-            .eq("parish_id", parishId)
-            .not("published_at", "is", null)
-            .order("published_at", { ascending: false })
-            .limit(5)
-        : Promise.resolve({ data: [] as NewsPost[] }),
+      supabase.from("events").select("*").gte("start_at", new Date().toISOString()).order("start_at", { ascending: true }).limit(3),
+      supabase.from("news_posts").select("*").not("published_at", "is", null).order("published_at", { ascending: false }).limit(5),
     ]);
 
     setLiturgy(liturgyData as DailyLiturgy | null);
-    setNextEvents((eventsData as ParishEvent[]) ?? []);
+    setNextEvents((eventsData as CommunityEvent[]) ?? []);
     setNews((newsData as NewsPost[]) ?? []);
-  }, [parishId, i18n.language]);
+  }, [i18n.language]);
 
   useEffect(() => {
     load();
@@ -76,8 +58,6 @@ export default function HomeScreen() {
     setRefreshing(false);
   }
 
-  const showStatusBanner = isStaff && parish && parish.status !== "active";
-
   return (
     <ScrollView
       style={styles.screen}
@@ -85,13 +65,15 @@ export default function HomeScreen() {
       refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
     >
       <Text style={styles.greeting}>{t("home.greeting", { name: profile?.full_name?.split(" ")[0] ?? t("home.defaultName") })}</Text>
-      <Text style={styles.subGreeting}>{t("home.peaceMessage")}</Text>
-
-      {showStatusBanner && (
-        <Card style={styles.statusBanner}>
-          <Text style={styles.statusBannerText}>{t(`home.parishStatus.${parish.status}`)}</Text>
-        </Card>
+      {colorInfo && (
+        <View style={styles.colorRow}>
+          <View style={[styles.colorDot, { backgroundColor: colorInfo.hex }]} />
+          <Text style={styles.subGreeting}>
+            {colorInfo.label} · {colorInfo.group}
+          </Text>
+        </View>
       )}
+      {!colorInfo && <Text style={styles.subGreeting}>{t("home.peaceMessage")}</Text>}
 
       <Card style={[styles.liturgyCard, { backgroundColor: theme.primary }]} onPress={() => router.push("/(tabs)/more/liturgy")}>
         <View style={{ flexDirection: "row", justifyContent: "space-between", alignItems: "center" }}>
@@ -109,20 +91,20 @@ export default function HomeScreen() {
           <Text style={[styles.eventDate, { color: theme.secondary }]}>
             {format(new Date(event.start_at), "EEEE, dd MMMM · HH:mm", { locale: dateLocale })}
           </Text>
-          <Text style={styles.eventTitle}>{localize(event, "title")}</Text>
+          <Text style={styles.eventTitle}>{event.title}</Text>
           {event.location && <Text style={styles.eventLocation}>{event.location}</Text>}
         </Card>
       ))}
 
-      <SectionTitle>{t("home.parishNews")}</SectionTitle>
+      <SectionTitle>{t("home.news")}</SectionTitle>
       {news.length === 0 && <Text style={styles.emptyText}>{t("home.noNews")}</Text>}
       {news.map((item) => (
         <Card key={item.id} onPress={() => router.push(`/(tabs)/more/news/${item.id}`)}>
           {item.cover_image_url && (
             <Image source={{ uri: item.cover_image_url }} style={styles.newsImage} contentFit="cover" />
           )}
-          <Text style={styles.newsTitle}>{localize(item, "title")}</Text>
-          {item.subtitle && <Text style={styles.newsSubtitle}>{localize(item, "subtitle")}</Text>}
+          <Text style={styles.newsTitle}>{item.title}</Text>
+          {item.subtitle && <Text style={styles.newsSubtitle}>{item.subtitle}</Text>}
         </Card>
       ))}
     </ScrollView>
@@ -132,9 +114,9 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   screen: { flex: 1, backgroundColor: colors.background },
   greeting: { fontSize: 24, fontWeight: "700", color: colors.textPrimary },
+  colorRow: { flexDirection: "row", alignItems: "center", gap: 6, marginBottom: 20 },
+  colorDot: { width: 10, height: 10, borderRadius: 5 },
   subGreeting: { fontSize: 14, color: colors.textSecondary, marginBottom: 20 },
-  statusBanner: { backgroundColor: `${colors.warning}18`, borderColor: colors.warning },
-  statusBannerText: { color: colors.warning, fontWeight: "600", textAlign: "center" },
   liturgyCard: { borderWidth: 0 },
   liturgyLabel: { color: "#fff", fontWeight: "600", opacity: 0.9 },
   liturgyCelebration: { color: "#fff", fontSize: 17, fontWeight: "700", marginTop: 8 },

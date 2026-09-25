@@ -4,7 +4,6 @@ import * as FileSystem from "expo-file-system";
 import * as Sharing from "expo-sharing";
 import { useTranslation } from "react-i18next";
 import { supabase } from "@/lib/supabase";
-import { useParishId } from "@/hooks/useParish";
 import { Card, EmptyState, ScreenContainer } from "@/components/ui";
 import { colors } from "@/theme/colors";
 import type { DownloadItem } from "@/types/database";
@@ -17,18 +16,15 @@ function formatSize(bytes: number | null) {
 
 export default function DownloadsScreen() {
   const { t } = useTranslation();
-  const parishId = useParishId();
   const [items, setItems] = useState<DownloadItem[]>([]);
 
   useEffect(() => {
-    if (!parishId) return;
     supabase
       .from("downloads")
       .select("*")
-      .eq("parish_id", parishId)
       .order("created_at", { ascending: false })
       .then(({ data }) => setItems((data as DownloadItem[]) ?? []));
-  }, [parishId]);
+  }, []);
 
   async function handleDownload(item: DownloadItem) {
     const localUri = FileSystem.documentDirectory + item.title.replace(/\s+/g, "_");

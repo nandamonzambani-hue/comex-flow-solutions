@@ -6,25 +6,23 @@ import { useTranslation } from "react-i18next";
 import { supabase } from "@/lib/supabase";
 import { useAuth } from "@/context/AuthContext";
 import { useDateLocale } from "@/lib/dateLocale";
-import { useLocalizedField } from "@/lib/localized";
 import { Button, Card } from "@/components/ui";
 import { colors } from "@/theme/colors";
-import type { ParishEvent } from "@/types/database";
+import type { CommunityEvent } from "@/types/database";
 
 export default function EventDetailScreen() {
   const { t } = useTranslation();
   const dateLocale = useDateLocale();
-  const localize = useLocalizedField();
   const { id } = useLocalSearchParams<{ id: string }>();
   const { profile } = useAuth();
-  const [event, setEvent] = useState<ParishEvent | null>(null);
+  const [event, setEvent] = useState<CommunityEvent | null>(null);
   const [registered, setRegistered] = useState(false);
   const [registeredCount, setRegisteredCount] = useState(0);
   const [busy, setBusy] = useState(false);
 
   const load = useCallback(async () => {
     const { data: eventData } = await supabase.from("events").select("*").eq("id", id).single();
-    setEvent(eventData as ParishEvent);
+    setEvent(eventData as CommunityEvent);
 
     const { count } = await supabase
       .from("event_registrations")
@@ -70,9 +68,9 @@ export default function EventDetailScreen() {
       <Text style={styles.date}>
         {format(new Date(event.start_at), "EEEE, dd MMMM yyyy · HH:mm", { locale: dateLocale })}
       </Text>
-      <Text style={styles.title}>{localize(event, "title")}</Text>
+      <Text style={styles.title}>{event.title}</Text>
       {event.location && <Text style={styles.location}>📍 {event.location}</Text>}
-      {event.description && <Text style={styles.description}>{localize(event, "description")}</Text>}
+      {event.description && <Text style={styles.description}>{event.description}</Text>}
 
       {event.capacity != null && (
         <Card>

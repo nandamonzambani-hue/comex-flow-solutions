@@ -2,36 +2,34 @@ import { useEffect, useState } from "react";
 import { Alert, ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
 import { useTranslation } from "react-i18next";
 import { supabase } from "@/lib/supabase";
-import { useParishId } from "@/hooks/useParish";
-import { useLocalizedField } from "@/lib/localized";
 import { sendNotification } from "@/lib/notifications";
 import { Button, Card, SectionTitle } from "@/components/ui";
 import { colors } from "@/theme/colors";
-import type { Group, MemberRole } from "@/types/database";
+import { EVANGELIZATION_COLORS, type EvangelizationColor, type Group, type MembershipLevel } from "@/types/database";
 
-type TargetType = "all" | "group" | "role";
-
-const ROLES: MemberRole[] = ["member", "group_leader", "staff"];
+type TargetType = "all" | "group" | "color" | "level";
 
 export default function AdminNotificationsScreen() {
   const { t } = useTranslation();
-  const localize = useLocalizedField();
-  const parishId = useParishId();
   const [title, setTitle] = useState("");
   const [message, setMessage] = useState("");
   const [targetType, setTargetType] = useState<TargetType>("all");
   const [targetId, setTargetId] = useState<string | undefined>();
   const [groups, setGroups] = useState<Group[]>([]);
+  const [levels, setLevels] = useState<MembershipLevel[]>([]);
   const [sending, setSending] = useState(false);
 
   useEffect(() => {
-    if (!parishId) return;
     supabase
       .from("groups")
       .select("*")
-      .eq("parish_id", parishId)
       .then(({ data }) => setGroups((data as Group[]) ?? []));
-  }, [parishId]);
+    supabase
+      .from("membership_levels")
+      .select("*")
+      .order("sort_order")
+      .then(({ data }) => setLevels((data as MembershipLevel[]) ?? []));
+  }, []);
 
   async function handleSend() {
     setSending(true);
@@ -62,7 +60,7 @@ export default function AdminNotificationsScreen() {
 
       <SectionTitle>{t("admin.notifications.recipients")}</SectionTitle>
       <View style={styles.optionsRow}>
-        {(["all", "group", "role"] as TargetType[]).map((target) => (
+        {(["all", "group", "color", "level"] as TargetType[]).map((target) => (
           <Text
             key={target}
             style={[styles.option, targetType === target && styles.optionActive]}
@@ -84,17 +82,31 @@ export default function AdminNotificationsScreen() {
               style={[styles.option, targetId === g.id && styles.optionActive]}
               onPress={() => setTargetId(g.id)}
             >
-              {localize(g, "name")}
+              {g.name}
             </Text>
           ))}
         </View>
       )}
 
-      {targetType === "role" && (
+      {targetType === "color" && (
         <View style={styles.optionsRow}>
-          {ROLES.map((r) => (
-            <Text key={r} style={[styles.option, targetId === r && styles.optionActive]} onPress={() => setTargetId(r)}>
-              {t(`admin.members.roles.${r === "group_leader" ? "groupLeader" : r}`)}
+          {EVANGELIZATION_COLORS.map((c) => (
+            <Text
+              key={c.value}
+              style={[styles.option, targetId === (c.value as EvangelizationColor) && styles.optionActive]}
+              onPress={() => setTargetId(c.value)}
+            >
+              {c.label} ({c.group})
+            </Text>
+          ))}
+        </View>
+      )}
+
+      {targetType === "level" && (
+        <View style={styles.optionsRow}>
+          {levels.map((l) => (
+            <Text key={l.id} style={[styles.option, targetId === l.id && styles.optionActive]} onPress={() => setTargetId(l.id)}>
+              {l.name}
             </Text>
           ))}
         </View>

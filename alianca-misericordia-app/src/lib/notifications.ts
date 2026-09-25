@@ -49,7 +49,7 @@ export async function registerPushToken(profileId: string) {
 export async function sendNotification(params: {
   title: string;
   message: string;
-  target_type: "all" | "group" | "role";
+  target_type: "all" | "group" | "color" | "level";
   target_id?: string;
 }) {
   const { data, error } = await supabase.functions.invoke("send-push-notification", {

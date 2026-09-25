@@ -58,6 +58,14 @@ create table quiz_answers (
 
 -- Calcula e grava o resultado final de uma tentativa a partir das
 -- respostas já registradas (chamado pelo app ao enviar o quiz).
+--
+-- IMPORTANTE: o cliente nunca sabe qual opção é a correta (RLS de
+-- quiz_options bloqueia isso pra não-staff — ver 0004_rls_policies.sql),
+-- então o `is_correct` que ele manda ao inserir em quiz_answers não pode
+-- ser confiável. Esta função primeiro RECALCULA is_correct de cada
+-- resposta comparando selected_option_id com quiz_options.is_correct
+-- (que ela consegue ler por ser security definer) e só então conta os
+-- acertos — nunca confia no valor que já estava salvo na linha.
 create or replace function finalize_quiz_attempt(p_attempt_id uuid)
 returns void
 language plpgsql
@@ -74,6 +82,17 @@ begin
   if v_quiz_id is null then
     raise exception 'Tentativa não encontrada ou não pertence a este usuário.';
   end if;
+
+  update quiz_answers qa
+  set is_correct = coalesce(qo.is_correct, false)
+  from quiz_options qo
+  where qa.attempt_id = p_attempt_id
+    and qo.id = qa.selected_option_id;
+
+  -- Respostas sem opção selecionada (selected_option_id nulo) contam como erradas.
+  update quiz_answers
+  set is_correct = false
+  where attempt_id = p_attempt_id and selected_option_id is null;
 
   select count(*) filter (where is_correct), count(*)
     into v_correct, v_total

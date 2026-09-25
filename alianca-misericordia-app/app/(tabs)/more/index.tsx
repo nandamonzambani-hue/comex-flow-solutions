@@ -1,4 +1,4 @@
-import { Pressable, StyleSheet, Text, View } from "react-native";
+import { Linking, Pressable, StyleSheet, Text, View } from "react-native";
 import { router } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
 import { useTranslation } from "react-i18next";
@@ -6,8 +6,9 @@ import { useAuth } from "@/context/AuthContext";
 import { ScreenContainer } from "@/components/ui";
 import { colors } from "@/theme/colors";
 
+const SHOP_URL = "https://www.lojadamisericordia.com.br/";
+
 const MENU_ITEMS = [
-  { icon: "play-circle", key: "media.title", href: "/(tabs)/more/media" },
   { icon: "download", key: "downloads.title", href: "/(tabs)/more/downloads" },
   { icon: "newspaper", key: "news.title", href: "/(tabs)/more/news" },
   { icon: "book", key: "bible.title", href: "/(tabs)/more/bible" },
@@ -17,7 +18,7 @@ const MENU_ITEMS = [
 
 export default function MoreScreen() {
   const { t } = useTranslation();
-  const { isStaff, isPlatformAdmin, signOut } = useAuth();
+  const { isStaff, signOut } = useAuth();
 
   return (
     <ScreenContainer>
@@ -28,16 +29,14 @@ export default function MoreScreen() {
             <Text style={styles.itemLabel}>{t(item.key)}</Text>
           </Pressable>
         ))}
+        <Pressable style={styles.item} onPress={() => Linking.openURL(SHOP_URL)}>
+          <Ionicons name="storefront" size={30} color={colors.primary} />
+          <Text style={styles.itemLabel}>{t("shop.title")}</Text>
+        </Pressable>
         {isStaff && (
           <Pressable style={styles.item} onPress={() => router.push("/admin")}>
             <Ionicons name="settings" size={30} color={colors.primary} />
             <Text style={styles.itemLabel}>{t("admin.title")}</Text>
-          </Pressable>
-        )}
-        {isPlatformAdmin && (
-          <Pressable style={styles.item} onPress={() => router.push("/platform-admin")}>
-            <Ionicons name="server" size={30} color={colors.primary} />
-            <Text style={styles.itemLabel}>{t("platformAdmin.title")}</Text>
           </Pressable>
         )}
       </View>

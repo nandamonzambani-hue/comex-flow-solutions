@@ -8,6 +8,7 @@ import en from "./locales/en.json";
 import es from "./locales/es.json";
 import it from "./locales/it.json";
 import fr from "./locales/fr.json";
+import pl from "./locales/pl.json";
 
 export const SUPPORTED_LOCALES = [
   { code: "pt-BR", label: "Português", flag: "🇧🇷" },
@@ -15,6 +16,7 @@ export const SUPPORTED_LOCALES = [
   { code: "es", label: "Español", flag: "🇪🇸" },
   { code: "it", label: "Italiano", flag: "🇮🇹" },
   { code: "fr", label: "Français", flag: "🇫🇷" },
+  { code: "pl", label: "Polski", flag: "🇵🇱" },
 ] as const;
 
 export type LocaleCode = (typeof SUPPORTED_LOCALES)[number]["code"];
@@ -28,6 +30,7 @@ const resources = {
   es: { translation: es },
   it: { translation: it },
   fr: { translation: fr },
+  pl: { translation: pl },
 };
 
 function resolveDeviceLocale(): LocaleCode {

@@ -1,7 +1,7 @@
 import { Tabs } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
 import { useTranslation } from "react-i18next";
-import { useTheme } from "@/context/ParishContext";
+import { colors, useTheme } from "@/theme/colors";
 
 export default function TabsLayout() {
   const { t } = useTranslation();
@@ -12,12 +12,16 @@ export default function TabsLayout() {
       screenOptions={{
         headerShown: false,
         tabBarActiveTintColor: theme.primary,
-        tabBarInactiveTintColor: theme.textSecondary,
+        tabBarInactiveTintColor: colors.textSecondary,
       }}
     >
       <Tabs.Screen
         name="index"
         options={{ title: t("tabs.home"), tabBarIcon: ({ color, size }) => <Ionicons name="home" color={color} size={size} /> }}
+      />
+      <Tabs.Screen
+        name="videos"
+        options={{ title: t("tabs.videos"), tabBarIcon: ({ color, size }) => <Ionicons name="play-circle" color={color} size={size} /> }}
       />
       <Tabs.Screen
         name="events"
@@ -26,10 +30,6 @@ export default function TabsLayout() {
       <Tabs.Screen
         name="groups"
         options={{ title: t("tabs.groups"), tabBarIcon: ({ color, size }) => <Ionicons name="people" color={color} size={size} /> }}
-      />
-      <Tabs.Screen
-        name="giving"
-        options={{ title: t("tabs.giving"), tabBarIcon: ({ color, size }) => <Ionicons name="heart" color={color} size={size} /> }}
       />
       <Tabs.Screen
         name="more"

@@ -1,6 +1,5 @@
 import { ActivityIndicator, Pressable, StyleSheet, Text, View, type ViewProps } from "react-native";
-import { colors } from "@/theme/colors";
-import { useTheme } from "@/context/ParishContext";
+import { colors, useTheme } from "@/theme/colors";
 
 export function ScreenContainer({ style, ...props }: ViewProps) {
   return <View style={[styles.screen, style]} {...props} />;

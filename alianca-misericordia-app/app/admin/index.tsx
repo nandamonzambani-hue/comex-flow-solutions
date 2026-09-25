@@ -7,11 +7,9 @@ import { colors } from "@/theme/colors";
 
 const ITEMS = [
   { icon: "people", key: "admin.members.title", href: "/admin/members" },
-  { icon: "cash", key: "admin.finance.title", href: "/admin/finance" },
-  { icon: "newspaper", key: "admin.content.title", href: "/admin/content" },
+  { icon: "play-circle", key: "admin.content.title", href: "/admin/content" },
+  { icon: "help-circle", key: "admin.quizzes.title", href: "/admin/quizzes" },
   { icon: "notifications", key: "admin.notifications.title", href: "/admin/notifications" },
-  { icon: "sunny", key: "admin.liturgyEditor.title", href: "/admin/liturgy-editor" },
-  { icon: "card", key: "admin.subscription.title", href: "/admin/subscription" },
 ] as const;
 
 export default function AdminHomeScreen() {

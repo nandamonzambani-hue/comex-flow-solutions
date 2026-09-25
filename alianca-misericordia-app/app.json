@@ -1,22 +1,22 @@
 {
   "expo": {
-    "name": "Minha Paróquia",
-    "slug": "minha-paroquia",
+    "name": "Aliança da Misericórdia",
+    "slug": "alianca-da-misericordia",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
-    "scheme": "parishapp",
+    "scheme": "aliancamisericordia",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#7A1F2B"
+      "backgroundColor": "#8C1F28"
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "br.org.paroquiaexemplo.app",
+      "bundleIdentifier": "br.org.aliancadamisericordia.app",
       "infoPlist": {
         "UIBackgroundModes": ["remote-notification"],
         "NSCameraUsageDescription": "Usado para atualizar sua foto de perfil.",
@@ -24,16 +24,17 @@
       }
     },
     "android": {
-      "package": "br.org.paroquiaexemplo.app",
+      "package": "br.org.aliancadamisericordia.app",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#7A1F2B"
+        "backgroundColor": "#8C1F28"
       },
       "permissions": ["NOTIFICATIONS", "CAMERA", "READ_EXTERNAL_STORAGE", "WRITE_EXTERNAL_STORAGE"]
     },
     "web": {
       "favicon": "./assets/favicon.png",
-      "bundler": "metro"
+      "bundler": "metro",
+      "output": "single"
     },
     "plugins": [
       "expo-router",
@@ -42,14 +43,14 @@
         "expo-notifications",
         {
           "icon": "./assets/notification-icon.png",
-          "color": "#7A1F2B"
+          "color": "#8C1F28"
         }
       ],
       [
         "expo-splash-screen",
         {
           "image": "./assets/splash.png",
-          "backgroundColor": "#7A1F2B"
+          "backgroundColor": "#8C1F28"
         }
       ]
     ],
