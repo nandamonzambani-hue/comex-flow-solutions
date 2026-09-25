@@ -13,8 +13,7 @@ _Última atualização: 25/09/2026_
 O aplicativo **Minha Paróquia** ("Plataforma") é um produto SaaS operado
 por **Logos Agência Digital (CNPJ 29.949.426/0001-78)** ("nós"), que licencia o uso do
 aplicativo a paróquias e comunidades católicas independentes ("Paróquia
-Cliente"). Para dúvidas sobre privacidade, contate: **[e-mail do
-encarregado de dados / DPO]**.
+Cliente"). Para dúvidas sobre privacidade, contate: **contato@logosagencia.com.br**.
 
 **Estrutura de responsabilidade (controlador/operador):** nós somos
 controladores dos dados de conta e de uso da Plataforma (login, idioma,
