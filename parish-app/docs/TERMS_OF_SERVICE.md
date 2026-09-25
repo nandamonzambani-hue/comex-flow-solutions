@@ -1,4 +1,4 @@
-# Termos de Uso — [Nome da Paróquia]
+# Termos de Uso — [Nome do App]
 
 _Última atualização: [DATA]_
 
@@ -6,62 +6,84 @@ _Última atualização: [DATA]_
 
 ## 1. Aceite
 
-Ao criar uma conta e usar o app **[Nome do App]**, você concorda com estes
-Termos de Uso e com a nossa Política de Privacidade.
+Ao criar uma conta e usar o app **[Nome do App]** ("Plataforma"), você
+concorda com estes Termos de Uso e com a nossa Política de Privacidade.
+A Plataforma é operada por **[Nome da sua Empresa, CNPJ]** ("nós") e
+licenciada a paróquias e comunidades católicas independentes ("Paróquia
+Cliente").
 
 ## 2. Sobre o app
 
-O app é uma ferramenta de comunicação e gestão comunitária da **[Nome da
-Paróquia]**, oferecendo informações sobre eventos, pastorais, conteúdo
-formativo, liturgia diária e um canal para contribuições voluntárias
-(dízimo, ofertas, campanhas).
+A Plataforma é uma ferramenta de comunicação e gestão comunitária que
+paróquias contratam para oferecer aos seus membros: informações sobre
+eventos, pastorais, conteúdo formativo, liturgia diária e um canal para
+contribuições voluntárias (dízimo, ofertas, campanhas). Cada usuário
+final se vincula a uma Paróquia Cliente específica; o conteúdo e a
+administração que você vê são controlados por aquela paróquia, não por
+nós diretamente.
 
 ## 3. Cadastro e conta
 
 Você é responsável por manter a confidencialidade da sua senha e por
-todas as atividades realizadas na sua conta. Informe dados verdadeiros no
-cadastro.
+todas as atividades realizadas na sua conta. Informe dados verdadeiros
+no cadastro.
 
-## 4. Doações e contribuições
+## 4. Assinatura da Paróquia Cliente
 
-- Todas as contribuições feitas pelo app (dízimo, ofertas, campanhas) são
-  **voluntárias** e não conferem direito a produtos, serviços ou
+- A Paróquia Cliente contrata um plano pago para usar a Plataforma junto
+  à sua comunidade, com cobrança recorrente processada via Mercado
+  Pago.
+- O usuário final (membro da paróquia) **não paga pelo uso do app** —
+  apenas a paróquia, como cliente da Plataforma, é cobrada pela
+  assinatura.
+- Se uma paróquia deixar de pagar, o acesso da paróquia (e de seus
+  membros) aos recursos da Plataforma pode ser suspenso, conforme
+  descrito em `docs/SAAS_MODEL.md`.
+
+## 5. Doações e contribuições
+
+- Todas as contribuições feitas pelo app (dízimo, ofertas, campanhas)
+  são **voluntárias**, destinadas à Paróquia Cliente à qual você está
+  vinculado, e não conferem direito a produtos, serviços ou
   contrapartidas comerciais.
-- Pagamentos são processados por um gateway externo (Mercado Pago). A
-  paróquia não armazena dados do seu cartão.
-- Em caso de erro de cobrança, entre em contato em **[e-mail/telefone]**
-  para solicitar estorno, sujeito às regras do gateway de pagamento.
+- Pagamentos são processados por um gateway externo (Mercado Pago). Nem
+  a Plataforma nem a paróquia armazenam dados do seu cartão.
+- Em caso de erro de cobrança, entre em contato com sua paróquia ou em
+  **[e-mail/telefone]** para solicitar estorno, sujeito às regras do
+  gateway de pagamento.
 
-## 5. Conduta do usuário
+## 6. Conduta do usuário
 
-Ao usar recursos de interação (comentários, se habilitados; inscrição em
-grupos e eventos), você concorda em:
+Ao usar recursos de interação (inscrição em grupos e eventos), você
+concorda em:
 - Não publicar conteúdo ofensivo, discriminatório ou ilegal
 - Respeitar os demais membros da comunidade
-- Não usar o app para fins comerciais não autorizados pela paróquia
+- Não usar o app para fins comerciais não autorizados
 
-A administração pode suspender contas que violem estas regras.
+A administração da sua paróquia, ou nós, podemos suspender contas que
+violem estas regras.
 
-## 6. Propriedade do conteúdo
+## 7. Propriedade do conteúdo
 
-Textos, vídeos, imagens e materiais para download disponibilizados no app
-são de propriedade da **[Nome da Paróquia]** ou usados com autorização de
-seus respectivos titulares (ex.: editoras de conteúdo bíblico/litúrgico —
-ver `docs/CONTENT_GUIDE.md`). É proibida a redistribuição comercial sem
-autorização.
+Textos, vídeos, imagens e materiais para download disponibilizados no
+app são de propriedade da respectiva Paróquia Cliente que os publicou,
+ou usados com autorização de seus respectivos titulares (ex.: editoras
+de conteúdo bíblico/litúrgico — ver `docs/CONTENT_GUIDE.md`). É
+proibida a redistribuição comercial sem autorização.
 
-## 7. Disponibilidade do serviço
+## 8. Disponibilidade do serviço
 
-Buscamos manter o app disponível, mas não garantimos operação
+Buscamos manter a Plataforma disponível, mas não garantimos operação
 ininterrupta. Manutenções podem causar indisponibilidade temporária.
 
-## 8. Limitação de responsabilidade
+## 9. Limitação de responsabilidade
 
-O app é fornecido "como está". A paróquia não se responsabiliza por danos
-indiretos decorrentes do uso do aplicativo, dentro dos limites permitidos
-pela legislação brasileira (Código de Defesa do Consumidor, Marco Civil
-da Internet).
+A Plataforma é fornecida "como está". Não nos responsabilizamos por
+danos indiretos decorrentes do uso do aplicativo, nem pelo conteúdo
+publicado por cada Paróquia Cliente, dentro dos limites permitidos pela
+legislação brasileira (Código de Defesa do Consumidor, Marco Civil da
+Internet).
 
-## 9. Contato
+## 10. Contato
 
 Dúvidas sobre estes termos: **[e-mail de contato]**.
