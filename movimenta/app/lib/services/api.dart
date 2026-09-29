@@ -5,8 +5,10 @@ import '../models/models.dart';
 /// Acesso aos dados do Supabase. As regras de segurança (RLS) ficam no banco;
 /// aqui só montamos as consultas.
 class Api {
-  Api._();
-  static final instance = Api._();
+  Api();
+
+  /// Substituível no modo demonstração (lib/demo/).
+  static Api instance = Api();
 
   SupabaseClient get _db => Supabase.instance.client;
   String? get userId => _db.auth.currentUser?.id;

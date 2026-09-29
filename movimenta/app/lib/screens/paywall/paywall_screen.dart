@@ -1,5 +1,4 @@
-import 'dart:io' show Platform;
-
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:purchases_flutter/purchases_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -35,7 +34,7 @@ class _PaywallScreenState extends State<PaywallScreen> {
   String? _loadError;
   bool _busy = false;
 
-  String get _storeName => Platform.isIOS ? 'App Store' : 'Google Play';
+  String get _storeName => defaultTargetPlatform == TargetPlatform.iOS ? 'App Store' : 'Google Play';
 
   @override
   void initState() {
@@ -149,7 +148,7 @@ class _PaywallScreenState extends State<PaywallScreen> {
   }
 
   List<Widget> _purchaseSection() {
-    if (!PurchasesService.enabled) {
+    if (!PurchasesService.enabled && PurchasesService.demoPackages == null) {
       return [
         const Text('Compras indisponíveis nesta versão (RevenueCat não configurado).', textAlign: TextAlign.center),
       ];

@@ -11,7 +11,8 @@ import 'services/purchases_service.dart';
 /// Estado global mínimo: sessão, perfil e assinatura da aluna.
 /// O roteador escuta este objeto para decidir entre login, onboarding e app.
 class AppState extends ChangeNotifier {
-  AppState() {
+  AppState({bool listenToAuth = true}) {
+    if (!listenToAuth) return;
     _sub = Supabase.instance.client.auth.onAuthStateChange.listen((event) {
       if (event.event == AuthChangeEvent.signedOut) {
         profile = null;
@@ -30,7 +31,7 @@ class AppState extends ChangeNotifier {
 
   static late AppState instance;
 
-  late final StreamSubscription<AuthState> _sub;
+  StreamSubscription<AuthState>? _sub;
   Profile? profile;
   Subscription subscription = Subscription.none;
   bool loadingProfile = false;
@@ -57,7 +58,7 @@ class AppState extends ChangeNotifier {
 
   @override
   void dispose() {
-    _sub.cancel();
+    _sub?.cancel();
     super.dispose();
   }
 }

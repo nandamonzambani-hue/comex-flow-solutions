@@ -19,6 +19,9 @@ class PurchasesService {
   static void Function()? onChanged;
   static Timer? _debounce;
 
+  /// Planos fictícios para o modo demonstração (sem loja).
+  static List<Package>? demoPackages;
+
   static String get _apiKey {
     if (kIsWeb) return '';
     if (Platform.isIOS) return AppConfig.revenueCatAppleKey;
@@ -70,6 +73,7 @@ class PurchasesService {
 
   /// Planos configurados na oferta "atual" do RevenueCat (mensal, anual...).
   static Future<List<Package>> packages() async {
+    if (demoPackages != null) return demoPackages!;
     if (!enabled) return const [];
     final offerings = await Purchases.getOfferings();
     final list = [...?offerings.current?.availablePackages];

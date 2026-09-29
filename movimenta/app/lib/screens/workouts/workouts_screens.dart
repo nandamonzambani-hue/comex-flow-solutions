@@ -196,69 +196,98 @@ class _WorkoutDetailScreenState extends State<WorkoutDetailScreen> {
             );
           }
           final locked = !workout.isFree && !AppState.instance.isSubscriber;
-          return CustomScrollView(
-            slivers: [
-              SliverAppBar(
-                expandedHeight: 220,
-                pinned: true,
-                actions: [
-                  IconButton(
-                    icon: Icon(_favorite! ? Icons.favorite : Icons.favorite_border),
-                    onPressed: _toggleFavorite,
+          return Stack(
+            children: [
+              CustomScrollView(
+                slivers: [
+                  SliverAppBar(
+                    expandedHeight: 220,
+                    pinned: true,
+                    actions: [FavoriteButton(active: _favorite!, onPressed: _toggleFavorite)],
+                    flexibleSpace: FlexibleSpaceBar(background: NetImage(workout.coverUrl, radius: 0)),
                   ),
-                ],
-                flexibleSpace: FlexibleSpaceBar(background: NetImage(workout.coverUrl, radius: 0)),
-              ),
-              SliverPadding(
-                padding: const EdgeInsets.all(20),
-                sliver: SliverList.list(
-                  children: [
-                    Text(workout.title, style: const TextStyle(fontSize: 24, fontWeight: FontWeight.w800)),
-                    const SizedBox(height: 10),
-                    Wrap(
-                      spacing: 6,
-                      runSpacing: 6,
+                  SliverPadding(
+                    padding: const EdgeInsets.all(20),
+                    sliver: SliverList.list(
                       children: [
-                        Pill(levelLabels[workout.level] ?? workout.level, icon: Icons.signal_cellular_alt),
-                        if (workout.durationMinutes != null)
-                          Pill('${workout.durationMinutes} min', icon: Icons.timer_outlined),
-                        if (steps.isNotEmpty) Pill('${steps.length} exercícios', icon: Icons.format_list_numbered),
+                        Text(workout.title, style: const TextStyle(fontSize: 24, fontWeight: FontWeight.w800)),
+                        const SizedBox(height: 10),
+                        Wrap(
+                          spacing: 6,
+                          runSpacing: 6,
+                          children: [
+                            Pill(levelLabels[workout.level] ?? workout.level, icon: Icons.signal_cellular_alt),
+                            if (workout.durationMinutes != null)
+                              Pill('${workout.durationMinutes} min', icon: Icons.timer_outlined),
+                            if (steps.isNotEmpty) Pill('${steps.length} exercícios', icon: Icons.format_list_numbered),
+                          ],
+                        ),
+                        if (workout.description != null) ...[
+                          const SizedBox(height: 14),
+                          Text(workout.description!, style: const TextStyle(height: 1.5)),
+                        ],
+                        const SectionTitle('Exercícios'),
+                        if (locked)
+                          MessageViewCard(
+                            icon: Icons.lock_outline,
+                            title: 'Treino exclusivo para assinantes',
+                            action: FilledButton(
+                              onPressed: () => context.push('/assinatura'),
+                              child: const Text('Saiba mais'),
+                            ),
+                          )
+                        else if (steps.isEmpty)
+                          const Text('Este treino ainda não tem exercícios.')
+                        else
+                          ...steps.map((s) => _StepTile(step: s)),
+                        const SizedBox(height: 90),
                       ],
                     ),
-                    if (workout.description != null) ...[
-                      const SizedBox(height: 14),
-                      Text(workout.description!, style: const TextStyle(height: 1.5)),
-                    ],
-                    const SectionTitle('Exercícios'),
-                    if (locked)
-                      MessageViewCard(
-                        icon: Icons.lock_outline,
-                        title: 'Treino exclusivo para assinantes',
-                        action: FilledButton(
+                  ),
+                ],
+              ),
+              Positioned(
+                left: 20,
+                right: 20,
+                bottom: 16,
+                child: SafeArea(
+                  top: false,
+                  child: locked
+                      ? FilledButton.icon(
+                          icon: const Icon(Icons.lock_open_rounded),
+                          label: const Text('Assinar para liberar'),
                           onPressed: () => context.push('/assinatura'),
-                          child: const Text('Saiba mais'),
+                        )
+                      : FilledButton.icon(
+                          icon: const Icon(Icons.play_arrow_rounded),
+                          label: const Text('Começar treino'),
+                          onPressed: steps.isEmpty ? null : () => context.push('/treinos/${widget.workoutId}/executar'),
                         ),
-                      )
-                    else if (steps.isEmpty)
-                      const Text('Este treino ainda não tem exercícios.')
-                    else
-                      ...steps.map((s) => _StepTile(step: s)),
-                    const SizedBox(height: 90),
-                  ],
                 ),
               ),
             ],
           );
         },
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButton: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: FilledButton.icon(
-          icon: const Icon(Icons.play_arrow_rounded),
-          label: const Text('Começar treino'),
-          onPressed: () => context.push('/treinos/${widget.workoutId}/executar'),
-        ),
+    );
+  }
+}
+
+/// Coração de favorito legível sobre fotos (fundo branco translúcido).
+class FavoriteButton extends StatelessWidget {
+  const FavoriteButton({super.key, required this.active, required this.onPressed});
+  final bool active;
+  final VoidCallback onPressed;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(right: 8),
+      child: IconButton(
+        style: IconButton.styleFrom(backgroundColor: Colors.white.withValues(alpha: 0.85)),
+        tooltip: active ? 'Remover dos favoritos' : 'Favoritar',
+        icon: Icon(active ? Icons.favorite : Icons.favorite_border, color: Theme.of(context).colorScheme.primary),
+        onPressed: onPressed,
       ),
     );
   }

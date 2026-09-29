@@ -5,7 +5,7 @@ import '../../app_state.dart';
 import '../../models/models.dart';
 import '../../services/api.dart';
 import '../../widgets/common.dart';
-import '../workouts/workouts_screens.dart' show MessageViewCard;
+import '../workouts/workouts_screens.dart' show FavoriteButton, MessageViewCard;
 
 class NutritionScreen extends StatelessWidget {
   const NutritionScreen({super.key});
@@ -220,9 +220,7 @@ class _RecipeScreenState extends State<RecipeScreen> {
               SliverAppBar(
                 expandedHeight: 240,
                 pinned: true,
-                actions: [
-                  IconButton(icon: Icon(_favorite! ? Icons.favorite : Icons.favorite_border), onPressed: _toggle),
-                ],
+                actions: [FavoriteButton(active: _favorite!, onPressed: _toggle)],
                 flexibleSpace: FlexibleSpaceBar(
                   background: NetImage(recipe.imageUrl, radius: 0, icon: Icons.restaurant),
                 ),
