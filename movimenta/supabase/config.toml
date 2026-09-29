@@ -1,0 +1,19 @@
+# Configuração do Supabase CLI (supabase start / supabase functions deploy)
+project_id = "movimenta"
+
+[api]
+schemas = ["public", "storage"]
+
+[auth]
+site_url = "http://localhost:3000"
+additional_redirect_urls = ["movimenta://login-callback"]
+
+[auth.email]
+enable_confirmations = true
+
+# Webhooks externos não enviam o JWT do Supabase: a assinatura deles é conferida no código.
+[functions.stripe-webhook]
+verify_jwt = false
+
+[functions.stream-webhook]
+verify_jwt = false
