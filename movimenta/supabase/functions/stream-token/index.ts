@@ -1,7 +1,8 @@
 // App: devolve a URL de reprodução assinada de um vídeo, se a aluna puder assisti-lo.
-// Vídeos de treinos gratuitos liberam para todas; os demais exigem assinatura ativa.
+// Vídeos de treinos gratuitos liberam para todas; os demais exigem assinatura ativa
+// (a administração pode assistir a todos para conferir o conteúdo).
 import { HttpError, json, serve } from "../_shared/http.ts";
-import { adminClient, hasActiveSubscription, requireUser } from "../_shared/supabase.ts";
+import { adminClient, hasActiveSubscription, isAdmin, requireUser } from "../_shared/supabase.ts";
 import { playbackUrls, signStreamToken } from "../_shared/cloudflare.ts";
 
 serve(async (req) => {
@@ -25,7 +26,7 @@ serve(async (req) => {
     .limit(1);
 
   const isFree = (free?.length ?? 0) > 0;
-  if (!isFree && !(await hasActiveSubscription(user.id))) {
+  if (!isFree && !(await hasActiveSubscription(user.id)) && !(await isAdmin(user.id))) {
     throw new HttpError("Conteúdo exclusivo para assinantes", 402);
   }
 

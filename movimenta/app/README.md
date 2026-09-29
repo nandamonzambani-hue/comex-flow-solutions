@@ -1,17 +1,23 @@
-# movimenta
+# Movimenta — app (Flutter)
 
-App de treinos e nutrição para mulheres
+```bash
+cp env.example.json env.json      # preencha SUPABASE_URL e SUPABASE_ANON_KEY
+flutter pub get
+flutter run --dart-define-from-file=env.json
+```
 
-## Getting Started
+Firebase (push, analytics, crashlytics) é opcional no desenvolvimento. Para ativar:
 
-This project is a starting point for a Flutter application.
+```bash
+dart pub global activate flutterfire_cli
+flutterfire configure   # gera lib/firebase_options.dart e os arquivos nativos
+```
 
-A few resources to get you started if this is your first Flutter project:
+Builds de loja:
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+```bash
+flutter build appbundle --dart-define-from-file=env.json   # Google Play
+flutter build ipa --dart-define-from-file=env.json         # App Store (em um Mac)
+```
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Veja o README na pasta `movimenta/` para a configuração completa.

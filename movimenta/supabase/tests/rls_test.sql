@@ -52,6 +52,13 @@ exception when others then
   raise notice 'ok: não registra treino em nome de outra aluna';
 end $$;
 do $$ begin
+  perform public.admin_list_students();
+  raise exception 'deveria ter bloqueado a lista de alunas';
+exception when others then
+  if sqlerrm like 'deveria%' then raise; end if;
+  raise notice 'ok: aluna não lista outras alunas';
+end $$;
+do $$ begin
   insert into public.workouts (title) values ('invasão');
   raise exception 'deveria ter bloqueado';
 exception when others then
@@ -74,6 +81,10 @@ set role authenticated;
 select set_config('request.jwt.claim.sub', '00000000-0000-0000-0000-00000000000a', false);
 select pg_temp.check('admin vê os 3 treinos', (select count(*) from public.workouts) = 3);
 select pg_temp.check('admin vê todos os perfis', (select count(*) from public.profiles) = 3);
+select pg_temp.check('admin lista alunas com e-mail',
+  (select count(*) = 2 and bool_and(email is not null) and max(total_count) = 2 from public.admin_list_students()));
+select pg_temp.check('busca de alunas por e-mail',
+  (select count(*) = 1 from public.admin_list_students('assinante@')));
 select pg_temp.check('painel: 2 alunas, 1 assinante', (select total_users = 2 and active_subscribers = 1 from public.admin_dashboard()));
 insert into public.workouts (title) values ('Novo treino pela admin');
 reset role;

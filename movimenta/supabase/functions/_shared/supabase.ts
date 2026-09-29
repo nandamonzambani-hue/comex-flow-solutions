@@ -17,10 +17,14 @@ export async function requireUser(req: Request): Promise<User> {
   return data.user;
 }
 
+export async function isAdmin(userId: string): Promise<boolean> {
+  const { data } = await adminClient().from("profiles").select("role").eq("id", userId).maybeSingle();
+  return data?.role === "admin";
+}
+
 export async function requireAdmin(req: Request): Promise<User> {
   const user = await requireUser(req);
-  const { data } = await adminClient().from("profiles").select("role").eq("id", user.id).single();
-  if (data?.role !== "admin") throw new HttpError("Acesso restrito à administração", 403);
+  if (!(await isAdmin(user.id))) throw new HttpError("Acesso restrito à administração", 403);
   return user;
 }
 
