@@ -58,21 +58,53 @@ class Profile {
 }
 
 class Subscription {
-  Subscription({required this.status, this.currentPeriodEnd, required this.cancelAtPeriodEnd});
+  Subscription({
+    required this.status,
+    this.currentPeriodEnd,
+    required this.cancelAtPeriodEnd,
+    this.source = 'site',
+    this.productId,
+    this.billingIssue = false,
+  });
 
   final String status;
   final DateTime? currentPeriodEnd;
   final bool cancelAtPeriodEnd;
 
+  /// site (Stripe), app_store, play_store ou promotional.
+  final String source;
+  final String? productId;
+  final bool billingIssue;
+
   bool get isActive =>
       (status == 'active' || status == 'trialing') &&
       (currentPeriodEnd == null || currentPeriodEnd!.isAfter(DateTime.now()));
 
+  bool get fromStore => source == 'app_store' || source == 'play_store';
+
+  /// Assinatura do site (tabela subscriptions).
   factory Subscription.fromMap(Map<String, dynamic> m) => Subscription(
     status: m['status'] as String,
     currentPeriodEnd: m['current_period_end'] == null ? null : DateTime.parse(m['current_period_end'] as String),
     cancelAtPeriodEnd: (m['cancel_at_period_end'] as bool?) ?? false,
   );
+
+  /// Assinatura das lojas (tabela store_subscriptions, alimentada pelo RevenueCat).
+  factory Subscription.fromStoreMap(Map<String, dynamic> m) => Subscription(
+    status: m['status'] as String,
+    currentPeriodEnd: m['current_period_end'] == null ? null : DateTime.parse(m['current_period_end'] as String),
+    cancelAtPeriodEnd: !((m['will_renew'] as bool?) ?? false),
+    source: (m['store'] as String?) ?? 'app_store',
+    productId: m['product_id'] as String?,
+    billingIssue: (m['billing_issue'] as bool?) ?? false,
+  );
+
+  /// Escolhe a assinatura que vale: a ativa (preferindo a da loja) ou, se nenhuma, a mais recente conhecida.
+  static Subscription pick(Subscription? site, Subscription? store) {
+    if (store != null && store.isActive) return store;
+    if (site != null && site.isActive) return site;
+    return site ?? store ?? none;
+  }
 
   static final none = Subscription(status: 'inactive', cancelAtPeriodEnd: false);
 }

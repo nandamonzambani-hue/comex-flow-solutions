@@ -9,10 +9,14 @@ import { callFunction, supabase } from "@/lib/supabase";
 import { useAuth } from "@/lib/useAuth";
 
 type Sub = { status: string; current_period_end: string | null; cancel_at_period_end: boolean };
+type StoreSub = { store: string; status: string; current_period_end: string | null; will_renew: boolean };
+
+const storeNames: Record<string, string> = { app_store: "App Store (iPhone)", play_store: "Google Play (Android)" };
 
 export default function Conta() {
   const { session, profile, loading } = useAuth();
   const [sub, setSub] = useState<Sub | null>(null);
+  const [storeSub, setStoreSub] = useState<StoreSub | null>(null);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
 
@@ -24,7 +28,17 @@ export default function Conta() {
       .eq("user_id", session.user.id)
       .maybeSingle()
       .then(({ data }) => setSub(data as Sub | null));
+    supabase()
+      .from("store_subscriptions")
+      .select("store, status, current_period_end, will_renew")
+      .eq("user_id", session.user.id)
+      .maybeSingle()
+      .then(({ data }) => setStoreSub(data as StoreSub | null));
   }, [session]);
+
+  const storeActive =
+    storeSub && ["active", "trialing"].includes(storeSub.status) &&
+    (!storeSub.current_period_end || new Date(storeSub.current_period_end) > new Date());
 
   const active =
     sub && ["active", "trialing"].includes(sub.status) &&
@@ -63,7 +77,7 @@ export default function Conta() {
                       {formatDate(sub?.current_period_end)}
                     </p>
                   </>
-                ) : (
+                ) : storeActive ? null : (
                   <span className="badge">Sem assinatura ativa</span>
                 )}
               </div>
@@ -73,7 +87,16 @@ export default function Conta() {
                   Gerenciar pagamento, faturas e cancelamento
                 </button>
               ) : null}
-              {!active && <Link href="/assinar" className="btn block">Assinar</Link>}
+              {storeActive && (
+                <div>
+                  <span className="badge green">Assinatura ativa pela {storeNames[storeSub!.store] ?? storeSub!.store}</span>
+                  <p className="small muted">
+                    {storeSub!.will_renew ? "Renova em " : "Acesso até "}{formatDate(storeSub!.current_period_end)}.
+                    Para gerenciar ou cancelar, use as configurações de assinaturas da loja no seu celular.
+                  </p>
+                </div>
+              )}
+              {!active && !storeActive && <Link href="/assinar" className="btn block">Assinar</Link>}
             </div>
             <div className="row">
               <button className="btn ghost" onClick={() => supabase().auth.signOut()}>Sair</button>

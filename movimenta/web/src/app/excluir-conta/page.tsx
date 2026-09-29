@@ -34,7 +34,9 @@ export default function ExcluirConta() {
         <h1>Excluir conta</h1>
         <p className="muted">
           A exclusão apaga permanentemente seu perfil, medidas, histórico de treinos e favoritos, e cancela a
-          assinatura ativa. Registros de pagamento podem ser mantidos pelo prazo exigido em lei.
+          assinatura feita pelo site. <strong>Assinaturas feitas pelo app (App Store ou Google Play) precisam ser
+          canceladas na própria loja</strong>, antes de excluir a conta. Registros de pagamento podem ser mantidos
+          pelo prazo exigido em lei.
         </p>
         {done ? (
           <div className="card"><p className="ok">Sua conta foi excluída.</p></div>

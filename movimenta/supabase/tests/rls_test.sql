@@ -3,7 +3,10 @@
 insert into auth.users (id, email, raw_user_meta_data) values
   ('00000000-0000-0000-0000-00000000000a', 'admin@x.com', '{"full_name":"Admin"}'),
   ('00000000-0000-0000-0000-00000000000b', 'assinante@x.com', '{"full_name":"Bia"}'),
-  ('00000000-0000-0000-0000-00000000000c', 'gratis@x.com', '{"full_name":"Carla"}');
+  ('00000000-0000-0000-0000-00000000000c', 'gratis@x.com', '{"full_name":"Carla"}'),
+  ('00000000-0000-0000-0000-00000000000d', 'loja@x.com', '{"full_name":"Duda"}');
+insert into public.store_subscriptions (user_id, store, product_id, status, current_period_end)
+  values ('00000000-0000-0000-0000-00000000000d', 'app_store', 'movimenta_mensal', 'active', now() + interval '30 days');
 update public.profiles set role = 'admin' where id = '00000000-0000-0000-0000-00000000000a';
 insert into public.subscriptions (user_id, status, current_period_end)
   values ('00000000-0000-0000-0000-00000000000b', 'active', now() + interval '20 days');
@@ -67,6 +70,30 @@ exception when others then
 end $$;
 reset role;
 
+-- ---------------- assinante pela App Store (RevenueCat)
+set role authenticated;
+select set_config('request.jwt.claim.sub', '00000000-0000-0000-0000-00000000000d', false);
+select pg_temp.check('assinante da loja tem premium', public.has_active_subscription());
+select pg_temp.check('assinante da loja vê exercícios premium', (select count(*) from public.workout_exercises) = 2);
+select pg_temp.check('assinante da loja lê a própria assinatura', (select count(*) from public.store_subscriptions) = 1);
+do $$ begin
+  update public.store_subscriptions set current_period_end = now() + interval '10 years';
+  if found then raise exception 'deveria ter bloqueado'; end if;
+  raise notice 'ok: aluna não altera a assinatura da loja';
+end $$;
+do $$ begin
+  insert into public.store_subscriptions (user_id, store, status) values ('00000000-0000-0000-0000-00000000000d', 'x', 'active');
+  raise exception 'deveria ter bloqueado';
+exception when others then
+  if sqlerrm like 'deveria%' then raise; end if;
+  raise notice 'ok: aluna não cria assinatura da loja';
+end $$;
+reset role;
+select set_config('request.jwt.claim.sub', '00000000-0000-0000-0000-00000000000c', false);
+set role authenticated;
+select pg_temp.check('gratuita não vê assinatura de outra', (select count(*) from public.store_subscriptions) = 0);
+reset role;
+
 -- ---------------- assinante
 set role authenticated;
 select set_config('request.jwt.claim.sub', '00000000-0000-0000-0000-00000000000b', false);
@@ -80,12 +107,14 @@ reset role;
 set role authenticated;
 select set_config('request.jwt.claim.sub', '00000000-0000-0000-0000-00000000000a', false);
 select pg_temp.check('admin vê os 3 treinos', (select count(*) from public.workouts) = 3);
-select pg_temp.check('admin vê todos os perfis', (select count(*) from public.profiles) = 3);
+select pg_temp.check('admin vê todos os perfis', (select count(*) from public.profiles) = 4);
 select pg_temp.check('admin lista alunas com e-mail',
-  (select count(*) = 2 and bool_and(email is not null) and max(total_count) = 2 from public.admin_list_students()));
+  (select count(*) = 3 and bool_and(email is not null) and max(total_count) = 3 from public.admin_list_students()));
+select pg_temp.check('lista mostra assinatura da App Store',
+  (select subscription_status = 'active' and subscription_source = 'app_store' from public.admin_list_students('loja@')));
 select pg_temp.check('busca de alunas por e-mail',
   (select count(*) = 1 from public.admin_list_students('assinante@')));
-select pg_temp.check('painel: 2 alunas, 1 assinante', (select total_users = 2 and active_subscribers = 1 from public.admin_dashboard()));
+select pg_temp.check('painel: 3 alunas, 2 assinantes', (select total_users = 3 and active_subscribers = 2 from public.admin_dashboard()));
 insert into public.workouts (title) values ('Novo treino pela admin');
 reset role;
 

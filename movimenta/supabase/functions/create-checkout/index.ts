@@ -1,7 +1,7 @@
 // Cria uma sessão de Checkout do Stripe para a assinatura.
 // Chamada pelo SITE (não pelo app iOS — ver README sobre regras das lojas).
 import { env, HttpError, json, serve } from "../_shared/http.ts";
-import { adminClient, requireUser } from "../_shared/supabase.ts";
+import { adminClient, hasActiveSubscription, requireUser } from "../_shared/supabase.ts";
 import { stripeClient } from "../_shared/stripe.ts";
 
 serve(async (req) => {
@@ -15,7 +15,8 @@ serve(async (req) => {
   const db = adminClient();
   const { data: sub } = await db.from("subscriptions").select("*").eq("user_id", user.id).maybeSingle();
 
-  if (sub && ["active", "trialing"].includes(sub.status)) {
+  // Vale para o site e para as lojas: evita cobrar duas vezes quem já assina pelo app.
+  if ((sub && ["active", "trialing"].includes(sub.status)) || (await hasActiveSubscription(user.id))) {
     throw new HttpError("Você já tem uma assinatura ativa", 409);
   }
 

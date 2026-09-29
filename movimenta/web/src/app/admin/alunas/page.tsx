@@ -16,7 +16,10 @@ type Student = {
   workouts_done: number;
   last_workout_at: string | null;
   total_count: number;
+  subscription_source: string | null;
 };
+
+const sourceLabels: Record<string, string> = { app_store: "App Store", play_store: "Google Play", site: "Site", promotional: "Cortesia" };
 
 const PAGE = 50;
 
@@ -50,10 +53,10 @@ export default function Alunas() {
   }
 
   function exportCsv() {
-    const header = ["nome", "email", "objetivo", "nivel", "cadastro", "assinatura", "treinos", "ultimo_treino"];
+    const header = ["nome", "email", "objetivo", "nivel", "cadastro", "assinatura", "origem", "treinos", "ultimo_treino"];
     const lines = rows.map((s) => [
       s.full_name ?? "", s.email, goalLabels[s.goal ?? ""] ?? "", levelLabels[s.level] ?? "",
-      formatDate(s.created_at), isActive(s) ? "ativa" : s.subscription_status, s.workouts_done, formatDate(s.last_workout_at),
+      formatDate(s.created_at), isActive(s) ? "ativa" : s.subscription_status, sourceLabels[s.subscription_source ?? ""] ?? "", s.workouts_done, formatDate(s.last_workout_at),
     ].map((v) => `"${String(v).replaceAll('"', '""')}"`).join(","));
     const blob = new Blob([[header.join(","), ...lines].join("\n")], { type: "text/csv;charset=utf-8" });
     const a = document.createElement("a");
@@ -89,7 +92,7 @@ export default function Alunas() {
                 <td>{formatDate(s.created_at)}</td>
                 <td>
                   {isActive(s)
-                    ? <span className="badge green">{s.subscription_status === "trialing" ? "teste" : "ativa"}</span>
+                    ? <span className="badge green">{s.subscription_status === "trialing" ? "teste" : "ativa"} · {sourceLabels[s.subscription_source ?? ""] ?? s.subscription_source}</span>
                     : <span className="badge">{s.subscription_status === "inactive" ? "grátis" : s.subscription_status}</span>}
                 </td>
                 <td>{s.workouts_done}</td>

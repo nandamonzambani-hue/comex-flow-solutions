@@ -15,14 +15,16 @@ os vídeos **não** passam nem ficam no servidor do app.
   (Next.js na Vercel)                     │ Cloudflare Stream  │◄── upload direto do
                                           │ (vídeos HLS)       │    navegador da admin
                                           └────────────────────┘
-  Stripe Billing (assinatura, site)  ·  Firebase (push, analytics, crashlytics)
+  App Store / Google Play + RevenueCat (assinatura no app)  ·  Stripe (opcional, site)
+  Firebase (push, analytics, crashlytics)
 ```
 
 | Pasta | O que tem |
 |---|---|
 | `supabase/migrations` | Banco completo com RLS: perfis, assinaturas, vídeos, exercícios, treinos, histórico, medidas, receitas, cardápios, desafios, favoritos, dispositivos e notificações |
-| `supabase/functions` | `create-checkout`, `customer-portal` e `stripe-webhook` (Stripe); `stream-upload`, `stream-token`, `stream-webhook`, `stream-sync` e `stream-delete` (Cloudflare Stream); `send-push` (FCM); `delete-account` |
-| `supabase/tests` | Testes das regras de acesso (21 verificações) |
+| `supabase/functions` | `revenuecat-webhook` e `revenuecat-sync` (compras na App Store e no Google Play); `create-checkout`, `customer-portal` e `stripe-webhook` (Stripe, só no site); `stream-upload`, `stream-token`, `stream-webhook`, `stream-sync` e `stream-delete` (Cloudflare Stream); `send-push` (FCM); `delete-account` |
+| `supabase/tests` | Testes das regras de acesso (28 verificações) |
+| `supabase/functions/tests` | Testes da sincronização com o RevenueCat |
 | `supabase/seed.sql` | Conteúdo de exemplo |
 | `app/` | App Flutter: login, cadastro, onboarding, início, treinos com player (séries e descanso), exercícios em vídeo, favoritos, receitas, cardápios, evolução (peso, medidas, gráfico), histórico, desafios, perfil, assinatura e exclusão de conta |
 | `web/` | Next.js: site público (landing, `/assinar`, `/conta`, `/redefinir-senha`, `/excluir-conta`, `/privacidade`) e painel `/admin` (alunas, treinos, exercícios, vídeos, receitas, cardápios, desafios, notificações) |
@@ -70,7 +72,9 @@ os vídeos **não** passam nem ficam no servidor do app.
 
 Todos os vídeos são enviados com `requireSignedURLs`. O app pede um link temporário, válido por 4 horas, e só recebe o link quem tem direito: vídeos de treinos gratuitos, assinantes e administração.
 
-## 3. Stripe (assinatura)
+## 3. Stripe (opcional: assinatura pelo site)
+
+As compras no app são configuradas na seção "Compras dentro do app", mais abaixo. O Stripe só é necessário se você também quiser vender pelo site. Se não quiser, deixe `/assinar` sem planos (`NEXT_PUBLIC_PRICE_*` vazios).
 
 1. Crie o produto e os preços recorrentes, por exemplo mensal e anual, em BRL.
 2. Em **Developers → Webhooks**, aponte para `https://SEU_REF.supabase.co/functions/v1/stripe-webhook` com os eventos:
@@ -114,13 +118,69 @@ Veja `app/README.md`. O resumo:
 
 ---
 
-## ⚠️ Regras das lojas sobre a venda da assinatura
+## Compras dentro do app (App Store e Google Play)
 
-- **Apple (App Store).** Conteúdo digital vendido *dentro* do app precisa usar a compra da Apple (IAP, diretriz 3.1.1). Este projeto vende a assinatura **no site, com Stripe**. No iOS o app **não mostra botão nem link de compra** (`AppConfig.showExternalPurchaseLink`), apenas libera o acesso de quem já assinou.
-  - A diretriz 3.1.3(b), para serviços multiplataforma, prevê que o conteúdo também esteja disponível por IAP. Por isso há risco de rejeição na revisão.
-  - O caminho mais seguro é adicionar a assinatura via IAP no iOS, por exemplo com RevenueCat gravando na mesma tabela `subscriptions`. A outra opção é confirmar as regras vigentes para o Brasil antes de enviar.
-- **Google Play.** Assinaturas digitais usam o Google Play Billing, salvo programas de faturamento alternativo, que variam por país. O link de compra externo no Android vem **desligado** (`ANDROID_EXTERNAL_PURCHASE=false`).
-- **Exclusão de conta.** Já está implementada no app (Perfil → Excluir minha conta) e na web (`/excluir-conta`), atendendo à Apple, ao Google Play e à LGPD.
+As assinaturas no app são vendidas **pela própria loja**: App Store no iPhone e Google Play no Android. Isso segue as regras de pagamento das duas lojas para conteúdo digital. O **RevenueCat** valida os recibos das duas lojas e avisa o Supabase.
+
+```
+App ──compra──► App Store / Google Play ──recibo──► RevenueCat
+ │                                                     │ webhook
+ └──► revenuecat-sync (acelera)            revenuecat-webhook
+                    └──────► store_subscriptions ◄─────┘
+                               has_active_subscription() libera treinos, vídeos, cardápios
+```
+
+- A aluna é identificada no RevenueCat pelo **mesmo id do Supabase**. Por isso a assinatura vale em qualquer aparelho em que ela entrar com a mesma conta.
+- O servidor **não confia no conteúdo do webhook**: a cada evento, busca o estado atual na API do RevenueCat. Isso cobre renovação, cancelamento, reembolso, período de carência, troca de plano e transferência.
+- O site continua vendendo pelo Stripe, **opcionalmente** e só na web. O app **nunca** mostra link para o site.
+- Quem assinar pelo site também tem acesso no app. Quem já assina pela loja não consegue pagar de novo no site.
+
+### Passo a passo
+
+**1. App Store Connect**
+1. Em *Business*, aceite o **Paid Apps Agreement** e preencha os dados bancários e fiscais. Sem isso, as compras não funcionam, nem em teste.
+2. No app, abra *Monetization → Subscriptions* e crie um **grupo de assinaturas** (ex.: "Movimenta Premium").
+3. Crie os produtos `movimenta_mensal` e `movimenta_anual`, com preço, nome e descrição em português. Se quiser teste grátis, configure uma *Introductory Offer*.
+4. Crie uma chave de **In-App Purchase** em *Users and Access → Integrations* (ela vai para o RevenueCat).
+5. No Xcode, abra *Runner → Signing & Capabilities* e adicione **In-App Purchase**.
+
+**2. Google Play Console**
+1. Crie o app com o pacote `br.com.movimenta.movimenta` e envie uma primeira versão para o teste interno. Os produtos só podem ser criados depois de haver um build com a biblioteca de faturamento.
+2. Em *Monetize → Subscriptions*, crie `movimenta_mensal` e `movimenta_anual`, cada um com um *base plan*. O teste grátis é uma *offer*.
+3. Em *Monetize → Monetization setup*, abra o pagamento.
+4. Crie uma **conta de serviço** no Google Cloud com acesso ao Play Console (ela vai para o RevenueCat). Siga o guia do RevenueCat.
+
+**3. RevenueCat** (app.revenuecat.com)
+1. Crie o projeto e adicione os apps **App Store** e **Play Store**, com as chaves dos passos anteriores.
+2. Em *Entitlements*, crie o entitlement `premium` e associe os 4 produtos (2 por loja).
+3. Em *Offerings*, deixe a oferta `default` como *current*, com os pacotes **$rc_monthly** e **$rc_annual**. O app mostra exatamente o que estiver aqui, então dá para mudar planos e preços sem publicar nova versão.
+4. Em *Integrations → Webhooks*:
+   - URL: `https://SEU_REF.supabase.co/functions/v1/revenuecat-webhook`
+   - *Authorization header*: invente um segredo longo, por exemplo `Bearer 3f9c...`, e use o **mesmo valor** em `REVENUECAT_WEBHOOK_AUTH`.
+5. Em *API keys*:
+   - as chaves **públicas** (`appl_...` e `goog_...`) vão no `env.json` do app;
+   - a chave **secreta** (`sk_...`) vai em `REVENUECAT_SECRET_API_KEY`, nas funções, e nunca no app.
+
+**4. Testes de compra**
+- **iPhone:**
+  1. Crie *Sandbox testers* no App Store Connect.
+  2. No aparelho, entre com o testador em *Ajustes → App Store → Conta sandbox*.
+  3. Rode o app pelo Xcode ou pelo TestFlight.
+  4. No sandbox, as renovações são aceleradas: 1 mês ≈ 5 minutos.
+- **Android:**
+  1. Adicione seu e-mail em *License testing* no Play Console.
+  2. Instale o app pelo link do **teste interno**. Instalado via `flutter run`, as compras não aparecem.
+- Compras de teste também liberam o acesso. Isso é necessário para a equipe de revisão da Apple e do Google.
+
+### Checklist da revisão das lojas (já implementado no app)
+- Nome, duração e preço de cada plano, com teste grátis quando houver, na tela de assinatura.
+- Texto sobre renovação automática e como cancelar, com links para os **termos de uso** e a **política de privacidade**.
+  - Os termos usam o EULA padrão da Apple. Troque por `TERMS_URL` no `env.json` se tiver termos próprios.
+  - No App Store Connect, informe a URL da política (`/privacidade`).
+- Botão **Restaurar compras**.
+- Link **Gerenciar assinatura**, que abre as assinaturas da App Store ou do Google Play.
+- **Exclusão de conta** no app e na web. Se houver assinatura da loja ativa, o app avisa que ela precisa ser cancelada na loja, porque a exclusão não interrompe a cobrança da Apple ou do Google.
+- Nenhum link ou botão para comprar fora da loja.
 
 ## Custos (referência do planejamento)
 
@@ -130,7 +190,9 @@ Veja `app/README.md`. O resumo:
 | Cloudflare Stream | US$ 5 por 1.000 min armazenados + US$ 1 por 1.000 min assistidos | Escala por uso |
 | Firebase (FCM, Analytics, Crashlytics) | Grátis | Grátis |
 | Vercel | Hobby (grátis) | Pro: US$ 20/mês (obrigatório para uso comercial) |
-| Stripe | 3,99% + R$ 0,39 por cobrança + 0,7% do Billing | — |
+| Apple / Google (compras no app) | 15% no Small Business Program da Apple (até US$ 1 mi/ano) e 15% em assinaturas no Google Play | 30% na Apple acima de US$ 1 mi/ano |
+| RevenueCat | Grátis até US$ 2.500/mês de receita | 1% da receita acima disso |
+| Stripe (só vendas pelo site) | 3,99% + R$ 0,39 por cobrança + 0,7% do Billing | — |
 | Lojas | Apple US$ 99/ano · Google US$ 25 (uma vez) | — |
 
 Confira os preços nos sites oficiais antes de lançar: eles mudam com frequência.
@@ -149,7 +211,7 @@ Confira os preços nos sites oficiais antes de lançar: eles mudam com frequênc
 # App
 cd app && flutter analyze && flutter test
 # Funções
-cd supabase/functions && deno check */index.ts && deno lint
+cd supabase/functions && deno check */index.ts && deno lint && deno test --allow-env --allow-net tests/
 # Site/painel
 cd web && npm install && npm run build
 # Regras de acesso (Postgres local): aplica tests/supabase_stub.sql, migrations e tests/rls_test.sql

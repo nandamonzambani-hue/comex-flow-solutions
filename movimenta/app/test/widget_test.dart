@@ -27,6 +27,43 @@ void main() {
     });
   });
 
+  group('Assinatura das lojas', () {
+    final future = DateTime.now().add(const Duration(days: 20)).toIso8601String();
+    final past = DateTime.now().subtract(const Duration(days: 2)).toIso8601String();
+
+    test('lê a assinatura da App Store', () {
+      final s = Subscription.fromStoreMap({
+        'store': 'app_store',
+        'status': 'trialing',
+        'current_period_end': future,
+        'will_renew': true,
+        'product_id': 'movimenta_anual',
+      });
+      expect(s.isActive, isTrue);
+      expect(s.fromStore, isTrue);
+      expect(s.cancelAtPeriodEnd, isFalse);
+    });
+
+    test('prefere a assinatura ativa, venha de onde vier', () {
+      final siteExpired = Subscription.fromMap({'status': 'canceled', 'current_period_end': past});
+      final storeActive = Subscription.fromStoreMap({
+        'store': 'play_store',
+        'status': 'active',
+        'current_period_end': future,
+      });
+      expect(Subscription.pick(siteExpired, storeActive).source, 'play_store');
+
+      final siteActive = Subscription.fromMap({'status': 'active', 'current_period_end': future});
+      final storeExpired = Subscription.fromStoreMap({
+        'store': 'app_store',
+        'status': 'expired',
+        'current_period_end': past,
+      });
+      expect(Subscription.pick(siteActive, storeExpired).source, 'site');
+      expect(Subscription.pick(null, null).isActive, isFalse);
+    });
+  });
+
   test('WorkoutStep monta a prescrição', () {
     final step = WorkoutStep.fromMap({
       'position': 1,

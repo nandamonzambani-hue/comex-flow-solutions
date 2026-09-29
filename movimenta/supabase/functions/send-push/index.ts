@@ -22,12 +22,13 @@ serve(async (req) => {
   } else {
     const { data: devices, error } = await db.from("devices").select("token, user_id");
     if (error) throw error;
-    const { data: subs } = await db.from("subscriptions").select("user_id, status, current_period_end");
+    // Assinantes do site (Stripe) e das lojas (App Store / Google Play).
+    const { data: subs, error: subsError } = await db.rpc("active_subscriber_ids");
+    if (subsError) throw subsError;
     const active = new Set(
-      (subs ?? [])
-        .filter((s) => ["active", "trialing"].includes(s.status) &&
-          (!s.current_period_end || new Date(s.current_period_end) > new Date()))
-        .map((s) => s.user_id),
+      ((subs ?? []) as unknown[]).map((v) =>
+        typeof v === "string" ? v : (v as { active_subscriber_ids: string }).active_subscriber_ids
+      ),
     );
     const targets = (devices ?? []).filter((d) =>
       audience === "assinantes" ? active.has(d.user_id) : !active.has(d.user_id)
@@ -45,8 +46,13 @@ serve(async (req) => {
   }
 
   await db.from("notifications").insert({
-    title, body, audience, deep_link: link ?? null,
-    sent_by: admin.id, sent_at: new Date().toISOString(), recipients,
+    title,
+    body,
+    audience,
+    deep_link: link ?? null,
+    sent_by: admin.id,
+    sent_at: new Date().toISOString(),
+    recipients,
   });
   return json({ ok: true, recipients });
 });

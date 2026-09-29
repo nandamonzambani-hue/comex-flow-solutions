@@ -19,16 +19,43 @@ class ProfileScreen extends StatelessWidget {
     await Supabase.instance.client.auth.signOut();
   }
 
+  static String _storeName(String source) => source == 'play_store' ? 'Google Play' : 'App Store';
+
+  /// Assinaturas das lojas só podem ser gerenciadas/canceladas na própria loja.
+  static Future<void> _manageStoreSubscription(Subscription sub) async {
+    final url = sub.source == 'play_store'
+        ? 'https://play.google.com/store/account/subscriptions?package=${AppConfig.androidPackage}'
+              '${sub.productId == null ? '' : '&sku=${Uri.encodeComponent(sub.productId!.split(':').first)}'}'
+        : 'https://apps.apple.com/account/subscriptions';
+    await launchUrl(Uri.parse(url), mode: LaunchMode.externalApplication);
+  }
+
   Future<void> _deleteAccount(BuildContext context) async {
+    final sub = AppState.instance.subscription;
+    final storeActive = sub.isActive && sub.fromStore;
     final ok = await showDialog<bool>(
       context: context,
       builder: (c) => AlertDialog(
         title: const Text('Excluir conta?'),
-        content: const Text(
+        content: Text(
           'Todos os seus dados (medidas, histórico, favoritos) serão apagados permanentemente. '
-          'Se você tiver uma assinatura ativa, ela será cancelada. Essa ação não pode ser desfeita.',
+          'Essa ação não pode ser desfeita.'
+          '${storeActive
+              ? '\n\nAtenção: sua assinatura foi feita pela ${_storeName(sub.source)} e NÃO é cancelada '
+                    'ao excluir a conta. Cancele antes em "Gerenciar assinatura" para não ser cobrada.'
+              : sub.isActive
+              ? '\n\nSua assinatura será cancelada.'
+              : ''}',
         ),
         actions: [
+          if (storeActive)
+            TextButton(
+              onPressed: () {
+                Navigator.pop(c, false);
+                _manageStoreSubscription(sub);
+              },
+              child: const Text('Gerenciar assinatura'),
+            ),
           TextButton(onPressed: () => Navigator.pop(c, false), child: const Text('Cancelar')),
           TextButton(
             style: TextButton.styleFrom(foregroundColor: Colors.red),
@@ -117,9 +144,18 @@ class ProfileScreen extends StatelessWidget {
                     ),
                     subtitle: Text(_subscriptionText(sub)),
                     trailing: const Icon(Icons.chevron_right),
-                    onTap: () => sub.isActive && AppConfig.showExternalPurchaseLink
-                        ? launchUrl(Uri.parse('${AppConfig.siteUrl}/conta'), mode: LaunchMode.externalApplication)
-                        : context.push('/assinatura'),
+                    onTap: () {
+                      if (!sub.isActive) {
+                        context.push('/assinatura');
+                      } else if (sub.fromStore) {
+                        _manageStoreSubscription(sub);
+                      } else {
+                        showSnack(
+                          context,
+                          'Sua assinatura foi feita pelo site. Gerencie em ${AppConfig.siteUrl}/conta.',
+                        );
+                      }
+                    },
                   ),
                 ),
                 const SectionTitle('Mais'),
@@ -169,6 +205,8 @@ class ProfileScreen extends StatelessWidget {
   String _subscriptionText(Subscription s) {
     if (!s.isActive) return 'Toque para conhecer os benefícios.';
     final end = s.currentPeriodEnd == null ? null : DateFormat('dd/MM/yyyy').format(s.currentPeriodEnd!.toLocal());
+    if (s.billingIssue) return 'Problema na cobrança — atualize o pagamento na ${_storeName(s.source)}';
+    if (s.currentPeriodEnd == null) return 'Acesso liberado';
     if (s.status == 'trialing') return 'Período de teste${end == null ? '' : ' até $end'}';
     if (s.cancelAtPeriodEnd) return 'Cancelada — acesso até $end';
     return end == null ? 'Renovação automática' : 'Renova em $end';

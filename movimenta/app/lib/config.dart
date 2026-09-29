@@ -1,7 +1,3 @@
-import 'dart:io' show Platform;
-
-import 'package:flutter/foundation.dart';
-
 /// Configuração lida em tempo de build:
 /// flutter run --dart-define-from-file=env.json
 class AppConfig {
@@ -10,15 +6,21 @@ class AppConfig {
   static const supabaseAnonKey = String.fromEnvironment('SUPABASE_ANON_KEY');
   static const siteUrl = String.fromEnvironment('SITE_URL', defaultValue: 'https://movimenta.com.br');
 
-  static bool get isConfigured => supabaseUrl.isNotEmpty && supabaseAnonKey.isNotEmpty;
+  /// Chaves PÚBLICAS do RevenueCat (Project settings → API keys): appl_... e goog_...
+  static const revenueCatAppleKey = String.fromEnvironment('REVENUECAT_APPLE_KEY');
+  static const revenueCatGoogleKey = String.fromEnvironment('REVENUECAT_GOOGLE_KEY');
+  static const revenueCatEntitlement = String.fromEnvironment('REVENUECAT_ENTITLEMENT', defaultValue: 'premium');
 
-  /// As regras da App Store (3.1.1) exigem compra dentro do app para conteúdo digital,
-  /// salvo exceções. Por isso, no iOS o app NÃO mostra link de compra: a assinatura é
-  /// feita no site e o app apenas libera o acesso (modelo "multiplataforma", 3.1.3(b)).
-  /// No Android, confira as regras vigentes do Google Play antes de ativar.
-  static bool get showExternalPurchaseLink {
-    if (kIsWeb) return true;
-    if (Platform.isIOS) return false;
-    return const bool.fromEnvironment('ANDROID_EXTERNAL_PURCHASE', defaultValue: false);
-  }
+  /// Identificador do app no Google Play (usado no link "gerenciar assinatura").
+  static const androidPackage = 'br.com.movimenta.movimenta';
+
+  static String get privacyUrl => '$siteUrl/privacidade';
+
+  /// Termos de uso exigidos pela Apple para assinaturas: por padrão, o EULA padrão da Apple.
+  static const termsUrl = String.fromEnvironment(
+    'TERMS_URL',
+    defaultValue: 'https://www.apple.com/legal/internet-services/itunes/dev/stdeula/',
+  );
+
+  static bool get isConfigured => supabaseUrl.isNotEmpty && supabaseAnonKey.isNotEmpty;
 }

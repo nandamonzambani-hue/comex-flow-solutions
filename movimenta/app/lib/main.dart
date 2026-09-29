@@ -8,6 +8,7 @@ import 'app_state.dart';
 import 'config.dart';
 import 'router.dart';
 import 'services/firebase_services.dart';
+import 'services/purchases_service.dart';
 import 'theme.dart';
 
 Future<void> main() async {
@@ -21,6 +22,7 @@ Future<void> main() async {
 
   await FirebaseServices.init();
   await Supabase.initialize(url: AppConfig.supabaseUrl, publishableKey: AppConfig.supabaseAnonKey);
+  await PurchasesService.init(userId: Supabase.instance.client.auth.currentUser?.id);
 
   AppState.instance = AppState();
   runApp(MovimentaApp(state: AppState.instance));

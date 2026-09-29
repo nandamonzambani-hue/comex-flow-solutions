@@ -26,8 +26,14 @@ class Api {
   Future<Subscription> mySubscription() async {
     final uid = userId;
     if (uid == null) return Subscription.none;
-    final row = await _db.from('subscriptions').select().eq('user_id', uid).maybeSingle();
-    return row == null ? Subscription.none : Subscription.fromMap(row);
+    final rows = await Future.wait([
+      _db.from('subscriptions').select().eq('user_id', uid).maybeSingle(),
+      _db.from('store_subscriptions').select().eq('user_id', uid).maybeSingle(),
+    ]);
+    return Subscription.pick(
+      rows[0] == null ? null : Subscription.fromMap(rows[0]!),
+      rows[1] == null ? null : Subscription.fromStoreMap(rows[1]!),
+    );
   }
 
   Future<Stats> myStats() async {
