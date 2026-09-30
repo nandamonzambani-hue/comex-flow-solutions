@@ -91,35 +91,40 @@ para a fonte correta; registre a versão em `bible_versions` com o
 que a tela de Bíblia a selecione automaticamente quando o app estiver
 naquele idioma.
 
-## Liturgia Diária
+## Liturgia Diária — já automática, funcionando em produção
 
-Não existe uma API pública e oficialmente mantida pela CNBB ou Vaticano
-para as leituras do dia. Três caminhos:
+A Edge Function `daily-liturgy-sync` busca as leituras do dia na API
+pública **liturgia.up.railway.app** (mantida pela comunidade, usada por
+vários apps católicos brasileiros) e grava em `daily_liturgy`.
 
-1. **Alimentar manualmente**: a tela `admin/liturgy-editor.tsx` permite
-   que alguém da equipe de liturgia digite a leitura do dia — funciona
-   bem para uma única paróquia com um voluntário responsável. A tela tem
-   uma aba por idioma (`daily_liturgy` guarda uma linha por
-   `data + idioma`); na prática, a maioria das paróquias só preenche
-   português e deixa os outros idiomas para quando houver um
-   voluntário/fonte disponível — o app cai automaticamente para o texto
-   em português quando a tradução não existe, então nada fica quebrado.
-2. **Usar um provedor comunitário**: existem projetos open-source que
-   disponibilizam a liturgia diária em JSON (busque "liturgia diária API"
-   no GitHub). Configure `LITURGY_API_URL` na Edge Function
-   `daily-liturgy-sync` apontando para ele. **Valide a licença de uso**
-   antes de ir para produção — muitos desses projetos são para fins
-   educacionais/pessoais.
-3. **Negociar acesso a uma fonte oficial diocesana**, se a diocese tiver
-   um feed próprio.
+**Atenção a um detalhe não óbvio dessa API**: o path de data é
+`DD-MM-AAAA`, não ISO (`AAAA-MM-DD`) — `/v2/2026-09-30` dá 404,
+`/v2/30-09-2026` funciona. Isso já estava causando a liturgia ficar
+travada (a function rodava mas nunca encontrava dados); corrigido em
+`toApiDate()` no arquivo da function.
 
-Agende `daily-liturgy-sync` para rodar todo dia de madrugada:
+**Configuração em produção (feita nesta sessão):**
+- Function implantada (v2, com o fix de data) via API de gerenciamento
+  do Supabase.
+- `pg_cron` habilitado + job `daily-liturgy-sync-weekly` agendado para
+  toda segunda-feira às 06:00 UTC (`0 6 * * 1`), chamando a function via
+  `pg_net` com `days=60` — mantém um horizonte rolante de 60 dias à
+  frente sempre preenchido, sem precisar de intervenção manual.
+- Horizonte inicial populado manualmente até 01/02/2027 (~120 dias) para
+  já ter conteúdo enquanto o cron assume a manutenção contínua.
 
-```bash
-supabase functions deploy daily-liturgy-sync
-# no painel Supabase: Edge Functions > daily-liturgy-sync > Cron
-# expressão: 0 6 * * *  (06:00 UTC = 03:00 em Brasília)
-```
+Para conferir/alterar o agendamento: `select * from cron.job;` no SQL
+Editor, ou `select cron.alter_job(...)` / `cron.unschedule(...)`.
+
+Se quiser trocar de fonte no futuro (ex: feed oficial de uma diocese),
+edite `SOURCE_BASE` em `supabase/functions/daily-liturgy-sync/index.ts`
+e reimplante — o resto da lógica (mapeamento de campos, upsert) só
+precisa mudar se o formato da resposta for diferente.
+
+A tela `admin/liturgy-editor.tsx` continua disponível para ajuste fino
+manual (ex: uma reflexão especial do pároco) ou para preencher outros
+idiomas além de pt-BR, que essa API não oferece — o app cai
+automaticamente para o texto em português quando a tradução não existe.
 
 ## Notícias, vídeos e downloads
 

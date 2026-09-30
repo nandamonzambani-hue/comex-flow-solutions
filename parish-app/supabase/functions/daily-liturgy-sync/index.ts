@@ -55,6 +55,16 @@ function toIsoDate(d: Date): string {
   return d.toISOString().slice(0, 10);
 }
 
+// A API liturgia.up.railway.app espera o formato DD-MM-AAAA no path, não
+// ISO (AAAA-MM-DD) — confirmado testando diretamente: /v2/2026-09-30
+// retorna 404, /v2/30-09-2026 retorna os dados certos. Guardamos o
+// registro em ISO (isoDate) como chave da tabela; esta função só formata
+// a URL de busca.
+function toApiDate(isoDate: string): string {
+  const [y, m, d] = isoDate.split("-");
+  return `${d}-${m}-${y}`;
+}
+
 function mapSeason(celebration: string | undefined): string | null {
   if (!celebration) return null;
   const c = celebration.toLowerCase();
@@ -91,7 +101,7 @@ Deno.serve(async (req) => {
 
   async function syncOneDate(isoDate: string) {
     try {
-      const resp = await fetch(`${SOURCE_BASE}/${isoDate}`);
+      const resp = await fetch(`${SOURCE_BASE}/${toApiDate(isoDate)}`);
       if (!resp.ok) {
         failed.push({ date: isoDate, reason: `HTTP ${resp.status}` });
         return;

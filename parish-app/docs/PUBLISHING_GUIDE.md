@@ -163,7 +163,9 @@ adicione mais conforme a demanda.
 ## Checklist rápido antes de qualquer submissão
 
 - [x] Cadastro/confirmação de e-mail/criação de perfil testados de ponta a ponta (SMTP Resend)
-- [ ] Testado login, dízimo (Pix sandbox), push notification, liturgia do dia
+- [x] Bíblia (73 livros, Figueiredo), banners e quiz aplicados no banco de produção
+- [x] Liturgia diária automática (Edge Function corrigida + cron semanal via pg_cron, horizonte de 60 dias sempre à frente)
+- [ ] Testado login, dízimo (Pix sandbox), push notification
 - [ ] `.env` de produção aponta para o projeto Supabase de produção (não o de dev)
 - [x] Ícones e splash finais (cruz dourada sobre bordô, não mais placeholders)
 - [x] Política de privacidade e termos publicados em URL pública —
