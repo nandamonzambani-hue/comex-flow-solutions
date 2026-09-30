@@ -166,7 +166,8 @@ adicione mais conforme a demanda.
 - [x] Bíblia (73 livros, Figueiredo), banners e quiz aplicados no banco de produção
 - [x] Liturgia diária automática (Edge Function corrigida + cron semanal via pg_cron, horizonte de 60 dias sempre à frente)
 - [ ] Testado login, dízimo (Pix sandbox), push notification
-- [ ] `.env` de produção aponta para o projeto Supabase de produção (não o de dev)
+- [x] `.env` de produção aponta para o projeto Supabase de produção (não o de dev)
+- [ ] Rebuild + redeploy do site (Cloudflare Pages) — a versão no ar é anterior aos eventos/banners/quiz/ícones novos
 - [x] Ícones e splash finais (cruz dourada sobre bordô, não mais placeholders)
 - [x] Política de privacidade e termos publicados em URL pública —
       https://claude.ai/artifact/LwN3X8Psko77uSWRNjsY4v (lembre de compartilhar publicamente)
