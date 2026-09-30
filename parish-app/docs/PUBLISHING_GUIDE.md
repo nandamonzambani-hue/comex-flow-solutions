@@ -172,7 +172,9 @@ adicione mais conforme a demanda.
 - [ ] Testado login, dízimo (Pix sandbox — depende da paróquia de teste ter
       conectado o Mercado Pago), push notification
 - [x] `.env` de produção aponta para o projeto Supabase de produção (não o de dev)
-- [ ] Rebuild + redeploy do site (Cloudflare Pages) — a versão no ar é anterior aos eventos/banners/quiz/ícones novos
+- [x] Rebuild + redeploy do site (Cloudflare Pages) — publicado em
+      https://paroquia-app-preview.pages.dev com tudo em dia (avisos,
+      Mercado Pago Connect, banners, quiz, ícones)
 - [x] Ícones e splash finais (cruz dourada sobre bordô, não mais placeholders)
 - [x] Política de privacidade e termos publicados em URL pública —
       https://claude.ai/artifact/LwN3X8Psko77uSWRNjsY4v (lembre de compartilhar publicamente)
