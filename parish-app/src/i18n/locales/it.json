@@ -49,7 +49,8 @@
       "past_due": "C'è un problema con il pagamento dell'abbonamento della parrocchia. Risolvilo per evitare interruzioni.",
       "suspended": "L'abbonamento della parrocchia è sospeso. Contatta l'amministrazione per riattivarlo.",
       "cancelled": "L'abbonamento della parrocchia è stato annullato."
-    }
+    },
+    "announcements": "Avvisi"
   },
   "events": {
     "title": "Eventi",
@@ -193,7 +194,20 @@
       "confirmed": "Confermato",
       "pending": "In attesa",
       "byMethod": "Per metodo di pagamento",
-      "recentTransactions": "Transazioni recenti"
+      "recentTransactions": "Transazioni recenti",
+      "mercadoPago": {
+        "title": "Mercado Pago",
+        "status": "Stato dell'account",
+        "connected": "Connesso",
+        "notConnected": "Non connesso",
+        "connect": "Collega Mercado Pago",
+        "reconnect": "Ricollega Mercado Pago",
+        "connectedSince": "Connesso dal {{date}}",
+        "explanation": "Collega il proprio account Mercado Pago della parrocchia affinché decime e donazioni arrivino direttamente ad esso, senza passare dalla piattaforma.",
+        "onlyAdmin": "Solo l'amministratore/parroco può collegare il Mercado Pago della parrocchia.",
+        "startError": "Non è stato possibile avviare la connessione con Mercado Pago.",
+        "connectError": "La connessione con Mercado Pago non è stata completata. Riprova."
+      }
     },
     "content": {
       "title": "Contenuti",
@@ -316,6 +330,21 @@
       "choosePlan": "Scegli un piano",
       "subscribe": "Abbonati",
       "trialUntil": "Prova gratuita fino al {{date}}"
+    },
+    "announcements": {
+      "title": "Avvisi",
+      "hint": "Comunicati brevi e a tempo limitato (es: cambio orario Messa, confessioni straordinarie). Diverso dalle Notizie — più rapido e diretto, senza immagine.",
+      "titlePlaceholder": "Titolo dell'avviso",
+      "bodyPlaceholder": "Testo dell'avviso",
+      "pinned": "Fissa in alto",
+      "active": "Attivo",
+      "create": "Pubblica avviso",
+      "save": "Salva modifiche",
+      "current": "Avvisi pubblicati",
+      "empty": "Nessun avviso ancora.",
+      "inactive": "Non attivo",
+      "deleteTitle": "Elimina avviso",
+      "deleteConfirm": "Sei sicuro di voler eliminare questo avviso?"
     }
   },
   "onboarding": {

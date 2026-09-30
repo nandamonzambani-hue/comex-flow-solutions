@@ -49,7 +49,8 @@
       "past_due": "Il y a un problème avec le paiement de l'abonnement de la paroisse. Régularisez pour éviter une interruption.",
       "suspended": "L'abonnement de la paroisse est suspendu. Contactez l'administration pour le réactiver.",
       "cancelled": "L'abonnement de la paroisse a été annulé."
-    }
+    },
+    "announcements": "Annonces"
   },
   "events": {
     "title": "Événements",
@@ -193,7 +194,20 @@
       "confirmed": "Confirmé",
       "pending": "En attente",
       "byMethod": "Par moyen de paiement",
-      "recentTransactions": "Transactions récentes"
+      "recentTransactions": "Transactions récentes",
+      "mercadoPago": {
+        "title": "Mercado Pago",
+        "status": "Statut du compte",
+        "connected": "Connecté",
+        "notConnected": "Non connecté",
+        "connect": "Connecter Mercado Pago",
+        "reconnect": "Reconnecter Mercado Pago",
+        "connectedSince": "Connecté depuis le {{date}}",
+        "explanation": "Connectez le propre compte Mercado Pago de la paroisse afin que la dîme et les dons y arrivent directement, sans passer par la plateforme.",
+        "onlyAdmin": "Seul l'administrateur/curé peut connecter le Mercado Pago de la paroisse.",
+        "startError": "Impossible de démarrer la connexion avec Mercado Pago.",
+        "connectError": "La connexion avec Mercado Pago n'a pas abouti. Réessayez."
+      }
     },
     "content": {
       "title": "Contenu",
@@ -316,6 +330,21 @@
       "choosePlan": "Choisissez un forfait",
       "subscribe": "S'abonner",
       "trialUntil": "Essai gratuit jusqu'au {{date}}"
+    },
+    "announcements": {
+      "title": "Annonces",
+      "hint": "Communiqués courts et à durée limitée (ex : changement d'horaire de messe, confession spéciale). Différent des Actualités — plus rapide et direct, sans image.",
+      "titlePlaceholder": "Titre de l'annonce",
+      "bodyPlaceholder": "Texte de l'annonce",
+      "pinned": "Épingler en haut",
+      "active": "Actif",
+      "create": "Publier l'annonce",
+      "save": "Enregistrer les modifications",
+      "current": "Annonces publiées",
+      "empty": "Aucune annonce pour le moment.",
+      "inactive": "Inactif",
+      "deleteTitle": "Supprimer l'annonce",
+      "deleteConfirm": "Voulez-vous vraiment supprimer cette annonce ?"
     }
   },
   "onboarding": {

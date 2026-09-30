@@ -11,7 +11,7 @@ import { useLocalizedField } from "@/lib/localized";
 import { Card, SectionTitle, Badge } from "@/components/ui";
 import { BannerCarousel } from "@/components/BannerCarousel";
 import { colors } from "@/theme/colors";
-import type { Banner, DailyLiturgy, NewsPost, ParishEvent } from "@/types/database";
+import type { Announcement, Banner, DailyLiturgy, NewsPost, ParishEvent } from "@/types/database";
 import { format } from "date-fns";
 
 export default function HomeScreen() {
@@ -26,12 +26,19 @@ export default function HomeScreen() {
   const [nextEvents, setNextEvents] = useState<ParishEvent[]>([]);
   const [news, setNews] = useState<NewsPost[]>([]);
   const [banners, setBanners] = useState<Banner[]>([]);
+  const [announcements, setAnnouncements] = useState<Announcement[]>([]);
   const [refreshing, setRefreshing] = useState(false);
 
   const load = useCallback(async () => {
     const today = new Date().toISOString().slice(0, 10);
 
-    const [{ data: liturgyData }, { data: eventsData }, { data: newsData }, { data: bannersData }] = await Promise.all([
+    const [
+      { data: liturgyData },
+      { data: eventsData },
+      { data: newsData },
+      { data: bannersData },
+      { data: announcementsData },
+    ] = await Promise.all([
       supabase
         .from("daily_liturgy")
         .select("*")
@@ -64,12 +71,22 @@ export default function HomeScreen() {
       parishId
         ? supabase.from("banners").select("*").eq("parish_id", parishId).order("order_index")
         : Promise.resolve({ data: [] as Banner[] }),
+      parishId
+        ? supabase
+            .from("announcements")
+            .select("*")
+            .eq("parish_id", parishId)
+            .order("is_pinned", { ascending: false })
+            .order("created_at", { ascending: false })
+            .limit(5)
+        : Promise.resolve({ data: [] as Announcement[] }),
     ]);
 
     setLiturgy(liturgyData as DailyLiturgy | null);
     setNextEvents((eventsData as ParishEvent[]) ?? []);
     setNews((newsData as NewsPost[]) ?? []);
     setBanners((bannersData as Banner[]) ?? []);
+    setAnnouncements((announcementsData as Announcement[]) ?? []);
   }, [parishId, i18n.language]);
 
   useEffect(() => {
@@ -97,6 +114,21 @@ export default function HomeScreen() {
         <Card style={styles.statusBanner}>
           <Text style={styles.statusBannerText}>{t(`home.parishStatus.${parish.status}`)}</Text>
         </Card>
+      )}
+
+      {announcements.length > 0 && (
+        <>
+          <SectionTitle>{t("home.announcements")}</SectionTitle>
+          {announcements.map((item) => (
+            <Card key={item.id} style={item.is_pinned ? styles.announcementPinned : undefined}>
+              <View style={{ flexDirection: "row", alignItems: "center", gap: 6 }}>
+                {item.is_pinned && <Text>📌</Text>}
+                <Text style={styles.announcementTitle}>{item.title}</Text>
+              </View>
+              <Text style={styles.announcementBody}>{item.body}</Text>
+            </Card>
+          ))}
+        </>
       )}
 
       <BannerCarousel banners={banners} />
@@ -154,4 +186,7 @@ const styles = StyleSheet.create({
   newsTitle: { fontSize: 16, fontWeight: "700", color: colors.textPrimary },
   newsSubtitle: { color: colors.textSecondary, marginTop: 4 },
   emptyText: { color: colors.textSecondary, marginBottom: 8 },
+  announcementPinned: { borderColor: colors.warning, borderWidth: 1, backgroundColor: `${colors.warning}0d` },
+  announcementTitle: { fontWeight: "700", color: colors.textPrimary },
+  announcementBody: { color: colors.textSecondary, marginTop: 4 },
 });

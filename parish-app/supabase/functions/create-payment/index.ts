@@ -5,6 +5,13 @@
 // Pix copia-e-cola + QR code para o app exibir. A confirmação do
 // pagamento chega depois via `payment-webhook`.
 //
+// O dinheiro precisa cair na conta Mercado Pago DA PARÓQUIA do doador, não
+// na da plataforma — por isso a cobrança usa o access_token gravado em
+// parish_payment_accounts (ver migration 0011 e mercadopago-oauth-*), nunca
+// um token global. Se a paróquia ainda não conectou sua conta (ver
+// admin/finance.tsx), a doação é recusada com uma mensagem clara em vez de
+// cair silenciosamente na conta errada.
+//
 // Invoke: POST /functions/v1/create-payment
 //   { "amount": 50.00, "category_id"?: "...", "campaign_id"?: "...",
 //     "payment_method": "pix", "is_recurring"?: false }
@@ -20,11 +27,6 @@ Deno.serve(async (req) => {
   const authHeader = req.headers.get("Authorization");
   if (!authHeader) {
     return new Response(JSON.stringify({ error: "Missing Authorization header" }), { status: 401 });
-  }
-
-  const accessToken = Deno.env.get("MERCADOPAGO_ACCESS_TOKEN");
-  if (!accessToken) {
-    return new Response(JSON.stringify({ error: "MERCADOPAGO_ACCESS_TOKEN não configurado" }), { status: 500 });
   }
 
   const supabaseUrl = Deno.env.get("SUPABASE_URL")!;
@@ -47,6 +49,23 @@ Deno.serve(async (req) => {
   if (!profile) {
     return new Response(JSON.stringify({ error: "Perfil não encontrado" }), { status: 404 });
   }
+
+  // service_role bypassa RLS de propósito aqui: esta função PRECISA ler o
+  // access_token (a única leitura legítima fora do service_role é a view
+  // parish_payment_status, que nunca expõe o token).
+  const { data: paymentAccount } = await admin
+    .from("parish_payment_accounts")
+    .select("access_token")
+    .eq("parish_id", profile.parish_id)
+    .maybeSingle();
+
+  if (!paymentAccount) {
+    return new Response(
+      JSON.stringify({ error: "Esta paróquia ainda não conectou sua conta Mercado Pago" }),
+      { status: 422 },
+    );
+  }
+  const accessToken = paymentAccount.access_token;
 
   const body = await req.json();
   const { amount, category_id, campaign_id, payment_method = "pix", is_recurring = false } = body;

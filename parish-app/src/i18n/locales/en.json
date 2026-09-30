@@ -49,7 +49,8 @@
       "past_due": "There's an issue with the parish's subscription payment. Please resolve it to avoid interruption.",
       "suspended": "The parish's subscription is suspended. Contact the administration to reactivate it.",
       "cancelled": "The parish's subscription has been cancelled."
-    }
+    },
+    "announcements": "Announcements"
   },
   "events": {
     "title": "Events",
@@ -193,7 +194,20 @@
       "confirmed": "Confirmed",
       "pending": "Pending",
       "byMethod": "By payment method",
-      "recentTransactions": "Recent transactions"
+      "recentTransactions": "Recent transactions",
+      "mercadoPago": {
+        "title": "Mercado Pago",
+        "status": "Account status",
+        "connected": "Connected",
+        "notConnected": "Not connected",
+        "connect": "Connect Mercado Pago",
+        "reconnect": "Reconnect Mercado Pago",
+        "connectedSince": "Connected since {{date}}",
+        "explanation": "Connect your parish's own Mercado Pago account so tithes and donations go directly to it, without passing through the platform.",
+        "onlyAdmin": "Only the parish admin/pastor can connect its Mercado Pago account.",
+        "startError": "Could not start the Mercado Pago connection.",
+        "connectError": "The Mercado Pago connection was not completed. Please try again."
+      }
     },
     "content": {
       "title": "Content",
@@ -316,6 +330,21 @@
       "choosePlan": "Choose a plan",
       "subscribe": "Subscribe",
       "trialUntil": "Free trial until {{date}}"
+    },
+    "announcements": {
+      "title": "Announcements",
+      "hint": "Short, time-limited notices (e.g. Mass time change, special confession hours). Different from News — quicker and more direct, no image.",
+      "titlePlaceholder": "Announcement title",
+      "bodyPlaceholder": "Announcement text",
+      "pinned": "Pin to top",
+      "active": "Active",
+      "create": "Post announcement",
+      "save": "Save changes",
+      "current": "Announcements",
+      "empty": "No announcements yet.",
+      "inactive": "Inactive",
+      "deleteTitle": "Delete announcement",
+      "deleteConfirm": "Are you sure you want to delete this announcement?"
     }
   },
   "onboarding": {

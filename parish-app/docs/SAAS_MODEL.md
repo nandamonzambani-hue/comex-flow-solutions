@@ -116,6 +116,53 @@ diferente do Pix avulso usado pras doações dos fiéis).
 Gerenciar os planos vendidos (nome, preço, dias de teste, limite de
 membros) fica em **Painel da Plataforma > Planos**.
 
+## Dízimo/doação de cada paróquia (Mercado Pago Connect)
+
+Importante não confundir com a seção acima: a **assinatura** (paróquia →
+plataforma) usa a conta Mercado Pago da Logos Agência Digital. Já o
+**dízimo/doação** (fiel → paróquia) precisa cair direto na conta Mercado
+Pago da PRÓPRIA paróquia — por isso cada paróquia conecta sua própria
+conta via OAuth (migration `0011_mercadopago_connect.sql`, tabela
+`parish_payment_accounts` com RLS travada e zero policies — só
+`service_role` lê/escreve tokens; o app só vê status via a view
+`parish_payment_status`, sem token nenhum).
+
+**[VOCÊ] — configuração única, uma vez só, nunca por paróquia:**
+1. Crie uma aplicação em https://www.mercadopago.com.br/developers/panel/app
+   (é a aplicação da PLATAFORMA, não de uma paróquia específica).
+2. Em "Credenciais de produção" dessa aplicação, pegue `Client ID` e
+   `Client Secret` e configure:
+   ```bash
+   supabase secrets set MERCADOPAGO_CLIENT_ID=xxx
+   supabase secrets set MERCADOPAGO_CLIENT_SECRET=xxx
+   ```
+3. Na mesma aplicação, em "OAuth" (ou "Redirect URIs"), cadastre
+   exatamente: `<SUPABASE_URL>/functions/v1/mercadopago-oauth-callback`
+4. Deploy das duas functions novas:
+   ```bash
+   supabase functions deploy mercadopago-oauth-start
+   supabase functions deploy mercadopago-oauth-callback
+   ```
+
+**Depois disso, cada paróquia conecta sozinha**, sem precisar de você:
+o admin/pároco vai em **Admin > Financeiro**, toca em "Conectar Mercado
+Pago", faz login na própria conta Mercado Pago da paróquia e autoriza —
+o app volta sozinho pra tela de Financeiro já mostrando "Conectado".
+Enquanto uma paróquia não conecta, `create-payment` recusa qualquer
+tentativa de doação com uma mensagem clara (nunca cai na conta errada
+por engano).
+
+**Nota de segurança já testada adversarialmente** (ver metodologia de
+teste RLS no topo deste repositório): a view `parish_payment_status` foi
+originalmente criada só com `grant select`, mas o Postgres considera
+qualquer view de uma tabela só "automaticamente atualizável" — um
+UPDATE/INSERT direto na view seria reescrito como UPDATE/INSERT na
+tabela base, ignorando as zero policies dela. Corrigido com
+`revoke insert, update, delete, truncate on parish_payment_status from
+anon, authenticated` (já na migration). Reconfirmado que nenhum papel
+além de `service_role` consegue ler ou escrever token nenhum, por
+nenhum caminho.
+
 ## Limitação conhecida (documentada de propósito)
 
 Hoje, se uma paróquia fica **suspensa** ou **cancelada** (deixou de

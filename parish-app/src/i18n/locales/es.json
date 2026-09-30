@@ -49,7 +49,8 @@
       "past_due": "Hay un problema con el pago de la suscripción de la parroquia. Regulariza para evitar la interrupción.",
       "suspended": "La suscripción de la parroquia está suspendida. Habla con la administración para reactivarla.",
       "cancelled": "La suscripción de la parroquia fue cancelada."
-    }
+    },
+    "announcements": "Avisos"
   },
   "events": {
     "title": "Eventos",
@@ -193,7 +194,20 @@
       "confirmed": "Confirmado",
       "pending": "Pendiente",
       "byMethod": "Por forma de pago",
-      "recentTransactions": "Transacciones recientes"
+      "recentTransactions": "Transacciones recientes",
+      "mercadoPago": {
+        "title": "Mercado Pago",
+        "status": "Estado de la cuenta",
+        "connected": "Conectado",
+        "notConnected": "No conectado",
+        "connect": "Conectar Mercado Pago",
+        "reconnect": "Reconectar Mercado Pago",
+        "connectedSince": "Conectado desde {{date}}",
+        "explanation": "Conecte la propia cuenta de Mercado Pago de la parroquia para que el diezmo y las donaciones lleguen directamente a ella, sin pasar por la plataforma.",
+        "onlyAdmin": "Solo el administrador/párroco puede conectar el Mercado Pago de la parroquia.",
+        "startError": "No fue posible iniciar la conexión con Mercado Pago.",
+        "connectError": "La conexión con Mercado Pago no se completó. Inténtelo de nuevo."
+      }
     },
     "content": {
       "title": "Contenido",
@@ -316,6 +330,21 @@
       "choosePlan": "Elige un plan",
       "subscribe": "Suscribirse",
       "trialUntil": "Prueba gratuita hasta {{date}}"
+    },
+    "announcements": {
+      "title": "Avisos",
+      "hint": "Comunicados cortos y de tiempo limitado (ej: cambio de horario de misa, confesión especial). Diferente de Noticias — más rápido y directo, sin imagen.",
+      "titlePlaceholder": "Título del aviso",
+      "bodyPlaceholder": "Texto del aviso",
+      "pinned": "Fijar arriba",
+      "active": "Activo",
+      "create": "Publicar aviso",
+      "save": "Guardar cambios",
+      "current": "Avisos publicados",
+      "empty": "Todavía no hay avisos.",
+      "inactive": "Inactivo",
+      "deleteTitle": "Eliminar aviso",
+      "deleteConfirm": "¿Seguro que quieres eliminar este aviso?"
     }
   },
   "onboarding": {

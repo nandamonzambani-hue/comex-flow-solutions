@@ -211,6 +211,20 @@ export interface Banner {
   ends_at: string | null;
 }
 
+export interface Announcement {
+  id: string;
+  parish_id: string;
+  title: string;
+  body: string;
+  is_pinned: boolean;
+  is_active: boolean;
+  starts_at: string | null;
+  ends_at: string | null;
+  created_by: string | null;
+  created_at: string;
+  updated_at: string;
+}
+
 export interface DownloadItem {
   id: string;
   parish_id: string;

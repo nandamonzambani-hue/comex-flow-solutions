@@ -49,7 +49,8 @@
       "past_due": "Há um problema com o pagamento da assinatura da paróquia. Regularize para evitar interrupção.",
       "suspended": "A assinatura da paróquia está suspensa. Fale com a administração para reativar.",
       "cancelled": "A assinatura da paróquia foi cancelada."
-    }
+    },
+    "announcements": "Avisos"
   },
   "events": {
     "title": "Eventos",
@@ -193,7 +194,20 @@
       "confirmed": "Confirmado",
       "pending": "Pendente",
       "byMethod": "Por forma de pagamento",
-      "recentTransactions": "Últimas transações"
+      "recentTransactions": "Últimas transações",
+      "mercadoPago": {
+        "title": "Mercado Pago",
+        "status": "Status da conta",
+        "connected": "Conectado",
+        "notConnected": "Não conectado",
+        "connect": "Conectar Mercado Pago",
+        "reconnect": "Reconectar Mercado Pago",
+        "connectedSince": "Conectado desde {{date}}",
+        "explanation": "Conecte a conta Mercado Pago da própria paróquia para que o dízimo e as doações caiam direto nela, sem passar pela plataforma.",
+        "onlyAdmin": "Apenas o admin/pároco pode conectar o Mercado Pago da paróquia.",
+        "startError": "Não foi possível iniciar a conexão com o Mercado Pago.",
+        "connectError": "A conexão com o Mercado Pago não foi concluída. Tente novamente."
+      }
     },
     "content": {
       "title": "Conteúdo",
@@ -316,6 +330,21 @@
       "choosePlan": "Escolha um plano",
       "subscribe": "Assinar",
       "trialUntil": "Teste gratuito até {{date}}"
+    },
+    "announcements": {
+      "title": "Avisos",
+      "hint": "Comunicados curtos e por tempo limitado (ex: mudança de horário de missa, confissão especial). Diferente de Notícias — mais rápido e direto, sem imagem.",
+      "titlePlaceholder": "Título do aviso",
+      "bodyPlaceholder": "Texto do aviso",
+      "pinned": "Fixar no topo",
+      "active": "Ativo",
+      "create": "Publicar aviso",
+      "save": "Salvar alterações",
+      "current": "Avisos cadastrados",
+      "empty": "Nenhum aviso cadastrado ainda.",
+      "inactive": "Inativo",
+      "deleteTitle": "Excluir aviso",
+      "deleteConfirm": "Tem certeza que deseja excluir este aviso?"
     }
   },
   "onboarding": {

@@ -192,6 +192,14 @@ create view quiz_options_public as
   join quizzes q on q.id = qq.quiz_id
   where q.is_published and q.parish_id = auth_parish_id();
 
+-- Views baseadas em mais de uma tabela nunca são "automaticamente
+-- atualizáveis" pelo Postgres (só funciona pra view de uma tabela só), então
+-- esta em particular já era segura contra escrita mesmo com grant amplo. Mas
+-- o Supabase concede insert/update/delete por padrão a qualquer view nova, o
+-- que é um sinal enganoso (parece gravável, mas nunca foi) — revoga
+-- explicitamente por clareza e como defesa em profundidade caso a view seja
+-- reescrita no futuro para usar só uma tabela.
+revoke insert, update, delete, truncate on quiz_options_public from anon, authenticated;
 grant select on quiz_options_public to authenticated;
 
 create policy "quiz_attempts_select_self_or_staff" on quiz_attempts for select
