@@ -29,6 +29,7 @@
     },
     "android": {
       "package": "br.org.paroquiaexemplo.app",
+      "googleServicesFile": "./google-services.json",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#7A1F2B"

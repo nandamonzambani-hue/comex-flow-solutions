@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "693067985935",
+    "project_id": "minha-paroquia-67a40",
+    "storage_bucket": "minha-paroquia-67a40.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:693067985935:android:0faa3a9ffe41026ee89f7a",
+        "android_client_info": {
+          "package_name": "br.org.paroquiaexemplo.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA4WlE6ssnRJCGaUnnBLtnEx7qxKl6rnQU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
