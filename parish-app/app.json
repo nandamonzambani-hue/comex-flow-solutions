@@ -13,12 +13,16 @@
       "resizeMode": "contain",
       "backgroundColor": "#7A1F2B"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "br.org.paroquiaexemplo.app",
       "infoPlist": {
-        "UIBackgroundModes": ["remote-notification"],
+        "UIBackgroundModes": [
+          "remote-notification"
+        ],
         "NSCameraUsageDescription": "Usado para atualizar sua foto de perfil.",
         "NSPhotoLibraryUsageDescription": "Usado para escolher sua foto de perfil e anexar imagens em publicações."
       }
@@ -29,7 +33,12 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#7A1F2B"
       },
-      "permissions": ["NOTIFICATIONS", "CAMERA", "READ_EXTERNAL_STORAGE", "WRITE_EXTERNAL_STORAGE"]
+      "permissions": [
+        "NOTIFICATIONS",
+        "CAMERA",
+        "READ_EXTERNAL_STORAGE",
+        "WRITE_EXTERNAL_STORAGE"
+      ]
     },
     "web": {
       "favicon": "./assets/favicon.png",
@@ -54,11 +63,14 @@
         }
       ]
     ],
+    "owner": "logos-agencia-digital",
     "extra": {
+      "router": {
+        "origin": false
+      },
       "eas": {
-        "projectId": "REPLACE_WITH_YOUR_EAS_PROJECT_ID"
+        "projectId": "8a87121b-d976-4884-a740-e4886411fabf"
       }
-    },
-    "owner": "REPLACE_WITH_YOUR_EXPO_ACCOUNT"
+    }
   }
 }
