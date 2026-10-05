@@ -18,7 +18,7 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "br.org.paroquiaexemplo.app",
+      "bundleIdentifier": "br.com.logosagenciadigital.minhaparoquia",
       "infoPlist": {
         "UIBackgroundModes": [
           "remote-notification"
@@ -28,7 +28,7 @@
       }
     },
     "android": {
-      "package": "br.org.paroquiaexemplo.app",
+      "package": "br.com.logosagenciadigital.minhaparoquia",
       "googleServicesFile": "./google-services.json",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",

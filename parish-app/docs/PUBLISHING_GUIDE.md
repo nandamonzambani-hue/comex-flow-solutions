@@ -43,12 +43,11 @@ Se precisar trocar a API key do Resend ou o domínio remetente no futuro,
 mexa em Authentication → Emails → SMTP Settings no painel do Supabase (ou
 via API de gerenciamento: `PATCH /v1/projects/{ref}/config/auth`).
 
-## 2. Preparar identidade do app
+## 2. Identidade do app — definida (05/10)
 
-**[VOCÊ]** decide e me informa:
-- Nome final do app (hoje: "Minha Paróquia" — troque em `app.json` > `expo.name`)
-- Bundle ID / Package name únicos, ex: `br.org.paroquiaaparecida.app`
-  (troque em `app.json` > `ios.bundleIdentifier` e `android.package`)
+- **Nome final**: "Minha Paróquia" (`app.json` > `expo.name`)
+- **Bundle ID / Package**: `br.com.logosagenciadigital.minhaparoquia`
+  (`app.json` > `ios.bundleIdentifier` e `android.package`)
 - Ícone (1024×1024px, sem transparência, sem cantos arredondados — a loja arredonda)
 - Splash screen
 - Cor primária/secundária da identidade visual
@@ -70,19 +69,21 @@ eas login                      # [VOCÊ] faz login com sua conta Expo
 eas build:configure
 ```
 
-## 4. Notificações push (Android/FCM) — já configurado
+## 4. Notificações push (Android/FCM) — chave FCM V1 já configurada
 
-Projeto Firebase `minha-paroquia-67a40` criado, app Android registrado
-com o mesmo `package` do `app.json` (`br.org.paroquiaexemplo.app`),
-`google-services.json` commitado na raiz de `parish-app/`, e a chave de
-conta de serviço (FCM V1) já está nas credenciais do EAS (verificável
-com `eas credentials` > Android > production > Google Service Account >
-Push Notifications).
+Projeto Firebase `minha-paroquia-67a40` criado e a chave de conta de
+serviço (FCM V1) já está nas credenciais do EAS (verificável com
+`eas credentials` > Android > production > Google Service Account >
+Push Notifications) — isso não depende do package e não precisa repetir.
 
-**Atenção**: se o `android.package` mudar antes de publicar (nome final
-do app/paróquia), é preciso registrar um NOVO app Android no mesmo
-projeto Firebase com o package novo e repetir o upload do
-`google-services.json` — o Firebase amarra o app ao package exato.
+**Pendente**: o `android.package` final (`br.com.logosagenciadigital.minhaparoquia`,
+definido em 05/10) ainda não tem um app Android registrado nesse
+projeto Firebase — o `google-services.json` atual no repo é do package
+antigo (placeholder) e precisa ser trocado por um novo, gerado
+registrando um app Android com o package final no mesmo projeto
+Firebase (Configurações do projeto > Geral > Adicionar app). Sem isso,
+o Firebase recusa inicializar no build final ("No matching client
+found for package name").
 
 No iOS, o EAS gera e gerencia o certificado APNs automaticamente durante o build.
 
