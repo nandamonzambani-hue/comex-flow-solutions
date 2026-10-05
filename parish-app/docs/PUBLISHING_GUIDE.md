@@ -16,11 +16,11 @@ entender o modelo multi-paróquia antes de publicar.
 |---|---|---|---|
 | Apple Developer Program | US$99/ano | Publicar na App Store | **[VOCÊ]** em https://developer.apple.com |
 | Google Play Console | US$25 (único) | Publicar na Play Store | **[VOCÊ]** em https://play.google.com/console |
-| Expo (conta EAS) | Grátis (plano pago opcional p/ builds mais rápidos) | Compilar o app na nuvem | **[VOCÊ ou EU]** em https://expo.dev |
+| Expo (conta EAS) | Grátis (plano pago opcional p/ builds mais rápidos) | Compilar o app na nuvem | **[FEITO]** — projeto `logos-agencia-digital/minha-paroquia`, projectId real já no `app.json` |
 | Supabase | Grátis para começar | Backend (banco, auth, storage, funções) | **[VOCÊ ou EU]** |
-| Mercado Pago (ou outro gateway) | Grátis, taxa por transação | Receber dízimo/doações via Pix | **[VOCÊ]** — exige CNPJ/CPF da paróquia verificado |
+| Mercado Pago (ou outro gateway) | Grátis, taxa por transação | Receber dízimo/doações via Pix | **[FEITO]** — ver `docs/SAAS_MODEL.md`, falta confirmar redirect URI/webhook no painel |
 | Apple Push (APNs) | Incluso na Apple Developer | Notificações push no iOS | Gerado automaticamente pelo EAS |
-| Firebase Cloud Messaging | Grátis | Notificações push no Android | **[VOCÊ]** cria projeto Firebase (ver abaixo) |
+| Firebase Cloud Messaging | Grátis | Notificações push no Android | **[FEITO]** — projeto `minha-paroquia-67a40`, `google-services.json` commitado, chave FCM V1 já nas credenciais do EAS |
 | Resend | Grátis até 3.000 e-mails/mês | Envio de e-mail (confirmação de cadastro, recuperação de senha) | **[FEITO]** — ver seção 1.1 abaixo |
 
 ### 1.1 E-mail transacional (SMTP) — já configurado
@@ -58,26 +58,31 @@ Os arquivos em `assets/` (`icon.png`, `adaptive-icon.png`, `splash.png`,
 (cruz dourada sobre bordô) — pronto para publicar como está, ou substitua
 pela arte definitiva da paróquia/marca se quiser algo diferente.
 
-## 3. Configurar EAS Build
+## 3. EAS Build — já configurado
+
+Projeto criado em `@logos-agencia-digital/minha-paroquia`
+(https://expo.dev/accounts/logos-agencia-digital/projects/minha-paroquia),
+`owner` e `extra.eas.projectId` já preenchidos no `app.json` (via
+`eas init`). Se precisar reconfigurar no futuro:
 
 ```bash
-npm install -g eas-cli
 eas login                      # [VOCÊ] faz login com sua conta Expo
-eas build:configure            # gera/atualiza eas.json e o projectId
+eas build:configure
 ```
 
-Isso preenche `extra.eas.projectId` em `app.json` automaticamente.
+## 4. Notificações push (Android/FCM) — já configurado
 
-## 4. Notificações push (Android/FCM)
+Projeto Firebase `minha-paroquia-67a40` criado, app Android registrado
+com o mesmo `package` do `app.json` (`br.org.paroquiaexemplo.app`),
+`google-services.json` commitado na raiz de `parish-app/`, e a chave de
+conta de serviço (FCM V1) já está nas credenciais do EAS (verificável
+com `eas credentials` > Android > production > Google Service Account >
+Push Notifications).
 
-1. **[VOCÊ]** crie um projeto em https://console.firebase.google.com
-2. Adicione um app Android com o `package` igual ao `android.package` do `app.json`
-3. Baixe o `google-services.json` e coloque na raiz de `parish-app/`
-4. Rode:
-   ```bash
-   eas credentials
-   # selecione Android > Push Notifications > upload do FCM Server Key ou use FCM V1 com o google-services.json
-   ```
+**Atenção**: se o `android.package` mudar antes de publicar (nome final
+do app/paróquia), é preciso registrar um NOVO app Android no mesmo
+projeto Firebase com o package novo e repetir o upload do
+`google-services.json` — o Firebase amarra o app ao package exato.
 
 No iOS, o EAS gera e gerencia o certificado APNs automaticamente durante o build.
 
@@ -169,9 +174,13 @@ adicione mais conforme a demanda.
       produção (schema, Edge Functions, UI em Admin > Financeiro,
       `MERCADOPAGO_ACCESS_TOKEN`/`CLIENT_ID`/`CLIENT_SECRET` já setados) —
       falta só cada paróquia conectar sua própria conta em Admin > Financeiro
+- [x] Projeto EAS (`logos-agencia-digital/minha-paroquia`) e Firebase
+      (`minha-paroquia-67a40`, FCM V1) configurados — push notification
+      só pode ser testado de verdade num build real em dispositivo físico
 - [ ] Testado login, dízimo (Pix — agora desbloqueado, falta uma paróquia de
       teste conectar o Mercado Pago em Admin > Financeiro e fazer uma doação
-      de teste), push notification
+      de teste), push notification (precisa de um build EAS instalado num
+      aparelho — não dá em simulador)
 - [x] `.env` de produção aponta para o projeto Supabase de produção (não o de dev)
 - [x] Rebuild + redeploy do site (Cloudflare Pages) — publicado em
       https://paroquia-app-preview.pages.dev com tudo em dia (avisos,
