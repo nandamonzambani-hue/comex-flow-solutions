@@ -165,12 +165,13 @@ adicione mais conforme a demanda.
 - [x] Cadastro/confirmação de e-mail/criação de perfil testados de ponta a ponta (SMTP Resend)
 - [x] Bíblia (73 livros, Figueiredo), banners e quiz aplicados no banco de produção
 - [x] Liturgia diária automática (Edge Function corrigida + cron semanal via pg_cron, horizonte de 60 dias sempre à frente)
-- [x] Mercado Pago Connect por paróquia implementado (schema, Edge Functions,
-      UI em Admin > Financeiro) — falta só **[VOCÊ]** cadastrar a aplicação
-      Mercado Pago da plataforma (ver `docs/SAAS_MODEL.md`, seção "Dízimo/
-      doação de cada paróquia") e cada paróquia conectar sua própria conta
-- [ ] Testado login, dízimo (Pix sandbox — depende da paróquia de teste ter
-      conectado o Mercado Pago), push notification
+- [x] Mercado Pago Connect por paróquia implementado e configurado em
+      produção (schema, Edge Functions, UI em Admin > Financeiro,
+      `MERCADOPAGO_ACCESS_TOKEN`/`CLIENT_ID`/`CLIENT_SECRET` já setados) —
+      falta só cada paróquia conectar sua própria conta em Admin > Financeiro
+- [ ] Testado login, dízimo (Pix — agora desbloqueado, falta uma paróquia de
+      teste conectar o Mercado Pago em Admin > Financeiro e fazer uma doação
+      de teste), push notification
 - [x] `.env` de produção aponta para o projeto Supabase de produção (não o de dev)
 - [x] Rebuild + redeploy do site (Cloudflare Pages) — publicado em
       https://paroquia-app-preview.pages.dev com tudo em dia (avisos,

@@ -96,20 +96,19 @@ Cada paróquia assina um plano (`subscription_plans`) via a API de
 **Preapproval** do Mercado Pago (cobrança automática recorrente — é
 diferente do Pix avulso usado pras doações dos fiéis).
 
-1. Configure o segredo nas Edge Functions:
+**Status: `MERCADOPAGO_ACCESS_TOKEN` já configurado em produção (05/10) e
+as duas functions já estão no ar.** Falta só:
+1. **[VOCÊ]** opcionalmente configurar `SUBSCRIPTION_BACK_URL` (se não
+   setado, usa um fallback genérico):
    ```bash
-   supabase secrets set MERCADOPAGO_ACCESS_TOKEN=xxx
    supabase secrets set SUBSCRIPTION_BACK_URL=https://seusite.com/assinatura-confirmada
    ```
-2. Deploy:
-   ```bash
-   supabase functions deploy create-parish-subscription
-   supabase functions deploy subscription-webhook
-   ```
-3. No painel do Mercado Pago, cadastre o webhook para o evento
+2. **[VOCÊ]** no painel do Mercado Pago, cadastre o webhook para o evento
    `subscription_preapproval` apontando para
-   `<SUPABASE_URL>/functions/v1/subscription-webhook`.
-4. O admin da paróquia assina em **Admin > Assinatura**: escolhe um
+   `https://rticyxwmequyztnvzipc.supabase.co/functions/v1/subscription-webhook`
+   (isso só dá pra fazer pelo painel do Mercado Pago, não tenho como
+   fazer por você).
+3. O admin da paróquia assina em **Admin > Assinatura**: escolhe um
    plano, é levado ao checkout do Mercado Pago (cartão), e quando
    autoriza, o webhook marca `parishes.status = 'active'` automaticamente.
 
@@ -127,22 +126,15 @@ conta via OAuth (migration `0011_mercadopago_connect.sql`, tabela
 `service_role` lê/escreve tokens; o app só vê status via a view
 `parish_payment_status`, sem token nenhum).
 
-**[VOCÊ] — configuração única, uma vez só, nunca por paróquia:**
-1. Crie uma aplicação em https://www.mercadopago.com.br/developers/panel/app
-   (é a aplicação da PLATAFORMA, não de uma paróquia específica).
-2. Em "Credenciais de produção" dessa aplicação, pegue `Client ID` e
-   `Client Secret` e configure:
-   ```bash
-   supabase secrets set MERCADOPAGO_CLIENT_ID=xxx
-   supabase secrets set MERCADOPAGO_CLIENT_SECRET=xxx
-   ```
-3. Na mesma aplicação, em "OAuth" (ou "Redirect URIs"), cadastre
-   exatamente: `<SUPABASE_URL>/functions/v1/mercadopago-oauth-callback`
-4. Deploy das duas functions novas:
-   ```bash
-   supabase functions deploy mercadopago-oauth-start
-   supabase functions deploy mercadopago-oauth-callback
-   ```
+**Status: aplicação criada, `MERCADOPAGO_CLIENT_ID`/`CLIENT_SECRET` já
+configurados em produção (05/10) e as duas functions já estão no ar.**
+Falta só:
+1. **[VOCÊ]** na aplicação em
+   https://www.mercadopago.com.br/developers/panel/app, na aba "OAuth"
+   (ou "Redirect URIs"), confirme que está cadastrado exatamente:
+   `https://rticyxwmequyztnvzipc.supabase.co/functions/v1/mercadopago-oauth-callback`
+   (sem essa URL cadastrada lá, o Mercado Pago recusa a autorização —
+   só dá pra fazer pelo painel do Mercado Pago).
 
 **Depois disso, cada paróquia conecta sozinha**, sem precisar de você:
 o admin/pároco vai em **Admin > Financeiro**, toca em "Conectar Mercado
