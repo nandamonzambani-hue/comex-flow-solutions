@@ -1,0 +1,53 @@
+name: Porto Lotado
+
+# Só roda quando algo dentro de porto-lotado/ muda; não interfere no site.
+on:
+  push:
+    paths: ['porto-lotado/**', '.github/workflows/porto-lotado.yml']
+  pull_request:
+    paths: ['porto-lotado/**', '.github/workflows/porto-lotado.yml']
+  workflow_dispatch:
+
+defaults:
+  run:
+    working-directory: porto-lotado
+
+jobs:
+  web:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: porto-lotado/package-lock.json
+      - run: npm ci
+      - run: npm test
+      - run: npm run build
+
+  android-apk:
+    # APK de teste (debug) para instalar direto no celular Android.
+    needs: web
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: porto-lotado/package-lock.json
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+      - run: npm ci
+      - run: npm run build
+      - run: npx cap sync android
+      - name: Compilar APK
+        working-directory: porto-lotado/android
+        run: chmod +x gradlew && ./gradlew assembleDebug --no-daemon
+      - uses: actions/upload-artifact@v4
+        with:
+          name: porto-lotado-debug-apk
+          path: porto-lotado/android/app/build/outputs/apk/debug/*.apk

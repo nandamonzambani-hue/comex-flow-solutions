@@ -1,0 +1,105 @@
+/* Layout: one-screen harbor at dusk. HUD on top, ships moored in up to two rows, crane-yellow action bar on the quay at the bottom. Single dark theme by choice. */
+:root{
+  --sea:#0f4152; --sea-deep:#072530; --quay:#17262c; --quay-edge:#2a3f47;
+  --ink:#eaf3f2; --muted:#9db8bd; --signal:#f4b42c; --signal-ink:#1e1504;
+  --hull:#24363d; --hull-line:#3d5a63; --danger:#ff7360; --ok:#57d39a;
+  --f-display:"Big Shoulders Stencil Display", Impact, "Arial Narrow", sans-serif;
+  --f-ui:"Barlow Condensed", "Arial Narrow", system-ui, sans-serif;
+  --w:64px; --h:30px;
+  color-scheme:dark;
+}
+html{box-sizing:border-box;height:100%;background:var(--sea-deep);-webkit-text-size-adjust:100%}
+*,*::before,*::after{box-sizing:inherit}
+[hidden]{display:none!important}
+body{height:100%;margin:0;background:var(--sea-deep);color:var(--ink);font-family:var(--f-ui);overflow:hidden;
+  -webkit-tap-highlight-color:transparent;user-select:none;-webkit-user-select:none;touch-action:manipulation}
+#sea{position:fixed;inset:0;width:100%;height:100%;z-index:0}
+#app{position:relative;z-index:1;height:100%;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);display:flex;flex-direction:column;max-width:560px;margin:0 auto;padding-inline:max(16px,env(safe-area-inset-left,0px))}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+button:focus-visible{outline:2px solid var(--signal);outline-offset:3px;border-radius:8px}
+
+/* HUD */
+.hud{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:14px 6px}
+.lvl{display:flex;flex-direction:column;min-width:0}
+.port{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.num{font-family:var(--f-display);font-weight:900;font-size:34px;line-height:.95;letter-spacing:.02em}
+.num b{color:var(--signal);font-weight:900}
+.hud-r{display:flex;align-items:center;gap:8px}
+.coins{display:flex;align-items:center;gap:6px;background:rgba(0,0,0,.28);padding:6px 10px 6px 7px;border-radius:999px;font-weight:700;font-size:18px;font-variant-numeric:tabular-nums}
+.coins svg{width:20px;height:20px}
+.pill-btn{display:flex;align-items:center;justify-content:center;height:36px;min-width:36px;padding:0 10px;border-radius:999px;background:rgba(0,0,0,.28);font-weight:600;font-size:16px;letter-spacing:.04em}
+.pill-btn svg{width:20px;height:20px}
+
+.tip{align-self:center;font-size:16px;color:var(--ink);background:rgba(0,0,0,.3);border-radius:999px;padding:5px 14px;text-align:center;margin-top:4px}
+
+/* Board */
+#board{flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:var(--rowgap,18px);min-height:0}
+.row{display:flex;justify-content:center;align-items:flex-end;gap:var(--gap,10px)}
+.ship{display:flex;flex-direction:column;align-items:center;padding:0;position:relative}
+.stack{display:flex;flex-direction:column-reverse;gap:2px;width:calc(var(--w) + 6px);height:calc(var(--h)*4 + 6px + var(--h)*.75);
+  padding:0 3px;justify-content:flex-start;position:relative}
+.stack::before{content:"";position:absolute;left:0;right:0;bottom:0;height:calc(var(--h)*4 + 6px);
+  border-left:2px solid rgba(255,255,255,.08);border-right:2px solid rgba(255,255,255,.08)}
+.slot{height:var(--h);flex:none}
+.box{width:var(--w);height:var(--h);flex:none;border-radius:3px;position:relative;display:flex;align-items:center;padding-left:calc(var(--h)*.22);
+  background:repeating-linear-gradient(90deg,transparent 0 5px,rgba(0,0,0,.15) 5px 7px),var(--c);
+  box-shadow:inset 0 0 0 1.5px rgba(0,0,0,.3),inset 0 2px 0 rgba(255,255,255,.22);
+  transition:transform .16s ease-out}
+.box::after{content:"";position:absolute;right:calc(var(--h)*.18);top:18%;bottom:18%;width:calc(var(--h)*.28);
+  border-left:1.5px solid rgba(0,0,0,.28);border-right:1.5px solid rgba(0,0,0,.28)}
+.box svg{width:calc(var(--h)*.52);height:calc(var(--h)*.52);color:var(--k);flex:none}
+.ship.sel .box.lift{transform:translateY(calc(var(--h)*-.7))}
+.hull{width:calc(var(--w) + 14px);height:calc(var(--w)*.4);background:var(--hullc,var(--hull));margin-top:2px;
+  clip-path:polygon(0 0,100% 0,91% 100%,9% 100%);display:flex;align-items:center;justify-content:center;
+  border-top:3px solid var(--hull-line);position:relative}
+.hull span{font-family:var(--f-display);font-weight:800;font-size:calc(var(--w)*.2);letter-spacing:.08em;color:rgba(234,243,242,.55)}
+.ship.sel .hull{border-top-color:var(--signal)}
+.ship.done .hull{border-top-color:var(--ok)}
+.ship.done .hull span{color:var(--ok)}
+.ship.hint{animation:hintPulse .9s ease-in-out infinite}
+@keyframes hintPulse{50%{filter:drop-shadow(0 0 10px var(--signal)) brightness(1.15)}}
+.ship.shake{animation:shake .3s}
+@keyframes shake{25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+.ship.pop{animation:pop .45s ease-out}
+@keyframes pop{40%{transform:scale(1.08)}}
+
+.flyer{position:fixed;z-index:20;pointer-events:none;margin:0}
+
+/* Action bar */
+.bar{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;padding-block:10px 16px}
+.act{display:flex;flex-direction:column;align-items:center;gap:3px;padding:9px 4px 7px;border-radius:14px;background:var(--quay);
+  border-top:3px solid var(--quay-edge);font-weight:600;font-size:15px;letter-spacing:.03em;position:relative}
+.act svg{width:26px;height:26px}
+.act:active{transform:translateY(1px)}
+.act[disabled]{opacity:.4;cursor:default}
+.badge{position:absolute;top:-7px;right:6px;min-width:22px;height:22px;padding:0 6px;border-radius:999px;background:var(--signal);color:var(--signal-ink);
+  font-style:normal;font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center}
+.badge.ad{background:var(--ink);color:var(--sea-deep);letter-spacing:.05em}
+
+/* Overlays */
+.modal{position:fixed;inset:0;z-index:40;display:flex;align-items:center;justify-content:center;padding:16px;background:rgba(3,16,21,.72);backdrop-filter:blur(3px)}
+.card{width:100%;max-width:360px;background:var(--quay);border-radius:20px;padding:22px 20px 18px;border-top:4px solid var(--signal);text-align:center;
+  display:flex;flex-direction:column;gap:14px;box-shadow:0 20px 50px rgba(0,0,0,.5)}
+.card h2{margin:0;font-family:var(--f-display);font-weight:900;font-size:38px;line-height:1;letter-spacing:.02em;text-wrap:balance}
+.card p{margin:0;font-size:18px;line-height:1.35;color:var(--muted)}
+.card .big{font-family:var(--f-display);font-weight:900;font-size:48px;color:var(--signal);line-height:1}
+.btns{display:flex;flex-direction:column;gap:10px}
+.btn{height:50px;border-radius:14px;font-weight:700;font-size:20px;letter-spacing:.03em;background:rgba(255,255,255,.08)}
+.btn.primary{background:var(--signal);color:var(--signal-ink)}
+.btn.ad::after{content:"AD";margin-left:8px;font-size:12px;padding:2px 6px;border-radius:6px;background:var(--ink);color:var(--sea-deep);vertical-align:2px}
+.btn[disabled]{opacity:.45}
+.adbox{height:170px;border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;
+  background:repeating-linear-gradient(45deg,rgba(255,255,255,.04) 0 12px,transparent 12px 24px),#0c1b20;color:var(--muted);font-size:16px}
+.adbox strong{font-family:var(--f-display);font-size:28px;color:var(--ink);letter-spacing:.04em}
+.meter{height:6px;border-radius:3px;background:rgba(255,255,255,.1);overflow:hidden}
+.meter i{display:block;height:100%;width:0;background:var(--signal)}
+.shop-item{display:flex;align-items:center;justify-content:space-between;gap:10px;text-align:left;padding:10px 12px;border-radius:12px;background:rgba(255,255,255,.05)}
+.shop-item b{display:block;font-size:19px}
+.shop-item small{color:var(--muted);font-size:15px}
+.shop-item .btn{height:40px;padding:0 14px;font-size:16px;flex:none}
+.fine{font-size:14px!important;color:var(--muted)}
+.toast{position:fixed;left:50%;bottom:calc(110px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:50;background:var(--ink);color:var(--sea-deep);
+  padding:9px 16px;border-radius:999px;font-weight:600;font-size:17px;max-width:calc(100% - 32px);text-align:center;opacity:0;transition:opacity .2s;pointer-events:none}
+.toast.on{opacity:1}
+.spark{position:fixed;z-index:30;width:8px;height:5px;border-radius:1px;pointer-events:none}
+@media (prefers-reduced-motion:reduce){.box{transition:none}.ship.hint{animation:none;filter:drop-shadow(0 0 8px var(--signal))}}
