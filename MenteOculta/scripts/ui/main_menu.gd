@@ -30,13 +30,16 @@ func _ready() -> void:
 	%SettingsButton.pressed.connect(_open_settings)
 	%AboutButton.pressed.connect(_open_about)
 	%PlayButton.grab_focus()
+	_animate_intro()
 	var top := GameManager.safe_top_margin(self)
 	if top > 0:
 		%Margin.add_theme_constant_override("margin_top", 150 + top)
 
 
 func _play(restart: bool) -> void:
-	if GameManager.open_case(_entry, restart):
+	var opened := GameManager.open_case(_entry, restart)
+	print("DEBUG open_case:", opened, GameManager.load_errors)
+	if opened:
 		GameManager.goto("investigation")
 		return
 	var body := UiKit.overlay(self)
@@ -91,3 +94,15 @@ func _open_about() -> void:
 	var close := UiKit.button(tr("CLOSE"))
 	close.pressed.connect(func(): UiKit.close_overlay(body))
 	body.add_child(close)
+
+
+## Entrada com clima: fundo respirando, poeira na luz e blocos surgindo em sequência.
+func _animate_intro() -> void:
+	Fx.breathe($Background, 0.06, 20.0)
+	Fx.ambient(self, "dust")
+	var column: VBoxContainer = $Margin/Column
+	var items: Array = []
+	for c in column.get_children():
+		if c is Control and c.visible and c.name != "Spacer":
+			items.append(c)
+	Fx.stagger(items, 0.11, 0.1)

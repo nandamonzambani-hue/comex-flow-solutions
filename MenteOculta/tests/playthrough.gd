@@ -213,10 +213,14 @@ func _find_button(root: Node, text: String) -> Button:
 
 
 func _wait_scene(scene_name: String) -> void:
-	for i in 300:
+	# Espera por tempo (não por quadros): em máquinas rápidas os quadros passam antes da transição acabar.
+	var t0 := Time.get_ticks_msec()
+	while Time.get_ticks_msec() - t0 < 10000:
 		await get_tree().process_frame
 		var cs := get_tree().current_scene
 		if cs and cs.name == scene_name:
+			while GameManager._busy and Time.get_ticks_msec() - t0 < 10000:
+				await get_tree().process_frame
 			await _frames(30)
 			return
 	failures.append("a tela %s não abriu" % scene_name)

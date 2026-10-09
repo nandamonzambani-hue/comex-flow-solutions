@@ -19,6 +19,8 @@ func _ready() -> void:
 	%Role.text = who.get("role", "")
 	%Portrait.texture = load(who.portrait)
 	%EndButton.pressed.connect(_close)
+	Fx.pop_in(%Portrait, 0.05, 0.5)
+	Fx.breathe(%Portrait, 0.015, 4.0)
 	var top := GameManager.safe_top_margin(self)
 	if top > 0:
 		%Margin.add_theme_constant_override("margin_top", 24 + top)

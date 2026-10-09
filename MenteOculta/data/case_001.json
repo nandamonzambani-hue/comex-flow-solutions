@@ -4,15 +4,15 @@
   "subtitle": "Livraria Farol, sábado de manhã",
   "description": "Um caderno raro sumiu de uma vitrine trancada. Uma mensagem anônima diz que alguém está mentindo.",
   "estimated_minutes": 12,
-  "background": "res://assets/backgrounds/livraria.svg",
+  "background": "res://assets/backgrounds/livraria.jpg",
 
   "characters": {
-    "helena": {"name": "Helena Duarte", "role": "Dona da Livraria Farol", "portrait": "res://assets/characters/helena.svg", "suspect": false},
-    "rafael": {"name": "Rafael Souza", "role": "Gerente da livraria, 41 anos", "portrait": "res://assets/characters/rafael.svg", "suspect": true,
+    "helena": {"name": "Helena Duarte", "role": "Dona da Livraria Farol", "portrait": "res://assets/characters/helena.png", "suspect": false},
+    "rafael": {"name": "Rafael Souza", "role": "Gerente da livraria, 41 anos", "portrait": "res://assets/characters/rafael.png", "suspect": true,
       "bio": "Metódico e orgulhoso. Guarda as chaves e o segredo do cadeado da vitrine."},
-    "bia": {"name": "Bia Nunes", "role": "Barista, 23 anos", "portrait": "res://assets/characters/bia.svg", "suspect": true,
+    "bia": {"name": "Bia Nunes", "role": "Barista, 23 anos", "portrait": "res://assets/characters/bia.png", "suspect": true,
       "bio": "Estuda restauração de papel. Cuida das redes sociais da livraria."},
-    "otavio": {"name": "Otávio Leme", "role": "Designer da exposição, 34 anos", "portrait": "res://assets/characters/otavio.svg", "suspect": true,
+    "otavio": {"name": "Otávio Leme", "role": "Designer da exposição, 34 anos", "portrait": "res://assets/characters/otavio.png", "suspect": true,
       "bio": "Contratado para montar a exposição e instalar a nova iluminação da vitrine."}
   },
 
@@ -144,26 +144,26 @@
 
   "locations": [
     {
-      "id": "vitrine", "name": "Vitrine", "icon": "case", "pos": [0.5, 0.36],
+      "id": "vitrine", "name": "Vitrine", "icon": "case", "pos": [0.53, 0.5],
       "entries": [
         {"id": "vitrine_1", "text": "A vitrine está fechada com um cadeado de segredo, sem marcas de força. Dentro, a luminária nova que Otávio instalou e o suporte vazio onde ficava o caderno."}
       ]
     },
     {
-      "id": "celular", "name": "Celular da Helena", "icon": "phone", "pos": [0.2, 0.7],
+      "id": "celular", "name": "Celular da Helena", "icon": "phone", "pos": [0.4, 0.88],
       "entries": [
         {"id": "celular_1", "text": "A mensagem anônima continua na tela. O número não aparece em nenhum contato. \"Olhe com atenção as fotos da vitrine.\""}
       ]
     },
     {
-      "id": "balcao", "name": "Balcão", "icon": "counter", "pos": [0.76, 0.6],
+      "id": "balcao", "name": "Balcão", "icon": "counter", "pos": [0.74, 0.86],
       "entries": [
         {"id": "balcao_1", "text": "Ao lado da caixa registradora está o caderno de ocorrências do Rafael. A última página é de sexta-feira.",
           "effects": [{"type": "clue", "id": "p5"}]}
       ]
     },
     {
-      "id": "escritorio", "name": "Escritório", "icon": "door", "pos": [0.22, 0.27],
+      "id": "escritorio", "name": "Escritório", "icon": "door", "pos": [0.15, 0.55],
       "entries": [
         {"id": "escritorio_1", "text": "Na mesa da Helena, a pasta do empréstimo, com a ficha assinada pelo colecionador. O notebook da loja recebe os e-mails da empresa de segurança.",
           "effects": [{"type": "clue", "id": "p4"}]},
@@ -173,14 +173,14 @@
       ]
     },
     {
-      "id": "montagem", "name": "Área de montagem", "icon": "tools", "pos": [0.8, 0.25],
+      "id": "montagem", "name": "Área de montagem", "icon": "tools", "pos": [0.85, 0.6],
       "entries": [
         {"id": "montagem_1", "text": "Cavaletes, cabos, molduras e a mochila de ferramentas do Otávio. No canto, uma lixeira.",
           "effects": [{"type": "decision", "id": "d2"}]}
       ]
     },
     {
-      "id": "beco", "name": "Lixeira do beco", "icon": "bin", "pos": [0.84, 0.82], "condition": {"flag": "beco_liberado"},
+      "id": "beco", "name": "Lixeira do beco", "icon": "bin", "pos": [0.25, 0.13], "condition": {"flag": "beco_liberado"},
       "entries": [
         {"id": "beco_1", "text": "Entre caixas de papelão e sacos de pó de café, um saco com restos da montagem: fita crepe, pedaços de moldura e um papel amassado.",
           "effects": [{"type": "clue", "id": "p6"}]}

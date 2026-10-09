@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/investigation.gd" id="1_inv"]
 [ext_resource type="PackedScene" path="res://scenes/evidence_board.tscn" id="2_board"]
-[ext_resource type="Texture2D" path="res://assets/backgrounds/livraria.svg" id="3_bg"]
+[ext_resource type="Texture2D" path="res://assets/backgrounds/livraria.jpg" id="3_bg"]
 
 [node name="Investigation" type="Control"]
 layout_mode = 3

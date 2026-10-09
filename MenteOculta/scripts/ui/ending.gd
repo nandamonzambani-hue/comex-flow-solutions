@@ -106,3 +106,5 @@ func _ready() -> void:
 	menu.pressed.connect(func(): GameManager.goto("menu"))
 	column.add_child(menu)
 	again.grab_focus.call_deferred()
+	Fx.ambient(self, "dust")
+	Fx.stagger(column.get_children(), 0.07, 0.1)

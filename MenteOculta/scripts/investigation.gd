@@ -13,6 +13,7 @@ var _tab := "place"
 var _tab_buttons := {}
 var _spots := {}
 var _busy := false
+var _lamp: TextureRect
 
 
 func _ready() -> void:
@@ -53,8 +54,10 @@ func _ready() -> void:
 	%TopBar.resized.connect(_layout)
 	%BottomNav.resized.connect(_layout)
 	show_tab("place")
+	_build_atmosphere()
 	await get_tree().process_frame
 	_layout()
+	Fx.stagger(_spots.values(), 0.1, 0.25)
 	if not GameManager.state.is_done("intro"):
 		await _play_intro()
 
@@ -140,10 +143,33 @@ func _build_spots() -> void:
 		_spots[loc.id] = box
 
 
+## Clima da livraria: poeira na luz, respiro do fundo e a lâmpada que vacila.
+func _build_atmosphere() -> void:
+	Fx.breathe(%Background, 0.012, 10.0)
+	Fx.ambient(%PlacePage, "dust")
+	_lamp = TextureRect.new()
+	_lamp.texture = Fx.glow_texture()
+	_lamp.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	_lamp.custom_minimum_size = Vector2(560, 560)
+	_lamp.size = Vector2(560, 560)
+	_lamp.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_lamp.modulate = Color(1.0, 0.78, 0.38, 0.5)
+	var mat := CanvasItemMaterial.new()
+	mat.blend_mode = CanvasItemMaterial.BLEND_MODE_ADD
+	_lamp.material = mat
+	%PlacePage.add_child(_lamp)
+	%PlacePage.move_child(_lamp, %Background.get_index() + 1)
+	var t := _lamp.create_tween().set_loops()
+	for a in [0.55, 0.38, 0.6, 0.5, 0.3, 0.58, 0.48]:
+		t.tween_property(_lamp, "modulate:a", a, randf_range(0.12, 0.7)).set_trans(Tween.TRANS_SINE)
+
+
 func _place_spots() -> void:
 	%Background.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED if _cover_mode() else TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 	var r := _bg_rect()
 	var area: Vector2 = %PlacePage.size
+	if _lamp:
+		_lamp.position = r.position + Vector2(0.53, 0.19) * r.size - _lamp.size / 2.0
 	for id in _spots:
 		var box: Control = _spots[id]
 		box.reset_size()
