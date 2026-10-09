@@ -1,0 +1,359 @@
+{
+  "id": "case_001",
+  "title": "O Caso da Mensagem Anônima",
+  "subtitle": "Livraria Farol, sábado de manhã",
+  "description": "Um caderno raro sumiu de uma vitrine trancada. Uma mensagem anônima diz que alguém está mentindo.",
+  "estimated_minutes": 12,
+  "background": "res://assets/backgrounds/livraria.svg",
+
+  "characters": {
+    "helena": {"name": "Helena Duarte", "role": "Dona da Livraria Farol", "portrait": "res://assets/characters/helena.svg", "suspect": false},
+    "rafael": {"name": "Rafael Souza", "role": "Gerente da livraria, 41 anos", "portrait": "res://assets/characters/rafael.svg", "suspect": true,
+      "bio": "Metódico e orgulhoso. Guarda as chaves e o segredo do cadeado da vitrine."},
+    "bia": {"name": "Bia Nunes", "role": "Barista, 23 anos", "portrait": "res://assets/characters/bia.svg", "suspect": true,
+      "bio": "Estuda restauração de papel. Cuida das redes sociais da livraria."},
+    "otavio": {"name": "Otávio Leme", "role": "Designer da exposição, 34 anos", "portrait": "res://assets/characters/otavio.svg", "suspect": true,
+      "bio": "Contratado para montar a exposição e instalar a nova iluminação da vitrine."}
+  },
+
+  "intro": [
+    {"speaker": "narrator", "text": "Sábado, 10h20. A Livraria Farol ainda está com as luzes apagadas quando Helena abre a porta para você."},
+    {"speaker": "helena", "text": "Obrigada por vir. O caderno de poemas da Ilda Matos sumiu da vitrine. É emprestado: o colecionador volta na segunda para abrir a exposição."},
+    {"speaker": "helena", "text": "A vitrine estava fechada, o cadeado intacto. E agora há pouco chegou isto no meu celular, de um número que eu não conheço."},
+    {"speaker": "helena", "text": "Só três pessoas estiveram aqui na sexta: o Rafael, a Bia e o Otávio. Eu confio em todos... ou confiava."}
+  ],
+  "intro_effects": [
+    {"type": "clue", "id": "p1"},
+    {"type": "decision", "id": "d1"}
+  ],
+
+  "clues": [
+    {
+      "id": "p1", "title": "Mensagem anônima", "icon": "phone", "kind": "message",
+      "summary": "Recebida por Helena no sábado, às 10h, de um número desconhecido.",
+      "doc": {"style": "phone", "header": "Número desconhecido · sáb 10:02",
+        "lines": ["Alguém da livraria está escondendo a verdade sobre sexta à noite.", "Olhe com atenção as fotos da vitrine."]}
+    },
+    {
+      "id": "p2", "title": "Registro do alarme", "icon": "alarm", "kind": "record",
+      "summary": "Relatório da empresa de segurança com as aberturas e fechamentos de sexta.",
+      "doc": {"style": "email", "header": "De: Vigia Segurança · Relatório de eventos · Sexta",
+        "lines": [
+          "07:58  Porta da frente aberta  ·  código 1 (gerência)",
+          "20:05  Porta da frente trancada  ·  código 1 (gerência)",
+          "23:12  Porta dos fundos aberta  ·  código 3 (prestadores)",
+          "23:16  Porta dos fundos trancada  ·  código 3 (prestadores)",
+          "",
+          "Códigos: 1 = gerência · 2 = funcionários · 3 = prestadores de serviço",
+          "Observação: a transportadora entrega somente às terças e quintas, das 8h às 10h."
+        ]}
+    },
+    {
+      "id": "p3", "title": "Foto da vitrine (19h45)", "icon": "photo", "kind": "photo",
+      "summary": "Foto que Bia tirou na sexta, às 19h45, para as redes da livraria.",
+      "doc": {"style": "photo", "image": "res://assets/documents/foto_vitrine.svg", "header": "Sexta · 19:45",
+        "lines": ["O caderno aparece na vitrine, com a fita marcadora azul para fora.", "A lombada parece lisa, sem marcas."]}
+    },
+    {
+      "id": "p4", "title": "Ficha do empréstimo", "icon": "document", "kind": "document",
+      "summary": "Descrição do caderno original, assinada pelo colecionador.",
+      "doc": {"style": "form", "image": "res://assets/documents/ficha_original.svg", "header": "Termo de empréstimo nº 0112",
+        "lines": [
+          "Obra: caderno manuscrito de poemas de Ilda Matos (1958–1961).",
+          "Capa de tecido verde, formato A5.",
+          "Fita marcadora de cetim VERMELHA.",
+          "Lombada rachada na parte de cima.",
+          "Mancha de tinta azul na página 12.",
+          "Devolução: segunda-feira, 18h."
+        ]}
+    },
+    {
+      "id": "p5", "title": "Caderno de ocorrências", "icon": "notebook", "kind": "document",
+      "summary": "Caderno do balcão onde Rafael anota o que acontece na loja.",
+      "doc": {"style": "notebook", "header": "Ocorrências · sexta-feira",
+        "lines": [
+          "14h — Chegaram os cartazes da exposição.",
+          "18h10 — Passei o segredo do cadeado da vitrine ao Otávio para ele ajustar a luminária por dentro.",
+          "18h40 — Otávio fechou a vitrine. Trocar o segredo na segunda!",
+          "19h50 — Bia saiu.",
+          "— R."
+        ]}
+    },
+    {
+      "id": "p6", "title": "Recibo da papelaria", "icon": "receipt", "kind": "receipt",
+      "summary": "Recibo amassado da Papelaria Ponto Final.",
+      "doc": {"style": "receipt", "header": "PAPELARIA PONTO FINAL · quinta 17:20",
+        "lines": [
+          "1  Caderno capa de tecido VERDE A5 ..... R$ 64,00",
+          "1  Fita de cetim AZUL 1 m ................ R$ 4,50",
+          "TOTAL ........................................ R$ 68,50",
+          "Pagamento: dinheiro",
+          "(Obs. escrita à mão: \"não tinha vermelha\")"
+        ]}
+    }
+  ],
+
+  "statements": [
+    {"id": "s_rafael_hora", "character": "rafael", "text": "Fiquei até umas dez da noite fechando o caixa. Fui o último a sair."},
+    {"id": "s_rafael_vitrine", "character": "rafael", "text": "Quando fechei, o caderno estava na vitrine. Vi a capa verde."},
+    {"id": "s_rafael_bia", "character": "rafael", "text": "Na quinta, a Bia me pediu para manusear o caderno. Eu não deixei."},
+    {"id": "s_bia_sexta", "character": "bia", "text": "Tirei fotos da vitrine às 19h45 para o Instagram e saí às 19h50."},
+    {"id": "s_bia_caderno", "character": "bia", "text": "Eu nunca toquei no caderno."},
+    {"id": "s_otavio_vitrine", "character": "otavio", "text": "Eu nem encostei na vitrine. Ajustei a luminária pelo lado de fora."},
+    {"id": "s_otavio_noite", "character": "otavio", "text": "Saí às 18h45 e passei a noite em casa, editando fotos."}
+  ],
+
+  "decisions": {
+    "d1": {
+      "speaker": "helena",
+      "prompt": "Antes de chamar a equipe: conto a eles sobre a mensagem anônima?",
+      "options": [
+        {"id": "contar", "text": "Sim, conte a todos. Transparência primeiro.",
+          "feedback": "Helena conta à equipe. O clima fica tenso: agora todos sabem que há uma suspeita no ar.",
+          "effects": [{"type": "flag", "id": "equipe_sabe"}]},
+        {"id": "segredo", "text": "Não. Vamos ouvir cada um antes.",
+          "feedback": "Helena guarda a mensagem. A equipe acha que vocês só estão organizando o boletim de ocorrência.",
+          "effects": []}
+      ]
+    },
+    "d2": {
+      "speaker": "narrator",
+      "prompt": "A área de montagem é o espaço de trabalho do Otávio. Ele está no café, do outro lado da loja.",
+      "options": [
+        {"id": "revistar", "text": "Revistar agora, sem avisar.",
+          "feedback": "Você encontra algo na lixeira. Pouco depois, Otávio vê a lixeira revirada e fecha a cara.",
+          "effects": [{"type": "clue", "id": "p6"}, {"type": "flag", "id": "otavio_hostil"}]},
+        {"id": "pedir", "text": "Pedir autorização ao Otávio primeiro.",
+          "feedback": "\"Claro, pode olhar. Mas já limpei tudo hoje cedo, levei o lixo para o beco.\" A lixeira da área está vazia. Um novo local foi liberado: a lixeira do beco.",
+          "effects": [{"type": "flag", "id": "beco_liberado"}]}
+      ]
+    },
+    "d3": {
+      "speaker": "rafael",
+      "prompt": "\"Por favor, não conte à Helena sobre a entrevista. Eu mesmo vou falar com ela, do meu jeito.\"",
+      "options": [
+        {"id": "guardar", "text": "Combinado. Isso não tem a ver com o caderno.",
+          "feedback": "Rafael respira aliviado. \"Obrigado. E... olha, quando eu saí, o caderno estava lá. Disso eu tenho certeza.\"",
+          "effects": [{"type": "flag", "id": "rafael_confia"}]},
+        {"id": "contar", "text": "A Helena precisa saber de tudo.",
+          "feedback": "Rafael fica em silêncio. \"Tudo bem. Você tem razão.\" A conversa esfria, mas ele não esconde mais nada.",
+          "effects": []}
+      ]
+    }
+  },
+
+  "locations": [
+    {
+      "id": "vitrine", "name": "Vitrine", "icon": "case", "pos": [0.5, 0.36],
+      "entries": [
+        {"id": "vitrine_1", "text": "A vitrine está fechada com um cadeado de segredo, sem marcas de força. Dentro, a luminária nova que Otávio instalou e o suporte vazio onde ficava o caderno."}
+      ]
+    },
+    {
+      "id": "celular", "name": "Celular da Helena", "icon": "phone", "pos": [0.2, 0.7],
+      "entries": [
+        {"id": "celular_1", "text": "A mensagem anônima continua na tela. O número não aparece em nenhum contato. \"Olhe com atenção as fotos da vitrine.\""}
+      ]
+    },
+    {
+      "id": "balcao", "name": "Balcão", "icon": "counter", "pos": [0.76, 0.6],
+      "entries": [
+        {"id": "balcao_1", "text": "Ao lado da caixa registradora está o caderno de ocorrências do Rafael. A última página é de sexta-feira.",
+          "effects": [{"type": "clue", "id": "p5"}]}
+      ]
+    },
+    {
+      "id": "escritorio", "name": "Escritório", "icon": "door", "pos": [0.22, 0.27],
+      "entries": [
+        {"id": "escritorio_1", "text": "Na mesa da Helena, a pasta do empréstimo, com a ficha assinada pelo colecionador. O notebook da loja recebe os e-mails da empresa de segurança.",
+          "effects": [{"type": "clue", "id": "p4"}]},
+        {"id": "escritorio_alarme", "condition": {"flag": "alarme_pedido"},
+          "text": "Chegou o e-mail da empresa de segurança com o registro de sexta.",
+          "effects": [{"type": "clue", "id": "p2"}]}
+      ]
+    },
+    {
+      "id": "montagem", "name": "Área de montagem", "icon": "tools", "pos": [0.8, 0.25],
+      "entries": [
+        {"id": "montagem_1", "text": "Cavaletes, cabos, molduras e a mochila de ferramentas do Otávio. No canto, uma lixeira.",
+          "effects": [{"type": "decision", "id": "d2"}]}
+      ]
+    },
+    {
+      "id": "beco", "name": "Lixeira do beco", "icon": "bin", "pos": [0.84, 0.82], "condition": {"flag": "beco_liberado"},
+      "entries": [
+        {"id": "beco_1", "text": "Entre caixas de papelão e sacos de pó de café, um saco com restos da montagem: fita crepe, pedaços de moldura e um papel amassado.",
+          "effects": [{"type": "clue", "id": "p6"}]}
+      ]
+    }
+  ],
+
+  "dialogues": {
+    "rafael": {
+      "greeting": "Rafael está de braços cruzados ao lado do caixa. \"Pode perguntar. Não tenho nada a esconder.\"",
+      "topics": [
+        {"id": "r_noite", "question": "Onde você estava na sexta à noite?",
+          "lines": [{"speaker": "rafael", "text": "Aqui. Fiquei até umas dez da noite fechando o caixa. Fui o último a sair."}],
+          "effects": [{"type": "statement", "id": "s_rafael_hora"}]},
+        {"id": "r_vitrine", "question": "O caderno estava na vitrine quando você saiu?",
+          "lines": [{"speaker": "rafael", "text": "Estava. Quando fechei, olhei a vitrine como sempre. Vi a capa verde lá dentro."}],
+          "effects": [{"type": "statement", "id": "s_rafael_vitrine"}]},
+        {"id": "r_segredo", "question": "Quem sabe o segredo do cadeado?",
+          "lines": [{"speaker": "rafael", "text": "Eu e a Helena. Na sexta passei para o Otávio, para ele mexer na luminária. Anotei tudo no caderno de ocorrências, no balcão."}]},
+        {"id": "r_bia", "question": "Alguém mostrou interesse especial no caderno?",
+          "lines": [{"speaker": "rafael", "text": "A Bia. Na quinta ela me pediu para manusear o caderno, disse que queria ver a encadernação. Eu não deixei."}],
+          "effects": [{"type": "statement", "id": "s_rafael_bia"}]},
+        {"id": "r_alarme", "question": "Dá para ver quem entrou e saiu da loja?",
+          "lines": [{"speaker": "rafael", "text": "A empresa de segurança manda um relatório por e-mail. Vou pedir agora; em alguns minutos chega no notebook do escritório."}],
+          "effects": [{"type": "flag", "id": "alarme_pedido"}]},
+        {"id": "r_confronto", "question": "A porta da frente foi trancada às 20h05, com o seu código. Para onde você foi?",
+          "condition": {"contradiction": "x1"},
+          "lines": [
+            {"speaker": "rafael", "text": "...Tá. Eu saí às oito. Tinha uma entrevista de emprego na Livraria Central às oito e meia."},
+            {"speaker": "rafael", "text": "As contas daqui não fecham há meses. Fiquei com vergonha de contar. Mas não toquei no caderno, e não voltei à noite."}
+          ],
+          "effects": [{"type": "flag", "id": "rafael_confessou"}, {"type": "decision", "id": "d3"}]}
+      ]
+    },
+    "bia": {
+      "greeting": "Bia limpa a máquina de café pela terceira vez. \"Oi. Tá tudo bem?\"",
+      "topics": [
+        {"id": "b_sexta", "question": "O que você fez na sexta, no fim do dia?",
+          "lines": [{"speaker": "bia", "text": "Às 19h45 tirei fotos da vitrine para o Instagram, para anunciar a exposição. Saí às 19h50."}],
+          "effects": [{"type": "statement", "id": "s_bia_sexta"}]},
+        {"id": "b_caderno", "question": "Você já mexeu no caderno?",
+          "lines": [{"speaker": "bia", "text": "Nunca toquei nele. Eu... tinha vontade, estudo restauração de papel. Mas não."}],
+          "effects": [{"type": "statement", "id": "s_bia_caderno"}]},
+        {"id": "b_foto_aberta", "question": "Posso ver as fotos que você tirou?",
+          "condition": {"not": {"flag": "equipe_sabe"}},
+          "lines": [{"speaker": "bia", "text": "Claro! Ficou bonita, olha. Aliás, eu ia mesmo te mostrar..."}],
+          "effects": [{"type": "clue", "id": "p3"}]},
+        {"id": "b_foto_defensiva", "question": "Posso ver as fotos que você tirou?",
+          "condition": {"all": [{"flag": "equipe_sabe"}, {"not": {"clue": "p4"}}]},
+          "lines": [{"speaker": "bia", "text": "Por quê? Vocês acham que fui eu, por causa da tal mensagem? Não vou ficar mostrando meu celular sem saber para quê."}]},
+        {"id": "b_foto_explicada", "question": "Quero comparar sua foto com a ficha do colecionador. Pode me mostrar?",
+          "condition": {"all": [{"flag": "equipe_sabe"}, {"clue": "p4"}]},
+          "lines": [{"speaker": "bia", "text": "Ah... comparar a foto com a ficha. Tá bom. Aqui."}],
+          "effects": [{"type": "clue", "id": "p3"}]},
+        {"id": "b_mensagem", "question": "Foi você quem mandou a mensagem anônima?",
+          "condition": {"all": [{"clue": "p3"}, {"clue": "p4"}]},
+          "lines": [
+            {"speaker": "bia", "text": "...Fui eu. Hoje cedo revi a foto e vi a fita azul. Na ficha a fita é vermelha. Fiquei com medo."},
+            {"speaker": "bia", "text": "Eu tinha pedido para manusear o caderno na quinta. Se falasse, iam achar que fui eu. Então mandei de um chip velho."}
+          ],
+          "effects": [{"type": "flag", "id": "bia_confessou"}]}
+      ]
+    },
+    "otavio": {
+      "greeting": "Otávio sorri e ajeita o cabelo. \"Que confusão, hein? Pergunta o que precisar.\"",
+      "greeting_hostile": "Otávio nem levanta os olhos do celular. \"Vi que reviraram minhas coisas. Seja rápida.\"",
+      "topics": [
+        {"id": "o_trabalho", "question": "O que você fez na vitrine na sexta?",
+          "lines": [{"speaker": "otavio", "text": "Instalei a luminária nova. Coisa rápida. Eu nem encostei na vitrine, ajustei tudo pelo lado de fora."}],
+          "effects": [{"type": "statement", "id": "s_otavio_vitrine"}]},
+        {"id": "o_noite", "question": "A que horas você saiu? E depois?",
+          "lines": [{"speaker": "otavio", "text": "Saí às 18h45 e passei a noite em casa, editando as fotos da exposição. Pode perguntar pro meu gato."}],
+          "effects": [{"type": "statement", "id": "s_otavio_noite"}]},
+        {"id": "o_codigo", "question": "Quem usa o código 3 da porta dos fundos?",
+          "condition": {"not": {"flag": "otavio_hostil"}},
+          "lines": [{"speaker": "otavio", "text": "Os prestadores. Eu e a transportadora, acho. Por quê?"}]},
+        {"id": "o_confronto_vitrine", "question": "O Rafael passou a você o segredo do cadeado. Você abriu a vitrine.",
+          "condition": {"contradiction": "x3"},
+          "lines": [{"speaker": "otavio", "text": "Tá, abri. Para ajustar a luz por dentro. Força de expressão, \"nem encostei\". Isso não prova nada."}]},
+        {"id": "o_confronto_noite", "question": "Seu código abriu a porta dos fundos às 23h12.",
+          "condition": {"contradiction": "x4"},
+          "lines": [{"speaker": "otavio", "text": "Deve ter sido a transportadora. Eles também têm o código 3. Não é?"}]},
+        {"id": "o_recibo", "question": "Este recibo estava no lixo da sua montagem.",
+          "condition": {"clue": "p6"},
+          "lines": [{"speaker": "otavio", "text": "Um caderno verde? Comprei para um projeto meu. Muita gente compra caderno, sabia?"}]}
+      ]
+    }
+  },
+
+  "contradictions": [
+    {"id": "x1", "a": "s_rafael_hora", "b": "p2", "title": "Rafael saiu bem antes",
+      "explanation": "Rafael disse que ficou até as 22h, mas a porta da frente foi trancada com o código da gerência às 20h05 e não abriu mais. Pergunte a ele de novo."},
+    {"id": "x2", "a": "p3", "b": "p4", "title": "Às 19h45, o caderno já era uma cópia",
+      "explanation": "A foto mostra fita azul e lombada lisa. O original tem fita vermelha e lombada rachada. O caderno na vitrine às 19h45 não era o original: a troca aconteceu antes. Isso muda o sentido do depoimento de Rafael: ele viu uma capa verde, mas não o caderno verdadeiro."},
+    {"id": "x3", "a": "s_otavio_vitrine", "b": "p5", "title": "Otávio abriu a vitrine",
+      "explanation": "Otávio disse que nem encostou na vitrine. O caderno de ocorrências mostra que ele recebeu o segredo do cadeado e ficou com a vitrine aberta das 18h10 às 18h40, a única abertura de sexta."},
+    {"id": "x4", "a": "s_otavio_noite", "b": "p2", "title": "Alguém voltou à noite com o código de Otávio",
+      "explanation": "Otávio disse que passou a noite em casa, mas a porta dos fundos foi aberta às 23h12 com o código 3, dos prestadores. A transportadora só entrega às terças e quintas de manhã."}
+  ],
+  "no_contradiction": [
+    {"a": "s_bia_caderno", "b": "s_rafael_bia", "text": "Essas falas não se contradizem: pedir para manusear o caderno não é o mesmo que tocar nele."},
+    {"a": "s_rafael_vitrine", "b": "p3", "text": "Não há contradição: a foto também mostra um caderno verde na vitrine. Mas compare a foto com a descrição do original..."}
+  ],
+  "default_no_contradiction": "Essas duas informações não se contradizem. Procure afirmações que não podem ser verdadeiras ao mesmo tempo.",
+
+  "objectives": [
+    {"text": "Converse com os três suspeitos.", "done": {"all": [{"flag": "talked_rafael"}, {"flag": "talked_bia"}, {"flag": "talked_otavio"}]}},
+    {"text": "Examine os locais da livraria e reúna as pistas.", "progress": "clues", "done": {"min_clues": 6}},
+    {"text": "No Quadro, compare depoimentos e pistas para achar contradições.", "progress": "contradictions", "done": {"min_contradictions": 4}},
+    {"text": "Quando estiver segura, faça a acusação."}
+  ],
+  "hints": [
+    {"when": {"not": {"flag": "talked_rafael"}}, "text": "Comece pelo Rafael: ele é o gerente e sabe como a loja funciona."},
+    {"when": {"not": {"clue": "p5"}}, "text": "O Rafael anota tudo. Procure o caderno de ocorrências no balcão."},
+    {"when": {"not": {"clue": "p4"}}, "text": "Para saber se algo mudou, é preciso saber como o caderno original era. Olhe a pasta no escritório."},
+    {"when": {"not": {"flag": "alarme_pedido"}}, "text": "A loja tem alarme. Pergunte ao Rafael se dá para ver quem entrou e saiu."},
+    {"when": {"not": {"clue": "p2"}}, "text": "O relatório do alarme chega no notebook do escritório."},
+    {"when": {"not": {"clue": "p3"}}, "text": "A mensagem fala em \"fotos da vitrine\". Quem fotografou a vitrine na sexta?"},
+    {"when": {"not": {"clue": "p6"}}, "text": "Ainda falta examinar a área de montagem da exposição."},
+    {"when": {"not": {"contradiction": "x2"}}, "text": "No Quadro, compare a foto da vitrine com a ficha do empréstimo. Repare na fita."},
+    {"when": {"not": {"contradiction": "x3"}}, "text": "O que o Otávio disse sobre a vitrine bate com o caderno de ocorrências?"},
+    {"when": {"not": {"contradiction": "x1"}}, "text": "O horário que o Rafael disse bate com o registro do alarme?"},
+    {"when": {"not": {"contradiction": "x4"}}, "text": "Quem usa o código 3, e quando a transportadora vem? Compare com o que o Otávio disse sobre a noite."},
+    {"when": {"always": true}, "text": "Pense na ordem: quando o caderno foi trocado? Quem estava com a vitrine aberta nesse momento? Quem voltou à noite?"}
+  ],
+  "free_hints": 3,
+
+  "accusation": {
+    "requires": {"all": [{"flag": "talked_rafael"}, {"flag": "talked_bia"}, {"flag": "talked_otavio"}, {"min_clues": 4}]},
+    "prompt": "Quem trocou e levou o caderno de Ilda Matos?",
+    "locked_text": "Converse com os três suspeitos e reúna pelo menos 4 pistas antes de acusar alguém.",
+    "culprit": "otavio",
+    "max_evidence": 3,
+    "relevant_evidence": ["p2", "p3", "p4", "p5", "p6"],
+    "evidence_reasons": {
+      "p1": "A mensagem iniciou a investigação, mas não aponta ninguém.",
+      "p2": "Mostra a entrada à noite com o código 3, o de Otávio.",
+      "p3": "Mostra que às 19h45 o caderno da vitrine já era uma cópia.",
+      "p4": "Descreve o original: fita vermelha, lombada rachada.",
+      "p5": "Mostra que só Otávio abriu a vitrine na sexta.",
+      "p6": "Mostra que Otávio comprou um caderno igual e fita azul na véspera."
+    }
+  },
+
+  "endings": {
+    "correct": {
+      "title": "A verdade vem à tona",
+      "text": "Diante da foto, da ficha e do caderno de ocorrências, Otávio para de sorrir. Na tarde de sábado, Helena e o colecionador vão com a polícia ao ateliê dele. O caderno de Ilda Matos está numa caixa, embrulhado, pronto para ser entregue a um comprador na segunda. A exposição abre no horário.",
+      "epilogue": {
+        "d3": {
+          "guardar": "Rafael contou ele mesmo à Helena sobre a entrevista. Ela entendeu, e os dois combinaram rever o futuro da livraria juntos.",
+          "contar": "Helena soube da entrevista por você. Rafael pediu demissão no mês seguinte, mas os dois se despediram sem mágoa."
+        },
+        "d1": {
+          "contar": "A equipe passou o sábado desconfiada. Bia só se acalmou quando entendeu que a mensagem dela ajudou.",
+          "segredo": "Bia confessou a mensagem aliviada. Na semana seguinte, Helena a convidou para cuidar da conservação do acervo da exposição."
+        }
+      }
+    },
+    "wrong": {
+      "title": "Um erro custoso",
+      "text": "A acusação não se sustenta: as pistas não ligam essa pessoa à troca. Enquanto todos discutem, Otávio entrega o caderno original ao comprador na segunda de manhã. O colecionador cancela a exposição, e a Livraria Farol perde a confiança de quem a ajudava.",
+      "epilogue": {}
+    }
+  },
+
+  "explanation": [
+    {"text": "A foto de Bia (19h45) mostra fita azul e lombada lisa. A ficha descreve fita vermelha e lombada rachada: o caderno exposto já era uma cópia.", "clues": ["p3", "p4"]},
+    {"text": "Então a troca aconteceu antes das 19h45. A única abertura da vitrine na sexta foi das 18h10 às 18h40, com o segredo passado a Otávio, que mentiu dizendo que nem encostou nela.", "clues": ["p5"]},
+    {"text": "Na quinta, Otávio comprou um caderno de tecido verde e uma fita azul: a loja não tinha vermelha.", "clues": ["p6"]},
+    {"text": "Às 23h12, o código 3 abriu os fundos. A transportadora só vem às terças e quintas de manhã. Otávio voltou para retirar a cópia e fazer o sumiço parecer um furto noturno de alguém da casa.", "clues": ["p2"]},
+    {"text": "Rafael mentiu sobre o horário por causa da entrevista na concorrente, e o código dele não aparece à noite. Bia enviou a mensagem anônima depois de notar a fita azul na própria foto.", "clues": ["p2", "p1"]}
+  ],
+
+  "scoring": {"clue": 50, "contradiction": 100, "correct": 300, "evidence": 50}
+}

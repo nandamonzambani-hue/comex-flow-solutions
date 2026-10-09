@@ -1,0 +1,7 @@
+{
+  "_info": "Lista de casos do menu. Para adicionar um caso: crie data/case_00N.json, cadastre aqui e rode os testes.",
+  "cases": [
+    {"id": "case_001", "file": "case_001.json", "status": "available", "free": true},
+    {"id": "case_002", "title": "Em preparação", "status": "coming_soon", "free": false}
+  ]
+}

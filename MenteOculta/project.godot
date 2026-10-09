@@ -1,0 +1,48 @@
+; Arquivo de configuração do projeto Godot (Projeto > Configurações do Projeto).
+
+config_version=5
+
+[application]
+
+config/name="Mente Oculta"
+config/description="Jogo 2D de investigação: reúna evidências, compare depoimentos e resolva mistérios."
+config/version="0.1.0"
+run/main_scene="res://scenes/main_menu.tscn"
+config/features=PackedStringArray("4.6", "Mobile")
+boot_splash/bg_color=Color(0.094, 0.137, 0.227, 1)
+config/icon="res://assets/icons/app_icon.svg"
+
+[autoload]
+
+SaveManager="*res://scripts/save_manager.gd"
+CaseLoader="*res://scripts/case_loader.gd"
+GameManager="*res://scripts/game_manager.gd"
+
+[display]
+
+window/size/viewport_width=720
+window/size/viewport_height=1280
+window/size/window_width_override=405
+window/size/window_height_override=720
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+window/handheld/orientation=1
+
+[gui]
+
+common/drop_mouse_on_gui_input_disabled=true
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
+
+[internationalization]
+
+locale/fallback="pt_BR"
+
+[rendering]
+
+renderer/rendering_method="mobile"
+renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true
+environment/defaults/default_clear_color=Color(0.094, 0.137, 0.227, 1)

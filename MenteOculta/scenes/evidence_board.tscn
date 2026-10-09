@@ -1,0 +1,110 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/evidence_board.gd" id="1_board"]
+
+[node name="EvidenceBoard" type="VBoxContainer"]
+size_flags_horizontal = 3
+theme_override_constants/separation = 14
+script = ExtResource("1_board")
+
+[node name="Help" type="Label" parent="."]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+theme_type_variation = &"MutedLabel"
+text = "BOARD_HELP"
+autowrap_mode = 3
+
+[node name="Slots" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="SlotA" type="PanelContainer" parent="Slots"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 170)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SlotAText" type="Label" parent="Slots/SlotA"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+theme_type_variation = &"MutedLabel"
+text = "SLOT_EMPTY"
+autowrap_mode = 3
+
+[node name="Versus" type="Label" parent="Slots"]
+layout_mode = 2
+theme_type_variation = &"BadgeLabel"
+text = "×"
+vertical_alignment = 1
+
+[node name="SlotB" type="PanelContainer" parent="Slots"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 170)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SlotBText" type="Label" parent="Slots/SlotB"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+theme_type_variation = &"MutedLabel"
+text = "SLOT_EMPTY"
+autowrap_mode = 3
+
+[node name="Buttons" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="ClearButton" type="Button" parent="Buttons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 88)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"SecondaryButton"
+text = "CLEAR"
+
+[node name="CompareButton" type="Button" parent="Buttons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 88)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+text = "COMPARE"
+
+[node name="Result" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_type_variation = &"PaperPanel"
+
+[node name="ResultBox" type="VBoxContainer" parent="Result"]
+layout_mode = 2
+
+[node name="ResultTitle" type="Label" parent="Result/ResultBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+theme_type_variation = &"InkHeadingLabel"
+autowrap_mode = 3
+
+[node name="ResultText" type="Label" parent="Result/ResultBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+theme_type_variation = &"InkLabel"
+autowrap_mode = 3
+
+[node name="Progress" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"BadgeLabel"
+
+[node name="Found" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Items" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 10

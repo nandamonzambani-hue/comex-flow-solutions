@@ -1,0 +1,112 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/dialogue.gd" id="1_dlg"]
+
+[node name="Dialogue" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dlg")
+
+[node name="Backdrop" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.094, 0.137, 0.227, 1)
+
+[node name="Margin" type="MarginContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="Column" type="VBoxContainer" parent="Margin"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="Header" type="HBoxContainer" parent="Margin/Column"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Portrait" type="TextureRect" parent="Margin/Column/Header"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(140, 140)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Names" type="VBoxContainer" parent="Margin/Column/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Name" type="Label" parent="Margin/Column/Header/Names"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"HeadingLabel"
+
+[node name="Role" type="Label" parent="Margin/Column/Header/Names"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+theme_type_variation = &"MutedLabel"
+autowrap_mode = 3
+
+[node name="LogScroll" type="ScrollContainer" parent="Margin/Column"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="Log" type="VBoxContainer" parent="Margin/Column/LogScroll"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 12
+
+[node name="AskLabel" type="Label" parent="Margin/Column"]
+layout_mode = 2
+theme_type_variation = &"BadgeLabel"
+text = "ASK"
+
+[node name="TopicScroll" type="ScrollContainer" parent="Margin/Column"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 360)
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="Topics" type="VBoxContainer" parent="Margin/Column/TopicScroll"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="EndButton" type="Button" parent="Margin/Column"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 88)
+layout_mode = 2
+theme_type_variation = &"SecondaryButton"
+text = "END_TALK"
+
+[node name="Overlays" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2

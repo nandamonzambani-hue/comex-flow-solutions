@@ -1,0 +1,87 @@
+name: Mente Oculta
+
+# Roda os testes do jogo e gera um APK de teste sempre que algo em MenteOculta/ muda.
+on:
+  push:
+    paths: ['MenteOculta/**', '.github/workflows/mente-oculta.yml']
+  pull_request:
+    paths: ['MenteOculta/**', '.github/workflows/mente-oculta.yml']
+  workflow_dispatch:
+
+env:
+  GODOT_VERSION: 4.6.2
+
+defaults:
+  run:
+    working-directory: MenteOculta
+
+jobs:
+  test-and-apk:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Baixar o Godot
+        working-directory: ${{ runner.temp }}
+        run: |
+          curl -sSL -o godot.zip "https://github.com/godotengine/godot/releases/download/${GODOT_VERSION}-stable/Godot_v${GODOT_VERSION}-stable_linux.x86_64.zip"
+          unzip -q godot.zip && mv "Godot_v${GODOT_VERSION}-stable_linux.x86_64" godot && chmod +x godot
+          echo "GODOT=${{ runner.temp }}/godot" >> "$GITHUB_ENV"
+
+      - name: Importar o projeto
+        run: timeout 300 $GODOT --headless --import || true
+
+      - name: Testes de lógica e conteúdo
+        run: timeout 300 $GODOT --headless -s res://tests/run_tests.gd
+
+      - name: Partida completa automatizada
+        run: timeout 300 $GODOT --headless --path . res://tests/playthrough.tscn
+
+      - name: Partida completa com o final errado
+        run: timeout 300 $GODOT --headless --path . res://tests/playthrough.tscn -- --wrong
+
+      - uses: actions/cache@v4
+        id: templates
+        with:
+          path: ~/.local/share/godot/export_templates
+          key: godot-templates-${{ env.GODOT_VERSION }}
+
+      - name: Baixar modelos de exportação
+        if: steps.templates.outputs.cache-hit != 'true'
+        working-directory: ${{ runner.temp }}
+        run: |
+          curl -sSL -o t.tpz "https://github.com/godotengine/godot/releases/download/${GODOT_VERSION}-stable/Godot_v${GODOT_VERSION}-stable_export_templates.tpz"
+          T=~/.local/share/godot/export_templates/${GODOT_VERSION}.stable
+          mkdir -p "$T" && unzip -oqj t.tpz "templates/android_*" "templates/version.txt" -d "$T" && rm t.tpz
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+
+      - name: Configurar Android SDK e chave de teste
+        run: |
+          keytool -genkeypair -keystore "$RUNNER_TEMP/debug.keystore" -storepass android -alias androiddebugkey \
+            -keypass android -keyalg RSA -keysize 2048 -validity 10000 -dname "CN=Android Debug,O=Android,C=US"
+          mkdir -p ~/.config/godot
+          cat > ~/.config/godot/editor_settings-4.6.tres <<EOF
+          [gd_resource type="EditorSettings" format=3]
+
+          [resource]
+          export/android/android_sdk_path = "$ANDROID_HOME"
+          export/android/java_sdk_path = "$JAVA_HOME"
+          EOF
+          echo "GODOT_ANDROID_KEYSTORE_DEBUG_PATH=$RUNNER_TEMP/debug.keystore" >> "$GITHUB_ENV"
+          echo "GODOT_ANDROID_KEYSTORE_DEBUG_USER=androiddebugkey" >> "$GITHUB_ENV"
+          echo "GODOT_ANDROID_KEYSTORE_DEBUG_PASSWORD=android" >> "$GITHUB_ENV"
+
+      - name: Exportar APK de teste
+        run: |
+          mkdir -p build
+          $GODOT --headless --path . --export-debug "Android" build/MenteOculta.apk
+          test -s build/MenteOculta.apk
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mente-oculta-apk-teste
+          path: MenteOculta/build/MenteOculta.apk

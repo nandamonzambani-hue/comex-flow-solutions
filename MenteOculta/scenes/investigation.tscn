@@ -1,0 +1,219 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/investigation.gd" id="1_inv"]
+[ext_resource type="PackedScene" path="res://scenes/evidence_board.tscn" id="2_board"]
+[ext_resource type="Texture2D" path="res://assets/backgrounds/livraria.svg" id="3_bg"]
+
+[node name="Investigation" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_inv")
+
+[node name="Backdrop" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.094, 0.137, 0.227, 1)
+
+[node name="Pages" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="PlacePage" type="Control" parent="Pages"]
+unique_name_in_owner = true
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Background" type="TextureRect" parent="Pages/PlacePage"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("3_bg")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Spots" type="Control" parent="Pages/PlacePage"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="SuspectsPage" type="ScrollContainer" parent="Pages"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+
+[node name="Margin" type="MarginContainer" parent="Pages/SuspectsPage"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="SuspectList" type="VBoxContainer" parent="Pages/SuspectsPage/Margin"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="CluesPage" type="ScrollContainer" parent="Pages"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+
+[node name="Margin" type="MarginContainer" parent="Pages/CluesPage"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="ClueList" type="VBoxContainer" parent="Pages/CluesPage/Margin"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="BoardPage" type="ScrollContainer" parent="Pages"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+
+[node name="Margin" type="MarginContainer" parent="Pages/BoardPage"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="BoardColumn" type="VBoxContainer" parent="Pages/BoardPage/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="EvidenceBoard" parent="Pages/BoardPage/Margin/BoardColumn" instance=ExtResource("2_board")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="BoardAccuse" type="Button" parent="Pages/BoardPage/Margin/BoardColumn"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 96)
+layout_mode = 2
+text = "ACCUSE"
+
+[node name="TopBar" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+theme_type_variation = &"BarPanel"
+
+[node name="Row" type="HBoxContainer" parent="TopBar"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="MenuButton" type="Button" parent="TopBar/Row"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_vertical = 4
+theme_type_variation = &"GhostButton"
+
+[node name="Titles" type="VBoxContainer" parent="TopBar/Row"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="CaseTitle" type="Label" parent="TopBar/Row/Titles"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"StrongLabel"
+text_overrun_behavior = 3
+
+[node name="Objective" type="Label" parent="TopBar/Row/Titles"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+theme_type_variation = &"MutedLabel"
+autowrap_mode = 3
+
+[node name="HintButton" type="Button" parent="TopBar/Row"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_vertical = 4
+theme_type_variation = &"SecondaryButton"
+
+[node name="BottomNav" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_type_variation = &"BarPanel"
+
+[node name="Tabs" type="HBoxContainer" parent="BottomNav"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Overlays" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
