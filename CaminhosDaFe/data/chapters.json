@@ -1,0 +1,34 @@
+{
+  "_info": "Lista de capítulos do mapa. Para adicionar um capítulo: crie chapter_00N.json e questions_00N.json, cadastre-o aqui com status 'available' e rode os testes.",
+  "chapters": [
+    {
+      "id": "chapter_001",
+      "number": 1,
+      "title": "A caridade na prática",
+      "place": "Vila do Vale Sereno",
+      "virtue": "Caridade",
+      "status": "available",
+      "file": "chapter_001.json",
+      "questions_file": "questions_001.json",
+      "map_pos": [0.3, 0.78]
+    },
+    {
+      "id": "chapter_002",
+      "number": 2,
+      "title": "Em preparação",
+      "place": "Próximo destino",
+      "virtue": "Esperança",
+      "status": "coming_soon",
+      "map_pos": [0.68, 0.56]
+    },
+    {
+      "id": "chapter_003",
+      "number": 3,
+      "title": "Em preparação",
+      "place": "Próximo destino",
+      "virtue": "Fé",
+      "status": "coming_soon",
+      "map_pos": [0.36, 0.34]
+    }
+  ]
+}

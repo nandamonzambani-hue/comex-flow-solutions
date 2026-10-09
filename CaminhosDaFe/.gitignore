@@ -1,0 +1,8 @@
+# Gerado pelo Godot ao abrir o projeto
+.godot/
+# Exportações (APK/AAB/IPA)
+build/
+# Chaves de assinatura NUNCA vão para o repositório
+*.keystore
+*.jks
+export_credentials.cfg

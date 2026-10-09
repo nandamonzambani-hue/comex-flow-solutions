@@ -1,0 +1,45 @@
+{
+  "chapter": "chapter_001",
+  "questions": [
+    {
+      "id": "q_virtudes",
+      "prompt": "Segundo o Catecismo da Igreja Católica, quais são as três virtudes teologais?",
+      "options": ["Fé, esperança e caridade", "Prudência, justiça e fortaleza", "Paciência, coragem e alegria"],
+      "answer": 0,
+      "explanation": "O Catecismo ensina que \"são três as virtudes teologais: fé, esperança e caridade\" (§1813). Prudência, justiça e fortaleza são virtudes cardeais, junto com a temperança (§1805).",
+      "sources": ["ccc_virtudes"]
+    },
+    {
+      "id": "q_obras",
+      "prompt": "O Catecismo chama de obras de misericórdia corporais gestos como dar de comer a quem tem fome. Qual destas também é uma obra corporal?",
+      "options": ["Vestir os nus", "Aconselhar", "Consolar", "Perdoar"],
+      "answer": 0,
+      "explanation": "O §2447 cita como corporais: dar de comer a quem tem fome, albergar quem não tem teto, vestir os nus, visitar os doentes e os presos e sepultar os mortos. Aconselhar, consolar e perdoar estão entre as obras de misericórdia espirituais.",
+      "sources": ["ccc_pobres"]
+    },
+    {
+      "id": "q_samaritano",
+      "prompt": "Na parábola que Jesus conta em Lucas 10,25-37, quem para e cuida do homem ferido na estrada?",
+      "options": ["Um sacerdote", "Um levita", "Um samaritano"],
+      "answer": 2,
+      "explanation": "Um sacerdote e um levita passam pelo outro lado da estrada. É um samaritano que se aproxima, cuida das feridas e leva o homem a uma hospedaria. No fim, Jesus pede que façamos o mesmo (Lc 10,37).",
+      "sources": ["bib_lc10"]
+    },
+    {
+      "id": "q_vicente",
+      "prompt": "Com qual santa São Vicente de Paulo deu início à Companhia das Filhas da Caridade?",
+      "options": ["Santa Luísa de Marillac", "Santa Teresa de Ávila", "Santa Clara de Assis"],
+      "answer": 0,
+      "explanation": "Santa Luísa de Marillac trabalhou com São Vicente na formação das Filhas da Caridade, em Paris, em 1633, para servir os pobres e os doentes.",
+      "sources": ["britannica_fc", "ce_vicente"]
+    },
+    {
+      "id": "q_maior",
+      "prompt": "Na Primeira Carta aos Coríntios (13,13), São Paulo fala da fé, da esperança e da caridade. Qual delas ele diz ser a maior?",
+      "options": ["A fé", "A esperança", "A caridade"],
+      "answer": 2,
+      "explanation": "São Paulo conclui que a maior delas é a caridade (1Cor 13,13). O Catecismo cita essa passagem ao apresentar as virtudes teologais (§1813).",
+      "sources": ["bib_1cor13", "ccc_virtudes"]
+    }
+  ]
+}

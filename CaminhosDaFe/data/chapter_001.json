@@ -1,0 +1,339 @@
+{
+  "id": "chapter_001",
+  "title": "A caridade na prática",
+  "place": "Vila do Vale Sereno",
+  "virtue": "Caridade",
+  "summary": "Uma tempestade deixou estragos na vila às vésperas da Festa da Colheita. Ajude os moradores a se reerguerem juntos.",
+  "estimated_minutes": 10,
+  "background": "res://assets/backgrounds/vila_vale_sereno.svg",
+
+  "characters": {
+    "marta": {"name": "Marta", "role": "Catequista da capela", "portrait": "res://assets/characters/marta.svg"},
+    "bento": {"name": "Seu Bento", "role": "Padeiro", "portrait": "res://assets/characters/bento.svg"},
+    "lucia": {"name": "Dona Lúcia", "role": "Cuida da casa comunitária", "portrait": "res://assets/characters/lucia.svg"},
+    "tome": {"name": "Tomé", "role": "Menino da vila", "portrait": "res://assets/characters/tome.svg"},
+    "joaquim": {"name": "Seu Joaquim", "role": "Hortelão", "portrait": "res://assets/characters/joaquim.svg"}
+  },
+
+  "intro": [
+    {"type": "dialogue", "lines": [
+      {"speaker": "narrator", "text": "Você chega à Vila do Vale Sereno numa manhã de outono. Na noite anterior, uma tempestade forte passou por aqui."},
+      {"speaker": "narrator", "text": "O telhado da padaria rachou, o canal que rega a horta entupiu e algumas famílias perderam o que tinham guardado na despensa."},
+      {"speaker": "narrator", "text": "Daqui a três dias seria a Festa da Colheita. Na capela, no alto da colina, alguém acena para você."},
+      {"speaker": "narrator", "text": "Toque nos lugares da vila para ir até eles. Novos lugares se abrem conforme você ajuda os moradores."}
+    ]},
+    {"type": "diary", "id": "vila"},
+    {"type": "diary", "id": "sobre_fontes"}
+  ],
+
+  "points": [
+    {
+      "id": "capela", "name": "Capela", "icon": "church", "pos": [0.5, 0.25], "requires": [],
+      "events": [
+        {"type": "dialogue", "lines": [
+          {"speaker": "marta", "text": "Que bom que você chegou! Sou a Marta, catequista aqui da capela. A vila acordou cansada e assustada hoje."},
+          {"speaker": "marta", "text": "Muita gente quer ajudar, mas cada um está tentando resolver tudo sozinho. Caridade não é só dar coisas: é amar a Deus e amar o próximo de verdade, com gestos."},
+          {"speaker": "marta", "text": "Antes de começar, uma pergunta que faço sempre na catequese."}
+        ]},
+        {"type": "diary", "id": "caridade"},
+        {"type": "question", "id": "q_virtudes"},
+        {"type": "dialogue", "lines": [
+          {"speaker": "marta", "text": "Muito bem! Comece pela padaria do Seu Bento. Sem pão, não há festa, e o telhado dele está pior do que parece."}
+        ]}
+      ],
+      "revisit": [{"speaker": "marta", "text": "A vila conta com você. Siga pelos caminhos que se abriram no mapa."}]
+    },
+    {
+      "id": "padaria", "name": "Padaria", "icon": "bread", "pos": [0.27, 0.44], "requires": ["capela"],
+      "events": [
+        {"type": "dialogue", "lines": [
+          {"speaker": "bento", "text": "Bom dia! Quatro vizinhos vieram ajudar a consertar o telhado, mas ninguém se entende sobre quem faz o quê."},
+          {"speaker": "bento", "text": "Se cada um fizer a tarefa certa, a gente termina antes do almoço. Você ajuda a organizar?"}
+        ]},
+        {"type": "challenge", "id": "mutirao"},
+        {"type": "dialogue", "lines": [
+          {"speaker": "bento", "text": "Olha só: telhado firme e ninguém se machucou! Cada um ajudou com o que tinha de melhor."},
+          {"speaker": "bento", "text": "Minha avó dizia que os primeiros cristãos repartiam tudo, para que ninguém passasse necessidade. Está escrito nos Atos dos Apóstolos."}
+        ]},
+        {"type": "diary", "id": "comunidade"}
+      ],
+      "revisit": [{"speaker": "bento", "text": "O forno já está quente. Amanhã cedo tem pão para a festa!"}]
+    },
+    {
+      "id": "pomar", "name": "Pomar", "icon": "apple", "pos": [0.76, 0.42], "requires": ["capela"],
+      "events": [
+        {"type": "dialogue", "lines": [
+          {"speaker": "narrator", "text": "Entre as árvores do pomar comunitário, você vê o Tomé guardando maçãs na mochila. Elas foram separadas para a festa."},
+          {"speaker": "tome", "text": "Ah... oi. Eu... não é o que parece."}
+        ]},
+        {"type": "choice", "id": "macas"}
+      ],
+      "revisit": [{"speaker": "tome", "text": "As maçãs que sobraram já estão no cesto da festa."}]
+    },
+    {
+      "id": "casa", "name": "Casa comunitária", "icon": "house", "pos": [0.27, 0.68], "requires": ["padaria"],
+      "events": [
+        {"type": "dialogue", "lines": [
+          {"speaker": "lucia", "text": "Os vizinhos trouxeram doações para as famílias que perderam a despensa. Agora precisamos montar as cestas."},
+          {"speaker": "lucia", "text": "Cada casa precisa de coisas diferentes. Leia com atenção e use tudo o que foi doado: nada pode faltar, nem sobrar."}
+        ]},
+        {"type": "challenge", "id": "cestas"},
+        {"type": "dialogue", "lines": [
+          {"speaker": "lucia", "text": "Cada cesta foi pensada para quem vai recebê-la. Repartir com atenção também é uma forma de cuidar."}
+        ]},
+        {"type": "question", "id": "q_obras"},
+        {"type": "diary", "id": "obras"}
+      ],
+      "revisit": [{"speaker": "lucia", "text": "As cestas já foram entregues. Obrigada pela ajuda!"}]
+    },
+    {
+      "id": "horta", "name": "Horta", "icon": "sprout", "pos": [0.74, 0.7], "requires": ["padaria"],
+      "events": [
+        {"type": "dialogue", "lines": [
+          {"speaker": "joaquim", "text": "A tempestade bagunçou o canal que traz água do riacho. Sem água, as verduras da festa não aguentam."},
+          {"speaker": "joaquim", "text": "Minhas costas já não deixam eu mexer em tudo sozinho. Se você girar as peças do canal, a água volta a correr."}
+        ]},
+        {"type": "challenge", "id": "canal"},
+        {"type": "dialogue", "lines": [
+          {"speaker": "joaquim", "text": "Escute a água chegando! Você parou o seu caminho para ajudar um velho hortelão. Isso me lembra uma parábola."}
+        ]},
+        {"type": "question", "id": "q_samaritano"},
+        {"type": "diary", "id": "samaritano"}
+      ],
+      "revisit": [{"speaker": "joaquim", "text": "As couves já estão levantando as folhas. A horta agradece."}]
+    },
+    {
+      "id": "salinha", "name": "Salinha da catequese", "icon": "book", "pos": [0.7, 0.18], "requires": ["casa", "horta", "pomar"],
+      "events": [
+        {"type": "dialogue", "lines": [
+          {"speaker": "marta", "text": "Você trabalhou o dia inteiro! Sente aqui. Quero contar a história de um santo que viveu a caridade de um jeito muito concreto."},
+          {"speaker": "marta", "text": "Daqui em diante é história de verdade, não invenção da vila. Tudo o que vou contar está no seu diário, com as fontes."},
+          {"speaker": "marta", "text": "São Vicente de Paulo foi um padre francês do século XVII. Em 1617, numa pequena paróquia, ele reuniu fiéis para socorrer uma família inteira que estava doente."},
+          {"speaker": "marta", "text": "Dali nasceu a primeira Confraria da Caridade. Depois ele fundou a Congregação da Missão e, com Santa Luísa de Marillac, as Filhas da Caridade."}
+        ]},
+        {"type": "diary", "id": "vicente"},
+        {"type": "question", "id": "q_vicente"},
+        {"type": "dialogue", "lines": [
+          {"speaker": "marta", "text": "Última pergunta antes da festa. Esta vem de uma carta de São Paulo que costuma ser lida em casamentos."}
+        ]},
+        {"type": "question", "id": "q_maior"},
+        {"type": "diary", "id": "corintios"},
+        {"type": "dialogue", "lines": [
+          {"speaker": "marta", "text": "Escute os sinos: a Festa da Colheita vai começar na praça!"}
+        ]}
+      ],
+      "revisit": [{"speaker": "marta", "text": "A festa já começou na praça. Vá até lá!"}]
+    },
+    {
+      "id": "praca", "name": "Praça da festa", "icon": "well", "pos": [0.5, 0.56], "requires": ["salinha"],
+      "events": [
+        {"type": "dialogue", "lines": [
+          {"speaker": "narrator", "text": "A praça se enche de mesas, pães quentes, verduras da horta e cestas de maçãs. A vila inteira está ali."},
+          {"speaker": "narrator", "text": "Quando todos vão se sentar, chega pela estrada um viajante cansado, com a roupa molhada da chuva. Ninguém o conhece."}
+        ]},
+        {"type": "choice", "id": "viajante"},
+        {"type": "diary", "id": "mateus25"},
+        {"type": "dialogue", "lines": [
+          {"speaker": "marta", "text": "Hoje a vila não ficou rica nem perfeita. Mas ficou mais unida, e ninguém ficou sozinho."}
+        ]},
+        {"type": "finish"}
+      ],
+      "revisit": [{"speaker": "narrator", "text": "A festa terminou. Obrigado por caminhar com a vila."}]
+    }
+  ],
+
+  "challenges": {
+    "mutirao": {
+      "type": "assignment",
+      "title": "Mutirão do telhado",
+      "virtue": "Cooperação",
+      "intro": "Leia as pistas e escolha uma tarefa diferente para cada voluntário.",
+      "hint": "Comece pelo Davi: só uma tarefa não exige força. Depois veja quem trouxe luvas.",
+      "success": "Cada pessoa ficou na tarefa certa, e o telhado foi consertado com segurança.",
+      "data": {
+        "people": [
+          {"id": "ana", "name": "Ana"},
+          {"id": "davi", "name": "Davi"},
+          {"id": "rita", "name": "Rita"},
+          {"id": "caio", "name": "Caio"}
+        ],
+        "tasks": [
+          {"id": "telhado", "name": "Subir e trocar as telhas", "short": "Telhado"},
+          {"id": "escada", "name": "Segurar a escada", "short": "Escada"},
+          {"id": "carregar", "name": "Carregar as telhas", "short": "Carregar"},
+          {"id": "agua", "name": "Servir água e lanche", "short": "Água"}
+        ],
+        "clues": [
+          "Davi machucou o braço: só pode fazer a tarefa que não exige força.",
+          "Rita tem medo de altura.",
+          "Carregar telhas exige luvas, e só a Ana e a Rita trouxeram luvas.",
+          "Caio nunca trocou uma telha e prefere não subir no telhado."
+        ],
+        "allowed": {
+          "ana": ["telhado", "escada", "carregar", "agua"],
+          "davi": ["agua"],
+          "rita": ["escada", "carregar", "agua"],
+          "caio": ["escada", "agua"]
+        }
+      }
+    },
+    "cestas": {
+      "type": "distribution",
+      "title": "Cestas da partilha",
+      "virtue": "Generosidade",
+      "intro": "Monte uma cesta para cada casa com o que ela realmente precisa. Use todas as doações.",
+      "hint": "A família Rocha tem 5 pessoas e precisa de 1 pão por pessoa. A família do Tomé tem 4 pessoas.",
+      "success": "Todas as cestas ficaram certas, e nenhuma doação ficou parada no depósito.",
+      "data": {
+        "items": [
+          {"id": "pao", "name": "Pão", "icon": "bread"},
+          {"id": "cobertor", "name": "Cobertor", "icon": "blanket"},
+          {"id": "sopa", "name": "Pote de sopa", "icon": "soup"},
+          {"id": "lenha", "name": "Feixe de lenha", "icon": "wood"}
+        ],
+        "stock": {"pao": 10, "cobertor": 4, "sopa": 3, "lenha": 2},
+        "households": [
+          {
+            "id": "rocha", "name": "Família Rocha",
+            "description": "Cinco pessoas. A despensa alagou: precisam de 1 pão por pessoa e de 1 pote de sopa. Os cobertores e a lenha deles não se molharam.",
+            "needs": {"pao": 5, "sopa": 1}
+          },
+          {
+            "id": "celeste", "name": "Dona Celeste",
+            "description": "Mora sozinha e a casa ficou fria. Precisa de 2 cobertores, 1 feixe de lenha, 1 pão e 1 pote de sopa.",
+            "needs": {"pao": 1, "cobertor": 2, "lenha": 1, "sopa": 1}
+          },
+          {
+            "id": "familia_tome", "name": "Família do Tomé",
+            "description": "A mãe e três filhos. Perderam a despensa e a lenha: precisam de 1 pão por pessoa, 1 pote de sopa e 1 feixe de lenha. Ganharam cobertores dos vizinhos, mas ainda faltam 2.",
+            "needs": {"pao": 4, "sopa": 1, "lenha": 1, "cobertor": 2}
+          }
+        ]
+      }
+    },
+    "canal": {
+      "type": "pipes",
+      "title": "O canal da horta",
+      "virtue": "Serviço",
+      "intro": "Toque nas peças para girá-las e leve a água do riacho (à esquerda) até a horta (à direita).",
+      "hint": "A água entra pela primeira linha e precisa sair pela última. O caminho desce pela esquerda, atravessa o meio e desce de novo.",
+      "success": "A água voltou a correr e a horta está salva para a festa.",
+      "data": {
+        "tiles": ["LTIL", "LILI", "TLIL", "ILLI"],
+        "rotations": ["1302", "2030", "1211", "1320"],
+        "solution": ["2000", "0120", "0000", "0001"],
+        "source_row": 0,
+        "target_row": 3
+      }
+    }
+  },
+
+  "choices": {
+    "macas": {
+      "speaker": "tome",
+      "prompt": "O que você faz?",
+      "options": [
+        {
+          "id": "conversar",
+          "text": "Sentar ao lado dele e perguntar o que está acontecendo.",
+          "response": "Tomé conta, baixinho, que a despensa da casa dele alagou e que os irmãos menores estavam com fome. Você promete ajudar a família a receber uma cesta, e ele devolve as maçãs para a festa.",
+          "ending": "Tomé se sentiu ouvido. Na festa, ajudou a servir as mesas ao lado da mãe."
+        },
+        {
+          "id": "expor",
+          "text": "Levar o Tomé até a praça e contar a todos o que ele fez.",
+          "response": "Algumas pessoas balançam a cabeça. Tomé abaixa os olhos e sai correndo. Mais tarde, Dona Lúcia descobre que a família dele perdeu a despensa na tempestade.",
+          "ending": "Tomé demorou a voltar para perto das pessoas. Dona Lúcia foi até a casa dele e o convidou para a festa. Ele foi, mas ficou num canto, ainda envergonhado."
+        },
+        {
+          "id": "ignorar",
+          "text": "Fingir que não viu e seguir caminho.",
+          "response": "Tomé some entre as árvores. Você segue, mas fica com a sensação de que alguma coisa ficou sem resposta.",
+          "ending": "Faltaram algumas maçãs na festa. Só no fim da noite a vila soube que a família do Tomé tinha perdido a despensa."
+        }
+      ]
+    },
+    "viajante": {
+      "speaker": "narrator",
+      "prompt": "O viajante para na entrada da praça. O que você faz?",
+      "options": [
+        {
+          "id": "convidar",
+          "text": "Convidar o viajante para sentar à mesa com a vila.",
+          "response": "Ele agradece, emocionado. Conta que também foi pego pela tempestade na estrada.",
+          "ending": "O viajante passou a noite na casa comunitária e, de manhã, ajudou Seu Joaquim a terminar de limpar o canal antes de seguir viagem."
+        },
+        {
+          "id": "prato",
+          "text": "Separar um prato para ele comer do lado de fora.",
+          "response": "Ele come em silêncio, sentado no muro da praça, e agradece.",
+          "ending": "O viajante seguiu viagem antes do amanhecer. Ficou na vila a lembrança de um prato servido às pressas e a pergunta se dava para ter feito mais."
+        },
+        {
+          "id": "recusar",
+          "text": "Dizer que a festa é só para quem é da vila.",
+          "response": "O viajante agradece mesmo assim e segue pela estrada. Seu Bento vai atrás dele com um pão embrulhado.",
+          "ending": "Seu Bento alcançou o viajante na estrada e lhe deu um pão. Na volta, comentou: \"A mesa da festa ainda tinha lugar\"."
+        }
+      ]
+    }
+  },
+
+  "diary": [
+    {
+      "id": "vila", "kind": "fiction", "title": "Vila do Vale Sereno",
+      "body": "A vila, a tempestade e os moradores (Marta, Seu Bento, Dona Lúcia, Tomé e Seu Joaquim) foram inventados para este jogo. As situações servem para pensar em como a caridade aparece no dia a dia."
+    },
+    {
+      "id": "caridade", "kind": "teaching", "title": "O que é a caridade",
+      "body": "O Catecismo da Igreja Católica define: \"A caridade é a virtude teologal pela qual amamos a Deus sobre todas as coisas por Ele mesmo, e ao próximo como a nós mesmos, por amor de Deus\" (§1822).\n\nÉ uma das três virtudes teologais, junto com a fé e a esperança (§1813). Jesus fez da caridade o \"mandamento novo\": amar uns aos outros como Ele nos amou (Jo 13,34; Catecismo §1823).",
+      "sources": ["ccc_virtudes", "bib_jo13"]
+    },
+    {
+      "id": "comunidade", "kind": "scripture", "title": "Um só coração",
+      "body": "Os Atos dos Apóstolos contam que a primeira comunidade cristã de Jerusalém tinha \"um só coração e uma só alma\" e repartia seus bens, de modo que ninguém passava necessidade (At 4,32-35).\n\nO texto aqui é um resumo. Leia a passagem completa na sua Bíblia.",
+      "sources": ["bib_at4"]
+    },
+    {
+      "id": "obras", "kind": "teaching", "title": "Obras de misericórdia",
+      "body": "O Catecismo chama de obras de misericórdia \"as ações caridosas pelas quais vamos em ajuda do nosso próximo, nas suas necessidades corporais e espirituais\" (§2447).\n\nCorporais: dar de comer a quem tem fome, albergar quem não tem teto, vestir os nus, visitar os doentes e os presos, sepultar os mortos.\n\nEspirituais: instruir, aconselhar, consolar, confortar, perdoar e suportar com paciência.\n\nO mesmo parágrafo cita São Lucas: \"Quem tem duas túnicas reparta com quem não tem nenhuma\" (Lc 3,11).",
+      "sources": ["ccc_pobres", "bib_lc3"]
+    },
+    {
+      "id": "samaritano", "kind": "scripture", "title": "O bom samaritano",
+      "body": "Um mestre da Lei pergunta a Jesus: \"Quem é o meu próximo?\". Jesus responde com uma parábola: um homem é assaltado e deixado ferido na estrada. Um sacerdote e um levita passam pelo outro lado. Um samaritano se aproxima, cuida dele e paga a hospedaria. Jesus pede que façamos o mesmo (Lc 10,25-37).\n\nO texto aqui é um resumo. Leia a passagem completa na sua Bíblia.",
+      "sources": ["bib_lc10"]
+    },
+    {
+      "id": "vicente", "kind": "saint", "title": "São Vicente de Paulo",
+      "body": "Origem: nasceu numa família camponesa em Pouy, na Gasconha (sul da França). O ano varia entre as fontes: a maioria das biografias recentes indica 1581, e a Enciclopédia Católica de 1912 registra 1580.\n\nFoi ordenado sacerdote em 1600.\n\nEm agosto de 1617, como pároco de Châtillon-les-Dombes, reuniu mulheres da paróquia para socorrer uma família inteira que estava doente. Assim nasceu a primeira Confraria da Caridade.\n\nFundou a Congregação da Missão (1625), dedicada a anunciar o Evangelho ao povo do campo. Com Santa Luísa de Marillac, deu início às Filhas da Caridade (1633). Também foi capelão das galés, levando assistência aos condenados.\n\nMorreu em Paris em 27 de setembro de 1660. Foi beatificado em 1729 e canonizado em 1737. Em 1885, o papa Leão XIII o declarou padroeiro das associações de caridade.\n\nUm ponto discutido: em cartas de 1607, Vicente contou ter sido capturado por piratas e levado como escravo a Túnis. Historiadores discordam sobre a veracidade desse relato, por isso ele não é apresentado aqui como fato certo.\n\nA Sociedade de São Vicente de Paulo (os vicentinos) foi fundada depois, em 1833, por Frederico Ozanam e outros jovens, inspirados no exemplo dele.",
+      "sources": ["ce_vicente", "famvin_vicente", "famvin_chatillon", "vinformation_1617", "britannica_fc", "cm_padroeiro", "depaul_cativeiro", "famvin_ssvp"]
+    },
+    {
+      "id": "corintios", "kind": "scripture", "title": "A maior delas é a caridade",
+      "body": "No capítulo 13 da Primeira Carta aos Coríntios, São Paulo descreve a caridade. O Catecismo cita: \"A caridade é paciente, a caridade é benigna; não é invejosa\" (1Cor 13,4; Catecismo §1825).\n\nNo fim do capítulo, ele diz que permanecem a fé, a esperança e a caridade, e que a maior delas é a caridade (1Cor 13,13).",
+      "sources": ["bib_1cor13", "ccc_virtudes"]
+    },
+    {
+      "id": "mateus25", "kind": "scripture", "title": "\"Foi a mim que o fizestes\"",
+      "body": "No Evangelho de Mateus, Jesus fala de quem deu de comer a quem tinha fome, acolheu o estrangeiro, vestiu quem estava sem roupa e visitou os doentes e os presos. Ele diz que, ao fazer isso a um dos seus irmãos mais pequeninos, foi a Ele que o fizeram (Mt 25,31-46).\n\nO Catecismo lembra essa passagem ao falar do amor aos pobres (§2443).\n\nO texto aqui é um resumo. Leia a passagem completa na sua Bíblia.",
+      "sources": ["bib_mt25", "ccc_pobres"]
+    },
+    {
+      "id": "sobre_fontes", "kind": "sources", "title": "Como este capítulo foi escrito",
+      "body": "Os registros marcados como \"Ficção\" foram inventados para o jogo. Os marcados como \"Ensinamento\", \"Bíblia\" ou \"Santo\" trazem informações com fontes, listadas em cada registro.\n\nAs passagens bíblicas aparecem resumidas, com a referência exata. As citações do Catecismo vêm da versão em português publicada no site da Santa Sé.\n\nEste é um projeto independente, sem aprovação oficial da Igreja. Se encontrar algum erro, avise para que possamos corrigir."
+    }
+  ],
+
+  "ending": {
+    "title": "A Festa da Colheita",
+    "intro": "A vila se reuniu na praça. Veja como as suas escolhas marcaram esta história:",
+    "lessons": [
+      "A caridade é amar a Deus sobre todas as coisas e ao próximo como a nós mesmos, por amor de Deus (Catecismo §1822).",
+      "As obras de misericórdia atendem às necessidades do corpo e da alma (Catecismo §2447).",
+      "O próximo é quem precisa de nós no caminho, como mostra a parábola do bom samaritano (Lc 10,25-37).",
+      "São Vicente de Paulo organizou a caridade para que ela chegasse a quem mais precisava."
+    ],
+    "closing": "As escolhas deste jogo são situações inventadas para refletir. Elas não medem a fé de ninguém: ajudam a pensar em como a caridade aparece nos pequenos gestos do dia a dia."
+  }
+}

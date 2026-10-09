@@ -1,0 +1,105 @@
+{
+  "_info": "Fontes citadas no jogo. Todo conteúdo religioso ou histórico do diário e das perguntas aponta para um 'id' daqui. Os textos bíblicos aparecem resumidos com a referência exata; leia o trecho completo numa Bíblia católica.",
+  "sources": [
+    {
+      "id": "ccc_virtudes",
+      "type": "catechism",
+      "title": "Catecismo da Igreja Católica, §1803–1829 (as virtudes; a caridade)",
+      "publisher": "Santa Sé",
+      "url": "https://www.vatican.va/archive/cathechism_po/index_new/p3s1cap1_1699-1876_po.html"
+    },
+    {
+      "id": "ccc_pobres",
+      "type": "catechism",
+      "title": "Catecismo da Igreja Católica, §2443–2449 (o amor aos pobres; obras de misericórdia)",
+      "publisher": "Santa Sé",
+      "url": "https://www.vatican.va/archive/cathechism_po/index_new/p3s2cap2_2196-2557_po.html"
+    },
+    {
+      "id": "bib_jo13",
+      "type": "bible",
+      "title": "Evangelho segundo São João 13,34-35 (o mandamento novo)"
+    },
+    {
+      "id": "bib_at4",
+      "type": "bible",
+      "title": "Atos dos Apóstolos 4,32-35 (a primeira comunidade cristã)"
+    },
+    {
+      "id": "bib_lc3",
+      "type": "bible",
+      "title": "Evangelho segundo São Lucas 3,11"
+    },
+    {
+      "id": "bib_lc10",
+      "type": "bible",
+      "title": "Evangelho segundo São Lucas 10,25-37 (o bom samaritano)"
+    },
+    {
+      "id": "bib_mt25",
+      "type": "bible",
+      "title": "Evangelho segundo São Mateus 25,31-46"
+    },
+    {
+      "id": "bib_1cor13",
+      "type": "bible",
+      "title": "Primeira Carta de São Paulo aos Coríntios 13,1-13"
+    },
+    {
+      "id": "ce_vicente",
+      "type": "biography",
+      "title": "Catholic Encyclopedia (1912), verbete \"St. Vincent de Paul\"",
+      "publisher": "New Advent",
+      "url": "https://www.newadvent.org/cathen/15434c.htm"
+    },
+    {
+      "id": "famvin_vicente",
+      "type": "biography",
+      "title": "VincentWiki: artigos de enciclopédia sobre São Vicente de Paulo",
+      "publisher": "Família Vicentina",
+      "url": "https://wiki.famvin.org/en/Vincent_de_Paul_-_Encyclopedia_Articles"
+    },
+    {
+      "id": "famvin_chatillon",
+      "type": "history",
+      "title": "Lugares vicentinos: Châtillon-les-Dombes",
+      "publisher": "Família Vicentina",
+      "url": "https://famvin.org/en/2024/05/28/vincentian-places-09-chatillon-les-dombes"
+    },
+    {
+      "id": "vinformation_1617",
+      "type": "history",
+      "title": "A primeira Confraria da Caridade (1617)",
+      "publisher": "Vinformation (Família Vicentina)",
+      "url": "https://vinformation.org/en/2018/08/first-confraternity-of-charity-1617/"
+    },
+    {
+      "id": "britannica_fc",
+      "type": "history",
+      "title": "Encyclopaedia Britannica, \"Daughters of Charity of Saint Vincent de Paul\"",
+      "publisher": "Britannica",
+      "url": "https://www.britannica.com/topic/Daughters-of-Charity-of-Saint-Vincent-de-Paul"
+    },
+    {
+      "id": "cm_padroeiro",
+      "type": "history",
+      "title": "São Vicente de Paulo: 140 anos como padroeiro das associações de caridade",
+      "publisher": "Congregação da Missão",
+      "url": "https://congregatiomissionis.org/en/st-vincent-de-paul-140-years-as-patron-of-charity-associations/"
+    },
+    {
+      "id": "depaul_cativeiro",
+      "type": "history",
+      "title": "O relato do cativeiro de Vicente em Túnis e o debate histórico",
+      "publisher": "DePaul University Special Collections",
+      "url": "https://dpuspecialcollections.omeka.net/exhibits/show/mediterranean/vincent/captivity"
+    },
+    {
+      "id": "famvin_ssvp",
+      "type": "history",
+      "title": "VincentWiki: Sociedade de São Vicente de Paulo (1833)",
+      "publisher": "Família Vicentina",
+      "url": "https://wiki.famvin.org/en/Society_of_St._Vincent_dePaul_(1833)"
+    }
+  ]
+}

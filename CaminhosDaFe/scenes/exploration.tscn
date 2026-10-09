@@ -1,0 +1,119 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/exploration.gd" id="1_exp"]
+[ext_resource type="PackedScene" path="res://scenes/ui/dialogue_box.tscn" id="2_dlg"]
+[ext_resource type="Texture2D" path="res://assets/characters/jogador.svg" id="3_player"]
+
+[node name="Exploration" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_exp")
+
+[node name="World" type="Control" parent="."]
+unique_name_in_owner = true
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Background" type="TextureRect" parent="World"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Points" type="Control" parent="World"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Player" type="TextureRect" parent="World"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 72.0
+offset_bottom = 112.0
+mouse_filter = 2
+texture = ExtResource("3_player")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TopBar" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+theme_type_variation = &"BarPanel"
+
+[node name="Row" type="HBoxContainer" parent="TopBar"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="MapButton" type="Button" parent="TopBar/Row"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(88, 88)
+layout_mode = 2
+theme_type_variation = &"GhostButton"
+tooltip_text = "MAP"
+
+[node name="Titles" type="VBoxContainer" parent="TopBar/Row"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="Place" type="Label" parent="TopBar/Row/Titles"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"MutedLabel"
+text_overrun_behavior = 3
+
+[node name="ChapterTitle" type="Label" parent="TopBar/Row/Titles"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"StrongLabel"
+text_overrun_behavior = 3
+
+[node name="Score" type="Label" parent="TopBar/Row"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"BadgeLabel"
+
+[node name="DiaryButton" type="Button" parent="TopBar/Row"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(88, 88)
+layout_mode = 2
+tooltip_text = "DIARY"
+
+[node name="DialogueBox" parent="." instance=ExtResource("2_dlg")]
+unique_name_in_owner = true
+layout_mode = 1
+
+[node name="Overlays" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
