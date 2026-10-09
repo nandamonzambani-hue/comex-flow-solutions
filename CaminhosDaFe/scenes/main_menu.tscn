@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3]
 
 [ext_resource type="Script" path="res://scripts/ui/main_menu.gd" id="1_menu"]
-[ext_resource type="Texture2D" path="res://assets/backgrounds/vila_vale_sereno.svg" id="2_bg"]
+[ext_resource type="Texture2D" path="res://assets/backgrounds/vila_vale_sereno.jpg" id="2_bg"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3

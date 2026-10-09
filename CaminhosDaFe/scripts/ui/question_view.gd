@@ -46,9 +46,11 @@ func _on_pick(index: int) -> void:
 	var correct := index == int(question.answer)
 	if correct:
 		_paint(_buttons[index], GameManager.COLORS.green)
+		Fx.confetti(self, _buttons[index].global_position + _buttons[index].size / 2.0 - global_position, 40)
 		_finish(true)
 	elif _attempts < Scoring.MAX_QUESTION_ATTEMPTS:
 		_paint(_buttons[index], GameManager.COLORS.wrong)
+		Fx.shake(_buttons[index])
 		_buttons[index].disabled = true
 		_clear_feedback()
 		_feedback.add_child(UiKit.label(tr("TRY_AGAIN"), "StrongLabel"))

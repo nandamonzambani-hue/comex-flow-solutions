@@ -309,3 +309,4 @@ func _succeed() -> void:
 	feedback.scale = Vector2(0.9, 0.9)
 	feedback.pivot_offset = feedback.size / 2
 	t.tween_property(feedback, "scale", Vector2.ONE, 0.25).set_trans(Tween.TRANS_BACK)
+	Fx.confetti(self, size / 2.0, 90)

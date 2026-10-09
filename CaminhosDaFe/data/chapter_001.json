@@ -5,14 +5,14 @@
   "virtue": "Caridade",
   "summary": "Uma tempestade deixou estragos na vila às vésperas da Festa da Colheita. Ajude os moradores a se reerguerem juntos.",
   "estimated_minutes": 10,
-  "background": "res://assets/backgrounds/vila_vale_sereno.svg",
+  "background": "res://assets/backgrounds/vila_vale_sereno.jpg",
 
   "characters": {
-    "marta": {"name": "Marta", "role": "Catequista da capela", "portrait": "res://assets/characters/marta.svg"},
-    "bento": {"name": "Seu Bento", "role": "Padeiro", "portrait": "res://assets/characters/bento.svg"},
-    "lucia": {"name": "Dona Lúcia", "role": "Cuida da casa comunitária", "portrait": "res://assets/characters/lucia.svg"},
-    "tome": {"name": "Tomé", "role": "Menino da vila", "portrait": "res://assets/characters/tome.svg"},
-    "joaquim": {"name": "Seu Joaquim", "role": "Hortelão", "portrait": "res://assets/characters/joaquim.svg"}
+    "marta": {"name": "Marta", "role": "Catequista da capela", "portrait": "res://assets/characters/marta.png"},
+    "bento": {"name": "Seu Bento", "role": "Padeiro", "portrait": "res://assets/characters/bento.png"},
+    "lucia": {"name": "Dona Lúcia", "role": "Cuida da casa comunitária", "portrait": "res://assets/characters/lucia.png"},
+    "tome": {"name": "Tomé", "role": "Menino da vila", "portrait": "res://assets/characters/tome.png"},
+    "joaquim": {"name": "Seu Joaquim", "role": "Hortelão", "portrait": "res://assets/characters/joaquim.png"}
   },
 
   "intro": [
@@ -28,7 +28,7 @@
 
   "points": [
     {
-      "id": "capela", "name": "Capela", "icon": "church", "pos": [0.5, 0.25], "requires": [],
+      "id": "capela", "name": "Capela", "icon": "church", "pos": [0.4, 0.15], "requires": [],
       "events": [
         {"type": "dialogue", "lines": [
           {"speaker": "marta", "text": "Que bom que você chegou! Sou a Marta, catequista aqui da capela. A vila acordou cansada e assustada hoje."},
@@ -44,7 +44,7 @@
       "revisit": [{"speaker": "marta", "text": "A vila conta com você. Siga pelos caminhos que se abriram no mapa."}]
     },
     {
-      "id": "padaria", "name": "Padaria", "icon": "bread", "pos": [0.27, 0.44], "requires": ["capela"],
+      "id": "padaria", "name": "Padaria", "icon": "bread", "pos": [0.19, 0.47], "requires": ["capela"],
       "events": [
         {"type": "dialogue", "lines": [
           {"speaker": "bento", "text": "Bom dia! Quatro vizinhos vieram ajudar a consertar o telhado, mas ninguém se entende sobre quem faz o quê."},
@@ -60,7 +60,7 @@
       "revisit": [{"speaker": "bento", "text": "O forno já está quente. Amanhã cedo tem pão para a festa!"}]
     },
     {
-      "id": "pomar", "name": "Pomar", "icon": "apple", "pos": [0.76, 0.42], "requires": ["capela"],
+      "id": "pomar", "name": "Pomar", "icon": "apple", "pos": [0.85, 0.58], "requires": ["capela"],
       "events": [
         {"type": "dialogue", "lines": [
           {"speaker": "narrator", "text": "Entre as árvores do pomar comunitário, você vê o Tomé guardando maçãs na mochila. Elas foram separadas para a festa."},
@@ -71,7 +71,7 @@
       "revisit": [{"speaker": "tome", "text": "As maçãs que sobraram já estão no cesto da festa."}]
     },
     {
-      "id": "casa", "name": "Casa comunitária", "icon": "house", "pos": [0.27, 0.68], "requires": ["padaria"],
+      "id": "casa", "name": "Casa comunitária", "icon": "house", "pos": [0.73, 0.43], "requires": ["padaria"],
       "events": [
         {"type": "dialogue", "lines": [
           {"speaker": "lucia", "text": "Os vizinhos trouxeram doações para as famílias que perderam a despensa. Agora precisamos montar as cestas."},
@@ -87,7 +87,7 @@
       "revisit": [{"speaker": "lucia", "text": "As cestas já foram entregues. Obrigada pela ajuda!"}]
     },
     {
-      "id": "horta", "name": "Horta", "icon": "sprout", "pos": [0.74, 0.7], "requires": ["padaria"],
+      "id": "horta", "name": "Horta", "icon": "sprout", "pos": [0.27, 0.7], "requires": ["padaria"],
       "events": [
         {"type": "dialogue", "lines": [
           {"speaker": "joaquim", "text": "A tempestade bagunçou o canal que traz água do riacho. Sem água, as verduras da festa não aguentam."},
@@ -103,7 +103,7 @@
       "revisit": [{"speaker": "joaquim", "text": "As couves já estão levantando as folhas. A horta agradece."}]
     },
     {
-      "id": "salinha", "name": "Salinha da catequese", "icon": "book", "pos": [0.7, 0.18], "requires": ["casa", "horta", "pomar"],
+      "id": "salinha", "name": "Salinha da catequese", "icon": "book", "pos": [0.68, 0.29], "requires": ["casa", "horta", "pomar"],
       "events": [
         {"type": "dialogue", "lines": [
           {"speaker": "marta", "text": "Você trabalhou o dia inteiro! Sente aqui. Quero contar a história de um santo que viveu a caridade de um jeito muito concreto."},

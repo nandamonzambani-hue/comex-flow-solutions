@@ -18,6 +18,9 @@ func _ready() -> void:
 	_build_markers()
 	resized.connect(_place_markers)
 	_place_markers.call_deferred()
+	Fx.breathe(background, 0.02, 12.0)
+	Fx.ambient(self, "pollen")
+	Fx.stagger(markers.get_children(), 0.18, 0.25)
 
 
 func _build_markers() -> void:

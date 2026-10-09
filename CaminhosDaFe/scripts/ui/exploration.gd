@@ -57,6 +57,7 @@ func _ready() -> void:
 	player.position = _player_spot(_player_point)
 	_start_bob()
 	_refresh_markers()
+	_ambient_life()
 	if not ProgressManager.intro_seen(cid):
 		_busy = true
 		await _run_events(chapter.intro)
@@ -99,6 +100,7 @@ func _build_markers() -> void:
 		box.alignment = BoxContainer.ALIGNMENT_CENTER
 		box.add_theme_constant_override("separation", 4)
 		var b := Button.new()
+		b.set_meta("no_press", true)
 		b.custom_minimum_size = Vector2(96, 96)
 		b.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
 		b.icon = UiKit.icon(pt.icon)
@@ -180,6 +182,14 @@ func _update_score() -> void:
 	score_label.text = tr("SCORE") % ProgressManager.score(cid)
 
 
+## Vida na vila: o fundo respira, polén flutua e os pontos aparecem um a um.
+func _ambient_life() -> void:
+	Fx.breathe(background, 0.012, 9.0)
+	var dust := Fx.ambient(world, "pollen")
+	world.move_child(dust, 1)
+	Fx.stagger(_markers.values(), 0.09, 0.2)
+
+
 func _start_bob() -> void:
 	if _bob:
 		_bob.kill()
@@ -219,9 +229,19 @@ func _walk_to(point_id: String) -> void:
 	var target := _player_spot(point_id)
 	var dist := player.position.distance_to(target)
 	player.flip_h = target.x < player.position.x
+	var dur := clampf(dist / WALK_SPEED, 0.2, 1.4)
 	var t := create_tween()
-	t.tween_property(player, "position", target, clampf(dist / WALK_SPEED, 0.2, 1.4)).set_trans(Tween.TRANS_SINE)
+	t.tween_property(player, "position", target, dur).set_trans(Tween.TRANS_SINE)
+	# Balancinho de caminhada: o peregrino inclina para os lados a cada passo.
+	player.pivot_offset = Vector2(player.size.x / 2.0, player.size.y)
+	var steps := maxi(2, int(dur / 0.18))
+	var wiggle := create_tween().set_loops(steps)
+	wiggle.tween_property(player, "rotation", 0.07, 0.09).set_trans(Tween.TRANS_SINE)
+	wiggle.tween_property(player, "rotation", -0.07, 0.09).set_trans(Tween.TRANS_SINE)
 	await t.finished
+	wiggle.kill()
+	player.create_tween().tween_property(player, "rotation", 0.0, 0.08)
+	Fx.hop(player, 12.0)
 	_player_point = point_id
 
 

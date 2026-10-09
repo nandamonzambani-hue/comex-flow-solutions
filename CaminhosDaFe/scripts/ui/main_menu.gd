@@ -15,6 +15,15 @@ func _ready() -> void:
 	%Version.text = "v" + str(ProjectSettings.get_setting("application/config/version"))
 	_refresh()
 	play_button.grab_focus()
+	_animate_intro()
+
+
+## Entrada animada: fundo "respirando", título e botões surgindo um a um, vaga-lumes.
+func _animate_intro() -> void:
+	Fx.breathe($Background, 0.07, 22.0)
+	Fx.ambient(self, "fireflies")
+	var column: VBoxContainer = $Margin/Column
+	Fx.stagger([column.get_node("Title"), column.get_node("Tagline"), play_button, settings_button, about_button], 0.12, 0.15)
 
 
 func _refresh() -> void:

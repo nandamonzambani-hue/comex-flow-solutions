@@ -15,6 +15,7 @@ func _ready() -> void:
 		%Margin.add_theme_constant_override("margin_top", 64 + top)
 	var progress := ProgressManager.chapter(cid)
 	var ending: Dictionary = chapter.ending
+	_dress_background()
 
 	var star := UiKit.icon_rect("star", 88, GameManager.COLORS.gold)
 	star.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
@@ -76,6 +77,7 @@ func _ready() -> void:
 			GameManager.goto("exploration")))
 	column.add_child(restart)
 	map.grab_focus.call_deferred()
+	_celebrate(star)
 
 
 func _stat(caption: String, value: String) -> Control:
@@ -91,3 +93,30 @@ func _stat(caption: String, value: String) -> Control:
 	col.add_child(c)
 	p.add_child(col)
 	return p
+
+
+## Fundo ilustrado da festa, com um véu de pergaminho para o texto continuar legível.
+func _dress_background() -> void:
+	var bg := TextureRect.new()
+	bg.texture = load("res://assets/backgrounds/festa_final.jpg")
+	bg.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	bg.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
+	bg.set_anchors_preset(Control.PRESET_FULL_RECT)
+	bg.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	add_child(bg)
+	move_child(bg, 0)
+	$Paper.color = Color(0.984, 0.961, 0.902, 0.86)
+	Fx.breathe(bg, 0.03, 14.0)
+	Fx.ambient(self, "fireflies")
+
+
+## A estrela entra girando, o confete explode e os blocos aparecem em sequência.
+func _celebrate(star: Control) -> void:
+	await get_tree().process_frame
+	star.pivot_offset = star.size / 2.0
+	star.scale = Vector2.ZERO
+	var t := star.create_tween().set_parallel(true)
+	t.tween_property(star, "scale", Vector2.ONE, 0.7).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+	t.tween_property(star, "rotation", TAU, 0.7).from(-TAU * 0.5).set_trans(Tween.TRANS_CUBIC)
+	Fx.confetti(self, Vector2(size.x / 2.0, size.y * 0.3), 110)
+	Fx.stagger(column.get_children().slice(1), 0.06, 0.3)

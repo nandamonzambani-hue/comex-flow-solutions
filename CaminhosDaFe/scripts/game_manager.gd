@@ -53,6 +53,10 @@ func _ready() -> void:
 	_fade.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	_fade.modulate.a = 0.0
 	layer.add_child(_fade)
+	# Todo botão novo ganha o efeito de "apertar" automaticamente.
+	get_tree().node_added.connect(func(n: Node):
+		if n is BaseButton:
+			Fx.press_feedback(n))
 
 
 # ---------- navegação ----------
@@ -91,7 +95,7 @@ func character(id: String) -> Dictionary:
 	if id == "narrator":
 		return {"name": tr("NARRATOR"), "portrait": "res://assets/characters/narrador.svg"}
 	if id == "player":
-		return {"name": tr("PLAYER_NAME"), "portrait": "res://assets/characters/peregrino.svg"}
+		return {"name": tr("PLAYER_NAME"), "portrait": "res://assets/characters/peregrino.png"}
 	return chapter.get("characters", {}).get(id, {"name": id, "portrait": ""})
 
 
