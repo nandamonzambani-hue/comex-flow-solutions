@@ -5,7 +5,7 @@ import { router } from "expo-router";
 import { format } from "date-fns";
 import { useTranslation } from "react-i18next";
 import { supabase } from "@/lib/supabase";
-import { useParishId } from "@/hooks/useParish";
+import { useVisibleParishIds } from "@/hooks/useParish";
 import { useDateLocale } from "@/lib/dateLocale";
 import { useLocalizedField } from "@/lib/localized";
 import { Badge, Card, EmptyState, ScreenContainer } from "@/components/ui";
@@ -16,20 +16,20 @@ export default function NewsListScreen() {
   const { t } = useTranslation();
   const dateLocale = useDateLocale();
   const localize = useLocalizedField();
-  const parishId = useParishId();
+  const parishIds = useVisibleParishIds();
   const [items, setItems] = useState<NewsPost[]>([]);
 
   useEffect(() => {
-    if (!parishId) return;
+    if (parishIds.length === 0) return;
     supabase
       .from("news_posts")
       .select("*")
-      .eq("parish_id", parishId)
+      .in("parish_id", parishIds)
       .not("published_at", "is", null)
       .order("is_pinned", { ascending: false })
       .order("published_at", { ascending: false })
       .then(({ data }) => setItems((data as NewsPost[]) ?? []));
-  }, [parishId]);
+  }, [parishIds]);
 
   return (
     <ScreenContainer>

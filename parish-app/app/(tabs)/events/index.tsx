@@ -4,7 +4,7 @@ import { router } from "expo-router";
 import { format } from "date-fns";
 import { useTranslation } from "react-i18next";
 import { supabase } from "@/lib/supabase";
-import { useParishId } from "@/hooks/useParish";
+import { useVisibleParishIds } from "@/hooks/useParish";
 import { useDateLocale } from "@/lib/dateLocale";
 import { useLocalizedField } from "@/lib/localized";
 import { Card, EmptyState, ScreenContainer } from "@/components/ui";
@@ -15,23 +15,23 @@ export default function EventsListScreen() {
   const { t } = useTranslation();
   const dateLocale = useDateLocale();
   const localize = useLocalizedField();
-  const parishId = useParishId();
+  const parishIds = useVisibleParishIds();
   const [events, setEvents] = useState<ParishEvent[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (!parishId) return;
+    if (parishIds.length === 0) return;
     supabase
       .from("events")
       .select("*")
-      .eq("parish_id", parishId)
+      .in("parish_id", parishIds)
       .gte("start_at", new Date(Date.now() - 86400000).toISOString())
       .order("start_at", { ascending: true })
       .then(({ data }) => {
         setEvents((data as ParishEvent[]) ?? []);
         setLoading(false);
       });
-  }, [parishId]);
+  }, [parishIds]);
 
   return (
     <ScreenContainer>

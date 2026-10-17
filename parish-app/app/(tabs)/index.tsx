@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
-import { RefreshControl, ScrollView, StyleSheet, Text, View } from "react-native";
+import { Pressable, RefreshControl, ScrollView, StyleSheet, Text, View } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
 import { Image } from "expo-image";
 import { router } from "expo-router";
 import { useTranslation } from "react-i18next";
@@ -10,9 +11,18 @@ import { useDateLocale } from "@/lib/dateLocale";
 import { useLocalizedField } from "@/lib/localized";
 import { Card, SectionTitle, Badge } from "@/components/ui";
 import { BannerCarousel } from "@/components/BannerCarousel";
+import { MoodCheckin } from "@/components/MoodCheckin";
+import { ParishOriginBadge } from "@/components/ParishOriginBadge";
 import { colors } from "@/theme/colors";
 import type { Announcement, Banner, DailyLiturgy, NewsPost, ParishEvent } from "@/types/database";
 import { format } from "date-fns";
+
+const SHORTCUTS = [
+  { icon: "document-text", key: "forms.title", href: "/(tabs)/more/forms" },
+  { icon: "hand-left", key: "prayer.title", href: "/(tabs)/more/prayer" },
+  { icon: "chatbubble-ellipses", key: "testimonies.title", href: "/(tabs)/more/testimonies" },
+  { icon: "book", key: "bible.title", href: "/(tabs)/more/bible" },
+] as const;
 
 export default function HomeScreen() {
   const { t, i18n } = useTranslation();
@@ -20,7 +30,7 @@ export default function HomeScreen() {
   const localize = useLocalizedField();
   const theme = useTheme();
   const { profile, isStaff } = useAuth();
-  const { parish } = useParishContext();
+  const { parish, parentParish, visibleParishIds } = useParishContext();
   const parishId = parish?.id ?? null;
   const [liturgy, setLiturgy] = useState<DailyLiturgy | null>(null);
   const [nextEvents, setNextEvents] = useState<ParishEvent[]>([]);
@@ -54,7 +64,7 @@ export default function HomeScreen() {
         ? supabase
             .from("events")
             .select("*")
-            .eq("parish_id", parishId)
+            .in("parish_id", visibleParishIds)
             .gte("start_at", new Date().toISOString())
             .order("start_at", { ascending: true })
             .limit(3)
@@ -63,19 +73,19 @@ export default function HomeScreen() {
         ? supabase
             .from("news_posts")
             .select("*")
-            .eq("parish_id", parishId)
+            .in("parish_id", visibleParishIds)
             .not("published_at", "is", null)
             .order("published_at", { ascending: false })
             .limit(5)
         : Promise.resolve({ data: [] as NewsPost[] }),
       parishId
-        ? supabase.from("banners").select("*").eq("parish_id", parishId).order("order_index")
+        ? supabase.from("banners").select("*").in("parish_id", visibleParishIds).order("order_index")
         : Promise.resolve({ data: [] as Banner[] }),
       parishId
         ? supabase
             .from("announcements")
             .select("*")
-            .eq("parish_id", parishId)
+            .in("parish_id", visibleParishIds)
             .order("is_pinned", { ascending: false })
             .order("created_at", { ascending: false })
             .limit(5)
@@ -87,7 +97,7 @@ export default function HomeScreen() {
     setNews((newsData as NewsPost[]) ?? []);
     setBanners((bannersData as Banner[]) ?? []);
     setAnnouncements((announcementsData as Announcement[]) ?? []);
-  }, [parishId, i18n.language]);
+  }, [parishId, visibleParishIds, i18n.language]);
 
   useEffect(() => {
     load();
@@ -108,7 +118,24 @@ export default function HomeScreen() {
       refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
     >
       <Text style={styles.greeting}>{t("home.greeting", { name: profile?.full_name?.split(" ")[0] ?? t("home.defaultName") })}</Text>
-      <Text style={styles.subGreeting}>{t("home.peaceMessage")}</Text>
+      <Text style={styles.subGreeting}>
+        {parentParish ? `${parish?.name} · ${parentParish.name}` : t("home.peaceMessage")}
+      </Text>
+
+      <MoodCheckin />
+
+      <View style={styles.shortcuts}>
+        {SHORTCUTS.map((item) => (
+          <Pressable key={item.key} style={styles.shortcut} onPress={() => router.push(item.href as never)}>
+            <View style={[styles.shortcutIcon, { backgroundColor: `${theme.primary}14` }]}>
+              <Ionicons name={item.icon as never} size={22} color={theme.primary} />
+            </View>
+            <Text style={styles.shortcutLabel} numberOfLines={2}>
+              {t(item.key)}
+            </Text>
+          </Pressable>
+        ))}
+      </View>
 
       {showStatusBanner && (
         <Card style={styles.statusBanner}>
@@ -121,9 +148,10 @@ export default function HomeScreen() {
           <SectionTitle>{t("home.announcements")}</SectionTitle>
           {announcements.map((item) => (
             <Card key={item.id} style={item.is_pinned ? styles.announcementPinned : undefined}>
-              <View style={{ flexDirection: "row", alignItems: "center", gap: 6 }}>
+              <View style={{ flexDirection: "row", alignItems: "center", gap: 6, flexWrap: "wrap" }}>
                 {item.is_pinned && <Text>📌</Text>}
                 <Text style={styles.announcementTitle}>{item.title}</Text>
+                <ParishOriginBadge parishId={item.parish_id} />
               </View>
               <Text style={styles.announcementBody}>{item.body}</Text>
             </Card>
@@ -150,6 +178,7 @@ export default function HomeScreen() {
             {format(new Date(event.start_at), "EEEE, dd MMMM · HH:mm", { locale: dateLocale })}
           </Text>
           <Text style={styles.eventTitle}>{localize(event, "title")}</Text>
+          <ParishOriginBadge parishId={event.parish_id} />
           {event.location && <Text style={styles.eventLocation}>{event.location}</Text>}
         </Card>
       ))}
@@ -186,6 +215,10 @@ const styles = StyleSheet.create({
   newsTitle: { fontSize: 16, fontWeight: "700", color: colors.textPrimary },
   newsSubtitle: { color: colors.textSecondary, marginTop: 4 },
   emptyText: { color: colors.textSecondary, marginBottom: 8 },
+  shortcuts: { flexDirection: "row", gap: 8, marginBottom: 16 },
+  shortcut: { flex: 1, alignItems: "center", gap: 6 },
+  shortcutIcon: { width: 52, height: 52, borderRadius: 26, alignItems: "center", justifyContent: "center" },
+  shortcutLabel: { fontSize: 11, color: colors.textPrimary, textAlign: "center", fontWeight: "600" },
   announcementPinned: { borderColor: colors.warning, borderWidth: 1, backgroundColor: `${colors.warning}0d` },
   announcementTitle: { fontWeight: "700", color: colors.textPrimary },
   announcementBody: { color: colors.textSecondary, marginTop: 4 },

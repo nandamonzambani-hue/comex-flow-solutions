@@ -3,7 +3,7 @@ import { SectionList, StyleSheet, Text } from "react-native";
 import { router } from "expo-router";
 import { useTranslation } from "react-i18next";
 import { supabase } from "@/lib/supabase";
-import { useParishId } from "@/hooks/useParish";
+import { useVisibleParishIds } from "@/hooks/useParish";
 import { useLocalizedField } from "@/lib/localized";
 import { Card, EmptyState, ScreenContainer } from "@/components/ui";
 import { colors } from "@/theme/colors";
@@ -12,7 +12,7 @@ import type { Group, GroupType } from "@/types/database";
 export default function GroupsListScreen() {
   const { t } = useTranslation();
   const localize = useLocalizedField();
-  const parishId = useParishId();
+  const parishIds = useVisibleParishIds();
   const [groups, setGroups] = useState<Group[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -27,18 +27,18 @@ export default function GroupsListScreen() {
   };
 
   useEffect(() => {
-    if (!parishId) return;
+    if (parishIds.length === 0) return;
     supabase
       .from("groups")
       .select("*")
-      .eq("parish_id", parishId)
+      .in("parish_id", parishIds)
       .eq("is_active", true)
       .order("name")
       .then(({ data }) => {
         setGroups((data as Group[]) ?? []);
         setLoading(false);
       });
-  }, [parishId]);
+  }, [parishIds]);
 
   const sections = useMemo(() => {
     const byType = new Map<GroupType, Group[]>();

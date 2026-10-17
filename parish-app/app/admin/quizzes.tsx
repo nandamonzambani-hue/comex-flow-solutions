@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import { Alert, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
 import { useTranslation } from "react-i18next";
 import { supabase } from "@/lib/supabase";
-import { useParishId } from "@/hooks/useParish";
+import { useAdminParish } from "@/hooks/useParish";
+import { ShareWithCommunitiesSwitch } from "@/components/ShareWithCommunitiesSwitch";
 import { Button, Card, SectionTitle } from "@/components/ui";
 import { colors } from "@/theme/colors";
 import type { MediaContent } from "@/types/database";
@@ -23,13 +24,14 @@ function emptyQuestion(): DraftQuestion {
 
 export default function AdminQuizzesScreen() {
   const { t } = useTranslation();
-  const parishId = useParishId();
+  const { parishId } = useAdminParish();
   const [content, setContent] = useState<MediaContent[]>([]);
   const [mediaContentId, setMediaContentId] = useState<string | null>(null);
   const [quizTitle, setQuizTitle] = useState("");
   const [passingScore, setPassingScore] = useState("70");
   const [questions, setQuestions] = useState<DraftQuestion[]>([emptyQuestion()]);
   const [saving, setSaving] = useState(false);
+  const [share, setShare] = useState(true);
 
   useEffect(() => {
     if (!parishId) return;
@@ -89,6 +91,7 @@ export default function AdminQuizzesScreen() {
           title: quizTitle,
           passing_score_percent: Number(passingScore) || 70,
           is_published: true,
+          share_with_communities: share,
         })
         .select()
         .single();
@@ -187,6 +190,7 @@ export default function AdminQuizzesScreen() {
         + {t("admin.quizzes.addQuestion")}
       </Text>
 
+      <ShareWithCommunitiesSwitch value={share} onChange={setShare} />
       <Button title={t("admin.quizzes.save")} onPress={handleSave} loading={saving} disabled={!canSave} />
     </ScrollView>
   );

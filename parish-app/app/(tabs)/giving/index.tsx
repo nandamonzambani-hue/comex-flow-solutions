@@ -3,7 +3,7 @@ import { ScrollView, StyleSheet, Text, View } from "react-native";
 import { router } from "expo-router";
 import { useTranslation } from "react-i18next";
 import { supabase } from "@/lib/supabase";
-import { useParishId } from "@/hooks/useParish";
+import { useVisibleParishIds } from "@/hooks/useParish";
 import { useLocalizedField } from "@/lib/localized";
 import { Button, Card, SectionTitle } from "@/components/ui";
 import { colors } from "@/theme/colors";
@@ -12,18 +12,18 @@ import type { Campaign } from "@/types/database";
 export default function GivingScreen() {
   const { t } = useTranslation();
   const localize = useLocalizedField();
-  const parishId = useParishId();
+  const parishIds = useVisibleParishIds();
   const [campaigns, setCampaigns] = useState<Campaign[]>([]);
 
   useEffect(() => {
-    if (!parishId) return;
+    if (parishIds.length === 0) return;
     supabase
       .from("campaigns")
       .select("*")
-      .eq("parish_id", parishId)
+      .in("parish_id", parishIds)
       .eq("status", "active")
       .then(({ data }) => setCampaigns((data as Campaign[]) ?? []));
-  }, [parishId]);
+  }, [parishIds]);
 
   return (
     <ScrollView contentContainerStyle={styles.container}>

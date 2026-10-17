@@ -42,6 +42,7 @@ parish-app/
   supabase/
     migrations/             schema SQL completo + RLS (inclui camada SaaS)
     seed.sql                dados de exemplo
+    seed_demo.sql           paróquia de demonstração (Sagrado Coração + 2 comunidades, com logins)
     functions/               Edge Functions (push, liturgia, bíblia, pagamentos, assinatura)
   docs/                    guias de publicação, privacidade, conteúdo, modelo SaaS
 ```
@@ -59,6 +60,11 @@ parish-app/
    - `supabase link --project-ref <seu-project-ref>`
    - `supabase db push` (aplica as migrations em `supabase/migrations`)
    - Rode `supabase/seed.sql` no SQL Editor do painel (dados de exemplo).
+   - (Opcional, para demonstrações) rode também `supabase/seed_demo.sql`:
+     cria a **Paróquia Sagrado Coração de Jesus** (Matriz) com as
+     comunidades **Imaculado Coração de Maria** e **Castíssimo Coração de
+     José**, conteúdo, formulários, pedidos de oração e 4 logins de
+     demonstração (ver topo do arquivo).
    - Deploy das Edge Functions:
      ```bash
      supabase functions deploy send-push-notification
@@ -189,6 +195,29 @@ espanhol, italiano e francês.
 3. Adicione o locale correspondente do `date-fns` em `src/lib/dateLocale.ts`.
 4. Pronto — o seletor de idioma, o fallback de conteúdo e a bíblia/liturgia
    já reconhecem qualquer código presente em `SUPPORTED_LOCALES`.
+
+## Matriz e comunidades
+
+Quem assina é a **Matriz**; as **comunidades** (capelas) ficam debaixo
+dela (`parishes.kind` / `parent_parish_id`, migration 0013):
+
+- O que a Matriz publica aparece também para os fiéis das comunidades
+  (eventos, avisos, notícias, banners, vídeos, downloads, quizzes,
+  formulários, grupos, campanhas) — a não ser que a equipe desmarque
+  **"Mostrar também nas comunidades"** naquele item.
+- O que uma comunidade publica fica só nela.
+- A equipe da Matriz gerencia tudo das comunidades pelo seletor
+  **"Publicar em"** do painel; a equipe da comunidade só a própria.
+- Comunidade não tem plano próprio: herda status/plano da Matriz.
+
+Comparativo com a inChurch e o que foi implementado: `docs/ANALISE_INCHURCH.md`.
+
+## Painel administrativo
+
+No celular, o painel abre numa tela inicial com indicadores e o menu
+agrupado; em tablet/navegador (≥ 900 px) ganha **barra lateral fixa**
+no estilo do painel da inChurch: Igreja · Pessoas · Cuidado ·
+Programação · Conteúdo · Formulários · Financeiro.
 
 ## Papéis de usuário
 

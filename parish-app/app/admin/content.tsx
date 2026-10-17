@@ -3,8 +3,9 @@ import { Alert, ScrollView, StyleSheet, Text, TextInput, View } from "react-nati
 import { useTranslation } from "react-i18next";
 import { supabase } from "@/lib/supabase";
 import { useAuth } from "@/context/AuthContext";
-import { useParishId } from "@/hooks/useParish";
+import { useAdminParish } from "@/hooks/useParish";
 import { SUPPORTED_LOCALES } from "@/i18n";
+import { ShareWithCommunitiesSwitch } from "@/components/ShareWithCommunitiesSwitch";
 import { Button, Card } from "@/components/ui";
 import { colors } from "@/theme/colors";
 import type { Translations } from "@/types/database";
@@ -24,7 +25,7 @@ function slugify(title: string) {
 
 export default function AdminContentScreen() {
   const { t } = useTranslation();
-  const parishId = useParishId();
+  const { parishId } = useAdminParish();
   const { profile } = useAuth();
   const [kind, setKind] = useState<Kind>("news");
   const [title, setTitle] = useState("");
@@ -35,6 +36,7 @@ export default function AdminContentScreen() {
   const [activeLocale, setActiveLocale] = useState(TRANSLATABLE_LOCALES[0].code);
   const [translations, setTranslations] = useState<Translations>({});
   const [saving, setSaving] = useState(false);
+  const [share, setShare] = useState(true);
 
   function setTranslationField(locale: string, field: string, value: string) {
     setTranslations((prev) => ({ ...prev, [locale]: { ...prev[locale], [field]: value } }));
@@ -55,6 +57,7 @@ export default function AdminContentScreen() {
         translations,
         author_id: profile?.id,
         published_at: new Date().toISOString(),
+        share_with_communities: share,
       });
     } else {
       await supabase.from("media_content").insert({
@@ -68,6 +71,7 @@ export default function AdminContentScreen() {
         translations,
         author_id: profile?.id,
         published_at: new Date().toISOString(),
+        share_with_communities: share,
       });
     }
 
@@ -168,6 +172,7 @@ export default function AdminContentScreen() {
         </Card>
       )}
 
+      <ShareWithCommunitiesSwitch value={share} onChange={setShare} />
       <Button title={t("admin.content.publish")} onPress={handlePublish} loading={saving} disabled={!title.trim()} />
     </ScrollView>
   );

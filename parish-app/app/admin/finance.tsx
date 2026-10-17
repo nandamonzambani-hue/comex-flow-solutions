@@ -4,7 +4,7 @@ import * as WebBrowser from "expo-web-browser";
 import { useTranslation } from "react-i18next";
 import { format } from "date-fns";
 import { supabase } from "@/lib/supabase";
-import { useParishId } from "@/hooks/useParish";
+import { useAdminParish } from "@/hooks/useParish";
 import { useAuth } from "@/context/AuthContext";
 import { useDateLocale } from "@/lib/dateLocale";
 import { Badge, Button, Card, SectionTitle } from "@/components/ui";
@@ -29,7 +29,7 @@ const MP_APP_REDIRECT = "parishapp://admin/finance";
 export default function AdminFinanceScreen() {
   const { t } = useTranslation();
   const dateLocale = useDateLocale();
-  const parishId = useParishId();
+  const { parishId } = useAdminParish();
   const { profile } = useAuth();
   const [donations, setDonations] = useState<Donation[]>([]);
   const [paymentStatus, setPaymentStatus] = useState<ParishPaymentStatus | null>(null);

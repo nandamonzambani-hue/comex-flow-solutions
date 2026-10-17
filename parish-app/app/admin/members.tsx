@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { FlatList, Pressable, StyleSheet, Text, TextInput, View } from "react-native";
 import { useTranslation } from "react-i18next";
 import { supabase } from "@/lib/supabase";
-import { useParishId } from "@/hooks/useParish";
+import { useAdminParish } from "@/hooks/useParish";
 import { Badge, Card, EmptyState, ScreenContainer } from "@/components/ui";
 import { colors } from "@/theme/colors";
 import type { MemberRole, Profile } from "@/types/database";
@@ -11,7 +11,7 @@ const ROLE_CYCLE: MemberRole[] = ["member", "group_leader", "staff", "admin"];
 
 export default function AdminMembersScreen() {
   const { t } = useTranslation();
-  const parishId = useParishId();
+  const { parishId } = useAdminParish();
   const [members, setMembers] = useState<Profile[]>([]);
   const [search, setSearch] = useState("");
 

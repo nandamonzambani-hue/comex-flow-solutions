@@ -2,8 +2,9 @@ import { useCallback, useEffect, useState } from "react";
 import { Alert, FlatList, Pressable, StyleSheet, Switch, Text, TextInput, View } from "react-native";
 import { useTranslation } from "react-i18next";
 import { supabase } from "@/lib/supabase";
-import { useParishId } from "@/hooks/useParish";
+import { useAdminParish } from "@/hooks/useParish";
 import { useDateLocale } from "@/lib/dateLocale";
+import { ShareWithCommunitiesSwitch } from "@/components/ShareWithCommunitiesSwitch";
 import { Button, Card, EmptyState, ScreenContainer } from "@/components/ui";
 import { colors } from "@/theme/colors";
 import type { ParishEvent } from "@/types/database";
@@ -23,13 +24,14 @@ function emptyForm() {
     endTime: "",
     capacity: "",
     requiresRegistration: false,
+    share: true,
   };
 }
 
 export default function AdminEventsScreen() {
   const { t } = useTranslation();
   const dateLocale = useDateLocale();
-  const parishId = useParishId();
+  const { parishId } = useAdminParish();
   const [events, setEvents] = useState<ParishEvent[]>([]);
   const [form, setForm] = useState(emptyForm());
   const [saving, setSaving] = useState(false);
@@ -62,6 +64,7 @@ export default function AdminEventsScreen() {
       endTime: end ? format(end, "HH:mm") : "",
       capacity: event.capacity ? String(event.capacity) : "",
       requiresRegistration: event.requires_registration,
+      share: event.share_with_communities ?? true,
     });
   }
 
@@ -106,6 +109,7 @@ export default function AdminEventsScreen() {
       end_at: endAt,
       capacity: form.capacity ? Number(form.capacity) : null,
       requires_registration: form.requiresRegistration,
+      share_with_communities: form.share,
     };
 
     const { error } = form.id
@@ -202,6 +206,7 @@ export default function AdminEventsScreen() {
                 onValueChange={(v) => setForm((f) => ({ ...f, requiresRegistration: v }))}
               />
             </View>
+            <ShareWithCommunitiesSwitch value={form.share} onChange={(v) => setForm((f) => ({ ...f, share: v }))} />
 
             <View style={styles.actionsRow}>
               <Button

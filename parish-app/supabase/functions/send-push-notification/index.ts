@@ -6,7 +6,14 @@
 //
 // Deploy: supabase functions deploy send-push-notification
 // Invoke:  POST /functions/v1/send-push-notification
-//   { "title": "...", "body": "...", "target_type": "all"|"group"|"role", "target_id"?: "..." }
+//   { "title": "...", "body": "...", "target_type": "all"|"group"|"role", "target_id"?: "...",
+//     "target_parish_id"?: "...", "include_communities"?: true }
+//
+// Hierarquia Matriz → comunidades: quando quem envia é equipe da Matriz,
+// o envio "para todos" alcança também os fiéis das comunidades (a menos
+// que include_communities=false). target_parish_id permite à Matriz
+// mandar só para uma comunidade específica. Equipe de comunidade só
+// alcança a própria comunidade.
 
 import { createClient } from "npm:@supabase/supabase-js@2";
 
@@ -51,14 +58,31 @@ Deno.serve(async (req) => {
   }
 
   const body = await req.json();
-  const { title, message, target_type = "all", target_id, data = {} } = body;
+  const { title, message, target_type = "all", target_id, data = {}, target_parish_id, include_communities = true } = body;
 
   if (!title || !message) {
     return new Response(JSON.stringify({ error: "title and message are required" }), { status: 400 });
   }
 
+  // Paróquias alcançadas: a do remetente e, se for Matriz, as comunidades.
+  const { data: communities } = await admin
+    .from("parishes")
+    .select("id")
+    .eq("parent_parish_id", profile.parish_id);
+  const communityIds = (communities ?? []).map((c) => c.id as string);
+
+  let parishIds: string[];
+  if (target_parish_id) {
+    if (target_parish_id !== profile.parish_id && !communityIds.includes(target_parish_id)) {
+      return new Response(JSON.stringify({ error: "Forbidden: parish outside your scope" }), { status: 403 });
+    }
+    parishIds = [target_parish_id];
+  } else {
+    parishIds = include_communities ? [profile.parish_id, ...communityIds] : [profile.parish_id];
+  }
+
   // Monta a query de destinatários conforme o alvo
-  let profilesQuery = admin.from("profiles").select("id").eq("parish_id", profile.parish_id);
+  let profilesQuery = admin.from("profiles").select("id").in("parish_id", parishIds);
 
   if (target_type === "role" && target_id) {
     profilesQuery = profilesQuery.eq("role", target_id);
@@ -117,7 +141,7 @@ Deno.serve(async (req) => {
   }
 
   await admin.from("notifications_log").insert({
-    parish_id: profile.parish_id,
+    parish_id: target_parish_id ?? profile.parish_id,
     title,
     body: message,
     target_type,

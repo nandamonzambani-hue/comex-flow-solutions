@@ -51,6 +51,8 @@ export async function sendNotification(params: {
   message: string;
   target_type: "all" | "group" | "role";
   target_id?: string;
+  /** Matriz pode mandar só para uma comunidade; sem isso, Matriz alcança também as comunidades. */
+  target_parish_id?: string;
 }) {
   const { data, error } = await supabase.functions.invoke("send-push-notification", {
     body: params,

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Alert, ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
 import { useTranslation } from "react-i18next";
 import { supabase } from "@/lib/supabase";
-import { useParishId } from "@/hooks/useParish";
+import { useAdminParish } from "@/hooks/useParish";
 import { useLocalizedField } from "@/lib/localized";
 import { sendNotification } from "@/lib/notifications";
 import { Button, Card, SectionTitle } from "@/components/ui";
@@ -16,7 +16,7 @@ const ROLES: MemberRole[] = ["member", "group_leader", "staff"];
 export default function AdminNotificationsScreen() {
   const { t } = useTranslation();
   const localize = useLocalizedField();
-  const parishId = useParishId();
+  const { parishId } = useAdminParish();
   const [title, setTitle] = useState("");
   const [message, setMessage] = useState("");
   const [targetType, setTargetType] = useState<TargetType>("all");
@@ -36,7 +36,7 @@ export default function AdminNotificationsScreen() {
   async function handleSend() {
     setSending(true);
     try {
-      const result = await sendNotification({ title, message, target_type: targetType, target_id: targetId });
+      const result = await sendNotification({ title, message, target_type: targetType, target_id: targetId, target_parish_id: parishId ?? undefined });
       Alert.alert(t("admin.notifications.sentTitle"), t("admin.notifications.sentBody", { count: result.sent }));
       setTitle("");
       setMessage("");

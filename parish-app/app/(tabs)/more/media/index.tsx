@@ -4,7 +4,7 @@ import { Image } from "expo-image";
 import { router } from "expo-router";
 import { useTranslation } from "react-i18next";
 import { supabase } from "@/lib/supabase";
-import { useParishId } from "@/hooks/useParish";
+import { useVisibleParishIds } from "@/hooks/useParish";
 import { useLocalizedField } from "@/lib/localized";
 import { Badge, Card, EmptyState, ScreenContainer } from "@/components/ui";
 import { colors } from "@/theme/colors";
@@ -13,7 +13,7 @@ import type { MediaContent } from "@/types/database";
 export default function MediaListScreen() {
   const { t } = useTranslation();
   const localize = useLocalizedField();
-  const parishId = useParishId();
+  const parishIds = useVisibleParishIds();
   const [items, setItems] = useState<MediaContent[]>([]);
 
   const CONTENT_TYPE_LABEL: Record<MediaContent["content_type"], string> = {
@@ -24,15 +24,15 @@ export default function MediaListScreen() {
   };
 
   useEffect(() => {
-    if (!parishId) return;
+    if (parishIds.length === 0) return;
     supabase
       .from("media_content")
       .select("*")
-      .eq("parish_id", parishId)
+      .in("parish_id", parishIds)
       .not("published_at", "is", null)
       .order("published_at", { ascending: false })
       .then(({ data }) => setItems((data as MediaContent[]) ?? []));
-  }, [parishId]);
+  }, [parishIds]);
 
   return (
     <ScreenContainer>

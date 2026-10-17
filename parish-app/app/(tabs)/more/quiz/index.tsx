@@ -4,24 +4,24 @@ import { router } from "expo-router";
 import { useTranslation } from "react-i18next";
 import { supabase } from "@/lib/supabase";
 import { useAuth } from "@/context/AuthContext";
-import { useParishId } from "@/hooks/useParish";
+import { useVisibleParishIds } from "@/hooks/useParish";
 import { Badge, Card, EmptyState, ScreenContainer } from "@/components/ui";
 import { colors } from "@/theme/colors";
 import type { Quiz, QuizAttempt } from "@/types/database";
 
 export default function QuizListScreen() {
   const { t } = useTranslation();
-  const parishId = useParishId();
+  const parishIds = useVisibleParishIds();
   const { profile } = useAuth();
   const [quizzes, setQuizzes] = useState<Quiz[]>([]);
   const [bestAttempts, setBestAttempts] = useState<Record<string, QuizAttempt>>({});
 
   useEffect(() => {
-    if (!parishId || !profile) return;
+    if (parishIds.length === 0 || !profile) return;
     supabase
       .from("quizzes")
       .select("*")
-      .eq("parish_id", parishId)
+      .in("parish_id", parishIds)
       .eq("is_published", true)
       .then(async ({ data }) => {
         const list = (data as Quiz[]) ?? [];
@@ -40,7 +40,7 @@ export default function QuizListScreen() {
         }
         setBestAttempts(best);
       });
-  }, [parishId, profile]);
+  }, [parishIds, profile]);
 
   return (
     <ScreenContainer>

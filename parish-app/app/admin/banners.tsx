@@ -3,7 +3,8 @@ import { Alert, FlatList, Pressable, StyleSheet, Switch, Text, TextInput, View }
 import { Image } from "expo-image";
 import { useTranslation } from "react-i18next";
 import { supabase } from "@/lib/supabase";
-import { useParishId } from "@/hooks/useParish";
+import { useAdminParish } from "@/hooks/useParish";
+import { ShareWithCommunitiesSwitch } from "@/components/ShareWithCommunitiesSwitch";
 import { Button, Card, EmptyState, ScreenContainer } from "@/components/ui";
 import { colors } from "@/theme/colors";
 import type { Banner } from "@/types/database";
@@ -15,12 +16,13 @@ function emptyForm() {
     title: "",
     linkUrl: "",
     isActive: true,
+    share: true,
   };
 }
 
 export default function AdminBannersScreen() {
   const { t } = useTranslation();
-  const parishId = useParishId();
+  const { parishId } = useAdminParish();
   const [banners, setBanners] = useState<Banner[]>([]);
   const [form, setForm] = useState(emptyForm());
   const [saving, setSaving] = useState(false);
@@ -46,6 +48,7 @@ export default function AdminBannersScreen() {
       title: banner.title ?? "",
       linkUrl: banner.link_url ?? "",
       isActive: banner.is_active,
+      share: banner.share_with_communities ?? true,
     });
   }
 
@@ -84,6 +87,7 @@ export default function AdminBannersScreen() {
       title: form.title.trim() || null,
       link_url: form.linkUrl.trim() || null,
       is_active: form.isActive,
+      share_with_communities: form.share,
       order_index: form.id ? undefined : banners.length,
     };
 
@@ -139,6 +143,7 @@ export default function AdminBannersScreen() {
               <Text style={styles.switchLabel}>{t("admin.banners.active")}</Text>
               <Switch value={form.isActive} onValueChange={(v) => setForm((f) => ({ ...f, isActive: v }))} />
             </View>
+            <ShareWithCommunitiesSwitch value={form.share} onChange={(v) => setForm((f) => ({ ...f, share: v }))} />
 
             <View style={styles.actionsRow}>
               <Button

@@ -17,6 +17,10 @@ export default function MoreLayout() {
       <Stack.Screen name="liturgy" options={{ title: t("liturgy.title") }} />
       <Stack.Screen name="quiz/index" options={{ title: t("quiz.title") }} />
       <Stack.Screen name="quiz/[quizId]" options={{ title: t("quiz.title") }} />
+      <Stack.Screen name="forms/index" options={{ title: t("forms.title") }} />
+      <Stack.Screen name="forms/[formId]" options={{ title: t("forms.title") }} />
+      <Stack.Screen name="prayer" options={{ title: t("prayer.title") }} />
+      <Stack.Screen name="testimonies" options={{ title: t("testimonies.title") }} />
       <Stack.Screen name="profile" options={{ title: t("profile.title") }} />
     </Stack>
   );

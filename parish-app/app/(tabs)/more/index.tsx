@@ -13,6 +13,9 @@ const MENU_ITEMS = [
   { icon: "book", key: "bible.title", href: "/(tabs)/more/bible" },
   { icon: "sunny", key: "liturgy.title", href: "/(tabs)/more/liturgy" },
   { icon: "help-circle", key: "quiz.title", href: "/(tabs)/more/quiz" },
+  { icon: "document-text", key: "forms.title", href: "/(tabs)/more/forms" },
+  { icon: "hand-left", key: "prayer.title", href: "/(tabs)/more/prayer" },
+  { icon: "chatbubble-ellipses", key: "testimonies.title", href: "/(tabs)/more/testimonies" },
   { icon: "person-circle", key: "profile.title", href: "/(tabs)/more/profile" },
 ] as const;
 

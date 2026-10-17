@@ -2,7 +2,8 @@ import { useCallback, useEffect, useState } from "react";
 import { Alert, FlatList, Pressable, StyleSheet, Switch, Text, TextInput, View } from "react-native";
 import { useTranslation } from "react-i18next";
 import { supabase } from "@/lib/supabase";
-import { useParishId } from "@/hooks/useParish";
+import { useAdminParish } from "@/hooks/useParish";
+import { ShareWithCommunitiesSwitch } from "@/components/ShareWithCommunitiesSwitch";
 import { Button, Card, EmptyState, ScreenContainer } from "@/components/ui";
 import { colors } from "@/theme/colors";
 import type { Announcement } from "@/types/database";
@@ -14,12 +15,13 @@ function emptyForm() {
     body: "",
     isPinned: false,
     isActive: true,
+    share: true,
   };
 }
 
 export default function AdminAnnouncementsScreen() {
   const { t } = useTranslation();
-  const parishId = useParishId();
+  const { parishId } = useAdminParish();
   const [announcements, setAnnouncements] = useState<Announcement[]>([]);
   const [form, setForm] = useState(emptyForm());
   const [saving, setSaving] = useState(false);
@@ -46,6 +48,7 @@ export default function AdminAnnouncementsScreen() {
       body: item.body,
       isPinned: item.is_pinned,
       isActive: item.is_active,
+      share: item.share_with_communities ?? true,
     });
   }
 
@@ -73,6 +76,7 @@ export default function AdminAnnouncementsScreen() {
       body: form.body.trim(),
       is_pinned: form.isPinned,
       is_active: form.isActive,
+      share_with_communities: form.share,
       updated_at: new Date().toISOString(),
     };
 
@@ -121,6 +125,7 @@ export default function AdminAnnouncementsScreen() {
               <Text style={styles.switchLabel}>{t("admin.announcements.active")}</Text>
               <Switch value={form.isActive} onValueChange={(v) => setForm((f) => ({ ...f, isActive: v }))} />
             </View>
+            <ShareWithCommunitiesSwitch value={form.share} onChange={(v) => setForm((f) => ({ ...f, share: v }))} />
 
             <View style={styles.actionsRow}>
               <Button
