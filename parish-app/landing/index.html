@@ -1,0 +1,614 @@
+<title>Minha Paróquia</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="App e painel para a paróquia Matriz e suas comunidades: avisos, eventos, formulários, dízimo, pedidos de oração e liturgia.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700;6..12,800&display=swap">
+<style>
+/* Layout: faixas largas alternando nave (claro) e cripta (vinho escuro); conteúdo em coluna de 1120px; a "planta" Matriz → comunidades é o fio condutor. */
+:root {
+  --bg: #fbf8f8;
+  --surface: #ffffff;
+  --ink: #241517;
+  --muted: #6e5c5f;
+  --line: #eadfe0;
+  --wine: #8b1e2d;
+  --wine-deep: #4a0f18;
+  --gold: #b8892b;
+  --gold-soft: #f3e6c8;
+  --green: #2f7d4a;
+  --on-wine: #fff7f2;
+  --on-wine-muted: #e9cfd2;
+  --shadow: 0 18px 50px -24px rgba(74, 15, 24, 0.35);
+  --font-display: "Cinzel", "Trajan Pro", Georgia, serif;
+  --font-body: "Nunito Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --radius: 14px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #160d0f; --surface: #22161a; --ink: #f6ecec; --muted: #c2abaf; --line: #3a2a2e;
+    --wine: #d0566a; --wine-deep: #2c0910; --gold: #e0b55a; --gold-soft: #3b2f17; --green: #6cc28a;
+    --on-wine: #fff7f2; --on-wine-muted: #e3c3c8; --shadow: 0 18px 50px -24px rgba(0, 0, 0, 0.7);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #160d0f; --surface: #22161a; --ink: #f6ecec; --muted: #c2abaf; --line: #3a2a2e;
+  --wine: #d0566a; --wine-deep: #2c0910; --gold: #e0b55a; --gold-soft: #3b2f17; --green: #6cc28a;
+  --on-wine: #fff7f2; --on-wine-muted: #e3c3c8; --shadow: 0 18px 50px -24px rgba(0, 0, 0, 0.7);
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; animation: none !important; } }
+body { background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 16px; line-height: 1.6; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+h1, h2, h3 { text-wrap: balance; margin: 0; }
+p { margin: 0; }
+a { color: inherit; }
+button { font: inherit; cursor: pointer; }
+:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; border-radius: 6px; }
+.eyebrow { font-family: var(--font-display); font-size: 0.78rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; }
+.section { padding-block: 88px; }
+.section-head { display: grid; gap: 12px; max-width: 680px; margin-bottom: 40px; }
+.section-head h2 { font-family: var(--font-display); font-size: clamp(1.7rem, 3.4vw, 2.5rem); font-weight: 600; line-height: 1.15; }
+.section-head p { color: var(--muted); font-size: 1.05rem; }
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 20px; border-radius: 999px; font-weight: 700; text-decoration: none; border: 1px solid transparent; }
+.btn-primary { background: var(--gold); color: #1f1405; }
+.btn-ghost { border-color: currentColor; }
+
+/* header */
+header.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: color-mix(in srgb, var(--wine-deep) 94%, transparent); backdrop-filter: blur(8px); color: var(--on-wine); }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 30; background: var(--wine-deep); }
+.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 12px; }
+.brand { display: flex; align-items: center; gap: 10px; font-family: var(--font-display); font-weight: 700; letter-spacing: 0.06em; text-decoration: none; }
+.brand-mark { width: 34px; height: 34px; border-radius: 9px; background: var(--gold); color: var(--wine-deep); display: grid; place-items: center; font-size: 1.1rem; }
+.top nav { display: flex; gap: 22px; font-size: 0.92rem; }
+.top nav a { text-decoration: none; color: var(--on-wine-muted); }
+.top nav a:hover { color: var(--on-wine); }
+@media (max-width: 820px) { .top nav { display: none; } }
+
+/* hero */
+.hero { background: radial-gradient(1200px 500px at 85% -10%, color-mix(in srgb, var(--gold) 28%, transparent), transparent 60%), var(--wine-deep); color: var(--on-wine); padding-block: 64px 80px; overflow: hidden; }
+.hero-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 56px; align-items: center; }
+@media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr; gap: 40px; } }
+.hero h1 { font-family: var(--font-display); font-size: clamp(2.1rem, 5vw, 3.6rem); line-height: 1.08; font-weight: 600; margin-top: 14px; }
+.hero h1 em { font-style: normal; color: var(--gold); }
+.hero .lead { color: var(--on-wine-muted); font-size: 1.12rem; margin-top: 18px; max-width: 34em; }
+.hero-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+.hero-facts { display: flex; flex-wrap: wrap; gap: 10px 22px; margin-top: 30px; font-size: 0.9rem; color: var(--on-wine-muted); }
+.hero-facts span::before { content: "✓ "; color: var(--gold); font-weight: 800; }
+
+/* demo: perspective picker + phone */
+.demo { display: grid; gap: 18px; justify-items: center; }
+.viewer-pick { display: grid; gap: 8px; width: 100%; max-width: 380px; }
+.viewer-pick .label { font-size: 0.8rem; color: var(--on-wine-muted); text-align: center; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+.chip { border: 1px solid color-mix(in srgb, var(--on-wine) 35%, transparent); background: transparent; color: var(--on-wine); border-radius: 999px; padding: 7px 13px; font-size: 0.85rem; font-weight: 600; }
+.chip[aria-pressed="true"] { background: var(--gold); border-color: var(--gold); color: #1f1405; }
+.phone { width: 300px; max-width: 100%; aspect-ratio: 9 / 18.5; border-radius: 40px; background: #0b0607; padding: 11px; box-shadow: 0 30px 80px -30px #000, 0 0 0 1px #ffffff1a inset; }
+.screen { height: 100%; border-radius: 30px; background: #faf6f5; color: #241517; overflow: hidden; display: flex; flex-direction: column; font-size: 12.5px; }
+.screen-top { background: #8b1e2d; color: #fff; padding: 22px 14px 12px; }
+.screen-top small { opacity: 0.8; display: block; font-size: 10.5px; }
+.screen-top strong { font-size: 15px; }
+.feed { padding: 10px; display: grid; gap: 8px; overflow: hidden; align-content: start; flex: 1; }
+.feed-item { background: #fff; border: 1px solid #eadfe0; border-radius: 12px; padding: 9px 10px; animation: rise 0.35s ease both; }
+.feed-item .kind { font-size: 9.5px; text-transform: uppercase; letter-spacing: 0.08em; color: #b8892b; font-weight: 800; }
+.feed-item .t { font-weight: 700; margin-top: 2px; line-height: 1.3; }
+.feed-item .meta { color: #6e5c5f; font-size: 11px; margin-top: 2px; display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+.tag { font-size: 9.5px; font-weight: 800; border-radius: 999px; padding: 1px 7px; border: 1px solid; }
+.tag-matriz { color: #8b1e2d; border-color: #8b1e2d55; background: #8b1e2d0d; }
+.tag-local { color: #2f7d4a; border-color: #2f7d4a55; background: #2f7d4a0d; }
+.mood { background: #fff; border: 1px solid #eadfe0; border-radius: 12px; padding: 8px 10px; }
+.mood b { font-size: 11.5px; }
+.mood div { display: flex; gap: 6px; margin-top: 5px; font-size: 17px; }
+.tabbar { display: grid; grid-template-columns: repeat(5, 1fr); border-top: 1px solid #eadfe0; background: #fff; font-size: 9.5px; text-align: center; color: #6e5c5f; padding: 6px 0 10px; }
+.tabbar span:first-child { color: #8b1e2d; font-weight: 800; }
+@keyframes rise { from { opacity: 0.2; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+.demo-caption { font-size: 0.85rem; color: var(--on-wine-muted); text-align: center; max-width: 360px; min-height: 3.2em; }
+
+/* hierarchy */
+.rules { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 48px; align-items: center; }
+@media (max-width: 900px) { .rules { grid-template-columns: 1fr; } }
+.tree { position: relative; display: grid; gap: 26px; justify-items: center; padding: 28px 12px; background: var(--surface); border: 1px solid var(--line); border-radius: 20px; }
+.node { display: grid; gap: 2px; text-align: center; padding: 12px 16px; border-radius: 12px; border: 1px solid var(--line); background: var(--bg); min-width: 0; }
+.node .k { font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); font-weight: 800; }
+.node .n { font-weight: 800; line-height: 1.25; }
+.node .s { font-size: 0.8rem; color: var(--muted); }
+.node.matriz { border-color: var(--wine); background: color-mix(in srgb, var(--wine) 7%, var(--surface)); }
+.children { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; width: 100%; }
+.connector { width: 2px; height: 26px; background: var(--wine); margin: -26px 0; }
+.flow { font-size: 0.82rem; color: var(--muted); text-align: center; }
+.flow b { color: var(--wine); }
+.rule-list { display: grid; gap: 18px; }
+.rule { display: grid; grid-template-columns: 44px 1fr; gap: 14px; align-items: start; }
+.rule-ico { width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; background: var(--gold-soft); color: var(--wine); font-size: 1.2rem; }
+.rule h3 { font-size: 1.05rem; }
+.rule p { color: var(--muted); margin-top: 2px; }
+
+/* admin mockup */
+.band-alt { background: color-mix(in srgb, var(--wine) 5%, var(--bg)); border-block: 1px solid var(--line); }
+.window { border-radius: 16px; overflow: hidden; border: 1px solid var(--line); background: var(--surface); box-shadow: var(--shadow); }
+.window-bar { display: flex; align-items: center; gap: 8px; padding: 10px 14px; border-bottom: 1px solid var(--line); background: var(--bg); font-size: 0.8rem; color: var(--muted); }
+.dots { display: flex; gap: 6px; }
+.dots i { width: 10px; height: 10px; border-radius: 50%; background: var(--line); display: block; }
+.admin { display: grid; grid-template-columns: 230px 1fr; min-height: 520px; }
+@media (max-width: 760px) { .admin { grid-template-columns: 1fr; } .side { display: none; } }
+.side { border-right: 1px solid var(--line); font-size: 0.86rem; }
+.side-brand { background: var(--wine); color: var(--on-wine); padding: 14px; display: flex; gap: 10px; align-items: center; }
+.side-brand b { display: block; font-size: 0.85rem; line-height: 1.25; }
+.side-brand small { color: var(--on-wine-muted); }
+.scope { margin: 10px; border: 1px solid color-mix(in srgb, var(--wine) 35%, transparent); border-radius: 10px; padding: 7px 10px; }
+.scope small { display: block; font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); font-weight: 800; }
+.scope select { width: 100%; border: 0; background: transparent; color: var(--ink); font-weight: 700; font-size: 0.85rem; padding: 2px 0; }
+.nav-group { padding: 6px 8px; }
+.nav-group > span { display: block; font-size: 0.66rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); font-weight: 800; padding: 6px 8px 2px; }
+.nav-item { display: block; width: 100%; text-align: left; border: 0; background: transparent; color: var(--ink); padding: 6px 8px; border-radius: 8px; font-size: 0.86rem; }
+.nav-item[aria-current="page"] { background: color-mix(in srgb, var(--wine) 12%, transparent); color: var(--wine); font-weight: 800; }
+.panel { padding: 22px; min-width: 0; }
+.panel h3 { font-size: 1.15rem; }
+.panel .sub { color: var(--muted); font-size: 0.9rem; margin-top: 2px; }
+.kpis { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin-top: 16px; }
+@media (max-width: 1000px) { .kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.kpi { border: 1px solid var(--line); border-radius: 12px; padding: 12px; }
+.kpi b { display: block; font-size: 1.45rem; font-variant-numeric: tabular-nums; }
+.kpi span { font-size: 0.78rem; color: var(--muted); }
+.table-wrap { overflow-x: auto; margin-top: 16px; border: 1px solid var(--line); border-radius: 12px; }
+table { width: 100%; border-collapse: collapse; font-size: 0.86rem; min-width: 520px; }
+th, td { padding: 10px 12px; border-bottom: 1px solid var(--line); text-align: right; font-variant-numeric: tabular-nums; }
+th:first-child, td:first-child { text-align: left; }
+th { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); background: var(--bg); }
+tr:last-child td { border-bottom: 0; }
+.bars { display: grid; gap: 7px; margin-top: 12px; }
+.bar { display: grid; grid-template-columns: 140px 1fr 32px; gap: 8px; align-items: center; font-size: 0.84rem; }
+.bar i { display: block; height: 9px; border-radius: 5px; background: var(--wine); }
+.bar em { font-style: normal; color: var(--muted); text-align: right; font-variant-numeric: tabular-nums; }
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 18px; }
+@media (max-width: 1000px) { .two { grid-template-columns: 1fr; } }
+.card { border: 1px solid var(--line); border-radius: 12px; padding: 14px; }
+.card h4 { margin: 0; font-size: 0.92rem; }
+.list { display: grid; gap: 10px; margin-top: 14px; }
+.row { border: 1px solid var(--line); border-radius: 12px; padding: 12px; display: grid; gap: 4px; }
+.row-top { display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+.pill { font-size: 0.72rem; font-weight: 800; padding: 2px 8px; border-radius: 999px; background: var(--gold-soft); color: var(--ink); }
+.pill.ok { background: color-mix(in srgb, var(--green) 16%, transparent); color: var(--green); }
+.pill.wine { background: color-mix(in srgb, var(--wine) 12%, transparent); color: var(--wine); }
+.muted { color: var(--muted); font-size: 0.86rem; }
+
+/* forms demo */
+.forms-grid { display: grid; grid-template-columns: 0.95fr 1.05fr; gap: 40px; align-items: start; }
+@media (max-width: 900px) { .forms-grid { grid-template-columns: 1fr; } }
+.asks { display: grid; gap: 12px; }
+.ask { display: grid; grid-template-columns: 28px 1fr; gap: 12px; padding: 14px; border-radius: 12px; background: var(--surface); border: 1px solid var(--line); }
+.ask .check { width: 28px; height: 28px; border-radius: 8px; background: var(--green); color: #fff; display: grid; place-items: center; font-weight: 800; }
+.ask b { display: block; }
+.ask span { color: var(--muted); font-size: 0.92rem; }
+.form-demo { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; overflow: hidden; box-shadow: var(--shadow); }
+.form-cover { background: linear-gradient(135deg, var(--wine), var(--wine-deep)); color: var(--on-wine); padding: 18px; }
+.form-cover small { color: var(--gold); font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; font-size: 0.7rem; }
+.form-cover h3 { font-size: 1.1rem; margin-top: 4px; }
+.steps { display: flex; gap: 6px; padding: 12px 18px 0; }
+.steps i { height: 4px; flex: 1; border-radius: 4px; background: var(--line); }
+.steps i.on { background: var(--gold); }
+.form-body { padding: 16px 18px 20px; display: grid; gap: 14px; }
+.form-body h4 { margin: 0; font-size: 1rem; }
+.form-body .desc { color: var(--muted); font-size: 0.9rem; }
+.q label, .q .ql { font-weight: 700; display: block; margin-bottom: 6px; }
+.opt { display: block; width: 100%; text-align: left; border: 1px solid var(--line); background: var(--bg); color: var(--ink); border-radius: 10px; padding: 10px 12px; margin-bottom: 6px; }
+.opt[aria-pressed="true"] { background: var(--wine); color: #fff; border-color: var(--wine); }
+.opt small { display: block; font-size: 0.75rem; opacity: 0.75; }
+.combo { position: relative; }
+.combo input, .q input[type="text"] { width: 100%; border: 1px solid var(--line); background: var(--bg); color: var(--ink); border-radius: 10px; padding: 10px 12px; font: inherit; }
+.combo ul { list-style: none; margin: 4px 0 0; padding: 4px; border: 1px solid var(--line); border-radius: 10px; max-height: 150px; overflow: auto; background: var(--surface); }
+.combo ul:empty { display: none; }
+.combo li button { width: 100%; text-align: left; border: 0; background: transparent; color: var(--ink); padding: 6px 8px; border-radius: 6px; }
+.combo li button:hover { background: var(--bg); }
+.form-actions { display: flex; gap: 10px; }
+.form-actions button { flex: 1; padding: 11px; border-radius: 10px; font-weight: 800; border: 1px solid var(--wine); }
+.f-next { background: var(--wine); color: #fff; }
+.f-back { background: transparent; color: var(--wine); }
+.path-note { font-size: 0.8rem; color: var(--muted); border-top: 1px dashed var(--line); padding-top: 10px; }
+.done { text-align: center; padding: 24px 6px; display: grid; gap: 8px; }
+
+/* features */
+.features { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; border-top: 1px solid var(--line); }
+@media (max-width: 900px) { .features { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .features { grid-template-columns: 1fr; } }
+.feature { padding: 22px 20px 22px 0; border-bottom: 1px solid var(--line); display: grid; gap: 4px; }
+.feature b { font-size: 1rem; }
+.feature span { color: var(--muted); font-size: 0.93rem; }
+
+/* demo access */
+.access { background: var(--wine-deep); color: var(--on-wine); }
+.access .section-head p { color: var(--on-wine-muted); }
+.logins { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+@media (max-width: 760px) { .logins { grid-template-columns: 1fr; } }
+.login { border: 1px solid color-mix(in srgb, var(--on-wine) 22%, transparent); border-radius: 14px; padding: 16px; display: grid; gap: 6px; min-width: 0; }
+.login small { color: var(--gold); font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.7rem; }
+.login code { font-size: 0.92rem; overflow-wrap: anywhere; color: var(--on-wine); }
+.login p { color: var(--on-wine-muted); font-size: 0.9rem; }
+.copy { justify-self: start; border: 1px solid var(--gold); background: transparent; color: var(--gold); border-radius: 999px; padding: 4px 12px; font-size: 0.8rem; font-weight: 700; }
+.password { margin-top: 16px; color: var(--on-wine-muted); }
+.password code { color: var(--gold); font-weight: 800; }
+footer { padding-block: 36px; color: var(--muted); font-size: 0.88rem; }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#inicio"><span class="brand-mark">✝</span> Minha Paróquia</a>
+    <nav aria-label="Seções">
+      <a href="#como-funciona">Matriz e comunidades</a>
+      <a href="#painel">Painel</a>
+      <a href="#formularios">Formulários</a>
+      <a href="#recursos">Recursos</a>
+      <a href="#demonstracao">Demonstração</a>
+    </nav>
+  </div>
+</header>
+
+<main id="inicio">
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow">App para paróquias católicas</p>
+        <h1>A Matriz publica. <em>As comunidades recebem.</em></h1>
+        <p class="lead">Um só app para a paróquia inteira: a Matriz manda avisos, eventos e formulários para todas as capelas de uma vez, e cada comunidade cuida também do que é só dela.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="#demonstracao">Ver a demonstração</a>
+          <a class="btn btn-ghost" href="#painel">Conhecer o painel</a>
+        </div>
+        <div class="hero-facts">
+          <span>Comunidades incluídas no plano da Matriz</span>
+          <span>Dízimo por Pix direto na conta da paróquia</span>
+          <span>Liturgia diária e Bíblia completa</span>
+        </div>
+      </div>
+
+      <div class="demo">
+        <div class="viewer-pick">
+          <span class="label">Quem está abrindo o app?</span>
+          <div class="chips" role="group" aria-label="Escolha quem está olhando">
+            <button class="chip" type="button" data-viewer="matriz" aria-pressed="false">Fiel da Matriz</button>
+            <button class="chip" type="button" data-viewer="imaculado" aria-pressed="true">Imaculado Coração</button>
+            <button class="chip" type="button" data-viewer="castissimo" aria-pressed="false">Castíssimo Coração</button>
+          </div>
+        </div>
+        <div class="phone" aria-live="polite">
+          <div class="screen">
+            <div class="screen-top">
+              <small id="ph-sub">Comunidade Imaculado Coração de Maria · Paróquia Sagrado Coração de Jesus</small>
+              <strong>Olá, Ana Clara!</strong>
+            </div>
+            <div class="feed" id="feed"></div>
+            <div class="tabbar"><span>Início</span><span>Eventos</span><span>Grupos</span><span>Dízimo</span><span>Mais</span></div>
+          </div>
+        </div>
+        <p class="demo-caption" id="demo-caption"></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="como-funciona">
+    <div class="wrap rules">
+      <div>
+        <div class="section-head">
+          <p class="eyebrow">Matriz e comunidades</p>
+          <h2>Pensado para como a paróquia já funciona</h2>
+          <p>Quem contrata é a Matriz. As capelas entram junto, cada uma com sua equipe, sem pagar a mais.</p>
+        </div>
+        <div class="rule-list">
+          <div class="rule"><div class="rule-ico">⬇</div><div><h3>Da Matriz para todos</h3><p>Aviso de confissões, festa do padroeiro, inscrição da Crisma: publicou na Matriz, chegou em todas as comunidades. Se for algo só da Matriz (como a reunião do Conselho Pastoral), basta desmarcar "mostrar nas comunidades".</p></div></div>
+          <div class="rule"><div class="rule-ico">⌂</div><div><h3>Da comunidade, só para ela</h3><p>O bazar da Imaculado Coração não aparece para quem é da Castíssimo Coração, nem sobe para a Matriz.</p></div></div>
+          <div class="rule"><div class="rule-ico">⚙</div><div><h3>A Matriz enxerga tudo</h3><p>O pároco vê membros, pedidos de oração, inscrições e doações de cada comunidade, e escolhe onde publicar com um seletor.</p></div></div>
+        </div>
+      </div>
+      <div class="tree" aria-label="Exemplo de estrutura">
+        <div class="node matriz"><span class="k">Matriz</span><span class="n">Paróquia Sagrado Coração de Jesus</span><span class="s">Sáb 19h · Dom 7h, 9h30 e 19h</span></div>
+        <div class="connector" aria-hidden="true"></div>
+        <div class="children">
+          <div class="node"><span class="k">Comunidade</span><span class="n">Imaculado Coração de Maria</span><span class="s">Dom 8h · Qua 19h30</span></div>
+          <div class="node"><span class="k">Comunidade</span><span class="n">Castíssimo Coração de José</span><span class="s">Sáb 17h · Qui 19h30</span></div>
+        </div>
+        <p class="flow"><b>Matriz → comunidades:</b> sim &nbsp;·&nbsp; <b>comunidade → Matriz:</b> não</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section band-alt" id="painel">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Painel da paróquia</p>
+        <h2>Tudo da paróquia numa tela, no computador ou no celular</h2>
+        <p>Organizado em Igreja, Pessoas, Cuidado, Programação, Conteúdo, Formulários e Financeiro. Clique no menu para ver as telas.</p>
+      </div>
+
+      <div class="window">
+        <div class="window-bar"><span class="dots"><i></i><i></i><i></i></span> painel · Minha Paróquia</div>
+        <div class="admin">
+          <aside class="side">
+            <div class="side-brand"><span class="brand-mark">✝</span><div><b>Paróquia Sagrado Coração de Jesus</b><small>Administração</small></div></div>
+            <div class="scope">
+              <small>Publicar em</small>
+              <select id="scope-select" aria-label="Publicar em">
+                <option value="all">⛪ Matriz (e comunidades)</option>
+                <option value="imaculado">🏠 Imaculado Coração de Maria</option>
+                <option value="castissimo">🏠 Castíssimo Coração de José</option>
+              </select>
+            </div>
+            <div class="nav-group"><span>Igreja</span><button class="nav-item" type="button" data-panel="inicio" aria-current="page">Início</button><button class="nav-item" type="button" data-panel="comunidades">Matriz e comunidades</button></div>
+            <div class="nav-group"><span>Cuidado</span><button class="nav-item" type="button" data-panel="oracao">Pedidos de oração</button></div>
+            <div class="nav-group"><span>Formulários</span><button class="nav-item" type="button" data-panel="formularios">Formulários</button></div>
+          </aside>
+          <div class="panel" id="panel"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="formularios">
+    <div class="wrap forms-grid">
+      <div>
+        <div class="section-head">
+          <p class="eyebrow">Formulários e fichas de inscrição</p>
+          <h2>O que a Secretaria de Evangelização pediu</h2>
+          <p>Fichas de Crisma, Batismo, retiros e pesquisas com o que faltava nos apps do mercado.</p>
+        </div>
+        <div class="asks">
+          <div class="ask"><span class="check">✓</span><div><b>Lista suspensa longa</b><span>Com busca: digite "sor" e aparece Sorocaba. No painel, cola-se a lista inteira de uma vez.</span></div></div>
+          <div class="ask"><span class="check">✓</span><div><b>"Se for sim, ir para tal seção"</b><span>Cada resposta pode levar a uma seção diferente ou encerrar o formulário.</span></div></div>
+          <div class="ask"><span class="check">✓</span><div><b>Divisão por seção</b><span>O fiel preenche em etapas, com botão Voltar.</span></div></div>
+          <div class="ask"><span class="check">✓</span><div><b>Incluir imagem</b><span>Na capa, nas seções, nas perguntas, e o fiel pode anexar foto da certidão.</span></div></div>
+          <div class="ask"><span class="check">✓</span><div><b>Quiz</b><span>Respostas certas e pontos; a nota é calculada pelo sistema.</span></div></div>
+        </div>
+      </div>
+
+      <div class="form-demo" aria-label="Formulário de exemplo">
+        <div class="form-cover"><small>Secretaria de Evangelização</small><h3>Ficha de Inscrição – Crisma 2027</h3></div>
+        <div class="steps" id="steps"></div>
+        <div class="form-body" id="form-body"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section band-alt" id="recursos">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Recursos</p>
+        <h2>O dia a dia da paróquia, no bolso do fiel</h2>
+      </div>
+      <div class="features">
+        <div class="feature"><b>Avisos e notícias</b><span>Mural com avisos fixados e notícias com foto, em até 5 idiomas.</span></div>
+        <div class="feature"><b>Eventos com inscrição</b><span>Missas, retiros e festas, com vagas e ficha de inscrição.</span></div>
+        <div class="feature"><b>Dízimo e campanhas</b><span>Pix, cartão e boleto pelo Mercado Pago, direto na conta da paróquia.</span></div>
+        <div class="feature"><b>Pedidos de oração</b><span>Por área (família, saúde, trabalho…), com retorno pelo WhatsApp se o fiel autorizar.</span></div>
+        <div class="feature"><b>Testemunhos</b><span>O fiel envia; a equipe aprova antes de publicar.</span></div>
+        <div class="feature"><b>"Como você está hoje?"</b><span>Um toque na Home vira termômetro pastoral no painel.</span></div>
+        <div class="feature"><b>Liturgia diária</b><span>Leituras, salmo, evangelho e cor litúrgica, todo dia.</span></div>
+        <div class="feature"><b>Bíblia completa</b><span>Tradução do Pe. Antônio Pereira de Figueiredo, 73 livros.</span></div>
+        <div class="feature"><b>Notificações</b><span>Para todos, para um grupo, ou só para uma comunidade.</span></div>
+        <div class="feature"><b>Grupos e pastorais</b><span>Catequese, PJ, Terço dos Homens, Legião de Maria.</span></div>
+        <div class="feature"><b>Vídeos e downloads</b><span>Formações, boletins e partituras.</span></div>
+        <div class="feature"><b>Quiz de estudo</b><span>Perguntas sobre a fé ligadas a vídeos e encontros.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section access" id="demonstracao">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Demonstração</p>
+        <h2>Entre como cada pessoa da Paróquia Sagrado Coração</h2>
+        <p>Paróquia fictícia, com conteúdo de exemplo. Abra o app e use um destes acessos para ver a diferença entre a Matriz, uma comunidade e o fiel.</p>
+      </div>
+      <div class="logins">
+        <div class="login"><small>Pároco da Matriz</small><code>matriz@demo.minhaparoquia.app</code><p>Vê o painel inteiro: Matriz e as duas comunidades.</p><button class="copy" type="button" data-copy="matriz@demo.minhaparoquia.app">Copiar e-mail</button></div>
+        <div class="login"><small>Coordenação · Imaculado Coração</small><code>imaculado@demo.minhaparoquia.app</code><p>Painel só da comunidade, recebendo o que vem da Matriz.</p><button class="copy" type="button" data-copy="imaculado@demo.minhaparoquia.app">Copiar e-mail</button></div>
+        <div class="login"><small>Coordenação · Castíssimo Coração</small><code>castissimo@demo.minhaparoquia.app</code><p>Outra comunidade: não vê o que a Imaculado publica.</p><button class="copy" type="button" data-copy="castissimo@demo.minhaparoquia.app">Copiar e-mail</button></div>
+        <div class="login"><small>Fiel · Imaculado Coração</small><code>fiel@demo.minhaparoquia.app</code><p>App do fiel: avisos da Matriz e da comunidade, formulários, pedido de oração.</p><button class="copy" type="button" data-copy="fiel@demo.minhaparoquia.app">Copiar e-mail</button></div>
+      </div>
+      <p class="password">Senha de todos os acessos: <code>Demo@2026</code></p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap"><span>Minha Paróquia · um produto da Logos Agência Digital</span><span>A Paróquia Sagrado Coração de Jesus e suas comunidades são exemplos fictícios.</span></div>
+</footer>
+
+<script>
+(function () {
+  // ----- Conteúdo de exemplo (mesmo do supabase/seed_demo.sql) -----
+  const M = "matriz", I = "imaculado", C = "castissimo";
+  const NAMES = { matriz: "Paróquia Sagrado Coração de Jesus", imaculado: "Comunidade Imaculado Coração de Maria", castissimo: "Comunidade Castíssimo Coração de José" };
+  const ITEMS = [
+    { from: M, shared: true, kind: "Aviso fixado", t: "Horário especial de confissões", meta: "Ter a Sex, 15h às 18h" },
+    { from: I, shared: true, kind: "Aviso", t: "Missa de quarta transferida para 20h", meta: "Capela Imaculado Coração" },
+    { from: C, shared: true, kind: "Aviso", t: "Mutirão de limpeza da capela", meta: "Sábado, 8h" },
+    { from: M, shared: true, kind: "Evento", t: "Festa do Sagrado Coração de Jesus", meta: "Missa solene e procissão" },
+    { from: M, shared: false, kind: "Evento", t: "Reunião do Conselho Pastoral", meta: "Salão paroquial · só Matriz" },
+    { from: I, shared: true, kind: "Evento", t: "Novena do Imaculado Coração", meta: "Qua 19h30" },
+    { from: I, shared: true, kind: "Evento", t: "Bazar beneficente", meta: "Salão da comunidade" },
+    { from: C, shared: true, kind: "Evento", t: "Missa de São José Operário", meta: "Bênção das carteiras de trabalho" },
+    { from: M, shared: true, kind: "Formulário", t: "Ficha de Inscrição – Crisma 2027", meta: "Secretaria de Evangelização" },
+  ];
+  const CAPTIONS = {
+    matriz: "Quem é da Matriz vê só o que a Matriz publica. Nada das comunidades aparece aqui.",
+    imaculado: "A Imaculado Coração vê o que a Matriz compartilhou (marcado \"Matriz\") e o que é da própria comunidade.",
+    castissimo: "A Castíssimo Coração recebe a Matriz, mas não vê o bazar nem a novena da Imaculado.",
+  };
+
+  const feed = document.getElementById("feed");
+  const sub = document.getElementById("ph-sub");
+  const caption = document.getElementById("demo-caption");
+  function visible(viewer, item) {
+    if (item.from === viewer) return true;
+    return viewer !== M && item.from === M && item.shared;
+  }
+  function renderFeed(viewer) {
+    sub.textContent = viewer === M ? NAMES.matriz : NAMES[viewer] + " · " + NAMES.matriz;
+    const mood = '<div class="mood"><b>Como você está se sentindo hoje?</b><div><span>🙏</span><span>😊</span><span>🕊️</span><span>😮‍💨</span><span>😟</span><span>🤲</span></div></div>';
+    feed.innerHTML = mood + ITEMS.filter((it) => visible(viewer, it)).map((it) => {
+      const tag = it.from === viewer
+        ? (viewer === M ? "" : '<span class="tag tag-local">Comunidade</span>')
+        : '<span class="tag tag-matriz">Matriz</span>';
+      return '<div class="feed-item"><div class="kind">' + it.kind + '</div><div class="t">' + it.t + '</div><div class="meta">' + tag + '<span>' + it.meta + '</span></div></div>';
+    }).join("");
+    caption.textContent = CAPTIONS[viewer];
+  }
+  document.querySelectorAll("[data-viewer]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      document.querySelectorAll("[data-viewer]").forEach((b) => b.setAttribute("aria-pressed", String(b === btn)));
+      renderFeed(btn.dataset.viewer);
+    });
+  });
+  renderFeed(I);
+
+  // ----- Painel -----
+  const STATS = {
+    matriz: { members: 21, fresh: 6, prayers: 1, money: 1862 },
+    imaculado: { members: 22, fresh: 6, prayers: 1, money: 1641 },
+    castissimo: { members: 20, fresh: 6, prayers: 1, money: 1497 },
+  };
+  const PRAYERS = [
+    { who: "Ana Clara", where: I, area: "Saúde", text: "Pela recuperação da minha avó, que está internada.", wa: true, status: "Recebido" },
+    { who: "Bruno Souza", where: M, area: "Trabalho", text: "Por uma nova oportunidade de emprego.", wa: false, status: "Em oração" },
+    { who: "Daniel Santos", where: C, area: "Família", text: "Pela paz na minha família.", wa: true, status: "Recebido" },
+  ];
+  const brl = (n) => n.toLocaleString("pt-BR", { style: "currency", currency: "BRL", maximumFractionDigits: 0 });
+  const panel = document.getElementById("panel");
+  const scopeSel = document.getElementById("scope-select");
+  let current = "inicio";
+
+  function scopeKeys() { return scopeSel.value === "all" ? [M, I, C] : [scopeSel.value]; }
+  function sum(key) { return scopeKeys().reduce((s, k) => s + STATS[k][key], 0); }
+
+  const VIEWS = {
+    inicio() {
+      const keys = scopeKeys();
+      const rows = keys.map((k) => '<tr><td>' + (k === M ? "⛪ " : "🏠 ") + NAMES[k] + '</td><td>' + STATS[k].members + '</td><td>' + STATS[k].fresh + '</td><td>' + STATS[k].prayers + '</td><td>' + brl(STATS[k].money) + '</td></tr>').join("");
+      const moods = [["🙏 Grato", 14], ["😊 Feliz", 11], ["🕊️ Em paz", 9], ["😮‍💨 Cansado", 8], ["😟 Ansioso", 7], ["🤲 Preciso de oração", 5]];
+      const max = 14;
+      return '<h3>Olá, Pe. João!</h3><p class="sub">' + (keys.length > 1 ? "Visão da Matriz e de 2 comunidades." : "Visão da " + NAMES[keys[0]] + ".") + '</p>' +
+        '<div class="kpis"><div class="kpi"><b>' + sum("members") + '</b><span>Membros</span></div><div class="kpi"><b>' + sum("fresh") + '</b><span>Novos (30 dias)</span></div><div class="kpi"><b>' + sum("prayers") + '</b><span>Pedidos de oração abertos</span></div><div class="kpi"><b>' + brl(sum("money")) + '</b><span>Doações no mês</span></div></div>' +
+        (keys.length > 1 ? '<div class="table-wrap"><table><thead><tr><th>Igreja</th><th>Membros</th><th>Novos</th><th>Oração</th><th>Doações/mês</th></tr></thead><tbody>' + rows + '</tbody></table></div>' : "") +
+        '<div class="two"><div class="card"><h4>Como os fiéis estão (7 dias)</h4><div class="bars">' + moods.map(([l, v]) => '<div class="bar"><span>' + l + '</span><i style="width:' + (v / max * 100) + '%"></i><em>' + v + '</em></div>').join("") + '</div></div>' +
+        '<div class="card"><h4>Próximos eventos</h4><div class="list">' +
+        '<div class="row"><div class="row-top"><b>Festa do Sagrado Coração</b><span class="pill wine">Matriz → todas</span></div><span class="muted">Missa solene, procissão e quermesse</span></div>' +
+        '<div class="row"><div class="row-top"><b>Retiro Paroquial de Advento</b><span class="pill">120 vagas</span></div><span class="muted">Inscrição pelo formulário</span></div>' +
+        '</div></div></div>';
+    },
+    comunidades() {
+      return '<h3>Matriz e comunidades</h3><p class="sub">Tudo o que a Matriz publica aparece nas comunidades; o que cada comunidade publica fica nela.</p><div class="list">' +
+        [[I, "IMACULADO-DEMO", "Maria Aparecida", "Rua das Rosas, 45"], [C, "CASTISSIMO-DEMO", "José Carlos", "Av. São José, 900"]].map(([k, code, coord, addr]) =>
+          '<div class="row"><div class="row-top"><b>🏠 ' + NAMES[k] + '</b><span class="pill">' + STATS[k].members + ' membros</span></div><span class="muted">📍 ' + addr + ' · Código para os fiéis: <b>' + code + '</b></span><span class="muted">Coordenação: ' + coord + '</span></div>').join("") +
+        '<div class="row"><b>+ Nova comunidade</b><span class="muted">Nome, padroeiro, endereço e horários de missa. Entra no mesmo plano da Matriz.</span></div></div>';
+    },
+    oracao() {
+      const keys = scopeKeys();
+      return '<h3>Pedidos de oração</h3><p class="sub">Filtre por situação e área. Quem autorizou pode receber retorno pelo WhatsApp.</p><div class="list">' +
+        PRAYERS.filter((p) => keys.includes(p.where)).map((p) =>
+          '<div class="row"><div class="row-top"><b>' + p.who + '</b><span class="pill">' + p.area + '</span></div><span>' + p.text + '</span><span class="muted">' + NAMES[p.where] + ' · ' + p.status + (p.wa ? ' · <b style="color:var(--green)">WhatsApp autorizado</b>' : "") + '</span></div>').join("") + '</div>';
+    },
+    formularios() {
+      return '<h3>Formulários</h3><p class="sub">Fichas de inscrição, pesquisas e quizzes.</p><div class="list">' +
+        '<div class="row"><div class="row-top"><b>Ficha de Inscrição – Crisma 2027</b><span class="pill ok">Publicado</span></div><span class="muted">4 seções · desvio "batizado? sim/não" · lista de 43 cidades · 37 respostas</span><span class="muted">Exportar planilha · Chamar no WhatsApp</span></div>' +
+        '<div class="row"><div class="row-top"><b>Quiz: Você conhece o Sagrado Coração?</b><span class="pill">Quiz</span></div><span class="muted">3 perguntas · 30 pontos · média 23</span></div>' +
+        '<div class="row"><div class="row-top"><b>Escala de leitores – Imaculado Coração</b><span class="pill wine">Só da comunidade</span></div><span class="muted">Publicado pela comunidade</span></div></div>';
+    },
+  };
+  function renderPanel() { panel.innerHTML = VIEWS[current](); }
+  document.querySelectorAll("[data-panel]").forEach((b) => b.addEventListener("click", () => {
+    current = b.dataset.panel;
+    document.querySelectorAll("[data-panel]").forEach((x) => (x === b ? x.setAttribute("aria-current", "page") : x.removeAttribute("aria-current")));
+    renderPanel();
+  }));
+  scopeSel.addEventListener("change", renderPanel);
+  renderPanel();
+
+  // ----- Formulário com desvio -----
+  const CITIES = ["Aracaju","Belém","Belo Horizonte","Boa Vista","Brasília","Campinas","Campo Grande","Cuiabá","Curitiba","Feira de Santana","Florianópolis","Fortaleza","Goiânia","Guarulhos","João Pessoa","Joinville","Juiz de Fora","Londrina","Macapá","Maceió","Manaus","Natal","Niterói","Osasco","Palmas","Porto Alegre","Porto Velho","Recife","Ribeirão Preto","Rio Branco","Rio de Janeiro","Salvador","Santo André","Santos","São Bernardo do Campo","São José dos Campos","São Luís","São Paulo","Sorocaba","Teresina","Uberlândia","Vitória","Outra cidade"];
+  const norm = (s) => s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
+  const state = { path: ["dados"], baptized: null, city: "", name: "" };
+  const SECTIONS = {
+    dados: { title: "Dados do crismando", desc: "Seção 1 · informações pessoais." },
+    batismo: { title: "Batismo", desc: "Você respondeu Sim: precisamos da paróquia do batismo." },
+    preparo: { title: "Ainda não sou batizado", desc: "Você respondeu Não: o formulário pulou para a preparação ao Batismo e termina aqui." },
+    turma: { title: "Disponibilidade", desc: "Escolha a comunidade dos encontros." },
+  };
+  const formBody = document.getElementById("form-body");
+  const steps = document.getElementById("steps");
+  function next() {
+    const cur = state.path[state.path.length - 1];
+    if (cur === "dados") return state.baptized === "sim" ? "batismo" : state.baptized === "nao" ? "preparo" : null;
+    if (cur === "batismo") return "turma";
+    return "fim";
+  }
+  function renderForm() {
+    const cur = state.path[state.path.length - 1];
+    steps.innerHTML = [0, 1, 2].map((i) => '<i class="' + (i < state.path.length ? "on" : "") + '"></i>').join("");
+    if (cur === "fim") {
+      formBody.innerHTML = '<div class="done"><b style="font-size:1.6rem">✅</b><h4>Inscrição recebida!</h4><p class="desc">Caminho percorrido: ' + state.path.slice(0, -1).map((k) => SECTIONS[k].title).join(" → ") + '.</p><button class="opt" type="button" id="restart" style="text-align:center">Recomeçar</button></div>';
+      document.getElementById("restart").onclick = () => { state.path = ["dados"]; state.baptized = null; state.city = ""; renderForm(); };
+      return;
+    }
+    const s = SECTIONS[cur];
+    let html = '<div><h4>' + s.title + '</h4><p class="desc">' + s.desc + '</p></div>';
+    if (cur === "dados") {
+      html += '<div class="q"><label for="f-city">Em qual cidade você nasceu? <span class="muted">(lista longa com busca)</span></label><div class="combo"><input id="f-city" type="text" autocomplete="off" placeholder="Digite para buscar entre 43 cidades" value="' + state.city + '"><ul id="city-list"></ul></div></div>' +
+        '<div class="q"><span class="ql">Você é batizado(a)?</span>' +
+        '<button class="opt" type="button" data-bap="sim" aria-pressed="' + (state.baptized === "sim") + '">Sim <small>→ vai para a seção "Batismo"</small></button>' +
+        '<button class="opt" type="button" data-bap="nao" aria-pressed="' + (state.baptized === "nao") + '">Não <small>→ vai para "Ainda não sou batizado"</small></button></div>';
+    } else if (cur === "batismo") {
+      html += '<div class="q"><label for="f-par">Paróquia onde foi batizado(a)</label><input id="f-par" type="text" placeholder="Ex.: Paróquia São Pedro"></div><div class="q"><span class="ql">Foto da certidão de batismo</span><button class="opt" type="button">📷 Escolher imagem</button></div>';
+    } else if (cur === "preparo") {
+      html += '<div class="q"><label for="f-fam">Conte um pouco sobre você e sua família</label><input id="f-fam" type="text" placeholder="Sua resposta"></div>';
+    } else {
+      html += '<div class="q"><span class="ql">Em qual comunidade deseja fazer os encontros?</span>' + ["Matriz Sagrado Coração", "Comunidade Imaculado Coração", "Comunidade Castíssimo Coração"].map((o) => '<button class="opt turma" type="button" aria-pressed="false">' + o + '</button>').join("") + '</div>';
+    }
+    const n = next();
+    html += '<div class="form-actions">' + (state.path.length > 1 ? '<button class="f-back" type="button" id="f-back">Voltar</button>' : "") +
+      '<button class="f-next" type="button" id="f-next"' + (n === null ? " disabled style=\"opacity:.5\"" : "") + '>' + (n === "fim" || cur === "preparo" ? "Enviar" : "Próxima") + '</button></div>' +
+      '<p class="path-note">Caminho até aqui: ' + state.path.map((k) => SECTIONS[k].title).join(" → ") + '</p>';
+    formBody.innerHTML = html;
+
+    const city = document.getElementById("f-city");
+    if (city) {
+      const list = document.getElementById("city-list");
+      const fill = () => {
+        const q = norm(city.value.trim());
+        const found = CITIES.filter((c) => !q || norm(c).includes(q)).slice(0, 8);
+        list.innerHTML = found.map((c) => '<li><button type="button">' + c + '</button></li>').join("");
+        list.querySelectorAll("button").forEach((b) => b.onclick = () => { state.city = b.textContent; city.value = state.city; list.innerHTML = ""; });
+      };
+      city.addEventListener("input", () => { state.city = city.value; fill(); });
+      city.addEventListener("focus", fill);
+    }
+    formBody.querySelectorAll("[data-bap]").forEach((b) => b.onclick = () => { state.baptized = b.dataset.bap; renderForm(); });
+    formBody.querySelectorAll(".turma").forEach((b) => b.onclick = () => formBody.querySelectorAll(".turma").forEach((x) => x.setAttribute("aria-pressed", String(x === b))));
+    const back = document.getElementById("f-back");
+    if (back) back.onclick = () => { state.path.pop(); renderForm(); };
+    document.getElementById("f-next").onclick = () => {
+      const nn = next();
+      if (nn) state.path.push(nn);
+      renderForm();
+    };
+  }
+  renderForm();
+
+  // ----- Copiar e-mails de demonstração -----
+  document.querySelectorAll("[data-copy]").forEach((b) => b.addEventListener("click", () => {
+    const text = b.dataset.copy;
+    const done = () => { const old = b.textContent; b.textContent = "Copiado"; setTimeout(() => (b.textContent = old), 1500); };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(done).catch(() => selectCode(b));
+    } else { selectCode(b); }
+  }));
+  function selectCode(b) {
+    const code = b.parentElement.querySelector("code");
+    const r = document.createRange(); r.selectNodeContents(code);
+    const sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(r);
+  }
+})();
+</script>
