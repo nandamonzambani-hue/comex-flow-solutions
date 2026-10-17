@@ -1,0 +1,335 @@
+{
+	"pack": "",
+	"questions": [
+		{
+			"id": "bib-001",
+			"difficulty": 1,
+			"question": "Quantos livros tem a Bíblia católica?",
+			"options": [
+				"73",
+				"66",
+				"72",
+				"80"
+			],
+			"answer": 0,
+			"explanation": "A Bíblia católica tem 46 livros no Antigo Testamento e 27 no Novo Testamento.",
+			"source": "Catecismo da Igreja Católica, §120",
+			"category": "biblia"
+		},
+		{
+			"id": "bib-002",
+			"difficulty": 1,
+			"question": "Qual é o primeiro livro da Bíblia?",
+			"options": [
+				"Gênesis",
+				"Êxodo",
+				"Salmos",
+				"Mateus"
+			],
+			"answer": 0,
+			"explanation": "Gênesis narra a criação e as origens do povo de Deus: “No princípio, Deus criou o céu e a terra”.",
+			"source": "Gn 1,1",
+			"category": "biblia"
+		},
+		{
+			"id": "bib-003",
+			"difficulty": 1,
+			"question": "Quem construiu a arca para escapar do dilúvio?",
+			"options": [
+				"Noé",
+				"Abraão",
+				"Moisés",
+				"Elias"
+			],
+			"answer": 0,
+			"explanation": "Deus mandou Noé construir a arca para salvar sua família e os animais.",
+			"source": "Gn 6,13-14",
+			"category": "biblia"
+		},
+		{
+			"id": "bib-004",
+			"difficulty": 1,
+			"question": "Quem recebeu de Deus as tábuas da Lei no monte Sinai?",
+			"options": [
+				"Moisés",
+				"Josué",
+				"Davi",
+				"Abraão"
+			],
+			"answer": 0,
+			"explanation": "No Sinai, Deus entregou a Moisés as duas tábuas da Aliança.",
+			"source": "Ex 31,18",
+			"category": "biblia"
+		},
+		{
+			"id": "bib-005",
+			"difficulty": 1,
+			"question": "Em que cidade Jesus nasceu?",
+			"options": [
+				"Belém",
+				"Nazaré",
+				"Jerusalém",
+				"Cafarnaum"
+			],
+			"answer": 0,
+			"explanation": "Jesus nasceu em Belém da Judeia, a cidade de Davi; cresceu em Nazaré.",
+			"source": "Mt 2,1; Lc 2,4-7",
+			"category": "biblia"
+		},
+		{
+			"id": "bib-006",
+			"difficulty": 1,
+			"question": "Segundo o Evangelho de João, qual foi o primeiro sinal (milagre) de Jesus?",
+			"options": [
+				"Transformar água em vinho em Caná",
+				"Multiplicar os pães",
+				"Andar sobre as águas",
+				"Ressuscitar Lázaro"
+			],
+			"answer": 0,
+			"explanation": "Nas bodas de Caná, a pedido de Maria, Jesus transformou água em vinho: “Este foi o início dos sinais”.",
+			"source": "Jo 2,1-11",
+			"category": "biblia"
+		},
+		{
+			"id": "bib-007",
+			"difficulty": 1,
+			"question": "Quantos apóstolos Jesus escolheu?",
+			"options": [
+				"Doze",
+				"Sete",
+				"Setenta",
+				"Dez"
+			],
+			"answer": 0,
+			"explanation": "Jesus constituiu os Doze para ficarem com Ele e para enviá-los a pregar.",
+			"source": "Mc 3,14",
+			"category": "biblia"
+		},
+		{
+			"id": "bib-008",
+			"difficulty": 1,
+			"question": "Qual apóstolo negou Jesus três vezes?",
+			"options": [
+				"Pedro",
+				"Judas",
+				"Tomé",
+				"João"
+			],
+			"answer": 0,
+			"explanation": "Pedro negou conhecer Jesus três vezes antes de o galo cantar e depois chorou amargamente.",
+			"source": "Lc 22,54-62",
+			"category": "biblia"
+		},
+		{
+			"id": "bib-009",
+			"difficulty": 2,
+			"question": "Qual destes NÃO é um dos quatro Evangelhos da Bíblia?",
+			"options": [
+				"Evangelho de Tomé",
+				"Evangelho de Marcos",
+				"Evangelho de Lucas",
+				"Evangelho de João"
+			],
+			"answer": 0,
+			"explanation": "Os Evangelhos canônicos são Mateus, Marcos, Lucas e João. O chamado “Evangelho de Tomé” não faz parte da Bíblia.",
+			"source": "Catecismo da Igreja Católica, §120 e §125",
+			"category": "biblia"
+		},
+		{
+			"id": "bib-010",
+			"difficulty": 2,
+			"question": "Quem escreveu a maior parte das cartas do Novo Testamento?",
+			"options": [
+				"São Paulo",
+				"São Pedro",
+				"São Tiago",
+				"São Judas Tadeu"
+			],
+			"answer": 0,
+			"explanation": "Treze cartas do Novo Testamento, de Romanos a Filêmon, levam o nome do apóstolo Paulo.",
+			"source": "Cartas de Romanos a Filêmon",
+			"category": "biblia"
+		},
+		{
+			"id": "bib-011",
+			"difficulty": 1,
+			"question": "Qual é o último livro da Bíblia?",
+			"options": [
+				"Apocalipse",
+				"Atos dos Apóstolos",
+				"Judas",
+				"Malaquias"
+			],
+			"answer": 0,
+			"explanation": "O Apocalipse, atribuído a São João, encerra a Bíblia com a visão da vitória de Cristo.",
+			"source": "Ap 1,1",
+			"category": "biblia"
+		},
+		{
+			"id": "bib-012",
+			"difficulty": 2,
+			"question": "Qual livro narra a descida do Espírito Santo em Pentecostes?",
+			"options": [
+				"Atos dos Apóstolos",
+				"Evangelho de João",
+				"Carta aos Romanos",
+				"Apocalipse"
+			],
+			"answer": 0,
+			"explanation": "Atos dos Apóstolos conta que, no dia de Pentecostes, todos ficaram cheios do Espírito Santo.",
+			"source": "At 2,1-4",
+			"category": "biblia"
+		},
+		{
+			"id": "bib-013",
+			"difficulty": 2,
+			"question": "Em qual Evangelho está a parábola do filho pródigo?",
+			"options": [
+				"Lucas",
+				"Mateus",
+				"Marcos",
+				"João"
+			],
+			"answer": 0,
+			"explanation": "A parábola do pai misericordioso (filho pródigo) está no capítulo 15 de Lucas.",
+			"source": "Lc 15,11-32",
+			"category": "biblia"
+		},
+		{
+			"id": "bib-014",
+			"difficulty": 1,
+			"question": "Quem foi vendido pelos irmãos e depois se tornou governador do Egito?",
+			"options": [
+				"José",
+				"Jacó",
+				"Benjamim",
+				"Isaac"
+			],
+			"answer": 0,
+			"explanation": "José, filho de Jacó, foi vendido pelos irmãos e mais tarde governou o Egito, salvando sua família da fome.",
+			"source": "Gn 37; Gn 41,41",
+			"category": "biblia"
+		},
+		{
+			"id": "bib-015",
+			"difficulty": 1,
+			"question": "A quem a tradição atribui muitos dos Salmos?",
+			"options": [
+				"Ao rei Davi",
+				"Ao profeta Isaías",
+				"A Moisés",
+				"A Salomão"
+			],
+			"answer": 0,
+			"explanation": "Davi, o rei e músico, é tradicionalmente ligado a grande parte do Saltério.",
+			"source": "Catecismo da Igreja Católica, §2579",
+			"category": "biblia"
+		},
+		{
+			"id": "bib-016",
+			"difficulty": 1,
+			"question": "Qual profeta ficou três dias no ventre de um grande peixe?",
+			"options": [
+				"Jonas",
+				"Daniel",
+				"Jeremias",
+				"Amós"
+			],
+			"answer": 0,
+			"explanation": "Jonas fugiu da missão, foi engolido por um grande peixe e depois pregou em Nínive.",
+			"source": "Jn 2,1",
+			"category": "biblia"
+		},
+		{
+			"id": "bib-017",
+			"difficulty": 3,
+			"question": "Qual destes livros está na Bíblia católica, mas não na maioria das Bíblias protestantes?",
+			"options": [
+				"Tobias",
+				"Rute",
+				"Jonas",
+				"Neemias"
+			],
+			"answer": 0,
+			"explanation": "Tobias é um dos livros deuterocanônicos (como Judite, Sabedoria, Eclesiástico, Baruc e 1 e 2 Macabeus).",
+			"source": "Catecismo da Igreja Católica, §120",
+			"category": "biblia"
+		},
+		{
+			"id": "bib-018",
+			"difficulty": 2,
+			"question": "Quais apóstolos presenciaram a Transfiguração de Jesus?",
+			"options": [
+				"Pedro, Tiago e João",
+				"Pedro, André e Filipe",
+				"João, Tomé e Mateus",
+				"Tiago, Judas e Bartolomeu"
+			],
+			"answer": 0,
+			"explanation": "Jesus levou Pedro, Tiago e João a um alto monte e transfigurou-se diante deles.",
+			"source": "Mt 17,1-2",
+			"category": "biblia"
+		},
+		{
+			"id": "bib-019",
+			"difficulty": 1,
+			"question": "Quem batizou Jesus no rio Jordão?",
+			"options": [
+				"João Batista",
+				"Pedro",
+				"André",
+				"Zacarias"
+			],
+			"answer": 0,
+			"explanation": "Jesus veio da Galileia ao Jordão para ser batizado por João.",
+			"source": "Mt 3,13-17",
+			"category": "biblia"
+		},
+		{
+			"id": "bib-020",
+			"difficulty": 2,
+			"question": "“No princípio era o Verbo” é o começo de qual Evangelho?",
+			"options": [
+				"João",
+				"Mateus",
+				"Marcos",
+				"Lucas"
+			],
+			"answer": 0,
+			"explanation": "O prólogo de João apresenta Jesus como o Verbo eterno que se fez carne.",
+			"source": "Jo 1,1.14",
+			"category": "biblia"
+		},
+		{
+			"id": "bib-021",
+			"difficulty": 1,
+			"question": "Quantos dias Jesus jejuou no deserto?",
+			"options": [
+				"Quarenta",
+				"Sete",
+				"Doze",
+				"Três"
+			],
+			"answer": 0,
+			"explanation": "Depois de jejuar quarenta dias e quarenta noites, Jesus foi tentado no deserto.",
+			"source": "Mt 4,1-2",
+			"category": "biblia"
+		},
+		{
+			"id": "bib-022",
+			"difficulty": 2,
+			"question": "Quem era a mãe de João Batista?",
+			"options": [
+				"Isabel",
+				"Ana",
+				"Marta",
+				"Maria Madalena"
+			],
+			"answer": 0,
+			"explanation": "Isabel, parente de Maria, deu à luz João na velhice; o pai era Zacarias.",
+			"source": "Lc 1,57-60",
+			"category": "biblia"
+		}
+	]
+}

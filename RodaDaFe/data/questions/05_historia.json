@@ -1,0 +1,320 @@
+{
+	"pack": "",
+	"questions": [
+		{
+			"id": "his-001",
+			"difficulty": 2,
+			"question": "Em que período aconteceu o Concílio Vaticano II?",
+			"options": [
+				"1962 a 1965",
+				"1869 a 1870",
+				"1545 a 1563",
+				"1978 a 1981"
+			],
+			"answer": 0,
+			"explanation": "Foi o 21º concílio ecumênico, voltado à renovação da vida da Igreja.",
+			"source": "Documentos do Concílio Vaticano II",
+			"category": "historia"
+		},
+		{
+			"id": "his-002",
+			"difficulty": 2,
+			"question": "Qual Papa convocou o Concílio Vaticano II?",
+			"options": [
+				"São João XXIII",
+				"São Paulo VI",
+				"Pio XII",
+				"São João Paulo II"
+			],
+			"answer": 0,
+			"explanation": "João XXIII anunciou o Concílio em 1959 e o abriu em 1962; Paulo VI o concluiu.",
+			"source": "Constituição Humanae salutis (1961)",
+			"category": "historia"
+		},
+		{
+			"id": "his-003",
+			"difficulty": 2,
+			"question": "Qual imperador concedeu liberdade de culto aos cristãos com o Edito de Milão (313)?",
+			"options": [
+				"Constantino",
+				"Nero",
+				"Diocleciano",
+				"Trajano"
+			],
+			"answer": 0,
+			"explanation": "Depois de séculos de perseguições, o Edito de Milão permitiu o culto cristão.",
+			"source": "Edito de Milão, 313",
+			"category": "historia"
+		},
+		{
+			"id": "his-004",
+			"difficulty": 2,
+			"question": "Qual foi o primeiro concílio ecumênico da Igreja?",
+			"options": [
+				"Niceia (325)",
+				"Trento (1545)",
+				"Éfeso (431)",
+				"Jerusalém (1099)"
+			],
+			"answer": 0,
+			"explanation": "Niceia afirmou que o Filho é “consubstancial ao Pai”.",
+			"source": "Catecismo da Igreja Católica, §465",
+			"category": "historia"
+		},
+		{
+			"id": "his-005",
+			"difficulty": 2,
+			"question": "O Concílio de Trento (1545–1563) respondeu principalmente a qual acontecimento?",
+			"options": [
+				"A Reforma protestante",
+				"A queda de Constantinopla",
+				"As Cruzadas",
+				"A Revolução Francesa"
+			],
+			"answer": 0,
+			"explanation": "Trento reafirmou a doutrina católica e promoveu uma grande reforma interna.",
+			"source": "Decretos do Concílio de Trento",
+			"category": "historia"
+		},
+		{
+			"id": "his-006",
+			"difficulty": 2,
+			"question": "Quando foi celebrada a primeira Missa no Brasil?",
+			"options": [
+				"26 de abril de 1500",
+				"22 de abril de 1500",
+				"7 de setembro de 1822",
+				"12 de outubro de 1717"
+			],
+			"answer": 0,
+			"explanation": "Foi celebrada por Frei Henrique de Coimbra, na atual Bahia.",
+			"source": "Carta de Pero Vaz de Caminha (1500)",
+			"category": "historia"
+		},
+		{
+			"id": "his-007",
+			"difficulty": 1,
+			"question": "Qual Papa foi eleito em maio de 2025?",
+			"options": [
+				"Leão XIV",
+				"Francisco",
+				"Bento XVI",
+				"Pio XIII"
+			],
+			"answer": 0,
+			"explanation": "Robert Francis Prevost foi eleito em 8 de maio de 2025 e escolheu o nome Leão XIV.",
+			"source": "Santa Sé, 08/05/2025",
+			"category": "historia"
+		},
+		{
+			"id": "his-008",
+			"difficulty": 1,
+			"question": "Como se chama o pequeno Estado onde vive o Papa?",
+			"options": [
+				"Vaticano",
+				"Mônaco",
+				"San Marino",
+				"Liechtenstein"
+			],
+			"answer": 0,
+			"explanation": "O Estado da Cidade do Vaticano foi criado em 1929 pelos Pactos Lateranenses.",
+			"source": "Pactos Lateranenses (1929)",
+			"category": "historia"
+		},
+		{
+			"id": "his-009",
+			"difficulty": 3,
+			"question": "Em que ano aconteceu o Grande Cisma do Oriente, entre Roma e Constantinopla?",
+			"options": [
+				"1054",
+				"1517",
+				"313",
+				"1453"
+			],
+			"answer": 0,
+			"explanation": "As excomunhões mútuas de 1054 só foram retiradas em 1965 por Paulo VI e Atenágoras.",
+			"source": "Declaração conjunta de 07/12/1965",
+			"category": "historia"
+		},
+		{
+			"id": "his-010",
+			"difficulty": 2,
+			"question": "Em que ano a imagem de Nossa Senhora Aparecida foi encontrada no rio Paraíba do Sul?",
+			"options": [
+				"1717",
+				"1500",
+				"1822",
+				"1930"
+			],
+			"answer": 0,
+			"explanation": "Três pescadores encontraram primeiro o corpo e depois a cabeça da imagem.",
+			"source": "Santuário Nacional de Aparecida",
+			"category": "historia"
+		},
+		{
+			"id": "his-011",
+			"difficulty": 2,
+			"question": "Qual ordem religiosa chegou ao Brasil em 1549 com o Padre Manuel da Nóbrega?",
+			"options": [
+				"Jesuítas",
+				"Beneditinos",
+				"Capuchinhos",
+				"Salesianos"
+			],
+			"answer": 0,
+			"explanation": "Os jesuítas fundaram colégios e aldeamentos e tiveram papel central na evangelização.",
+			"source": "Chegada com Tomé de Sousa (1549)",
+			"category": "historia"
+		},
+		{
+			"id": "his-012",
+			"difficulty": 3,
+			"question": "Qual Papa promulgou o Catecismo da Igreja Católica em 1992?",
+			"options": [
+				"São João Paulo II",
+				"Bento XVI",
+				"São Paulo VI",
+				"Francisco"
+			],
+			"answer": 0,
+			"explanation": "A Constituição Fidei Depositum apresentou o Catecismo como norma segura para ensinar a fé.",
+			"source": "Fidei Depositum (11/10/1992)",
+			"category": "historia"
+		},
+		{
+			"id": "his-013",
+			"difficulty": 1,
+			"question": "Quem foi o primeiro Papa latino-americano?",
+			"options": [
+				"Francisco",
+				"João Paulo II",
+				"Leão XIV",
+				"Bento XVI"
+			],
+			"answer": 0,
+			"explanation": "Jorge Mario Bergoglio, argentino, foi eleito em 2013.",
+			"source": "Santa Sé, 13/03/2013",
+			"category": "historia"
+		},
+		{
+			"id": "his-014",
+			"difficulty": 2,
+			"question": "Segundo a tradição, em que cidade São Pedro e São Paulo foram martirizados?",
+			"options": [
+				"Roma",
+				"Jerusalém",
+				"Antioquia",
+				"Atenas"
+			],
+			"answer": 0,
+			"explanation": "A Igreja celebra os dois apóstolos juntos em 29 de junho.",
+			"source": "Tradição da Igreja de Roma; solenidade de São Pedro e São Paulo (29 de junho)",
+			"category": "historia"
+		},
+		{
+			"id": "his-015",
+			"difficulty": 3,
+			"question": "O que o Concílio de Jerusalém (Atos 15) decidiu?",
+			"options": [
+				"Que os pagãos convertidos não precisavam ser circuncidados",
+				"Que o domingo substituiria o sábado",
+				"Quais livros formam a Bíblia",
+				"Que Pedro seria o primeiro Papa"
+			],
+			"answer": 0,
+			"explanation": "Os apóstolos decidiram não impor a Lei de Moisés aos cristãos vindos do paganismo.",
+			"source": "At 15,1-29",
+			"category": "historia"
+		},
+		{
+			"id": "his-016",
+			"difficulty": 1,
+			"question": "Qual é a língua oficial da Santa Sé e da liturgia romana?",
+			"options": [
+				"Latim",
+				"Italiano",
+				"Grego",
+				"Hebraico"
+			],
+			"answer": 0,
+			"explanation": "Os documentos oficiais são publicados em latim; a liturgia pode ser celebrada nas línguas de cada povo.",
+			"source": "Sacrosanctum Concilium, n. 36",
+			"category": "historia"
+		},
+		{
+			"id": "his-017",
+			"difficulty": 2,
+			"question": "Qual foi o lema do Jubileu de 2025?",
+			"options": [
+				"Peregrinos de Esperança",
+				"Abri as portas a Cristo",
+				"Misericordiosos como o Pai",
+				"Duc in altum"
+			],
+			"answer": 0,
+			"explanation": "O Jubileu ordinário de 2025 foi anunciado pelo Papa Francisco com a bula Spes non confundit.",
+			"source": "Spes non confundit (2024)",
+			"category": "historia"
+		},
+		{
+			"id": "his-018",
+			"difficulty": 2,
+			"question": "Qual Papa fez a primeira visita papal ao Brasil, em 1980?",
+			"options": [
+				"São João Paulo II",
+				"São Paulo VI",
+				"Bento XVI",
+				"Francisco"
+			],
+			"answer": 0,
+			"explanation": "Foi a primeira das viagens de João Paulo II ao Brasil; ele voltou em 1991 e 1997.",
+			"source": "Viagens apostólicas de João Paulo II",
+			"category": "historia"
+		},
+		{
+			"id": "his-019",
+			"difficulty": 2,
+			"question": "Em que século viveu São Francisco de Assis?",
+			"options": [
+				"Entre os séculos XII e XIII",
+				"No século IV",
+				"No século XVI",
+				"No século XIX"
+			],
+			"answer": 0,
+			"explanation": "Francisco nasceu por volta de 1181/1182 e morreu em 1226.",
+			"source": "Biografias de Tomás de Celano",
+			"category": "historia"
+		},
+		{
+			"id": "his-020",
+			"difficulty": 2,
+			"question": "Em que ano Martinho Lutero publicou as 95 teses?",
+			"options": [
+				"1517",
+				"1054",
+				"1492",
+				"1648"
+			],
+			"answer": 0,
+			"explanation": "As teses de Wittenberg são o marco inicial da Reforma protestante.",
+			"source": "31/10/1517",
+			"category": "historia"
+		},
+		{
+			"id": "his-021",
+			"difficulty": 2,
+			"question": "Quantos Papas usaram o nome João Paulo?",
+			"options": [
+				"Dois",
+				"Um",
+				"Três",
+				"Quatro"
+			],
+			"answer": 0,
+			"explanation": "João Paulo I (1978, 33 dias de pontificado) e João Paulo II (1978–2005).",
+			"source": "Lista dos Papas, Santa Sé",
+			"category": "historia"
+		}
+	]
+}

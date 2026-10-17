@@ -1,0 +1,320 @@
+{
+	"pack": "",
+	"questions": [
+		{
+			"id": "san-001",
+			"difficulty": 1,
+			"question": "Quem fundou a Ordem dos Frades Menores (franciscanos)?",
+			"options": [
+				"São Francisco de Assis",
+				"São Domingos",
+				"São Bento",
+				"Santo Antônio"
+			],
+			"answer": 0,
+			"explanation": "Francisco de Assis (séc. XIII) abraçou a pobreza e fundou os Frades Menores.",
+			"source": "Regra bulada de 1223 (Honório III)",
+			"category": "santos"
+		},
+		{
+			"id": "san-002",
+			"difficulty": 1,
+			"question": "Quem é a padroeira do Brasil?",
+			"options": [
+				"Nossa Senhora da Conceição Aparecida",
+				"Santa Rita de Cássia",
+				"Nossa Senhora de Fátima",
+				"Santa Teresinha"
+			],
+			"answer": 0,
+			"explanation": "Pio XI declarou Nossa Senhora Aparecida padroeira principal do Brasil em 1930.",
+			"source": "Decreto de Pio XI, 16/07/1930",
+			"category": "santos"
+		},
+		{
+			"id": "san-003",
+			"difficulty": 1,
+			"question": "Qual santa ensinou a “pequena via” da confiança e do amor?",
+			"options": [
+				"Santa Teresinha do Menino Jesus",
+				"Santa Teresa d'Ávila",
+				"Santa Clara",
+				"Santa Faustina"
+			],
+			"answer": 0,
+			"explanation": "Teresa de Lisieux, carmelita, foi declarada Doutora da Igreja em 1997.",
+			"source": "São João Paulo II, Divini Amoris Scientia (1997)",
+			"category": "santos"
+		},
+		{
+			"id": "san-004",
+			"difficulty": 2,
+			"question": "Qual destes livros foi escrito por Santo Agostinho?",
+			"options": [
+				"Confissões",
+				"Imitação de Cristo",
+				"Filoteia",
+				"História de uma Alma"
+			],
+			"answer": 0,
+			"explanation": "Nas Confissões, Agostinho conta sua conversão e louva a misericórdia de Deus.",
+			"source": "Santo Agostinho, Confissões",
+			"category": "santos"
+		},
+		{
+			"id": "san-005",
+			"difficulty": 2,
+			"question": "Quem escreveu a Suma Teológica?",
+			"options": [
+				"Santo Tomás de Aquino",
+				"Santo Anselmo",
+				"São Boaventura",
+				"Santo Alberto Magno"
+			],
+			"answer": 0,
+			"explanation": "Tomás de Aquino, dominicano do séc. XIII, é o “Doutor Angélico”.",
+			"source": "Santo Tomás de Aquino, Summa Theologiae",
+			"category": "santos"
+		},
+		{
+			"id": "san-006",
+			"difficulty": 1,
+			"question": "Quem foi o primeiro Papa?",
+			"options": [
+				"São Pedro",
+				"São Paulo",
+				"São Lino",
+				"São Clemente"
+			],
+			"answer": 0,
+			"explanation": "“Tu és Pedro, e sobre esta pedra edificarei a minha Igreja”.",
+			"source": "Mt 16,18; Catecismo, §881",
+			"category": "santos"
+		},
+		{
+			"id": "san-007",
+			"difficulty": 2,
+			"question": "Quem foi o primeiro mártir cristão?",
+			"options": [
+				"Santo Estêvão",
+				"São Tiago",
+				"São Pedro",
+				"São Lourenço"
+			],
+			"answer": 0,
+			"explanation": "Estêvão, um dos sete diáconos, foi apedrejado perdoando seus perseguidores.",
+			"source": "At 7,54-60",
+			"category": "santos"
+		},
+		{
+			"id": "san-008",
+			"difficulty": 2,
+			"question": "Santa Teresa d'Ávila foi a grande reformadora de qual ordem?",
+			"options": [
+				"Carmelitas",
+				"Clarissas",
+				"Beneditinas",
+				"Dominicanas"
+			],
+			"answer": 0,
+			"explanation": "Teresa de Jesus reformou o Carmelo no séc. XVI, com São João da Cruz.",
+			"source": "Santa Teresa d'Ávila, Livro das Fundações",
+			"category": "santos"
+		},
+		{
+			"id": "san-009",
+			"difficulty": 2,
+			"question": "O lema “Ora et labora” (reza e trabalha) está ligado à tradição de qual santo?",
+			"options": [
+				"São Bento",
+				"São Francisco",
+				"Santo Inácio",
+				"São Domingos"
+			],
+			"answer": 0,
+			"explanation": "O lema resume a vida monástica beneditina, guiada pela Regra de São Bento.",
+			"source": "Regra de São Bento",
+			"category": "santos"
+		},
+		{
+			"id": "san-010",
+			"difficulty": 2,
+			"question": "Santo Inácio de Loyola fundou qual ordem religiosa?",
+			"options": [
+				"Companhia de Jesus (jesuítas)",
+				"Ordem dos Pregadores",
+				"Salesianos",
+				"Redentoristas"
+			],
+			"answer": 0,
+			"explanation": "A Companhia de Jesus foi aprovada em 1540 por Paulo III.",
+			"source": "Bula Regimini militantis Ecclesiae (1540)",
+			"category": "santos"
+		},
+		{
+			"id": "san-011",
+			"difficulty": 1,
+			"question": "Qual Papa polonês foi canonizado em 2014?",
+			"options": [
+				"São João Paulo II",
+				"São Pio X",
+				"São João XXIII",
+				"São Paulo VI"
+			],
+			"answer": 0,
+			"explanation": "João Paulo II foi canonizado em 27 de abril de 2014, junto com São João XXIII.",
+			"source": "Canonização de 27/04/2014",
+			"category": "santos"
+		},
+		{
+			"id": "san-012",
+			"difficulty": 1,
+			"question": "Santa Teresa de Calcutá fundou qual congregação?",
+			"options": [
+				"Missionárias da Caridade",
+				"Irmãzinhas dos Pobres",
+				"Filhas da Caridade",
+				"Irmãs Clarissas"
+			],
+			"answer": 0,
+			"explanation": "Madre Teresa dedicou-se aos mais pobres entre os pobres; foi canonizada em 2016.",
+			"source": "Canonização de 04/09/2016",
+			"category": "santos"
+		},
+		{
+			"id": "san-013",
+			"difficulty": 3,
+			"question": "Quem foi declarado padroeiro da Igreja universal em 1870?",
+			"options": [
+				"São José",
+				"São Pedro",
+				"São Miguel Arcanjo",
+				"São João Batista"
+			],
+			"answer": 0,
+			"explanation": "O beato Pio IX declarou São José padroeiro da Igreja universal.",
+			"source": "Pio IX, decreto Quemadmodum Deus (1870)",
+			"category": "santos"
+		},
+		{
+			"id": "san-014",
+			"difficulty": 2,
+			"question": "Qual frade capuchinho italiano, conhecido pelos estigmas, foi canonizado em 2002?",
+			"options": [
+				"São Pio de Pietrelcina (Padre Pio)",
+				"Santo Antônio de Pádua",
+				"São Leopoldo Mandić",
+				"São Francisco de Paula"
+			],
+			"answer": 0,
+			"explanation": "Padre Pio passou a vida em San Giovanni Rotondo atendendo confissões.",
+			"source": "Canonização de 16/06/2002",
+			"category": "santos"
+		},
+		{
+			"id": "san-015",
+			"difficulty": 2,
+			"question": "São Domingos de Gusmão fundou qual ordem?",
+			"options": [
+				"Ordem dos Pregadores (dominicanos)",
+				"Ordem dos Frades Menores",
+				"Ordem de São Bento",
+				"Ordem do Carmo"
+			],
+			"answer": 0,
+			"explanation": "Os dominicanos foram aprovados por Honório III em 1216 para a pregação.",
+			"source": "Bula de aprovação de 1216",
+			"category": "santos"
+		},
+		{
+			"id": "san-016",
+			"difficulty": 3,
+			"question": "Qual santa, Doutora da Igreja, ajudou a convencer o Papa a voltar de Avignon para Roma?",
+			"options": [
+				"Santa Catarina de Sena",
+				"Santa Brígida",
+				"Santa Hildegarda",
+				"Santa Clara"
+			],
+			"answer": 0,
+			"explanation": "Catarina, leiga dominicana, escreveu ao Papa Gregório XI, que voltou a Roma em 1377.",
+			"source": "Cartas de Santa Catarina de Sena",
+			"category": "santos"
+		},
+		{
+			"id": "san-017",
+			"difficulty": 2,
+			"question": "Qual jovem italiano, chamado de “padroeiro da internet”, foi canonizado em 2025?",
+			"options": [
+				"Carlo Acutis",
+				"Pier Giorgio Frassati",
+				"Domingos Sávio",
+				"Luís Gonzaga"
+			],
+			"answer": 0,
+			"explanation": "Carlo Acutis (1991–2006) fez um site sobre milagres eucarísticos; foi canonizado em 7 de setembro de 2025.",
+			"source": "Canonização de 07/09/2025",
+			"category": "santos"
+		},
+		{
+			"id": "san-018",
+			"difficulty": 2,
+			"question": "Qual santo traduziu a Bíblia para o latim (a Vulgata)?",
+			"options": [
+				"São Jerônimo",
+				"Santo Ambrósio",
+				"São Gregório Magno",
+				"Santo Atanásio"
+			],
+			"answer": 0,
+			"explanation": "Jerônimo (séc. IV–V): “Ignorar as Escrituras é ignorar Cristo”.",
+			"source": "Catecismo da Igreja Católica, §133",
+			"category": "santos"
+		},
+		{
+			"id": "san-019",
+			"difficulty": 2,
+			"question": "Qual santo missionário levou o Evangelho à Índia e ao Japão no séc. XVI?",
+			"options": [
+				"São Francisco Xavier",
+				"São Pedro Claver",
+				"São Paulo Miki",
+				"São José de Anchieta"
+			],
+			"answer": 0,
+			"explanation": "Jesuíta, companheiro de Santo Inácio; é padroeiro das missões.",
+			"source": "Pio XI, padroeiro das missões (1927)",
+			"category": "santos"
+		},
+		{
+			"id": "san-020",
+			"difficulty": 1,
+			"question": "Qual santa é conhecida como “santa das causas impossíveis”?",
+			"options": [
+				"Santa Rita de Cássia",
+				"Santa Luzia",
+				"Santa Edwiges",
+				"Santa Bárbara"
+			],
+			"answer": 0,
+			"explanation": "Rita de Cássia (séc. XIV–XV) foi esposa, mãe, viúva e religiosa agostiniana.",
+			"source": "Canonização de 24/05/1900",
+			"category": "santos"
+		},
+		{
+			"id": "san-021",
+			"difficulty": 2,
+			"question": "Qual santo deu a vida no campo de Auschwitz no lugar de outro prisioneiro?",
+			"options": [
+				"São Maximiliano Kolbe",
+				"Santa Edith Stein",
+				"Beato Tito Brandsma",
+				"São Rafael Kalinowski"
+			],
+			"answer": 0,
+			"explanation": "O franciscano Maximiliano Kolbe ofereceu-se para morrer no lugar de um pai de família em 1941.",
+			"source": "Canonização de 10/10/1982",
+			"category": "santos"
+		}
+	]
+}

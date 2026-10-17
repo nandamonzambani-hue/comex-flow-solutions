@@ -1,0 +1,305 @@
+{
+	"pack": "",
+	"questions": [
+		{
+			"id": "dou-001",
+			"difficulty": 1,
+			"question": "Quantos são os sacramentos da Igreja?",
+			"options": [
+				"Sete",
+				"Cinco",
+				"Três",
+				"Dez"
+			],
+			"answer": 0,
+			"explanation": "Batismo, Confirmação, Eucaristia, Penitência, Unção dos Enfermos, Ordem e Matrimônio.",
+			"source": "Catecismo da Igreja Católica, §1113",
+			"category": "doutrina"
+		},
+		{
+			"id": "dou-002",
+			"difficulty": 1,
+			"question": "O que a Igreja ensina sobre a Santíssima Trindade?",
+			"options": [
+				"Um só Deus em três Pessoas",
+				"Três deuses iguais",
+				"Um Deus que muda de forma",
+				"Deus Pai acima de dois anjos"
+			],
+			"answer": 0,
+			"explanation": "Pai, Filho e Espírito Santo são um só Deus, em três Pessoas distintas.",
+			"source": "Catecismo da Igreja Católica, §253-254",
+			"category": "doutrina"
+		},
+		{
+			"id": "dou-003",
+			"difficulty": 1,
+			"question": "Quantos são os Mandamentos da Lei de Deus?",
+			"options": [
+				"Dez",
+				"Sete",
+				"Doze",
+				"Cinco"
+			],
+			"answer": 0,
+			"explanation": "O Decálogo, as “dez palavras”, resume a Lei dada por Deus.",
+			"source": "Catecismo da Igreja Católica, §2056",
+			"category": "doutrina"
+		},
+		{
+			"id": "dou-004",
+			"difficulty": 1,
+			"question": "Quais são as virtudes teologais?",
+			"options": [
+				"Fé, esperança e caridade",
+				"Prudência, justiça e fortaleza",
+				"Humildade, paciência e castidade",
+				"Oração, jejum e esmola"
+			],
+			"answer": 0,
+			"explanation": "São chamadas teologais porque têm Deus como origem, motivo e objeto.",
+			"source": "Catecismo da Igreja Católica, §1812-1813",
+			"category": "doutrina"
+		},
+		{
+			"id": "dou-005",
+			"difficulty": 2,
+			"question": "Qual destas é uma virtude cardeal?",
+			"options": [
+				"Temperança",
+				"Esperança",
+				"Caridade",
+				"Fé"
+			],
+			"answer": 0,
+			"explanation": "As virtudes cardeais são prudência, justiça, fortaleza e temperança. Fé, esperança e caridade são teologais.",
+			"source": "Catecismo da Igreja Católica, §1805",
+			"category": "doutrina"
+		},
+		{
+			"id": "dou-006",
+			"difficulty": 2,
+			"question": "O que significa o dogma da Imaculada Conceição?",
+			"options": [
+				"Maria foi preservada do pecado original desde a sua concepção",
+				"Jesus foi concebido sem pai humano",
+				"Maria foi levada ao céu em corpo e alma",
+				"Maria é Mãe de Deus"
+			],
+			"answer": 0,
+			"explanation": "É comum confundir com a concepção virginal de Jesus. A Imaculada Conceição diz respeito à própria Maria.",
+			"source": "Catecismo da Igreja Católica, §490-492",
+			"category": "doutrina"
+		},
+		{
+			"id": "dou-007",
+			"difficulty": 2,
+			"question": "Qual dogma afirma que Maria foi elevada ao céu em corpo e alma?",
+			"options": [
+				"Assunção",
+				"Imaculada Conceição",
+				"Maternidade divina",
+				"Virgindade perpétua"
+			],
+			"answer": 0,
+			"explanation": "Proclamado por Pio XII em 1950.",
+			"source": "Catecismo da Igreja Católica, §966",
+			"category": "doutrina"
+		},
+		{
+			"id": "dou-008",
+			"difficulty": 1,
+			"question": "Qual destes é um dos pecados capitais?",
+			"options": [
+				"Preguiça",
+				"Timidez",
+				"Distração",
+				"Ansiedade"
+			],
+			"answer": 0,
+			"explanation": "Os pecados capitais são soberba, avareza, inveja, ira, luxúria, gula e preguiça (acídia).",
+			"source": "Catecismo da Igreja Católica, §1866",
+			"category": "doutrina"
+		},
+		{
+			"id": "dou-009",
+			"difficulty": 2,
+			"question": "Qual destas é uma obra de misericórdia CORPORAL?",
+			"options": [
+				"Dar de comer a quem tem fome",
+				"Ensinar quem não sabe",
+				"Consolar os tristes",
+				"Perdoar as ofensas"
+			],
+			"answer": 0,
+			"explanation": "Ensinar, consolar e perdoar são obras de misericórdia espirituais.",
+			"source": "Catecismo da Igreja Católica, §2447",
+			"category": "doutrina"
+		},
+		{
+			"id": "dou-010",
+			"difficulty": 2,
+			"question": "O que é a transubstanciação?",
+			"options": [
+				"A mudança de toda a substância do pão e do vinho no Corpo e Sangue de Cristo",
+				"Um símbolo que apenas lembra a Última Ceia",
+				"A bênção do pão para os pobres",
+				"A mistura de água e vinho no cálice"
+			],
+			"answer": 0,
+			"explanation": "Pela consagração, Cristo torna-se verdadeira, real e substancialmente presente.",
+			"source": "Catecismo da Igreja Católica, §1376",
+			"category": "doutrina"
+		},
+		{
+			"id": "dou-011",
+			"difficulty": 3,
+			"question": "Os dois Credos mais usados na Igreja são o Símbolo dos Apóstolos e o Símbolo...",
+			"options": [
+				"Niceno-Constantinopolitano",
+				"de Trento",
+				"de Jerusalém",
+				"Agostiniano"
+			],
+			"answer": 0,
+			"explanation": "O Niceno-Constantinopolitano vem dos dois primeiros concílios ecumênicos (325 e 381).",
+			"source": "Catecismo da Igreja Católica, §194-195",
+			"category": "doutrina"
+		},
+		{
+			"id": "dou-012",
+			"difficulty": 3,
+			"question": "Quando o Papa é infalível?",
+			"options": [
+				"Quando define solenemente (ex cathedra) uma doutrina de fé ou moral",
+				"Em tudo o que diz",
+				"Em entrevistas e homilias",
+				"Quando nomeia bispos"
+			],
+			"answer": 0,
+			"explanation": "A infalibilidade é um carisma restrito às definições solenes sobre fé e costumes.",
+			"source": "Catecismo da Igreja Católica, §891",
+			"category": "doutrina"
+		},
+		{
+			"id": "dou-013",
+			"difficulty": 2,
+			"question": "Qual destes é um dos mandamentos (preceitos) da Igreja?",
+			"options": [
+				"Participar da Missa aos domingos e festas de preceito",
+				"Rezar o terço todos os dias",
+				"Fazer uma peregrinação por ano",
+				"Ler a Bíblia inteira a cada ano"
+			],
+			"answer": 0,
+			"explanation": "Os preceitos da Igreja são o mínimo indispensável na oração e no esforço moral.",
+			"source": "Catecismo da Igreja Católica, §2041-2042",
+			"category": "doutrina"
+		},
+		{
+			"id": "dou-014",
+			"difficulty": 2,
+			"question": "Segundo o Catecismo, a Revelação divina é transmitida pela Sagrada Escritura e pela...",
+			"options": [
+				"Sagrada Tradição",
+				"Ciência",
+				"Vontade da maioria",
+				"Tradição popular de cada região"
+			],
+			"answer": 0,
+			"explanation": "Escritura e Tradição formam um só depósito da fé, interpretado pelo Magistério.",
+			"source": "Catecismo da Igreja Católica, §80-82 e §95",
+			"category": "doutrina"
+		},
+		{
+			"id": "dou-015",
+			"difficulty": 2,
+			"question": "O que é o Purgatório?",
+			"options": [
+				"Purificação depois da morte de quem morreu na graça de Deus",
+				"Um lugar de castigo eterno",
+				"Uma segunda chance de se converter depois da morte",
+				"Outro nome para o Limbo"
+			],
+			"answer": 0,
+			"explanation": "Quem morre na amizade de Deus, mas ainda imperfeitamente purificado, passa por uma purificação antes do céu.",
+			"source": "Catecismo da Igreja Católica, §1030-1031",
+			"category": "doutrina"
+		},
+		{
+			"id": "dou-016",
+			"difficulty": 1,
+			"question": "Qual é o primeiro mandamento da Lei de Deus?",
+			"options": [
+				"Amar a Deus sobre todas as coisas",
+				"Não matar",
+				"Honrar pai e mãe",
+				"Guardar domingos e festas"
+			],
+			"answer": 0,
+			"explanation": "“Amarás o Senhor teu Deus de todo o teu coração”.",
+			"source": "Catecismo da Igreja Católica, §2083",
+			"category": "doutrina"
+		},
+		{
+			"id": "dou-017",
+			"difficulty": 3,
+			"question": "Para um pecado ser mortal, além de matéria grave, é preciso...",
+			"options": [
+				"Pleno conhecimento e consentimento deliberado",
+				"Ter sido cometido em público",
+				"Que outra pessoa tenha sido prejudicada",
+				"Ter sido repetido várias vezes"
+			],
+			"answer": 0,
+			"explanation": "As três condições juntas: matéria grave, plena consciência e consentimento deliberado.",
+			"source": "Catecismo da Igreja Católica, §1857",
+			"category": "doutrina"
+		},
+		{
+			"id": "dou-018",
+			"difficulty": 2,
+			"question": "O que significa “comunhão dos santos” no Credo?",
+			"options": [
+				"A união dos fiéis da terra, do purgatório e do céu em Cristo",
+				"A lista oficial de santos canonizados",
+				"A comunhão recebida só no Dia de Todos os Santos",
+				"Uma confraria de devotos"
+			],
+			"answer": 0,
+			"explanation": "A Igreja é comunhão de bens santos e de pessoas santas: peregrinos, os que se purificam e os que já estão na glória.",
+			"source": "Catecismo da Igreja Católica, §946-962",
+			"category": "doutrina"
+		},
+		{
+			"id": "dou-019",
+			"difficulty": 3,
+			"question": "Qual concílio proclamou Maria “Mãe de Deus” (Theotókos)?",
+			"options": [
+				"Éfeso (431)",
+				"Trento (1545)",
+				"Vaticano I (1869)",
+				"Niceia (325)"
+			],
+			"answer": 0,
+			"explanation": "Em Éfeso a Igreja confessou que Maria é verdadeiramente Mãe de Deus, pois seu Filho é Deus.",
+			"source": "Catecismo da Igreja Católica, §466 e §495",
+			"category": "doutrina"
+		},
+		{
+			"id": "dou-020",
+			"difficulty": 1,
+			"question": "Qual destes é um dos sete dons do Espírito Santo?",
+			"options": [
+				"Sabedoria",
+				"Riqueza",
+				"Eloquência",
+				"Beleza"
+			],
+			"answer": 0,
+			"explanation": "Os dons são sabedoria, entendimento, conselho, fortaleza, ciência, piedade e temor de Deus.",
+			"source": "Catecismo da Igreja Católica, §1831",
+			"category": "doutrina"
+		}
+	]
+}

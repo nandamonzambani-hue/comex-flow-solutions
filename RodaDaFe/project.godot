@@ -1,0 +1,51 @@
+; Arquivo de configuração do projeto Godot.
+; Pode ser editado pelo editor em Projeto > Configurações do Projeto.
+
+config_version=5
+
+[application]
+
+config/name="Roda da Fé"
+config/description="Quiz católico: gire a roda, responda sobre Bíblia, doutrina, santos, liturgia, história da Igreja e espiritualidade."
+config/version="0.1.0"
+run/main_scene="res://scenes/main_menu.tscn"
+config/features=PackedStringArray("4.6", "Mobile")
+boot_splash/bg_color=Color(0.13, 0.08, 0.2, 1)
+config/icon="res://assets/store/app_icon_512.png"
+
+[autoload]
+
+SaveManager="*res://scripts/save_manager.gd"
+Content="*res://scripts/content.gd"
+Player="*res://scripts/player.gd"
+Monetization="*res://scripts/monetization/monetization.gd"
+Game="*res://scripts/game.gd"
+
+[display]
+
+window/size/viewport_width=720
+window/size/viewport_height=1280
+window/size/window_width_override=405
+window/size/window_height_override=720
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+window/handheld/orientation=1
+
+[gui]
+
+common/drop_mouse_on_gui_input_disabled=true
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
+
+[internationalization]
+
+locale/fallback="pt_BR"
+
+[rendering]
+
+renderer/rendering_method="mobile"
+renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true
+environment/defaults/default_clear_color=Color(0.13, 0.08, 0.2, 1)

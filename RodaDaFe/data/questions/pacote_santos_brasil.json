@@ -1,0 +1,305 @@
+{
+	"pack": "santos_brasil",
+	"questions": [
+		{
+			"id": "sbr-001",
+			"difficulty": 1,
+			"question": "Quem foi o primeiro santo nascido no Brasil?",
+			"options": [
+				"São Frei Galvão",
+				"São José de Anchieta",
+				"Santa Paulina",
+				"Santa Dulce dos Pobres"
+			],
+			"answer": 0,
+			"explanation": "Antônio de Sant'Ana Galvão, nascido em Guaratinguetá (SP), foi canonizado por Bento XVI em 2007.",
+			"source": "Canonização de 11/05/2007",
+			"category": "santos"
+		},
+		{
+			"id": "sbr-002",
+			"difficulty": 1,
+			"question": "Quem era chamada de “Anjo bom da Bahia”?",
+			"options": [
+				"Santa Dulce dos Pobres",
+				"Santa Paulina",
+				"Beata Lindalva",
+				"Nhá Chica"
+			],
+			"answer": 0,
+			"explanation": "Irmã Dulce cuidou de doentes e pobres em Salvador e fundou as Obras Sociais Irmã Dulce.",
+			"source": "Canonização de 13/10/2019",
+			"category": "santos"
+		},
+		{
+			"id": "sbr-003",
+			"difficulty": 2,
+			"question": "Quem foi a primeira santa canonizada do Brasil, em 2002?",
+			"options": [
+				"Santa Paulina do Coração Agonizante de Jesus",
+				"Santa Dulce dos Pobres",
+				"Santa Rita",
+				"Beata Albertina"
+			],
+			"answer": 0,
+			"explanation": "Nascida na Itália, viveu em Santa Catarina (Nova Trento e Vígolo) e foi canonizada por São João Paulo II.",
+			"source": "Canonização de 19/05/2002",
+			"category": "santos"
+		},
+		{
+			"id": "sbr-004",
+			"difficulty": 2,
+			"question": "Qual santo jesuíta é chamado de “Apóstolo do Brasil”?",
+			"options": [
+				"São José de Anchieta",
+				"São Francisco Xavier",
+				"Santo Inácio",
+				"São Roque González"
+			],
+			"answer": 0,
+			"explanation": "Anchieta ajudou a fundar São Paulo e o Rio de Janeiro e evangelizou os povos indígenas.",
+			"source": "Canonização de 03/04/2014",
+			"category": "santos"
+		},
+		{
+			"id": "sbr-005",
+			"difficulty": 3,
+			"question": "Em 2017 foram canonizados 30 mártires brasileiros do Rio Grande do Norte. Como são chamados?",
+			"options": [
+				"Mártires de Cunhaú e Uruaçu",
+				"Mártires de Caaró",
+				"Mártires do Japão",
+				"Mártires de Uganda"
+			],
+			"answer": 0,
+			"explanation": "Foram mortos em 1645 por causa da fé católica; entre eles o padre André de Soveral e Mateus Moreira.",
+			"source": "Canonização de 15/10/2017",
+			"category": "santos"
+		},
+		{
+			"id": "sbr-006",
+			"difficulty": 2,
+			"question": "Qual santo brasileiro é conhecido pelas “pílulas” de papel com uma oração a Nossa Senhora?",
+			"options": [
+				"São Frei Galvão",
+				"São José de Anchieta",
+				"Santa Dulce",
+				"Padre Eustáquio"
+			],
+			"answer": 0,
+			"explanation": "As pílulas trazem uma oração latina à Virgem e são distribuídas pelo Mosteiro da Luz.",
+			"source": "Mosteiro da Luz, São Paulo",
+			"category": "santos"
+		},
+		{
+			"id": "sbr-007",
+			"difficulty": 3,
+			"question": "Qual mosteiro de São Paulo foi fundado por Frei Galvão?",
+			"options": [
+				"Mosteiro da Luz",
+				"Mosteiro de São Bento",
+				"Convento da Penha",
+				"Mosteiro da Encarnação"
+			],
+			"answer": 0,
+			"explanation": "O Recolhimento de Nossa Senhora da Conceição da Luz foi fundado em 1774.",
+			"source": "Mosteiro da Luz (1774)",
+			"category": "santos"
+		},
+		{
+			"id": "sbr-008",
+			"difficulty": 1,
+			"question": "Em que ano Santa Dulce dos Pobres foi canonizada?",
+			"options": [
+				"2019",
+				"2002",
+				"2007",
+				"2014"
+			],
+			"answer": 0,
+			"explanation": "Foi canonizada pelo Papa Francisco em 13 de outubro de 2019.",
+			"source": "Canonização de 13/10/2019",
+			"category": "santos"
+		},
+		{
+			"id": "sbr-009",
+			"difficulty": 3,
+			"question": "Santa Paulina fundou qual congregação?",
+			"options": [
+				"Irmãzinhas da Imaculada Conceição",
+				"Missionárias da Caridade",
+				"Filhas de Maria Auxiliadora",
+				"Irmãs Franciscanas de Allegany"
+			],
+			"answer": 0,
+			"explanation": "A congregação nasceu em 1890 em Santa Catarina, para cuidar de doentes e pobres.",
+			"source": "Congregação das Irmãzinhas da Imaculada Conceição (1890)",
+			"category": "santos"
+		},
+		{
+			"id": "sbr-010",
+			"difficulty": 2,
+			"question": "Anchieta escreveu a primeira gramática de qual língua?",
+			"options": [
+				"Tupi",
+				"Guarani paraguaio",
+				"Latim",
+				"Quéchua"
+			],
+			"answer": 0,
+			"explanation": "“Arte de gramática da língua mais usada na costa do Brasil”, publicada em 1595.",
+			"source": "Anchieta, Arte de Gramática (1595)",
+			"category": "santos"
+		},
+		{
+			"id": "sbr-011",
+			"difficulty": 2,
+			"question": "Nhá Chica, beatificada em 2013, viveu em qual cidade mineira?",
+			"options": [
+				"Baependi",
+				"Mariana",
+				"Ouro Preto",
+				"Diamantina"
+			],
+			"answer": 0,
+			"explanation": "Francisca de Paula de Jesus era conhecida pela caridade e pela oração.",
+			"source": "Beatificação de 04/05/2013",
+			"category": "santos"
+		},
+		{
+			"id": "sbr-012",
+			"difficulty": 3,
+			"question": "Qual menina catarinense, beatificada em 2007, é chamada de “mártir da pureza”?",
+			"options": [
+				"Albertina Berkenbrock",
+				"Benigna Cardoso",
+				"Lindalva Justo",
+				"Maria Goretti"
+			],
+			"answer": 0,
+			"explanation": "Albertina foi morta aos 12 anos em 1931, em Imaruí (SC).",
+			"source": "Beatificação de 20/10/2007",
+			"category": "santos"
+		},
+		{
+			"id": "sbr-013",
+			"difficulty": 3,
+			"question": "A beata Lindalva Justo de Oliveira, mártir, servia como religiosa em qual cidade?",
+			"options": [
+				"Salvador",
+				"Recife",
+				"Fortaleza",
+				"Natal"
+			],
+			"answer": 0,
+			"explanation": "Filha da Caridade, foi morta em 1993 no abrigo onde cuidava de idosos.",
+			"source": "Beatificação de 02/12/2007",
+			"category": "santos"
+		},
+		{
+			"id": "sbr-014",
+			"difficulty": 3,
+			"question": "O beato Padre Eustáquio, beatificado em 2006, era de qual país?",
+			"options": [
+				"Holanda",
+				"Itália",
+				"Portugal",
+				"Alemanha"
+			],
+			"answer": 0,
+			"explanation": "Eustáquio van Lieshout, padre dos Sagrados Corações, viveu em Belo Horizonte.",
+			"source": "Beatificação de 15/06/2006",
+			"category": "santos"
+		},
+		{
+			"id": "sbr-015",
+			"difficulty": 3,
+			"question": "Os santos Roque González, Afonso Rodríguez e João de Castilho foram martirizados em 1628 em terras do atual...",
+			"options": [
+				"Rio Grande do Sul",
+				"Amazonas",
+				"Maranhão",
+				"Espírito Santo"
+			],
+			"answer": 0,
+			"explanation": "Jesuítas das reduções, morreram em Caaró e foram canonizados em 1988.",
+			"source": "Canonização de 16/05/1988",
+			"category": "santos"
+		},
+		{
+			"id": "sbr-016",
+			"difficulty": 2,
+			"question": "Irmã Dulce chegou a ser indicada a qual prêmio internacional?",
+			"options": [
+				"Nobel da Paz",
+				"Oscar",
+				"Prêmio Pulitzer",
+				"Bola de Ouro"
+			],
+			"answer": 0,
+			"explanation": "A indicação ao Nobel da Paz foi feita em 1988.",
+			"source": "Obras Sociais Irmã Dulce",
+			"category": "santos"
+		},
+		{
+			"id": "sbr-017",
+			"difficulty": 2,
+			"question": "Onde nasceu São José de Anchieta?",
+			"options": [
+				"Nas Ilhas Canárias (Tenerife)",
+				"Em Lisboa",
+				"Em São Paulo",
+				"Em Roma"
+			],
+			"answer": 0,
+			"explanation": "Nasceu em 1534 em San Cristóbal de La Laguna e veio ao Brasil em 1553.",
+			"source": "Biografia de São José de Anchieta",
+			"category": "santos"
+		},
+		{
+			"id": "sbr-018",
+			"difficulty": 2,
+			"question": "Frei Galvão pertencia a qual ordem religiosa?",
+			"options": [
+				"Franciscanos",
+				"Jesuítas",
+				"Beneditinos",
+				"Carmelitas"
+			],
+			"answer": 0,
+			"explanation": "Ingressou na Ordem dos Frades Menores (franciscanos).",
+			"source": "Canonização de 11/05/2007",
+			"category": "santos"
+		},
+		{
+			"id": "sbr-019",
+			"difficulty": 3,
+			"question": "Qual beata cearense, morta em 1941 aos 13 anos, foi beatificada em 2022?",
+			"options": [
+				"Benigna Cardoso da Silva",
+				"Albertina Berkenbrock",
+				"Nhá Chica",
+				"Lindalva Justo"
+			],
+			"answer": 0,
+			"explanation": "Benigna, de Santana do Cariri (CE), é a primeira beata do Ceará.",
+			"source": "Beatificação de 24/10/2022",
+			"category": "santos"
+		},
+		{
+			"id": "sbr-020",
+			"difficulty": 1,
+			"question": "Em que cidade fica o Santuário Nacional de Nossa Senhora Aparecida?",
+			"options": [
+				"Aparecida (SP)",
+				"Salvador (BA)",
+				"Belo Horizonte (MG)",
+				"Rio de Janeiro (RJ)"
+			],
+			"answer": 0,
+			"explanation": "Às margens da Via Dutra, é um dos maiores santuários marianos do mundo.",
+			"source": "Santuário Nacional de Aparecida",
+			"category": "santos"
+		}
+	]
+}

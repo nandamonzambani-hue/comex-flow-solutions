@@ -1,0 +1,11 @@
+{
+	"categories": [
+		{"id": "biblia", "name": "Bíblia", "short": "Bíblia", "color": "2f6fb5", "symbol": "book"},
+		{"id": "doutrina", "name": "Doutrina e Catecismo", "short": "Doutrina", "color": "a3243b", "symbol": "cross"},
+		{"id": "santos", "name": "Santos", "short": "Santos", "color": "d99a1e", "symbol": "halo"},
+		{"id": "liturgia", "name": "Liturgia e Sacramentos", "short": "Liturgia", "color": "3c8c4a", "symbol": "chalice"},
+		{"id": "historia", "name": "História da Igreja", "short": "História", "color": "b2652a", "symbol": "column"},
+		{"id": "espiritualidade", "name": "Espiritualidade e Orações", "short": "Oração", "color": "6b4aa8", "symbol": "dove"}
+	],
+	"crown": {"name": "Coroa", "color": "f2c94c"}
+}

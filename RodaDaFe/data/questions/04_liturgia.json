@@ -1,0 +1,320 @@
+{
+	"pack": "",
+	"questions": [
+		{
+			"id": "lit-001",
+			"difficulty": 1,
+			"question": "Qual é a cor litúrgica do Advento e da Quaresma?",
+			"options": [
+				"Roxo",
+				"Verde",
+				"Branco",
+				"Vermelho"
+			],
+			"answer": 0,
+			"explanation": "O roxo indica preparação, penitência e espera.",
+			"source": "Instrução Geral do Missal Romano, n. 346",
+			"category": "liturgia"
+		},
+		{
+			"id": "lit-002",
+			"difficulty": 1,
+			"question": "Qual é a cor litúrgica do Tempo Comum?",
+			"options": [
+				"Verde",
+				"Roxo",
+				"Azul",
+				"Dourado"
+			],
+			"answer": 0,
+			"explanation": "O verde é usado no Tempo Comum, sinal de esperança e crescimento.",
+			"source": "Instrução Geral do Missal Romano, n. 346",
+			"category": "liturgia"
+		},
+		{
+			"id": "lit-003",
+			"difficulty": 2,
+			"question": "Em qual destas celebrações se usa o vermelho?",
+			"options": [
+				"Pentecostes",
+				"Natal",
+				"Páscoa",
+				"Advento"
+			],
+			"answer": 0,
+			"explanation": "O vermelho é usado no Domingo de Ramos, na Sexta-feira Santa, em Pentecostes e nas festas de apóstolos e mártires.",
+			"source": "Instrução Geral do Missal Romano, n. 346",
+			"category": "liturgia"
+		},
+		{
+			"id": "lit-004",
+			"difficulty": 1,
+			"question": "Como se chama o tempo litúrgico que prepara o Natal?",
+			"options": [
+				"Advento",
+				"Quaresma",
+				"Tempo Pascal",
+				"Tempo Comum"
+			],
+			"answer": 0,
+			"explanation": "O Advento tem quatro domingos e prepara a vinda do Senhor.",
+			"source": "Normas Universais do Ano Litúrgico, n. 39",
+			"category": "liturgia"
+		},
+		{
+			"id": "lit-005",
+			"difficulty": 1,
+			"question": "Em que dia começa a Quaresma?",
+			"options": [
+				"Quarta-feira de Cinzas",
+				"Domingo de Ramos",
+				"Primeiro domingo do Advento",
+				"Quinta-feira Santa"
+			],
+			"answer": 0,
+			"explanation": "Na Quarta-feira de Cinzas recebemos as cinzas como sinal de conversão.",
+			"source": "Normas Universais do Ano Litúrgico, n. 28-29",
+			"category": "liturgia"
+		},
+		{
+			"id": "lit-006",
+			"difficulty": 1,
+			"question": "A Quaresma lembra quantos dias de Jesus no deserto?",
+			"options": [
+				"Quarenta",
+				"Trinta",
+				"Cinquenta",
+				"Sete"
+			],
+			"answer": 0,
+			"explanation": "Os quarenta dias recordam o jejum de Jesus no deserto.",
+			"source": "Mt 4,2; Catecismo, §540",
+			"category": "liturgia"
+		},
+		{
+			"id": "lit-007",
+			"difficulty": 2,
+			"question": "Quais são os sacramentos da iniciação cristã?",
+			"options": [
+				"Batismo, Confirmação e Eucaristia",
+				"Batismo, Penitência e Matrimônio",
+				"Eucaristia, Ordem e Unção",
+				"Confirmação, Penitência e Ordem"
+			],
+			"answer": 0,
+			"explanation": "Eles lançam os fundamentos de toda a vida cristã.",
+			"source": "Catecismo da Igreja Católica, §1212",
+			"category": "liturgia"
+		},
+		{
+			"id": "lit-008",
+			"difficulty": 3,
+			"question": "Quais sacramentos imprimem caráter e por isso não se repetem?",
+			"options": [
+				"Batismo, Confirmação e Ordem",
+				"Batismo, Eucaristia e Matrimônio",
+				"Confirmação, Penitência e Unção",
+				"Eucaristia, Ordem e Matrimônio"
+			],
+			"answer": 0,
+			"explanation": "Esses três imprimem um selo espiritual indelével.",
+			"source": "Catecismo da Igreja Católica, §1121",
+			"category": "liturgia"
+		},
+		{
+			"id": "lit-009",
+			"difficulty": 1,
+			"question": "Qual é a matéria (o sinal) essencial do Batismo?",
+			"options": [
+				"A água",
+				"O óleo",
+				"O pão",
+				"O sal"
+			],
+			"answer": 0,
+			"explanation": "O Batismo é feito por imersão ou derramando água sobre a cabeça, invocando a Trindade.",
+			"source": "Catecismo da Igreja Católica, §1239-1240",
+			"category": "liturgia"
+		},
+		{
+			"id": "lit-010",
+			"difficulty": 2,
+			"question": "Quem é o ministro ordinário da Confirmação (Crisma)?",
+			"options": [
+				"O bispo",
+				"Qualquer catequista",
+				"O diácono",
+				"O padrinho"
+			],
+			"answer": 0,
+			"explanation": "No rito latino o ministro ordinário é o bispo; ele pode conceder a faculdade a presbíteros.",
+			"source": "Catecismo da Igreja Católica, §1312-1313",
+			"category": "liturgia"
+		},
+		{
+			"id": "lit-011",
+			"difficulty": 2,
+			"question": "A quem se destina a Unção dos Enfermos?",
+			"options": [
+				"A fiéis em perigo por doença grave ou velhice",
+				"Somente a quem está morrendo",
+				"A qualquer pessoa resfriada",
+				"Apenas aos padres"
+			],
+			"answer": 0,
+			"explanation": "Não é só para o fim da vida: pode ser recebida quando começa o perigo de morte por doença ou velhice.",
+			"source": "Catecismo da Igreja Católica, §1514-1515",
+			"category": "liturgia"
+		},
+		{
+			"id": "lit-012",
+			"difficulty": 2,
+			"question": "Quais são as duas grandes partes da Missa?",
+			"options": [
+				"Liturgia da Palavra e Liturgia Eucarística",
+				"Ritos iniciais e bênção final",
+				"Homilia e ofertório",
+				"Glória e Credo"
+			],
+			"answer": 0,
+			"explanation": "As duas partes formam um só ato de culto.",
+			"source": "Catecismo da Igreja Católica, §1346",
+			"category": "liturgia"
+		},
+		{
+			"id": "lit-013",
+			"difficulty": 1,
+			"question": "Qual celebração abre a Semana Santa?",
+			"options": [
+				"Domingo de Ramos",
+				"Quinta-feira Santa",
+				"Quarta-feira de Cinzas",
+				"Domingo de Páscoa"
+			],
+			"answer": 0,
+			"explanation": "Recorda a entrada de Jesus em Jerusalém, aclamado com ramos.",
+			"source": "Mt 21,1-11",
+			"category": "liturgia"
+		},
+		{
+			"id": "lit-014",
+			"difficulty": 3,
+			"question": "Qual celebração dá início ao Tríduo Pascal?",
+			"options": [
+				"A Missa da Ceia do Senhor, na Quinta-feira Santa",
+				"A Missa do Crisma",
+				"O Domingo de Ramos",
+				"A Via-Sacra da Sexta-feira"
+			],
+			"answer": 0,
+			"explanation": "O Tríduo começa com a Missa vespertina da Ceia do Senhor e culmina na Vigília Pascal.",
+			"source": "Normas Universais do Ano Litúrgico, n. 19",
+			"category": "liturgia"
+		},
+		{
+			"id": "lit-015",
+			"difficulty": 2,
+			"question": "Pentecostes é celebrado quantos dias depois da Páscoa?",
+			"options": [
+				"Cinquenta",
+				"Quarenta",
+				"Trinta",
+				"Sete"
+			],
+			"answer": 0,
+			"explanation": "Pentecostes significa “quinquagésimo dia” e encerra o Tempo Pascal.",
+			"source": "At 2,1; Normas Universais, n. 22-23",
+			"category": "liturgia"
+		},
+		{
+			"id": "lit-016",
+			"difficulty": 2,
+			"question": "Quando começa o ano litúrgico?",
+			"options": [
+				"No primeiro domingo do Advento",
+				"Em 1º de janeiro",
+				"Na Páscoa",
+				"Na Quarta-feira de Cinzas"
+			],
+			"answer": 0,
+			"explanation": "O ano da Igreja começa com a espera do Senhor no Advento.",
+			"source": "Normas Universais do Ano Litúrgico, n. 40",
+			"category": "liturgia"
+		},
+		{
+			"id": "lit-017",
+			"difficulty": 2,
+			"question": "Em quais dias jejum e abstinência são obrigatórios para a Igreja latina?",
+			"options": [
+				"Quarta-feira de Cinzas e Sexta-feira Santa",
+				"Todos os domingos",
+				"Natal e Páscoa",
+				"Todas as sextas do ano, com jejum"
+			],
+			"answer": 0,
+			"explanation": "O jejum vale dos 18 aos 59 anos; a abstinência de carne, a partir dos 14.",
+			"source": "Código de Direito Canônico, cân. 1251-1252",
+			"category": "liturgia"
+		},
+		{
+			"id": "lit-018",
+			"difficulty": 2,
+			"question": "Como se chama o pequeno prato onde se coloca a hóstia na Missa?",
+			"options": [
+				"Patena",
+				"Cibório",
+				"Galheta",
+				"Âmbula"
+			],
+			"answer": 0,
+			"explanation": "A patena acompanha o cálice; o cibório (âmbula) guarda as hóstias para a comunhão.",
+			"source": "Instrução Geral do Missal Romano, n. 118 e 329",
+			"category": "liturgia"
+		},
+		{
+			"id": "lit-019",
+			"difficulty": 2,
+			"question": "O que significa a palavra “Aleluia”?",
+			"options": [
+				"Louvai o Senhor",
+				"Assim seja",
+				"Vinde, Senhor",
+				"Paz a vós"
+			],
+			"answer": 0,
+			"explanation": "Vem do hebraico hallelu-Yah. “Assim seja” é o sentido de “Amém”.",
+			"source": "Ap 19,1-6",
+			"category": "liturgia"
+		},
+		{
+			"id": "lit-020",
+			"difficulty": 2,
+			"question": "Qual destes NÃO é um nome do sacramento da Reconciliação?",
+			"options": [
+				"Crisma",
+				"Penitência",
+				"Confissão",
+				"Sacramento do perdão"
+			],
+			"answer": 0,
+			"explanation": "Crisma é outro nome da Confirmação.",
+			"source": "Catecismo da Igreja Católica, §1423-1424",
+			"category": "liturgia"
+		},
+		{
+			"id": "lit-021",
+			"difficulty": 1,
+			"question": "O que a Igreja celebra na festa de Corpus Christi?",
+			"options": [
+				"A presença real de Jesus na Eucaristia",
+				"A Ascensão de Jesus",
+				"O nascimento de Maria",
+				"A vinda do Espírito Santo"
+			],
+			"answer": 0,
+			"explanation": "A solenidade do Santíssimo Corpo e Sangue de Cristo é marcada por procissões.",
+			"source": "Catecismo da Igreja Católica, §1378",
+			"category": "liturgia"
+		}
+	]
+}

@@ -1,0 +1,10 @@
+{
+	"_comentario": "Preços de referência em reais. O preço cobrado de verdade é o cadastrado na Play Console / App Store Connect; o app mostra o preço que a loja devolver.",
+	"products": [
+		{"id": "remover_anuncios", "type": "non_consumable", "title": "Sem anúncios", "description": "Remove os anúncios entre as partidas para sempre. Os anúncios opcionais (para ganhar moedas ou continuar) continuam disponíveis se você quiser.", "price_brl": "R$ 9,90"},
+		{"id": "pacote_santos_brasil", "type": "non_consumable", "title": "Pacote: Santos do Brasil", "description": "20 perguntas novas sobre santos, beatos e mártires brasileiros, que entram nas partidas.", "price_brl": "R$ 6,90", "unlocks_pack": "santos_brasil"},
+		{"id": "moedas_300", "type": "consumable", "title": "300 moedas", "description": "Para usar em dicas (eliminar duas alternativas ou ganhar mais tempo).", "price_brl": "R$ 4,90", "coins": 300},
+		{"id": "moedas_1000", "type": "consumable", "title": "1.000 moedas", "description": "Para usar em dicas (eliminar duas alternativas ou ganhar mais tempo).", "price_brl": "R$ 12,90", "coins": 1000}
+	],
+	"rewarded": {"coins": 50, "max_per_day": 3}
+}

@@ -1,0 +1,305 @@
+{
+	"pack": "",
+	"questions": [
+		{
+			"id": "esp-001",
+			"difficulty": 1,
+			"question": "Quem ensinou a oração do Pai-Nosso?",
+			"options": [
+				"Jesus",
+				"São Paulo",
+				"São Pedro",
+				"Maria"
+			],
+			"answer": 0,
+			"explanation": "Jesus ensinou o Pai-Nosso aos discípulos quando pediram: “Senhor, ensina-nos a rezar”.",
+			"source": "Mt 6,9-13; Lc 11,1-4",
+			"category": "espiritualidade"
+		},
+		{
+			"id": "esp-002",
+			"difficulty": 1,
+			"question": "Quantas Ave-Marias tem cada dezena do terço?",
+			"options": [
+				"Dez",
+				"Sete",
+				"Doze",
+				"Cinco"
+			],
+			"answer": 0,
+			"explanation": "Cada mistério se reza com um Pai-Nosso, dez Ave-Marias e um Glória.",
+			"source": "Rosarium Virginis Mariae, n. 33-35",
+			"category": "espiritualidade"
+		},
+		{
+			"id": "esp-003",
+			"difficulty": 2,
+			"question": "Qual Papa acrescentou os Mistérios Luminosos ao Rosário?",
+			"options": [
+				"São João Paulo II",
+				"São Pio V",
+				"Leão XIII",
+				"Francisco"
+			],
+			"answer": 0,
+			"explanation": "Em 2002, com a carta Rosarium Virginis Mariae.",
+			"source": "Rosarium Virginis Mariae, n. 19 (2002)",
+			"category": "espiritualidade"
+		},
+		{
+			"id": "esp-004",
+			"difficulty": 2,
+			"question": "O que a oração do Ângelus recorda?",
+			"options": [
+				"A Encarnação do Filho de Deus",
+				"A Ressurreição",
+				"A criação do mundo",
+				"O batismo de Jesus"
+			],
+			"answer": 0,
+			"explanation": "“O Anjo do Senhor anunciou a Maria... E o Verbo se fez carne”.",
+			"source": "Lc 1,26-38; Jo 1,14",
+			"category": "espiritualidade"
+		},
+		{
+			"id": "esp-005",
+			"difficulty": 1,
+			"question": "De quem são as palavras “Ave, cheia de graça, o Senhor é contigo”?",
+			"options": [
+				"Do anjo Gabriel",
+				"De Isabel",
+				"De São José",
+				"De Simeão"
+			],
+			"answer": 0,
+			"explanation": "Foi a saudação do anjo Gabriel a Maria na Anunciação.",
+			"source": "Lc 1,28",
+			"category": "espiritualidade"
+		},
+		{
+			"id": "esp-006",
+			"difficulty": 1,
+			"question": "A oração “Glória ao Pai” louva...",
+			"options": [
+				"A Santíssima Trindade",
+				"Somente Jesus",
+				"Os anjos",
+				"Nossa Senhora"
+			],
+			"answer": 0,
+			"explanation": "“Glória ao Pai, ao Filho e ao Espírito Santo”.",
+			"source": "Catecismo da Igreja Católica, §2639-2642",
+			"category": "espiritualidade"
+		},
+		{
+			"id": "esp-007",
+			"difficulty": 2,
+			"question": "O que é a Lectio Divina?",
+			"options": [
+				"Leitura orante da Palavra de Deus",
+				"Uma aula de teologia",
+				"A leitura do jornal da paróquia",
+				"O nome do Evangelho em latim"
+			],
+			"answer": 0,
+			"explanation": "Ler, meditar, rezar e contemplar a Escritura.",
+			"source": "Catecismo da Igreja Católica, §1177 e §2708",
+			"category": "espiritualidade"
+		},
+		{
+			"id": "esp-008",
+			"difficulty": 1,
+			"question": "Quais são as três práticas tradicionais da Quaresma?",
+			"options": [
+				"Oração, jejum e esmola",
+				"Festa, canto e dança",
+				"Leitura, estudo e trabalho",
+				"Silêncio, viagem e descanso"
+			],
+			"answer": 0,
+			"explanation": "Jesus fala das três no Sermão da Montanha.",
+			"source": "Mt 6,1-18; Catecismo, §1434",
+			"category": "espiritualidade"
+		},
+		{
+			"id": "esp-009",
+			"difficulty": 1,
+			"question": "O exame de consciência é recomendado especialmente antes de qual sacramento?",
+			"options": [
+				"Confissão",
+				"Batismo",
+				"Matrimônio",
+				"Ordem"
+			],
+			"answer": 0,
+			"explanation": "Reconhecer os próprios pecados à luz da Palavra de Deus prepara a confissão.",
+			"source": "Catecismo da Igreja Católica, §1454",
+			"category": "espiritualidade"
+		},
+		{
+			"id": "esp-010",
+			"difficulty": 2,
+			"question": "De quem é o cântico do Magnificat (“A minha alma engrandece o Senhor”)?",
+			"options": [
+				"De Maria",
+				"De Zacarias",
+				"De Simeão",
+				"De Ana"
+			],
+			"answer": 0,
+			"explanation": "Maria o cantou ao visitar Isabel.",
+			"source": "Lc 1,46-55",
+			"category": "espiritualidade"
+		},
+		{
+			"id": "esp-011",
+			"difficulty": 2,
+			"question": "Qual é a oração oficial da Igreja rezada em diferentes horas do dia?",
+			"options": [
+				"Liturgia das Horas",
+				"Via-Sacra",
+				"Novena",
+				"Terço"
+			],
+			"answer": 0,
+			"explanation": "Também chamada Ofício Divino, santifica o dia com salmos, leituras e preces.",
+			"source": "Catecismo da Igreja Católica, §1174",
+			"category": "espiritualidade"
+		},
+		{
+			"id": "esp-012",
+			"difficulty": 1,
+			"question": "O que é a Adoração Eucarística?",
+			"options": [
+				"Rezar diante de Jesus presente na Eucaristia",
+				"Uma procissão com imagens",
+				"Ler a Bíblia em voz alta",
+				"Cantar no coral"
+			],
+			"answer": 0,
+			"explanation": "A Igreja adora o Santíssimo Sacramento também fora da Missa.",
+			"source": "Catecismo da Igreja Católica, §1378-1380",
+			"category": "espiritualidade"
+		},
+		{
+			"id": "esp-013",
+			"difficulty": 2,
+			"question": "A devoção do Terço da Misericórdia está ligada a qual santa?",
+			"options": [
+				"Santa Faustina Kowalska",
+				"Santa Teresinha",
+				"Santa Gertrudes",
+				"Santa Bernadette"
+			],
+			"answer": 0,
+			"explanation": "Santa Faustina registrou em seu Diário a mensagem da Divina Misericórdia.",
+			"source": "Diário de Santa Faustina, n. 476",
+			"category": "espiritualidade"
+		},
+		{
+			"id": "esp-014",
+			"difficulty": 3,
+			"question": "Segundo a devoção da Divina Misericórdia, qual é a “Hora da Misericórdia”?",
+			"options": [
+				"Três horas da tarde",
+				"Meio-dia",
+				"Seis da manhã",
+				"Meia-noite"
+			],
+			"answer": 0,
+			"explanation": "Recorda a hora da morte de Jesus na cruz.",
+			"source": "Diário de Santa Faustina, n. 1320; Mc 15,34",
+			"category": "espiritualidade"
+		},
+		{
+			"id": "esp-015",
+			"difficulty": 2,
+			"question": "Quem escreveu os Exercícios Espirituais?",
+			"options": [
+				"Santo Inácio de Loyola",
+				"São Francisco de Sales",
+				"Santa Teresa d'Ávila",
+				"São João da Cruz"
+			],
+			"answer": 0,
+			"explanation": "Um caminho de oração para discernir e seguir a vontade de Deus.",
+			"source": "Santo Inácio de Loyola, Exercícios Espirituais",
+			"category": "espiritualidade"
+		},
+		{
+			"id": "esp-016",
+			"difficulty": 1,
+			"question": "O Credo é uma oração de...",
+			"options": [
+				"Profissão de fé",
+				"Pedido de perdão",
+				"Agradecimento pela comida",
+				"Bênção das crianças"
+			],
+			"answer": 0,
+			"explanation": "No Credo professamos o que a Igreja crê.",
+			"source": "Catecismo da Igreja Católica, §185-187",
+			"category": "espiritualidade"
+		},
+		{
+			"id": "esp-017",
+			"difficulty": 1,
+			"question": "O Ato de Contrição expressa...",
+			"options": [
+				"Arrependimento dos pecados e propósito de não pecar mais",
+				"Gratidão pelas refeições",
+				"Louvor aos santos",
+				"Pedido de chuva"
+			],
+			"answer": 0,
+			"explanation": "A contrição é a dor da alma e a detestação do pecado cometido.",
+			"source": "Catecismo da Igreja Católica, §1451",
+			"category": "espiritualidade"
+		},
+		{
+			"id": "esp-018",
+			"difficulty": 2,
+			"question": "Qual destas é uma das formas de oração citadas pelo Catecismo?",
+			"options": [
+				"Intercessão",
+				"Simpatia",
+				"Adivinhação",
+				"Superstição"
+			],
+			"answer": 0,
+			"explanation": "Bênção e adoração, petição, intercessão, ação de graças e louvor.",
+			"source": "Catecismo da Igreja Católica, §2626-2643",
+			"category": "espiritualidade"
+		},
+		{
+			"id": "esp-019",
+			"difficulty": 2,
+			"question": "Em quais horários o Ângelus é tradicionalmente rezado?",
+			"options": [
+				"6h, 12h e 18h",
+				"Só ao meio-dia de domingo",
+				"Às 15h",
+				"Antes de dormir"
+			],
+			"answer": 0,
+			"explanation": "O toque dos sinos convida a rezar de manhã, ao meio-dia e ao entardecer.",
+			"source": "Diretório sobre a Piedade Popular e a Liturgia, n. 195",
+			"category": "espiritualidade"
+		},
+		{
+			"id": "esp-020",
+			"difficulty": 3,
+			"question": "Quem escreveu “Tarde Vos amei, ó Beleza tão antiga e tão nova”?",
+			"options": [
+				"Santo Agostinho",
+				"São Francisco de Assis",
+				"Santa Teresinha",
+				"São Bernardo"
+			],
+			"answer": 0,
+			"explanation": "É uma das passagens mais famosas das Confissões.",
+			"source": "Santo Agostinho, Confissões X, 27",
+			"category": "espiritualidade"
+		}
+	]
+}
