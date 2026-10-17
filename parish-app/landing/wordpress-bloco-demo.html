@@ -1,0 +1,489 @@
+<!-- Minha Paróquia · seções interativas para a página logosagencia.com.br/minha-paroquia/
+     Cole num bloco "HTML personalizado" do WordPress. O estilo fica restrito a .mp-demo
+     e não altera o resto do tema. -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700;6..12,800&display=swap">
+<style>
+/* Layout: faixas largas alternando nave (claro) e cripta (vinho escuro); conteúdo em coluna de 1120px; a "planta" Matriz → comunidades é o fio condutor. */
+.mp-demo {
+  --bg: #fbf8f8;
+  --surface: #ffffff;
+  --ink: #241517;
+  --muted: #6e5c5f;
+  --line: #eadfe0;
+  --wine: #8b1e2d;
+  --wine-deep: #4a0f18;
+  --gold: #b8892b;
+  --gold-soft: #f3e6c8;
+  --green: #2f7d4a;
+  --on-wine: #fff7f2;
+  --on-wine-muted: #e9cfd2;
+  --shadow: 0 18px 50px -24px rgba(74, 15, 24, 0.35);
+  --font-display: "Cinzel", "Trajan Pro", Georgia, serif;
+  --font-body: "Nunito Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --radius: 14px;
+}
+
+.mp-demo, .mp-demo * { box-sizing: border-box; }
+@media (prefers-reduced-motion: reduce) { .mp-demo * { transition: none !important; animation: none !important; }  }
+.mp-demo .wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.mp-demo h1, .mp-demo h2, .mp-demo h3 { text-wrap: balance; margin: 0; }
+.mp-demo p { margin: 0; }
+.mp-demo a { color: inherit; }
+.mp-demo button { font: inherit; cursor: pointer; }
+.mp-demo :focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; border-radius: 6px; }
+.mp-demo .eyebrow { font-family: var(--font-display); font-size: 0.78rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; }
+.mp-demo .section { padding-block: 88px; }
+.mp-demo .section-head { display: grid; gap: 12px; max-width: 680px; margin-bottom: 40px; }
+.mp-demo .section-head h2 { font-family: var(--font-display); font-size: clamp(1.7rem, 3.4vw, 2.5rem); font-weight: 600; line-height: 1.15; }
+.mp-demo .section-head p { color: var(--muted); font-size: 1.05rem; }
+.mp-demo .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 20px; border-radius: 999px; font-weight: 700; text-decoration: none; border: 1px solid transparent; }
+.mp-demo .btn-primary { background: var(--gold); color: #1f1405; }
+.mp-demo .btn-ghost { border-color: currentColor; }
+
+/* header */
+
+/* hero */
+
+/* demo: perspective picker + phone */
+.mp-demo .demo { display: grid; gap: 18px; justify-items: center; }
+.mp-demo .viewer-pick { display: grid; gap: 8px; width: 100%; max-width: 380px; }
+.mp-demo .viewer-pick .label { font-size: 0.8rem; color: var(--on-wine-muted); text-align: center; }
+.mp-demo .chips { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+.mp-demo .chip { border: 1px solid color-mix(in srgb, var(--on-wine) 35%, transparent); background: transparent; color: var(--on-wine); border-radius: 999px; padding: 7px 13px; font-size: 0.85rem; font-weight: 600; }
+.mp-demo .chip[aria-pressed="true"] { background: var(--gold); border-color: var(--gold); color: #1f1405; }
+.mp-demo .phone { width: 300px; max-width: 100%; aspect-ratio: 9 / 18.5; border-radius: 40px; background: #0b0607; padding: 11px; box-shadow: 0 30px 80px -30px #000, 0 0 0 1px #ffffff1a inset; }
+.mp-demo .screen { height: 100%; border-radius: 30px; background: #faf6f5; color: #241517; overflow: hidden; display: flex; flex-direction: column; font-size: 12.5px; }
+.mp-demo .screen-top { background: #8b1e2d; color: #fff; padding: 22px 14px 12px; }
+.mp-demo .screen-top small { opacity: 0.8; display: block; font-size: 10.5px; }
+.mp-demo .screen-top strong { font-size: 15px; }
+.mp-demo .feed { padding: 10px; display: grid; gap: 8px; overflow: hidden; align-content: start; flex: 1; }
+.mp-demo .feed-item { background: #fff; border: 1px solid #eadfe0; border-radius: 12px; padding: 9px 10px; animation: rise 0.35s ease both; }
+.mp-demo .feed-item .kind { font-size: 9.5px; text-transform: uppercase; letter-spacing: 0.08em; color: #b8892b; font-weight: 800; }
+.mp-demo .feed-item .t { font-weight: 700; margin-top: 2px; line-height: 1.3; }
+.mp-demo .feed-item .meta { color: #6e5c5f; font-size: 11px; margin-top: 2px; display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+.mp-demo .tag { font-size: 9.5px; font-weight: 800; border-radius: 999px; padding: 1px 7px; border: 1px solid; }
+.mp-demo .tag-matriz { color: #8b1e2d; border-color: #8b1e2d55; background: #8b1e2d0d; }
+.mp-demo .tag-local { color: #2f7d4a; border-color: #2f7d4a55; background: #2f7d4a0d; }
+.mp-demo .mood { background: #fff; border: 1px solid #eadfe0; border-radius: 12px; padding: 8px 10px; }
+.mp-demo .mood b { font-size: 11.5px; }
+.mp-demo .mood div { display: flex; gap: 6px; margin-top: 5px; font-size: 17px; }
+.mp-demo .tabbar { display: grid; grid-template-columns: repeat(5, 1fr); border-top: 1px solid #eadfe0; background: #fff; font-size: 9.5px; text-align: center; color: #6e5c5f; padding: 6px 0 10px; }
+.mp-demo .tabbar span:first-child { color: #8b1e2d; font-weight: 800; }
+@keyframes rise { from { opacity: 0.2; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+.mp-demo .demo-caption { font-size: 0.85rem; color: var(--on-wine-muted); text-align: center; max-width: 360px; min-height: 3.2em; }
+
+/* hierarchy */
+.mp-demo .rules { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 48px; align-items: center; }
+@media (max-width: 900px) { .mp-demo .rules { grid-template-columns: 1fr; }  }
+.mp-demo .tree { position: relative; display: grid; gap: 26px; justify-items: center; padding: 28px 12px; background: var(--surface); border: 1px solid var(--line); border-radius: 20px; }
+.mp-demo .node { display: grid; gap: 2px; text-align: center; padding: 12px 16px; border-radius: 12px; border: 1px solid var(--line); background: var(--bg); min-width: 0; }
+.mp-demo .node .k { font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); font-weight: 800; }
+.mp-demo .node .n { font-weight: 800; line-height: 1.25; }
+.mp-demo .node .s { font-size: 0.8rem; color: var(--muted); }
+.mp-demo .node.matriz { border-color: var(--wine); background: color-mix(in srgb, var(--wine) 7%, var(--surface)); }
+.mp-demo .children { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; width: 100%; }
+.mp-demo .connector { width: 2px; height: 26px; background: var(--wine); margin: -26px 0; }
+.mp-demo .flow { font-size: 0.82rem; color: var(--muted); text-align: center; }
+.mp-demo .flow b { color: var(--wine); }
+.mp-demo .rule-list { display: grid; gap: 18px; }
+.mp-demo .rule { display: grid; grid-template-columns: 44px 1fr; gap: 14px; align-items: start; }
+.mp-demo .rule-ico { width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; background: var(--gold-soft); color: var(--wine); font-size: 1.2rem; }
+.mp-demo .rule h3 { font-size: 1.05rem; }
+.mp-demo .rule p { color: var(--muted); margin-top: 2px; }
+
+/* admin mockup */
+.mp-demo .band-alt { background: color-mix(in srgb, var(--wine) 5%, var(--bg)); border-block: 1px solid var(--line); }
+.mp-demo .window { border-radius: 16px; overflow: hidden; border: 1px solid var(--line); background: var(--surface); box-shadow: var(--shadow); }
+.mp-demo .window-bar { display: flex; align-items: center; gap: 8px; padding: 10px 14px; border-bottom: 1px solid var(--line); background: var(--bg); font-size: 0.8rem; color: var(--muted); }
+.mp-demo .dots { display: flex; gap: 6px; }
+.mp-demo .dots i { width: 10px; height: 10px; border-radius: 50%; background: var(--line); display: block; }
+.mp-demo .admin { display: grid; grid-template-columns: 230px 1fr; min-height: 520px; }
+.mp-demo .side { border-right: 1px solid var(--line); font-size: 0.86rem; }
+.mp-demo .side-brand { background: var(--wine); color: var(--on-wine); padding: 14px; display: flex; gap: 10px; align-items: center; }
+.mp-demo .side-brand b { display: block; font-size: 0.85rem; line-height: 1.25; }
+.mp-demo .side-brand small { color: var(--on-wine-muted); }
+.mp-demo .scope { margin: 10px; border: 1px solid color-mix(in srgb, var(--wine) 35%, transparent); border-radius: 10px; padding: 7px 10px; }
+.mp-demo .scope small { display: block; font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); font-weight: 800; }
+.mp-demo .scope select { width: 100%; border: 0; background: transparent; color: var(--ink); font-weight: 700; font-size: 0.85rem; padding: 2px 0; }
+.mp-demo .nav-group { padding: 6px 8px; }
+.mp-demo .nav-group > span { display: block; font-size: 0.66rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); font-weight: 800; padding: 6px 8px 2px; }
+.mp-demo .nav-item { display: block; width: 100%; text-align: left; border: 0; background: transparent; color: var(--ink); padding: 6px 8px; border-radius: 8px; font-size: 0.86rem; }
+.mp-demo .nav-item[aria-current="page"] { background: color-mix(in srgb, var(--wine) 12%, transparent); color: var(--wine); font-weight: 800; }
+.mp-demo .panel { padding: 22px; min-width: 0; }
+.mp-demo .panel h3 { font-size: 1.15rem; }
+.mp-demo .panel .sub { color: var(--muted); font-size: 0.9rem; margin-top: 2px; }
+.mp-demo .kpis { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin-top: 16px; }
+@media (max-width: 1000px) { .mp-demo .kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); }  }
+.mp-demo .kpi { border: 1px solid var(--line); border-radius: 12px; padding: 12px; }
+.mp-demo .kpi b { display: block; font-size: 1.45rem; font-variant-numeric: tabular-nums; }
+.mp-demo .kpi span { font-size: 0.78rem; color: var(--muted); }
+.mp-demo .table-wrap { overflow-x: auto; margin-top: 16px; border: 1px solid var(--line); border-radius: 12px; }
+.mp-demo table { width: 100%; border-collapse: collapse; font-size: 0.86rem; min-width: 520px; }
+.mp-demo th, .mp-demo td { padding: 10px 12px; border-bottom: 1px solid var(--line); text-align: right; font-variant-numeric: tabular-nums; }
+.mp-demo th:first-child, .mp-demo td:first-child { text-align: left; }
+.mp-demo th { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); background: var(--bg); }
+.mp-demo tr:last-child td { border-bottom: 0; }
+.mp-demo .bars { display: grid; gap: 7px; margin-top: 12px; }
+.mp-demo .bar { display: grid; grid-template-columns: 140px 1fr 32px; gap: 8px; align-items: center; font-size: 0.84rem; }
+.mp-demo .bar i { display: block; height: 9px; border-radius: 5px; background: var(--wine); }
+.mp-demo .bar em { font-style: normal; color: var(--muted); text-align: right; font-variant-numeric: tabular-nums; }
+.mp-demo .two { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 18px; }
+@media (max-width: 1000px) { .mp-demo .two { grid-template-columns: 1fr; }  }
+.mp-demo .card { border: 1px solid var(--line); border-radius: 12px; padding: 14px; }
+.mp-demo .card h4 { margin: 0; font-size: 0.92rem; }
+.mp-demo .list { display: grid; gap: 10px; margin-top: 14px; }
+.mp-demo .row { border: 1px solid var(--line); border-radius: 12px; padding: 12px; display: grid; gap: 4px; }
+.mp-demo .row-top { display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+.mp-demo .pill { font-size: 0.72rem; font-weight: 800; padding: 2px 8px; border-radius: 999px; background: var(--gold-soft); color: var(--ink); }
+.mp-demo .pill.ok { background: color-mix(in srgb, var(--green) 16%, transparent); color: var(--green); }
+.mp-demo .pill.wine { background: color-mix(in srgb, var(--wine) 12%, transparent); color: var(--wine); }
+.mp-demo .muted { color: var(--muted); font-size: 0.86rem; }
+
+/* forms demo */
+.mp-demo .forms-grid { display: grid; grid-template-columns: 0.95fr 1.05fr; gap: 40px; align-items: start; }
+@media (max-width: 900px) { .mp-demo .forms-grid { grid-template-columns: 1fr; }  }
+.mp-demo .asks { display: grid; gap: 12px; }
+.mp-demo .ask { display: grid; grid-template-columns: 28px 1fr; gap: 12px; padding: 14px; border-radius: 12px; background: var(--surface); border: 1px solid var(--line); }
+.mp-demo .ask .check { width: 28px; height: 28px; border-radius: 8px; background: var(--green); color: #fff; display: grid; place-items: center; font-weight: 800; }
+.mp-demo .ask b { display: block; }
+.mp-demo .ask span { color: var(--muted); font-size: 0.92rem; }
+.mp-demo .form-demo { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; overflow: hidden; box-shadow: var(--shadow); }
+.mp-demo .form-cover { background: linear-gradient(135deg, var(--wine), var(--wine-deep)); color: var(--on-wine); padding: 18px; }
+.mp-demo .form-cover small { color: var(--gold); font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; font-size: 0.7rem; }
+.mp-demo .form-cover h3 { font-size: 1.1rem; margin-top: 4px; }
+.mp-demo .steps { display: flex; gap: 6px; padding: 12px 18px 0; }
+.mp-demo .steps i { height: 4px; flex: 1; border-radius: 4px; background: var(--line); }
+.mp-demo .steps i.on { background: var(--gold); }
+.mp-demo .form-body { padding: 16px 18px 20px; display: grid; gap: 14px; }
+.mp-demo .form-body h4 { margin: 0; font-size: 1rem; }
+.mp-demo .form-body .desc { color: var(--muted); font-size: 0.9rem; }
+.mp-demo .q label, .mp-demo .q .ql { font-weight: 700; display: block; margin-bottom: 6px; }
+.mp-demo .opt { display: block; width: 100%; text-align: left; border: 1px solid var(--line); background: var(--bg); color: var(--ink); border-radius: 10px; padding: 10px 12px; margin-bottom: 6px; }
+.mp-demo .opt[aria-pressed="true"] { background: var(--wine); color: #fff; border-color: var(--wine); }
+.mp-demo .opt small { display: block; font-size: 0.75rem; opacity: 0.75; }
+.mp-demo .combo { position: relative; }
+.mp-demo .combo input, .mp-demo .q input[type="text"] { width: 100%; border: 1px solid var(--line); background: var(--bg); color: var(--ink); border-radius: 10px; padding: 10px 12px; font: inherit; }
+.mp-demo .combo ul { list-style: none; margin: 4px 0 0; padding: 4px; border: 1px solid var(--line); border-radius: 10px; max-height: 150px; overflow: auto; background: var(--surface); }
+.mp-demo .combo ul:empty { display: none; }
+.mp-demo .combo li button { width: 100%; text-align: left; border: 0; background: transparent; color: var(--ink); padding: 6px 8px; border-radius: 6px; }
+.mp-demo .combo li button:hover { background: var(--bg); }
+.mp-demo .form-actions { display: flex; gap: 10px; }
+.mp-demo .form-actions button { flex: 1; padding: 11px; border-radius: 10px; font-weight: 800; border: 1px solid var(--wine); }
+.mp-demo .f-next { background: var(--wine); color: #fff; }
+.mp-demo .f-back { background: transparent; color: var(--wine); }
+.mp-demo .path-note { font-size: 0.8rem; color: var(--muted); border-top: 1px dashed var(--line); padding-top: 10px; }
+.mp-demo .done { text-align: center; padding: 24px 6px; display: grid; gap: 8px; }
+
+/* features */
+.mp-demo .features { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; border-top: 1px solid var(--line); }
+@media (max-width: 900px) { .mp-demo .features { grid-template-columns: 1fr 1fr; }  }
+@media (max-width: 560px) { .mp-demo .features { grid-template-columns: 1fr; }  }
+.mp-demo .feature { padding: 22px 20px 22px 0; border-bottom: 1px solid var(--line); display: grid; gap: 4px; }
+.mp-demo .feature b { font-size: 1rem; }
+.mp-demo .feature span { color: var(--muted); font-size: 0.93rem; }
+
+/* demo access */
+
+.mp-demo { background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 16px; line-height: 1.6; }
+.mp-demo h1, .mp-demo h2, .mp-demo h3, .mp-demo h4 { text-wrap: balance; margin: 0; color: inherit; letter-spacing: normal; text-transform: none; }
+.mp-demo p { margin: 0; }
+.mp-demo button { font: inherit; cursor: pointer; }
+.mp-demo .mp-dark { background: radial-gradient(1200px 500px at 85% -10%, color-mix(in srgb, var(--gold) 28%, transparent), transparent 60%), var(--wine-deep); color: var(--on-wine); padding-block: 72px; overflow: hidden; }
+.mp-demo .mp-dark .section-head p { color: var(--on-wine-muted); }
+.mp-demo .mp-dark-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+@media (max-width: 900px) { .mp-demo .mp-dark-grid { grid-template-columns: 1fr; } }
+@media (max-width: 760px) { .mp-demo .admin { grid-template-columns: 1fr; } .mp-demo .side { border-right: 0; border-bottom: 1px solid var(--line); display: flex; flex-wrap: wrap; align-items: center; gap: 4px; padding: 8px; } .mp-demo .side-brand { display: none; } .mp-demo .scope { margin: 0 0 6px; flex-basis: 100%; } .mp-demo .nav-group { display: contents; } .mp-demo .nav-group > span { display: none; } .mp-demo .nav-item { width: auto; border: 1px solid var(--line); border-radius: 999px; padding: 5px 12px; font-size: 0.82rem; } }
+</style>
+<div class="mp-demo">
+<section class="mp-dark" id="mp-demonstracao">
+  <div class="wrap mp-dark-grid">
+    <div class="section-head">
+      <p class="eyebrow">Veja funcionando</p>
+      <h2>A Matriz publica. As comunidades recebem.</h2>
+      <p>Escolha quem está abrindo o app e veja o que aparece para cada um: o fiel da Matriz, da Comunidade Imaculado Coração ou da Comunidade Castíssimo Coração (paróquia de exemplo).</p>
+    </div>
+    <div class="demo">
+        <div class="viewer-pick">
+          <span class="label">Quem está abrindo o app?</span>
+          <div class="chips" role="group" aria-label="Escolha quem está olhando">
+            <button class="chip" type="button" data-viewer="matriz" aria-pressed="false">Fiel da Matriz</button>
+            <button class="chip" type="button" data-viewer="imaculado" aria-pressed="true">Imaculado Coração</button>
+            <button class="chip" type="button" data-viewer="castissimo" aria-pressed="false">Castíssimo Coração</button>
+          </div>
+        </div>
+        <div class="phone" aria-live="polite">
+          <div class="screen">
+            <div class="screen-top">
+              <small id="mp-ph-sub">Comunidade Imaculado Coração de Maria · Paróquia Sagrado Coração de Jesus</small>
+              <strong>Olá, Ana Clara!</strong>
+            </div>
+            <div class="feed" id="mp-feed"></div>
+            <div class="tabbar"><span>Início</span><span>Eventos</span><span>Grupos</span><span>Dízimo</span><span>Mais</span></div>
+          </div>
+        </div>
+        <p class="demo-caption" id="mp-demo-caption"></p>
+      
+  </div>
+</section>
+<section class="section" id="mp-como-funciona">
+    <div class="wrap rules">
+      <div>
+        <div class="section-head">
+          <p class="eyebrow">Matriz e comunidades</p>
+          <h2>Pensado para como a paróquia já funciona</h2>
+          <p>Quem contrata é a Matriz. As capelas entram junto, cada uma com sua equipe, sem pagar a mais.</p>
+        </div>
+        <div class="rule-list">
+          <div class="rule"><div class="rule-ico">⬇</div><div><h3>Da Matriz para todos</h3><p>Aviso de confissões, festa do padroeiro, inscrição da Crisma: publicou na Matriz, chegou em todas as comunidades. Se for algo só da Matriz (como a reunião do Conselho Pastoral), basta desmarcar "mostrar nas comunidades".</p></div></div>
+          <div class="rule"><div class="rule-ico">⌂</div><div><h3>Da comunidade, só para ela</h3><p>O bazar da Imaculado Coração não aparece para quem é da Castíssimo Coração, nem sobe para a Matriz.</p></div></div>
+          <div class="rule"><div class="rule-ico">⚙</div><div><h3>A Matriz enxerga tudo</h3><p>O pároco vê membros, pedidos de oração, inscrições e doações de cada comunidade, e escolhe onde publicar com um seletor.</p></div></div>
+        </div>
+      </div>
+      <div class="tree" aria-label="Exemplo de estrutura">
+        <div class="node matriz"><span class="k">Matriz</span><span class="n">Paróquia Sagrado Coração de Jesus</span><span class="s">Sáb 19h · Dom 7h, 9h30 e 19h</span></div>
+        <div class="connector" aria-hidden="true"></div>
+        <div class="children">
+          <div class="node"><span class="k">Comunidade</span><span class="n">Imaculado Coração de Maria</span><span class="s">Dom 8h · Qua 19h30</span></div>
+          <div class="node"><span class="k">Comunidade</span><span class="n">Castíssimo Coração de José</span><span class="s">Sáb 17h · Qui 19h30</span></div>
+        </div>
+        <p class="flow"><b>Matriz → comunidades:</b> sim &nbsp;·&nbsp; <b>comunidade → Matriz:</b> não</p>
+      </div>
+    </div>
+  </section>
+<section class="section band-alt" id="mp-painel">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Painel da paróquia</p>
+        <h2>Tudo da paróquia numa tela, no computador ou no celular</h2>
+        <p>Organizado em Igreja, Pessoas, Cuidado, Programação, Conteúdo, Formulários e Financeiro. Clique no menu para ver as telas.</p>
+      </div>
+
+      <div class="window">
+        <div class="window-bar"><span class="dots"><i></i><i></i><i></i></span> painel · Minha Paróquia</div>
+        <div class="admin">
+          <aside class="side">
+            <div class="side-brand"><span class="brand-mark">✝</span><div><b>Paróquia Sagrado Coração de Jesus</b><small>Administração</small></div></div>
+            <div class="scope">
+              <small>Publicar em</small>
+              <select id="mp-scope-select" aria-label="Publicar em">
+                <option value="all">⛪ Matriz (e comunidades)</option>
+                <option value="imaculado">🏠 Imaculado Coração de Maria</option>
+                <option value="castissimo">🏠 Castíssimo Coração de José</option>
+              </select>
+            </div>
+            <div class="nav-group"><span>Igreja</span><button class="nav-item" type="button" data-panel="inicio" aria-current="page">Início</button><button class="nav-item" type="button" data-panel="comunidades">Matriz e comunidades</button></div>
+            <div class="nav-group"><span>Cuidado</span><button class="nav-item" type="button" data-panel="oracao">Pedidos de oração</button></div>
+            <div class="nav-group"><span>Formulários</span><button class="nav-item" type="button" data-panel="formularios">Formulários</button></div>
+          </aside>
+          <div class="panel" id="mp-panel"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+<section class="section" id="mp-formularios">
+    <div class="wrap forms-grid">
+      <div>
+        <div class="section-head">
+          <p class="eyebrow">Formulários e fichas de inscrição</p>
+          <h2>Fichas completas, do jeito que a paróquia precisa</h2>
+          <p>Fichas de Crisma, Batismo, retiros e pesquisas com o que faltava nos apps do mercado.</p>
+        </div>
+        <div class="asks">
+          <div class="ask"><span class="check">✓</span><div><b>Lista suspensa longa</b><span>Com busca: digite "sor" e aparece Sorocaba. No painel, cola-se a lista inteira de uma vez.</span></div></div>
+          <div class="ask"><span class="check">✓</span><div><b>"Se for sim, ir para tal seção"</b><span>Cada resposta pode levar a uma seção diferente ou encerrar o formulário.</span></div></div>
+          <div class="ask"><span class="check">✓</span><div><b>Divisão por seção</b><span>O fiel preenche em etapas, com botão Voltar.</span></div></div>
+          <div class="ask"><span class="check">✓</span><div><b>Incluir imagem</b><span>Na capa, nas seções, nas perguntas, e o fiel pode anexar foto da certidão.</span></div></div>
+          <div class="ask"><span class="check">✓</span><div><b>Quiz</b><span>Respostas certas e pontos; a nota é calculada pelo sistema.</span></div></div>
+        </div>
+      </div>
+
+      <div class="form-demo" aria-label="Formulário de exemplo">
+        <div class="form-cover"><small>Secretaria de Evangelização</small><h3>Ficha de Inscrição – Crisma 2027</h3></div>
+        <div class="steps" id="mp-steps"></div>
+        <div class="form-body" id="mp-form-body"></div>
+      </div>
+    </div>
+  </section>
+</div>
+<script>
+(function () {
+  // ----- Conteúdo de exemplo (mesmo do supabase/seed_demo.sql) -----
+  const M = "matriz", I = "imaculado", C = "castissimo";
+  const NAMES = { matriz: "Paróquia Sagrado Coração de Jesus", imaculado: "Comunidade Imaculado Coração de Maria", castissimo: "Comunidade Castíssimo Coração de José" };
+  const ITEMS = [
+    { from: M, shared: true, kind: "Aviso fixado", t: "Horário especial de confissões", meta: "Ter a Sex, 15h às 18h" },
+    { from: I, shared: true, kind: "Aviso", t: "Missa de quarta transferida para 20h", meta: "Capela Imaculado Coração" },
+    { from: C, shared: true, kind: "Aviso", t: "Mutirão de limpeza da capela", meta: "Sábado, 8h" },
+    { from: M, shared: true, kind: "Evento", t: "Festa do Sagrado Coração de Jesus", meta: "Missa solene e procissão" },
+    { from: M, shared: false, kind: "Evento", t: "Reunião do Conselho Pastoral", meta: "Salão paroquial · só Matriz" },
+    { from: I, shared: true, kind: "Evento", t: "Novena do Imaculado Coração", meta: "Qua 19h30" },
+    { from: I, shared: true, kind: "Evento", t: "Bazar beneficente", meta: "Salão da comunidade" },
+    { from: C, shared: true, kind: "Evento", t: "Missa de São José Operário", meta: "Bênção das carteiras de trabalho" },
+    { from: M, shared: true, kind: "Formulário", t: "Ficha de Inscrição – Crisma 2027", meta: "Secretaria de Evangelização" },
+  ];
+  const CAPTIONS = {
+    matriz: "Quem é da Matriz vê só o que a Matriz publica. Nada das comunidades aparece aqui.",
+    imaculado: "A Imaculado Coração vê o que a Matriz compartilhou (marcado \"Matriz\") e o que é da própria comunidade.",
+    castissimo: "A Castíssimo Coração recebe a Matriz, mas não vê o bazar nem a novena da Imaculado.",
+  };
+
+  const feed = document.getElementById("mp-feed");
+  const sub = document.getElementById("mp-ph-sub");
+  const caption = document.getElementById("mp-demo-caption");
+  function visible(viewer, item) {
+    if (item.from === viewer) return true;
+    return viewer !== M && item.from === M && item.shared;
+  }
+  function renderFeed(viewer) {
+    sub.textContent = viewer === M ? NAMES.matriz : NAMES[viewer] + " · " + NAMES.matriz;
+    const mood = '<div class="mood"><b>Como você está se sentindo hoje?</b><div><span>🙏</span><span>😊</span><span>🕊️</span><span>😮‍💨</span><span>😟</span><span>🤲</span></div></div>';
+    feed.innerHTML = mood + ITEMS.filter((it) => visible(viewer, it)).map((it) => {
+      const tag = it.from === viewer
+        ? (viewer === M ? "" : '<span class="tag tag-local">Comunidade</span>')
+        : '<span class="tag tag-matriz">Matriz</span>';
+      return '<div class="feed-item"><div class="kind">' + it.kind + '</div><div class="t">' + it.t + '</div><div class="meta">' + tag + '<span>' + it.meta + '</span></div></div>';
+    }).join("");
+    caption.textContent = CAPTIONS[viewer];
+  }
+  document.querySelectorAll("[data-viewer]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      document.querySelectorAll("[data-viewer]").forEach((b) => b.setAttribute("aria-pressed", String(b === btn)));
+      renderFeed(btn.dataset.viewer);
+    });
+  });
+  renderFeed(I);
+
+  // ----- Painel -----
+  const STATS = {
+    matriz: { members: 21, fresh: 6, prayers: 1, money: 1862 },
+    imaculado: { members: 22, fresh: 6, prayers: 1, money: 1641 },
+    castissimo: { members: 20, fresh: 6, prayers: 1, money: 1497 },
+  };
+  const PRAYERS = [
+    { who: "Ana Clara", where: I, area: "Saúde", text: "Pela recuperação da minha avó, que está internada.", wa: true, status: "Recebido" },
+    { who: "Bruno Souza", where: M, area: "Trabalho", text: "Por uma nova oportunidade de emprego.", wa: false, status: "Em oração" },
+    { who: "Daniel Santos", where: C, area: "Família", text: "Pela paz na minha família.", wa: true, status: "Recebido" },
+  ];
+  const brl = (n) => n.toLocaleString("pt-BR", { style: "currency", currency: "BRL", maximumFractionDigits: 0 });
+  const panel = document.getElementById("mp-panel");
+  const scopeSel = document.getElementById("mp-scope-select");
+  let current = "inicio";
+
+  function scopeKeys() { return scopeSel.value === "all" ? [M, I, C] : [scopeSel.value]; }
+  function sum(key) { return scopeKeys().reduce((s, k) => s + STATS[k][key], 0); }
+
+  const VIEWS = {
+    inicio() {
+      const keys = scopeKeys();
+      const rows = keys.map((k) => '<tr><td>' + (k === M ? "⛪ " : "🏠 ") + NAMES[k] + '</td><td>' + STATS[k].members + '</td><td>' + STATS[k].fresh + '</td><td>' + STATS[k].prayers + '</td><td>' + brl(STATS[k].money) + '</td></tr>').join("");
+      const moods = [["🙏 Grato", 14], ["😊 Feliz", 11], ["🕊️ Em paz", 9], ["😮‍💨 Cansado", 8], ["😟 Ansioso", 7], ["🤲 Preciso de oração", 5]];
+      const max = 14;
+      return '<h3>Olá, Pe. João!</h3><p class="sub">' + (keys.length > 1 ? "Visão da Matriz e de 2 comunidades." : "Visão da " + NAMES[keys[0]] + ".") + '</p>' +
+        '<div class="kpis"><div class="kpi"><b>' + sum("members") + '</b><span>Membros</span></div><div class="kpi"><b>' + sum("fresh") + '</b><span>Novos (30 dias)</span></div><div class="kpi"><b>' + sum("prayers") + '</b><span>Pedidos de oração abertos</span></div><div class="kpi"><b>' + brl(sum("money")) + '</b><span>Doações no mês</span></div></div>' +
+        (keys.length > 1 ? '<div class="table-wrap"><table><thead><tr><th>Igreja</th><th>Membros</th><th>Novos</th><th>Oração</th><th>Doações/mês</th></tr></thead><tbody>' + rows + '</tbody></table></div>' : "") +
+        '<div class="two"><div class="card"><h4>Como os fiéis estão (7 dias)</h4><div class="bars">' + moods.map(([l, v]) => '<div class="bar"><span>' + l + '</span><i style="width:' + (v / max * 100) + '%"></i><em>' + v + '</em></div>').join("") + '</div></div>' +
+        '<div class="card"><h4>Próximos eventos</h4><div class="list">' +
+        '<div class="row"><div class="row-top"><b>Festa do Sagrado Coração</b><span class="pill wine">Matriz → todas</span></div><span class="muted">Missa solene, procissão e quermesse</span></div>' +
+        '<div class="row"><div class="row-top"><b>Retiro Paroquial de Advento</b><span class="pill">120 vagas</span></div><span class="muted">Inscrição pelo formulário</span></div>' +
+        '</div></div></div>';
+    },
+    comunidades() {
+      return '<h3>Matriz e comunidades</h3><p class="sub">Tudo o que a Matriz publica aparece nas comunidades; o que cada comunidade publica fica nela.</p><div class="list">' +
+        [[I, "IMACULADO-DEMO", "Maria Aparecida", "Rua das Rosas, 45"], [C, "CASTISSIMO-DEMO", "José Carlos", "Av. São José, 900"]].map(([k, code, coord, addr]) =>
+          '<div class="row"><div class="row-top"><b>🏠 ' + NAMES[k] + '</b><span class="pill">' + STATS[k].members + ' membros</span></div><span class="muted">📍 ' + addr + ' · Código para os fiéis: <b>' + code + '</b></span><span class="muted">Coordenação: ' + coord + '</span></div>').join("") +
+        '<div class="row"><b>+ Nova comunidade</b><span class="muted">Nome, padroeiro, endereço e horários de missa. Entra no mesmo plano da Matriz.</span></div></div>';
+    },
+    oracao() {
+      const keys = scopeKeys();
+      return '<h3>Pedidos de oração</h3><p class="sub">Filtre por situação e área. Quem autorizou pode receber retorno pelo WhatsApp.</p><div class="list">' +
+        PRAYERS.filter((p) => keys.includes(p.where)).map((p) =>
+          '<div class="row"><div class="row-top"><b>' + p.who + '</b><span class="pill">' + p.area + '</span></div><span>' + p.text + '</span><span class="muted">' + NAMES[p.where] + ' · ' + p.status + (p.wa ? ' · <b style="color:var(--green)">WhatsApp autorizado</b>' : "") + '</span></div>').join("") + '</div>';
+    },
+    formularios() {
+      return '<h3>Formulários</h3><p class="sub">Fichas de inscrição, pesquisas e quizzes.</p><div class="list">' +
+        '<div class="row"><div class="row-top"><b>Ficha de Inscrição – Crisma 2027</b><span class="pill ok">Publicado</span></div><span class="muted">4 seções · desvio "batizado? sim/não" · lista de 43 cidades · 37 respostas</span><span class="muted">Exportar planilha · Chamar no WhatsApp</span></div>' +
+        '<div class="row"><div class="row-top"><b>Quiz: Você conhece o Sagrado Coração?</b><span class="pill">Quiz</span></div><span class="muted">3 perguntas · 30 pontos · média 23</span></div>' +
+        '<div class="row"><div class="row-top"><b>Escala de leitores – Imaculado Coração</b><span class="pill wine">Só da comunidade</span></div><span class="muted">Publicado pela comunidade</span></div></div>';
+    },
+  };
+  function renderPanel() { panel.innerHTML = VIEWS[current](); }
+  document.querySelectorAll("[data-panel]").forEach((b) => b.addEventListener("click", () => {
+    current = b.dataset.panel;
+    document.querySelectorAll("[data-panel]").forEach((x) => (x === b ? x.setAttribute("aria-current", "page") : x.removeAttribute("aria-current")));
+    renderPanel();
+  }));
+  scopeSel.addEventListener("change", renderPanel);
+  renderPanel();
+
+  // ----- Formulário com desvio -----
+  const CITIES = ["Aracaju","Belém","Belo Horizonte","Boa Vista","Brasília","Campinas","Campo Grande","Cuiabá","Curitiba","Feira de Santana","Florianópolis","Fortaleza","Goiânia","Guarulhos","João Pessoa","Joinville","Juiz de Fora","Londrina","Macapá","Maceió","Manaus","Natal","Niterói","Osasco","Palmas","Porto Alegre","Porto Velho","Recife","Ribeirão Preto","Rio Branco","Rio de Janeiro","Salvador","Santo André","Santos","São Bernardo do Campo","São José dos Campos","São Luís","São Paulo","Sorocaba","Teresina","Uberlândia","Vitória","Outra cidade"];
+  const norm = (s) => s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
+  const state = { path: ["dados"], baptized: null, city: "", name: "" };
+  const SECTIONS = {
+    dados: { title: "Dados do crismando", desc: "Seção 1 · informações pessoais." },
+    batismo: { title: "Batismo", desc: "Você respondeu Sim: precisamos da paróquia do batismo." },
+    preparo: { title: "Ainda não sou batizado", desc: "Você respondeu Não: o formulário pulou para a preparação ao Batismo e termina aqui." },
+    turma: { title: "Disponibilidade", desc: "Escolha a comunidade dos encontros." },
+  };
+  const formBody = document.getElementById("mp-form-body");
+  const steps = document.getElementById("mp-steps");
+  function next() {
+    const cur = state.path[state.path.length - 1];
+    if (cur === "dados") return state.baptized === "sim" ? "batismo" : state.baptized === "nao" ? "preparo" : null;
+    if (cur === "batismo") return "turma";
+    return "fim";
+  }
+  function renderForm() {
+    const cur = state.path[state.path.length - 1];
+    steps.innerHTML = [0, 1, 2].map((i) => '<i class="' + (i < state.path.length ? "on" : "") + '"></i>').join("");
+    if (cur === "fim") {
+      formBody.innerHTML = '<div class="done"><b style="font-size:1.6rem">✅</b><h4>Inscrição recebida!</h4><p class="desc">Caminho percorrido: ' + state.path.slice(0, -1).map((k) => SECTIONS[k].title).join(" → ") + '.</p><button class="opt" type="button" id="mp-restart" style="text-align:center">Recomeçar</button></div>';
+      document.getElementById("mp-restart").onclick = () => { state.path = ["dados"]; state.baptized = null; state.city = ""; renderForm(); };
+      return;
+    }
+    const s = SECTIONS[cur];
+    let html = '<div><h4>' + s.title + '</h4><p class="desc">' + s.desc + '</p></div>';
+    if (cur === "dados") {
+      html += '<div class="q"><label for="mp-f-city">Em qual cidade você nasceu? <span class="muted">(lista longa com busca)</span></label><div class="combo"><input id="mp-f-city" type="text" autocomplete="off" placeholder="Digite para buscar entre 43 cidades" value="' + state.city + '"><ul id="mp-city-list"></ul></div></div>' +
+        '<div class="q"><span class="ql">Você é batizado(a)?</span>' +
+        '<button class="opt" type="button" data-bap="sim" aria-pressed="' + (state.baptized === "sim") + '">Sim <small>→ vai para a seção "Batismo"</small></button>' +
+        '<button class="opt" type="button" data-bap="nao" aria-pressed="' + (state.baptized === "nao") + '">Não <small>→ vai para "Ainda não sou batizado"</small></button></div>';
+    } else if (cur === "batismo") {
+      html += '<div class="q"><label for="mp-f-par">Paróquia onde foi batizado(a)</label><input id="mp-f-par" type="text" placeholder="Ex.: Paróquia São Pedro"></div><div class="q"><span class="ql">Foto da certidão de batismo</span><button class="opt" type="button">📷 Escolher imagem</button></div>';
+    } else if (cur === "preparo") {
+      html += '<div class="q"><label for="mp-f-fam">Conte um pouco sobre você e sua família</label><input id="mp-f-fam" type="text" placeholder="Sua resposta"></div>';
+    } else {
+      html += '<div class="q"><span class="ql">Em qual comunidade deseja fazer os encontros?</span>' + ["Matriz Sagrado Coração", "Comunidade Imaculado Coração", "Comunidade Castíssimo Coração"].map((o) => '<button class="opt turma" type="button" aria-pressed="false">' + o + '</button>').join("") + '</div>';
+    }
+    const n = next();
+    html += '<div class="form-actions">' + (state.path.length > 1 ? '<button class="f-back" type="button" id="mp-f-back">Voltar</button>' : "") +
+      '<button class="f-next" type="button" id="mp-f-next"' + (n === null ? " disabled style=\"opacity:.5\"" : "") + '>' + (n === "fim" || cur === "preparo" ? "Enviar" : "Próxima") + '</button></div>' +
+      '<p class="path-note">Caminho até aqui: ' + state.path.map((k) => SECTIONS[k].title).join(" → ") + '</p>';
+    formBody.innerHTML = html;
+
+    const city = document.getElementById("mp-f-city");
+    if (city) {
+      const list = document.getElementById("mp-city-list");
+      const fill = () => {
+        const q = norm(city.value.trim());
+        const found = CITIES.filter((c) => !q || norm(c).includes(q)).slice(0, 8);
+        list.innerHTML = found.map((c) => '<li><button type="button">' + c + '</button></li>').join("");
+        list.querySelectorAll("button").forEach((b) => b.onclick = () => { state.city = b.textContent; city.value = state.city; list.innerHTML = ""; });
+      };
+      city.addEventListener("input", () => { state.city = city.value; fill(); });
+      city.addEventListener("focus", fill);
+    }
+    formBody.querySelectorAll("[data-bap]").forEach((b) => b.onclick = () => { state.baptized = b.dataset.bap; renderForm(); });
+    formBody.querySelectorAll(".turma").forEach((b) => b.onclick = () => formBody.querySelectorAll(".turma").forEach((x) => x.setAttribute("aria-pressed", String(x === b))));
+    const back = document.getElementById("mp-f-back");
+    if (back) back.onclick = () => { state.path.pop(); renderForm(); };
+    document.getElementById("mp-f-next").onclick = () => {
+      const nn = next();
+      if (nn) state.path.push(nn);
+      renderForm();
+    };
+  }
+  renderForm();
+
+})();
+</script>
